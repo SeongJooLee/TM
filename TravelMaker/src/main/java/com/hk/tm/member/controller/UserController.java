@@ -3,6 +3,7 @@ package com.hk.tm.member.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,7 +22,6 @@ public class UserController {
 	@RequestMapping(value="/member/login",method=RequestMethod.GET)
 	public String memberLogin(Model model) {
 		System.out.println("로그인기능 실행");
-		
 		
 		return "memberLogin";
 	}
@@ -42,25 +42,22 @@ public class UserController {
         	return "memberRegister";            
         case "seller":
         	return "sellerRegister";  
-    }
+		}
 		
 		return null;
 		// 과연
 	}
 	@RequestMapping(value="/member/mypage",method=RequestMethod.POST)
-	public String memberMyPage(@RequestParam("grade")String grade) {
-		System.out.println("실행");
-		 switch(grade){
+	public String memberMyPage(@ModelAttribute UserVO userVO) {
+		System.out.println(userVO);
+		 switch(userVO.getGrade()){
 	        case "user": 
 	        	return "userMyPage";            
 	        case "seller":
 	        	return "sellerMyPage";
 	        case "admin" :
 	        	return "adminMyPage";
-	       
 	    }
 		return null;
-		
-		
 	}
 }
