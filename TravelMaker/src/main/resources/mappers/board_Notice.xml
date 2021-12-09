@@ -11,9 +11,9 @@
       <result property="title" column="title" />
       <result property="content" column="content" />
       <result property="imageFileName" column="imageFileName" />
-      <result property="WriteDate" column="WriteDate" />
       <result property="adminID" column="adminID" />
       <result property="name" column="name" />
+      <result property="writeDate" column="writeDate" />
    </resultMap>
    
 
