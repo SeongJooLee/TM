@@ -57,6 +57,6 @@ public class ReviewVO {
 		return "ReviewVO [reviewNO=" + reviewNO + ", title=" + title + ", content=" + content + ", imageFileName="
 				+ imageFileName + ", WriteDate=" + WriteDate + ", id=" + id + ", name=" + name + "]";
 	}
-	
+	//ㅇㅇ
 	
 }
