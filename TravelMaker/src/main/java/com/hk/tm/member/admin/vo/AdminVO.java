@@ -2,10 +2,11 @@ package com.hk.tm.member.admin.vo;
 
 public class AdminVO {
 
-	String adminID;
-	String pw;
-	String name;
-	String grade;
+	private String adminID;
+	private String pw;
+	private String name;
+	private String grade;
+	
 	public String getAdminID() {
 		return adminID;
 	}

@@ -4,11 +4,11 @@ import java.util.Date;
 
 public class ReservationVO {
 
-	String reserNO;
-	int promotionNO;
-	Date ReserDate;
-	int headCount;
-	String id;
+	private String reserNO;
+	private int promotionNO;
+	private Date ReserDate;
+	private int headCount;
+	private String id;
 	public String getReserNO() {
 		return reserNO;
 	}

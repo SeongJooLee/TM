@@ -4,13 +4,13 @@ import java.util.Date;
 
 public class SellerVO {
 
-	String sellerID;
-	String pw;
-	String name;
-	String phone;
-	String address;
-	Date joinDate;
-	String grade;
+	private String sellerID;
+	private String pw;
+	private String name;
+	private String phone;
+	private String address;
+	private Date joinDate;
+	private String grade;
 	public String getSellerID() {
 		return sellerID;
 	}

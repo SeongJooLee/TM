@@ -4,14 +4,14 @@ import java.util.Date;
 
 public class UserVO {
 
-	String id;
-	String pw;
-	String name;
-	String birth;
-	String phone;
-	String address;
-	Date joinDate;
-	String grade;
+	private String id;
+	private String pw;
+	private String name;
+	private String birth;
+	private String phone;
+	private String address;
+	private Date joinDate;
+	private String grade;
 	public String getId() {
 		return id;
 	}

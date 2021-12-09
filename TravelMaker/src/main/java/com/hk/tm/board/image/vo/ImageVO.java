@@ -2,21 +2,21 @@ package com.hk.tm.board.image.vo;
 
 public class ImageVO {
 
-	int noticeNO;
-	int travelNO;
-	int reviewNO;
-	int promotionNO;
-	int eventNO;
-	String image1;
-	String image2;
-	String image3;
-	String image4;
-	String image5;
-	String image6;
-	String image7;
-	String image8;
-	String image9;
-	String image10;
+	private int noticeNO;
+	private int travelNO;
+	private int reviewNO;
+	private int promotionNO;
+	private int eventNO;
+	private String image1;
+	private String image2;
+	private String image3;
+	private String image4;
+	private String image5;
+	private String image6;
+	private String image7;
+	private String image8;
+	private String image9;
+	private String image10;
 	public int getNoticeNO() {
 		return noticeNO;
 	}
