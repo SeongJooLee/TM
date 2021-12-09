@@ -30,5 +30,6 @@ public class UserController {
 		
 		
 		return "memberRegister";
+		// 과연
 	}
 }
