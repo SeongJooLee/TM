@@ -24,6 +24,9 @@
 	<div class="jumbotron text-center" style="margin-bottom: 0">
 		<h1><img src="../webapp/img/unnamed.png" ></h1>
 		<p>Resize this responsive page to see the effect!</p>
+		<p align="right"><a href="#">로그인</a>&nbsp;&nbsp;&nbsp;<a href="#">회원가입</a>&nbsp;&nbsp;&nbsp;<a href="#">고객센터</a></p>
+		<p align="right"><a href="#">로그아웃</a>&nbsp;&nbsp;&nbsp;<a href="#">고객센터</a></p>
+	
 	</div>
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 		<a class="navbar-brand" href="#">Navbar</a>
