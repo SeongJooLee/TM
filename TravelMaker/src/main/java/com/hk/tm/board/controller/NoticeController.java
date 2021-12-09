@@ -8,14 +8,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.hk.tm.board.service.NoticeService;
 
-
 @Controller
 public class NoticeController {
-  
-	
-	/*
-	 * @Autowired NoticeService noticeService;
-	 * 
+
+	/* @Autowired NoticeService noticeService;
+	 *
 	 * 
 	 * @RequestMapping(value = "/board/notice", method = RequestMethod.GET) public
 	 * String noticeList(Model model) { System.out.println("공지사항 클릭 시 페이지 이동");
@@ -43,6 +40,9 @@ public class NoticeController {
 	 * 
 	 * 
 	 * 
-	 * return "?"; }
+	 * retur
+	 * n "?"; }
 	 */
+  
+	
 }
