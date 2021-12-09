@@ -5,6 +5,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		
 	<configuration>
 		<typeAliases>
-			<typeAlias type="com.hk.tm.member.user.vo.UserVO" alias="UserVO" />
+			<typeAlias type="com.hk.tm.member.vo.UserVO" alias="UserVO" />
 		</typeAliases>
 	</configuration>
