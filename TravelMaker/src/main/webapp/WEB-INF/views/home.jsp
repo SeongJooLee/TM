@@ -5,6 +5,9 @@
 	<title>Home</title>
 </head>
 <body>
+
+<jsp:include page="../../include/header.jsp" />
+
 <h1>
 	Hello world!  
 </h1>
