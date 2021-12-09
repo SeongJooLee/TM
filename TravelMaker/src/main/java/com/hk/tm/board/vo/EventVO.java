@@ -1,7 +1,5 @@
 package com.hk.tm.board.vo;
 
-import java.util.Date;
-
 public class EventVO {
 	private int eventNO;
 	private String imagefileName;

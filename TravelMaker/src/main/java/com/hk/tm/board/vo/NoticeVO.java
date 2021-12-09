@@ -3,7 +3,7 @@ package com.hk.tm.board.vo;
 import java.util.Date;
 
 public class NoticeVO {
-	private int NoticeNO;
+	private int noticeNO;
 	private String title;
 	private String content;
 	private String imagefileName;
@@ -11,10 +11,10 @@ public class NoticeVO {
 	private String adminID;
 	private String name;
 	public int getNoticeNO() {
-		return NoticeNO;
+		return noticeNO;
 	}
 	public void setNoticeNO(int noticeNO) {
-		NoticeNO = noticeNO;
+		this.noticeNO = noticeNO;
 	}
 	public String getTitle() {
 		return title;
@@ -52,10 +52,9 @@ public class NoticeVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 	@Override
 	public String toString() {
-		return "NoticeVO [NoticeNO=" + NoticeNO + ", title=" + title + ", content=" + content + ", imagefileName="
+		return "NoticeVO [noticeNO=" + noticeNO + ", title=" + title + ", content=" + content + ", imagefileName="
 				+ imagefileName + ", writeDate=" + writeDate + ", adminID=" + adminID + ", name=" + name + "]";
 	}
 	

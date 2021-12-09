@@ -6,7 +6,7 @@ public class ReservationVO {
 
 	private String reserNO;
 	private int promotionNO;
-	private Date ReserDate;
+	private Date reserDate;
 	private int headCount;
 	private String id;
 	public String getReserNO() {
@@ -22,10 +22,10 @@ public class ReservationVO {
 		this.promotionNO = promotionNO;
 	}
 	public Date getReserDate() {
-		return ReserDate;
+		return reserDate;
 	}
 	public void setReserDate(Date reserDate) {
-		ReserDate = reserDate;
+		this.reserDate = reserDate;
 	}
 	public int getHeadCount() {
 		return headCount;
@@ -41,7 +41,7 @@ public class ReservationVO {
 	}
 	@Override
 	public String toString() {
-		return "ReservationVO [reserNO=" + reserNO + ", promotionNO=" + promotionNO + ", ReserDate=" + ReserDate
+		return "ReservationVO [reserNO=" + reserNO + ", promotionNO=" + promotionNO + ", reserDate=" + reserDate
 				+ ", headCount=" + headCount + ", id=" + id + "]";
 	}
 	

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        
+<mapper namespace="mapper.board">
+
+	<!--  테이블 컬럼하고 VO하고 1:1 맵핑했을 때 이름이 다르면 안됌. -->
+   <resultMap id="imageResult" type="ImageVO">
+      <result property="noticeNO" column="noticeNO" />
+      <result property="travelNO" column="travelNO" />
+      <result property="reviewNO" column="reviewNO" />
+      <result property="promotionNO" column="promotionNO" />
+      <result property="eventNO" column="eventNO" />
+      <result property="image1" column="image1" />
+      <result property="image2" column="image2" />
+      <result property="image3" column="image3" />
+      <result property="image4" column="image4" />
+      <result property="image5" column="image5" />
+      <result property="image6" column="image6" />
+      <result property="image7" column="image7" />
+      <result property="image8" column="image8" />
+      <result property="image9" column="image9" />
+      <result property="image10" column="image10" />
+   </resultMap>
+   
+
+</mapper>
