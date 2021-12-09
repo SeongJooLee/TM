@@ -36,6 +36,8 @@ public class HomeController {
 		return "home";
 		
 		//1122
+		
+		//ㅅㄷ
 	}
 	
 }
