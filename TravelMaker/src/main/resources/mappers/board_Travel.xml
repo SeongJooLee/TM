@@ -2,20 +2,25 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-        
+
 <mapper namespace="mapper.board">
 
-	<!--  테이블 컬럼하고 VO하고 1:1 맵핑했을 때 이름이 다르면 안됌. -->
-   <resultMap id="travelResult" type="TravelVO">
-      <result property="travelNO" column="travelNO" />
-      <result property="title" column="title" />
-      <result property="content" column="content" />
-      <result property="imageFileName" column="imageFileName" />
-      <result property="WriteDate" column="WriteDate" />
-      <result property="id" column="id" />
-      <result property="likeCount" column="likeCount" />
-      <result property="name" column="name" />
-   </resultMap>
-   
+	<!-- 테이블 컬럼하고 VO하고 1:1 맵핑했을 때 이름이 다르면 안됌. -->
+	<resultMap id="travelResult" type="TravelVO">
+		<result property="travelNO" column="travelNO" />
+		<result property="title" column="title" />
+		<result property="content" column="content" />
+		<result property="imageFileName" column="imageFileName" />
+		<result property="WriteDate" column="WriteDate" />
+		<result property="id" column="id" />
+		<result property="likeCount" column="likeCount" />
+		<result property="name" column="name" />
+	</resultMap>
 
+	<select id="selectAllTravelList" resultMap="travelResult">
+<![CDATA[
+		SELECT TRAVELNO, TITLE, CONTENT, IMAGEFILENAME, WRITEDATE, ID, LIKECOUNT, NAME
+		FROM TRAVEL
+   ]]>
+	</select>
 </mapper>
