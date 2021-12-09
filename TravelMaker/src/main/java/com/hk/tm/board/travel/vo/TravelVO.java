@@ -9,7 +9,7 @@ public class TravelVO {
 	private String imagefileName;
 	private Date writeDate;
 	private String id;
-	private String likecount;
+	private String likeCount;
 	private String name;
 	
 	public int getTravelNO() {
@@ -49,10 +49,10 @@ public class TravelVO {
 		this.id = id;
 	}
 	public String getLikecount() {
-		return likecount;
+		return likeCount;
 	}
 	public void setLikecount(String likecount) {
-		this.likecount = likecount;
+		this.likeCount = likecount;
 	}
 	public String getName() {
 		return name;
@@ -64,7 +64,7 @@ public class TravelVO {
 	@Override
 	public String toString() {
 		return "TravelVO [travelNO=" + travelNO + ", title=" + title + ", content=" + content + ", imagefileName="
-				+ imagefileName + ", writeDate=" + writeDate + ", id=" + id + ", likecount=" + likecount + ", name="
+				+ imagefileName + ", writeDate=" + writeDate + ", id=" + id + ", likeCount=" + likeCount + ", name="
 				+ name + "]";
 	}
 	

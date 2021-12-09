@@ -1,16 +1,16 @@
 package com.hk.tm.board.likeyou.vo;
 
 public class LikeyouVO {
-	private String likecount;
+	private String likeCount;
 	private String id;
 	private int travelNO;
 	private int reviewNO;
 	
 	public String getLikecount() {
-		return likecount;
+		return likeCount;
 	}
 	public void setLikecount(String likecount) {
-		this.likecount = likecount;
+		this.likeCount = likecount;
 	}
 	public String getId() {
 		return id;
@@ -33,7 +33,7 @@ public class LikeyouVO {
 	
 	@Override
 	public String toString() {
-		return "LikeyouVO [likecount=" + likecount + ", id=" + id + ", travelNO=" + travelNO + ", reviewNO=" + reviewNO
+		return "LikeyouVO [likeCount=" + likeCount + ", id=" + id + ", travelNO=" + travelNO + ", reviewNO=" + reviewNO
 				+ "]";
 	}
 
