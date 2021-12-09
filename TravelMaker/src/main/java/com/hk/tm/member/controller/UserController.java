@@ -17,9 +17,16 @@ public class UserController {
 	@Autowired
 	UserService userService;
 	
+	@RequestMapping(value="/member/login",method=RequestMethod.GET)
+	public String memberLogin(Model model) {
+		System.out.println("회원가입기능 실행");
+		
+		
+		return "memberLogin";
+	}
 	
 	@RequestMapping(value="/member/register",method=RequestMethod.GET)
-	public String boardList(Model model) {
+	public String memberRegister(Model model) {
 		System.out.println("회원가입기능 실행");
 		
 		
