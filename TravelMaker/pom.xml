@@ -33,11 +33,6 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-
-		<!-- Aspect 위에 -->
-		<!-- https://mvnrepository.com/ -> Spring JDBC 검색 후 버전은 {org.springframework-version} 
-			변경 -->
-		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>

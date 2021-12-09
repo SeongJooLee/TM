@@ -2,10 +2,9 @@
 <!DOCTYPE configuration
 PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
-
+		
 	<configuration>
 		<typeAliases>
-		<!-- type의 코드 확인 -->
-			<typeAlias type="com.hk.hello.vo.ArticleVO" alias="ArticleVO" />
+			<typeAlias type="com.hk.tm.member.user.vo" alias="UserVO" />
 		</typeAliases>
 	</configuration>
