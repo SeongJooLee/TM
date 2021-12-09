@@ -18,7 +18,7 @@ public class UserController {
 	
 	@RequestMapping(value="/member/login",method=RequestMethod.GET)
 	public String memberLogin(Model model) {
-		System.out.println("회원가입기능 실행");
+		System.out.println("로그인기능 실행");
 		
 		
 		return "memberLogin";
