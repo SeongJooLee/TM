@@ -7,7 +7,5 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class TravelController {
 	private static final Logger logger = LoggerFactory.getLogger(TravelController.class);
-	
 
-	
 }
