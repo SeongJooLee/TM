@@ -5,8 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hk.tm.member.service.UserService;
+import com.hk.tm.member.vo.UserVO;
 
 
 
@@ -31,5 +33,12 @@ public class UserController {
 		
 		return "memberRegister";
 		// 과연
+	}
+	@RequestMapping(value="/member/mypage",method=RequestMethod.POST)
+	public String memberMyPage(@RequestParam UserVO userVO) {
+		System.out.println();
+		
+		
+		return "memberLogin";
 	}
 }
