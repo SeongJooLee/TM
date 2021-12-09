@@ -8,7 +8,7 @@
 <script>
 	
 	function register() {
-		location.href = "register";
+		location.href = "registerCheck";
 
 	}
 

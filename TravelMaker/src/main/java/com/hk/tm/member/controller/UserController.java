@@ -26,12 +26,25 @@ public class UserController {
 		return "memberLogin";
 	}
 	
-	@RequestMapping(value="/member/register",method=RequestMethod.GET)
-	public String memberRegister(Model model) {
+	@RequestMapping(value="/member/registerCheck",method=RequestMethod.GET)
+	public String memberRegisterCheck(Model model) {
 		System.out.println("회원가입기능 실행");
 		
 		
-		return "memberRegister";
+		return "memberRegisterCheck";
+		// 과연
+	}
+	@RequestMapping(value="/member/register",method=RequestMethod.GET)
+	public String memberRegister(@RequestParam("name")String name) {
+		System.out.println("name="+name);
+		switch(name){
+        case "user": 
+        	return "memberRegister";            
+        case "seller":
+        	return "sellerRegister";  
+    }
+		
+		return null;
 		// 과연
 	}
 	@RequestMapping(value="/member/mypage",method=RequestMethod.POST)
@@ -46,7 +59,7 @@ public class UserController {
 	        	return "adminMyPage";
 	       
 	    }
-		return "";
+		return null;
 		
 		
 	}
