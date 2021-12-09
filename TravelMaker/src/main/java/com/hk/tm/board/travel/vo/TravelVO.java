@@ -48,11 +48,11 @@ public class TravelVO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getLikecount() {
+	public String getLikeCount() {
 		return likeCount;
 	}
-	public void setLikecount(String likecount) {
-		this.likeCount = likecount;
+	public void setLikeCount(String likeCount) {
+		this.likeCount = likeCount;
 	}
 	public String getName() {
 		return name;
@@ -67,5 +67,7 @@ public class TravelVO {
 				+ imagefileName + ", writeDate=" + writeDate + ", id=" + id + ", likeCount=" + likeCount + ", name="
 				+ name + "]";
 	}
+	
+
 	
 }

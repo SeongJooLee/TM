@@ -6,11 +6,11 @@ public class LikeyouVO {
 	private int travelNO;
 	private int reviewNO;
 	
-	public String getLikecount() {
+	public String getLikeCount() {
 		return likeCount;
 	}
-	public void setLikecount(String likecount) {
-		this.likeCount = likecount;
+	public void setLikeCount(String likeCount) {
+		this.likeCount = likeCount;
 	}
 	public String getId() {
 		return id;
@@ -36,5 +36,7 @@ public class LikeyouVO {
 		return "LikeyouVO [likeCount=" + likeCount + ", id=" + id + ", travelNO=" + travelNO + ", reviewNO=" + reviewNO
 				+ "]";
 	}
+	
+
 
 }
