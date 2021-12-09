@@ -7,6 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>회원가입창</h1>
+	<form action='#' method='post'>
+		ID <input type='text' name='id'>  <button>중복체크</button>
+		PW <input type='text' name='id'>
+		PW확인 <input type='text' name='id'>
+		이름 <input type='text' name='id'>
+		생년월일 <input type='text' name='id'>
+		연락처 <input type='text' name='id'>
+		주소 <input type='text' name='id'>
+	</form>
 </body>
 </html>

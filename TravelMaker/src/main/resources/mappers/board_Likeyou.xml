@@ -6,7 +6,7 @@
 <mapper namespace="mapper.board">
 
 	<!--  테이블 컬럼하고 VO하고 1:1 맵핑했을 때 이름이 다르면 안됌. -->
-   <resultMap id="noticeResult" type="LikeyouVO">
+   <resultMap id="likeyouResult" type="LikeyouVO">
       <result property="likeCount" column="likeCount" />
       <result property="id" column="id" />
       <result property="travelNO" column="travelNO" />
