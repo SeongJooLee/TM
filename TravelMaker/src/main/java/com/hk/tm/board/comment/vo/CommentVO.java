@@ -1,5 +1,48 @@
 package com.hk.tm.board.comment.vo;
 
-public class CommentVO {
+import java.util.Date;
 
+public class CommentVO {
+	private String id;
+	private String content;
+	private Date writeDate;
+	private int travelNO;
+	private int reviewNO;
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public Date getWriteDate() {
+		return writeDate;
+	}
+	public void setWriteDate(Date writeDate) {
+		this.writeDate = writeDate;
+	}
+	public int getTravelNO() {
+		return travelNO;
+	}
+	public void setTravelNO(int travelNO) {
+		this.travelNO = travelNO;
+	}
+	public int getReviewNO() {
+		return reviewNO;
+	}
+	public void setReviewNO(int reviewNO) {
+		this.reviewNO = reviewNO;
+	}
+	@Override
+	public String toString() {
+		return "CommentVO [id=" + id + ", content=" + content + ", writeDate=" + writeDate + ", travelNO=" + travelNO
+				+ ", reviewNO=" + reviewNO + "]";
+	}
+	
+	
 }
