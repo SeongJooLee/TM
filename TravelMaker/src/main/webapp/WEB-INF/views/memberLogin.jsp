@@ -6,14 +6,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
-	function doOpenCheck(chk) {
-		var obj = document.getElementsByName("userGrade");
-		for (var i = 0; i < obj.length; i++) {
-			if (obj[i] != chk) {
-				obj[i].checked = false;
-			}
-		}
-	}
 	
 	function register() {
 		location.href = "register";
@@ -27,18 +19,14 @@
 </script>
 </head>
 <body>
-	<form action='/member/mypage' method='post'>
-		<input type ='checkbox'  name='userGrade' value='user'onclick='doOpenCheck(this)'>
-		<input type="radio" name='userGrade' value='user'> <input
-			type="radio" name='sellerGrade' value='seller'> <input
-			type="radio" name='adminGrade' value='admin'> <input
-			type='text' name='id' value='ID'><br> <input
-			type='password' name='pw' value='PW'><br> <input
-			type='submit' value='로그인'>
+	<form action='mypage' method='post'>
+		<input type="radio" name='grade' value='user'> 
+		<input type="radio" name='grade' value='seller'> 
+		<input type="radio" name='grade' value='admin'><br>
+		<input type='text' name='id' value='ID'><br> 
+		<input type='password' name='pw' value='PW'><br> 
+		<input type='submit' value='로그인'>
 	</form>
-
-
-	<input type="checkbox">
 	<button type='button' onclick='find()'>ID/PW찾기</button>
 
 	<button type='button' onclick='register()'>회원가입</button>

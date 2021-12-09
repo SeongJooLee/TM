@@ -35,10 +35,19 @@ public class UserController {
 		// 과연
 	}
 	@RequestMapping(value="/member/mypage",method=RequestMethod.POST)
-	public String memberMyPage(@RequestParam UserVO userVO) {
-		System.out.println();
+	public String memberMyPage(@RequestParam("grade")String grade) {
+		System.out.println("실행");
+		 switch(grade){
+	        case "user": 
+	        	return "userMyPage";            
+	        case "seller":
+	        	return "sellerMyPage";
+	        case "admin" :
+	        	return "adminMyPage";
+	       
+	    }
+		return "";
 		
 		
-		return "memberLogin";
 	}
 }
