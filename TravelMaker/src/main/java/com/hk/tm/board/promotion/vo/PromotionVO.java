@@ -3,19 +3,19 @@ package com.hk.tm.board.promotion.vo;
 import java.util.Date;
 
 public class PromotionVO {
-	private int NoticeNO;
+	private int promotionNO;
 	private String title;
 	private String content;
 	private String imagefileName;
 	private Date writeDate;
-	private String id;
+	private String sellerID;
 	private String name;
 	private int price;
-	public int getNoticeNO() {
-		return NoticeNO;
+	public int getPromotionNO() {
+		return promotionNO;
 	}
-	public void setNoticeNO(int noticeNO) {
-		NoticeNO = noticeNO;
+	public void setPromotionNO(int promotionNO) {
+		this.promotionNO = promotionNO;
 	}
 	public String getTitle() {
 		return title;
@@ -41,11 +41,11 @@ public class PromotionVO {
 	public void setWriteDate(Date writeDate) {
 		this.writeDate = writeDate;
 	}
-	public String getId() {
-		return id;
+	public String getSellerID() {
+		return sellerID;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setSellerID(String sellerID) {
+		this.sellerID = sellerID;
 	}
 	public String getName() {
 		return name;
@@ -62,10 +62,11 @@ public class PromotionVO {
 	
 	@Override
 	public String toString() {
-		return "PromotionVO [NoticeNO=" + NoticeNO + ", title=" + title + ", content=" + content + ", imagefileName="
-				+ imagefileName + ", writeDate=" + writeDate + ", id=" + id + ", name=" + name + ", price=" + price
-				+ "]";
+		return "PromotionVO [promotionNO=" + promotionNO + ", title=" + title + ", content=" + content
+				+ ", imagefileName=" + imagefileName + ", writeDate=" + writeDate + ", sellerID=" + sellerID + ", name="
+				+ name + ", price=" + price + "]";
 	}
+	
 	
 	
 

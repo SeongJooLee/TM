@@ -8,9 +8,8 @@ public class NoticeVO {
 	private String content;
 	private String imagefileName;
 	private Date writeDate;
-	private String id;
+	private String adminID;
 	private String name;
-	
 	public int getNoticeNO() {
 		return NoticeNO;
 	}
@@ -41,11 +40,11 @@ public class NoticeVO {
 	public void setWriteDate(Date writeDate) {
 		this.writeDate = writeDate;
 	}
-	public String getId() {
-		return id;
+	public String getAdminID() {
+		return adminID;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setAdminID(String adminID) {
+		this.adminID = adminID;
 	}
 	public String getName() {
 		return name;
@@ -53,12 +52,13 @@ public class NoticeVO {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	@Override
 	public String toString() {
 		return "NoticeVO [NoticeNO=" + NoticeNO + ", title=" + title + ", content=" + content + ", imagefileName="
-				+ imagefileName + ", writeDate=" + writeDate + ", id=" + id + ", name=" + name + "]";
+				+ imagefileName + ", writeDate=" + writeDate + ", adminID=" + adminID + ", name=" + name + "]";
 	}
 	
-	
+
 }
 
