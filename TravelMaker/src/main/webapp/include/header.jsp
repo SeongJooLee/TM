@@ -25,7 +25,7 @@
 		<a href="/tm"><img src=""></a>
 		<p align="right"><a href="member/login">로그인</a>&nbsp;&nbsp;&nbsp;<a href="member/register">회원가입</a>&nbsp;&nbsp;&nbsp;<a href="#">고객센터</a></p>
 		<p align="right"><a href="#">로그아웃</a>&nbsp;&nbsp;&nbsp;<a href="#">고객센터</a></p>
-	
+	 
 	</div>
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 		<a class="navbar-brand" href="board/notice">공지사항</a>
