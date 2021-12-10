@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"  %>
+	<%@page session='false' %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	
+
+
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +28,7 @@
 </head>
 <body>
 	<div class="jumbotron text-center" style="margin-bottom: 0;background-color: lightblue;">
-		<a href="/tm"><img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F5040%2F2017%2F06%2F05%2F0000086609_001_20170605185107788.jpg&type=sc960_832"></a>
+		<img class="card-img-top" src="<c:url value="/resources/img/logo_1.png" />" width="50" height="300" />
 		<p align="right"><a href="member/login">로그인</a>&nbsp;&nbsp;&nbsp;<a href="member/register">회원가입</a>&nbsp;&nbsp;&nbsp;<a href="#">고객센터</a></p>
 		<p align="right"><a href="#">로그아웃</a>&nbsp;&nbsp;&nbsp;<a href="#">고객센터</a></p>
 	 
