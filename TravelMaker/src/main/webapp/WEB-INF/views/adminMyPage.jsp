@@ -53,4 +53,7 @@
 <div class="grid4">footer</div>
 </div>
 </body>
+
+<%@ include file="/include/adminsidemenu.jsp" %>
+		관리자 화면입니다.
 </html>
