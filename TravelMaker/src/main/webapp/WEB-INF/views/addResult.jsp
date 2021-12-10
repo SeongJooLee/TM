@@ -8,7 +8,7 @@
 <html>
 <head>
 <script>
-	var a = ${result}
+	/* var a = ${result} */
 	function ss(){
 	alert('회원가입이 완료되었습니다.');
 	location.href = "../";
@@ -19,10 +19,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:if var='ret' test = '${result==1}'>
+	 <c:if var='ret' test = '${result==1}'>
 		<script>
 			ss();
 		</script>
-	</c:if>
+	</c:if> 
 </body>
 </html>

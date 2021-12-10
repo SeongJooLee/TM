@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hk.tm.member.dao.UserDAO;
+import com.hk.tm.member.vo.SellerVO;
 import com.hk.tm.member.vo.UserVO;
 
 @Service
@@ -20,5 +21,10 @@ public class UserService {
 	public int addUser(UserVO userVO) {
 		// TODO Auto-generated method stub
 		return userDAO.addUser(userVO);
+	}
+
+	public int addSeller(SellerVO seller) {
+		// TODO Auto-generated method stub
+		return userDAO.addSeller(seller);
 	}
 }

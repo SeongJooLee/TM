@@ -50,11 +50,11 @@ public class UserController {
 		// 과연
 	}
 	@RequestMapping(value="/member/sellerAdd",method=RequestMethod.POST)
-	public String memberSellerAdd(@ModelAttribute SellerVO seller) {
-		System.out.println(seller);
+	public String memberSellerAdd(@ModelAttribute SellerVO seller,Model model) {
+		int ret = userService.addSeller(seller);
 		
-		
-		return "home";
+		model.addAttribute("result", ret);
+		return "addResult";
 		// 과연
 	}
 	@RequestMapping(value="/member/register",method=RequestMethod.GET)

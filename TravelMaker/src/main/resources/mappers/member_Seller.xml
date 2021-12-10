@@ -32,7 +32,7 @@
    </select>
    
    <insert id="insert" parameterType="SellerVO">
-   		INSERT INTO seller (sellerID, PW, NAME, PHONE, ADDRESS, JOINDATE, GRADE)
+   		INSERT INTO seller (sellerID, pw, name, phone, address, joindate, grade)
    		 VALUES(#{sellerID}, #{pw}, #{name}, #{phone}, #{address}, sysdate, #{grade})
    </insert>
    
