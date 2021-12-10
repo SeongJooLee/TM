@@ -17,6 +17,7 @@ public class ImageVO {
 	private String image8;
 	private String image9;
 	private String image10;
+	
 	public int getNoticeNO() {
 		return noticeNO;
 	}

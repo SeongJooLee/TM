@@ -6,10 +6,10 @@ public class ReviewVO {
 	private int reviewNO;
 	private String title;
 	private String content;
-	private String imageFileName;
-	private Date WriteDate;
+	private Date writeDate;
 	private String id;
 	private String name;
+	private int promotionNO;
 	public int getReviewNO() {
 		return reviewNO;
 	}
@@ -28,17 +28,11 @@ public class ReviewVO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getImageFileName() {
-		return imageFileName;
-	}
-	public void setImageFileName(String imageFileName) {
-		this.imageFileName = imageFileName;
-	}
 	public Date getWriteDate() {
-		return WriteDate;
+		return writeDate;
 	}
 	public void setWriteDate(Date writeDate) {
-		WriteDate = writeDate;
+		this.writeDate = writeDate;
 	}
 	public String getId() {
 		return id;
@@ -52,11 +46,16 @@ public class ReviewVO {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public int getPromotionNO() {
+		return promotionNO;
+	}
+	public void setPromotionNO(int promotionNO) {
+		this.promotionNO = promotionNO;
+	}
 	@Override
 	public String toString() {
-		return "ReviewVO [reviewNO=" + reviewNO + ", title=" + title + ", content=" + content + ", imageFileName="
-				+ imageFileName + ", WriteDate=" + WriteDate + ", id=" + id + ", name=" + name + "]";
+		return "ReviewVO [reviewNO=" + reviewNO + ", title=" + title + ", content=" + content + ", writeDate="
+				+ writeDate + ", id=" + id + ", name=" + name + ", promotionNO=" + promotionNO + "]";
 	}
-	//ㅇㅇ
 	
 }

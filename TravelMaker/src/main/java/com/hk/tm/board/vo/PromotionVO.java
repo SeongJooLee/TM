@@ -6,11 +6,11 @@ public class PromotionVO {
 	private int promotionNO;
 	private String title;
 	private String content;
-	private String imagefileName;
 	private Date writeDate;
+	private int price;
 	private String sellerID;
 	private String name;
-	private int price;
+	
 	public int getPromotionNO() {
 		return promotionNO;
 	}
@@ -29,17 +29,17 @@ public class PromotionVO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getImagefileName() {
-		return imagefileName;
-	}
-	public void setImagefileName(String imagefileName) {
-		this.imagefileName = imagefileName;
-	}
 	public Date getWriteDate() {
 		return writeDate;
 	}
 	public void setWriteDate(Date writeDate) {
 		this.writeDate = writeDate;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
 	}
 	public String getSellerID() {
 		return sellerID;
@@ -53,21 +53,10 @@ public class PromotionVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getPrice() {
-		return price;
-	}
-	public void setPrice(int price) {
-		this.price = price;
-	}
-	
 	@Override
 	public String toString() {
-		return "PromotionVO [promotionNO=" + promotionNO + ", title=" + title + ", content=" + content
-				+ ", imagefileName=" + imagefileName + ", writeDate=" + writeDate + ", sellerID=" + sellerID + ", name="
-				+ name + ", price=" + price + "]";
+		return "PromotionVO [promotionNO=" + promotionNO + ", title=" + title + ", content=" + content + ", writeDate="
+				+ writeDate + ", price=" + price + ", sellerID=" + sellerID + ", name=" + name + "]";
 	}
-	
-	
-	
 
 }

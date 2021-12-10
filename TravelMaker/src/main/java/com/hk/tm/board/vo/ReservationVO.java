@@ -9,6 +9,7 @@ public class ReservationVO {
 	private Date reserDate;
 	private int headCount;
 	private String id;
+	
 	public String getReserNO() {
 		return reserNO;
 	}

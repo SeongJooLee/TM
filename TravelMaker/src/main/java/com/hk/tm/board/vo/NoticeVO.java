@@ -6,10 +6,10 @@ public class NoticeVO {
 	private int noticeNO;
 	private String title;
 	private String content;
-	private String imagefileName;
 	private String adminID;
 	private String name;
 	private Date writeDate;
+	
 	public int getNoticeNO() {
 		return noticeNO;
 	}
@@ -27,12 +27,6 @@ public class NoticeVO {
 	}
 	public void setContent(String content) {
 		this.content = content;
-	}
-	public String getImagefileName() {
-		return imagefileName;
-	}
-	public void setImagefileName(String imagefileName) {
-		this.imagefileName = imagefileName;
 	}
 	public String getAdminID() {
 		return adminID;
@@ -54,8 +48,8 @@ public class NoticeVO {
 	}
 	@Override
 	public String toString() {
-		return "NoticeVO [noticeNO=" + noticeNO + ", title=" + title + ", content=" + content + ", imagefileName="
-				+ imagefileName + ", adminID=" + adminID + ", name=" + name + ", writeDate=" + writeDate + "]";
+		return "NoticeVO [noticeNO=" + noticeNO + ", title=" + title + ", content=" + content + ", adminID=" + adminID
+				+ ", name=" + name + ", writeDate=" + writeDate + "]";
 	}
 
 }

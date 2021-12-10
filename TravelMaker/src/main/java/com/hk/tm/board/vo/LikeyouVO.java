@@ -1,15 +1,15 @@
 package com.hk.tm.board.vo;
 
 public class LikeyouVO {
-	private String likeCount;
+	private int likeCount;
 	private String id;
 	private int travelNO;
 	private int reviewNO;
 	
-	public String getLikeCount() {
+	public int getLikeCount() {
 		return likeCount;
 	}
-	public void setLikeCount(String likeCount) {
+	public void setLikeCount(int likeCount) {
 		this.likeCount = likeCount;
 	}
 	public String getId() {
@@ -36,7 +36,4 @@ public class LikeyouVO {
 		return "LikeyouVO [likeCount=" + likeCount + ", id=" + id + ", travelNO=" + travelNO + ", reviewNO=" + reviewNO
 				+ "]";
 	}
-	
-
-
 }

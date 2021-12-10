@@ -8,6 +8,7 @@ public class CommentVO {
 	private Date writeDate;
 	private int travelNO;
 	private int reviewNO;
+	
 	public String getId() {
 		return id;
 	}
