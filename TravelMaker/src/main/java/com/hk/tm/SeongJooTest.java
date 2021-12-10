@@ -20,4 +20,10 @@ public class SeongJooTest {
 		return "seongjooTest";
 		
 	}
+	@RequestMapping(value = "/member/headerTest", method = RequestMethod.GET)
+	public String header() {
+		
+		return "headerTest";
+		
+	}
 }
