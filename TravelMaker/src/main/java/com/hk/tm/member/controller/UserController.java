@@ -36,12 +36,17 @@ public class UserController {
 		// 과연
 	}
 	@RequestMapping(value="/member/userAdd",method=RequestMethod.POST)
-	public String memberUserAdd(@ModelAttribute UserVO userVO) {
+	public String memberUserAdd(@ModelAttribute UserVO userVO,Model model) {
 		System.out.println("hello");
 		System.out.println(userVO);
 		
+		int ret = userService.addUser(userVO);
+		System.out.println(ret);
 		
-		return "home";
+		model.addAttribute("result",ret);
+		
+		
+		return "addResult";
 		// 과연
 	}
 	@RequestMapping(value="/member/sellerAdd",method=RequestMethod.POST)

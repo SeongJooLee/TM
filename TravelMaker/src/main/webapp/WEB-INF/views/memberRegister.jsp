@@ -13,6 +13,7 @@
 	아이디 : <input type='text' name='id'><br>
 	비밀번호 : <input type='password' name='pw'><br>
 	이름 : <input type='text' name='name'><br>
+	생년월일 : <input type='text' name='birth'><br>
 	연락처 : <input type='text' name='phone'><br>
 	주소 : <input type='text' name='address'><br>
 	<input type='submit' value='제출'><br>

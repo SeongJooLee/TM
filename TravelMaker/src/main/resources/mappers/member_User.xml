@@ -33,8 +33,8 @@
    </select>
    
    <insert id="insert" parameterType="UserVO">
-   		INSERT INTO "USER" (ID, PW, NAME, BIRTH, PHONE, ADDRESS, JOINDATE, GRADE)
-   		 VALUES(#{id}, #{pw}, #{name}, #{birth}, #{phone}, #{address}, sysdate, #{grade})
+   		INSERT INTO "USER" (ID, PW, NAME,birth,  PHONE, ADDRESS, JOINDATE, GRADE)
+   		 VALUES(#{id}, #{pw}, #{name}, #{birth} ,#{phone}, #{address}, sysdate, #{grade})
    </insert>
    
    <update id="update" parameterType="UserVO">
