@@ -1,1 +1,6 @@
 @charset "UTF-8";
+
+div#sub{width:000px; height:000px; float:left; }
+div#content{width:000px; heigth:000px; float:left; }
+div#wrap{width:880px; margin:0 auto; overflow:hidden; }
+

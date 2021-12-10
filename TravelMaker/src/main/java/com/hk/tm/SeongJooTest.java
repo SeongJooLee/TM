@@ -17,7 +17,7 @@ public class SeongJooTest {
 	@RequestMapping(value = "/member/seongjoo", method = RequestMethod.GET)
 	public String seongjoo() {
 		
-		return "seonhjooTest";
+		return "seongjooTest";
 		
 	}
 }
