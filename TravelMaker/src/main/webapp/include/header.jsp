@@ -21,9 +21,8 @@
 </style>
 </head>
 <body>
-	<div class="jumbotron text-center" style="margin-bottom: 0">
-		<h1><img src="../webapp/img/unnamed.png" ></h1>
-		<p>Resize this responsive page to see the effect!</p>
+	<div class="jumbotron text-center" style="margin-bottom: 0;background-color: lightblue;">
+		<a href="/tm"><img src=""></a>
 		<p align="right"><a href="member/login">로그인</a>&nbsp;&nbsp;&nbsp;<a href="member/register">회원가입</a>&nbsp;&nbsp;&nbsp;<a href="#">고객센터</a></p>
 		<p align="right"><a href="#">로그아웃</a>&nbsp;&nbsp;&nbsp;<a href="#">고객센터</a></p>
 	
@@ -39,6 +38,7 @@
 				<li class="nav-item"><a class="nav-link" href="board/promotion">홍보상품</a></li>
 				<li class="nav-item"><a class="nav-link" href="board/review">이용후기</a></li>
 				<li class="nav-item"><a class="nav-link" href="board/travel">테마여행</a></li>
+				<li class="nav-item"><button class="nav-button" href="board/popupEnter" style="margin-left: 1400px; background-color: lightblue;">&nbsp;통합검색&nbsp;</button>
 			</ul>
 		</div>
 	</nav>
