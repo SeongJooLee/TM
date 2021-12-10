@@ -16,31 +16,31 @@
       <result property="grade" column="grade" />
    </resultMap>
 
-   <select id="selectAllList"  resultMap="sellerResult">
+   <select id="selectAll"  resultMap="sellerResult">
    		select * from seller
    </select>
    
-   <select id="selectOneList" resultType="SellerVO">
+   <select id="selectOne" resultType="SellerVO">
 		select * from seller
 		where sellerID=#{sellerID}   
    </select>
    
-   <select id="sellerLogin" resultType="SellerVO">
+   <select id="login" resultType="SellerVO">
    		select * from seller
    		where sellerID=#{sellerID}
    		and pw=#{pw}
    </select>
    
-   <insert id="insertSeller" parameterType="SellerVO">
+   <insert id="insert" parameterType="SellerVO">
    		INSERT INTO seller (sellerID, PW, NAME, PHONE, ADDRESS, JOINDATE, GRADE)
    		 VALUES(#{sellerID}, #{pw}, #{name}, #{phone}, #{address}, sysdate, #{grade})
    </insert>
    
-   <update id="updateSeller" parameterType="SellerVO">
+   <update id="update" parameterType="SellerVO">
    		UPDATE seller SET PW=#{pw}, PHONE=#{phone}, ADDRESS=#{address}, WHERE sellerID=#{sellerID}
    </update>
    
-   <delete id="deleteSeller" parameterType="SellerVO">
+   <delete id="delete" parameterType="SellerVO">
    		DELETE FROM seller WHERE sellerID=#{sellerID}
    </delete>
    

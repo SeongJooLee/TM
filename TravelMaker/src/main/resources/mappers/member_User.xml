@@ -17,31 +17,31 @@
       <result property="grade" column="grade" />
    </resultMap>
    
-   <select id="selectAllList"  resultMap="userResult">
+   <select id="selectAll"  resultMap="userResult">
    		select * from User
    </select>
    
-   <select id="selectOneList" resultType="UserVO">
+   <select id="selectOne" resultType="UserVO">
 		select * from user
 		where id=#{id}   
    </select>
    
-   <select id="userLogin" resultType="UserVO">
+   <select id="login" resultType="UserVO">
    		select * from user
    		where id=#{id}
    		and pw=#{pw}
    </select>
    
-   <insert id="insertUser" parameterType="UserVO">
+   <insert id="insert" parameterType="UserVO">
    		INSERT INTO "USER" (ID, PW, NAME, BIRTH, PHONE, ADDRESS, JOINDATE, GRADE)
    		 VALUES(#{id}, #{pw}, #{name}, #{birth}, #{phone}, #{address}, sysdate, #{grade})
    </insert>
    
-   <update id="updateUser" parameterType="UserVO">
+   <update id="update" parameterType="UserVO">
    		UPDATE "USER" SET PW=#{pw}, PHONE=#{phone}, ADDRESS=#{address}, WHERE ID=#{id}
    </update>
    
-   <delete id="deleteUser" parameterType="UserVO">
+   <delete id="delete" parameterType="UserVO">
    		DELETE FROM "USER" WHERE ID=#{id}
    </delete>
 

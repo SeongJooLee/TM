@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
         
-<mapper namespace="mapper.board">
+<mapper namespace="mapper.boardReservation">
 
 	<!--  테이블 컬럼하고 VO하고 1:1 맵핑했을 때 이름이 다르면 안됌. -->
    <resultMap id="reservationResult" type="ReservationVO">
@@ -14,5 +14,26 @@
       <result property="id" column="id" />
    </resultMap>
    
+   	<select id="selectAll" resultMap="reservationResult">
+		SELECT RESERNO, PROMOTIONNO, RESERDATE, HEADCOUNT, ID FROM RESERVATION
+	</select>
+	
+	<select id="selectOne" resultType="ReservationVO">
+		SELECT RESERNO, PROMOTIONNO, RESERDATE, HEADCOUNT, ID FROM RESERVATION
+		 where reserNO=#{reserNO}
+	</select>
+	
+	<insert id="insert" parameterType="ReservationVO">
+		INSERT INTO RESERVATION (RESERNO, PROMOTIONNO, RESERDATE, HEADCOUNT, ID)
+ 		VALUES(TO_CHAR(SYSDATE,'YYYY/MM/DD/HH/MI/SS'), #{promotionNO}, #{reserDate}, #{headCount}, #{id})	
+	</insert>
+	
+	<update id="update" parameterType="ReservationVO">
+		UPDATE RESERVATION SET RESERDATE=#{reserDate}, HEADCOUNT=#{headCount} WHERE RESERNO=#{reserNO}
+	</update>
+	
+	<delete id="delete" parameterType="ReservationVO">
+		DELETE FROM RESERVATION WHERE RESERNO=#{reserNO}
+	</delete>
 
 </mapper>

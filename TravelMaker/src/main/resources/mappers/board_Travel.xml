@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="mapper.board">
+<mapper namespace="mapper.boardTravel">
 
 	<!-- 테이블 컬럼하고 VO하고 1:1 맵핑했을 때 이름이 다르면 안됌. -->
 	<resultMap id="travelResult" type="TravelVO">
@@ -17,10 +17,27 @@
 		<result property="name" column="name" />
 	</resultMap>
 
-	<select id="selectAllTravelList" resultMap="travelResult">
-<![CDATA[
+	<select id="selectAll" resultMap="travelResult">
 		SELECT TRAVELNO, TITLE, CONTENT, IMAGEFILENAME, WRITEDATE, ID, LIKECOUNT, NAME
 		FROM TRAVEL
-   ]]>
 	</select>
+	
+	<select id="selectOne" resultType="TravelVO">
+			select * from travel
+			where travelNO = #{travelNO}
+	</select>
+	
+	<insert id="insert" parameterType="TravelVO">
+			INSERT INTO TRAVEL (TRAVELNO, TITLE, CONTENT, WRITEDATE, ID, LIKECOUNT, NAME)
+			 VALUES((select max(travelNO)+1 from travel), #{title}, #{content}, SYSDATE , #{id}, '0', 'travel')
+	</insert>
+	
+	<update id="update" parameterType="TravelVO">
+		UPDATE TRAVEL SET TITLE=#{title}, CONTENT=#{content}, WHERE TRAVELNO=#{travelNO}
+	</update>
+	
+	<delete id="delete" parameterType="travelVO">
+			DELETE FROM TRAVEL WHERE TRAVELNO=#{travelNO}
+	</delete>
+	
 </mapper>

@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
         
-<mapper namespace="mapper.board">
+<mapper namespace="mapper.boardReview">
 
 	<!--  테이블 컬럼하고 VO하고 1:1 맵핑했을 때 이름이 다르면 안됌. -->
    <resultMap id="reviewResult" type="ReviewVO">
@@ -16,8 +16,27 @@
       <result property="name" column="name" />
    </resultMap>
    
-   <select id="allList" resultMap="reviewResult">
-   		select * from review
-   </select>
-
+	<select id="selectAll" resultMap="reviewResult">
+		SELECT reviewNO, TITLE, CONTENT, IMAGEFILENAME, WRITEDATE, ID, LIKECOUNT, NAME
+		FROM REVIEW
+	</select>
+	
+	<select id="selectOne" resultType="ReviewVO">
+			select * from REVIEW
+			where reviewNO = #{reviewNO}
+	</select>
+	
+	<insert id="insert" parameterType="ReviewVO">
+			INSERT INTO REVIEW (reviewNO, TITLE, CONTENT, WRITEDATE, ID, NAME)
+			 VALUES((select max(reviewNO)+1 from REVIEW), #{title}, #{content}, SYSDATE , #{id}, 'review')
+	</insert>
+	
+	<update id="update" parameterType="ReviewVO">
+		UPDATE REVIEW SET TITLE=#{title}, CONTENT=#{content}, WHERE reviewNO=#{reviewNO}
+	</update>
+	
+	<delete id="delete" parameterType="ReviewVO">
+			DELETE FROM REVIEW WHERE reviewNO=#{reviewNO}
+	</delete>
+	
 </mapper>

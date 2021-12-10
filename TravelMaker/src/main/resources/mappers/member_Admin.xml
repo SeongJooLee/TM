@@ -13,31 +13,31 @@
       <result property="grade" column="grade" />
    </resultMap>
 
-   <select id="selectAllList"  resultMap="adminResult">
+   <select id="selectAll"  resultMap="adminResult">
    		select * from admin
    </select>
    
-   <select id="selectOneList" resultType="AdminVO">
+   <select id="selectOne" resultType="AdminVO">
 		select * from admin
 		where adminID=#{adminID}   
    </select>
    
-   <select id="adminLogin" resultType="AdminVO">
+   <select id="login" resultType="AdminVO">
    		select * from admin
    		where adminID=#{adminID}
    		and pw=#{pw}
    </select>
    
-   <insert id="insertAdmin" parameterType="AdminVO">
+   <insert id="insert" parameterType="AdminVO">
    		INSERT INTO admin (adminID, PW, NAME, GRADE)
    		 VALUES(#{adminID}, #{pw}, #{name},#{grade})
    </insert>
    
-   <update id="updateAdmin" parameterType="AdminVO">
+   <update id="update" parameterType="AdminVO">
    		UPDATE admin SET PW=#{pw} WHERE adminID=#{adminID}
    </update>
    
-   <delete id="deleteAdmin" parameterType="AdminVO">
+   <delete id="delete" parameterType="AdminVO">
    		DELETE FROM admin WHERE adminID=#{adminID}
    </delete>
    
