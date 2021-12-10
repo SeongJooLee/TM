@@ -8,5 +8,10 @@
 </head>
 <body>
 <h1>admin마이페이지</h1>
+
+
+
+
+
 </body>
 </html>
