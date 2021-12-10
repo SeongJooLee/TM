@@ -15,27 +15,26 @@
       <result property="count" column="count" />
    </resultMap>
    
-   <select id="selectAll" resultMap="eventResult">
+    <select id="selectAll" resultMap="eventResult">
 		<![CDATA[ select * from eventproduct]]>
 	</select>
 	
 	<select id="selectOne" resultType="EventVO"> 
-		SELECT eventNO,imagefileName,id,name,price,count from EVENTPRODUCT where id=#{id}
+		SELECT eventNO,id,name,price,count from EVENTPRODUCT where eventNO=#{eventNO}
 	</select>
-	<insert id="insert" parameterType="EventVO">
-		<![CDATA[ INSERT INTO EVENTPRODUCT
-			(eventNO, imagefileName, id, name, price,count)
-			VALUES(#{eventNO}, #{imagefileName}, #{id} , #{name}, #{price}),#{count} ]]>
-	</insert>
+	<!-- <insert id="insert" parameterType="EventVO">
+		  INSERT INTO EVENTPRODUCT(eventNO, id, name, count)
+			VALUES(#{(select max(eventNO)+1 from EVENTPRODUCT)}, #{id} , #{name},1) 
+	</insert>  -->
 	
 
-	<update id="update" parameterType="EventVO"> 
-		UPDATE EVENTPRODUCT SET imagefileName=#{imagefileName}, name=#{name},price=#{price},count=#{count} 
-		WHERE id=#{id} 
+	<!-- <update id="update" parameterType="EventVO"> 
+		UPDATE EVENTPRODUCT SET name=#{name},price=#{price},count=#{count} 
+		WHERE eventNO=#{eventNO} 
 	
 	</update>
 	<delete id="delete" parameterType="EventVO"> 
 		DELETE FROM EVENTPRODUCT WHERE ID=#{id} 
-	</delete>
+	</delete> -->
 
 </mapper>

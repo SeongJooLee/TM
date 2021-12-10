@@ -17,16 +17,27 @@
 		<![CDATA[ select * from likeyou]]>
 	</select>
 	
-	<select id="selectOne" resultType="LikeyouVO"> 
-		SELECT likeCount,id,travelNO,reviewNO from LIKEYOU where id=#{id}
+	<select id="selectOneTravel" resultType="LikeyouVO"> 
+		SELECT likeCount,travelNO from LIKEYOU where travelNO=#{travelNO}
 	</select>
-	<insert id="insert" parameterType="LikeyouVO">
+	
+	<select id="selectOneReview" resultType="LikeyouVO"> 
+		SELECT likeCount,reviewNO from LIKEYOU where reviewNO=#{reviewNO}
+	</select>
+	
+	<insert id="insertTravel" parameterType="LikeyouVO">
 		<![CDATA[ INSERT INTO LIKEYOU
-			(likeCount, id,travelNO, reviewNO)
-			VALUES(#{likeCount}, #{id}, #{travelNO} , #{reviewNO} ]]>
+			(likeCount,travelNO,id)
+			VALUES(#{likeCount},#{travelNO},#{id})]]>
 	</insert>
 	
-
+	<insert id="insertReview" parameterType="LikeyouVO">
+		<![CDATA[ INSERT INTO LIKEYOU
+			(likeCount,reviewNO,id)
+			VALUES(#{likeCount},#{reviewNO},#{id}) ]]>
+	</insert>
+	
+	
 	<update id="update" parameterType="LikeyouVO"> 
 		UPDATE LIKEYOU SET likeCount=#{likeCount},travelNO=#{travelNO} 
 		WHERE id=#{id} AND likeCount=#{likeCount} 

@@ -27,11 +27,12 @@
    <select id="selectAll" resultMap="imageResult">
 		<![CDATA[ select * from image ]]>
 	</select>
-	<select id="selectOne" resultType="imageVO"> 
+	<select id="selectOneNotice" resultType="imageVO"> 
 		SELECT image1,image2,image3,image4,image5,
-		 image6,image7,image8,image9,image10 from image where noticeNO=#{noticeNO}
+		 image6,image7,image8,image9,image10 from image where noticeNO=#{noticeNO} or travelNO=#{travelNO}
+		 or reviewNO=#{reviewNO} or promotionNO=#{promotionNO} or eventNO=#{eventNO}
 	</select>
-	<insert id="insert" parameterType="imageVO">
+	<insert id="insertNotice" parameterType="imageVO">
 		<![CDATA[ INSERT INTO IMAGE
 			(noticeNO,image1, image2, image3, image4, image5,
 			image6,image7,image8,image9,image10)
@@ -40,14 +41,16 @@
 	</insert>
 	
 
-	<update id="update" parameterType="imageVO"> 
+	<update id="updateNotice" parameterType="imageVO"> 
 		UPDATE IMAGE SET image1=#{image1}, image2=#{image2},image3=#{image3},
 		image4=#{image4},image5=#{image5},image6=#{image6},image7=#{image7} 
-		WHERE noticeNO=#{noticeNO} 
+		WHERE noticeNO=#{noticeNO} or travelNO=#{travelNO}
+		 or reviewNO=#{reviewNO} or promotionNO=#{promotionNO} or eventNO=#{eventNO}
 	
 	</update>
-	<delete id="delete" parameterType="imageVO"> 
-		DELETE FROM IMAGE WHERE noticeNO=#{noticeNO} 
+	<delete id="deleteNotice" parameterType="imageVO"> 
+		DELETE FROM IMAGE where noticeNO=#{noticeNO} or travelNO=#{travelNO}
+		 or reviewNO=#{reviewNO} or promotionNO=#{promotionNO} or eventNO=#{eventNO} 
 	</delete>
    
 
