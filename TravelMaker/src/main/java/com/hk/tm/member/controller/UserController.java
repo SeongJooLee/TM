@@ -1,5 +1,7 @@
 package com.hk.tm.member.controller;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -71,15 +73,17 @@ public class UserController {
 		// 과연
 	}
 	@RequestMapping(value="/member/mypage",method=RequestMethod.POST)
-	public String memberMyPage(@ModelAttribute UserVO userVO) {
+	public String memberMyPage(@ModelAttribute UserVO userVO,HttpServletResponse response,Model model) {
 		System.out.println(userVO);
 		 switch(userVO.getGrade()){
 	        case "user": 
 	        	
 	        	//정보를받아서 계정이 있는지 db에서 조회
 	        	UserVO user = userService.checkUser(userVO);
+	        	
 	        	//계정이 있으면 마이페이지 리턴
 	        	//계정이 없다면 로그인창으로 리턴
+	        	model.addAttribute("user", user);
 	        	return "userMyPage";            
 	        case "seller":
 	        	return "sellerMyPage";

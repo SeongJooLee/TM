@@ -22,11 +22,11 @@
    </select>
    
    <select id="selectOne" resultType="UserVO">
-		<![CDATA[select * from uservo where id=#{id} and pw=#{pw}  ]]><!--  -->   
+		<![CDATA[select * from "USER" where id=#{id} and pw=#{pw}  ]]><!--  -->   
    </select>
    
    <select id="login" resultType="UserVO">
-   		select * from user
+   		select * from "USER"
    		where id=#{id}
    		and pw=#{pw}
    </select>
