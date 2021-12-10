@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
         
-<mapper namespace="mapper.board">
+<mapper namespace="mapper.boardNotice">
 
 	<!--  테이블 컬럼하고 VO하고 1:1 맵핑했을 때 이름이 다르면 안됌. -->
    <resultMap id="noticeResult" type="NoticeVO">
@@ -16,5 +16,27 @@
       <result property="writeDate" column="writeDate" />
    </resultMap>
    
+	<select id="selectAll" resultMap="noticeResult">
+		<![CDATA[ select * from notice]]>
+	</select>
+	
+	<select id="selectOne" resultType="NoticeVO"> 
+		SELECT noticeNO,title,content,imageFileName,adminID,name,writeDate from notice where noticeNO=#{noticeNO}
+	</select>
+	<insert id="insert" parameterType="NoticeVO">
+		<![CDATA[ INSERT INTO NOTICE
+			(noticeNO, title, content, imageFileName, adminID,name,writeDate)
+			VALUES(#{noticeNO}, #{title}, #{content} , #{imageFileName}, #{adminID}),#{name},sysdate ]]>
+	</insert>
+	
 
+	<update id="update" parameterType="NoticeVO"> 
+		UPDATE NOTICE SET title=#{title},content=#{content},imageFileName=#{imageFileName},
+		name=#{name} 
+		WHERE noticeNO=#{noticeNO} 
+	
+	</update>
+	<delete id="delete" parameterType="NoticeVO"> 
+		DELETE FROM NOTICE WHERE noticeNO=#{noticeNO} 
+	</delete>
 </mapper>

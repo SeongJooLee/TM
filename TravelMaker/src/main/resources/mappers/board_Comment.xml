@@ -17,11 +17,13 @@
 	<select id="selectAll" resultMap="commentResult">
 		<![CDATA[ select * from comment ]]>
 	</select>
-	
+	<select id="selectOne" resultType="CommentVO"> 
+		SELECT id,content,writeDate,travelNO,reviewNO from comment where id=#{id}
+	</select>
 	<insert id="insert" parameterType="CommentVO">
 		<![CDATA[ INSERT INTO COMMENT
 			(ID, CONTENT, WRITEDATE, TRAVELNO, REVIEWNO)
-			VALUES(#{id}, #{content}, #{writeDate} , #{travelNO}, #{reviewNO}); ]]>
+			VALUES(#{id}, #{content}, #{writeDate} , #{travelNO}, #{reviewNO}) ]]>
 	</insert>
 	
 

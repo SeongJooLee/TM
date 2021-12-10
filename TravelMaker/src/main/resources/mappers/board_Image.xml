@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
         
-<mapper namespace="mapper.board">
+<mapper namespace="mapper.boardImage">
 
 	<!--  테이블 컬럼하고 VO하고 1:1 맵핑했을 때 이름이 다르면 안됌. -->
    <resultMap id="imageResult" type="ImageVO">
@@ -23,6 +23,32 @@
       <result property="image9" column="image9" />
       <result property="image10" column="image10" />
    </resultMap>
+   
+   <select id="selectAll" resultMap="imageResult">
+		<![CDATA[ select * from image ]]>
+	</select>
+	<select id="selectOne" resultType="imageVO"> 
+		SELECT image1,image2,image3,image4,image5,
+		 image6,image7,image8,image9,image10 from image where noticeNO=#{noticeNO}
+	</select>
+	<insert id="insert" parameterType="imageVO">
+		<![CDATA[ INSERT INTO IMAGE
+			(noticeNO,image1, image2, image3, image4, image5,
+			image6,image7,image8,image9,image10)
+			VALUES(#{noticeNO},#{image1}, #{image2}, #{image3} , #{image4}, #{image5},
+			#{image6}, #{image7}, #{image8} , #{image9}, #{image10}) ]]>
+	</insert>
+	
+
+	<update id="update" parameterType="imageVO"> 
+		UPDATE IMAGE SET image1=#{image1}, image2=#{image2},image3=#{image3},
+		image4=#{image4},image5=#{image5},image6=#{image6},image7=#{image7} 
+		WHERE noticeNO=#{noticeNO} 
+	
+	</update>
+	<delete id="delete" parameterType="imageVO"> 
+		DELETE FROM IMAGE WHERE noticeNO=#{noticeNO} 
+	</delete>
    
 
 </mapper>

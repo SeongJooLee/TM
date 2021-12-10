@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
         
-<mapper namespace="mapper.board">
+<mapper namespace="mapper.boardPromotion">
 
 	<!--  테이블 컬럼하고 VO하고 1:1 맵핑했을 때 이름이 다르면 안됌. -->
    <resultMap id="promotionResult" type="PromotionVO">
@@ -11,11 +11,35 @@
       <result property="title" column="title" />
       <result property="content" column="content" />
       <result property="imageFileName" column="imageFileName" />
-      <result property="WriteDate" column="WriteDate" />
+      <result property="writeDate" column="writeDate" />
       <result property="sellerID" column="sellerID" />
       <result property="name" column="name" />
       <result property="price" column="price" />
    </resultMap>
+   
+   <select id="selectAll" resultMap="promotionResult">
+		<![CDATA[ select * from promotion]]>
+	</select>
+	
+	<select id="selectOne" resultType="PromotionVO"> 
+		SELECT promotionNO,title,content,imageFileName,writeDate,sellerID,name,price from promotion where sellerID=#{sellerID}
+	</select>
+	<insert id="insert" parameterType="PromotionVO">
+		<![CDATA[ INSERT INTO PROMOTION
+			(promotionNO,title,content,imageFileName,writeDate,sellerID,name,price)
+			VALUES(#{promotionNO}, #{title}, #{content} , #{imageFileName}, sysdate,#{sellerID},#{name},#{price}) ]]>
+	</insert>
+	
+
+	<update id="update" parameterType="PromotionVO"> 
+		UPDATE PROMOTION SET title=#{title}, content=#{content},imageFileName=#{imageFileName},
+		name=#{name},price=#{price} 
+		WHERE sellerID=#{sellerID} 
+	
+	</update>
+	<delete id="delete" parameterType="PromotionVO"> 
+		DELETE FROM PROMOTION WHERE sellerID=#{sellerID} 
+	</delete>
    
 
 </mapper>

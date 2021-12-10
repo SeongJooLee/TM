@@ -16,23 +16,26 @@
    </resultMap>
    
    <select id="selectAll" resultMap="eventResult">
-		<![CDATA[ select * from  ]]>
+		<![CDATA[ select * from eventproduct]]>
 	</select>
 	
-	<insert id="insert" parameterType="CommentVO">
-		<![CDATA[ INSERT INTO COMMENT
-			(ID, CONTENT, WRITEDATE, TRAVELNO, REVIEWNO)
-			VALUES(#{id}, #{content}, #{writeDate} , #{travelNO}, #{reviewNO}); ]]>
+	<select id="selectOne" resultType="EventVO"> 
+		SELECT eventNO,imagefileName,id,name,price,count from EVENTPRODUCT where id=#{id}
+	</select>
+	<insert id="insert" parameterType="EventVO">
+		<![CDATA[ INSERT INTO EVENTPRODUCT
+			(eventNO, imagefileName, id, name, price,count)
+			VALUES(#{eventNO}, #{imagefileName}, #{id} , #{name}, #{price}),#{count} ]]>
 	</insert>
 	
 
-	<update id="update" parameterType="CommentVO"> 
-		UPDATE COMMENT SET content=#{content}, writeDate=#{writeDate},travleNO=#{travleNO},reviewNO=#{reviewNO} 
+	<update id="update" parameterType="EventVO"> 
+		UPDATE EVENTPRODUCT SET imagefileName=#{imagefileName}, name=#{name},price=#{price},count=#{count} 
 		WHERE id=#{id} 
 	
 	</update>
-	<delete id="deleteArticle" parameterType="CommentVO"> 
-		DELETE FROM COMMENT WHERE ID=#{id} 
+	<delete id="delete" parameterType="EventVO"> 
+		DELETE FROM EVENTPRODUCT WHERE ID=#{id} 
 	</delete>
 
 </mapper>
