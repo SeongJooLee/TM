@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hk.tm.member.service.UserService;
+import com.hk.tm.member.vo.SellerVO;
 import com.hk.tm.member.vo.UserVO;
 
 
@@ -32,6 +33,23 @@ public class UserController {
 		
 		
 		return "memberRegisterCheck";
+		// 과연
+	}
+	@RequestMapping(value="/member/userAdd",method=RequestMethod.POST)
+	public String memberUserAdd(@ModelAttribute UserVO userVO) {
+		System.out.println("hello");
+		System.out.println(userVO);
+		
+		
+		return "home";
+		// 과연
+	}
+	@RequestMapping(value="/member/sellerAdd",method=RequestMethod.POST)
+	public String memberSellerAdd(@ModelAttribute SellerVO seller) {
+		System.out.println(seller);
+		
+		
+		return "home";
 		// 과연
 	}
 	@RequestMapping(value="/member/register",method=RequestMethod.GET)
