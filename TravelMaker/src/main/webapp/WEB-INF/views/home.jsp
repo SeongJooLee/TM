@@ -9,7 +9,7 @@
    <title>Home</title>
 </head>
 <body>
-
+<!--  해치웠나?? -->
 <jsp:include page="../../include/header.jsp" />
 
   <!-- Section-->
