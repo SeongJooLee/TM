@@ -27,4 +27,9 @@ public class UserService {
 		// TODO Auto-generated method stub
 		return userDAO.addSeller(seller);
 	}
+
+	public UserVO checkUser(UserVO userVO) {
+		// TODO Auto-generated method stub
+		return userDAO.checkUser(userVO);
+	}
 }

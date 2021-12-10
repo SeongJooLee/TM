@@ -34,4 +34,15 @@ public class UserDAO {
 		return result;
 	}
 
+	public UserVO checkUser(UserVO userVO) {
+		// TODO Auto-generated method stub
+		System.out.println("dao = "+userVO);
+		UserVO user = sqlSession.selectOne("mapper.memberUser.selectOne", userVO);
+		if(user ==null) {
+			
+		}
+		System.out.println("user ="+user);
+		return null;
+	}
+
 }

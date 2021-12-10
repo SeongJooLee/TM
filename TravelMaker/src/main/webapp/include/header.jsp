@@ -41,7 +41,7 @@
    	    </div>
 	<div class="jumbotron text-center" style="margin-bottom: 0;">
 		<img class="card-img-top" src="<c:url value="/resources/img/logo_1.png" />" width="50" height="300" />
-		<p align="right"><a href="member/login">로그인</a>&nbsp;&nbsp;&nbsp;<a href="member/register">회원가입</a>&nbsp;&nbsp;&nbsp;<a href="#">고객센터</a></p>
+		<p align="right"><a href="member/login">로그인</a>&nbsp;&nbsp;&nbsp;<a href="member/registerCheck">회원가입</a>&nbsp;&nbsp;&nbsp;<a href="#">고객센터</a></p>
 		<p align="right"><a href="#">로그아웃</a>&nbsp;&nbsp;&nbsp;<a href="#">고객센터</a></p>
 	</div>
 	

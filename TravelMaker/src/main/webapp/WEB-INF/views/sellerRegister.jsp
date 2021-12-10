@@ -5,10 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script>
-	
+<script>	
 	function check(){
-
 		var result = confirm("취소할거니..?");
 		if(result){
 			location.href = "../";
@@ -16,7 +14,6 @@
 		    return;
 		}
 	}
-	
 </script>
 </head>
 <body>

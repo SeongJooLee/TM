@@ -75,6 +75,11 @@ public class UserController {
 		System.out.println(userVO);
 		 switch(userVO.getGrade()){
 	        case "user": 
+	        	
+	        	//정보를받아서 계정이 있는지 db에서 조회
+	        	UserVO user = userService.checkUser(userVO);
+	        	//계정이 있으면 마이페이지 리턴
+	        	//계정이 없다면 로그인창으로 리턴
 	        	return "userMyPage";            
 	        case "seller":
 	        	return "sellerMyPage";
