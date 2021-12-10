@@ -1,8 +1,12 @@
+<%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
+<%@ page session="false" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" pageEncoding="UTF-8"%>
 <html>
 <head>
-	<title>Home</title>
+   <title>Home</title>
 </head>
 <body>
 
@@ -15,6 +19,7 @@
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Product image-->
+                            <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVUgpixljI786eMul03marwwCOx33B8_kLFQInjNjzzthyu8N03S1MGPyclDzNk6WDsQg&usqp=CAU" width="100%" height="100%"  />
                             <img class="card-img-top" src="<c:url value="/resources/img/angel.PNG" />" width="100%" height="100%" />                       
                             <!-- Product details-->
                             <div class="card-body p-4">
@@ -36,7 +41,7 @@
                             <!-- Sale badge-->
                             <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
                             <!-- Product image-->
-                            <img class="card-img-top" src="img/rava.PNG" width="100%" height="100%" />
+                            <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbvtOqv17ujOWe1mADZ2YZ9Q1s58p6gdJKhw&usqp=CAU" width="100%" height="100%" />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -66,7 +71,7 @@
                             <!-- Sale badge-->
                             <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
                             <!-- Product image-->
-                            <img class="card-img-top" src='img/war.PNG' width="100%" height="100%"/>
+                            <img class="card-img-top" src='https://images.contentstack.io/v3/assets/blt370612131b6e0756/blt46c3315bf1f512eb/605400372a6c5a1cccb7a5c6/3_24_21_Patch22ItemPreviewArticle_ForceofNature.jpg' width="100%" height="100%"/>
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
