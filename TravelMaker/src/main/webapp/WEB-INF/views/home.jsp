@@ -2,6 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
 <%@ page session="false" %>
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="false" pageEncoding="UTF-8"%>
 <html>
 <head>
    <title>Home</title>
@@ -18,11 +20,12 @@
                         <div class="card h-100">
                             <!-- Product image-->
                             <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVUgpixljI786eMul03marwwCOx33B8_kLFQInjNjzzthyu8N03S1MGPyclDzNk6WDsQg&usqp=CAU" width="100%" height="100%"  />
+                            <img class="card-img-top" src="<c:url value="/resources/img/angel.PNG" />" width="100%" height="100%" />                       
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">BF-대검</h5>
+                                    <h5 class="fw-bolder">abcdefg</h5>
                                     <!-- Product price-->
                                     1500G
                                 </div>
