@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
         
-<mapper namespace="mapper.board">
+<mapper namespace="mapper.memberUser">
 
 	<!--  테이블 컬럼하고 VO하고 1:1 맵핑했을 때 이름이 다르면 안됌. -->
    <resultMap id="userResult" type="UserVO">
@@ -16,5 +16,33 @@
       <result property="joinDate" column="joinDate" />
       <result property="grade" column="grade" />
    </resultMap>
+   
+   <select id="selectAllList"  resultMap="userResult">
+   		select * from User
+   </select>
+   
+   <select id="selectOneList" resultType="UserVO">
+		select * from user
+		where id=#{id}   
+   </select>
+   
+   <select id="userLogin" resultType="UserVO">
+   		select * from user
+   		where id=#{id}
+   		and pw=#{pw}
+   </select>
+   
+   <insert id="insertUser" parameterType="UserVO">
+   		INSERT INTO "USER" (ID, PW, NAME, BIRTH, PHONE, ADDRESS, JOINDATE, GRADE)
+   		 VALUES(#{id}, #{pw}, #{name}, #{birth}, #{phone}, #{address}, sysdate, #{grade})
+   </insert>
+   
+   <update id="updateUser" parameterType="UserVO">
+   		UPDATE "USER" SET PW=#{pw}, PHONE=#{phone}, ADDRESS=#{address}, WHERE ID=#{id}
+   </update>
+   
+   <delete id="deleteUser" parameterType="UserVO">
+   		DELETE FROM "USER" WHERE ID=#{id}
+   </delete>
 
 </mapper>

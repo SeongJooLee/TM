@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
         
-<mapper namespace="mapper.board">
+<mapper namespace="mapper.memberAdmin">
 
 	<!--  테이블 컬럼하고 VO하고 1:1 맵핑했을 때 이름이 다르면 안됌. -->
    <resultMap id="adminResult" type="AdminVO">
@@ -13,4 +13,32 @@
       <result property="grade" column="grade" />
    </resultMap>
 
+   <select id="selectAllList"  resultMap="adminResult">
+   		select * from admin
+   </select>
+   
+   <select id="selectOneList" resultType="AdminVO">
+		select * from admin
+		where adminID=#{adminID}   
+   </select>
+   
+   <select id="adminLogin" resultType="AdminVO">
+   		select * from admin
+   		where adminID=#{adminID}
+   		and pw=#{pw}
+   </select>
+   
+   <insert id="insertAdmin" parameterType="AdminVO">
+   		INSERT INTO admin (adminID, PW, NAME, GRADE)
+   		 VALUES(#{adminID}, #{pw}, #{name},#{grade})
+   </insert>
+   
+   <update id="updateAdmin" parameterType="AdminVO">
+   		UPDATE admin SET PW=#{pw} WHERE adminID=#{adminID}
+   </update>
+   
+   <delete id="deleteAdmin" parameterType="AdminVO">
+   		DELETE FROM admin WHERE adminID=#{adminID}
+   </delete>
+   
 </mapper>
