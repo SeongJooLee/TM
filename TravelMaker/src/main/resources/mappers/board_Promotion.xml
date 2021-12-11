@@ -10,37 +10,36 @@
       <result property="promotionNO" column="promotionNO" />
       <result property="title" column="title" />
       <result property="content" column="content" />
-      <result property="imageFileName" column="imageFileName" />
       <result property="writeDate" column="writeDate" />
+      <result property="price" column="price" />
       <result property="sellerID" column="sellerID" />
       <result property="name" column="name" />
-      <result property="price" column="price" />
    </resultMap>
    
    <select id="selectAll" resultMap="promotionResult">
-		<![CDATA[ select * from promotion]]>
+		SELECT PROMOTIONNO, TITLE, CONTENT, WRITEDATE, PRICE, SELLERID, NAME
+		 FROM PROMOTION
 	</select>
 	
 	<select id="selectOne" resultType="PromotionVO"> 
-		SELECT promotionNO,title,content,imageFileName,writeDate,sellerID,name,price from promotion where sellerID=#{sellerID}
+		SELECT PROMOTIONNO, TITLE, CONTENT, WRITEDATE, PRICE, SELLERID, NAME
+		 FROM PROMOTION
+		  where promotionNO=#{promotionNO}
 	</select>
+	
 	<insert id="insert" parameterType="PromotionVO">
-		<![CDATA[ INSERT INTO PROMOTION
-			(promotionNO,title,content,imageFileName,writeDate,sellerID,name,price)
-			VALUES(#{promotionNO}, #{title}, #{content} , #{imageFileName}, sysdate,#{sellerID},#{name},#{price}) ]]>
+		INSERT INTO PROMOTION (PROMOTIONNO, TITLE, CONTENT, WRITEDATE, PRICE, SELLERID, NAME)
+		 VALUES((select max(promotionNO)+1 from promotion), #{title}, #{content}, SYSDATE, #{price}, #{sellerID}, 'promotion')
 	</insert>
 	
-
 	<update id="update" parameterType="PromotionVO"> 
-		UPDATE PROMOTION SET title=#{title}, content=#{content},imageFileName=#{imageFileName},
-		name=#{name},price=#{price} 
-		WHERE sellerID=#{sellerID} 
-	
+		UPDATE PROMOTION SET TITLE=#{title}, CONTENT=#{content}, PRICE=#{price}
+		 WHERE PROMOTIONNO=#{promotionNO}
 	</update>
+	
 	<delete id="delete" parameterType="PromotionVO"> 
-		DELETE FROM PROMOTION WHERE sellerID=#{sellerID} 
+		DELETE FROM PROMOTION WHERE PROMOTIONNO=#{promotionNO}
 	</delete>
    
-
 </mapper>
 

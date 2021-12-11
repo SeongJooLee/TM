@@ -15,11 +15,13 @@
    </resultMap>
    
    	<select id="selectAll" resultMap="reservationResult">
-		SELECT RESERNO, PROMOTIONNO, RESERDATE, HEADCOUNT, ID FROM RESERVATION
+		SELECT RESERNO, PROMOTIONNO, RESERDATE, HEADCOUNT, ID
+		 FROM RESERVATION
 	</select>
 	
 	<select id="selectOne" resultType="ReservationVO">
-		SELECT RESERNO, PROMOTIONNO, RESERDATE, HEADCOUNT, ID FROM RESERVATION
+		SELECT RESERNO, PROMOTIONNO, RESERDATE, HEADCOUNT, ID
+		 FROM RESERVATION
 		 where reserNO=#{reserNO}
 	</select>
 	
@@ -29,7 +31,8 @@
 	</insert>
 	
 	<update id="update" parameterType="ReservationVO">
-		UPDATE RESERVATION SET RESERDATE=#{reserDate}, HEADCOUNT=#{headCount} WHERE RESERNO=#{reserNO}
+		UPDATE RESERVATION SET RESERDATE=#{reserDate}, HEADCOUNT=#{headCount}
+		 WHERE RESERNO=#{reserNO}
 	</update>
 	
 	<delete id="delete" parameterType="ReservationVO">

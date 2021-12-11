@@ -8,33 +8,38 @@
 	<!--  테이블 컬럼하고 VO하고 1:1 맵핑했을 때 이름이 다르면 안됌. -->
    <resultMap id="eventResult" type="EventVO">
       <result property="eventNO" column="eventNO" />
-      <result property="imagefileName" column="imagefileName" />
-      <result property="id" column="id" />
       <result property="name" column="name" />
       <result property="price" column="price" />
       <result property="count" column="count" />
+      <result property="id" column="id" />
+      <result property="writeDate" column="writeDate" />
    </resultMap>
    
     <select id="selectAll" resultMap="eventResult">
-		<![CDATA[ select * from eventproduct]]>
+		SELECT EVENTNO, NAME, PRICE, COUNT, ID, WRITEDATE
+		 FROM EVENTPRODUCT
 	</select>
 	
 	<select id="selectOne" resultType="EventVO"> 
-		SELECT eventNO,id,name,price,count from EVENTPRODUCT where eventNO=#{eventNO}
+		SELECT EVENTNO, NAME, PRICE, COUNT, ID, WRITEDATE
+		 FROM EVENTPRODUCT
+		 where eventNO=#{eventNO}
 	</select>
-	<!-- <insert id="insert" parameterType="EventVO">
-		  INSERT INTO EVENTPRODUCT(eventNO, id, name, count)
-			VALUES(#{(select max(eventNO)+1 from EVENTPRODUCT)}, #{id} , #{name},1) 
-	</insert>  -->
 	
+	<insert id="insert" parameterType="EventVO">
+		INSERT INTO EVENTPRODUCT (EVENTNO, NAME, PRICE, COUNT, ID, WRITEDATE)
+		 VALUES((select max(eventNO)+1 from event), #{name}, #{price}, #{count}, #{id}, sysdate)
+	</insert>
+	
+<!-- 모르겟다 테스트로 실험 해봐야할듯... -->
 
-	<!-- <update id="update" parameterType="EventVO"> 
-		UPDATE EVENTPRODUCT SET name=#{name},price=#{price},count=#{count} 
-		WHERE eventNO=#{eventNO} 
-	
+	<update id="update" parameterType="EventVO"> 
+		UPDATE EVENTPRODUCT SET NAME=#{name}, PRICE=#{price}, COUNT=#{count}
+		 WHERE EVENTNO=#{eventNO}
 	</update>
+	
 	<delete id="delete" parameterType="EventVO"> 
 		DELETE FROM EVENTPRODUCT WHERE ID=#{id} 
-	</delete> -->
+	</delete>
 
 </mapper>

@@ -10,25 +10,26 @@
       <result property="reviewNO" column="reviewNO" />
       <result property="title" column="title" />
       <result property="content" column="content" />
-      <result property="imageFileName" column="imageFileName" />
       <result property="WriteDate" column="WriteDate" />
       <result property="id" column="id" />
       <result property="name" column="name" />
+      <result property="promotionNO" column="promotionNO" />
    </resultMap>
    
 	<select id="selectAll" resultMap="reviewResult">
-		SELECT reviewNO, TITLE, CONTENT, IMAGEFILENAME, WRITEDATE, ID, LIKECOUNT, NAME
-		FROM REVIEW
+		SELECT REVIEWNO, TITLE, CONTENT, WRITEDATE, ID, NAME, PROMOTIONNO
+		 FROM REVIEW
 	</select>
 	
 	<select id="selectOne" resultType="ReviewVO">
-			select * from REVIEW
-			where reviewNO = #{reviewNO}
+		SELECT REVIEWNO, TITLE, CONTENT, WRITEDATE, ID, NAME, PROMOTIONNO
+		 FROM REVIEW 
+		 where reviewNO = #{reviewNO}
 	</select>
 	
 	<insert id="insert" parameterType="ReviewVO">
-			INSERT INTO REVIEW (reviewNO, TITLE, CONTENT, WRITEDATE, ID, NAME)
-			 VALUES((select max(reviewNO)+1 from REVIEW), #{title}, #{content}, SYSDATE , #{id}, 'review')
+		 INSERT INTO REVIEW (REVIEWNO, TITLE, CONTENT, WRITEDATE, ID, NAME, PROMOTIONNO)
+		  VALUES((select max(reviewNO)+1 from REVIEW), #{title}, #{content}, SYSDATE , #{id}, 'review',#{promotionNO})
 	</insert>
 	
 	<update id="update" parameterType="ReviewVO">

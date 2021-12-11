@@ -10,33 +10,40 @@
       <result property="noticeNO" column="noticeNO" />
       <result property="title" column="title" />
       <result property="content" column="content" />
-      <result property="imageFileName" column="imageFileName" />
       <result property="adminID" column="adminID" />
       <result property="name" column="name" />
       <result property="writeDate" column="writeDate" />
    </resultMap>
    
 	<select id="selectAll" resultMap="noticeResult">
-		<![CDATA[ select * from notice]]>
+		SELECT NOTICENO, TITLE, CONTENT, ADMINID, NAME, WRITEDATE
+		 FROM NOTICE
 	</select>
 	
 	<select id="selectOne" resultType="NoticeVO"> 
-		SELECT noticeNO,title,content,imageFileName,adminID,name,writeDate from notice where noticeNO=#{noticeNO}
+		SELECT NOTICENO, TITLE, CONTENT, ADMINID, NAME, WRITEDATE
+		 FROM NOTICE
+		 where noticeNO=#{noticeNO}
 	</select>
-	<insert id="insert" parameterType="NoticeVO">
-		<![CDATA[ INSERT INTO NOTICE
-			(noticeNO, title, content, imageFileName, adminID,name,writeDate)
-			VALUES(#{noticeNO}, #{title}, #{content} , #{imageFileName}, #{adminID}),#{name},sysdate ]]>
+	
+	<insert id="insertNotice" parameterType="NoticeVO">
+		INSERT INTO NOTICE (NOTICENO, TITLE, CONTENT, ADMINID, NAME, WRITEDATE)
+		 VALUES((select max(noticeNO)+1 from notice), #{title}, #{content}, #{adminID}, 'notice', SYSDATE)
+	</insert>
+
+	<insert id="insertEvent" parameterType="NoticeVO">
+		INSERT INTO NOTICE (NOTICENO, TITLE, CONTENT, ADMINID, NAME, WRITEDATE)
+		 VALUES((select max(noticeNO)+1 from notice), #{title}, #{content}, #{adminID}, 'event', SYSDATE)
 	</insert>
 	
-
-	<update id="update" parameterType="NoticeVO"> 
-		UPDATE NOTICE SET title=#{title},content=#{content},imageFileName=#{imageFileName},
-		name=#{name} 
-		WHERE noticeNO=#{noticeNO} 
-	
+	<update id="update" parameterType="NoticeVO">
+		UPDATE NOTICE SET TITLE=#{title}, CONTENT=#{content}
+		 WHERE NOTICENO=#{noticeNO}
 	</update>
+	
 	<delete id="delete" parameterType="NoticeVO"> 
-		DELETE FROM NOTICE WHERE noticeNO=#{noticeNO} 
+		DELETE FROM NOTICE
+		 where noticeNO=#{noticeNO} 
 	</delete>
+	
 </mapper>

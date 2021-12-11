@@ -10,26 +10,25 @@
 		<result property="travelNO" column="travelNO" />
 		<result property="title" column="title" />
 		<result property="content" column="content" />
-		<result property="imageFileName" column="imageFileName" />
 		<result property="WriteDate" column="WriteDate" />
 		<result property="id" column="id" />
-		<result property="likeCount" column="likeCount" />
 		<result property="name" column="name" />
 	</resultMap>
 
 	<select id="selectAll" resultMap="travelResult">
-		SELECT TRAVELNO, TITLE, CONTENT, IMAGEFILENAME, WRITEDATE, ID, LIKECOUNT, NAME
+		SELECT TRAVELNO, TITLE, CONTENT, WRITEDATE, ID, NAME
 		FROM TRAVEL
 	</select>
 	
 	<select id="selectOne" resultType="TravelVO">
-			select * from travel
-			where travelNO = #{travelNO}
+		SELECT TRAVELNO, TITLE, CONTENT, WRITEDATE, ID, NAME
+		FROM TRAVEL
+		WHERE travelNO=#{travelNO}
 	</select>
 	
 	<insert id="insert" parameterType="TravelVO">
-			INSERT INTO TRAVEL (TRAVELNO, TITLE, CONTENT, WRITEDATE, ID, LIKECOUNT, NAME)
-			 VALUES((select max(travelNO)+1 from travel), #{title}, #{content}, SYSDATE , #{id}, '0', 'travel')
+		 INSERT INTO TRAVEL (TRAVELNO, TITLE, CONTENT, WRITEDATE, ID, NAME)
+		  VALUES((select max(travelNO)+1 from travel), #{title}, #{content}, SYSDATE, #{id},  'travel')
 	</insert>
 	
 	<update id="update" parameterType="TravelVO">

@@ -10,6 +10,7 @@ public class ReviewVO {
 	private String id;
 	private String name;
 	private int promotionNO;
+	
 	public int getReviewNO() {
 		return reviewNO;
 	}

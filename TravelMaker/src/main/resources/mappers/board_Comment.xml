@@ -15,23 +15,26 @@
 	</resultMap>
 
 	<select id="selectAll" resultMap="commentResult">
-		<![CDATA[ select * from comment ]]>
+		SELECT ID, CONTENT, WRITEDATE, TRAVELNO, REVIEWNO
+		 FROM "COMMENT"
 	</select>
-	<select id="selectOne" resultType="CommentVO"> 
-		SELECT id,content,writeDate,travelNO,reviewNO from comment where id=#{id}
+	
+	<select id="selectOne" resultType="CommentVO">
+		SELECT ID, CONTENT, WRITEDATE, TRAVELNO, REVIEWNO
+		 FROM "COMMENT"
+		 where id=#{id}
 	</select>
+	
 	<insert id="insert" parameterType="CommentVO">
-		<![CDATA[ INSERT INTO COMMENT
-			(ID, CONTENT, WRITEDATE, TRAVELNO, REVIEWNO)
-			VALUES(#{id}, #{content}, #{writeDate} , #{travelNO}, #{reviewNO}) ]]>
+		INSERT INTO "COMMENT" (ID, CONTENT, WRITEDATE, TRAVELNO, REVIEWNO)
+		 VALUES(#{id}, #{content}, SYSDATE, #{travelNO}, #{reviewNO})
 	</insert>
 	
-
-	<update id="update" parameterType="CommentVO"> 
-		UPDATE COMMENT SET content=#{content}, writeDate=#{writeDate},travleNO=#{travleNO},reviewNO=#{reviewNO} 
-		WHERE id=#{id} 
-	
+	<update id="update" parameterType="CommentVO">
+		UPDATE "COMMENT" SET CONTENT=#{content}
+		 where id=#{id}
 	</update>
+	
 	<delete id="delete" parameterType="CommentVO"> 
 		DELETE FROM COMMENT WHERE ID=#{id} 
 	</delete>

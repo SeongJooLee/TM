@@ -14,17 +14,37 @@
    </resultMap>
    
 	<select id="selectAll" resultMap="likeyouResult">
-		<![CDATA[ select * from likeyou]]>
+		SELECT LIKECOUNT, ID, TRAVELNO, REVIEWNO
+		 FROM LIKEYOU
 	</select>
 	
+	<select id="selectOne" resultType="LikeyouVO"> 
+		SELECT LIKECOUNT, ID, TRAVELNO, REVIEWNO
+		 FROM LIKEYOU
+		 where travelNO=#{travelNO}
+		 or review=#{reviewNO}
+	</select>
+	
+<!-- 	민수야 나도 이건 헷갈려서 일단 이케 함
 	<select id="selectOneTravel" resultType="LikeyouVO"> 
-		SELECT likeCount,travelNO from LIKEYOU where travelNO=#{travelNO}
+		SELECT LIKECOUNT, ID, TRAVELNO, REVIEWNO
+		 FROM LIKEYOU
+		 where travelNO=#{travelNO}
 	</select>
 	
 	<select id="selectOneReview" resultType="LikeyouVO"> 
-		SELECT likeCount,reviewNO from LIKEYOU where reviewNO=#{reviewNO}
+		SELECT LIKECOUNT, ID, TRAVELNO, REVIEWNO
+		 FROM LIKEYOU
+		 where review=#{reviewNO}
 	</select>
-	
+	 -->
+	 
+	<insert id="insert" parameterType="LikeyouVO">
+		INSERT INTO LIKEYOU (LIKECOUNT, ID, TRAVELNO, REVIEWNO)
+		 VALUES(1, #{id}, #{travelNO}, #{revieNO})
+	</insert>
+
+<!-- 이거도 동일 테스트 예정 	
 	<insert id="insertTravel" parameterType="LikeyouVO">
 		<![CDATA[ INSERT INTO LIKEYOU
 			(likeCount,travelNO,id)
@@ -36,14 +56,15 @@
 			(likeCount,reviewNO,id)
 			VALUES(#{likeCount},#{reviewNO},#{id}) ]]>
 	</insert>
-	
-	
+	업데이트 필요한가 고민해보자.
 	<update id="update" parameterType="LikeyouVO"> 
 		UPDATE LIKEYOU SET likeCount=#{likeCount},travelNO=#{travelNO} 
 		WHERE id=#{id} AND likeCount=#{likeCount} 
-	
 	</update>
+	 -->
+	
 	<delete id="delete" parameterType="LikeyouVO"> 
 		DELETE FROM LIKEYOU WHERE id=#{id} 
 	</delete>
+	
 </mapper>

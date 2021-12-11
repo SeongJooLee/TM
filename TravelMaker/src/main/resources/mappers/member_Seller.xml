@@ -44,5 +44,4 @@
    		DELETE FROM seller WHERE sellerID=#{sellerID}
    </delete>
    
-   
 </mapper>
