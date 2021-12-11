@@ -80,7 +80,7 @@ public class UserController {
 		 switch(userVO.getGrade()){
 	        case "user":   
 	        	UserVO user = userService.checkUser(userVO);      	
-	        	model.addAttribute("user", user);
+	        	model.addAttribute("user", user);        	
 	        	return "userMyPage";            
 	        case "seller":	        	
 	        	sellerVO.setSellerID(userVO.getId());

@@ -1,6 +1,6 @@
 package com.hk.tm.member.vo;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class UserVO {
 
