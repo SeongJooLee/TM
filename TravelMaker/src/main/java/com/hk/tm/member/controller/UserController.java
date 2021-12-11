@@ -60,13 +60,12 @@ public class UserController {
 		
 		
 	}
-//	@RequestMapping(value="/member/logout",method=RequestMethod.GET)
-//	public String memberLogout(Model model,HttpServletRequest request) {
-//		HttpSession session = request.getSession(false);
-//		session.invalidate();
-//		System.out.println("세션삭제");
-//		return "home";
-//	}
+	@RequestMapping(value="/member/logout",method=RequestMethod.GET)
+	public String memberLogout(HttpSession session) {
+		session.invalidate();
+		System.out.println("세션삭제");
+		return "logout";
+	}
 	
 	@RequestMapping(value="/member/registerCheck",method=RequestMethod.GET)
 	public String memberRegisterCheck(Model model) {
@@ -116,9 +115,14 @@ public class UserController {
 
 		 switch(userVO.getGrade()){
 	        case "user":   
-	        	UserVO user = userService.checkUser(userVO);        	        	
-	        	model.addAttribute("user", user);           	        	
-	        	return "userMyPage";            
+	        	UserVO user = userService.checkUser(userVO);  
+	        	if(user !=null) {
+	        		System.out.println("이쪽실행");
+	        		session.setAttribute("userSession", user);
+	        	}
+	        	model.addAttribute("user", user);   
+	        	
+	        	return "userhome";            
 	        case "seller":	        	
 	        	sellerVO.setSellerID(userVO.getId());
 				sellerVO.setPw(userVO.getPw());

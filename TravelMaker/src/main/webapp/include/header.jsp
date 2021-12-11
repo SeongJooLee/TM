@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"  %>
-	<%@page session='false' %>
+	<%@page session='true' %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 	
 
@@ -39,13 +39,20 @@
         	<a class="sns-link" href="https://www.instagram.com/ggul_min/?hl=ko"><i class="fab fa-facebook" ></i></a>
         	<a class="sns-link" href="https://www.instagram.com/ggul_min/?hl=ko"><i class="fab fa-twitter" ></i></a>
    	    </div>
-   
+   			<c:if test='${userSession.id != null}'>
    			<div class="jumbotron text-center" style="margin-bottom: 0;">
 			<img class="card-img-top" src="<c:url value="/resources/img/logo_1.png" />" width="50" height="300" />
-			<p align="right"><a href="member/login">로그인</a>&nbsp;&nbsp;&nbsp;<a href="member/registerCheck">회원가입</a>&nbsp;&nbsp;&nbsp;<a href="#">고객센터</a></p>
-			<p align="right"><a href="../member/logout">로그아웃</a>&nbsp;&nbsp;&nbsp;<a href="#">고객센터</a></p>
+					
+			<p align="right">${userSession.id}님 <a href="member/logout">로그아웃</a>&nbsp;&nbsp;&nbsp;<a href="#">고객센터</a></p>
 			</div>
-   		
+			</c:if>
+			
+			<c:if test='${userSession.id == null}'>
+			<div class="jumbotron text-center" style="margin-bottom: 0;">
+			<img class="card-img-top" src="<c:url value="/resources/img/logo_1.png" />" width="50" height="300" />
+			<p align="right"><a href="member/login">로그인</a>&nbsp;&nbsp;&nbsp;<a href="member/registerCheck">회원가입</a>&nbsp;&nbsp;&nbsp;<a href="#">고객센터</a></p>		
+			</div>
+   			</c:if>
    		
 	
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
