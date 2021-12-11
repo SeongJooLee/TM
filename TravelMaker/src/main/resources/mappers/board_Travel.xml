@@ -15,27 +15,27 @@
 		<result property="name" column="name" />
 	</resultMap>
 
-	<select id="selectAll" resultMap="travelResult">
+	<select id="selectAllTravels" resultMap="travelResult">
 		SELECT TRAVELNO, TITLE, CONTENT, WRITEDATE, ID, NAME
 		FROM TRAVEL
 	</select>
 	
-	<select id="selectOne" resultType="TravelVO">
+	<select id="selectOneTravel" resultType="TravelVO">
 		SELECT TRAVELNO, TITLE, CONTENT, WRITEDATE, ID, NAME
 		FROM TRAVEL
 		WHERE travelNO=#{travelNO}
 	</select>
 	
-	<insert id="insert" parameterType="TravelVO">
+	<insert id="insertTravel" parameterType="TravelVO">
 		 INSERT INTO TRAVEL (TRAVELNO, TITLE, CONTENT, WRITEDATE, ID, NAME)
 		  VALUES((select max(travelNO)+1 from travel), #{title}, #{content}, SYSDATE, #{id},  'travel')
 	</insert>
 	
-	<update id="update" parameterType="TravelVO">
+	<update id="updateTravel" parameterType="TravelVO">
 		UPDATE TRAVEL SET TITLE=#{title}, CONTENT=#{content}, WHERE TRAVELNO=#{travelNO}
 	</update>
 	
-	<delete id="delete" parameterType="travelVO">
+	<delete id="deleteTravel" parameterType="travelVO">
 			DELETE FROM TRAVEL WHERE TRAVELNO=#{travelNO}
 	</delete>
 	
