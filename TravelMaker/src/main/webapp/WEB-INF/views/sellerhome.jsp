@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 <script>
 	function success(){
-		alert('${userSession.id}님 미친듯이 환영합니다~!!!!!');
+		alert('${userSession.sellerID}님 미친듯이 환영합니다~!!!!!');
 		location.href='../';
 	}
 	function fail(){
@@ -19,12 +19,12 @@
 </script>
 </head>
 <body>
-	<c:if test='${userSession.id!=null}'>
+	<c:if test='${userSession.sellerID!=null}'>
 		<script>
 			success();
 		</script>
 	</c:if>
-	<c:if test='${userSession.id==null}'>
+	<c:if test='${userSession.sellerID==null}'>
 		<script>
 			fail();
 		</script>

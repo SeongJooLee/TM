@@ -2,6 +2,8 @@ package com.hk.tm.member.vo;
 
 import java.sql.Date;
 
+
+
 public class UserVO {
 
 	private String id;

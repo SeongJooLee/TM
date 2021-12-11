@@ -31,30 +31,10 @@ public class UserController {
 	@Autowired
 	SellerVO sellerVO;
 	
+	
 	@RequestMapping(value="/member/login",method=RequestMethod.GET)
 	public String memberLogin(Model model,HttpServletRequest request) {
-//		HttpSession session = request.getSession(false);
-//		if(session ==null) {
-//			System.out.println("1번실행");
-//			return "memberLogin";
-//			
-//		}else if(session.getAttribute("userSession") != null){
-//			System.out.println("2번실행");
-//			return "home";
-//		}else {
-//			System.out.println("3번실행");
-//			return "memberLogin";
-//		}
-//		HttpSession session = request.getSession(false);
-//		if(session.getAttribute("userSession")==null) {
-//			System.out.println("1번실행");
-//			return "memberLogin";
-//		}else {
-//			UserVO user = (UserVO) session.getAttribute("userSession");
-//			
-//			model.addAttribute("user",user);
-//			return "home";
-//		}
+
 		
 		return "memberLogin";
 		
@@ -111,24 +91,53 @@ public class UserController {
 		// 과연
 	}
 	@RequestMapping(value="/member/login",method=RequestMethod.POST)
-	public String memberMyPage(@ModelAttribute UserVO userVO,Model model,HttpSession session,HttpServletResponse response) {
+	public String memberLogin(@ModelAttribute UserVO userVO,Model model,HttpSession session,HttpServletResponse response) {
 
 		 switch(userVO.getGrade()){
 	        case "user":   
 	        	UserVO user = userService.checkUser(userVO);  
 	        	if(user !=null) {
-	        		System.out.println("이쪽실행");
+	        		System.out.println("1번실행");
 	        		session.setAttribute("userSession", user);
 	        	}
+	        	
 	        	model.addAttribute("user", user);   
 	        	
 	        	return "userhome";            
-	        case "seller":	        	
+	        case "seller":	      
+	        	System.out.println("작업할공간");
 	        	sellerVO.setSellerID(userVO.getId());
 				sellerVO.setPw(userVO.getPw());
 				sellerVO.setGrade(userVO.getGrade());
 				SellerVO seller = userService.checkUser(sellerVO);
-				System.out.println(seller);
+				if(seller !=null) {
+	        		System.out.println("33번실행");
+	        		session.setAttribute("userSession", seller);
+	        	}			
+				model.addAttribute("seller", seller);
+	        	return "sellerhome";
+	        case "admin" :
+	        	return "adminMyPage";
+	    }
+		return null;
+	}
+	
+	@RequestMapping(value="/member/mypage",method=RequestMethod.GET)
+	public String memberMyPage(@ModelAttribute UserVO userVO,Model model,HttpSession session) {
+		System.out.println("민수야.? = "+session.getAttribute("userSession").getClass().getName());
+		String check = session.getAttribute("userSession").getClass().getName();
+		
+		
+		 switch(check){
+	        case "com.hk.tm.member.vo.UserVO":   
+	        	UserVO user = (UserVO) session.getAttribute("userSession");
+	        	model.addAttribute("user", user);   
+	        	
+	        	return "userMyPage";            
+	        case "com.hk.tm.member.vo.SellerVO":	 
+	        	System.out.println("진짜 끝인가 ?----------");
+	        	SellerVO seller = (SellerVO) session.getAttribute("userSession");
+	        	System.out.println("seller switch = "+seller);
 				model.addAttribute("seller", seller);
 	        	return "sellerMyPage";
 	        case "admin" :
@@ -136,4 +145,5 @@ public class UserController {
 	    }
 		return null;
 	}
+	
 }

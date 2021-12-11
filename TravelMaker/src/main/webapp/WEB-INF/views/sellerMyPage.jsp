@@ -7,12 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script>
+<!-- <script>
 	function ss(){
 		alert('계정정보가 없어서 로그인 못하지롱~~');
 		location.href = "login";
 	}
-</script>
+</script> -->
 <style type="text/css">
 .wrap {
 	display: grid;
@@ -42,11 +42,11 @@
 </style>
 </head>
 <body> 
-	<c:if test = '${seller==null}'>
+	<%-- <c:if test = '${seller==null}'>
 		<script>
 			ss();
 		</script>
-	</c:if> 
+	</c:if>  --%>
 	<h1>판매자 유저 페이지</h1>
 	<h2>${seller.sellerID}님 정보</h2> 
 	
