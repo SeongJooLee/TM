@@ -36,11 +36,17 @@ public class UserDAO {
 
 	public UserVO checkUser(UserVO userVO) {
 		// TODO Auto-generated method stub
-		System.out.println("dao = "+userVO);
+		System.out.println("dao USER = "+userVO);
 		UserVO user = sqlSession.selectOne("mapper.memberUser.selectOne", userVO);
 		
 		System.out.println("user ="+user);
 		return user;
+	}
+
+	public SellerVO checkUser(SellerVO sellerVO) {
+		System.out.println("dao seller = "+sellerVO);
+		SellerVO seller = sqlSession.selectOne("mapper.memberSeller.selectOne",sellerVO);
+		return seller;
 	}
 
 }

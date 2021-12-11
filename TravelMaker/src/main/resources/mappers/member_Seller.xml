@@ -22,7 +22,7 @@
    
    <select id="selectOne" resultType="SellerVO">
 		select * from seller
-		where sellerID=#{sellerID}   
+		where sellerID=#{sellerID} and pw=#{pw} 
    </select>
    
    <select id="login" resultType="SellerVO">

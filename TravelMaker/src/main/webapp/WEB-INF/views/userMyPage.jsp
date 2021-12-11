@@ -9,13 +9,13 @@
 <title>Insert title here</title>
 <script>
 	function ss(){
-		alert('계정정보가 없습니다');
+		alert('계정정보가 없어서 로그인 못하지롱~~');
 		location.href = "login";
 	}
 </script>
 </head>
 <body>
-	<c:if var='ret' test = '${user==null}'>
+	<c:if test = '${user==null}'>
 		<script>
 			ss();
 		</script>

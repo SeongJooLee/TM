@@ -2,6 +2,9 @@ package com.hk.tm.member.vo;
 
 import java.util.Date;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class SellerVO {
 
 	private String sellerID;
