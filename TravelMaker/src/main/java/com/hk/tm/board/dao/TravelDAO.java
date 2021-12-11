@@ -16,8 +16,18 @@ public class TravelDAO {
 	
 	public List<TravelVO> selectAllTravels() {
 		// TODO Auto-generated method stub
-		List<TravelVO> travelsList = sqlSession.selectList("mapper.board.selectAllTravelList");
+		List<TravelVO> travelsList = sqlSession.selectList("mapper.board.selectAll");
 		
 		return travelsList;
+	}
+	
+	public TravelVO selectTravel(int travelNO) {
+		TravelVO travelVO = sqlSession.selectOne("mapper.board.selectOne" , travelNO);
+		return travelVO;
+	}
+
+	public int addTravel(TravelVO travelVO) {		
+		int ret = sqlSession.insert("mapper.board.insert", travelVO);
+		return ret;
 	}
 }

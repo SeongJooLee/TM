@@ -12,11 +12,9 @@
   <tr height="10" align="center"  bgcolor="CornflowerBlue">
      <td >여행글번호</td>
      <td >제목</td>
-     <td >내용</td>              
-     <td >이미지파일이름</td>
+     <td >내용</td>            
      <td >작성일</td>
-     <td >사용자id</td>
-     <td >좋아요 수</td>
+     <td >사용자id</td>     
      <td >이름</td>
   </tr>
   </table>
