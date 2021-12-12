@@ -1,25 +1,81 @@
 package com.hk.tm.board.controller;
 
+
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hk.tm.board.service.NoticeService;
+import com.hk.tm.board.vo.ImageVO;
+import com.hk.tm.board.vo.NoticeVO;
 
 @Controller
 public class NoticeController {
 
 	 @Autowired NoticeService noticeService;
 	 
+	 @RequestMapping(value="/board/notice", method=RequestMethod.GET)
+	 public String noticeList(Model model) {
+	
+		 List<NoticeVO> list = noticeService.allList();
+		 
+		 model.addAttribute("notice",list);
+		 
+		 return "noticeList";
+	 }
+	 
+	 @RequestMapping(value="/board/notice/view", method=RequestMethod.GET)
+	 public String noticeView(Model model,@RequestParam("noticeNO") int noticeNO) {
+		 Map<String,Object> map = noticeService.oneList(noticeNO);
+		 System.out.println(map.get("image").toString());
+
+		 
+		 model.addAttribute("notice",map.get("notice"));
+		 
+		 model.addAttribute("image",map.get("image"));
+		 return "noticeView";
+	 }
+	 
+	 @RequestMapping(value="/board/notice/add", method=RequestMethod.GET)
+	 public String noticeAdd(Model model) {
+		 return "noticeAdd";
+	 }
+	 
+	 @RequestMapping(value="/board/notice/addDone", method=RequestMethod.POST)
+	 public String noticeAddDone(Model model,@ModelAttribute NoticeVO noticeVO,@ModelAttribute ImageVO imageVO) {
+		 noticeService.boardAdd(noticeVO,imageVO);
+
+		 return "noticeAddDone";
+	 }
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+//	  
+//	  @RequestMapping(value = "/board/notice", method = RequestMethod.GET) public
+//	  String noticeList(Model model) {
+//		  System.out.println("공지사항 클릭 시 페이지 이동");
+//	  
+//	  
+//	  
+//	  return "noticeList"; }
+//	  
+//	  
 	  
-	  @RequestMapping(value = "/board/notice", method = RequestMethod.GET) public
-	  String noticeList(Model model) { System.out.println("공지사항 클릭 시 페이지 이동");
 	  
-	  
-	  
-	  return "noticeList"; }
 	  
 	/* @RequestMapping(value = "/board/notice", method = RequestMethod.GET) public
 	 * String eventList(Model model) { System.out.println("이벤트 클릭 시 안에서 바꾸기");

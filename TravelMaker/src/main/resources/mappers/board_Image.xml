@@ -39,9 +39,25 @@
 		 or eventNO=#{eventNO}
 	</select>
 	
-	<insert id="insert" parameterType="imageVO">
+	<insert id="insertNotice" parameterType="imageVO">
 	INSERT INTO IMAGE (NOTICENO, TRAVELNO, REVIEWNO, PROMOTIONNO, EVENTNO, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10)
-	 VALUES(#{noticeNO}, #{travelNO}, #{reviewNO}, #{promotionNO}, #{eventNO}, #{image1}, #{image2}, #{image3}, #{image4}, #{image5}, #{image6}, #{image7}, #{image8}, #{image9}, #{image10})
+	 VALUES((select max(noticeNO) from notice), null, null, null, null, #{image1}, #{image2}, #{image3}, #{image4}, #{image5}, #{image6}, #{image7}, #{image8}, #{image9}, #{image10})
+	</insert>
+	<insert id="insertTravel" parameterType="imageVO">
+	INSERT INTO IMAGE (NOTICENO, TRAVELNO, REVIEWNO, PROMOTIONNO, EVENTNO, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10)
+	 VALUES(#{noticeNO}, (select max(travelNO) from travel), #{reviewNO}, #{promotionNO}, #{eventNO}, #{image1}, #{image2}, #{image3}, #{image4}, #{image5}, #{image6}, #{image7}, #{image8}, #{image9}, #{image10})
+	</insert>
+	<insert id="insertReview" parameterType="imageVO">
+	INSERT INTO IMAGE (NOTICENO, TRAVELNO, REVIEWNO, PROMOTIONNO, EVENTNO, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10)
+	 VALUES(#{noticeNO}, #{travelNO}, (select max(reviewNO) from review), #{promotionNO}, #{eventNO}, #{image1}, #{image2}, #{image3}, #{image4}, #{image5}, #{image6}, #{image7}, #{image8}, #{image9}, #{image10})
+	</insert>
+	<insert id="insertPromotion" parameterType="imageVO">
+	INSERT INTO IMAGE (NOTICENO, TRAVELNO, REVIEWNO, PROMOTIONNO, EVENTNO, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10)
+	 VALUES(#{noticeNO}, #{travelNO}, #{reviewNO}, (select max(promotionNO) from promotion), #{eventNO}, #{image1}, #{image2}, #{image3}, #{image4}, #{image5}, #{image6}, #{image7}, #{image8}, #{image9}, #{image10})
+	</insert>
+	<insert id="insertEvent" parameterType="imageVO">
+	INSERT INTO IMAGE (NOTICENO, TRAVELNO, REVIEWNO, PROMOTIONNO, EVENTNO, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10)
+	 VALUES(#{noticeNO}, #{travelNO}, #{reviewNO}, #{promotionNO}, (select max(eventNO) from event), #{image1}, #{image2}, #{image3}, #{image4}, #{image5}, #{image6}, #{image7}, #{image8}, #{image9}, #{image10})
 	</insert>
 	
 	<update id="update" parameterType="imageVO"> 
