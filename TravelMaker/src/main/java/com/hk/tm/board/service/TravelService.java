@@ -24,22 +24,19 @@ public class TravelService {
 	@Autowired
 	UserDAO userDAO;
 	
-	public List<TravelVO> listTravels() {
+	public List<TravelVO> allList() {
 		// TODO Auto-generated method stub
-		return travelDAO.selectAllTravels();
+		return travelDAO.allList();
 	}
 	
-	public Map<String,Object> viewTravel(int travelVO) {
-		
-		TravelVO travelVO = travelDAO.selectTravel(travelVO);
-		UserVO userVO = userDAO.selectName(userVO.getId());
-		logger.debug("travelVO = " + travelVO.toString());
-		logger.debug("userVO = " + userVO.toString());
+	public Map<String, Object> oneList(int travelNO) {
+		// TODO Auto-generated method stub
+		TravelVO travelVO = travelDAO.oneList(travelNO);
+		UserVO userVO = userDAO.oneList(travelVO.getId());
 		
 		Map<String,Object> map = new HashMap<String,Object>();
-		
-		map.put("travelVO", travelVO);
-		map.put("userVO", userVO);
+		map.put("travel", travelVO);
+		map.put("user", userVO);
 		
 		return map;
 	}
@@ -48,5 +45,14 @@ public class TravelService {
 		// TODO Auto-generated method stub
 		return travelDAO.addTravel(travelVO);
 	}
+
+	public int modTravel(TravelVO travelVO) {
+		return travelDAO.updateTravel(travelVO);
+	}
+	
+	public int removeTravel(int travelNO) {
+		return travelDAO.deleteTravel(travelNO);
+	}
+
 
 }

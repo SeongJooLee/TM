@@ -49,4 +49,10 @@ public class UserDAO {
 		return seller;
 	}
 
+	public UserVO oneList(String id) {
+		// TODO Auto-generated method stub
+		UserVO userVO = sqlSession.selectOne("mapper.memberUser.selectOne", id);
+		return userVO;
+	}
+
 }

@@ -12,22 +12,35 @@ import com.hk.tm.board.vo.TravelVO;
 public class TravelDAO {
 	
 	@Autowired
-	SqlSession sqlSession;	
+	SqlSession sql;	
 	
-	public List<TravelVO> selectAllTravels() {
+	String ns = "mapper.boardTravel.";
+	
+	public List<TravelVO> allList() {
 		// TODO Auto-generated method stub
-		List<TravelVO> travelsList = sqlSession.selectList("mapper.board.selectAllTravels");
+		List<TravelVO> list = sql.selectList(ns+ "selectAll");
 		
-		return travelsList;
+		return list;
 	}
 	
-	public TravelVO selectTravel(int travelNO) {
-		TravelVO travelVO = sqlSession.selectOne("mapper.board.selectOneTravel" , travelNO);
+	public TravelVO oneList(int travelNO) {
+		TravelVO travelVO = sql.selectOne(ns + "selectOne" , travelNO);
+		
 		return travelVO;
 	}
 
 	public int addTravel(TravelVO travelVO) {		
-		int ret = sqlSession.insert("mapper.board.insertTravel", travelVO);
+		int ret = sql.insert(ns + "insert", travelVO);
+		return ret;
+	}
+	
+	public int updateTravel(TravelVO travelVO) {
+		int ret = sql.update(ns + "update", travelVO);
+		return ret;
+	}
+	
+	public int deleteTravel(int travelNO) {
+		int ret = sql.delete(ns + "delete", travelNO);
 		return ret;
 	}
 }

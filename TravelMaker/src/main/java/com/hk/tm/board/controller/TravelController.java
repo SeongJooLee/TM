@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +18,7 @@ import com.hk.tm.board.service.TravelService;
 import com.hk.tm.board.vo.TravelVO;
 
 @Controller
+@RequestMapping(value="/board/")
 public class TravelController {
 	private static final Logger logger = LoggerFactory.getLogger(TravelController.class);
 
@@ -26,20 +28,20 @@ public class TravelController {
 	@Autowired
 	TravelDAO travelDAO;
 	
-	@RequestMapping(value="/board/travel" , method = RequestMethod.GET) 
+	@RequestMapping(value="travel" , method = RequestMethod.GET) 
 		public String travelList(Model model) {
 		
-		List<TravelVO> travelsList = travelService.listTravels();
+		List<TravelVO> list = travelService.allList();
 		
-		model.addAttribute("travelsList", travelsList);
+		model.addAttribute("travel", list);
 		logger.debug("---------/list called");
-		return "boardTravel"; //boardTravel.jsp 호출
+		return "travelList"; //travelList.jsp 호출
 	}
 	
-	@RequestMapping(value="/board/travelUpdate" , method=RequestMethod.GET)
-	public String boardTravelView(Model model , @RequestParam("travelNO") int travelNO) {
+	@RequestMapping(value="travel/View" , method=RequestMethod.GET)
+	public String travelView(Model model , @RequestParam("travelNO") int travelNO) {
 		
-		Map<String,Object> map = travelService.viewTravel(travelNO);
+		Map<String,Object> map = travelService.oneList(travelNO);
 		
 		model.addAttribute("travel", map.get("travelVO"));
 		model.addAttribute("user", map.get("userVO"));
@@ -47,9 +49,37 @@ public class TravelController {
 		
 	}
 	
-	@RequestMapping(value="/board/travelAdd" ,  method=RequestMethod.GET)
+	@RequestMapping(value="travel/add" ,  method=RequestMethod.GET)
 	public String travelAdd() {			
 		return "travelAdd"; // travelAdd.jsp 호출
 		
 	}
+	
+	@RequestMapping(value="travel/addDone" ,  method=RequestMethod.POST)
+	public String travelAddDone(Model model, @ModelAttribute TravelVO travelVO) {
+		
+		logger.debug("title", travelVO.getTitle());
+		logger.debug("content", travelVO.getContent());
+		
+		int ret = travelService.addTravel(travelVO);
+		model.addAttribute("ret", ret);
+		return "travelAddDone"; 
+	}
+	
+	@RequestMapping(value="travel/update" ,  method=RequestMethod.POST)
+	public String travelUpdate(Model model, @ModelAttribute TravelVO travelVO) {
+		
+		int ret = travelService.modTravel(travelVO);
+		model.addAttribute("ret", ret);
+		return "travellUpdateDone";
+	}
+	
+	@RequestMapping(value="travel/delete" ,  method=RequestMethod.GET)
+	public String travelDelete(Model model , @RequestParam("travelNO") int travelNO) {
+			
+		int ret = travelService.removeTravel(travelNO);
+		model.addAttribute("ret", ret);
+		return "travelTravelDeleteDone"; // boardDeleteDone.jsp 호출		
+	}
+	
 }

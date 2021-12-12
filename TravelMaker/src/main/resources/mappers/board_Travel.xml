@@ -10,32 +10,32 @@
 		<result property="travelNO" column="travelNO" />
 		<result property="title" column="title" />
 		<result property="content" column="content" />
-		<result property="WriteDate" column="WriteDate" />
+		<result property="writeDate" column="writeDate" />
 		<result property="id" column="id" />
 		<result property="name" column="name" />
 	</resultMap>
 
-	<select id="selectAllTravels" resultMap="travelResult">
+	<select id="selectAll" resultMap="travelResult">
 		SELECT TRAVELNO, TITLE, CONTENT, WRITEDATE, ID, NAME
 		FROM TRAVEL
 	</select>
 	
-	<select id="selectOneTravel" resultType="TravelVO">
+	<select id="selectOne" resultType="TravelVO">
 		SELECT TRAVELNO, TITLE, CONTENT, WRITEDATE, ID, NAME
 		FROM TRAVEL
 		WHERE travelNO=#{travelNO}
 	</select>
 	
-	<insert id="insertTravel" parameterType="TravelVO">
+	<insert id="insert" parameterType="TravelVO">
 		 INSERT INTO TRAVEL (TRAVELNO, TITLE, CONTENT, WRITEDATE, ID, NAME)
 		  VALUES((select max(travelNO)+1 from travel), #{title}, #{content}, SYSDATE, #{id},  'travel')
 	</insert>
 	
-	<update id="updateTravel" parameterType="TravelVO">
+	<update id="update" parameterType="TravelVO">
 		UPDATE TRAVEL SET TITLE=#{title}, CONTENT=#{content}, WHERE TRAVELNO=#{travelNO}
 	</update>
 	
-	<delete id="deleteTravel" parameterType="travelVO">
+	<delete id="delete" parameterType="travelVO">
 			DELETE FROM TRAVEL WHERE TRAVELNO=#{travelNO}
 	</delete>
 	
