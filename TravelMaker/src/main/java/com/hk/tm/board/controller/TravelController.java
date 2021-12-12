@@ -63,7 +63,7 @@ public class TravelController {
 		
 		int ret = travelService.addTravel(travelVO);
 		model.addAttribute("ret", ret);
-		return "travelAddDone"; 
+		return "travelAddDone"; // travelAddDone.jsp 호출
 	}
 	
 	@RequestMapping(value="travel/update" ,  method=RequestMethod.POST)
@@ -71,7 +71,7 @@ public class TravelController {
 		
 		int ret = travelService.modTravel(travelVO);
 		model.addAttribute("ret", ret);
-		return "travellUpdateDone";
+		return "travelUpdateDone"; // travelUpdateDone.jsp 호출
 	}
 	
 	@RequestMapping(value="travel/delete" ,  method=RequestMethod.GET)
@@ -79,7 +79,7 @@ public class TravelController {
 			
 		int ret = travelService.removeTravel(travelNO);
 		model.addAttribute("ret", ret);
-		return "travelTravelDeleteDone"; // boardDeleteDone.jsp 호출		
+		return "travelDeleteDone"; // travelDeleteDone.jsp 호출		
 	}
 	
 }

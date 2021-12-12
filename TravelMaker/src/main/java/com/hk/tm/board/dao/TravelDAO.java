@@ -18,7 +18,7 @@ public class TravelDAO {
 	
 	public List<TravelVO> allList() {
 		// TODO Auto-generated method stub
-		List<TravelVO> list = sql.selectList(ns+ "selectAll");
+		List<TravelVO> list = sql.selectList(ns+ "selectAllTravels");
 		
 		return list;
 	}
