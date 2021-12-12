@@ -10,11 +10,16 @@
 		<result property="travelNO" column="travelNO" />
 		<result property="title" column="title" />
 		<result property="content" column="content" />
-		<result property="WriteDate" column="WriteDate" />
+		<result property="writeDate" column="writeDate" />
 		<result property="id" column="id" />
 		<result property="name" column="name" />
 	</resultMap>
-
+	
+	<select id="select" resultMap="travelResult">
+		SELECT TRAVELNO, TITLE, CONTENT, WRITEDATE, ID, NAME
+		FROM TRAVEL where id=#{id}
+	</select>
+	
 	<select id="selectAllTravels" resultMap="travelResult">
 		SELECT TRAVELNO, TITLE, CONTENT, WRITEDATE, ID, NAME
 		FROM TRAVEL
