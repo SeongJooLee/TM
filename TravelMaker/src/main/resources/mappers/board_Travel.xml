@@ -14,8 +14,18 @@
 		<result property="id" column="id" />
 		<result property="name" column="name" />
 	</resultMap>
+<<<<<<< HEAD
 
 	<select id="selectAll" resultMap="travelResult">
+=======
+	
+	<select id="select" resultMap="travelResult">
+		SELECT TRAVELNO, TITLE, CONTENT, WRITEDATE, ID, NAME
+		FROM TRAVEL where id=#{id}
+	</select>
+	
+	<select id="selectAllTravels" resultMap="travelResult">
+>>>>>>> branch 'main' of https://github.com/SeongJooLee/TM.git
 		SELECT TRAVELNO, TITLE, CONTENT, WRITEDATE, ID, NAME
 		FROM TRAVEL
 	</select>

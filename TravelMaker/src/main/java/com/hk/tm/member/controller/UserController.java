@@ -3,6 +3,7 @@ package com.hk.tm.member.controller;
 
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
+import com.hk.tm.board.vo.ReviewVO;
+import com.hk.tm.board.vo.TravelVO;
 import com.hk.tm.member.service.UserService;
 import com.hk.tm.member.vo.SellerVO;
 import com.hk.tm.member.vo.UserVO;
@@ -147,7 +149,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/member/mypage", method=RequestMethod.POST)
-	public String mypage(HttpSession session,@RequestParam("testKey") String key){
+	public String mypage(HttpSession session,@RequestParam("testKey") String key,Model model){
 		UserVO user = (UserVO) session.getAttribute("userSession");
 		switch(key) {
 		case "one" :
@@ -157,6 +159,12 @@ public class UserController {
 		case "two":
 			//user = (UserVO) session.getAttribute("userSession");
 			System.out.println("세션값 받아오기 22 "+user.getId());
+			List <TravelVO> travel = userService.travelListAll(user.getId());
+			List <ReviewVO> review = userService.reviewListAll(user.getId());
+			model.addAttribute("travel",travel);
+			model.addAttribute("review",review);
+			System.out.println("review = "+review);
+			System.out.println("설마?");
 			return "userBoardList";
 		case "three":
 			//user = (UserVO) session.getAttribute("userSession");
@@ -165,7 +173,7 @@ public class UserController {
 		case "four":
 			//user = (UserVO) session.getAttribute("userSession");
 			System.out.println("세션값 받아오기 44 "+user.getId());
-			return "userBoardList";
+			return null;
 		
 		}
 		return null;

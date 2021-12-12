@@ -85,8 +85,22 @@ width:110px;
 			</ul>
 		</div>
 		<div class="grid2">
-		<p>아이뒤 : ${userSession.id}</p> 
-		<p>내가 쓴 글 보기 아직 미구현</p>
+		<h3>테마여행 게시판에 작성한 게시글,제목</h3>
+		<c:forEach var='travel' items='${travel}' varStatus='num'>
+			<span>${num.count}</span>
+			<span>${travel.name}</span>
+			<span>${travel.title}</span><br><br>		
+		</c:forEach>
+		</div>
+		<div class="grid2">
+		<h3>리뷰 게시판에 작성한 게시글,제목</h3>
+		<c:forEach var='review' items='${review}' varStatus='num'>	
+			<span>${num.count}</span>
+			<span>${review.name}</span>
+			<span> ${review.title}</span><br><br>
+			
+		</c:forEach>
+		
 		</div>
 	</div>
 </body>
