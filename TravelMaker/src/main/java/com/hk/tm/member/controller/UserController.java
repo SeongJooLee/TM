@@ -173,7 +173,7 @@ public class UserController {
 		case "four":
 			//user = (UserVO) session.getAttribute("userSession");
 			System.out.println("세션값 받아오기 44 "+user.getId());
-			return "userBoardList";
+			return null;
 		
 		}
 		return null;
