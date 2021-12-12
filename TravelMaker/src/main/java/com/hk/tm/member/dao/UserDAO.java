@@ -51,12 +51,12 @@ public class UserDAO {
 		return seller;
 	}
 
-<<<<<<< HEAD
 	public UserVO oneList(String id) {
 		// TODO Auto-generated method stub
 		UserVO userVO = sqlSession.selectOne("mapper.memberUser.selectOne", id);
 		return userVO;
-=======
+	}
+	
 	public List<TravelVO> travelListAll(String id) {
 		// TODO Auto-generated method stub
 		System.out.println("dao id ="+id);
@@ -69,7 +69,6 @@ public class UserDAO {
 		System.out.println("dao id=2 "+id);
 		List<ReviewVO> review = sqlSession.selectList("mapper.boardReview.select",id);
 		return review;
->>>>>>> branch 'main' of https://github.com/SeongJooLee/TM.git
 	}
 
 }
