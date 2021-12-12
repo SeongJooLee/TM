@@ -146,4 +146,29 @@ public class UserController {
 		return null;
 	}
 	
+	@RequestMapping(value="/member/mypage", method=RequestMethod.POST)
+	public String mypage(HttpSession session,@RequestParam("testKey") String key){
+		UserVO user = (UserVO) session.getAttribute("userSession");
+		switch(key) {
+		case "one" :
+			
+			System.out.println("세션값 받아오기 11 test "+user.getId());
+			return "userMyPage";
+		case "two":
+			//user = (UserVO) session.getAttribute("userSession");
+			System.out.println("세션값 받아오기 22 "+user.getId());
+			return "userBoardList";
+		case "three":
+			//user = (UserVO) session.getAttribute("userSession");
+			System.out.println("세션값 받아오기 33 "+user.getId());
+			return "userReservation";
+		case "four":
+			//user = (UserVO) session.getAttribute("userSession");
+			System.out.println("세션값 받아오기 44 "+user.getId());
+			return "userBoardList";
+		
+		}
+		return null;
+	}
+	
 }

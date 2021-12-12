@@ -86,12 +86,7 @@ width:110px;
 		</div>
 		<div class="grid2">
 		<p>아이뒤 : ${userSession.id}</p> 
-		<p>비빔면호 : ${userSession.pw}</p> 
-		<p>이름 : ${userSession.name}</p> 
-		<p>생년월일 : ${userSession.birth}</p> 
-		<p>연락처 : ${userSession.phone}</p> 
-		<p>주소 : ${userSession.address}</p> 
-		<p>가입날짜 : ${userSession.joinDate}</p> 
+		<p>내가 쓴 글 보기 아직 미구현</p>
 		</div>
 	</div>
 </body>
