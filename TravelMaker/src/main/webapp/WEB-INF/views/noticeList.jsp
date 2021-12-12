@@ -29,6 +29,11 @@
      <td >${notice.name }</td>
   </tr>
   </c:forEach>
+  
+  
+  
+  
+  
   <a href="notice/add">글쓰기</a>
  </table>
 </body>
