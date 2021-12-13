@@ -22,7 +22,7 @@
 </head>
 <body>
 	<h1 style="text-align: center">공지 글 쓰기</h1>
-	<form action="addDone" method="post">
+	<form action="addDone" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="adminID" value="admin">
 		<table border="1" align="center">
 			<tr>
@@ -39,6 +39,7 @@
 			<tr>
 				<td align='right'>이미지 파일 첨부:
 				<input type='file' name='image1' onchange='readURL(this);'/>
+				<input type='file' name='image2' onchange='readURL(this);'/>
 				</td>
 				<td><img id='preview'  width=200 height = 200/></td>				
 			</tr>

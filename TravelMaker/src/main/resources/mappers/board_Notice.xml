@@ -26,6 +26,11 @@
 		 where noticeNO=#{noticeNO}
 	</select>
 	
+	<select id="oneMaxList" resultType="java.lang.Integer"> 
+		SELECT max(noticeNO)
+		 FROM NOTICE
+	</select>
+	
 	<insert id="insert" parameterType="NoticeVO">
 		INSERT INTO NOTICE (NOTICENO, TITLE, CONTENT, ADMINID, NAME, WRITEDATE)
 		 VALUES((select max(noticeNO)+1 from notice), #{title}, #{content}, #{adminID}, #{name}, sysdate)

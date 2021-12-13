@@ -15,14 +15,14 @@ public class ImageDAO {
 	
 	public ImageVO oneList(int noticeNO) {
 		// TODO Auto-generated method stub
-		ImageVO imageVO = sql.selectOne(ns+"selectOne",noticeNO);
+		ImageVO imageVO = sql.selectOne(ns+"selectOneTest",noticeNO);
 		return imageVO;
 	}
 
 	public void noticeAdd(ImageVO imageVO) {
 		// TODO Auto-generated method stub
-		System.out.println(imageVO.toString());
-		sql.insert(ns+"insertNotice",imageVO);
+		sql.insert(ns+"insertNoticeTest",imageVO);
+		System.out.println("이미지다오에서 아래 출력 "+imageVO.toString());
 	}
 
 }

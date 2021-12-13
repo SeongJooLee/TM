@@ -61,10 +61,23 @@ public class NoticeController {
 	 }
 	 
 	 @RequestMapping(value="/board/notice/addDone", method=RequestMethod.POST)
-	 public String noticeAddDone(HttpServletRequest request, HttpServletResponse response,Model model,@ModelAttribute NoticeVO noticeVO,@ModelAttribute ImageVO imageVO) throws IOException, ServletException {
-		 System.out.println("imageVO"+imageVO.toString());
+	 public String noticeAddDone(HttpServletRequest request, HttpServletResponse response,Model model) throws IOException, ServletException {
 			Map<String,String> map = upload(request,response);
+			NoticeVO noticeVO = new NoticeVO();
+			ImageVO imageVO = new ImageVO();
+			int noticeNO = noticeService.oneMaxList();
+			noticeNO++;
+			noticeVO.setNoticeNO(noticeNO);
+			noticeVO.setTitle(map.get("title"));
+			noticeVO.setContent(map.get("content"));
+			noticeVO.setAdminID(map.get("adminID"));
+			noticeVO.setName(map.get("name"));
+
 			String image1 = map.get("image1");
+			String image2 = map.get("image2");
+			imageVO.setImage1(image1);
+			imageVO.setImage2(image2);
+			System.out.println("내가 찾던 그곳 : "+imageVO.toString());
 			
 			if(image1 != null && image1.length()!=0) {
 				File srcFile = new File(REPO+"\\"+"temp"+"\\"+image1);
@@ -72,8 +85,9 @@ public class NoticeController {
 				destDir.mkdir();
 				FileUtils.moveFileToDirectory(srcFile, destDir, true);
 			}
-		 
+		 System.out.println("마지막 출력1");
 		 noticeService.boardAdd(noticeVO,imageVO);
+		 System.out.println("마지막 출력2");
 
 		 return "noticeAddDone";
 	 }

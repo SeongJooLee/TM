@@ -45,4 +45,9 @@ public class NoticeService {
 		
 	}
 
+	public int oneMaxList() {
+		// TODO Auto-generated method stub
+		return noticeDAO.oneMaxList();
+	}
+
 }
