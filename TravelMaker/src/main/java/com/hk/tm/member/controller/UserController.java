@@ -127,7 +127,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/member/mypage",method=RequestMethod.GET)
-	public String memberMyPage(@ModelAttribute UserVO userVO,Model model,HttpSession session,@RequestParam(required = false,value="promotionNO") String proNO) {
+	public String memberMyPage(@ModelAttribute UserVO userVO,Model model,HttpSession session,@RequestParam(required = false,value="promotionNO") String proNO,@RequestParam(required = false,value="travelNO") String traNO) {
 		System.out.println("민수야.? = "+session.getAttribute("userSession").getClass().getName());
 		String check = session.getAttribute("userSession").getClass().getName();
 		System.out.println("proNO= "+proNO);
@@ -139,6 +139,11 @@ public class UserController {
 			model.addAttribute("proNO",proNO);
 			model.addAttribute("reservation",result);
 			return "sellerReservation";
+		}else if(traNO != null) {
+			System.out.println("이번에 작업할곳");
+			int travelNO = Integer.parseInt(traNO);
+			//TravelNO travel = userService.
+			return "userBoardListDone";
 		}
 		
 		

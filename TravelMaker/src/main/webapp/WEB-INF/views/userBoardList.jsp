@@ -85,14 +85,37 @@ width:110px;
 			</ul>
 		</div>
 		<div class="grid2">
-		<h3>테마여행 게시판에 작성한 게시글,제목</h3>
-		<c:forEach var='travel' items='${travel}' varStatus='num'>
+		<h3>${userSession.id}님이 게시한 글</h3>
+		<%-- <c:forEach var='travel' items='${travel}' varStatus='num'>
 			<span>${num.count}</span>
 			<span>${travel.name}</span>
 			<span>${travel.title}</span><br><br>		
-		</c:forEach>
+		</c:forEach> --%>
+			<table border='1'>
+				<tr>
+					<td>게시판 종류</td>
+					<td>글 제목</td>
+					<td>글 내용</td>
+				</tr>
+				<c:forEach var='travel' items='${travel}'>
+				<tr>
+					<td>${travel.name}</td>
+					<td><a href='/tm/member/mypage?travelNO=${travel.travelNO}'>${travel.title}</a></td>
+					<td>${travel.content}</td>
+				</tr>
+				</c:forEach>
+				<c:forEach var='review' items='${review}'>
+				<tr>
+					<td>${review.name}</td>
+					<td>${review.title}</td>
+					<td>${review.content}</td>
+				</tr>
+				</c:forEach>
+				
+				
+			</table>
 		</div>
-		<div class="grid2">
+		<%-- <div class="grid2">
 		<h3>리뷰 게시판에 작성한 게시글,제목</h3>
 		<c:forEach var='review' items='${review}' varStatus='num'>	
 			<span>${num.count}</span>
@@ -101,7 +124,7 @@ width:110px;
 			
 		</c:forEach>
 		
-		</div>
+		</div> --%>
 	</div>
 </body>
 </html>
