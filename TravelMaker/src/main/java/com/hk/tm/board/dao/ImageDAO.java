@@ -13,9 +13,9 @@ public class ImageDAO {
 	
 	String ns = "mapper.boardImage.";
 	
-	public ImageVO oneList(int noticeNO) {
+	public ImageVO oneListNotice(int noticeNO) {
 		// TODO Auto-generated method stub
-		ImageVO imageVO = sql.selectOne(ns+"selectOne",noticeNO);
+		ImageVO imageVO = sql.selectOne(ns+"selectOneNotice",noticeNO);
 		return imageVO;
 	}
 

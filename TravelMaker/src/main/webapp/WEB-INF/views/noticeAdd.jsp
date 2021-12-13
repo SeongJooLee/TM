@@ -19,6 +19,11 @@ if(cnt===11){
     $("#d_file").append("<br>" + "<input type='file' name='image" + cnt + " ' />");
     cnt++;
 }
+function backToList(obj){
+	obj.method ="POST";
+	obj.action = "${contextPath}/tm/board/notice";
+	obj.submit();
+}
 </script>
 </head>
 <body>
@@ -34,7 +39,7 @@ if(cnt===11){
 					</select>
 				</td>
 				<td>
-					&nbsp;&nbsp;글 제목 : <input type="text" name="title" >
+					&nbsp;&nbsp;글 제목 : <input type="text" name="title" required>
 				</td>
 			</tr>
 			<tr>
@@ -48,14 +53,15 @@ if(cnt===11){
 			<tr>
 				<td align="center" valign="top">글내용</td>
 				<td colspan=2>
-					<textarea name="content" rows="10" cols="65" maxlength="4000"></textarea>
+					<textarea name="content" rows="10" cols="65" maxlength="4000" required></textarea>
 				</td>
 			</tr>
 		</table>
 		<br><br>
 		<div align="center">
 			<input type="submit" value="작성하기">
-			<input type="reset" value="다기 작성">
+			<input type="reset" value="다시 작성">
+			<input type="button" value="목록 보기" onClick="backToList(this.form)">
 		</div>
 	</form>
 

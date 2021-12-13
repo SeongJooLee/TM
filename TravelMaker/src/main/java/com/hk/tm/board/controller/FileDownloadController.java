@@ -20,28 +20,29 @@ public class FileDownloadController {
 	
 	@RequestMapping(value="/download", method=RequestMethod.GET)
 	public void download(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		if(request.getParameter("image") != null) {
+			
 		request.setCharacterEncoding("utf-8");
 		String image = request.getParameter("image");
 		String noticeNO = request.getParameter("noticeNO");
 		String name = request.getParameter("name");
-		System.out.println("내가 원하는거 image = ["+image+"]");
-		System.out.println("noticeNO = ["+noticeNO+"]");
-		System.out.println("name = ["+name+"]");
 
 		OutputStream out = response.getOutputStream();
-		String path = CURR_IMAGE_REPO_PATH+"\\"+name+"\\"+noticeNO+"\\"+image;
+		String path = "C:\\files\\"+name+"\\"+noticeNO+"\\"+image;
 		File imageFile = new File(path);
 
 		int lastIndex = image.lastIndexOf(".");
 		String fileName = image.substring(0,lastIndex);
-		File thumbnail = new File(CURR_IMAGE_REPO_PATH+"\\"+"thumbnail"+"\\"+fileName+".png");
+		File destDir = new File(CURR_IMAGE_REPO_PATH+"\\thumbnail");
+		File thumbnail = new File(CURR_IMAGE_REPO_PATH+"\\thumbnail\\"+fileName+".png");
+		destDir.mkdir();
 		
 		if(imageFile.exists()) {
 			thumbnail.getParentFile().mkdirs();
-			Thumbnails.of(image).size(50, 50).outputFormat("png").toFile(thumbnail);
+			Thumbnails.of(imageFile).size(500, 500).outputFormat("png").toFile(thumbnail);
 		}
 		
-		FileInputStream in = new FileInputStream(imageFile);
+		FileInputStream in = new FileInputStream(thumbnail);
 		byte[] buffer = new byte[1024*8];
 		while(true) {
 			int count = in.read(buffer);
@@ -53,4 +54,6 @@ public class FileDownloadController {
 		in.close();
 		out.close();
 	}
+	}
+
 }

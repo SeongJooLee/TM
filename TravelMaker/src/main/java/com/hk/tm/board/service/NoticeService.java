@@ -30,7 +30,7 @@ public class NoticeService {
 	public Map<String, Object> oneList(int noticeNO) {
 		// TODO Auto-generated method stub
 		NoticeVO noticeVO = noticeDAO.oneList(noticeNO);
-		ImageVO imageVO = imageDAO.oneList(noticeVO.getNoticeNO());
+		ImageVO imageVO = imageDAO.oneListNotice(noticeVO.getNoticeNO());
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("notice", noticeVO);
 		map.put("image", imageVO);

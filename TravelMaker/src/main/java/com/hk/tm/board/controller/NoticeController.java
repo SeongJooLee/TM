@@ -37,7 +37,7 @@ public class NoticeController {
 	String REPO = "C:\\files";
 
 
-	@RequestMapping(value="/board/notice", method=RequestMethod.GET)
+	@RequestMapping(value="/board/notice", method= {RequestMethod.GET,RequestMethod.POST})
 	public String noticeList(Model model) {
 
 		List<NoticeVO> list = noticeService.allList();
@@ -50,7 +50,6 @@ public class NoticeController {
 	@RequestMapping(value="/board/notice/view", method=RequestMethod.GET)
 	public String noticeView(Model model,@RequestParam("noticeNO") int noticeNO) {
 		Map<String,Object> map = noticeService.oneList(noticeNO);
-		System.out.println(map.get("image").toString());
 		model.addAttribute("notice",map.get("notice"));
 		model.addAttribute("image",map.get("image"));
 		return "noticeView";

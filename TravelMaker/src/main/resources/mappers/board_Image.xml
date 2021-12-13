@@ -29,14 +29,10 @@
 		 FROM IMAGE
 	</select>
 	
-	<select id="selectOne" resultType="imageVO"> 
+	<select id="selectOneNotice" resultType="imageVO"> 
 		SELECT NOTICENO, TRAVELNO, REVIEWNO, PROMOTIONNO, EVENTNO, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10
 		 FROM IMAGE
 		 where noticeNO=#{noticeNO}
-		 or travelNO=#{travelNO}
-		 or reviewNO=#{reviewNO}
-		 or promotionNO=#{promotionNO}
-		 or eventNO=#{eventNO}
 	</select>
 	
 	<insert id="insertNotice" parameterType="imageVO">
