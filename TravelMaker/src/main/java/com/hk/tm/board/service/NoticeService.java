@@ -50,6 +50,12 @@ public class NoticeService {
 		
 	}
 
+	public void noticeUpdate(NoticeVO noticeVO, ImageVO imageVO) {
+		// TODO Auto-generated method stub
+		
+		
+	}
+
 
 
 }
