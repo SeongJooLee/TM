@@ -7,6 +7,18 @@
 <head>
 <meta charset="UTF-8">
 <title>테마 여행 뷰</title>
+<script src='http://code.jquery.com/jquery-latest.min.js'></script>
+<script type='text/javascript'>
+	function readURL(input){
+		if(input.files && input.files[0]){
+			var reader = new FileReader();
+			reader.onload=function(e){
+				$('#preview').attr('src',e.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+</script>
 </head>
 <body>
 	<h1 style="text-align: center">공지 글 쓰기</h1>
@@ -25,19 +37,10 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2">
-					<input type="hidden" name="image1" value="image1">
-					<input type="hidden" name="image2" value="image2">
-					<input type="hidden" name="image3" value="image3">
-					<input type="hidden" name="image4" value="image4">
-					<input type="hidden" name="image5" value="image5">
-					<input type="hidden" name="image6" value="image6">
-					<input type="hidden" name="image7" value="image7">
-					<input type="hidden" name="image8" value="image8">
-					<input type="hidden" name="image9" value="image9">
-					<input type="hidden" name="image10" value="image10">
-					<p>사진 추가 공간</p>
+				<td align='right'>이미지 파일 첨부:
+				<input type='file' name='image1' onchange='readURL(this);'/>
 				</td>
+				<td><img id='preview'  width=200 height = 200/></td>				
 			</tr>
 			<tr>
 				<td align="right" valign="top">글내용</td>
