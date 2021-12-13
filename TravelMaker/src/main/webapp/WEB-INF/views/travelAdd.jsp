@@ -12,6 +12,14 @@
 <title>테마 여행 글쓰기창</title>
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
+function readURL(input) {
+    if (input.files && input.files[0]) {
+       var reader = new FileReader();
+       reader.onload = function (e) {
+          $('#preview').attr('src', e.target.result);
+       }
+       reader.readAsDataURL(input.files[0]);
+    }
 
 	function backToList(obj) {
 		obj.action = "${contextPath}/board/travel";
@@ -22,9 +30,10 @@
 </head>
 <body>
 <h1 style="text-align:center">테마 여행 글 쓰기</h1>
-  <form name="travelForm" method="post"   action="add">
+  <form name="addDone" method="post" action="${contextPath }/board/add" enctype = "multipart/form-data">  	
     <table border="0" align="center">
      <tr>
+
       <td align="right">글제목: </td>
       <td colspan="2"><input type="text" size="67"  maxlength="500" name="title" /></td>
     </tr>
@@ -35,9 +44,9 @@
 
       <tr>
          <td align = "right">이미지파일 첨부: </td>
-         <td> <input type = "file" name = "imageFileName" onchange = "readURL(this);" /></td>
+         <td> <input type = "file" name = "image1" onchange = "readURL(this);" /></td>
          <td><img id = "preview" src = "#" width = 200 height = 200 /></td>
-         </tr>
+      </tr>
 
     <tr>
        <td align="right"> </td>
