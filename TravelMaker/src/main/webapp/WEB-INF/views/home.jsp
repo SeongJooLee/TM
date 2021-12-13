@@ -16,7 +16,7 @@
        
     </head>
     <body>
-    <jsp:include page="../../include/header.jsp" />
+    <jsp:include page="/resources/include/header.jsp" />
         <!-- Responsive navbar-->
         
         <!-- Page Content-->

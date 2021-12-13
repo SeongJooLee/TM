@@ -19,5 +19,5 @@
   </tr>
     </table>
 </body>
-<%@ include file="../../include/nayounLeft.jsp"%>
+<%@ include file="/resources/include/nayounLeft.jsp"%>
 </html>

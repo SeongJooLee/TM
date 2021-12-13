@@ -9,7 +9,7 @@
 </head>
 <body>
 	<!--  해치웠나?? ㅇㅇㅇㅇ-->
-	<jsp:include page="../../include/header.jsp" />
+	<jsp:include page="/resources/include/header.jsp" />
 
 	<!-- Section-->
 	<section class="py-5">

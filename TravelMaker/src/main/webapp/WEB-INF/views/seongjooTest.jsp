@@ -46,7 +46,7 @@
 	<div class="grid2">
 		<div align="center">
 		
-			<jsp:include page="../../include/seongjooTest.jsp" />
+			<jsp:include page="/resources/include/seongjooTest.jsp" />
 		</div>
 	</div>
 	<div class="grid3">

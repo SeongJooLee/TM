@@ -57,5 +57,5 @@
 		content
 		</div>
 	</div>
-<%@ include file="../../include/nayounLeft.jsp"%>
+<%@ include file="/resources/include/nayounLeft.jsp"%>
 </html>

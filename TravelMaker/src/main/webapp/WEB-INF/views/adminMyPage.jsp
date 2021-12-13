@@ -52,6 +52,6 @@
 	</div>
 </body>
 
-<%@ include file="../../include/adminsidemenu.jsp"%>
+<%@ include file="/resources/include/adminsidemenu.jsp"%>
 관리자 메인 화면입니다.
 </html>
