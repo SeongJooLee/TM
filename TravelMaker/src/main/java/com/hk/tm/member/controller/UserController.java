@@ -127,10 +127,10 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/member/mypage",method=RequestMethod.GET)
-	public String memberMyPage(@ModelAttribute UserVO userVO,Model model,HttpSession session,@RequestParam(required = false,value="promotionNO") String proNO,@RequestParam(required = false,value="travelNO") String traNO) {
+	public String memberMyPage(@ModelAttribute UserVO userVO,Model model,HttpSession session,@RequestParam(required = false,value="promotionNO") String proNO,@RequestParam(required = false,value="travelNO") String traNO,@RequestParam(required=false,value="reviewNO") String revNO) {
 		System.out.println("민수야.? = "+session.getAttribute("userSession").getClass().getName());
 		String check = session.getAttribute("userSession").getClass().getName();
-		System.out.println("proNO= "+proNO);
+		
 		if(proNO!=null) {
 			int promotionNO = Integer.parseInt(proNO);
 			List<ReservationVO> result = userService.checkReservation(promotionNO);
@@ -146,6 +146,11 @@ public class UserController {
 			TravelVO travel = userService.checkOneTravel(travelNO);
 			model.addAttribute("travel",travel);
 			return "userBoardListDone";
+		}else if(revNO !=null) {
+			int reviewNO = Integer.parseInt(revNO);
+			ReviewVO reviewVO = userService.selectReview(reviewNO);
+			model.addAttribute("reviewVO",reviewVO);
+			return "userReviewDone";
 		}
 		
 		
@@ -179,6 +184,7 @@ public class UserController {
 //		}else if(session.getAttribute("")) {
 //			session.
 //		}
+		System.out.println("햇던일또하게생겻네");
 		UserVO user = null;
 		SellerVO seller = null;
 		try {

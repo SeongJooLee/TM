@@ -72,4 +72,9 @@ public class UserService {
 		// TODO Auto-generated method stub
 		return userDAO.userReservationList(id);
 	}
+
+	public ReviewVO selectReview(int reviewNO) {
+		// TODO Auto-generated method stub
+		return userDAO.selectReview(reviewNO);
+	}
 }

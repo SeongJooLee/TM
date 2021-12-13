@@ -99,4 +99,10 @@ public class UserDAO {
 		return list;
 	}
 
+	public ReviewVO selectReview(int reviewNO) {
+		// TODO Auto-generated method stub
+		ReviewVO review = sqlSession.selectOne("mapper.boardReview.selectOne",reviewNO);
+		return review;
+	}
+
 }

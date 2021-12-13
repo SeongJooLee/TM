@@ -85,46 +85,24 @@ width:110px;
 			</ul>
 		</div>
 		<div class="grid2">
-		<h3>${userSession.id}님이 게시한 글</h3>
-		<%-- <c:forEach var='travel' items='${travel}' varStatus='num'>
-			<span>${num.count}</span>
-			<span>${travel.name}</span>
-			<span>${travel.title}</span><br><br>		
-		</c:forEach> --%>
-			<table border='1'>
-				<tr>
-					<td>게시판 종류</td>
-					<td>글 제목</td>
-					<td>글 내용</td>
-				</tr>
-				<c:forEach var='travel' items='${travel}'>
-				<tr>
-					<td>${travel.name}</td>
-					<td><a href='/tm/member/mypage?travelNO=${travel.travelNO}'>${travel.title}</a></td>
-					<td>${travel.content}</td>
-				</tr>
-				</c:forEach>
-				<c:forEach var='review' items='${review}'>
-				<tr>
-					<td>${review.name}</td>
-					<td><a href='/tm/member/mypage?reviewNO=${review.reviewNO}'>${review.title}</a></td>
-					<td>${review.content}</td>
-				</tr>
-				</c:forEach>
-				
-				
-			</table>
-		</div>
-		<%-- <div class="grid2">
-		<h3>리뷰 게시판에 작성한 게시글,제목</h3>
-		<c:forEach var='review' items='${review}' varStatus='num'>	
-			<span>${num.count}</span>
-			<span>${review.name}</span>
-			<span> ${review.title}</span><br><br>
-			
-		</c:forEach>
+		<h3>리뷰 상세보기</h3> 
 		
-		</div> --%>
+		
+	
+				
+			<p>글 번호: ${reviewVO.reviewNO}</p>
+			<p>제목: ${reviewVO.title}</p>
+			<p>내용: ${reviewVO.content}</p>	
+			<p>작성날짜: ${reviewVO.writeDate}</p>
+			<p>작성자ID: ${reviewVO.id}</p>
+			<p>상품 번호: ${reviewVO.promotionNO}</p>
+			
+			
+			<button type='button'>수정하기</button>
+			<button type='button'>삭제하기</button>
+	
+		
+		</div>
 	</div>
 </body>
 </html>

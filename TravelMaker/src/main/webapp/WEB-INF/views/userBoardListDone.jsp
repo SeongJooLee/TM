@@ -85,12 +85,14 @@ width:110px;
 			</ul>
 		</div>
 		<div class="grid2">
-		<h3>상세보기</h3> 
+		<h3>테마여행 상세보기</h3> 
 		 <p>글 번호: ${travel.travelNO}</p> 
 		<p>제목: ${travel.title}</p> 
 		<p>내용: ${travel.content}</p> 
 		<p>작성 날짜: ${travel.writeDate}</p> 
 		<p>작성자 ID: ${travel.id}</p> 
+		<button type='button'>수정하기</button>
+		<button type='button'>삭제하기</button>
 		</div>
 	
 	</div>
