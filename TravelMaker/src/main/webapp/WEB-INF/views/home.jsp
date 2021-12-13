@@ -22,17 +22,10 @@
         <!-- Page Content-->
         <div class="container px-4 px-lg-5">
             <!-- Heading Row-->
-            <div class="row gx-4 gx-lg-5 align-items-center my-5">
-                <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="<c:url value="/resources/img/bf.PNG" />" width="200" height="100" alt="..." /></div>
-                <div class="col-lg-5">
-                    <h1 class="font-weight-light">민수의 여행사이트</h1>
-                    <p>민수와 여행을 같이 떠나볼까요~?</p>
-                    
-                </div>
-            </div>
+
             <!-- Call to Action-->
             <div class="card text-white bg-secondary my-5 py-4 text-center">
-                <div class="card-body"><p class="text-white m-0">테마게시판 !!</p></div>
+                <div class="card-body"><p class="text-white m-0">공지사항</p></div>
             </div>
             <!-- Content Row-->
             <div class="row gx-4 gx-lg-5">
@@ -42,8 +35,8 @@
                             <h2 class="card-title">Card One</h2>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
                         </div> -->
-                        <img  src="<c:url value="/resources/img/bf.PNG" />" width="100%" height="100%" /> 
-                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">제목1</a></div>
+                        <img  src="<c:url value="http://encosmall.kr/design/encos0720/shop/img/common/gonggi_top.jpg" />" width="100%" height="100%" /> 
+                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">공지사항</a></div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-5">
@@ -52,8 +45,8 @@
                             <h2 class="card-title">Card Two</h2>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
                         </div> -->
-                        <img  src="<c:url value="/resources/img/pop.PNG" />" width="100%" height="100%" />
-                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">제목2</a></div>
+                        <img  src="<c:url value="http://encosmall.kr/design/encos0720/shop/img/common/gonggi_top.jpg" />" width="100%" height="100%" />
+                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">이벤트</a><a class="title" href="#!">글제목 연결</a></div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-5">
@@ -62,13 +55,13 @@
                             <h2 class="card-title">Card Three</h2>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
                         </div> -->
-                        <img  src="<c:url value="/resources/img/rava.PNG" />" width="100%" height="100%" />
-                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">제목3</a></div>
+                        <img  src="<c:url value="http://encosmall.kr/design/encos0720/shop/img/common/gonggi_top.jpg" />" width="100%" height="100%" />
+                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">이벤트</a></div>
                     </div>
                 </div>
                 
                 <div class="card text-white bg-secondary my-5 py-4 text-center">
-                <div class="card-body"><p class="text-white m-0">홍보상품 !!</p></div>
+                <div class="card-body"><p class="text-white m-0">홍보상품</p></div>
                 </div>
                 <div class="col-md-4 mb-5">
                     <div class="card h-100">
@@ -76,8 +69,8 @@
                             <h2 class="card-title">Card Three</h2>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
                         </div> -->
-                        <img  src="<c:url value="/resources/img/rava.PNG" />" width="100%" height="100%" />
-                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">제목3</a></div>
+                        <img  src="<c:url value="https://blog.kakaocdn.net/dn/4EcjP/btquGWgVdxP/662m1kgoW6WVAkcZPXBs30/img.jpg" />" width="100%" height="100%" />
+                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">홍보</a></div>
                     </div>
                 </div>
                 
@@ -87,15 +80,15 @@
                             <h2 class="card-title">Card Three</h2>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
                         </div> -->
-                        <img  src="<c:url value="/resources/img/rava.PNG" />" width="100%" height="100%" />
-                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">제목3</a></div>
+                        <img  src="<c:url value="http://rgo4.com/files/attach/images/2676751/431/850/029/3788593f87c6c58876d68e0465a817aa.gif" />" width="100%" height="100%" />
+                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">흥부</a><a class="title" href="#!">글제목 연결</a></div>
                     </div>
                 </div>
                 
                 <div class="col-md-4 mb-5">
                     <div class="card h-100">
-                        <img  src="<c:url value="/resources/img/rava.PNG" />" width="100%" height="100%" />
-                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">제목3</a></div>
+                        <img  src="<c:url value="https://post-phinf.pstatic.net/MjAxOTAzMTNfNjUg/MDAxNTUyNDU0NTQwNjUz.yvVGf4GklXetQ8JfDMokhYSWi_AFvbpYM0dW49xWy6Ig.lhfTJzuFUtmLX5Sc-ZtW2-_wp6K2dqM9n6Bi3sRJqxog.GIF/%ED%87%B4%EC%82%AC%ED%9B%84%EB%B9%84%EB%A1%9C%EC%86%8C%EB%82%98%EB%8B%A4%EC%9A%B4%EC%9D%B8%EC%83%9D%EC%9D%B4%EC%8B%9C%EC%9E%91%EB%90%98%EC%97%88%EB%8B%A41.gif?type=w1200" />" width="100%" height="100%" />
+                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">놀부</a></div>
                     </div>
                 </div>
                 

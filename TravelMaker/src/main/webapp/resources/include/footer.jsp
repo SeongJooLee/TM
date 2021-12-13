@@ -47,26 +47,38 @@ $('.btn_gotop').click(function(){
 	background-color:white;
 	color:#333;
 	cursor:pointer;
-	padding:15px 20px;
+	padding:10px 10px;
 	border-radius:100%;
 }
+
+
+
+
+
 
 </style>
 </head>
 <body>
 		<div class="sns_test">
-        	<a class="sns-link" href="https://www.instagram.com/ggul_min/?hl=ko"><i class="fab fa-instagram" ></i></a>
-        	<a class="sns-link" href="https://www.instagram.com/ggul_min/?hl=ko"><i class="fab fa-facebook" ></i></a>
-        	<a class="sns-link" href="https://www.instagram.com/ggul_min/?hl=ko"><i class="fab fa-twitter" ></i></a>
+        	<a class="sns-link" href="https://www.instagram.com/"><i class="fab fa-instagram" ></i></a>
+        	<a class="sns-link" href="https://www.facebook.com/"><i class="fab fa-facebook" ></i></a>
+        	<a class="sns-link" href="https://www.twitter.com/"><i class="fab fa-twitter" ></i></a>
    	    </div>
-   	    <div class="caution_text" style = "background-color: gray;">
-   	    <p align="center"> 주의사항 </p><br>
-   	    <p align="center"> 주의사항 </p><br>
+   	    <div class="caution_text" style = "background-color: lightgray;">
+   	    <div class="corp_area" data-clk-prefix="plc"> 
+   	    	<ul class="list_corp"> 
+   	    		<li class="corp_item"><a href="https://www.navercorp.com">회사소개</a></li> 
+   	    		<li class="corp_item"><a href="https://recruit.navercorp.com/naver/recruitMain" >광고문의</a></li> 
+   	    		<li class="corp_item"><a href="https://www.navercorp.com/naver/proposalGuide" >이용약관</a></li>
+   	    		<li class="corp_item"><a href="/policy/service.html" >개인정보처리방침</a></li>
+   	        </ul>
+   	    </div>
    	    </div>
    	    <a href="#" class="btn_gotop">
   		<span class="glyphicon glyphicon-chevron-up">
   		<img src="https://www.iconpacks.net/icons/2/free-curved-arrow-icon-2259-thumb.png" style="width:20px">
  		</span>
 		</a>
+	
 </body>
 </html>
