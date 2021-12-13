@@ -21,14 +21,16 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <style>
 
-
+.logo_img{
+max-width:200px; width:100%; height:auto;
+}
 </style>
 </head>
 <body>
 
    			<c:if test='${userSession.name != null}'>
    			<div class="jumbotron text-center" style="margin-bottom: 0;background-color: white;">
-			<img class="card-img-top" src="<c:url value="/resources/img/logo_1.png" />" width="50" height="300" />
+			<img class="logo_img" src="<c:url value="/resources/Travel Maker (3).png" />"  />
 					
 			<p align="right">${userSession.name}님 <a href="member/mypage">마이페이지</a> <a href="member/logout">로그아웃</a>&nbsp;&nbsp;&nbsp;<a href="#">고객센터</a></p>
 			</div>
@@ -36,7 +38,7 @@
 			
 			<c:if test='${userSession.name == null}'>
 			<div class="jumbotron text-center" style="margin-bottom: 0;background-color: white;">
-			<img class="card-img-top" src="<c:url value="/resources/img/logo_1.png" />" width="50" height="300" />
+			<img class="logo_img" src="<c:url value="/resources/img/Travel Maker (3).png" />"  />
 			<p align="right"><a href="member/login">로그인</a>&nbsp;&nbsp;&nbsp;<a href="member/registerCheck">회원가입</a>&nbsp;&nbsp;&nbsp;<a href="#">고객센터</a></p>		
 			</div>
    			</c:if>

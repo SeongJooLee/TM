@@ -65,6 +65,7 @@ $('.btn_gotop').click(function(){
    	    </div>
    	    <a href="#" class="btn_gotop">
   		<span class="glyphicon glyphicon-chevron-up">
+  		<img src="https://www.iconpacks.net/icons/2/free-curved-arrow-icon-2259-thumb.png" style="width:20px">
  		</span>
 		</a>
 </body>
