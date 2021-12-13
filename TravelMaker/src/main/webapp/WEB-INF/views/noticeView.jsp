@@ -59,7 +59,7 @@ function fn_remove_article(url,articleNO){
 </script>
 </head>
 <body>
-<form name="frmArticle" method="post" action="&{contextPath}" enctype="multipart/form-data">
+<form name="frmArticle" method="GET" action="&{contextPath}" enctype="multipart/form-data">
 	<table border="1" align="center">
 		<tr>
 			<td>글 번호 : <input type="text" value="${notice.noticeNO }" name="noticeNO" readonly />
@@ -71,16 +71,13 @@ function fn_remove_article(url,articleNO){
 			<td width="150" align="center">작성자 아이디</td>
 			<td><input type="text" value="${notice.adminID }" name="adminID" readonly /></td>
 		</tr>
-<%-- 		
-		<c:forEach var="image" items="${map.fileList }">
+		
 			<tr>
 				<td colspan="2">
-					<img src="${contextPath }/download?image=${image}">
-					
+					<img src="${contextPath }/download?image=${image.image1}&noticeNO=${notice.noticeNO}&name=${notice.name}"> ${image.image1 }
 				</td>
 			</tr>
-		</c:forEach>
-		 --%>
+		
 		<tr>
 			<td width="150" align="center">글내용</td>
 			<td><textarea rows="20" cols="60" name="content" id="content" disabled >${notice.content } </textarea></td>
