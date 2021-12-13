@@ -13,7 +13,12 @@
       <result property="headCount" column="headCount" />
       <result property="id" column="id" />
    </resultMap>
-   
+   	
+   	<select id="select" resultType="ReservationVO">
+		SELECT RESERNO, PROMOTIONNO, RESERDATE, HEADCOUNT, ID
+		 FROM RESERVATION WHERE PROMOTIONNO=#{promotionNO}
+	</select>
+	
    	<select id="selectAll" resultMap="reservationResult">
 		SELECT RESERNO, PROMOTIONNO, RESERDATE, HEADCOUNT, ID
 		 FROM RESERVATION

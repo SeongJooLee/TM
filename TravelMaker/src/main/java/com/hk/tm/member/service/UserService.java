@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hk.tm.board.vo.PromotionVO;
+import com.hk.tm.board.vo.ReservationVO;
 import com.hk.tm.board.vo.ReviewVO;
 import com.hk.tm.board.vo.TravelVO;
+
 import com.hk.tm.member.dao.UserDAO;
 import com.hk.tm.member.vo.SellerVO;
 import com.hk.tm.member.vo.UserVO;
@@ -54,5 +56,10 @@ public class UserService {
 		// TODO Auto-generated method stub
 		return userDAO.sellerPromotionList(id);
 		
+	}
+
+	public ReservationVO checkReservation(int promotionNO) {
+		// TODO Auto-generated method stub
+		return userDAO.checkReservation(promotionNO);
 	}
 }

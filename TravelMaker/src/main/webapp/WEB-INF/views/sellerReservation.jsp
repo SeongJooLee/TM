@@ -42,7 +42,6 @@
 </style>
 </head>
 <body> 
-<%-- <jsp:include page="/resources/include/header.jsp" /> --%>
 	<h1>판매유저 페이지</h1>
 	<h2>${userSession.sellerID}님 정보</h2> 
 	
@@ -66,15 +65,41 @@
 			</ul>
 		</div>
 		<div class="grid2">
-		<p>아이뒤 : ${userSession.sellerID}</p> 
-		<p>비빔면호 : ${userSession.pw}</p> 
-		<p>이름 : ${userSession.name}</p> 
-		<p>연락처 : ${userSession.phone}</p> 
-		<p>주소 : ${userSession.address}</p> 
-		<p>가입날짜 : ${userSession.joinDate}</p> 
+		<h3>${userSession.sellerID}님이 등록한 상품정보</h3>
+		<p>여기다가 넣어야되나</p>
+		<table border='1'>
+		
+		<tr>
+			<td>순번</td>
+			<td>상품 제목</td>
+			<td>예약자 ID</td>
+			<td>예약 번호</td>			
+			<td>예약 날짜</td>
+			<td>인원수</td>
+		</tr>
+		<tr>
+		<c:forEach var='list' items='${proList}' varStatus='num'>
+			
+				
+			<td>${num.count}</td>
+			<td>${list.title}</td>
+			<td>${list.content}</td>	
+			<td>${list.price}</td>
+			<td>${list.sellerID}</td>
+			<td>
+				<!-- <form action='mypage' method='post'>
+					<input type="hidden" name="testKey" value="sellerThree">				
+					<input class='btn' type='submit'  value='예약내역 확인하기'>
+				</form> -->
+				<a href='/tm/member/mypage?promotionNO=${list.promotionNO}'>예약내역 확인하기</a>
+			</td>
+		</tr>	
+		</c:forEach>
+		
+		</table>
 		</div>
 		
 	</div>
-<%-- <jsp:include page="/resources/include/footer.jsp" /> --%>
+	
 </body>
 </html>

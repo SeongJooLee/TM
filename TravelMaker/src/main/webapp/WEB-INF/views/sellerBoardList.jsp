@@ -86,7 +86,13 @@
 			<td>${list.content}</td>	
 			<td>${list.price}</td>
 			<td>${list.sellerID}</td>
-			<td><button type='button'>예약내역 확인하기</button></td>
+			<td>
+				<!-- <form action='mypage' method='post'>
+					<input type="hidden" name="testKey" value="sellerThree">				
+					<input class='btn' type='submit'  value='예약내역 확인하기'>
+				</form> -->
+				<a href='/tm/member/mypage?promotionNO=${list.promotionNO}'>예약내역 확인하기</a>
+			</td>
 		</tr>	
 		</c:forEach>
 		
