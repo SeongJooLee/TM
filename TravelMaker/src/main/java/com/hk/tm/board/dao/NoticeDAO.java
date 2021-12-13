@@ -28,16 +28,17 @@ public class NoticeDAO {
 		return noticeVO;
 	}
 
-	public void boardAdd(NoticeVO noticeVO) {
-		// TODO Auto-generated method stub
-		sql.insert(ns+"insert",noticeVO);
-	}
-
 	public int oneMaxList() {
 		// TODO Auto-generated method stub
 		int noticeNO = sql.selectOne(ns+"oneMaxList",null);
 		
 		return noticeNO;
 	}
+	
+	public void boardAdd(NoticeVO noticeVO) {
+		// TODO Auto-generated method stub
+		sql.insert(ns+"insert",noticeVO);
+	}
+
 
 }

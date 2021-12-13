@@ -3,17 +3,16 @@ package com.hk.tm.board.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,8 +20,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.multipart.MultipartRequest;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.hk.tm.board.service.NoticeService;
 import com.hk.tm.board.vo.ImageVO;
@@ -64,75 +64,70 @@ public class NoticeController {
 	@RequestMapping(value="/board/notice/addDone", method=RequestMethod.POST)
 	public String noticeAddDone(MultipartHttpServletRequest request, HttpServletResponse response,Model model) throws IOException, ServletException {
 		request.setCharacterEncoding("utf-8");
-		Map<String,String> map = upload(request,response);
+		Map<String,Object> map = new HashMap<String,Object>();
+		Enumeration enu=request.getParameterNames();
+		while(enu.hasMoreElements()){
+			String name=(String)enu.nextElement();
+			String value=request.getParameter(name);
+			map.put(name,value);
+		}
+		List fileList= upload(request);
+		map.put("fileList", fileList);
+		System.out.println("제발 : "+fileList);
+		String image1 = (String) fileList.get(0);
+		String image2 = (String) fileList.get(1);
+
 		NoticeVO noticeVO = new NoticeVO();
 		ImageVO imageVO = new ImageVO();
+		
 		int noticeNO = noticeService.oneMaxList();
 		noticeNO++;
+		
 		noticeVO.setNoticeNO(noticeNO);
-		noticeVO.setTitle(map.get("title"));
-		noticeVO.setContent(map.get("content"));
-		noticeVO.setAdminID(map.get("adminID"));
-		noticeVO.setName(map.get("name"));
-
-		String image1 = map.get("image1");
-		String image2 = map.get("image2");
+		noticeVO.setTitle((String) map.get("title"));
+		noticeVO.setContent((String) map.get("content"));
+		noticeVO.setAdminID((String) map.get("adminID"));
+		noticeVO.setName((String) map.get("name"));
+		
 		imageVO.setImage1(image1);
 		imageVO.setImage2(image2);
-		System.out.println("내가 찾던 그곳 : "+imageVO.toString());
-
-		if(image1 != null && image1.length()!=0) {
-			File srcFile = new File(REPO+"\\"+"temp"+"\\"+image1);
-			File destDir = new File(REPO+"\\"+noticeVO.getName()+"\\"+noticeVO.getNoticeNO());
-			destDir.mkdir();
-			FileUtils.moveFileToDirectory(srcFile, destDir, true);
-		}
-		System.out.println("마지막 출력1");
+		
 		noticeService.boardAdd(noticeVO,imageVO);
-		System.out.println("마지막 출력2");
-
+		
+		for(int i=0;i < fileList.size(); i++) {
+			if(fileList.get(i)!=null) {
+				File srcFile = new File(REPO+"\\"+"temp"+"\\"+fileList.get(i));
+				File destDir = new File(REPO+"\\"+noticeVO.getName()+"\\"+noticeVO.getNoticeNO());
+				destDir.mkdir();
+				FileUtils.moveFileToDirectory(srcFile, destDir, true);
+			}
+			
+		}
+		
 		return "noticeAddDone";
 	}
 
-	private Map<String,String> upload(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		Map<String,String>noticeMap = new HashMap<String,String>();
-		String encoding="utf-8";
-		File currentDirPath = new File(REPO);
-		DiskFileItemFactory factory = new DiskFileItemFactory();
-		factory.setRepository(currentDirPath);
-		factory.setSizeThreshold(1024*1024);
-		ServletFileUpload upload = new ServletFileUpload(factory);
-
-		try {
-			List<FileItem> items = upload.parseRequest(request); //주의
-			System.out.println("items의 길이"+items.size());
-			for (int i = 0; i < items.size(); i++) {
-				FileItem fileItem = (FileItem)items.get(i);
-				if(fileItem.isFormField()) {
-					System.out.println("내가 원하는 부분!!"+fileItem.getFieldName()+"="+fileItem.getString(encoding));
-
-					noticeMap.put(fileItem.getFieldName(), fileItem.getString(encoding));
-				}else {
-					System.out.println("파라미터 이름 :"+fileItem.getFieldName());
-					System.out.println("파일 이름 :"+fileItem.getName());
-					System.out.println("파일 크기 :"+fileItem.getSize()+"bytes");
-
-					if(fileItem.getSize()>0) {
-						int idx = fileItem.getName().lastIndexOf("\\");
-						if(idx==-1) {
-							idx = fileItem.getName().lastIndexOf("/");
-						}
-						String fileName = fileItem.getName().substring(idx+1);
-						noticeMap.put(fileItem.getFieldName(),fileName);
-						File uploadFile = new File(currentDirPath+"\\temp\\"+fileName);
-						fileItem.write(uploadFile);
+	private List<String> upload(MultipartHttpServletRequest request) throws ServletException, IOException{
+		List<String> fileList= new ArrayList<String>();
+		Iterator<String> fileNames = request.getFileNames();
+		while(fileNames.hasNext()){
+			String fileName = fileNames.next();
+			MultipartFile mFile = request.getFile(fileName);
+			String originalFileName=mFile.getOriginalFilename();
+			fileList.add(originalFileName);
+			File file = new File(REPO +"\\"+ fileName);
+			if(mFile.getSize()!=0){ //File Null Check
+				if(! file.exists()){ //경로상에 파일이 존재하지 않을 경우
+					if(file.getParentFile().mkdirs()){ //경로에 해당하는 디렉토리들을 생성
+						file.createNewFile(); //이후 파일 생성
 					}
 				}
+				File destDir = new File(REPO +"\\temp\\");
+				destDir.mkdir();
+				mFile.transferTo(new File(REPO +"\\temp\\"+ originalFileName)); //임시로 저장된 multipartFile을 실제 파일로 전송
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
-		return noticeMap;
+		return fileList;
 	}
 
 

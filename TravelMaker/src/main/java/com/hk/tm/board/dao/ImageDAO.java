@@ -22,7 +22,6 @@ public class ImageDAO {
 	public void noticeAdd(ImageVO imageVO) {
 		// TODO Auto-generated method stub
 		sql.insert(ns+"insertNoticeTest",imageVO);
-		System.out.println("이미지다오에서 아래 출력 "+imageVO.toString());
 	}
 
 }

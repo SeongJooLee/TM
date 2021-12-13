@@ -40,12 +40,13 @@
 	</select>
 	
 	<select id="selectOneTest" resultType="imageVO"> 
-		SELECT NOTICENO, IMAGE1 FROM IMAGETEST
+		SELECT NOTICENO, IMAGE1, IMAGE2 FROM IMAGETEST
 		where noticeNO=#{noticeNO}
 	</select>
 	
 	<insert id="insertNoticeTest" parameterType="imageVO">
-		INSERT INTO IMAGETEST (NOTICENO, IMAGE1, IMAGE2) VALUES((select max(noticeNO) from notice), #{image1},#{image2})
+		INSERT INTO IMAGETEST (NOTICENO, IMAGE1, IMAGE2)
+		 VALUES((select max(noticeNO) from notice), #{image1},#{image2})
 	</insert>
 	
 	<insert id="insertNotice" parameterType="imageVO">
@@ -54,19 +55,19 @@
 	</insert>
 	<insert id="insertTravel" parameterType="imageVO">
 	INSERT INTO IMAGE (NOTICENO, TRAVELNO, REVIEWNO, PROMOTIONNO, EVENTNO, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10)
-	 VALUES(#{noticeNO}, (select max(travelNO) from travel), #{reviewNO}, #{promotionNO}, #{eventNO}, #{image1}, #{image2}, #{image3}, #{image4}, #{image5}, #{image6}, #{image7}, #{image8}, #{image9}, #{image10})
+	 VALUES(null, (select max(travelNO) from travel), null, null, null, #{image1}, #{image2}, #{image3}, #{image4}, #{image5}, #{image6}, #{image7}, #{image8}, #{image9}, #{image10})
 	</insert>
 	<insert id="insertReview" parameterType="imageVO">
 	INSERT INTO IMAGE (NOTICENO, TRAVELNO, REVIEWNO, PROMOTIONNO, EVENTNO, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10)
-	 VALUES(#{noticeNO}, #{travelNO}, (select max(reviewNO) from review), #{promotionNO}, #{eventNO}, #{image1}, #{image2}, #{image3}, #{image4}, #{image5}, #{image6}, #{image7}, #{image8}, #{image9}, #{image10})
+	 VALUES(null, null, (select max(reviewNO) from review), null, null, #{image1}, #{image2}, #{image3}, #{image4}, #{image5}, #{image6}, #{image7}, #{image8}, #{image9}, #{image10})
 	</insert>
 	<insert id="insertPromotion" parameterType="imageVO">
 	INSERT INTO IMAGE (NOTICENO, TRAVELNO, REVIEWNO, PROMOTIONNO, EVENTNO, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10)
-	 VALUES(#{noticeNO}, #{travelNO}, #{reviewNO}, (select max(promotionNO) from promotion), #{eventNO}, #{image1}, #{image2}, #{image3}, #{image4}, #{image5}, #{image6}, #{image7}, #{image8}, #{image9}, #{image10})
+	 VALUES(null, null, null, (select max(promotionNO) from promotion), null}, #{image1}, #{image2}, #{image3}, #{image4}, #{image5}, #{image6}, #{image7}, #{image8}, #{image9}, #{image10})
 	</insert>
 	<insert id="insertEvent" parameterType="imageVO">
 	INSERT INTO IMAGE (NOTICENO, TRAVELNO, REVIEWNO, PROMOTIONNO, EVENTNO, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10)
-	 VALUES(#{noticeNO}, #{travelNO}, #{reviewNO}, #{promotionNO}, (select max(eventNO) from event), #{image1}, #{image2}, #{image3}, #{image4}, #{image5}, #{image6}, #{image7}, #{image8}, #{image9}, #{image10})
+	 VALUES(null, null, null, null, (select max(eventNO) from event), #{image1}, #{image2}, #{image3}, #{image4}, #{image5}, #{image6}, #{image7}, #{image8}, #{image9}, #{image10})
 	</insert>
 	
 	<update id="update" parameterType="imageVO"> 

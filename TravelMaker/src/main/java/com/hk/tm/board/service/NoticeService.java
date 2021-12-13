@@ -37,6 +37,11 @@ public class NoticeService {
 		
 		return map;
 	}
+	
+	public int oneMaxList() {
+		// TODO Auto-generated method stub
+		return noticeDAO.oneMaxList();
+	}
 
 	public void boardAdd(NoticeVO noticeVO, ImageVO imageVO) {
 		// TODO Auto-generated method stub
@@ -45,9 +50,6 @@ public class NoticeService {
 		
 	}
 
-	public int oneMaxList() {
-		// TODO Auto-generated method stub
-		return noticeDAO.oneMaxList();
-	}
+
 
 }
