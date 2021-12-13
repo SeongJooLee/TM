@@ -35,10 +35,7 @@ public class NoticeController {
 	 public String noticeView(Model model,@RequestParam("noticeNO") int noticeNO) {
 		 Map<String,Object> map = noticeService.oneList(noticeNO);
 		 System.out.println(map.get("image").toString());
-
-		 
 		 model.addAttribute("notice",map.get("notice"));
-		 
 		 model.addAttribute("image",map.get("image"));
 		 return "noticeView";
 	 }
@@ -55,50 +52,47 @@ public class NoticeController {
 		 return "noticeAddDone";
 	 }
 	 
+//	private Map<String,String> upload(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+//			Map<String,String>articleMap = new HashMap<String,String>();
+//			String encoding="utf-8";
+//			File currentDirPath = new File(REPO);
+//			DiskFileItemFactory factory = new DiskFileItemFactory();
+//			factory.setRepository(currentDirPath);
+//			factory.setSizeThreshold(1024*1024);
+//			ServletFileUpload upload = new ServletFileUpload(factory);
+//			
+//			try {
+//				List items = upload.parseRequest(request); //주의
+//				System.out.println("items의 길이"+items.size());
+//				for (int i = 0; i < items.size(); i++) {
+//					FileItem fileItem = (FileItem)items.get(i);
+//					if(fileItem.isFormField()) {
+//						System.out.println("내가 원하는 부분!!"+fileItem.getFieldName()+"="+fileItem.getString(encoding));
+//						
+//						articleMap.put(fileItem.getFieldName(), fileItem.getString(encoding));
+//					}else {
+//						System.out.println("파라미터 이름 :"+fileItem.getFieldName());
+//						System.out.println("파일 이름 :"+fileItem.getName());
+//						System.out.println("파일 크기 :"+fileItem.getSize()+"bytes");
+//						
+//						if(fileItem.getSize()>0) {
+//							int idx = fileItem.getName().lastIndexOf("\\");
+//							if(idx==-1) {
+//								idx = fileItem.getName().lastIndexOf("/");
+//							}
+//							String fileName = fileItem.getName().substring(idx+1);
+//							articleMap.put(fileItem.getFieldName(),fileName);
+//							File uploadFile = new File(currentDirPath+"\\temp\\"+fileName);
+//							fileItem.write(uploadFile);
+//						}
+//					}
+//				}
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//			return articleMap;
+//		}
+//	 
 	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-//	  
-//	  @RequestMapping(value = "/board/notice", method = RequestMethod.GET) public
-//	  String noticeList(Model model) {
-//		  System.out.println("공지사항 클릭 시 페이지 이동");
-//	  
-//	  
-//	  
-//	  return "noticeList"; }
-//	  
-//	  
-	  
-	  
-	  
-	/* @RequestMapping(value = "/board/notice", method = RequestMethod.GET) public
-	 * String eventList(Model model) { System.out.println("이벤트 클릭 시 안에서 바꾸기");
-	 * 
-	 * 
-	 * 
-	 * return "eventList"; }
-	 * 
-	 * @RequestMapping(value = "/board/notice/add", method = RequestMethod.GET)
-	 * public String noticeAdd(Model model) { System.out.println("글쓰기 클릭 시 페이지 이동");
-	 * 
-	 * 
-	 * 
-	 * return "noticeAdd"; }
-	 * 
-	 * @RequestMapping(value = "/board/notice/view", method = RequestMethod.GET)
-	 * public String noSelect(Model model) { System.out.println("게시글 클릭 시 페이지 이동");
-	 * 
-	 * 
-	 * 
-	 * retur
-	 * n "?"; }
-	 */
-  
 	
 }

@@ -25,7 +25,6 @@ public class NoticeDAO {
 	public NoticeVO oneList(int noticeNO) {
 		// TODO Auto-generated method stub
 		NoticeVO noticeVO = sql.selectOne(ns+"selectOne",noticeNO);
-		
 		return noticeVO;
 	}
 

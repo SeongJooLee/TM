@@ -15,9 +15,7 @@ public class ImageDAO {
 	
 	public ImageVO oneList(int noticeNO) {
 		// TODO Auto-generated method stub
-		System.out.println("맵퍼 들가기 전");
 		ImageVO imageVO = sql.selectOne(ns+"selectOne",noticeNO);
-		System.out.println("맵퍼 들가기 후");
 		return imageVO;
 	}
 
