@@ -15,7 +15,10 @@
       <result property="sellerID" column="sellerID" />
       <result property="name" column="name" />
    </resultMap>
-   
+   <select id='select' resultMap='promotionResult'>
+   		SELECT PROMOTIONNO, TITLE, CONTENT, WRITEDATE, PRICE, SELLERID, NAME
+		 FROM PROMOTION WHERE SELLERID=#{id}
+   </select>
    <select id="selectAll" resultMap="promotionResult">
 		SELECT PROMOTIONNO, TITLE, CONTENT, WRITEDATE, PRICE, SELLERID, NAME
 		 FROM PROMOTION

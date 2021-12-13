@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.hk.tm.board.vo.PromotionVO;
 import com.hk.tm.board.vo.ReviewVO;
 import com.hk.tm.board.vo.TravelVO;
 import com.hk.tm.member.vo.SellerVO;
@@ -69,6 +70,12 @@ public class UserDAO {
 		System.out.println("dao id=2 "+id);
 		List<ReviewVO> review = sqlSession.selectList("mapper.boardReview.select",id);
 		return review;
+	}
+
+	public List<PromotionVO> sellerPromotionList(String id) {
+		// TODO Auto-generated method stub
+		List<PromotionVO> list = sqlSession.selectList("mapper.boardPromotion.select",id);
+		return list;
 	}
 
 }

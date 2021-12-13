@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hk.tm.board.vo.PromotionVO;
 import com.hk.tm.board.vo.ReviewVO;
 import com.hk.tm.board.vo.TravelVO;
 import com.hk.tm.member.dao.UserDAO;
@@ -47,5 +48,11 @@ public class UserService {
 	public List<ReviewVO> reviewListAll(String id) {
 		// TODO Auto-generated method stub
 		return userDAO.reviewListAll(id);
+	}
+
+	public List<PromotionVO> sellerPromotionList(String id) {
+		// TODO Auto-generated method stub
+		return userDAO.sellerPromotionList(id);
+		
 	}
 }

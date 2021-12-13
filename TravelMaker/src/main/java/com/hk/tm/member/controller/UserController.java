@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.hk.tm.board.vo.PromotionVO;
 import com.hk.tm.board.vo.ReviewVO;
 import com.hk.tm.board.vo.TravelVO;
 import com.hk.tm.member.service.UserService;
@@ -197,8 +198,9 @@ public class UserController {
 			System.out.println("sellerOne실행");
 			return "sellerMyPage";
 		case "sellerTwo":
-			
-			return null;
+			List<PromotionVO> list = userService.sellerPromotionList(seller.getSellerID());
+			model.addAttribute("proList",list);
+			return "sellerBoardList";
 		case "sellerThree":
 			System.out.println("sellerThree실행");
 			return null;
