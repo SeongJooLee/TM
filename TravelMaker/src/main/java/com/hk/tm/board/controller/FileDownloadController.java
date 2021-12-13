@@ -15,20 +15,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class FileDownloadController {
 
-	@RequestMapping(value="/board/download", method=RequestMethod.GET)
+	@RequestMapping(value="/download", method=RequestMethod.GET)
 	public void download(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		response.setContentType("text/html; charset=utf-8");
 		
-		String imageFileName = (String) request.getParameter("imageFileName");
-		String articleNO = request.getParameter("articleNO");
-		System.out.println("imageFileName = ["+imageFileName+"]");
+		String image = (String) request.getParameter("image");
+		String noticeNO = request.getParameter("noticeNO");
+		String name = request.getParameter("name");
+		System.out.println("image = ["+image+"]");
+		System.out.println("noticeNO = ["+noticeNO+"]");
+		System.out.println("name = ["+name+"]");
 		
 		OutputStream out = response.getOutputStream();
-		String path = "C:\\files\\"+articleNO+"\\"+imageFileName;
+		String path = "C:\\files\\"+name+"\\"+noticeNO+"\\"+image;
 		File imageFile = new File(path);
 		
 		response.setHeader("Cache-Control", "no-cache");
-		response.addHeader("Content-disposition", "attachment;fileName="+imageFileName);
+		response.addHeader("Content-disposition", "attachment;fileName="+image);
 		FileInputStream in = new FileInputStream(imageFile);
 		byte[] buffer = new byte[1024*8];
 		while(true) {

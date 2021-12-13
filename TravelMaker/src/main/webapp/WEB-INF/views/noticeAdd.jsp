@@ -37,17 +37,20 @@
 				</td>
 			</tr>
 			<tr>
-				<td align='right'>이미지 파일 첨부:
-				<input type='file' name='image1' onchange='readURL(this);'/>
-				<input type='file' name='image2' onchange='readURL(this);'/>
-				<input type='file' name='image3' onchange='readURL(this);'/>
-				<input type='file' name='image4' onchange='readURL(this);'/>
-				<input type='file' name='image5' onchange='readURL(this);'/>
-				<input type='file' name='image6' onchange='readURL(this);'/>
-				<input type='file' name='image7' onchange='readURL(this);'/>
-				<input type='file' name='image8' onchange='readURL(this);'/>
-				<input type='file' name='image9' onchange='readURL(this);'/>
+				<td align='right' colspan="1">이미지 파일 첨부:
+				<input type='file' name='image1' onchange='readURL(this);'/><br>
+				<input type='file' name='image2' onchange='readURL(this);'/><br>
+				<input type='file' name='image3' onchange='readURL(this);'/><br>
+				<input type='file' name='image4' onchange='readURL(this);'/><br>
+				<input type='file' name='image5' onchange='readURL(this);'/><br>
+				<input type='file' name='image6' onchange='readURL(this);'/><br>
+				<input type='file' name='image7' onchange='readURL(this);'/><br>
+				<input type='file' name='image8' onchange='readURL(this);'/><br>
+				<input type='file' name='image9' onchange='readURL(this);'/><br>
 				<input type='file' name='image10' onchange='readURL(this);'/>
+				</td>
+				<td>
+					<img id='preview'  width=200 height = 200/></
 				</td>
 			</tr>
 			<tr>
