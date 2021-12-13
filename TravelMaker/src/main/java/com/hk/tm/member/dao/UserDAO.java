@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.hk.tm.board.vo.PromotionVO;
+import com.hk.tm.board.vo.ReservationVO;
 import com.hk.tm.board.vo.ReviewVO;
 import com.hk.tm.board.vo.TravelVO;
+
 import com.hk.tm.member.vo.SellerVO;
 import com.hk.tm.member.vo.UserVO;
 
@@ -76,6 +78,13 @@ public class UserDAO {
 		// TODO Auto-generated method stub
 		List<PromotionVO> list = sqlSession.selectList("mapper.boardPromotion.select",id);
 		return list;
+	}
+
+	public ReservationVO checkReservation(int promotionNO) {
+		// TODO Auto-generated method stub
+		ReservationVO result = sqlSession.selectOne("mapper.boardReservation.select",promotionNO);
+		System.out.println("Dao의 result = "+result);
+		return result;
 	}
 
 }

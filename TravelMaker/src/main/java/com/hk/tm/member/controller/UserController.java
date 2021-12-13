@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hk.tm.board.vo.PromotionVO;
+import com.hk.tm.board.vo.ReservationVO;
 import com.hk.tm.board.vo.ReviewVO;
 import com.hk.tm.board.vo.TravelVO;
 import com.hk.tm.member.service.UserService;
@@ -126,9 +127,17 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/member/mypage",method=RequestMethod.GET)
-	public String memberMyPage(@ModelAttribute UserVO userVO,Model model,HttpSession session) {
+	public String memberMyPage(@ModelAttribute UserVO userVO,Model model,HttpSession session,@RequestParam(required = false,value="promotionNO") String proNO) {
 		System.out.println("민수야.? = "+session.getAttribute("userSession").getClass().getName());
 		String check = session.getAttribute("userSession").getClass().getName();
+		System.out.println("proNO= "+proNO);
+		if(proNO!=null) {
+			int promotionNO = Integer.parseInt(proNO);
+			ReservationVO result = userService.checkReservation(promotionNO);
+			//System.out.println("result = "+result);
+			model.addAttribute("proNO",proNO);
+			return "sellerReservation";
+		}
 		
 		
 		 switch(check){
@@ -137,7 +146,10 @@ public class UserController {
 	        	model.addAttribute("user", user);   
 	        	
 	        	return "userMyPage";            
-	        case "com.hk.tm.member.vo.SellerVO":	 
+	        case "com.hk.tm.member.vo.SellerVO":
+//	        	if() {
+//	        		return ;
+//	        	}
 	        	System.out.println("12-13작업공간");
 	        	SellerVO seller = (SellerVO) session.getAttribute("userSession");
 	        	System.out.println("seller switch = "+seller);
@@ -202,7 +214,11 @@ public class UserController {
 			model.addAttribute("proList",list);
 			return "sellerBoardList";
 		case "sellerThree":
+			System.out.println(seller);
+			//System.out.println("프로모션 넘버 = "+proNum);
 			System.out.println("sellerThree실행");
+		
+			//
 			return null;
 		case "sellerFour":
 			System.out.println("sellerFour실행");
