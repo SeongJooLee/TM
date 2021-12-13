@@ -73,9 +73,6 @@ public class NoticeController {
 		}
 		List fileList= upload(request);
 		map.put("fileList", fileList);
-		System.out.println("제발 : "+fileList);
-		String image1 = (String) fileList.get(0);
-		String image2 = (String) fileList.get(1);
 
 		NoticeVO noticeVO = new NoticeVO();
 		ImageVO imageVO = new ImageVO();
@@ -89,8 +86,16 @@ public class NoticeController {
 		noticeVO.setAdminID((String) map.get("adminID"));
 		noticeVO.setName((String) map.get("name"));
 		
-		imageVO.setImage1(image1);
-		imageVO.setImage2(image2);
+		imageVO.setImage1((String) fileList.get(0));
+		imageVO.setImage2((String) fileList.get(1));
+		imageVO.setImage3((String) fileList.get(2));
+		imageVO.setImage4((String) fileList.get(3));
+		imageVO.setImage5((String) fileList.get(4));
+		imageVO.setImage6((String) fileList.get(5));
+		imageVO.setImage7((String) fileList.get(6));
+		imageVO.setImage8((String) fileList.get(7));
+		imageVO.setImage9((String) fileList.get(8));
+		imageVO.setImage10((String) fileList.get(9));
 		
 		noticeService.boardAdd(noticeVO,imageVO);
 		

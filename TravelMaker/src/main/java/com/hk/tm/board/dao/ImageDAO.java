@@ -15,13 +15,13 @@ public class ImageDAO {
 	
 	public ImageVO oneList(int noticeNO) {
 		// TODO Auto-generated method stub
-		ImageVO imageVO = sql.selectOne(ns+"selectOneTest",noticeNO);
+		ImageVO imageVO = sql.selectOne(ns+"selectOne",noticeNO);
 		return imageVO;
 	}
 
 	public void noticeAdd(ImageVO imageVO) {
 		// TODO Auto-generated method stub
-		sql.insert(ns+"insertNoticeTest",imageVO);
+		sql.insert(ns+"insertNotice",imageVO);
 	}
 
 }

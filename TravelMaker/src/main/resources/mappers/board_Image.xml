@@ -39,16 +39,6 @@
 		 or eventNO=#{eventNO}
 	</select>
 	
-	<select id="selectOneTest" resultType="imageVO"> 
-		SELECT NOTICENO, IMAGE1, IMAGE2 FROM IMAGETEST
-		where noticeNO=#{noticeNO}
-	</select>
-	
-	<insert id="insertNoticeTest" parameterType="imageVO">
-		INSERT INTO IMAGETEST (NOTICENO, IMAGE1, IMAGE2)
-		 VALUES((select max(noticeNO) from notice), #{image1},#{image2})
-	</insert>
-	
 	<insert id="insertNotice" parameterType="imageVO">
 	INSERT INTO IMAGE (NOTICENO, TRAVELNO, REVIEWNO, PROMOTIONNO, EVENTNO, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10)
 	 VALUES((select max(noticeNO) from notice), null, null, null, null, #{image1}, #{image2}, #{image3}, #{image4}, #{image5}, #{image6}, #{image7}, #{image8}, #{image9}, #{image10})
