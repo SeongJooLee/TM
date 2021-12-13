@@ -10,7 +10,7 @@ import com.hk.tm.board.vo.PromotionVO;
 import com.hk.tm.board.vo.ReservationVO;
 import com.hk.tm.board.vo.ReviewVO;
 import com.hk.tm.board.vo.TravelVO;
-
+import com.hk.tm.member.vo.AdminVO;
 import com.hk.tm.member.vo.SellerVO;
 import com.hk.tm.member.vo.UserVO;
 
@@ -53,7 +53,11 @@ public class UserDAO {
 		SellerVO seller = sqlSession.selectOne("mapper.memberSeller.selectOne",sellerVO);
 		return seller;
 	}
-
+	public AdminVO checkUser(AdminVO adminVO) {
+		// TODO Auto-generated method stub
+		AdminVO admin = sqlSession.selectOne("mapper.memberAdmin.selectOne",adminVO);
+		return admin;
+	}
 	public UserVO oneList(String id) {
 		// TODO Auto-generated method stub
 		UserVO userVO = sqlSession.selectOne("mapper.memberUser.selectOne", id);
@@ -104,5 +108,7 @@ public class UserDAO {
 		ReviewVO review = sqlSession.selectOne("mapper.boardReview.selectOne",reviewNO);
 		return review;
 	}
+
+	
 
 }

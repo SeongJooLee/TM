@@ -19,7 +19,7 @@
    
    <select id="selectOne" resultType="AdminVO">
 		select * from admin
-		where adminID=#{adminID}   
+		where adminID=#{adminID} and pw=#{pw} 
    </select>
    
    <select id="login" resultType="AdminVO">

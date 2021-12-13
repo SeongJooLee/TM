@@ -2,7 +2,6 @@ package com.hk.tm.member.controller;
 
 
 
-import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +21,7 @@ import com.hk.tm.board.vo.ReservationVO;
 import com.hk.tm.board.vo.ReviewVO;
 import com.hk.tm.board.vo.TravelVO;
 import com.hk.tm.member.service.UserService;
+import com.hk.tm.member.vo.AdminVO;
 import com.hk.tm.member.vo.SellerVO;
 import com.hk.tm.member.vo.UserVO;
 
@@ -34,6 +34,9 @@ public class UserController {
 	UserService userService;
 	@Autowired
 	SellerVO sellerVO;
+	@Autowired
+	AdminVO adminVO;
+	
 	
 	
 	@RequestMapping(value="/member/login",method=RequestMethod.GET)
@@ -95,7 +98,7 @@ public class UserController {
 		// 과연
 	}
 	@RequestMapping(value="/member/login",method=RequestMethod.POST)
-	public String memberLogin(@ModelAttribute UserVO userVO,Model model,HttpSession session,HttpServletResponse response) {
+	public String memberLogin(@ModelAttribute UserVO userVO,Model model,HttpSession session) {
 
 		 switch(userVO.getGrade()){
 	        case "user":   
@@ -121,7 +124,18 @@ public class UserController {
 				model.addAttribute("seller", seller);
 	        	return "sellerhome";
 	        case "admin" :
-	        	return "adminMyPage";
+	        	adminVO.setAdminID(userVO.getId());
+	        	adminVO.setPw(userVO.getPw());
+	        	adminVO.setGrade(userVO.getGrade());
+	        	
+	        	AdminVO admin = userService.checkUser(adminVO);
+	        	if(admin !=null) {
+	        		
+	        		session.setAttribute("userSession", admin);
+	        		System.out.println("관리자 세션생성");
+	        	}	
+	        	model.addAttribute("admin", admin);
+	        	return "adminhome";
 	    }
 		return null;
 	}
@@ -130,6 +144,7 @@ public class UserController {
 	public String memberMyPage(@ModelAttribute UserVO userVO,Model model,HttpSession session,@RequestParam(required = false,value="promotionNO") String proNO,@RequestParam(required = false,value="travelNO") String traNO,@RequestParam(required=false,value="reviewNO") String revNO) {
 		System.out.println("민수야.? = "+session.getAttribute("userSession").getClass().getName());
 		String check = session.getAttribute("userSession").getClass().getName();
+		System.out.println("관리자 세션체크 : "+check);
 		
 		if(proNO!=null) {
 			int promotionNO = Integer.parseInt(proNO);
@@ -170,7 +185,7 @@ public class UserController {
 				model.addAttribute("seller", seller);
 	        	return "sellerMyPage";
 	        
-	        case "admin" :
+	        case "com.hk.tm.member.vo.AdminVO" :
 	        	return "adminMyPage";
 	    }
 		return null;

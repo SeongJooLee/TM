@@ -1,5 +1,8 @@
 package com.hk.tm.member.vo;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class AdminVO {
 
 	private String adminID;

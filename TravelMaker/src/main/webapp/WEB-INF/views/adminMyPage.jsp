@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,7 +35,7 @@
 </style>
 </head>
 <body>
-	<h1>admin마이페이지</h1>
+	<h1>${userSession.name} 전용 페이지</h1>
 	<div class="wrap">
 		<div class="grid1">
 			adminsidemenu<br>
