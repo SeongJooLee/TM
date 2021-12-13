@@ -70,7 +70,7 @@
 		<table border='1'>
 		
 		<tr>
-			<td>순번</td>
+			<td>상품 번호</td>
 			<td>상품 제목</td>
 			<td>상품 내용</td>
 			<td>상품 가격</td>			
@@ -81,7 +81,7 @@
 		<c:forEach var='list' items='${proList}' varStatus='num'>
 			
 				
-			<td>${num.count}</td>
+			<td>${list.promotionNO}</td>
 			<td>${list.title}</td>
 			<td>${list.content}</td>	
 			<td>${list.price}</td>

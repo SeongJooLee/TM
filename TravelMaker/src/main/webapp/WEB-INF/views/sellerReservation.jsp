@@ -70,31 +70,27 @@
 		<table border='1'>
 		
 		<tr>
-			<td>순번</td>
-			<td>상품 제목</td>
-			<td>예약자 ID</td>
-			<td>예약 번호</td>			
-			<td>예약 날짜</td>
-			<td>인원수</td>
+			<td>상품 번호</td>
+			<td>예약 번호</td>
+			<td>예약자 날짜</td>
+			<td>인원 수</td>			
+			<td>예약자 아이디</td>
 		</tr>
 		<tr>
-		<c:forEach var='list' items='${proList}' varStatus='num'>
+	
+			
+		<c:forEach var='list' items='${reservation}' varStatus='num'>
 			
 				
-			<td>${num.count}</td>
-			<td>${list.title}</td>
-			<td>${list.content}</td>	
-			<td>${list.price}</td>
-			<td>${list.sellerID}</td>
-			<td>
-				<!-- <form action='mypage' method='post'>
-					<input type="hidden" name="testKey" value="sellerThree">				
-					<input class='btn' type='submit'  value='예약내역 확인하기'>
-				</form> -->
-				<a href='/tm/member/mypage?promotionNO=${list.promotionNO}'>예약내역 확인하기</a>
-			</td>
+			<td>${proNO}</td>
+			<td>${list.reserNO}</td>
+			<td>${list.reserDate}</td>	
+			<td>${list.headCount}</td>
+			<td>${list.id}</td>
+			
 		</tr>	
-		</c:forEach>
+		</c:forEach>	
+		
 		
 		</table>
 		</div>

@@ -80,10 +80,10 @@ public class UserDAO {
 		return list;
 	}
 
-	public ReservationVO checkReservation(int promotionNO) {
+	public List<ReservationVO> checkReservation(int promotionNO) {
 		// TODO Auto-generated method stub
-		ReservationVO result = sqlSession.selectOne("mapper.boardReservation.select",promotionNO);
-		System.out.println("Dao의 result = "+result);
+		List<ReservationVO> result = sqlSession.selectList("mapper.boardReservation.select",promotionNO);
+		
 		return result;
 	}
 

@@ -133,9 +133,11 @@ public class UserController {
 		System.out.println("proNO= "+proNO);
 		if(proNO!=null) {
 			int promotionNO = Integer.parseInt(proNO);
-			ReservationVO result = userService.checkReservation(promotionNO);
+			List<ReservationVO> result = userService.checkReservation(promotionNO);
 			//System.out.println("result = "+result);
+			System.out.println("Controller의 result = "+result);
 			model.addAttribute("proNO",proNO);
+			model.addAttribute("reservation",result);
 			return "sellerReservation";
 		}
 		

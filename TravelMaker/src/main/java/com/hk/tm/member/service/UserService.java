@@ -58,7 +58,7 @@ public class UserService {
 		
 	}
 
-	public ReservationVO checkReservation(int promotionNO) {
+	public List<ReservationVO> checkReservation(int promotionNO) {
 		// TODO Auto-generated method stub
 		return userDAO.checkReservation(promotionNO);
 	}
