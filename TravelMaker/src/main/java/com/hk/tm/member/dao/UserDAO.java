@@ -87,4 +87,16 @@ public class UserDAO {
 		return result;
 	}
 
+	public TravelVO checkOneTravel(int travelNO) {
+		// TODO Auto-generated method stub
+		TravelVO result = sqlSession.selectOne("mapper.boardTravel.selectOne",travelNO);
+		return result;
+	}
+
+	public List<ReservationVO> userReservationList(String id) {
+		// TODO Auto-generated method stub
+		List<ReservationVO>list = sqlSession.selectList("mapper.boardReservation.selectId",id);
+		return list;
+	}
+
 }

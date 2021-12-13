@@ -85,9 +85,14 @@ width:110px;
 			</ul>
 		</div>
 		<div class="grid2">
-		<p>아이뒤 : ${userSession.id}</p> 
-		<p>예약확인 아직 미구현</p>
+		<h3>상세보기</h3> 
+		 <p>글 번호: ${travel.travelNO}</p> 
+		<p>제목: ${travel.title}</p> 
+		<p>내용: ${travel.content}</p> 
+		<p>작성 날짜: ${travel.writeDate}</p> 
+		<p>작성자 ID: ${travel.id}</p> 
 		</div>
+	
 	</div>
 </body>
 </html>

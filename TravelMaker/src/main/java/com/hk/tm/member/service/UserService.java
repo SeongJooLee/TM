@@ -62,4 +62,14 @@ public class UserService {
 		// TODO Auto-generated method stub
 		return userDAO.checkReservation(promotionNO);
 	}
+
+	public TravelVO checkOneTravel(int travelNO) {
+		// TODO Auto-generated method stub
+		return userDAO.checkOneTravel(travelNO);
+	}
+
+	public List<ReservationVO> userReservationList(String id) {
+		// TODO Auto-generated method stub
+		return userDAO.userReservationList(id);
+	}
 }

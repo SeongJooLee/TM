@@ -142,7 +142,9 @@ public class UserController {
 		}else if(traNO != null) {
 			System.out.println("이번에 작업할곳");
 			int travelNO = Integer.parseInt(traNO);
-			//TravelNO travel = userService.
+			System.out.println(travelNO);
+			TravelVO travel = userService.checkOneTravel(travelNO);
+			model.addAttribute("travel",travel);
 			return "userBoardListDone";
 		}
 		
@@ -207,7 +209,9 @@ public class UserController {
 		case "three":
 			//user = (UserVO) session.getAttribute("userSession");
 			System.out.println("세션값 받아오기 33 "+user.getId());
-			return "userReservation";
+			List<ReservationVO> userReservationList = userService.userReservationList(user.getId());
+			model.addAttribute("list",userReservationList);
+			return "userReservationList";
 		case "four":
 			//user = (UserVO) session.getAttribute("userSession");
 			System.out.println("세션값 받아오기 44 "+user.getId());
