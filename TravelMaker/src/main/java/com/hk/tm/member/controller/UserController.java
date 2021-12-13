@@ -137,11 +137,12 @@ public class UserController {
 	        	
 	        	return "userMyPage";            
 	        case "com.hk.tm.member.vo.SellerVO":	 
-	        	System.out.println("진짜 끝인가 ?----------");
+	        	System.out.println("12-13작업공간");
 	        	SellerVO seller = (SellerVO) session.getAttribute("userSession");
 	        	System.out.println("seller switch = "+seller);
 				model.addAttribute("seller", seller);
 	        	return "sellerMyPage";
+	        
 	        case "admin" :
 	        	return "adminMyPage";
 	    }
@@ -149,8 +150,25 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/member/mypage", method=RequestMethod.POST)
-	public String mypage(HttpSession session,@RequestParam("testKey") String key,Model model){
-		UserVO user = (UserVO) session.getAttribute("userSession");
+	public String mypage(HttpSession session,@RequestParam("testKey") String key,Model model){	
+//		UserVO user = null;
+//		if(session.getAttribute("userSession")!=null) {
+//			user = (UserVO) session.getAttribute("userSession");
+//		}else if(session.getAttribute("")) {
+//			session.
+//		}
+		UserVO user = null;
+		SellerVO seller = null;
+		try {
+			user = (UserVO) session.getAttribute("userSession");
+			System.out.println("오류발생");
+		} catch (Exception e) {
+			seller = (SellerVO)session.getAttribute("userSession");
+			System.out.println("변형성공");
+		}
+		System.out.println("처리완료");
+		
+		
 		switch(key) {
 		case "one" :
 			
@@ -175,6 +193,18 @@ public class UserController {
 			System.out.println("세션값 받아오기 44 "+user.getId());
 			return null;
 		
+		case "sellerOne":
+			System.out.println("sellerOne실행");
+			return "sellerMyPage";
+		case "sellerTwo":
+			
+			return null;
+		case "sellerThree":
+			System.out.println("sellerThree실행");
+			return null;
+		case "sellerFour":
+			System.out.println("sellerFour실행");
+			return null;
 		}
 		return null;
 	}

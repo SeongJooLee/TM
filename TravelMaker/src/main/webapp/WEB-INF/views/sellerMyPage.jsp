@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
-<%@ page session="false" %>
+<%@ page session="true" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,33 +42,37 @@
 </style>
 </head>
 <body> 
-	<%-- <c:if test = '${seller==null}'>
-		<script>
-			ss();
-		</script>
-	</c:if>  --%>
-	<h1>판매자 유저 페이지</h1>
-	<h2>${seller.sellerID}님 정보</h2> 
+	<h1>판매유저 페이지</h1>
+	<h2>${userSession.sellerID}님 정보</h2> 
 	
 	<div class="wrap">
 		<div class="grid1">
 			<br>
 			<ul style="background-color: CornflowerBlue; text-align: center;" >
-				<li><a href="#">판매자 회원정보</a></li><br>
-				<li><a href="#">판매자 뷰가..</a></li><br>
-				<li><a href="#">스토리보드에..</a></li><br>
-				<li><a href="#">없는데..??</a></li><br>
-				<li><a href="#">로스트아크 인벤이동</a></li><br>
+				<li>
+					<form action='mypage' method='post'>
+						<input type="hidden" name="testKey" value="sellerOne">					
+						<input class='btn' type='submit'  value='회원정보'>
+					</form>
+				</li><br>
+				<li>
+					<form action='mypage' method='post'>
+						<input type="hidden" name="testKey" value="sellerTwo">					
+						<input class='btn' type='submit'  value='내가 등록한 상품 보기'>
+					</form>			
+				</li><br>
+				
 			</ul>
 		</div>
 		<div class="grid2">
-		<p>아이뒤 : ${seller.sellerID}</p> 
-		<p>비빔면호 : ${seller.pw}</p> 
-		<p>이름 : ${seller.name}</p> 
-		<p>연락처 : ${seller.phone}</p> 
-		<p>주소 : ${seller.address}</p> 
-		<p>가입날짜 : ${seller.joinDate}</p> 
+		<p>아이뒤 : ${userSession.sellerID}</p> 
+		<p>비빔면호 : ${userSession.pw}</p> 
+		<p>이름 : ${userSession.name}</p> 
+		<p>연락처 : ${userSession.phone}</p> 
+		<p>주소 : ${userSession.address}</p> 
+		<p>가입날짜 : ${userSession.joinDate}</p> 
 		</div>
+		
 	</div>
 	
 </body>
