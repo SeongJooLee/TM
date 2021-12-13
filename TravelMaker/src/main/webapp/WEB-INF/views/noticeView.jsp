@@ -15,10 +15,8 @@
   </tr>
   
 	  <tr>
-  		<c:forEach var="image" items="${image }" >
   			<td colspan="2">
 			</td>
-  		</c:forEach>
   		</tr>
   	
   <tr>
