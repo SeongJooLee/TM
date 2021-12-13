@@ -30,15 +30,14 @@ max-width:250px; width:100%; height:auto;
 
    			<c:if test='${userSession.name != null}'>
    			<div class="jumbotron text-center" style="margin-bottom: 0;background-color: white;">
-			<img class="logo_img" src="<c:url value="/resources/img/Travel Maker (3).png" />"  />
-					
+			<a href="/tm"><img class="logo_img"  src="<c:url value="/resources/img/Travel Maker (3).png" />"  /></a>					
 			<p align="right">${userSession.name}님 <a href="member/mypage">마이페이지</a> <a href="member/logout">로그아웃</a>&nbsp;&nbsp;&nbsp;<a href="#">고객센터</a></p>
 			</div>
 			</c:if>
 			
 			<c:if test='${userSession.name == null}'>
 			<div class="jumbotron text-center" style="margin-bottom: 0;background-color: white;">
-			<img class="logo_img" src="<c:url value="/resources/img/Travel Maker (3).png" />"  />
+			<a href="/tm"><img class="logo_img" src="<c:url value="/resources/img/Travel Maker (3).png" />"  /></a>
 			<p align="right"><a href="member/login">로그인</a>&nbsp;&nbsp;&nbsp;<a href="member/registerCheck">회원가입</a>&nbsp;&nbsp;&nbsp;<a href="#">고객센터</a></p>		
 			</div>
    			</c:if>

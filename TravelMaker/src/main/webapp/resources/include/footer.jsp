@@ -51,6 +51,16 @@ $('.btn_gotop').click(function(){
 	border-radius:100%;
 }
 
+.corp_item a {display:block; width:150px; height:40px; background:darkgray; color:lightblue; border: 1px lightblue; font-size:12px; font-family:"돋움";
+
+ text-align:center; padding-top:10px; text-decoration:none;}
+
+.corp_item a span {display:block;}
+
+.corp_item a:hover {background:lightblue; text-decoration:none;}
+
+
+
 
 
 
