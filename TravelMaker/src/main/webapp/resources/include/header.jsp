@@ -22,7 +22,7 @@
 <style>
 
 .logo_img{
-max-width:200px; width:100%; height:auto;
+max-width:250px; width:100%; height:auto;
 }
 </style>
 </head>
@@ -30,7 +30,7 @@ max-width:200px; width:100%; height:auto;
 
    			<c:if test='${userSession.name != null}'>
    			<div class="jumbotron text-center" style="margin-bottom: 0;background-color: white;">
-			<img class="logo_img" src="<c:url value="/resources/Travel Maker (3).png" />"  />
+			<img class="logo_img" src="<c:url value="/resources/img/Travel Maker (3).png" />"  />
 					
 			<p align="right">${userSession.name}님 <a href="member/mypage">마이페이지</a> <a href="member/logout">로그아웃</a>&nbsp;&nbsp;&nbsp;<a href="#">고객센터</a></p>
 			</div>
