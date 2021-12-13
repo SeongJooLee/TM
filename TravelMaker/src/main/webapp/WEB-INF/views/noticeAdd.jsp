@@ -9,15 +9,16 @@
 <title>테마 여행 뷰</title>
 <script src='http://code.jquery.com/jquery-latest.min.js'></script>
 <script type='text/javascript'>
-	function readURL(input){
-		if(input.files && input.files[0]){
-			var reader = new FileReader();
-			reader.onload=function(e){
-				$('#preview').attr('src',e.target.result);
-			}
-			reader.readAsDataURL(input.files[0]);
-		}
-	}
+var cnt = 1;
+var previewCnt = 1;
+function fn_addFile(){
+if(cnt===11){
+	alert("최대 10개만 생성할 수 있습니다.");
+	return;        
+    }
+    $("#d_file").append("<br>" + "<input type='file' name='image" + cnt + " ' />");
+    cnt++;
+}
 </script>
 </head>
 <body>
@@ -33,35 +34,29 @@
 					</select>
 				</td>
 				<td>
-					<input type="text" name="title" value="글 제목 작성 칸">
+					&nbsp;&nbsp;글 제목 : <input type="text" name="title" >
 				</td>
 			</tr>
 			<tr>
-				<td align='right' colspan="1">이미지 파일 첨부:
-				<input type='file' name='image1' onchange='readURL(this);'/><br>
-				<input type='file' name='image2' onchange='readURL(this);'/><br>
-				<input type='file' name='image3' onchange='readURL(this);'/><br>
-				<input type='file' name='image4' onchange='readURL(this);'/><br>
-				<input type='file' name='image5' onchange='readURL(this);'/><br>
-				<input type='file' name='image6' onchange='readURL(this);'/><br>
-				<input type='file' name='image7' onchange='readURL(this);'/><br>
-				<input type='file' name='image8' onchange='readURL(this);'/><br>
-				<input type='file' name='image9' onchange='readURL(this);'/><br>
-				<input type='file' name='image10' onchange='readURL(this);'/>
-				</td>
-				<td>
-					<img id='preview'  width=200 height = 200/></
+				<td align='left' colspan="2">이미지 파일 첨부<br>
+					<p><input type="button" value="파일 추가" onClick="fn_addFile()"><small> &nbsp;&nbsp;*최대 10개까지 첨부 가능합니다.</small></p>
+					<div id="d_file">
+					
+					</div>
 				</td>
 			</tr>
 			<tr>
-				<td align="right" valign="top">글내용</td>
+				<td align="center" valign="top">글내용</td>
 				<td colspan=2>
 					<textarea name="content" rows="10" cols="65" maxlength="4000"></textarea>
 				</td>
 			</tr>
 		</table>
-		<input type="submit" value="작성하기">
-		<input type="reset" value="다기 작성">
+		<br><br>
+		<div align="center">
+			<input type="submit" value="작성하기">
+			<input type="reset" value="다기 작성">
+		</div>
 	</form>
 
 </body>

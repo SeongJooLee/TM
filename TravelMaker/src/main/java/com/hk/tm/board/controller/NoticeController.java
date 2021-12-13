@@ -85,17 +85,35 @@ public class NoticeController {
 		noticeVO.setContent((String) map.get("content"));
 		noticeVO.setAdminID((String) map.get("adminID"));
 		noticeVO.setName((String) map.get("name"));
-		
-		imageVO.setImage1((String) fileList.get(0));
-		imageVO.setImage2((String) fileList.get(1));
-		imageVO.setImage3((String) fileList.get(2));
-		imageVO.setImage4((String) fileList.get(3));
-		imageVO.setImage5((String) fileList.get(4));
-		imageVO.setImage6((String) fileList.get(5));
-		imageVO.setImage7((String) fileList.get(6));
-		imageVO.setImage8((String) fileList.get(7));
-		imageVO.setImage9((String) fileList.get(8));
-		imageVO.setImage10((String) fileList.get(9));
+		if(fileList.size()>0) {
+			imageVO.setImage1((String) fileList.get(0));
+		} if(fileList.size()>1) {
+			imageVO.setImage2((String) fileList.get(1));
+			
+		} if(fileList.size()>2) {
+			imageVO.setImage3((String) fileList.get(2));
+			
+		} if(fileList.size()>3) {
+			imageVO.setImage4((String) fileList.get(3));
+			
+		} if(fileList.size()>4) {
+			imageVO.setImage5((String) fileList.get(4));
+			
+		} if(fileList.size()>5) {
+			imageVO.setImage6((String) fileList.get(5));
+			
+		} if(fileList.size()>6) {
+			imageVO.setImage7((String) fileList.get(6));
+			
+		} if(fileList.size()>7) {
+			imageVO.setImage8((String) fileList.get(7));
+			
+		} if(fileList.size()>8) {
+			imageVO.setImage9((String) fileList.get(8));
+			
+		} if(fileList.size()>9) {
+			imageVO.setImage10((String) fileList.get(9));
+		}
 		
 		noticeService.boardAdd(noticeVO,imageVO);
 		

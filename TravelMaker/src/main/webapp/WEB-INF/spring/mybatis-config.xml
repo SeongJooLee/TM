@@ -4,6 +4,10 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 		
 	<configuration>
+		<settings>            <!-- <settings>이 없으면 만들어줍니다. -->
+   			 <setting name="jdbcTypeForNull" value="NULL" />
+   		</settings>
+   		
 		<typeAliases>
 			<typeAlias type="com.hk.tm.member.vo.UserVO" alias="UserVO" />
 			<typeAlias type="com.hk.tm.member.vo.SellerVO" alias="SellerVO" />
@@ -19,4 +23,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 			<typeAlias type="com.hk.tm.board.vo.TravelVO" alias="TravelVO" />
 			<typeAlias type="com.hk.tm.board.vo.ReservationVO" alias="ReservationVO" />
 		</typeAliases>
+		
+		
 	</configuration>
+
