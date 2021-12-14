@@ -73,46 +73,12 @@
 			</ul>
 		</div>
 		<div class="grid2">
-			<button onclick='nameOrder()'>이름 순으로보기</button><br><br>
-			<button onclick='dateOrder()'>가입날짜 순으로보기</button><br><br>
-			<form action='/tm/admin/mypage' method='post'>
-			아이디 조회 : <input type="search" name='search'><input type='submit' value='검색'>
-			</form>
-			<h3>모든 회원 목록</h3>
-			<table	border='1'>
-				<tr>
-					<td>ID</td>
-					<td>PW</td>
-					<td>NAME</td>
-					<td>PHONE</td>
-					<td>ADDRESS</td>
-					<td>JOINDATE</td>
-					<td>GRADE</td>
-				</tr>
-			<c:forEach var='list' items='${list}'>
-				<tr>
-					<td><a href='/tm/admin/mypage?id=${list.id}&grade=${list.grade}'>${list.id}</a></td>
-					<td>${list.pw}</td>
-					<td>${list.name}</td>
-					<td>${list.phone}</td>
-					<td>${list.address}</td>
-					<td>${list.joinDate}</td>
-					<td>${list.grade}</td>
-				</tr>			
-			</c:forEach>
-			<c:forEach var='sellerList' items='${sellerList}'>
-				<tr>
-					<td><a href='/tm/admin/mypage?id=${sellerList.sellerID}&grade=${sellerList.grade}'>${sellerList.sellerID}</a></td>
-					<td>${sellerList.pw}</td>
-					<td>${sellerList.name}</td>
-					<td>${sellerList.phone}</td>
-					<td>${sellerList.address}</td>
-					<td>${sellerList.joinDate}</td>
-					<td>${sellerList.grade}</td>
-				</tr>			
-			</c:forEach>
-
-			</table>
+			<h3>${seller.sellerID}님의 정보</h3>
+			<p>아이디: ${seller.sellerID}</p>
+			<p>비밀번호: ${seller.pw}</p>
+			<p>연락처: ${seller.phone}</p>
+			<p>주소: ${seller.address}</p>
+			<p>사용자 구분: ${seller.grade}</p>
 		</div>
 	</div>
 </body>

@@ -9,6 +9,9 @@
 <meta charset="UTF-8">
 <title>관리자 마이페이지</title>
 <script>
+	function waitd(){
+		alert('검색 결과가 없습니다');
+		}
 	function nameOrder(){
 		location.href='/tm/admin/mypage?list=name';
 		}
@@ -46,6 +49,12 @@
 </style>
 </head>
 <body>
+	<c:if test='${empty list}'>
+					<script>
+						waitd();
+					</script>
+		
+	</c:if>
 	<h1>${userSession.name} 전용 페이지</h1>
 	<div class="wrap">
 		<div class="grid1">
@@ -84,18 +93,18 @@
 					<td>ID</td>
 					<td>PW</td>
 					<td>NAME</td>
-					<td>BIRTH</td>
 					<td>PHONE</td>
 					<td>ADDRESS</td>
 					<td>JOINDATE</td>
 					<td>GRADE</td>
 				</tr>
+			
 			<c:forEach var='list' items='${list}'>
+				
 				<tr>
-					<td>${list.id}</td>
+					<td><a href='/tm/admin/mypage?id=${list.id}&grade=${list.grade}'>${list.id}</a></td>
 					<td>${list.pw}</td>
 					<td>${list.name}</td>
-					<td>${list.birth}</td>
 					<td>${list.phone}</td>
 					<td>${list.address}</td>
 					<td>${list.joinDate}</td>

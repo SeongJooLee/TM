@@ -22,19 +22,29 @@
    </select>
     
    <select id="selectAllName"  resultMap="userResult">
-   		select * from "USER" ORDER BY 3
+   		SELECT id,pw,name,phone,address,joindate,grade FROM "USER" u 
+		UNION ALL 
+		SELECT sellerid,pw,name,phone,address,joindate,grade FROM SELLER s ORDER BY 3
    </select>
    
    <select id="selectAllDate"  resultMap="userResult">
-   		select * from "USER" ORDER BY 7
+   		SELECT id,pw,name,phone,address,joindate,grade FROM "USER" u 
+		UNION ALL 
+		SELECT sellerid,pw,name,phone,address,joindate,grade FROM SELLER s ORDER BY 6
    </select>
    
-   <!-- <select id="selectSearchID"  resultMap="userResult">
-   	<![CDATA[	select * from "USER" WHERE ID LIKE '%#{search}%' ]]>
-   </select> -->
+    <select id="selectSearchID"  resultMap="userResult">
+   	<![CDATA[	SELECT id,pw,name,phone,address,joindate,grade FROM "USER" u WHERE id LIKE '%'||#{search}||'%'
+				UNION ALL 
+				SELECT sellerid,pw,name,phone,address,joindate,grade FROM SELLER s WHERE sellerid LIKE '%'||#{search}||'%' ]]>
+   </select> 
    
    <select id="selectOne" resultType="UserVO">
 		<![CDATA[select * from "USER" where id=#{id} and pw=#{pw}  ]]>
+   </select>
+   
+   <select id="selectView" resultType="UserVO">
+		<![CDATA[select * from "USER" where id=#{id}   ]]>
    </select>
    
    <select id="login" resultType="UserVO">

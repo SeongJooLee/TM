@@ -74,7 +74,10 @@
 		</div>
 		<div class="grid2">
 			<button onclick='nameOrder()'>이름 순으로보기</button><br><br>
-			<button onclick='dateOrder()'>가입날짜 순으로보기</button>
+			<button onclick='dateOrder()'>가입날짜 순으로보기</button><br><br>
+			<form action='/tm/admin/mypage' method='post'>
+			아이디 조회 : <input type="search" name='search'><input type='submit' value='검색'>
+			</form>
 			
 			<h3>모든 회원 목록</h3>
 			<table	border='1'>
@@ -82,7 +85,6 @@
 					<td>ID</td>
 					<td>PW</td>
 					<td>NAME</td>
-					<td>BIRTH</td>
 					<td>PHONE</td>
 					<td>ADDRESS</td>
 					<td>JOINDATE</td>
@@ -90,10 +92,9 @@
 				</tr>
 			<c:forEach var='list' items='${list}'>
 				<tr>
-					<td>${list.id}</td>
+					<td><a href='/tm/admin/mypage?id=${list.id}&grade=${list.grade}'>${list.id}</a></td>
 					<td>${list.pw}</td>
 					<td>${list.name}</td>
-					<td>${list.birth}</td>
 					<td>${list.phone}</td>
 					<td>${list.address}</td>
 					<td>${list.joinDate}</td>

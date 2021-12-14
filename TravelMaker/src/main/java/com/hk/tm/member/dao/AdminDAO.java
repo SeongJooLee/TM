@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.hk.tm.member.vo.SellerVO;
 import com.hk.tm.member.vo.UserVO;
 
 @Repository
@@ -32,6 +33,21 @@ public class AdminDAO {
 		List<UserVO>userList = sqlSession.selectList("mapper.memberUser.selectSearchID",search);
 		
 		return userList;
+	}
+	public UserVO selectOne(String id) {
+		// TODO Auto-generated method stub
+		UserVO user = sqlSession.selectOne("mapper.memberUser.selectView",id);
+		return user;
+	}
+	public List<SellerVO> selectListAll() {
+		// TODO Auto-generated method stub
+		List<SellerVO> sellerList = sqlSession.selectList("mapper.memberSeller.selectAll");
+		return sellerList;
+	}
+	public SellerVO selectOneSeller(String id) {
+		// TODO Auto-generated method stub
+		SellerVO seller = sqlSession.selectOne("mapper.memberSeller.selectOneSeller",id);
+		return seller;
 	}
 
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hk.tm.member.dao.AdminDAO;
+import com.hk.tm.member.vo.SellerVO;
 import com.hk.tm.member.vo.UserVO;
 
 @Service
@@ -27,6 +28,18 @@ public class AdminService {
 	public List<UserVO> searchID(String search) {
 		// TODO Auto-generated method stub
 		return adminDAO.searchID(search);
+	}
+	public UserVO selectOne(String id) {
+		// TODO Auto-generated method stub
+		return adminDAO.selectOne(id);
+	}
+	public List<SellerVO> sellerListAll() {
+		// TODO Auto-generated method stub
+		return adminDAO.selectListAll();
+	}
+	public SellerVO selectOneSeller(String id) {
+		// TODO Auto-generated method stub
+		return adminDAO.selectOneSeller(id);
 	}
 
 }

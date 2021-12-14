@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hk.tm.member.service.AdminService;
+import com.hk.tm.member.vo.SellerVO;
 import com.hk.tm.member.vo.UserVO;
 
 @Controller
@@ -21,10 +22,19 @@ public class AdminController {
 	
 	
 	@RequestMapping(value="/admin/mypage",method=RequestMethod.GET)
-	public String adminMyPage(Model model,@RequestParam(value="list",required=false) String list) {
+	public String adminMyPage(Model model,@RequestParam(value="list",required=false) String list,@RequestParam(value="id",required=false) String id,@RequestParam(value="grade",required=false) String grade) {
 		
-		if(list == null) {
+		if(list == null && id==null) {
 			return"adminMyPage";
+		}else if(id!=null&&grade.equals("user")) {
+			
+			UserVO user = adminService.selectOne(id);
+			model.addAttribute("user",user);
+			return "userOneList";
+		}else if(id!=null&&grade.equals("seller")) {			
+			SellerVO seller = adminService.selectOneSeller(id);
+			model.addAttribute("seller",seller);
+			return "sellerOneList";
 		}else if(list.equals("name")) {
 			List<UserVO>nameList = adminService.nameList();
 			model.addAttribute("list",nameList);
@@ -45,6 +55,7 @@ public class AdminController {
 		if(key ==null && search!=null) {
 			List<UserVO>list = adminService.searchID(search);
 			model.addAttribute("list",list);
+			System.out.println(list);
 			return "userSerachList";
 		}
 		
@@ -54,6 +65,8 @@ public class AdminController {
 			return "adminMyPage";
 		case "two":
 			List<UserVO>userList = adminService.userListAll();
+			List<SellerVO>sellerList = adminService.sellerListAll();
+			model.addAttribute("sellerList",sellerList);
 			model.addAttribute("list",userList);
 			return "listUserAll";
 		case "three":

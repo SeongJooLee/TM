@@ -24,6 +24,10 @@
 		select * from seller
 		where sellerID=#{sellerID} and pw=#{pw} 
    </select>
+   <select id="selectOneSeller" resultType="SellerVO">
+		select * from seller
+		where sellerID=#{id} 
+   </select>
    
    <select id="login" resultType="SellerVO">
    		select * from seller
