@@ -29,8 +29,15 @@ function fn_image(obj){
 	   }
 
 function fn_modify_update(){
+    if (!confirm("수정 하시겠습니까?")) {
+        alert("취소(아니오)를 누르셨습니다.");
+        return;
+    } else {
+        alert("확인(예)을 누르셨습니다.");
+	document.getElementById('frmNotice').method= "POST";
 	document.getElementById('frmNotice').action = "${contextPath}/board/notice/update";
    document.getElementById('frmNotice').submit();
+    }
 }
 
 function fn_delete(){
