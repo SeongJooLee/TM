@@ -42,10 +42,11 @@ li a:hover:not(.active) {
 <body>
 
 <ul>
+  <li><a href="#">이거 어떻게 넣지?.....</a></li>
   <li><a class="active" href="mypage">회원정보</a></li>
-  <li><a href="mypage">내가 쓴 글 보기</a></li>	
-  <li><a href="mypage">예약확인</a></li>
-  <li><a href="mypage">추천한 글(보류중)</a></li>
+  <li><a href="#">내가 쓴 글 보기</a></li>	
+  <li><a href="#">예약확인</a></li>
+  <li><a href="#">추천한 글(보류중)</a></li>
 </ul>
 
 </body>
