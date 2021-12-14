@@ -22,6 +22,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 			<typeAlias type="com.hk.tm.board.vo.ReviewVO" alias="ReviewVO" />
 			<typeAlias type="com.hk.tm.board.vo.TravelVO" alias="TravelVO" />
 			<typeAlias type="com.hk.tm.board.vo.ReservationVO" alias="ReservationVO" />
+			<typeAlias type="com.hk.tm.board.vo.CategoryVO" alias="CategoryVO" />
 		</typeAliases>
 		
 		
