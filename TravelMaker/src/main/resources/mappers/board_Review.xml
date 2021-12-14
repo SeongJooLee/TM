@@ -20,8 +20,8 @@
 		SELECT REVIEWNO, TITLE, CONTENT, WRITEDATE, ID, NAME, PROMOTIONNO
 		 FROM REVIEW where id=#{id}
 	</select>
-	
-	<select id="selectAll" resultMap="reviewResult">
+	<!-- 전체리스트 뽑는 아이디 selectAll -->
+	<select id="selectAll" resultMap="reviewResult"> 
 		SELECT REVIEWNO, TITLE, CONTENT, WRITEDATE, ID, NAME, PROMOTIONNO
 		 FROM REVIEW
 	</select>

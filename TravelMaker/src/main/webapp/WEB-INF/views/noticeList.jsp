@@ -24,18 +24,18 @@
   </tr>
   <c:forEach var="notice" items="${notice}" varStatus="status">
 
-  <tr height="10" align="center"  bgcolor="lightblue">
+  <tr height="10" align="center" >
      <td >${notice.noticeNO }</td>
-     <td><a href="notice/view?noticeNO=${notice.noticeNO }">${notice.title }</a>
+     <td><a href="notice/view?noticeNO=${notice.noticeNO }">${notice.title }</a></td>
      <td >${notice.content }</td>
      <td >${notice.adminID }</td>
      <td >${notice.writeDate }</td>
      <td >${notice.name }</td>
   </tr>
   </c:forEach>
-  	<a href="notice/add">글쓰기</a>
   
  </table>
+ <a href="notice/add">글쓰기</a>
  <hr>
      <jsp:include page="/resources/include/footer.jsp" />
 </body>

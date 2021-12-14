@@ -19,6 +19,7 @@ public class ReviewController {
 	
 	@RequestMapping(value = "/board/review", method = RequestMethod.GET)
 	public String home(Model model) {
+		
 		List<ReviewVO> list = reviewService.boardAllList();
 		
 		model.addAttribute("list",list);

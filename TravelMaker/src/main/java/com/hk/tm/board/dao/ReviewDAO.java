@@ -11,12 +11,12 @@ import com.hk.tm.board.vo.ReviewVO;
 public class ReviewDAO {
 	@Autowired
 	SqlSession sql;
-	String ns = "mapper.board.";
-	
+	String ns = "mapper.boardReview.";
+
 	public List<ReviewVO> boardAllList() {
 		// TODO Auto-generated method stub
-		List<ReviewVO> list = sql.selectList(ns+"allList");
+		List<ReviewVO> list = sql.selectList(ns+"selectAll");
 		return list;
 	}
 
-}
+} 
