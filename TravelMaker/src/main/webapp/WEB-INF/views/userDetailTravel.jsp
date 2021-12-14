@@ -52,13 +52,13 @@
 			
 			<ul style="background-color: CornflowerBlue; text-align: center;" >
 				<li>
-					<form action='' method='post'>
+					<form action='/tm/admin/mypage' method='post'>
 						<input type='hidden' name='key' value='one'>
 						<input type='submit' value='게시판 글 관리'>
 					</form>
 				</li><br>
 				<li>
-					<form action='' method='post'>
+					<form action='/tm/admin/mypage' method='post'>
 						<input type='hidden' name='key' value='two'>
 						<input type='submit' value='회원조회'>
 					</form>
@@ -68,24 +68,18 @@
 			</ul>
 		</div>
 		<div class="grid2">
+		<h3>상세보기</h3>
 		
 			
-		
-			<h3>${user.id}님의 정보</h3>
-			<p>아이디: ${user.id}</p>
-			<p>비밀번호: ${user.pw}</p>
-			<p>생년월일: ${user.birth}</p>
-			<p>연락처: ${user.phone}</p>
-			<p>주소: ${user.address}</p>
-			<p>사용자 구분: ${user.grade}</p>
-			<form action='/tm/admin/mypage' method='post'>
-				<input type='hidden' name='selectUserBoard'value='${user.id}'>
-				<input type='submit' value='글쓴내역 보기'>
-			</form>
-			<form action='/tm/admin/mypage' method='post'>
-				<input type='hidden' name='selectUserReservation'value='${user.id}'>
-				<input type='submit' value='예약내역 보기'>
-			</form>
+				<p>글 번호: ${travel.travelNO}</p>
+				<p>글 제목: ${travel.title}</p>
+				<p>글 내용: ${travel.content}</p>
+				<p>작성 일자: ${travel.writeDate}</p>
+				<p>작성자 아이디: ${travel.id}</p>
+				<p>게시판 종류: ${travel.name}</p>
+			
+				<button>수정하기</button>
+				<button>삭제하기</button>
 		</div>
 	</div>
 </body>

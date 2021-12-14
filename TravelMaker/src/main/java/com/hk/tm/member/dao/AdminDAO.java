@@ -73,5 +73,23 @@ public class AdminDAO {
 		List<PromotionVO> list = sqlSession.selectList("mapper.boardPromotion.select",selectSellerOne);
 		return list;
 	}
+	public TravelVO userDetailTravel(int travelNO) {
+		// TODO Auto-generated method stub
+		TravelVO travel = sqlSession.selectOne("mapper.boardTravel.selectOneTravel",travelNO);
+		return travel;
+	}
+	public ReviewVO userDetailReview(int reviewNO) {
+		// TODO Auto-generated method stub
+		ReviewVO review = sqlSession.selectOne("mapper.boardReview.selectOne",reviewNO);
+		return review;
+	}
+	public ReservationVO userDetailReservation(String reserNO) {
+		// TODO Auto-generated method stub
+		ReservationVO reservation = sqlSession.selectOne("mapper.boardReservation.selectOne", reserNO);
+		
+		
+		return reservation;
+	}
+	
 
 }
