@@ -33,6 +33,17 @@ function fn_modify_update(){
    document.getElementById('frmNotice').submit();
 }
 
+function fn_delete(){
+    if (!confirm("삭제 하시겠습니까?")) {
+        alert("취소(아니오)를 누르셨습니다.");
+        return;
+    } else {
+        alert("확인(예)을 누르셨습니다.");
+        location.href="${contextPath}/board/notice/delete?noticeNO=${notice.noticeNO}";
+    }
+	
+}
+
 function readURL(input){
 	   if(input.files && input.files[0]){
 	      var reader = new FileReader();
@@ -57,10 +68,10 @@ function backToList(obj){
     <hr>
 <div align="center">
 
-<form id="frmNotice" method="POST" enctype="multipart/form-data">
+<form id="frmNotice" enctype="multipart/form-data">
    <table border="1" align="center">
       <tr>
-         <td>글 번호 : <input type="text" value="${notice.noticeNO }" name="noticeNO" readonly />
+         <td>글 번호 : <input type="text" value="${notice.noticeNO }" id="noticeNO" name="noticeNO" readonly />
          </td>
          <td><input type="text" value="${notice.title }" id="title" name="title" disabled />
          <td><input type="hidden" value="${notice.name }"  name="name" />
@@ -132,7 +143,7 @@ function backToList(obj){
       <tr id="tr_btn">
          <td colspan="2" align="center" >
             <input type="button" value="수정하기" onClick="fn_enable(this.form)" />
-            <input type="button" value="삭제하기" onClick="#" />
+            <input type="button" value="삭제하기" onClick="fn_delete(this.form)" />
             <input type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />
          </td>
       </tr>

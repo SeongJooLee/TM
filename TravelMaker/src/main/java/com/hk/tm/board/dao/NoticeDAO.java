@@ -16,33 +16,38 @@ public class NoticeDAO {
 	
 	String ns = "mapper.boardNotice.";
 	
-	public List<NoticeVO> allList() {
-		List<NoticeVO> list = sql.selectList(ns+"selectAll");
+	public List<NoticeVO> selectAllNotice() {
+		List<NoticeVO> list = sql.selectList(ns+"selectAllNotice");
 		
 		return list;
 	}
 
-	public NoticeVO oneList(int noticeNO) {
+	public NoticeVO selectOneNotice(int noticeNO) {
 		// TODO Auto-generated method stub
-		NoticeVO noticeVO = sql.selectOne(ns+"selectOne",noticeNO);
+		NoticeVO noticeVO = sql.selectOne(ns+"selectOneNotice",noticeNO);
 		return noticeVO;
 	}
 
-	public int oneMaxList() {
+	public int selectMaxNotice() {
 		// TODO Auto-generated method stub
-		int noticeNO = sql.selectOne(ns+"oneMaxList",null);
+		int noticeNO = sql.selectOne(ns+"selectMaxNotice",null);
 		
 		return noticeNO;
 	}
 	
 	public void boardAdd(NoticeVO noticeVO) {
 		// TODO Auto-generated method stub
-		sql.insert(ns+"insert",noticeVO);
+		sql.insert(ns+"insertNotice",noticeVO);
 	}
 
 	public void boardUpdate(NoticeVO noticeVO) {
 		// TODO Auto-generated method stub
-		sql.update(ns+"update", noticeVO);
+		sql.update(ns+"updateNotice", noticeVO);
+	}
+
+	public void noticeDelete(int noticeNO) {
+		// TODO Auto-generated method stub
+		sql.delete(ns+"deleteNotice",noticeNO);
 	}
 
 

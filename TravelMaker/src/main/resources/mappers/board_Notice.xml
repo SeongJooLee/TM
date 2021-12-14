@@ -15,33 +15,33 @@
       <result property="writeDate" column="writeDate" />
    </resultMap>
    
-	<select id="selectAll" resultMap="noticeResult">
+	<select id="selectAllNotice" resultMap="noticeResult">
 		SELECT NOTICENO, TITLE, CONTENT, ADMINID, NAME, WRITEDATE
 		 FROM NOTICE
 	</select>
 	
-	<select id="selectOne" resultType="NoticeVO"> 
+	<select id="selectOneNotice" resultType="NoticeVO"> 
 		SELECT NOTICENO, TITLE, CONTENT, ADMINID, NAME, WRITEDATE
 		 FROM NOTICE
 		 where noticeNO=#{noticeNO}
 	</select>
 	
-	<select id="oneMaxList" resultType="java.lang.Integer"> 
+	<select id="selectMaxNotice" resultType="java.lang.Integer"> 
 		SELECT max(noticeNO)
 		 FROM NOTICE
 	</select>
 	
-	<insert id="insert" parameterType="NoticeVO">
+	<insert id="insertNotice" parameterType="NoticeVO">
 		INSERT INTO NOTICE (NOTICENO, TITLE, CONTENT, ADMINID, NAME, WRITEDATE)
 		 VALUES((select max(noticeNO)+1 from notice), #{title}, #{content}, #{adminID}, #{name}, sysdate)
 	</insert>
 	
-	<update id="update" parameterType="NoticeVO">
+	<update id="updateNotice" parameterType="NoticeVO">
 		UPDATE NOTICE SET TITLE=#{title}, CONTENT=#{content}
 		 WHERE NOTICENO=#{noticeNO}
 	</update>
 	
-	<delete id="delete" parameterType="NoticeVO"> 
+	<delete id="deleteNotice" parameterType="NoticeVO"> 
 		DELETE FROM NOTICE
 		 where noticeNO=#{noticeNO} 
 	</delete>

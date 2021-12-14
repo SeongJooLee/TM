@@ -22,14 +22,14 @@ public class NoticeService {
 	@Autowired
 	ImageDAO imageDAO;
 	
-	public List<NoticeVO> allList() {
+	public List<NoticeVO> selectAllNotice() {
 		// TODO Auto-generated method stub
-		return noticeDAO.allList();
+		return noticeDAO.selectAllNotice();
 	}
 
-	public Map<String, Object> oneList(int noticeNO) {
+	public Map<String, Object> selectOneNotice(int noticeNO) {
 		// TODO Auto-generated method stub
-		NoticeVO noticeVO = noticeDAO.oneList(noticeNO);
+		NoticeVO noticeVO = noticeDAO.selectOneNotice(noticeNO);
 		ImageVO imageVO = imageDAO.oneListNotice(noticeVO.getNoticeNO());
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("notice", noticeVO);
@@ -38,9 +38,9 @@ public class NoticeService {
 		return map;
 	}
 	
-	public int oneMaxList() {
+	public int selectMaxNotice() {
 		// TODO Auto-generated method stub
-		return noticeDAO.oneMaxList();
+		return noticeDAO.selectMaxNotice();
 	}
 
 	public void boardAdd(NoticeVO noticeVO, ImageVO imageVO) {
@@ -53,6 +53,16 @@ public class NoticeService {
 		// TODO Auto-generated method stub
 		noticeDAO.boardUpdate(noticeVO);
 		imageDAO.noticeUpdate(noticeVO,imageVO);
+	}
+
+	public NoticeVO noticeDelete(int noticeNO) {
+		// TODO Auto-generated method stub
+		imageDAO.noticeDelete(noticeNO);
+		NoticeVO noticeVO = noticeDAO.selectOneNotice(noticeNO);
+		noticeDAO.noticeDelete(noticeNO);
+		
+		return noticeVO;
+		
 	}
 
 

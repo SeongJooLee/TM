@@ -31,4 +31,9 @@ public class ImageDAO {
 		sql.update(ns+"update",imageVO);
 	}
 
+	public void noticeDelete(int noticeNO) {
+		// TODO Auto-generated method stub
+		sql.delete(ns+"deleteNotice",noticeNO);
+	}
+
 }

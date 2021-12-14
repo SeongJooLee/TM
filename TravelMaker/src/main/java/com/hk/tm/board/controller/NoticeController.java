@@ -41,7 +41,7 @@ public class NoticeController {
 	@RequestMapping(value="/board/notice", method= {RequestMethod.GET,RequestMethod.POST})
 	public String noticeList(Model model) {
 
-		List<NoticeVO> list = noticeService.allList();
+		List<NoticeVO> list = noticeService.selectAllNotice();
 
 		model.addAttribute("notice",list);
 
@@ -50,7 +50,7 @@ public class NoticeController {
 
 	@RequestMapping(value="/board/notice/view", method=RequestMethod.GET)
 	public String noticeView(Model model,@RequestParam("noticeNO") int noticeNO) {
-		Map<String,Object> map = noticeService.oneList(noticeNO);
+		Map<String,Object> map = noticeService.selectOneNotice(noticeNO);
 		model.addAttribute("notice",map.get("notice"));
 		model.addAttribute("image",map.get("image"));
 		
@@ -80,7 +80,7 @@ public class NoticeController {
 		ImageVO imageVO = new ImageVO();
 		
 		
-		int noticeNO = noticeService.oneMaxList();
+		int noticeNO = noticeService.selectMaxNotice();
 		noticeNO++;
 		
 		noticeVO.setNoticeNO(noticeNO);
@@ -175,7 +175,7 @@ public class NoticeController {
 			map.put(name,value);
 		}
 		
-		List fileList= upload(request,response);
+		List fileList= upload(request);
 		map.put("fileList", fileList);
 		
 		
@@ -250,5 +250,15 @@ public class NoticeController {
 		return "noticeView";
 		
 	}
-
+	@RequestMapping(value="/board/notice/delete", method=RequestMethod.GET)
+	public void noticeAdd(@RequestParam("noticeNO") int noticeNO, HttpServletResponse response) throws IOException {
+		
+		NoticeVO noticeVO = noticeService.noticeDelete(noticeNO);
+		System.out.println("삭제 후 noticeVO 기록"+noticeVO.toString());
+		File imgDir = new File(REPO+"\\"+noticeVO.getName()+"\\"+noticeVO.getNoticeNO());
+		if(imgDir.exists()) {
+			FileUtils.deleteDirectory(imgDir);
+		}
+		response.sendRedirect("/tm/board/notice");
+	}
 }
