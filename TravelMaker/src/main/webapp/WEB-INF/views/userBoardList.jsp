@@ -6,6 +6,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 <script>
 	function ss(){
@@ -91,12 +96,16 @@ width:110px;
 			<span>${travel.name}</span>
 			<span>${travel.title}</span><br><br>		
 		</c:forEach> --%>
-			<table border='1'>
-				<tr>
+<div class="container">
+  <table class="table table-hover">
+    <thead>
+				<tr class="table-primary">
 					<td>게시판 종류</td>
 					<td>글 제목</td>
 					<td>글 내용</td>
 				</tr>
+    </thead>
+    <tbody>
 				<c:forEach var='travel' items='${travel}'>
 				<tr>
 					<td>${travel.name}</td>
@@ -110,11 +119,10 @@ width:110px;
 					<td><a href='/tm/member/mypage?reviewNO=${review.reviewNO}'>${review.title}</a></td>
 					<td>${review.content}</td>
 				</tr>
-				</c:forEach>
-				
-				
-			</table>
-		</div>
+				</c:forEach>				
+    </tbody>
+  </table>
+</div>
 		<%-- <div class="grid2">
 		<h3>리뷰 게시판에 작성한 게시글,제목</h3>
 		<c:forEach var='review' items='${review}' varStatus='num'>	
