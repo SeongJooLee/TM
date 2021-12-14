@@ -16,29 +16,29 @@
       <result property="leisure" column="leisure" />
    </resultMap>
    	
-   	<select id="selectAllCategory" resultMap="categoryResult">
+   	<select id="selectAllPromotion" resultMap="categoryResult">
 		SELECT PROMOTIONNO, AREA, FOOD, TRAFFIC, CULTURE, HEALING, LEISURE
 		 FROM CATEGORY
 	</select>
 	
-   	<select id="selectOneCategory" resultType="CategoryVO">
+   	<select id="selectOnePromotion" resultType="CategoryVO">
 		SELECT PROMOTIONNO, AREA, FOOD, TRAFFIC, CULTURE, HEALING, LEISURE
 		 FROM CATEGORY
 		 where promotionNO=#{promotionNO}
 	</select>
 	
-	<insert id="insertCategory" parameterType="CategoryVO">
+	<insert id="insertPromotion" parameterType="CategoryVO">
 		  	INSERT INTO CATEGORY (PROMOTIONNO, AREA, FOOD, TRAFFIC, CULTURE, HEALING, LEISURE)
 		  	 VALUES(#{promotionNO}, #{area}, #{food}, #{traffic}, #{culture}, #{healing}, #{leisure})
 	</insert>
 	
-	<update id="updateCategory" parameterType="CategoryVO">
+	<update id="updatePromotion" parameterType="CategoryVO">
   	 	UPDATE CATEGORY SET
   	 	  AREA=#{area}, FOOD=#{food}, TRAFFIC=#{traffic}, CULTURE=#{culture}, HEALING=#{healing}, LEISURE=#{leisure}
   	 	  where promotionNO=#{promotionNO}
 	</update>
 	
-	<delete id="deleteCategory" parameterType="CategoryVO">
+	<delete id="deletePromotion" parameterType="CategoryVO">
 		   	DELETE FROM CATEGORY
 		   	 WHERE PROMOTIONNO=#{promotionNO}
 	</delete>

@@ -59,4 +59,9 @@ public class ImageDAO {
 		sql.insert(ns+"insertTravel",imageVO);
 	}
 
+	public ImageVO selectOnePromotion(int promotionNO) {
+		ImageVO imageVO = sql.selectOne(ns+"selectOnePromotion",promotionNO);
+		return imageVO;
+	}
+
 }

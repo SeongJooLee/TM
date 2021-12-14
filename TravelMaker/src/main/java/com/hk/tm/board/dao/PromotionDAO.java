@@ -14,7 +14,7 @@ public class PromotionDAO {
 	@Autowired
 	SqlSession sql;
 	
-	String ns = "mapper.boardPromotion";
+	String ns = "mapper.boardPromotion.";
 	
 	public List<PromotionVO> selectAllPromotion() {
 		// TODO Auto-generated method stub
@@ -22,9 +22,8 @@ public class PromotionDAO {
 		return list;
 	}
 
-	public PromotionVO selectOneNotice(int promotionNO) {
-		// TODO Auto-generated method stub
-		PromotionVO promotionVO = sql.selectOne(ns+"selectOnePromotion");
+	public PromotionVO selectOnePromotion(int promotionNO) {
+		PromotionVO promotionVO = sql.selectOne(ns+"selectOnePromotion",promotionNO);
 		return promotionVO;
 	}
 
