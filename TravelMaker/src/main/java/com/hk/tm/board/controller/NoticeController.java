@@ -120,10 +120,8 @@ public class NoticeController {
 		} if(fileList.size()>9) {
 			imageVO.setImage10((String) fileList.get(9));
 		}
-		System.out.println("이미지 브이오 어케 댐 "+imageVO.toString());
 		noticeService.boardAdd(noticeVO,imageVO);
 		if(imageVO.getImage1()!=null ) {
-			
 			for(int i=0;i < fileList.size(); i++) {
 				if(fileList.get(i)!=null) {
 					File srcFile = new File(REPO+"\\"+"temp"+"\\"+fileList.get(i));
@@ -133,7 +131,6 @@ public class NoticeController {
 				}
 			}
 		}
-		
 		response.sendRedirect("/tm/board/notice");
 	}
 
@@ -217,34 +214,28 @@ public class NoticeController {
 			imageVO.setImage10((String) fileList.get(9));
 		}
 		
-		if(imageVO.getImage1() != null && imageVO.getImage1().length()!=0) {
-			System.out.println("살려줘");
+		if(noticeNO!=0) {
+			File imgDir = new File(REPO+"\\"+noticeVO.getName()+"\\"+noticeVO.getNoticeNO());
+			if(imgDir.exists()) {
+				FileUtils.deleteDirectory(imgDir);
+			}
+		}
+
+		if(imageVO.getImage1()!=null ) {
 			for(int i=0;i < fileList.size(); i++) {
 				if(fileList.get(i)!=null) {
-					String originalFileName = (String) fileList.get(i);
-					System.out.println("오리지날 파일 이름 :"+originalFileName);
-					System.out.println("오리지날 파일 이름 :"+imageVO.getImage1());
 					File srcFile = new File(REPO+"\\"+"temp"+"\\"+fileList.get(i));
-					System.out.println("srcFile 파일 이름 :"+srcFile);
 					File destDir = new File(REPO+"\\"+noticeVO.getName()+"\\"+noticeVO.getNoticeNO());
+					destDir.mkdir();
 					FileUtils.moveFileToDirectory(srcFile, destDir, true);
-					
-					File oldFile = new File(REPO+"\\"+noticeVO.getName()+"\\"+noticeVO.getNoticeNO()+"\\"+originalFileName);
-					oldFile.delete();
 				}
 			}
 		}
 		
-		System.out.println("여기도 확인 "+noticeVO.toString());
-		System.out.println("여기도 확인 "+imageVO.toString());
 		noticeService.boardUpdate(noticeVO,imageVO);
-		System.out.println("여기도 확인 "+noticeVO.toString());
-		System.out.println("여기도 확인 "+imageVO.toString());
-		
 		
 		model.addAttribute("notice", noticeVO);
 		model.addAttribute("image", imageVO);
-		
 		
 		return "noticeView";
 		
