@@ -86,7 +86,7 @@ public class TravelController {
 			//System.out.println(name+", "+value);
 			map.put(name,value);
 		}
-		
+		//upload 빨간줄 처리
 		List fileList= upload(request);
 		map.put("fileList", fileList);
 		
