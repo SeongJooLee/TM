@@ -24,8 +24,7 @@ public class TravelDAO {
 	}
 	
 	public TravelVO oneList(int travelNO) {
-		TravelVO travelVO = sql.selectOne(ns + "selectOne" , travelNO);
-		
+		TravelVO travelVO = sql.selectOne(ns + "selectOne" , travelNO);		
 		return travelVO;
 	}
 
