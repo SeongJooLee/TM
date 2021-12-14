@@ -35,8 +35,9 @@
 			<a href="/tm"><img class="logo_img"
 				src="<c:url value="/resources/img/Travel Maker (3).png" />" /></a>
 			<p align="right">${userSession.name}님
-				<a href="member/mypage">마이페이지</a> <a href="member/logout">로그아웃</a>&nbsp;&nbsp;&nbsp;<a
-					href="#">고객센터</a>
+				<a href="${contextPath}/member/mypage">마이페이지</a>
+				 <a href="${contextPath}/member/logout">로그아웃</a>
+				 &nbsp;&nbsp;&nbsp;<a href="#">고객센터</a>
 			</p>
 		</div>
 	</c:if>
@@ -48,8 +49,9 @@
 			<a href="/tm"><img class="logo_img"
 				src="<c:url value="/resources/img/Travel Maker (3).png" />" /></a>
 			<p align="right">${userSession.name}님
-				<a href="member/mypage">마이페이지</a> <a href="member/logout">로그아웃</a>&nbsp;&nbsp;&nbsp;<a
-					href="#">고객센터</a>
+				<a href="${contextPath}/member/mypage">마이페이지</a>
+				 <a href="${contextPath}/member/logout">로그아웃</a>
+				 &nbsp;&nbsp;&nbsp;<a href="#">고객센터</a>
 			</p>
 		</div>
 	</c:if>
@@ -61,8 +63,9 @@
 			<a href="/tm"><img class="logo_img"
 				src="<c:url value="/resources/img/Travel Maker (3).png" />" /></a>
 			<p align="right">${userSession.name}님
-				<a href="admin/mypage">마이페이지</a> <a href="member/logout">로그아웃</a>&nbsp;&nbsp;&nbsp;<a
-					href="#">고객센터</a>
+				<a href="${contextPath}/admin/mypage">마이페이지</a>
+				 <a href="${contextPath}/member/logout">로그아웃</a>&nbsp;&nbsp;&nbsp;
+				 <a href="#">고객센터</a>
 			</p>
 		</div>
 	</c:if>
@@ -73,27 +76,24 @@
 			<a href="/tm"><img class="logo_img"
 				src="<c:url value="/resources/img/Travel Maker (3).png" />" /></a>
 			<p align="right">
-				<a href="member/login">로그인</a>&nbsp;&nbsp;&nbsp;<a
-					href="member/registerCheck">회원가입</a>&nbsp;&nbsp;&nbsp;<a href="#">고객센터</a>
+				<a href="${contextPath}/member/login">로그인</a>&nbsp;&nbsp;&nbsp;
+				<a 	href="${contextPath}/member/registerCheck">회원가입</a>
+				&nbsp;&nbsp;&nbsp;<a href="#">고객센터</a>
 			</p>
 		</div>
 	</c:if>
 
-
-
-
 	<ul class="nav justify-content-end">
 		<li class="nav-item"><a href="board/popupEnter"
 			class="btn btn-primary">&nbsp;통합검색&nbsp;</a></li>
-		<li class="nav-item"><a class="nav-link disabled" href="#">통합검색
-				버튼을 눌러 사용하세요!</a></li>
+		<li class="nav-item"><a class="nav-link disabled" href="#">통합검색 버튼을 눌러 사용하세요!</a></li>
 	</ul>
 
 
 
 
 	<nav class="navbar navbar-inverse-sm bg-dark navbar-dark">
-		<a class="navbar-brand" href="board/travel">트래블메이커 여행</a>
+		<p class="navbar-brand">Travel Maker</p>
 
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#collapsibleNavbar">
@@ -101,15 +101,12 @@
 		</button>
 		<div class="collapse navbar-collapse" id="collapsibleNavbar">
 			<ul class="nav navbar-nav">
-				<li class="nav-item"><a class="nav-link" href="${contextPath}/board/travel">여행게시판</a></li>
 				<li class="nav-item"><a class="nav-link" href="${contextPath}/board/notice">공지사항</a></li>
 				<li class="nav-item"><a class="nav-link" href="${contextPath}/board/promotion">홍보상품</a></li>
 				<li class="nav-item"><a class="nav-link" href="${contextPath}/board/review">이용후기</a></li>
-
+				<li class="nav-item"><a class="nav-link" href="${contextPath}/board/travel">여행게시판</a></li>
 			</ul>
 		</div>
 	</nav>
-
-
 </body>
 </html>
