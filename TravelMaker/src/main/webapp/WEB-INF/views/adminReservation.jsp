@@ -73,24 +73,25 @@
 			</ul>
 		</div>
 		<div class="grid2">
-		
+		<table border='1'>
+			<tr>
+				<td>예약번호</td>
+				<td>상품번호</td>
+				<td>예약날짜</td>
+				<td>인원수</td>
+				<td>예약자 아이디</td>
+			</tr>
+			<c:forEach var='list' items='${list}'>
+			<tr>
+				<td>${list.reserNO}</td>
+				<td>${list.promotionNO}</td>
+				<td>${list.reserDate}</td>
+				<td>${list.headCount}</td>
+				<td>${list.id}</td>
+			</tr>
+			</c:forEach>
+		</table>
 			
-		
-			<h3>${user.id}님의 정보</h3>
-			<p>아이디: ${user.id}</p>
-			<p>비밀번호: ${user.pw}</p>
-			<p>생년월일: ${user.birth}</p>
-			<p>연락처: ${user.phone}</p>
-			<p>주소: ${user.address}</p>
-			<p>사용자 구분: ${user.grade}</p>
-			<form action='/tm/admin/mypage' method='post'>
-				<input type='hidden' name='selectUserBoard'value='${user.id}'>
-				<input type='submit' value='글쓴내역 보기'>
-			</form>
-			<form action='/tm/admin/mypage' method='post'>
-				<input type='hidden' name='selectUserReservation'value='${user.id}'>
-				<input type='submit' value='예약내역 보기'>
-			</form>
 		</div>
 	</div>
 </body>

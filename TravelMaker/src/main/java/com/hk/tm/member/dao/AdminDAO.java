@@ -6,6 +6,10 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.hk.tm.board.vo.PromotionVO;
+import com.hk.tm.board.vo.ReservationVO;
+import com.hk.tm.board.vo.ReviewVO;
+import com.hk.tm.board.vo.TravelVO;
 import com.hk.tm.member.vo.SellerVO;
 import com.hk.tm.member.vo.UserVO;
 
@@ -48,6 +52,26 @@ public class AdminDAO {
 		// TODO Auto-generated method stub
 		SellerVO seller = sqlSession.selectOne("mapper.memberSeller.selectOneSeller",id);
 		return seller;
+	}
+	public List<ReservationVO> selectOneReservation(String userReservation) {
+		// TODO Auto-generated method stub
+		List<ReservationVO> list = sqlSession.selectList("mapper.boardReservation.selectId",userReservation);
+		return list;
+	}
+	public List<TravelVO> travelListAll(String userBoard) {
+		// TODO Auto-generated method stub
+		List<TravelVO> list = sqlSession.selectList("mapper.boardTravel.select",userBoard);
+		return list;
+	}
+	public List<ReviewVO> reviewListAll(String userBoard) {
+		// TODO Auto-generated method stub
+		List<ReviewVO> list = sqlSession.selectList("mapper.boardReview.select",userBoard);
+		return list;
+	}
+	public List<PromotionVO> sellerPromotion(String selectSellerOne) {
+		// TODO Auto-generated method stub
+		List<PromotionVO> list = sqlSession.selectList("mapper.boardPromotion.select",selectSellerOne);
+		return list;
 	}
 
 }

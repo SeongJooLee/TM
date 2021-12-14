@@ -46,7 +46,7 @@
 </style>
 </head>
 <body>
-	<h1>${userSession.name} 전용 페이지</h1>
+	<h1>관리자 전용 페이지</h1>
 	<div class="wrap">
 		<div class="grid1">
 			
@@ -73,24 +73,27 @@
 			</ul>
 		</div>
 		<div class="grid2">
-		
+		<h3>${travelList[0].id}님이 작성한 글</h3>
+		<table border='1'>
+			<tr>
+				<td>작성한 게시판</td>
+				<td>글 제목</td>
+				
+			</tr>
+			<c:forEach var='travel' items='${travelList}'>
+			<tr>
+				<td>${travel.name}</td>
+				<td>${travel.title}</td>
+			</tr>
+			</c:forEach>
+			<c:forEach var='review' items='${reviewList}'>
+			<tr>
+				<td>${review.name}</td>
+				<td>${review.title}</td>
+			</tr>
+			</c:forEach>
+		</table>
 			
-		
-			<h3>${user.id}님의 정보</h3>
-			<p>아이디: ${user.id}</p>
-			<p>비밀번호: ${user.pw}</p>
-			<p>생년월일: ${user.birth}</p>
-			<p>연락처: ${user.phone}</p>
-			<p>주소: ${user.address}</p>
-			<p>사용자 구분: ${user.grade}</p>
-			<form action='/tm/admin/mypage' method='post'>
-				<input type='hidden' name='selectUserBoard'value='${user.id}'>
-				<input type='submit' value='글쓴내역 보기'>
-			</form>
-			<form action='/tm/admin/mypage' method='post'>
-				<input type='hidden' name='selectUserReservation'value='${user.id}'>
-				<input type='submit' value='예약내역 보기'>
-			</form>
 		</div>
 	</div>
 </body>

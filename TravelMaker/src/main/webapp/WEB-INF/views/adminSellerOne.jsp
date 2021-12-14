@@ -73,24 +73,26 @@
 			</ul>
 		</div>
 		<div class="grid2">
-		
+		<h3>${seller[0].sellerID}님 등록한 상품 내역</h3>
+		<table border='1'>
+			<tr>
+				<td>상품 번호</td>
+				<td>상품 제목</td>
+				<td>상품 가격</td>
+				<td>등록 일자</td>
+				<td>등록자 아이디</td>
+			</tr>
+			<c:forEach var='seller' items='${seller}'>
+			<tr>
+				<td>${seller.promotionNO}</td>
+				<td>${seller.title}</td>
+				<td>${seller.price}</td>
+				<td>${seller.writeDate}</td>
+				<td>${seller.sellerID}</td>
+			</tr>
+			</c:forEach>
+		</table>
 			
-		
-			<h3>${user.id}님의 정보</h3>
-			<p>아이디: ${user.id}</p>
-			<p>비밀번호: ${user.pw}</p>
-			<p>생년월일: ${user.birth}</p>
-			<p>연락처: ${user.phone}</p>
-			<p>주소: ${user.address}</p>
-			<p>사용자 구분: ${user.grade}</p>
-			<form action='/tm/admin/mypage' method='post'>
-				<input type='hidden' name='selectUserBoard'value='${user.id}'>
-				<input type='submit' value='글쓴내역 보기'>
-			</form>
-			<form action='/tm/admin/mypage' method='post'>
-				<input type='hidden' name='selectUserReservation'value='${user.id}'>
-				<input type='submit' value='예약내역 보기'>
-			</form>
 		</div>
 	</div>
 </body>

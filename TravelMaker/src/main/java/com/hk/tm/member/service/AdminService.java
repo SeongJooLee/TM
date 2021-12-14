@@ -5,6 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hk.tm.board.vo.PromotionVO;
+import com.hk.tm.board.vo.ReservationVO;
+import com.hk.tm.board.vo.ReviewVO;
+import com.hk.tm.board.vo.TravelVO;
 import com.hk.tm.member.dao.AdminDAO;
 import com.hk.tm.member.vo.SellerVO;
 import com.hk.tm.member.vo.UserVO;
@@ -40,6 +44,22 @@ public class AdminService {
 	public SellerVO selectOneSeller(String id) {
 		// TODO Auto-generated method stub
 		return adminDAO.selectOneSeller(id);
+	}
+	public List<ReservationVO> selectOneReservation(String userReservation) {
+		// TODO Auto-generated method stub
+		return adminDAO.selectOneReservation(userReservation);
+	}
+	public List<TravelVO> travelListAll(String userBoard) {
+		// TODO Auto-generated method stub
+		return adminDAO.travelListAll(userBoard);
+	}
+	public List<ReviewVO> reviewListAll(String userBoard) {
+		// TODO Auto-generated method stub
+		return adminDAO.reviewListAll(userBoard);
+	}
+	public List<PromotionVO> sellerPromotion(String selectSellerOne) {
+		// TODO Auto-generated method stub
+		return adminDAO.sellerPromotion(selectSellerOne);
 	}
 
 }

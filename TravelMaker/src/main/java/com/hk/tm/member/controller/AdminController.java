@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.hk.tm.board.vo.PromotionVO;
+import com.hk.tm.board.vo.ReservationVO;
+import com.hk.tm.board.vo.ReviewVO;
+import com.hk.tm.board.vo.TravelVO;
 import com.hk.tm.member.service.AdminService;
 import com.hk.tm.member.vo.SellerVO;
 import com.hk.tm.member.vo.UserVO;
@@ -51,7 +55,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/admin/mypage",method=RequestMethod.POST)
-	public String adminMyPageDone(Model model,@RequestParam(value="key",required=false)String key,@RequestParam(value="search",required=false)String search) {
+	public String adminMyPageDone(Model model,@RequestParam(value="key",required=false)String key,@RequestParam(value="search",required=false)String search,@RequestParam(value="selectUserBoard",required=false)String userBoard,@RequestParam(value="selectUserReservation",required=false)String userReservation,@RequestParam(value="selectSellerOne",required=false)String selectSellerOne) {
 		if(key ==null && search!=null) {
 			List<UserVO>list = adminService.searchID(search);
 			model.addAttribute("list",list);
@@ -59,6 +63,24 @@ public class AdminController {
 			return "userSerachList";
 		}
 		
+		if(userBoard!=null) {	
+			List<ReservationVO> reserList = adminService.selectOneReservation(userReservation);
+			
+			List <TravelVO> travel = adminService.travelListAll(userBoard);
+			List <ReviewVO> review = adminService.reviewListAll(userBoard);
+			model.addAttribute("travelList",travel);
+			model.addAttribute("reviewList",review);
+			return "adminBoardAll";		
+		}else if(userReservation !=null) {
+			List<ReservationVO> reserList = adminService.selectOneReservation(userReservation);
+			model.addAttribute("list",reserList);
+			return "adminReservation";
+		}else if(selectSellerOne != null) {
+			System.out.println("민수야 일어나.. 코딩해야지..");
+			List<PromotionVO> seller = adminService.sellerPromotion(selectSellerOne);
+			model.addAttribute("seller",seller);
+			return "adminSellerOne";
+		}
 		switch(key) {
 		
 		case "one":
@@ -70,7 +92,7 @@ public class AdminController {
 			model.addAttribute("list",userList);
 			return "listUserAll";
 		case "three":
-			return "adminMyPage";
+			return "listSellerAll";
 		}
 		
 		

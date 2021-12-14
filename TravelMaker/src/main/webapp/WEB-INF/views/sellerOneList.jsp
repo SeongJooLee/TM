@@ -73,12 +73,19 @@
 			</ul>
 		</div>
 		<div class="grid2">
+		
 			<h3>${seller.sellerID}님의 정보</h3>
 			<p>아이디: ${seller.sellerID}</p>
 			<p>비밀번호: ${seller.pw}</p>
 			<p>연락처: ${seller.phone}</p>
 			<p>주소: ${seller.address}</p>
 			<p>사용자 구분: ${seller.grade}</p>
+			
+			<form action='/tm/admin/mypage' method='post'>
+				<input type='hidden' name='selectSellerOne'value='${seller.sellerID}'>
+				<input type='submit' value='상품내역 보기'>
+			</form>
+			
 		</div>
 	</div>
 </body>

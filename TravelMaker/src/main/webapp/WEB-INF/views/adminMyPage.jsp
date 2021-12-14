@@ -49,7 +49,7 @@
 				<li>
 					<form action='' method='post'>
 						<input type='hidden' name='key' value='two'>
-						<input type='submit' value='회원조회'>
+						<input type='submit' value='회원 조회'>
 					</form>
 				</li><br>
 				<li>
