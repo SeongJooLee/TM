@@ -118,15 +118,15 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+   		 <ul class="navbar-nav mr-auto">
      				<li class="nav-item"><a class="nav-link" href="${contextPath}/board/notice">공지사항</a></li>
-				<li class="nav-item"><a class="nav-link" href="${contextPath}/board/promotion">홍보상품</a></li>
-				<li class="nav-item"><a class="nav-link" href="${contextPath}/board/review">이용후기</a></li>
-				<li class="nav-item"><a class="nav-link" href="${contextPath}/board/travel">여행게시판</a></li>
-    </ul>
+					<li class="nav-item"><a class="nav-link" href="${contextPath}/board/promotion">홍보상품</a></li>
+					<li class="nav-item"><a class="nav-link" href="${contextPath}/board/review">이용후기</a></li>
+					<li class="nav-item"><a class="nav-link" href="${contextPath}/board/travel">여행게시판</a></li>
+   		 </ul>
     <form class="form-inline my-2 my-lg-0">
       
-      <button class="btn btn-outline-success my-2 my-sm-0" type=button onclick = "location.href = 'board/popupEnter' "> 통합검색</button>
+     			    <button class="btn btn-outline-success my-2 my-sm-0" type=button onclick = "location.href = 'board/popupEnter' "> 통합검색</button>
     </form>
   </div>
 </nav>
