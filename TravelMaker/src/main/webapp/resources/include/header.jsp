@@ -101,10 +101,10 @@
 		</button>
 		<div class="collapse navbar-collapse" id="collapsibleNavbar">
 			<ul class="nav navbar-nav">
-				<li class="nav-item"><a class="nav-link" href="board/travel">여행게시판</a></li>
+				<li class="nav-item"><a class="nav-link" href="${contextPath}/board/travel">여행게시판</a></li>
 				<li class="nav-item"><a class="nav-link" href="${contextPath}/board/notice">공지사항</a></li>
-				<li class="nav-item"><a class="nav-link" href="board/promotion">홍보상품</a></li>
-				<li class="nav-item"><a class="nav-link" href="board/review">이용후기</a></li>
+				<li class="nav-item"><a class="nav-link" href="${contextPath}/board/promotion">홍보상품</a></li>
+				<li class="nav-item"><a class="nav-link" href="${contextPath}/board/review">이용후기</a></li>
 
 			</ul>
 		</div>
