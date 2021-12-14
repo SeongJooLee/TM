@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.hk.tm.board.vo.ImageVO;
 import com.hk.tm.board.vo.NoticeVO;
+import com.hk.tm.board.vo.TravelVO;
 @Repository
 public class ImageDAO {
 
@@ -34,6 +35,18 @@ public class ImageDAO {
 	public void noticeDelete(int noticeNO) {
 		// TODO Auto-generated method stub
 		sql.delete(ns+"deleteNotice",noticeNO);
+	}
+
+	public ImageVO selectOneTravel(int travelNO) {
+		// TODO Auto-generated method stub
+		ImageVO imageVO = sql.selectOne(ns + "selectOneTravel" , travelNO);
+		return imageVO;
+	}
+
+	public void travelUpdate(TravelVO travelVO, ImageVO imageVO) {
+		// TODO Auto-generated method stub
+		imageVO.setTravelNO(travelVO.getTravelNO());
+		sql.update(ns+"updateTravel",imageVO);
 	}
 
 }

@@ -23,23 +23,23 @@ public class TravelDAO {
 		return list;
 	}
 	
-	public TravelVO oneList(int travelNO) {
-		TravelVO travelVO = sql.selectOne(ns + "selectOne" , travelNO);		
+	public TravelVO selectOneTravel(int travelNO) {
+		TravelVO travelVO = sql.selectOne(ns + "selectOneTravel" , travelNO);		
 		return travelVO;
 	}
 
 	public int addTravel(TravelVO travelVO) {		
-		int ret = sql.insert(ns + "insert", travelVO);
+		int ret = sql.insert(ns + "insertTravel", travelVO);
 		return ret;
 	}
 	
 	public int updateTravel(TravelVO travelVO) {
-		int ret = sql.update(ns + "update", travelVO);
+		int ret = sql.update(ns + "updateTravel", travelVO);
 		return ret;
 	}
 	
 	public int deleteTravel(int travelNO) {
-		int ret = sql.delete(ns + "delete", travelNO);
+		int ret = sql.delete(ns + "deleteTravel", travelNO);
 		return ret;
 	}
 }

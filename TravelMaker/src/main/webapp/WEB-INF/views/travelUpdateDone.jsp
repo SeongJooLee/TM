@@ -8,5 +8,10 @@
 </head>
 <body>
 
+<script>
+	alert("글이 수정되었습니다.");
+	location.href="../travel";
+</script>
+
 </body>
 </html>
