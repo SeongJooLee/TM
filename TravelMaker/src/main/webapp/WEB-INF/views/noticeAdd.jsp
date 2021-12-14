@@ -16,13 +16,24 @@ if(cnt===11){
 	alert("최대 10개만 생성할 수 있습니다.");
 	return;        
     }
-    $("#d_file").append("<br>" + "<input type='file' name='image" + cnt + " ' />");
+    $("#d_file").append("<br>" + "<p id='image"+cnt+" '><input type='file' name='image" + cnt + " ' />");
     cnt++;
 }
+
 function backToList(obj){
 	obj.method ="POST";
 	obj.action = "${contextPath}/tm/board/notice";
 	obj.submit();
+}
+
+function fn_create(){
+    if (!confirm("글을 생성하시겠습니까?")) {
+        alert("취소(아니오)를 누르셨습니다.");
+        return;
+    } else {
+        alert("확인(예)을 누르셨습니다.");
+        document.getElementById("frm").submit();
+    }
 }
 </script>
 </head>
@@ -30,7 +41,7 @@ function backToList(obj){
     <jsp:include page="/resources/include/header.jsp" />
     <hr>
 	<h1 style="text-align: center">공지 글 쓰기</h1>
-	<form action="addDone" method="post" enctype="multipart/form-data">
+	<form id="frm" action="addDone" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="adminID" value="admin">
 		<table border="1" align="center">
 			<tr>
@@ -46,7 +57,7 @@ function backToList(obj){
 			</tr>
 			<tr>
 				<td align='left' colspan="2">이미지 파일 첨부<br>
-					<p><input type="button" value="파일 추가" onClick="fn_addFile()"><small> &nbsp;&nbsp;*최대 10개까지 첨부 가능합니다.</small></p>
+					<p><input type="button" value="파일 추가" onClick="fn_addFile()"><small> &nbsp;&nbsp;*최대 10개까지 첨부 가능합니다.</small>
 					<div id="d_file">
 					
 					</div>
@@ -61,7 +72,7 @@ function backToList(obj){
 		</table>
 		<br><br>
 		<div align="center">
-			<input type="submit" value="작성하기">
+			<input type="button" value="작성하기" onClick="fn_create()">
 			<input type="reset" value="다시 작성">
 			<input type="button" value="목록 보기" onClick="backToList(this.form)">
 		</div>

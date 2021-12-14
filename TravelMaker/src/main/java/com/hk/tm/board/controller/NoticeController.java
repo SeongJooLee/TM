@@ -64,7 +64,7 @@ public class NoticeController {
 	}
 
 	@RequestMapping(value="/board/notice/addDone", method=RequestMethod.POST)
-	public String noticeAddDone(MultipartHttpServletRequest request, HttpServletResponse response,Model model) throws IOException, ServletException {
+	public void noticeAddDone(MultipartHttpServletRequest request, HttpServletResponse response,Model model) throws IOException, ServletException {
 		request.setCharacterEncoding("utf-8");
 		Map<String,Object> map = new HashMap<String,Object>();
 		Enumeration enu=request.getParameterNames();
@@ -136,7 +136,7 @@ public class NoticeController {
 			}
 		}
 		
-		return "noticeAddDone";
+		response.sendRedirect("/tm/board/notice");
 	}
 
 	private List<String> upload(MultipartHttpServletRequest request) throws ServletException, IOException{
@@ -255,7 +255,6 @@ public class NoticeController {
 	public void noticeAdd(@RequestParam("noticeNO") int noticeNO, HttpServletResponse response) throws IOException {
 		
 		NoticeVO noticeVO = noticeService.noticeDelete(noticeNO);
-		System.out.println("삭제 후 noticeVO 기록"+noticeVO.toString());
 		File imgDir = new File(REPO+"\\"+noticeVO.getName()+"\\"+noticeVO.getNoticeNO());
 		if(imgDir.exists()) {
 			FileUtils.deleteDirectory(imgDir);

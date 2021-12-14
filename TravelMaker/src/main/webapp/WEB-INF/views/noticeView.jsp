@@ -41,7 +41,6 @@ function fn_delete(){
         alert("확인(예)을 누르셨습니다.");
         location.href="${contextPath}/board/notice/delete?noticeNO=${notice.noticeNO}";
     }
-	
 }
 
 function readURL(input){
