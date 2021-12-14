@@ -23,7 +23,10 @@
 		SELECT TRAVELNO, TITLE, CONTENT, WRITEDATE, ID, NAME
 		FROM TRAVEL where id=#{id}
 	</select>
-	
+	<select id="selectOne" resultType="travelVO">
+		SELECT TRAVELNO, TITLE, CONTENT, WRITEDATE, ID, NAME
+		FROM TRAVEL WHERE TRAVELNO=#{travelNO}<!--김민수  -->
+	</select>
 	<select id="selectAllTravels" resultMap="travelResult">
 		SELECT TRAVELNO, TITLE, CONTENT, WRITEDATE, ID, NAME
 		FROM TRAVEL
