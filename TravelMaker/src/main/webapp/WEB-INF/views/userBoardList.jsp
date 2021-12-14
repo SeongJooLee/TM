@@ -61,7 +61,7 @@ width:110px;
 	<div class="wrap">
 		<div class="grid1">
 			<br>
-			<ul style="background-color: CornflowerBlue; text-align: center;" >
+			<ul style="background-color: CornflowerBlue; text-align: center;">			
 				<li>
 					<form action='mypage' method='post'>
 						<input type="hidden" name="testKey" value="one">					
@@ -89,6 +89,7 @@ width:110px;
 				<li><a href="#">로스트아크 인벤이동</a></li><br>
 			</ul>
 		</div>
+
 		<div class="grid2">
 		<h3>${userSession.id}님이 게시한 글</h3>
 		<%-- <c:forEach var='travel' items='${travel}' varStatus='num'>
@@ -134,5 +135,8 @@ width:110px;
 		
 		</div> --%>
 	</div>
+	
+	<jsp:include page="/resources/include/adminsidemenu.jsp" />
+	
 </body>
 </html>
