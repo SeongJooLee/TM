@@ -1,11 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
+<%@ page session="true" %>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>관리자 마이페이지</title>
+<script>
+	function nameOrder(){
+		location.href='/tm/admin/mypage?list=name';
+		}
+	function dateOrder(){
+		location.href='/tm/admin/mypage?list=date';
+		}
+	
+</script>
 <style type="text/css">
 .wrap {
 	display: grid;
@@ -62,7 +73,35 @@
 			</ul>
 		</div>
 		<div class="grid2">
-		content
+			<button onclick='nameOrder()'>이름 순으로보기</button><br><br>
+			<button onclick='dateOrder()'>가입날짜 순으로보기</button>
+			
+			<h3>모든 회원 목록</h3>
+			<table	border='1'>
+				<tr>
+					<td>ID</td>
+					<td>PW</td>
+					<td>NAME</td>
+					<td>BIRTH</td>
+					<td>PHONE</td>
+					<td>ADDRESS</td>
+					<td>JOINDATE</td>
+					<td>GRADE</td>
+				</tr>
+			<c:forEach var='list' items='${list}'>
+				<tr>
+					<td>${list.id}</td>
+					<td>${list.pw}</td>
+					<td>${list.name}</td>
+					<td>${list.birth}</td>
+					<td>${list.phone}</td>
+					<td>${list.address}</td>
+					<td>${list.joinDate}</td>
+					<td>${list.grade}</td>
+				</tr>			
+			</c:forEach>
+
+			</table>
 		</div>
 	</div>
 </body>

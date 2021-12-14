@@ -16,10 +16,22 @@
       <result property="joinDate" column="joinDate" />
       <result property="grade" column="grade" />
    </resultMap>
-   
+  
    <select id="selectAll"  resultMap="userResult">
-   		select * from User
+   		select * from "USER"
    </select>
+    
+   <select id="selectAllName"  resultMap="userResult">
+   		select * from "USER" ORDER BY 3
+   </select>
+   
+   <select id="selectAllDate"  resultMap="userResult">
+   		select * from "USER" ORDER BY 7
+   </select>
+   
+   <!-- <select id="selectSearchID"  resultMap="userResult">
+   	<![CDATA[	select * from "USER" WHERE ID LIKE '%#{search}%' ]]>
+   </select> -->
    
    <select id="selectOne" resultType="UserVO">
 		<![CDATA[select * from "USER" where id=#{id} and pw=#{pw}  ]]>

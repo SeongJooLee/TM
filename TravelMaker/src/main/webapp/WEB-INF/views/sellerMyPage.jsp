@@ -42,7 +42,7 @@
 </style>
 </head>
 <body> 
-<%-- <jsp:include page="/resources/include/header.jsp" /> --%>
+ <jsp:include page="/resources/include/header.jsp" />
 	<h1>판매유저 페이지</h1>
 	<h2>${userSession.sellerID}님 정보</h2> 
 	
@@ -75,6 +75,6 @@
 		</div>
 		
 	</div>
-<%-- <jsp:include page="/resources/include/footer.jsp" /> --%>
+  <jsp:include page="/resources/include/footer.jsp" /> 
 </body>
 </html>
