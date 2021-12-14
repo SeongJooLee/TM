@@ -18,13 +18,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.hk.tm.board.dao.TravelDAO;
 import com.hk.tm.board.service.TravelService;
@@ -47,7 +45,7 @@ public class TravelController {
 	@RequestMapping(value="travel" , method = {RequestMethod.GET, RequestMethod.POST}) 
 		public String travelList(Model model) {
 		
-		List<TravelVO> list = travelService.allList();
+		List<TravelVO> list = travelService.selectAllTravels();
 		
 		model.addAttribute("travel", list);
 		logger.debug("---------/list called");
@@ -68,28 +66,28 @@ public class TravelController {
 	}
 	
 	@RequestMapping(value="travel/add" ,  method=RequestMethod.GET)
-	public String travelAdd() {			
+	public String travelAdd(Model model) {			
 		return "travelAdd"; // travelAdd.jsp 호출
 		
 	}
 	
 	@RequestMapping(value="travel/addDone" ,  method=RequestMethod.POST)
-	public ModelAndView travelAddDone(MultipartHttpServletRequest multipartRequest, HttpServletResponse response, Model model) {
+	public void travelAddDone(MultipartHttpServletRequest request, HttpServletResponse response,Model model) throws IOException, ServletException {
 		
 		//logger.debug("title", travelVO.getTitle());
 		//logger.debug("content", travelVO.getContent());
 		
-		multipartRequest.setCharacterEncoding("utf-8");
-		Map map = new HashMap();		
-		Enumeration enu=multipartRequest.getParameterNames();
+		request.setCharacterEncoding("utf-8");
+		Map<String,Object> map = new HashMap<String,Object>();
+		Enumeration enu=request.getParameterNames();
 		while(enu.hasMoreElements()){
 			String name=(String)enu.nextElement();
-			String value=multipartRequest.getParameter(name);
+			String value=request.getParameter(name);
 			//System.out.println(name+", "+value);
 			map.put(name,value);
 		}
 		
-		List fileList= upload(multipartRequest);
+		List fileList= upload(request);
 		map.put("fileList", fileList);
 		
 		TravelVO travelVO = new TravelVO();
@@ -151,15 +149,15 @@ public class TravelController {
 			}
 		}
 		
-		return "travelAddDone";
+		response.sendRedirect("/board/travel");
 	}
 	
-	private List<String> upload(MultipartHttpServletRequest multipartRequest) throws Exception{
+	private List<String> upload(MultipartHttpServletRequest request) throws Exception{
 		List<String> fileList= new ArrayList<String>();
-		Iterator<String> fileNames = multipartRequest.getFileNames();
+		Iterator<String> fileNames = request.getFileNames();
 		while(fileNames.hasNext()){
 			String fileName = fileNames.next();
-			MultipartFile mFile = multipartRequest.getFile(fileName);
+			MultipartFile mFile = request.getFile(fileName);
 			String originalFileName=mFile.getOriginalFilename();
 			fileList.add(originalFileName);
 			File file = new File(REPO +"\\"+ fileName);
@@ -253,7 +251,7 @@ public class TravelController {
 		
 		System.out.println("여기도 확인 "+travelVO.toString());
 		System.out.println("여기도 확인 "+imageVO.toString());
-		travelService.boardUpdate(travelVO,imageVO);
+		travelService.updateTravel(travelVO,imageVO);
 		System.out.println("여기도 확인 "+travelVO.toString());
 		System.out.println("여기도 확인 "+imageVO.toString());
 		
@@ -269,7 +267,7 @@ public class TravelController {
 	@RequestMapping(value="travel/delete" ,  method=RequestMethod.GET)
 	public void addTravel(@RequestParam("travelNO") int travelNO, HttpServletResponse response) throws IOException {
 
-		TravelVO travelVO = travelService.travelDelete(travelNO);
+		TravelVO travelVO = travelService.deleteTravel(travelNO);
 		System.out.println("삭제 후 travelVO 기록"+travelVO.toString());
 		File imgDir = new File(REPO+"\\"+travelVO.getName()+"\\"+travelVO.getTravelNO());
 		if(imgDir.exists()) {

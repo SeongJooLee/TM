@@ -28,27 +28,26 @@ public class TravelService {
 	
 	ImageDAO imageDAO;
 	
-	public List<TravelVO> allList() {
+	public List<TravelVO> selectAllTravels() {
 		// TODO Auto-generated method stub
-		return travelDAO.allList();
+		return travelDAO.selectAllTravels();
 	}
 	
 	public Map<String, Object> selectOneTravel(int travelNO) {
 		// TODO Auto-generated method stub
-		TravelVO travelVO = travelDAO.selectOneTravel(travelNO);
-		//UserVO userVO = userDAO.selectOneTravel(travelVO.getId());
+		TravelVO travelVO = travelDAO.selectOneTravel(travelNO);		
 		ImageVO imageVO = imageDAO.selectOneTravel(travelVO.getTravelNO());
 		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("travel", travelVO);
-		//map.put("user", userVO);
+		map.put("travel", travelVO);		
 		map.put("image", imageVO);
 		
 		return map;
 	}
 	
-	public int addTravel(TravelVO travelVO) {		
+	public void addTravel(TravelVO travelVO, ImageVO imageVO) {		
 		// TODO Auto-generated method stub
-		return travelDAO.addTravel(travelVO);
+		travelDAO.addTravel(travelVO);
+		imageDAO.travelAdd(imageVO);
 	}
 
 	public void updateTravel(TravelVO travelVO, ImageVO imageVO) {
@@ -57,13 +56,17 @@ public class TravelService {
 		imageDAO.travelUpdate(travelVO,imageVO);
 	}
 	
-	public int removeTravel(int travelNO) {
-		return travelDAO.deleteTravel(travelNO);
+	public TravelVO deleteTravel(int travelNO) {
+		imageDAO.deleteTravel(travelNO);
+		TravelVO travelVO = travelDAO.selectOneTravel(travelNO);
+		travelDAO.deleteTravel(travelNO);
+		
+		return travelVO;
 	}
 
 	public int selectMaxTravel() {
 		// TODO Auto-generated method stub
-		return 0;
+		return travelDAO.selectMaxTravel();
 	}
 
 

@@ -49,4 +49,14 @@ public class ImageDAO {
 		sql.update(ns+"updateTravel",imageVO);
 	}
 
+	public void deleteTravel(int travelNO) {
+		// TODO Auto-generated method stub
+		sql.delete(ns+"deleteTravel",travelNO);
+	}
+
+	public void travelAdd(ImageVO imageVO) {
+		// TODO Auto-generated method stub
+		sql.insert(ns+"insertTravel",imageVO);
+	}
+
 }

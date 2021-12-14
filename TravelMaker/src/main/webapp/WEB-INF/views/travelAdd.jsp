@@ -25,7 +25,7 @@ if(cnt===11){
 }
 function backToList(obj){
 	obj.method ="POST";
-	obj.action = "${contextPath}/tm/board/travel";
+	obj.action = "${contextPath}/board/travel";
 	obj.submit();
 }
 </script>

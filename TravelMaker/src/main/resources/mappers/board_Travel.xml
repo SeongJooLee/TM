@@ -35,6 +35,11 @@
 		WHERE travelNO=#{travelNO}
 	</select>
 	
+	<select id="selectMaxTravel" resultType="java.lang.Integer"> 
+		SELECT max(travelNO)
+		FROM TRAVEL
+	</select>
+	
 	<insert id="insertTravel" parameterType="TravelVO">
 		 INSERT INTO TRAVEL (TRAVELNO, TITLE, CONTENT, WRITEDATE, ID, NAME)
 		  VALUES((select max(travelNO)+1 from travel), #{title}, #{content}, SYSDATE, #{id},  'travel')

@@ -16,7 +16,7 @@
 <body>
 
     <jsp:include page="/resources/include/header.jsp" />
-
+	<hr>
 <table align="center" border="1"  width="80%"  >
   <tr height="10" align="center"  bgcolor="CornflowerBlue">
      <td >여행 글번호</td>
@@ -41,7 +41,7 @@
   <a href="travel/add">글쓰기</a>
   </table>
   
+    <hr>
  <jsp:include page="/resources/include/footer.jsp" /> 
-  
 </body> 
 </html>

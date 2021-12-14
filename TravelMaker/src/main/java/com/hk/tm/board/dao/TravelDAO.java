@@ -16,7 +16,7 @@ public class TravelDAO {
 	
 	String ns = "mapper.boardTravel.";
 	
-	public List<TravelVO> allList() {
+	public List<TravelVO> selectAllTravels() {
 		// TODO Auto-generated method stub
 		List<TravelVO> list = sql.selectList(ns+ "selectAllTravels");
 		
@@ -28,18 +28,25 @@ public class TravelDAO {
 		return travelVO;
 	}
 
-	public int addTravel(TravelVO travelVO) {		
-		int ret = sql.insert(ns + "insertTravel", travelVO);
-		return ret;
+	public void addTravel(TravelVO travelVO) {		
+		sql.insert(ns + "insertTravel", travelVO);
+
 	}
 	
-	public int updateTravel(TravelVO travelVO) {
-		int ret = sql.update(ns + "updateTravel", travelVO);
-		return ret;
+	public void updateTravel(TravelVO travelVO) {
+		sql.update(ns + "updateTravel", travelVO);
+
 	}
 	
-	public int deleteTravel(int travelNO) {
-		int ret = sql.delete(ns + "deleteTravel", travelNO);
-		return ret;
+	public void deleteTravel(int travelNO) {
+		sql.delete(ns + "deleteTravel", travelNO);
+
+	}
+
+	public int selectMaxTravel() {
+		// TODO Auto-generated method stub
+		int travelNO = sql.selectOne(ns+"selectMaxTravel",null);
+		
+		return travelNO;
 	}
 }
