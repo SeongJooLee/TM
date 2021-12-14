@@ -61,5 +61,18 @@ public class AdminService {
 		// TODO Auto-generated method stub
 		return adminDAO.sellerPromotion(selectSellerOne);
 	}
+	public TravelVO userDetailTravel(int travelNO) {
+		// TODO Auto-generated method stub
+		return adminDAO.userDetailTravel(travelNO);
+	}
+	public ReviewVO userDetailReview(int reviewNO) {
+		// TODO Auto-generated method stub
+		return adminDAO.userDetailReview(reviewNO);
+	}
+	public ReservationVO userDetailReservation(String reserNO) {
+		// TODO Auto-generated method stub
+		return adminDAO.userDetailReservation(reserNO);
+	}
+	
 
 }

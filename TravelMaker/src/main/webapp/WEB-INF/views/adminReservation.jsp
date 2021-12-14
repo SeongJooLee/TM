@@ -63,16 +63,12 @@
 						<input type='submit' value='회원조회'>
 					</form>
 				</li><br>
-				<li>
-					<form action='' method='post'>
-						<input type='hidden' name='key' value='three'>
-						<input type='submit' value='업체조회'>
-					</form>
-				</li><br>
+				
 				
 			</ul>
 		</div>
 		<div class="grid2">
+		<h3>예약내역</h3>
 		<table border='1'>
 			<tr>
 				<td>예약번호</td>
@@ -83,7 +79,7 @@
 			</tr>
 			<c:forEach var='list' items='${list}'>
 			<tr>
-				<td>${list.reserNO}</td>
+				<td><a href='/tm/admin/mypage/detail?reserNO=${list.reserNO}'>${list.reserNO}</a></td>
 				<td>${list.promotionNO}</td>
 				<td>${list.reserDate}</td>
 				<td>${list.headCount}</td>

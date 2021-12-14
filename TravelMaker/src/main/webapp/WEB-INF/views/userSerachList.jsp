@@ -72,12 +72,7 @@
 						<input type='submit' value='회원조회'>
 					</form>
 				</li><br>
-				<li>
-					<form action='' method='post'>
-						<input type='hidden' name='key' value='three'>
-						<input type='submit' value='업체조회'>
-					</form>
-				</li><br>
+				
 				
 			</ul>
 		</div>

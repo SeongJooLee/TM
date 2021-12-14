@@ -63,17 +63,12 @@
 						<input type='submit' value='회원조회'>
 					</form>
 				</li><br>
-				<li>
-					<form action='' method='post'>
-						<input type='hidden' name='key' value='three'>
-						<input type='submit' value='업체조회'>
-					</form>
-				</li><br>
+				
 				
 			</ul>
 		</div>
 		<div class="grid2">
-		<h3>${travelList[0].id}님이 작성한 글</h3>
+		<h3>작성한 글</h3>
 		<table border='1'>
 			<tr>
 				<td>작성한 게시판</td>
@@ -83,13 +78,13 @@
 			<c:forEach var='travel' items='${travelList}'>
 			<tr>
 				<td>${travel.name}</td>
-				<td>${travel.title}</td>
+				<td><a href='/tm/admin/mypage/detail?travelNO=${travel.travelNO}'>${travel.title}</a></td>
 			</tr>
 			</c:forEach>
 			<c:forEach var='review' items='${reviewList}'>
 			<tr>
 				<td>${review.name}</td>
-				<td>${review.title}</td>
+				<td><a href='/tm/admin/mypage/detail?reviewNO=${review.reviewNO}'>${review.title}</a></td>
 			</tr>
 			</c:forEach>
 		</table>

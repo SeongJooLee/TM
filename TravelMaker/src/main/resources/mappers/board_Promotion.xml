@@ -21,6 +21,8 @@
 		 FROM PROMOTION WHERE SELLERID=#{id}
    </select>
    
+   
+   
    <select id="selectAllpromotion" resultMap="promotionResult">
 		SELECT PROMOTIONNO, TITLE, CONTENT, WRITEDATE, PRICE, SELLERID, NAME
 		 FROM PROMOTION

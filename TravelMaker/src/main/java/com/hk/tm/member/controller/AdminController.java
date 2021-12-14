@@ -100,4 +100,31 @@ public class AdminController {
 //		admin/mypage
 		
 	}
+	
+	@RequestMapping(value="/admin/mypage/detail",method=RequestMethod.GET)
+	public String myPageDetailGet(Model model,@RequestParam(value="travelNO",required = false)String travelNO_,@RequestParam(value="reserNO",required = false)String reserNO,@RequestParam(value="reviewNO",required=false)String reviewNO_){
+		if(travelNO_ != null) {
+			int travelNO = Integer.parseInt(travelNO_);
+			TravelVO travel = adminService.userDetailTravel(travelNO);
+			model.addAttribute("travel",travel);
+			return"userDetailTravel";
+		}else if(reviewNO_ != null) {
+			int reviewNO = Integer.parseInt(reviewNO_);
+			ReviewVO review = adminService.userDetailReview(reviewNO);
+			model.addAttribute("review",review);
+			return "userDetailReview";
+		}else if(reserNO != null) {
+			ReservationVO reservation = adminService.userDetailReservation(reserNO);
+			model.addAttribute("reservation", reservation);
+			
+			return "userDetailReservation";
+		}
+		return "";
+		
+	}
+	@RequestMapping(value="/admin/mypage/detail",method=RequestMethod.POST)
+	public String myPageDetail(Model model){
+		return"";
+	}
+	
 }

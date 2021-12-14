@@ -34,6 +34,8 @@
 		 where reserNO=#{reserNO}
 	</select>
 	
+	
+	
 	<insert id="insert" parameterType="ReservationVO">
 		INSERT INTO RESERVATION (RESERNO, PROMOTIONNO, RESERDATE, HEADCOUNT, ID)
  		VALUES(TO_CHAR(SYSDATE,'YYYY/MM/DD/HH/MI/SS'), #{promotionNO}, #{reserDate}, #{headCount}, #{id})	
