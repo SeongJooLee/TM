@@ -15,33 +15,36 @@
       <result property="sellerID" column="sellerID" />
       <result property="name" column="name" />
    </resultMap>
+   
    <select id='select' resultMap='promotionResult'>
    		SELECT PROMOTIONNO, TITLE, CONTENT, WRITEDATE, PRICE, SELLERID, NAME
 		 FROM PROMOTION WHERE SELLERID=#{id}
    </select>
-   <select id="selectAll" resultMap="promotionResult">
+   
+   <select id="selectAllpromotion" resultMap="promotionResult">
 		SELECT PROMOTIONNO, TITLE, CONTENT, WRITEDATE, PRICE, SELLERID, NAME
 		 FROM PROMOTION
 	</select>
 	
-	<select id="selectOne" resultType="PromotionVO"> 
+	<select id="selectOnepromotion" resultType="PromotionVO"> 
 		SELECT PROMOTIONNO, TITLE, CONTENT, WRITEDATE, PRICE, SELLERID, NAME
 		 FROM PROMOTION
 		  where promotionNO=#{promotionNO}
 	</select>
 	
-	<insert id="insert" parameterType="PromotionVO">
+	<insert id="insertpromotion" parameterType="PromotionVO">
 		INSERT INTO PROMOTION (PROMOTIONNO, TITLE, CONTENT, WRITEDATE, PRICE, SELLERID, NAME)
 		 VALUES((select max(promotionNO)+1 from promotion), #{title}, #{content}, SYSDATE, #{price}, #{sellerID}, 'promotion')
 	</insert>
 	
-	<update id="update" parameterType="PromotionVO"> 
+	<update id="updatepromotion" parameterType="PromotionVO"> 
 		UPDATE PROMOTION SET TITLE=#{title}, CONTENT=#{content}, PRICE=#{price}
 		 WHERE PROMOTIONNO=#{promotionNO}
 	</update>
 	
-	<delete id="delete" parameterType="PromotionVO"> 
-		DELETE FROM PROMOTION WHERE PROMOTIONNO=#{promotionNO}
+	<delete id="deletepromotion" parameterType="PromotionVO"> 
+		DELETE FROM PROMOTION
+		 WHERE PROMOTIONNO=#{promotionNO}
 	</delete>
    
 </mapper>
