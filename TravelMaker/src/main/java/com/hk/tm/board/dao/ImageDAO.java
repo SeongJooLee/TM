@@ -29,7 +29,7 @@ public class ImageDAO {
 	public void noticeUpdate(NoticeVO noticeVO, ImageVO imageVO) {
 		// TODO Auto-generated method stub
 		imageVO.setNoticeNO(noticeVO.getNoticeNO());
-		sql.update(ns+"update",imageVO);
+		sql.update(ns+"updateNotice",imageVO);
 	}
 
 	public void noticeDelete(int noticeNO) {
