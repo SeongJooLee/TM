@@ -25,31 +25,11 @@
 	height: auto;
 }
 
-#collapsibleNavbar ul li {
-	list-style: none;
-	color: white;
-	background-color: #2d2d2d;
-	float: left;
-	line-height: 30px;
-	vertical-align: middle;
-	text-align: center;
-}
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
 
-#collapsibleNavbar .nav-link {
-	text-decoration: none;
-	color: white;
-	display: block;
-	width: 150px;
-	font-size: 12px;
-	font-weight: bold;
-	font-family: "Trebuchet MS", Dotum, Arial;
+.nav-item {
+	font: 'Black Han Sans', sans-serif;
 }
-
-#collapsibleNavbar .nav-link:hover {
-	color: lightgray;
-	background-color: #4d4d4d;
-}
-
 
 </style>
 </head>
@@ -112,7 +92,7 @@
 
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
   <a class="navbar-brand">Travel Maker</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
