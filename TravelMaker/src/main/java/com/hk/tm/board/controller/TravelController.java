@@ -72,7 +72,7 @@ public class TravelController {
 	}
 	
 	@RequestMapping(value="travel/addDone" ,  method=RequestMethod.POST)
-	public void travelAddDone(MultipartHttpServletRequest request, HttpServletResponse response,Model model) throws IOException, ServletException {
+	public void travelAddDone(MultipartHttpServletRequest request, HttpServletResponse response,Model model) throws Exception {
 		
 		//logger.debug("title", travelVO.getTitle());
 		//logger.debug("content", travelVO.getContent());
@@ -176,7 +176,7 @@ public class TravelController {
 	}
 	
 	@RequestMapping(value="travel/update" ,  method=RequestMethod.POST)
-	public String travelUpdate(@RequestParam("travelNO") int travelNO, Model model, MultipartHttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public String travelUpdate(@RequestParam("travelNO") int travelNO, Model model, MultipartHttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("일단 여기");
 		request.setCharacterEncoding("utf-8");
 		Map<String,Object> map = new HashMap<String,Object>();
