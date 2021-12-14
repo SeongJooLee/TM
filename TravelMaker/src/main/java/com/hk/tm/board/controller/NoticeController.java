@@ -89,6 +89,7 @@ public class NoticeController {
 		noticeVO.setAdminID((String) map.get("adminID"));
 		noticeVO.setName((String) map.get("name"));
 		
+		
 		if(fileList.size()>0) {
 			imageVO.setImage1((String) fileList.get(0));
 			if(fileList.get(0) == "") {
