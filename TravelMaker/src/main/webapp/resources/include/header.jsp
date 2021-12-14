@@ -24,6 +24,33 @@
 	width: 100%;
 	height: auto;
 }
+
+#collapsibleNavbar ul li {
+	list-style: none;
+	color: white;
+	background-color: #2d2d2d;
+	float: left;
+	line-height: 30px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+#collapsibleNavbar .nav-link {
+	text-decoration: none;
+	color: white;
+	display: block;
+	width: 150px;
+	font-size: 12px;
+	font-weight: bold;
+	font-family: "Trebuchet MS", Dotum, Arial;
+}
+
+#collapsibleNavbar .nav-link:hover {
+	color: lightgray;
+	background-color: #4d4d4d;
+}
+
+
 </style>
 </head>
 <body>
@@ -83,30 +110,26 @@
 		</div>
 	</c:if>
 
-	<ul class="nav justify-content-end">
-		<li class="nav-item"><a href="board/popupEnter"
-			class="btn btn-primary">&nbsp;통합검색&nbsp;</a></li>
-		<li class="nav-item"><a class="nav-link disabled" href="#">통합검색 버튼을 눌러 사용하세요!</a></li>
-	</ul>
 
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand">Travel Maker</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-
-	<nav class="navbar navbar-inverse-sm bg-dark navbar-dark">
-		<p class="navbar-brand">Travel Maker</p>
-
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#collapsibleNavbar">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="collapsibleNavbar">
-			<ul class="nav navbar-nav">
-				<li class="nav-item"><a class="nav-link" href="${contextPath}/board/notice">공지사항</a></li>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+     				<li class="nav-item"><a class="nav-link" href="${contextPath}/board/notice">공지사항</a></li>
 				<li class="nav-item"><a class="nav-link" href="${contextPath}/board/promotion">홍보상품</a></li>
 				<li class="nav-item"><a class="nav-link" href="${contextPath}/board/review">이용후기</a></li>
 				<li class="nav-item"><a class="nav-link" href="${contextPath}/board/travel">여행게시판</a></li>
-			</ul>
-		</div>
-	</nav>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      
+      <button class="btn btn-outline-success my-2 my-sm-0" type=button onclick = "location.href = 'board/popupEnter' "> 통합검색</button>
+    </form>
+  </div>
+</nav>
 </body>
 </html>
