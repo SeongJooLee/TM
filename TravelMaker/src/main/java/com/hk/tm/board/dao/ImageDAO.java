@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.hk.tm.board.vo.ImageVO;
+import com.hk.tm.board.vo.NoticeVO;
 @Repository
 public class ImageDAO {
 
@@ -22,6 +23,12 @@ public class ImageDAO {
 	public void noticeAdd(ImageVO imageVO) {
 		// TODO Auto-generated method stub
 		sql.insert(ns+"insertNotice",imageVO);
+	}
+
+	public void noticeUpdate(NoticeVO noticeVO, ImageVO imageVO) {
+		// TODO Auto-generated method stub
+		imageVO.setNoticeNO(noticeVO.getNoticeNO());
+		sql.update(ns+"update",imageVO);
 	}
 
 }

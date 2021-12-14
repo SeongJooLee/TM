@@ -8,6 +8,10 @@
 <meta charset="UTF-8">
   <title>공지사항 목록</title>
 </head>
+
+    <jsp:include page="/resources/include/header.jsp" />
+    <hr>
+    
 <body>
 <table align="center" border="1"  width="80%"  >
   <tr height="10" align="center"  bgcolor="lightblue">
@@ -32,5 +36,7 @@
   	<a href="notice/add">글쓰기</a>
   
  </table>
+ <hr>
+     <jsp:include page="/resources/include/footer.jsp" />
 </body>
 </html>

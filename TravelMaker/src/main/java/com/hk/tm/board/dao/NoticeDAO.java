@@ -40,5 +40,10 @@ public class NoticeDAO {
 		sql.insert(ns+"insert",noticeVO);
 	}
 
+	public void boardUpdate(NoticeVO noticeVO) {
+		// TODO Auto-generated method stub
+		sql.update(ns+"update", noticeVO);
+	}
+
 
 }

@@ -27,6 +27,8 @@ function backToList(obj){
 </script>
 </head>
 <body>
+    <jsp:include page="/resources/include/header.jsp" />
+    <hr>
 	<h1 style="text-align: center">공지 글 쓰기</h1>
 	<form action="addDone" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="adminID" value="admin">
@@ -64,6 +66,7 @@ function backToList(obj){
 			<input type="button" value="목록 보기" onClick="backToList(this.form)">
 		</div>
 	</form>
-
+ <hr>
+     <jsp:include page="/resources/include/footer.jsp" />
 </body>
 </html>

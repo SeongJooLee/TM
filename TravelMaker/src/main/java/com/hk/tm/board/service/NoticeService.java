@@ -47,14 +47,14 @@ public class NoticeService {
 		// TODO Auto-generated method stub
 		noticeDAO.boardAdd(noticeVO);
 		imageDAO.noticeAdd(imageVO);
-		
+	}
+	
+	public void boardUpdate(NoticeVO noticeVO, ImageVO imageVO) {
+		// TODO Auto-generated method stub
+		noticeDAO.boardUpdate(noticeVO);
+		imageDAO.noticeUpdate(noticeVO,imageVO);
 	}
 
-	public void noticeUpdate(NoticeVO noticeVO, ImageVO imageVO) {
-		// TODO Auto-generated method stub
-		
-		
-	}
 
 
 
