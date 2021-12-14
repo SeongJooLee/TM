@@ -16,7 +16,7 @@
       <result property="leisure" column="leisure" />
    </resultMap>
    	
-   	<select id="selectAllCategory" resultMap="reservationResult">
+   	<select id="selectAllCategory" resultMap="categoryResult">
 		SELECT PROMOTIONNO, AREA, FOOD, TRAFFIC, CULTURE, HEALING, LEISURE
 		 FROM CATEGORY
 	</select>
