@@ -51,11 +51,13 @@ $('.btn_gotop').click(function(){
 	border-radius:100%;
 }
 
+
 .corp_item a {display:block; width:150px; height:40px; background:lightgray; color:black; border: 1px lightblue; font-size:14px; 
 
  text-align:center; padding-top:10px; text-decoration:none;}
 
 .corp_item a span {display:block;}
+
 
 .corp_item a:hover {background:white; text-decoration:none;}
 
