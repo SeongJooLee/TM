@@ -115,7 +115,7 @@
 					<tbody>
 						<tr>
 							<c:forEach var='list' items='${list}' varStatus='num'>
-								<td>${list.reserNO}</td>
+								<td><a href='#'>${list.reserNO}</a></td>
 								<td>${list.promotionNO}</td>
 								<td>${list.reserDate}</td>
 								<td>${list.id}</td>
