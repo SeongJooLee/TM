@@ -59,5 +59,9 @@
 			DELETE FROM TRAVEL WHERE id=#{userId}
 	</delete>
 	
+	<!-- 테스트중 -->
+		<select id = "selectToTravels" resultType="int">
+	select count(travelNO) FROM TRAVEL
+	</select>
 
 </mapper>

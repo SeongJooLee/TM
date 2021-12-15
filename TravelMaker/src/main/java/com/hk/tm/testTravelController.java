@@ -6,28 +6,21 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class NayounTest {
+@RequestMapping(value="/board/")
+public class testTravelController {
+	
+	@Autowired
+	testTravelService testtravelService;
 
-	@RequestMapping(value = "/member/nayounTest", method = RequestMethod.GET)
-	public String nayoun() {
-		
-		return "nayounTest";
-	}
-	
-	@RequestMapping(value = "/member/adminBoardList", method = RequestMethod.GET)
-	public String adminBoard() {
-		
-		return "adminBoardList";
-	}
-	
 	@RequestMapping(value="travel" , method = { RequestMethod.GET , RequestMethod.POST })
-	public ModelAndView listArticles(HttpServletRequest request , HttpServletResponse response) throws Exception {
+	public ModelAndView travelList(HttpServletRequest request , HttpServletResponse response) throws Exception {
 		
 		String _section = request.getParameter("section");
 		String _pageNum = request.getParameter("pageNum");
@@ -35,8 +28,8 @@ public class NayounTest {
 		int pageNum = Integer.parseInt(((_pageNum == null)? "1":_pageNum));
 		Map pagingMap = new HashMap();
 		pagingMap.put("section", section);
-		pagingMap.put("pageNum", pageNum);
-		Map travelsMap = travelService.selectAllTravels(pagingMap);
+		pagingMap.put("pageNum", pageNum);		
+		Map travelsMap = testtravelService.selectAllTravels(pagingMap);
 		
 		travelsMap.put("section", section);
 		travelsMap.put("pageNum", pageNum);
