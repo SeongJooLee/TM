@@ -25,7 +25,7 @@
 
             <!-- Call to Action-->
             <div class="card text-white bg-secondary my-5 py-4 text-center">
-                <div class="card-body"><p class="text-white m-0">공지사항</p></div>
+                <div class="card-body"><a class="text-white m-0" href="${contextPath}/tm/board/notice">공지사항</a></div>
             </div>
             <!-- Content Row-->
             <div class="row gx-4 gx-lg-5">
@@ -61,7 +61,7 @@
                 </div>
                 
                 <div class="card text-white bg-secondary my-5 py-4 text-center">
-                <div class="card-body"><p class="text-white m-0">홍보상품</p></div>
+                <div class="card-body"><a class="text-white m-0" href="${contextPath}/tm/board/promotion">홍보상품</a></div>
                 </div>
                 <div class="col-md-4 mb-5">
                     <div class="card h-100">
