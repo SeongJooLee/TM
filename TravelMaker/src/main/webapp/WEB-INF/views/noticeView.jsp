@@ -24,12 +24,13 @@ if(cnt===11){
 }
 
 function fn_enable(obj){
+	
    document.getElementById("title").disabled = false;
    document.getElementById("content").disabled = false;
    if(document.getElementById("originalFileName")!=null){
    	document.getElementById("imgUpdateBtn").disabled = false;
    }
-   if(document.getElementById("${image.image1}")==null){
+   if(document.getElementById("originalFileName")==null){
    	document.getElementById("imgUpdate").disabled = false;
    }
    document.getElementById("tr_btn_modify").style.display='block';
@@ -119,8 +120,8 @@ function backToList(obj){
 				<tr align="center">
 					<td align='left' colspan="2">이미지 파일 첨부<br>
 						<div id="update">
-							<input type="button" value="파일 수정" id="imgUpdateBtn" onClick="fn_imgUpdateBtn()" disabled />
-							<small>	&nbsp;&nbsp; * 클릭시 이미지 파일이 삭제됩니다.</small>
+							<input type="button" value="파일 삭제" id="imgUpdateBtn" onClick="fn_imgUpdateBtn()" disabled />
+							<small>	&nbsp;&nbsp; * 클릭시 전체 파일이 삭제됩니다.</small>
 						</div>
 							<input type="button" value="파일 추가" id="imgUpdate" onClick="fn_addFile()" disabled />
 							<small>	&nbsp;&nbsp; * 최대 10개까지 첨부 가능합니다.</small>
@@ -128,48 +129,55 @@ function backToList(obj){
 						
 						</div> 
 						<div id="updateResult">
+						
 							<c:if test="${not empty image.image1 && image.image1 !='null' }">
-							<input type="hidden" id="originalFileName" name="originalFileName" value="${image.image1 }" />
+							<input type="hidden" id="originalFileName" name="image1" value="${image.image1 }" />
 							<img src="${contextPath }/download?image=${image.image1}&noticeNO=${notice.noticeNO}&name=${notice.name}" />
-
+							</c:if>
+							
 							<c:if test="${not empty image.image2 && image.image2 !='null' }">
-								<input type="hidden" id="originalFileName" name="originalFileName" value="${image.image2 }" />
+								<input type="hidden" id="originalFileName" name="image2" value="${image.image2 }" />
 								<img src="${contextPath }/download?image=${image.image2}&noticeNO=${notice.noticeNO}&name=${notice.name}">
 							</c:if>
 
 							<c:if test="${not empty image.image3 && image.image3 !='null' }">
-								<input type="hidden" id="originalFileName" name="originalFileName" value="${image.image3 }" />
+								<input type="hidden" id="originalFileName" name="image3" value="${image.image3 }" />
 								<img src="${contextPath }/download?image=${image.image3}&noticeNO=${notice.noticeNO}&name=${notice.name}">
 							</c:if>
+							
 							<c:if test="${not empty image.image4 && image.image4 !='null' }">
-								<input type="hidden" id="originalFileName" name="originalFileName" value="${image.image4 }" />
+								<input type="hidden" id="originalFileName" name="image4" value="${image.image4 }" />
 								<img src="${contextPath }/download?image=${image.image4}&noticeNO=${notice.noticeNO}&name=${notice.name}">
 							</c:if>
+							
 							<c:if test="${not empty image.image5 && image.image5 !='null' }">
-								<input type="hidden" id="originalFileName" name="originalFileName" value="${image.image5 }" />
+								<input type="hidden" id="originalFileName" name="image5" value="${image.image5 }" />
 								<img src="${contextPath }/download?image=${image.image5}&noticeNO=${notice.noticeNO}&name=${notice.name}">
 							</c:if>
+							
 							<c:if test="${not empty image.image6 && image.image6 !='null' }">
-								<input type="hidden" id="originalFileName" name="originalFileName" value="${image.image6 }" />
+								<input type="hidden" id="originalFileName" name="image6" value="${image.image6 }" />
 								<img src="${contextPath }/download?image=${image.image6}&noticeNO=${notice.noticeNO}&name=${notice.name}">
 							</c:if>
 							<c:if test="${not empty image.image7 && image.image7 !='null' }">
-								<input type="hidden" id="originalFileName" name="originalFileName" value="${image.image7 }" />
+								<input type="hidden" id="originalFileName" name="image7" value="${image.image7 }" />
 								<img src="${contextPath }/download?image=${image.image7}&noticeNO=${notice.noticeNO}&name=${notice.name}">
 							</c:if>
+							
 							<c:if test="${not empty image.image8 && image.image8 !='null' }">
-								<input type="hidden" id="originalFileName" name="originalFileName" value="${image.image8 }" />
+								<input type="hidden" id="originalFileName" name="image8" value="${image.image8 }" />
 								<img src="${contextPath }/download?image=${image.image8}&noticeNO=${notice.noticeNO}&name=${notice.name}">
 							</c:if>
+							
 							<c:if test="${not empty image.image9 && image.image9 !='null' }">
-								<input type="hidden" id="originalFileName" name="originalFileName" value="${image.image9 }" />
+								<input type="hidden" id="originalFileName" name="image9" value="${image.image9 }" />
 								<img src="${contextPath }/download?image=${image.image9}&noticeNO=${notice.noticeNO}&name=${notice.name}">
 							</c:if>
+							
 							<c:if test="${not empty image.image10 && image.image10 !='null' }">
-								<input type="hidden" id="originalFileName" name="originalFileName" value="${image.image10 }" />
+								<input type="hidden" id="originalFileName" name="image10" value="${image.image10 }" />
 								<img src="${contextPath }/download?image=${image.image10}&noticeNO=${notice.noticeNO}&name=${notice.name}">
 							</c:if>
-						</c:if>
 						</div>
 					</td>
 				</tr>

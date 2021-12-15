@@ -33,9 +33,7 @@ public class ImageDAO {
 	public void noticeUpdate(NoticeVO noticeVO, ImageVO imageVO) {
 		// TODO Auto-generated method stub
 		imageVO.setNoticeNO(noticeVO.getNoticeNO());
-		System.out.println("업데이트 불량1"+imageVO.toString());
 		sql.update(ns+"updateNotice",imageVO);
-		System.out.println("업데이트 불량2"+imageVO.toString());
 	}
 
 	public void noticeDelete(int noticeNO) {
