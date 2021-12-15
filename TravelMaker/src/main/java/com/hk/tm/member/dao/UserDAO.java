@@ -162,6 +162,24 @@ public class UserDAO {
 		return 0;
 	}
 
+	public int updateSeller(SellerVO seller) {
+		// TODO Auto-generated method stub
+		int result = sqlSession.update("mapper.memberSeller.update", seller);
+		return result;
+	}
+
+	public int sellerDelete(String sellerID) {
+		// TODO Auto-generated method stub
+		int result = sqlSession.delete("mapper.memberSeller.delete", sellerID);
+		return result;
+	}
+
+	public int promotionDelete(String sellerId) {
+		// TODO Auto-generated method stub
+		int result = sqlSession.delete("mapper.boardPromotion.deleteSeller",sellerId);
+		return result;
+	}
+
 	
 
 }

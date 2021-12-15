@@ -34,7 +34,7 @@ public class FileDownloadController {
 		int lastIndex = image.lastIndexOf(".");
 		String fileName = image.substring(0,lastIndex);
 		File destDir = new File(CURR_IMAGE_REPO_PATH+"\\thumbnail");
-		File thumbnail = new File(CURR_IMAGE_REPO_PATH+"\\thumbnail\\"+fileName+".png");
+		File thumbnail = new File(CURR_IMAGE_REPO_PATH+"\\thumbnail\\"+name+"\\"+noticeNO+"\\"+fileName+".png");
 		destDir.mkdir();
 		
 		if(imageFile.exists()) {

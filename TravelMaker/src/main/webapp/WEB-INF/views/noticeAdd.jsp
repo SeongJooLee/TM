@@ -31,6 +31,17 @@ function backToList(obj){
 }
 
 function fn_create(){
+	var title = document.getElementById("title").value;
+	if(!title){
+		alert('제목을 적어주세요.');
+		return false;
+	}
+	var content = document.getElementById("content").value;
+	if(!content){
+		alert('내용을 적어주세요.');
+		return false;
+	}
+	
     if (!confirm("글을 생성하시겠습니까?")) {
         alert("취소(아니오)를 누르셨습니다.");
         return;
@@ -59,7 +70,7 @@ function fn_create(){
 					</select>
 				</td>
 				<td>
-					&nbsp;&nbsp;글 제목 : <input type="text" name="title" required>
+					&nbsp;&nbsp;글 제목 : <input type="text" name="title" id="title">
 				</td>
 			</tr>
 			<tr>
@@ -73,7 +84,7 @@ function fn_create(){
 			<tr>
 				<td align="center" valign="top">글내용</td>
 				<td colspan=2>
-					<textarea name="content" rows="10" cols="65" maxlength="4000" required></textarea>
+					<textarea id="content" name="content" rows="10" cols="65" maxlength="4000"></textarea>
 				</td>
 			</tr>
 		</table>

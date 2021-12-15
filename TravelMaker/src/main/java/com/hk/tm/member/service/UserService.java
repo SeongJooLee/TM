@@ -126,4 +126,20 @@ public class UserService {
 		// TODO Auto-generated method stub
 		return userDAO.deleteImage(userId);
 	}
+
+	public int updateSeller(SellerVO seller) {
+		// TODO Auto-generated method stub
+		return userDAO.updateSeller(seller);
+	}
+
+	public int sellerDelete(String sellerId) {
+		// TODO Auto-generated method stub
+		return userDAO.sellerDelete(sellerId);
+	}
+
+	public int promotionDelete(String sellerId) {
+		// TODO Auto-generated method stub
+		
+		return userDAO.promotionDelete(sellerId);
+	}
 }
