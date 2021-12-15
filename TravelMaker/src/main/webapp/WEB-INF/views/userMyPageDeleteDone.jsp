@@ -19,7 +19,7 @@
 .wrap {
 	display: grid;
 	grid-template-columns: 5% 15% 5% 60% 15%;
-	grid-template-rows: 500px 150px 500px;    
+	grid-template-rows: 100%;    
 }
 
 .wrap>div {
