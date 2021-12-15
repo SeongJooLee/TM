@@ -29,6 +29,9 @@ function fn_enable(obj){
    if(document.getElementById("originalFileName")!=null){
    	document.getElementById("imgUpdateBtn").disabled = false;
    }
+   if(document.getElementById("${image.image1}")==null){
+   	document.getElementById("imgUpdate").disabled = false;
+   }
    document.getElementById("tr_btn_modify").style.display='block';
    document.getElementById("tr_btn").style.display='none';
 }
@@ -46,7 +49,6 @@ function fn_imgUpdateBtn(obj){
 	            dataType: "json",
 	            data:{'noticeNO':'${notice.noticeNO}'},
 	            success: function(data) {
-	                alert('삭제 중');
 	                if(data.result == 'false'){
 	                	alert('삭제 실패');
 	                }else{
@@ -85,17 +87,6 @@ function fn_delete(){
         location.href="${contextPath}/board/notice/delete?noticeNO=${notice.noticeNO}";
     }
 }
-
-function readURL(input){
-	   if(input.files && input.files[0]){
-	      var reader = new FileReader();
-	      reader.onload=function(e){
-	         $('#preview').attr('src',e.target.result);
-	      }
-	      reader.readAsDataURL(input.files[0]);
-	   }
-	}
-
 
 function backToList(obj){
    obj.method ="POST";
@@ -142,60 +133,49 @@ function backToList(obj){
 							<img src="${contextPath }/download?image=${image.image1}&noticeNO=${notice.noticeNO}&name=${notice.name}" />
 
 							<c:if test="${not empty image.image2 && image.image2 !='null' }">
-								<input type="hidden" name="image2" value="${image.image2 }" />
+								<input type="hidden" id="originalFileName" name="originalFileName" value="${image.image2 }" />
 								<img src="${contextPath }/download?image=${image.image2}&noticeNO=${notice.noticeNO}&name=${notice.name}">
-								<br>
 							</c:if>
 
 							<c:if test="${not empty image.image3 && image.image3 !='null' }">
-								<img
-									src="${contextPath }/download?image=${image.image3}&noticeNO=${notice.noticeNO}&name=${notice.name}">
-								<br>
+								<input type="hidden" id="originalFileName" name="originalFileName" value="${image.image3 }" />
+								<img src="${contextPath }/download?image=${image.image3}&noticeNO=${notice.noticeNO}&name=${notice.name}">
 							</c:if>
 							<c:if test="${not empty image.image4 && image.image4 !='null' }">
-								<img
-									src="${contextPath }/download?image=${image.image4}&noticeNO=${notice.noticeNO}&name=${notice.name}">
-								<br>
+								<input type="hidden" id="originalFileName" name="originalFileName" value="${image.image4 }" />
+								<img src="${contextPath }/download?image=${image.image4}&noticeNO=${notice.noticeNO}&name=${notice.name}">
 							</c:if>
 							<c:if test="${not empty image.image5 && image.image5 !='null' }">
-								<img
-									src="${contextPath }/download?image=${image.image5}&noticeNO=${notice.noticeNO}&name=${notice.name}">
-								<br>
+								<input type="hidden" id="originalFileName" name="originalFileName" value="${image.image5 }" />
+								<img src="${contextPath }/download?image=${image.image5}&noticeNO=${notice.noticeNO}&name=${notice.name}">
 							</c:if>
 							<c:if test="${not empty image.image6 && image.image6 !='null' }">
-								<img
-									src="${contextPath }/download?image=${image.image6}&noticeNO=${notice.noticeNO}&name=${notice.name}">
-								<br>
+								<input type="hidden" id="originalFileName" name="originalFileName" value="${image.image6 }" />
+								<img src="${contextPath }/download?image=${image.image6}&noticeNO=${notice.noticeNO}&name=${notice.name}">
 							</c:if>
 							<c:if test="${not empty image.image7 && image.image7 !='null' }">
-								<img
-									src="${contextPath }/download?image=${image.image7}&noticeNO=${notice.noticeNO}&name=${notice.name}">
-								<br>
+								<input type="hidden" id="originalFileName" name="originalFileName" value="${image.image7 }" />
+								<img src="${contextPath }/download?image=${image.image7}&noticeNO=${notice.noticeNO}&name=${notice.name}">
 							</c:if>
 							<c:if test="${not empty image.image8 && image.image8 !='null' }">
-								<img
-									src="${contextPath }/download?image=${image.image8}&noticeNO=${notice.noticeNO}&name=${notice.name}">
-								<br>
+								<input type="hidden" id="originalFileName" name="originalFileName" value="${image.image8 }" />
+								<img src="${contextPath }/download?image=${image.image8}&noticeNO=${notice.noticeNO}&name=${notice.name}">
 							</c:if>
 							<c:if test="${not empty image.image9 && image.image9 !='null' }">
-								<img
-									src="${contextPath }/download?image=${image.image9}&noticeNO=${notice.noticeNO}&name=${notice.name}">
-								<br>
+								<input type="hidden" id="originalFileName" name="originalFileName" value="${image.image9 }" />
+								<img src="${contextPath }/download?image=${image.image9}&noticeNO=${notice.noticeNO}&name=${notice.name}">
 							</c:if>
-							<c:if
-								test="${not empty image.image10 && image.image10 !='null' }">
-								<img
-									src="${contextPath }/download?image=${image.image10}&noticeNO=${notice.noticeNO}&name=${notice.name}">
+							<c:if test="${not empty image.image10 && image.image10 !='null' }">
+								<input type="hidden" id="originalFileName" name="originalFileName" value="${image.image10 }" />
+								<img src="${contextPath }/download?image=${image.image10}&noticeNO=${notice.noticeNO}&name=${notice.name}">
 							</c:if>
 						</c:if>
 						</div>
 					</td>
-
 				</tr>
 				<tr>
 					<td width="150" align="center">글내용</td>
-					<td><textarea rows="20" cols="60" name="content" id="content"
-							disabled>${notice.content } </textarea></td>
+					<td><textarea rows="20" cols="60" name="content" id="content" disabled>${notice.content } </textarea></td>
 				</tr>
 				<tr>
 					<td>작성 날짜</td>
@@ -204,9 +184,7 @@ function backToList(obj){
 				<tr>
 					<td colspan="2" align="center">
 						<div id="tr_btn_modify" style="display: none">
-							<input type="button" value="수정 반영하기"
-								onClick="fn_modify_update(frmNotice)" /> <input type="button"
-								value="취소하기" onClick="backToList(frmNotice)" />
+							<input type="button" value="수정 반영하기" onClick="fn_modify_update(frmNotice)" /> <input type="button" value="취소하기" onClick="backToList(frmNotice)" />
 						</div>
 					</td>
 				</tr>

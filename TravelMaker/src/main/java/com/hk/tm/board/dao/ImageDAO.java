@@ -23,13 +23,18 @@ public class ImageDAO {
 
 	public void noticeAdd(ImageVO imageVO) {
 		// TODO Auto-generated method stub
+		System.out.println("인서트 불량1"+imageVO.toString());
 		sql.insert(ns+"insertNotice",imageVO);
+		System.out.println("인서트 불량2"+imageVO.toString());
+
 	}
 
 	public void noticeUpdate(NoticeVO noticeVO, ImageVO imageVO) {
 		// TODO Auto-generated method stub
 		imageVO.setNoticeNO(noticeVO.getNoticeNO());
+		System.out.println("업데이트 불량1"+imageVO.toString());
 		sql.update(ns+"updateNotice",imageVO);
+		System.out.println("업데이트 불량2"+imageVO.toString());
 	}
 
 	public void noticeDelete(int noticeNO) {

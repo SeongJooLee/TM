@@ -3,6 +3,7 @@ package com.hk.tm.board.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.spi.FileSystemProvider;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -85,39 +86,70 @@ public class NoticeController {
 		noticeVO.setContent((String) map.get("content"));
 		noticeVO.setAdminID((String) map.get("adminID"));
 		noticeVO.setName((String) map.get("name"));
-		
-		if(fileList.size()>0) {
-			imageVO.setImage1((String) fileList.get(0));
-			if(fileList.get(0) == "") {
-				imageVO.setImage1(null);
+		String noImage = "noImage";
+		if(fileList.size()>9) {
+			imageVO.setImage10((String) fileList.get(9));
+			if(fileList.get(9) == "") {
+				imageVO.setImage10(noImage);
+				fileList.remove(9);
+			}
+		} if(fileList.size()>8) {
+			imageVO.setImage9((String) fileList.get(8));
+			if(fileList.get(8) == "") {
+				imageVO.setImage9(noImage);
+				fileList.remove(8);
+			}
+		} if(fileList.size()>7) {
+			imageVO.setImage8((String) fileList.get(7));
+			if(fileList.get(7) == "") {
+				imageVO.setImage8(noImage);
+				fileList.remove(7);
+			}
+		} if(fileList.size()>6) {
+			imageVO.setImage7((String) fileList.get(6));
+			if(fileList.get(6) == "") {
+				imageVO.setImage7(noImage);
+				fileList.remove(6);
+			}
+		} if(fileList.size()>5) {
+			imageVO.setImage6((String) fileList.get(5));
+			if(fileList.get(5) == "") {
+				imageVO.setImage6(noImage);
+				fileList.remove(5);
+			}
+		} if(fileList.size()>4) {
+			imageVO.setImage5((String) fileList.get(4));
+			if(fileList.get(4) == "") {
+				imageVO.setImage5(null);
+				fileList.remove(4);
+			}
+		} if(fileList.size()>3) {
+			imageVO.setImage4((String) fileList.get(3));
+			if(fileList.get(3) == "") {
+				imageVO.setImage4(null);
+				fileList.remove(3);
+			}
+		} if(fileList.size()>2) {
+			imageVO.setImage3((String) fileList.get(2));
+			if(fileList.get(2) == "") {
+				imageVO.setImage3(null);
+				fileList.remove(2);
 			}
 		} if(fileList.size()>1) {
 			imageVO.setImage2((String) fileList.get(1));
-			
-		} if(fileList.size()>2) {
-			imageVO.setImage3((String) fileList.get(2));
-			
-		} if(fileList.size()>3) {
-			imageVO.setImage4((String) fileList.get(3));
-			
-		} if(fileList.size()>4) {
-			imageVO.setImage5((String) fileList.get(4));
-			
-		} if(fileList.size()>5) {
-			imageVO.setImage6((String) fileList.get(5));
-			
-		} if(fileList.size()>6) {
-			imageVO.setImage7((String) fileList.get(6));
-			
-		} if(fileList.size()>7) {
-			imageVO.setImage8((String) fileList.get(7));
-			
-		} if(fileList.size()>8) {
-			imageVO.setImage9((String) fileList.get(8));
-			
-		} if(fileList.size()>9) {
-			imageVO.setImage10((String) fileList.get(9));
+			if(fileList.get(1) == "") {
+				imageVO.setImage2(null);
+				fileList.remove(1);
+			}
+		} if(fileList.size()>0) {
+			imageVO.setImage1((String) fileList.get(0));
+			if(fileList.get(0) == "") {
+				imageVO.setImage1(null);
+				fileList.remove(0);
+			}
 		}
+		System.out.println("에드에서 무브되엇는가?" +imageVO.toString());
+		System.out.println("에드에서 무브되엇는가?" +fileList.toString());
 		noticeService.boardAdd(noticeVO,imageVO);
 		if(imageVO.getImage1()!=null ) {
 			for(int i=0;i < fileList.size(); i++) {
@@ -158,7 +190,6 @@ public class NoticeController {
 	
 	@RequestMapping(value="/board/notice/update", method=RequestMethod.POST)
 	public String noticeUpdate(@RequestParam("noticeNO") int noticeNO,Model model,MultipartHttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("일단 여기");
 		request.setCharacterEncoding("utf-8");
 		Map<String,Object> map = new HashMap<String,Object>();
 		Enumeration enu=request.getParameterNames();
@@ -184,32 +215,54 @@ public class NoticeController {
 		
 		if(fileList.size()>0) {
 			imageVO.setImage1((String) fileList.get(0));
+			if(fileList.get(0) == "") {
+				imageVO.setImage1(null);
+			}
 		} if(fileList.size()>1) {
 			imageVO.setImage2((String) fileList.get(1));
-			
+			if(fileList.get(1) == "") {
+				imageVO.setImage2(null);
+			}
 		} if(fileList.size()>2) {
 			imageVO.setImage3((String) fileList.get(2));
-			
+			if(fileList.get(1) == "") {
+				imageVO.setImage3(null);
+			}
 		} if(fileList.size()>3) {
 			imageVO.setImage4((String) fileList.get(3));
-			
+			if(fileList.get(1) == "") {
+				imageVO.setImage4(null);
+			}
 		} if(fileList.size()>4) {
 			imageVO.setImage5((String) fileList.get(4));
-			
+			if(fileList.get(1) == "") {
+				imageVO.setImage5(null);
+			}
 		} if(fileList.size()>5) {
 			imageVO.setImage6((String) fileList.get(5));
-			
+			if(fileList.get(1) == "") {
+				imageVO.setImage6(null);
+			}
 		} if(fileList.size()>6) {
 			imageVO.setImage7((String) fileList.get(6));
-			
+			if(fileList.get(1) == "") {
+				imageVO.setImage7(null);
+			}
 		} if(fileList.size()>7) {
 			imageVO.setImage8((String) fileList.get(7));
-			
+			if(fileList.get(1) == "") {
+				imageVO.setImage8(null);
+			}
 		} if(fileList.size()>8) {
 			imageVO.setImage9((String) fileList.get(8));
-			
+			if(fileList.get(1) == "") {
+				imageVO.setImage9(null);
+			}
 		} if(fileList.size()>9) {
 			imageVO.setImage10((String) fileList.get(9));
+			if(fileList.get(1) == "") {
+				imageVO.setImage10(null);
+			}
 		}
 		
 		if(noticeNO!=0) {
@@ -252,7 +305,6 @@ public class NoticeController {
 	@RequestMapping(value="/board/notice/imgDelete", method= {RequestMethod.GET,RequestMethod.POST},produces = "application/json; charset=utf8")
 	@ResponseBody
 	public Map<String, Object> imgDelete(@RequestParam("noticeNO") int noticeNO) throws IOException {
-		System.out.println("이미지 삭제 no 확인 = " + noticeNO);
 		Map<String, Object> map = new HashMap<String, Object>();
 
 		int ret = noticeService.imgDelete(noticeNO);
