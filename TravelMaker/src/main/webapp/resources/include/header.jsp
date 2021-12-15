@@ -18,6 +18,7 @@
 		</div>
 	</c:if>
 
+
 	<c:if
 		test='${userSession.name != null && userSession.grade.equals("seller")}'>
 		<div class="jumbotron text-center"
