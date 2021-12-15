@@ -71,7 +71,6 @@ function backToList(obj){
 </head>
 <body>
     <jsp:include page="/resources/include/header.jsp" />
-    <hr>
 <div align="center">
 
 <form id="frmReview" enctype="multipart/form-data">
@@ -156,7 +155,6 @@ function backToList(obj){
    </table>
    </form>
 </div>
- <hr>
      <jsp:include page="/resources/include/footer.jsp" />
 </body>
 </html>

@@ -25,30 +25,6 @@
 	height: auto;
 }
 
-#collapsibleNavbar ul li {
-	list-style: none;
-	color: white;
-	background-color: #2d2d2d;
-	float: left;
-	line-height: 30px;
-	vertical-align: middle;
-	text-align: center;
-}
-
-#collapsibleNavbar .nav-link {
-	text-decoration: none;
-	color: white;
-	display: block;
-	width: 150px;
-	font-size: 12px;
-	font-weight: bold;
-	font-family: "Trebuchet MS", Dotum, Arial;
-}
-
-#collapsibleNavbar .nav-link:hover {
-	color: lightgray;
-	background-color: #4d4d4d;
-}
 
 
 </style>
@@ -105,14 +81,14 @@
 			<p align="right">
 				<a href="${contextPath}/member/login">로그인</a>&nbsp;&nbsp;&nbsp;
 				<a 	href="${contextPath}/member/registerCheck">회원가입</a>
-				&nbsp;&nbsp;&nbsp;<a href="#">고객센터</a>
+				&nbsp;&nbsp;&nbsp;<a href="${contextPath}/board/notice/view?noticeNO=3">고객센터</a>
 			</p>
 		</div>
 	</c:if>
 
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand">Travel Maker</a>
+  <a class="navbar-brand" href="https://www.youtube.com/watch?v=q8lYrRzgYD4">Travel Maker</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

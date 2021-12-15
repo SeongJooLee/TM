@@ -26,4 +26,9 @@ public class ReviewDAO {
 		return reviewVO;
 	}
 
+	public void reviewUpdate(ReviewVO reviewVO) {
+		// TODO Auto-generated method stub
+		sql.update(ns+"update", reviewVO);
+	}
+
 } 
