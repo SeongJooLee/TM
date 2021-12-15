@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.hk.tm.board.vo.ImageVO;
 import com.hk.tm.board.vo.NoticeVO;
 
 @Repository
@@ -49,6 +50,8 @@ public class NoticeDAO {
 		// TODO Auto-generated method stub
 		sql.delete(ns+"deleteNotice",noticeNO);
 	}
+
+
 
 
 }

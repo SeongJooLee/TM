@@ -64,4 +64,12 @@ public class ImageDAO {
 		return imageVO;
 	}
 
+	public int imgDelete(int noticeNO) {
+		ImageVO imageVO = sql.selectOne(ns+"selectOneNotice",noticeNO);
+		int ret=0;
+		if(imageVO!=null) {
+			ret = sql.delete(ns+"deleteNotice",noticeNO);
+		}
+		return ret;
+	}
 }

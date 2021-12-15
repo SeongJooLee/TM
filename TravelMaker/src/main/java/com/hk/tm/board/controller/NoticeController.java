@@ -20,6 +20,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -52,7 +53,6 @@ public class NoticeController {
 		model.addAttribute("notice",map.get("notice"));
 		model.addAttribute("image",map.get("image"));
 		
-		System.out.println("여기는 view +"+ map.get("notice").toString());
 		return "noticeView";
 	}
 
@@ -77,7 +77,6 @@ public class NoticeController {
 		NoticeVO noticeVO = new NoticeVO();
 		ImageVO imageVO = new ImageVO();
 		
-		
 		int noticeNO = noticeService.selectMaxNotice();
 		noticeNO++;
 		
@@ -86,7 +85,6 @@ public class NoticeController {
 		noticeVO.setContent((String) map.get("content"));
 		noticeVO.setAdminID((String) map.get("adminID"));
 		noticeVO.setName((String) map.get("name"));
-		
 		
 		if(fileList.size()>0) {
 			imageVO.setImage1((String) fileList.get(0));
@@ -241,7 +239,7 @@ public class NoticeController {
 		
 	}
 	@RequestMapping(value="/board/notice/delete", method=RequestMethod.GET)
-	public void noticeAdd(@RequestParam("noticeNO") int noticeNO, HttpServletResponse response) throws IOException {
+	public void noticeDelete(@RequestParam("noticeNO") int noticeNO, HttpServletResponse response) throws IOException {
 		
 		NoticeVO noticeVO = noticeService.noticeDelete(noticeNO);
 		File imgDir = new File(REPO+"\\"+noticeVO.getName()+"\\"+noticeVO.getNoticeNO());
@@ -249,5 +247,25 @@ public class NoticeController {
 			FileUtils.deleteDirectory(imgDir);
 		}
 		response.sendRedirect("/tm/board/notice");
+	}
+	
+	@RequestMapping(value="/board/notice/imgDelete", method= {RequestMethod.GET,RequestMethod.POST},produces = "application/json; charset=utf8")
+	@ResponseBody
+	public Map<String, Object> imgDelete(@RequestParam("noticeNO") int noticeNO) throws IOException {
+		System.out.println("이미지 삭제 no 확인 = " + noticeNO);
+		Map<String, Object> map = new HashMap<String, Object>();
+
+		int ret = noticeService.imgDelete(noticeNO);
+		if(ret==0) {
+			map.put("result", "false");
+		} else {
+			map.put("result", "true");
+			File imgDir = new File(REPO+"\\notice\\"+noticeNO);
+			if(imgDir.exists()) {
+				FileUtils.deleteDirectory(imgDir);
+			}
+		}
+		return map;
+		
 	}
 }

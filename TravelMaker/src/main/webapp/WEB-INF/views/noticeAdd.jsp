@@ -10,7 +10,6 @@
 <script src='http://code.jquery.com/jquery-latest.min.js'></script>
 <script type='text/javascript'>
 var cnt = 1;
-var previewCnt = 1;
 function fn_addFile(){
 if(cnt===11){
 	alert("최대 10개만 생성할 수 있습니다.");
