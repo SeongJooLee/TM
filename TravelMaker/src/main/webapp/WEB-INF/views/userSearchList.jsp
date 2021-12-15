@@ -10,7 +10,8 @@
 <title>관리자 마이페이지</title>
 <script>
 	function waitd(){
-		alert('검색 결과가 없습니다');
+		alert('검색 결과가 없습니다 게시판 관리로 이동합니다');
+		location.href='/tm/admin/mypage';
 		}
 	function nameOrder(){
 		location.href='/tm/admin/mypage?list=name';
@@ -70,6 +71,12 @@
 					<form action='' method='post'>
 						<input type='hidden' name='key' value='two'>
 						<input type='submit' value='회원조회'>
+					</form>
+				</li><br>
+				<li>
+					<form action='' method='post'>
+						<input type='hidden' name='key' value='three'>
+						<input type='submit' value='예약 조회'>
 					</form>
 				</li><br>
 				

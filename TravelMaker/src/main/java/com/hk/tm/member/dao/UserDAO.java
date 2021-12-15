@@ -176,7 +176,14 @@ public class UserDAO {
 
 	public int promotionDelete(String sellerId) {
 		// TODO Auto-generated method stub
+		System.out.println("프로모션에서 "+sellerId);
 		int result = sqlSession.delete("mapper.boardPromotion.deleteSeller",sellerId);
+		return result;
+	}
+
+	public int imageDelete(String sellerId) {
+		// TODO Auto-generated method stub
+		int result = sqlSession.delete("mapper.boardImage.deleteSeller",sellerId);
 		return result;
 	}
 

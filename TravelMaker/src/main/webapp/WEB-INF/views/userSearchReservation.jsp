@@ -2,20 +2,20 @@
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
 <%@ page session="true" %>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관리자 마이페이지</title>
+<title>Insert title here</title>
 <script>
-	function nameOrder(){
-		location.href='/tm/admin/mypage?list=name';
-		}
-	function dateOrder(){
-		location.href='/tm/admin/mypage?list=date';
-		}
+function success(){
+	alert('${result}로 검색한 결과입니다');
 	
+	}
+function waitd(){
+	alert('검색 결과가 없습니다 게시판 관리 페이지로 이동합니다');
+	location.href='/tm/admin/mypage';
+	}
 </script>
 <style type="text/css">
 .wrap {
@@ -46,7 +46,8 @@
 </style>
 </head>
 <body>
-	<h1>${userSession.name} 전용 페이지</h1>
+
+<h1>${userSession.name} 전용 페이지</h1>
 	<div class="wrap">
 		<div class="grid1">
 			
@@ -58,9 +59,9 @@
 					</form>
 				</li><br>
 				<li>
-					<form action='' method='post'>
+					<form action='/tm/admin/mypage' method='post'>
 						<input type='hidden' name='key' value='two'>
-						<input type='submit' value='회원조회'>
+						<input type='submit' value='회원 조회'>
 					</form>
 				</li><br>
 				<li>
@@ -70,42 +71,59 @@
 					</form>
 				</li><br>
 				
-				
 			</ul>
 		</div>
 		<div class="grid2">
-			<button onclick='nameOrder()'>이름 순으로보기</button><br><br>
-			<button onclick='dateOrder()'>가입날짜 순으로보기</button><br><br>
-			<form action='/tm/admin/mypage' method='post'>
+		<h3>검색결과</h3>
+		<form action='/tm/admin/mypage/search' method='get'>
 			아이디 조회 : <input type="search" name='search'><input type='submit' value='검색'>
-			</form>
+		</form><br><br>
+		
+			<table border='1'>
+	<tr>
+		<td>예약번호</td>
+		<td>예약날짜</td>
+		<td>상품번호</td>
+		<td>상품제목</td>
+		<td>상품내용</td>
+		<td>가격</td>
+		<td>인원수</td>
+		<td>예약자아이디</td>
+	</tr>
+<c:forEach var='proList' items='${proList}'>
+	<tr>
+	<c:forEach var='reserList' items='${reserList}'>
+		
+		<c:if test='${proList.promotionNO==reserList.promotionNO && result.equals(reserList.id)}'>
 			
-			<h3>모든 회원 목록</h3>
-			<table	border='1'>
-				<tr>
-					<td>ID</td>
-					<td>PW</td>
-					<td>NAME</td>
-					<td>PHONE</td>
-					<td>ADDRESS</td>
-					<td>JOINDATE</td>
-					<td>GRADE</td>
-				</tr>
-			<c:forEach var='list' items='${list}'>
-				<tr>
-					<td><a href='/tm/admin/mypage?id=${list.id}&grade=${list.grade}'>${list.id}</a></td>
-					<td>${list.pw}</td>
-					<td>${list.name}</td>
-					<td>${list.phone}</td>
-					<td>${list.address}</td>
-					<td>${list.joinDate}</td>
-					<td>${list.grade}</td>
-				</tr>			
-			</c:forEach>
-
-			</table>
+				<td><a href='#'>${reserList.reserNO}</a></td>
+				<td>${reserList.reserDate}</td>
+				<td>${proList.promotionNO}</td>
+				<td>${proList.title}</td>
+				<td>${proList.content}</td>
+				<td>${proList.price}</td>
+				<td>${reserList.headCount}</td>
+				<td>${reserList.id}</td>
+			
+		</c:if>
+		<c:if test='${!result.equals(reserList.id)}'>
+					<script>
+						waitd();
+					</script>
+		
+		</c:if>
+		
+		
+	</c:forEach>
+	</tr>
+	
+</c:forEach>
+	<script>
+			success();
+	</script>
+</table>
 		</div>
 	</div>
-</body>
 
+</body>
 </html>

@@ -142,4 +142,9 @@ public class UserService {
 		
 		return userDAO.promotionDelete(sellerId);
 	}
+
+	public int imageDelete(String sellerId) {
+		// TODO Auto-generated method stub
+		return userDAO.imageDelete(sellerId);
+	}
 }

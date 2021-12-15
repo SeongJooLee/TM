@@ -74,6 +74,13 @@
 					</form>
 				</li>
 				<br>
+				<li>
+					<form action='' method='post'>
+						<input type='hidden' name='key' value='three'> <input
+							type='submit' value='예약조회'>
+					</form>
+				</li>
+				<br>
 
 
 			</ul>
@@ -93,7 +100,7 @@
 				<tbody>
 					<c:forEach var='seller' items='${seller}'>
 						<tr>
-							<td>${seller.promotionNO}</td>
+							<td><a href='#'>${seller.promotionNO}</a></td>
 							<td>${seller.title}</td>
 							<td>${seller.price}</td>
 							<td>${seller.writeDate}</td>

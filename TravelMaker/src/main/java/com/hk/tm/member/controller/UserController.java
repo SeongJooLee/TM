@@ -313,7 +313,11 @@ public class UserController {
 	@RequestMapping(value="/member/sellerMypage/delete", method=RequestMethod.GET)
 	public String sellerMypageDelete(@RequestParam(value="sellerId",required=false) String sellerId,Model model){	
 		if(sellerId != null) {	
+//			System.out.println(sellerId+" 셀러아이디");
+//			int imageResult = userService.imageDelete(sellerId);
+//			System.out.println("이미지테이블 개수 = "+imageResult);
 			int promotionResult = userService.promotionDelete(sellerId);
+			System.out.println("프로모션테이블 개수 = "+promotionResult);
 			int result = userService.sellerDelete(sellerId);
 			model.addAttribute("result",result);
 		}
