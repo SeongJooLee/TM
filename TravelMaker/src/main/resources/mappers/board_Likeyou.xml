@@ -64,7 +64,7 @@
 	 -->
 	
 	<delete id="delete" parameterType="LikeyouVO"> 
-		DELETE FROM LIKEYOU WHERE id=#{id} 
+		DELETE FROM LIKEYOU WHERE id=#{userId} 
 	</delete>
 	
 </mapper>

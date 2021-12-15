@@ -46,6 +46,11 @@
 		DELETE FROM PROMOTION
 		 WHERE PROMOTIONNO=#{promotionNO}
 	</delete>
+	
+	<delete id="deleteOne" parameterType="PromotionVO"> 
+		DELETE FROM PROMOTION
+		 WHERE id=#{userId}
+	</delete>
    
 </mapper>
 

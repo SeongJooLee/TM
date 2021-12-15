@@ -55,6 +55,9 @@
 	<delete id="deleteTravel" parameterType="travelVO">
 			DELETE FROM TRAVEL WHERE TRAVELNO=#{travelNO}
 	</delete>
+	<delete id="deleteUserTravel" parameterType="travelVO">
+			DELETE FROM TRAVEL WHERE id=#{userId}
+	</delete>
 	
 
 </mapper>

@@ -22,6 +22,9 @@
       <result property="image8" column="image8" />
       <result property="image9" column="image9" />
       <result property="image10" column="image10" />
+      <result property="id" column="id" />
+      <result property="sellerId" column="sellerId" />
+      <result property="adminId" column="adminId" />
    </resultMap>
    
    <select id="selectAll" resultMap="imageResult">
@@ -87,6 +90,11 @@
 	<delete id="deletePromotion" parameterType="imageVO"> 
 		DELETE FROM IMAGE
 		 where promotionNO=#{promotionNO}
+	</delete>
+	
+	<delete id="deleteUser" parameterType="imageVO"> 
+		DELETE FROM IMAGE
+		 where id=#{userId}
 	</delete>
    
 </mapper>

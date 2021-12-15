@@ -82,4 +82,48 @@ public class UserService {
 		// TODO Auto-generated method stub
 		return userDAO.selectReview(reviewNO);
 	}
+
+	public int update(UserVO user) {
+		// TODO Auto-generated method stub
+		return userDAO.update(user);
+	}
+
+	public int delete(String userId) {
+		// TODO Auto-generated method stub
+		return userDAO.delete(userId);
+	}
+	public int deleteTravel(String userId) {
+		// TODO Auto-generated method stub
+		return userDAO.deleteTravel(userId);
+	}
+
+	public int deleteComment(String userId) {
+		// TODO Auto-generated method stub
+		return userDAO.deleteComment(userId);
+	}
+
+	public int deleteReview(String userId) {
+		// TODO Auto-generated method stub
+		return userDAO.deleteReview(userId);
+	}
+
+	public int deleteLikeyou(String userId) {
+		// TODO Auto-generated method stub
+		return userDAO.deleteLikeyou(userId);
+	}
+
+	public int eventProduct(String userId) {
+		// TODO Auto-generated method stub
+		return userDAO.deleteEventProduct(userId);
+	}
+
+	public int delectReservation(String userId) {
+		// TODO Auto-generated method stub
+		return userDAO.delectReservation(userId);
+	}
+
+	public int deleteImage(String userId) {
+		// TODO Auto-generated method stub
+		return userDAO.deleteImage(userId);
+	}
 }

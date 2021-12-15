@@ -14,14 +14,21 @@
 		location.href = "login";
 	}
 	function updateUser(){
-			
 			location.href = "/tm/member/mypage/update";
 			
 
 		}
 	function deleteUser(){
-		location.href = "/tm/member/mypage/delete?userId=${userSession.id}";
+			alert('삭');
 		}
+	/* function check(){
+		var result = confirm("취소할거니..?");
+		if(result){
+			location.href = "../";
+		}else{
+		    return;
+		}
+	} */
 </script>
 <style type="text/css">
 .wrap {
@@ -68,25 +75,25 @@ width:110px;
 			<br>
 			<ul style="background-color: CornflowerBlue; text-align: center;" >
 				<li>
-					<form action='mypage' method='post'>
+					<form action='../mypage' method='post'>
 						<input type="hidden" name="testKey" value="one">					
 						<input class='btn' type='submit'  value='회원정보'>
 					</form>
 				</li><br>
 				<li>
-					<form action='mypage' method='post'>
+					<form action='../mypage' method='post'>
 						<input type="hidden" name="testKey" value="two">					
 						<input class='btn' type='submit'  value='내가 쓴 글 보기'>
 					</form>			
 				</li><br>
 				<li>
-					<form action='mypage' method='post'>
+					<form action='../mypage' method='post'>
 						<input type="hidden" name="testKey" value="three">					
 						<input class='btn' type='submit'  value='예약확인'>
 					</form>	
 				</li><br>
 				<li>
-					<form action='mypage' method='post'>
+					<form action='../mypage' method='post'>
 						<input type="hidden" name="testKey" value="four">					
 						<input class='btn' type='submit'  value='추천한 글(보류중)'>
 					</form>	
@@ -95,16 +102,19 @@ width:110px;
 			</ul>
 		</div>
 		<div class="grid2">
-		<p>아이뒤 : ${userSession.id}</p> 
-		<p>비빔면호 : ${userSession.pw}</p> 
-		<p>이름 : ${userSession.name}</p> 
-		<p>생년월일 : ${userSession.birth}</p> 
-		<p>연락처 : ${userSession.phone}</p> 
-		<p>주소 : ${userSession.address}</p> 
-		<p>가입날짜 : ${userSession.joinDate}</p> 
-		
-		<button type='button' onclick='updateUser()'>수정하기</button>
-		<button onclick='deleteUser()'>삭제하기</button>
+		<form action='/tm/member/mypage/update' method='post'>
+			아이디: <input type='text' name='id' value='${userSession.id}'><br>
+			비밀번호: <input type='text' name='pw' value='${userSession.pw}'><br>
+			이름: <input type='text' name='name' value='${userSession.name}'><br>
+			생년월일: <input type='text' name='birth' value='${userSession.birth}'><br>
+			연락처: <input type='text' name='phone' value='${userSession.phone}'><br>
+			주소: <input type='text' name='address' value='${userSession.address}'><br>
+			가입날짜: <input type='text' name='joinDate' value='${userSession.joinDate}'><br>
+			<input type='hidden' name='testKey' value='userUpdate'>
+			<input type='submit' value='변경하기'>
+		</form>
+	
+
 		
 		</div>
 	</div>

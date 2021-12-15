@@ -36,7 +36,8 @@
 	</update>
 	
 	<delete id="delete" parameterType="CommentVO"> 
-		DELETE FROM COMMENT WHERE ID=#{id} 
+		DELETE FROM "COMMENT" WHERE ID=#{userId} 
 	</delete>
+	
 
 </mapper>

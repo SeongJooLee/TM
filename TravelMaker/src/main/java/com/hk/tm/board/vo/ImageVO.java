@@ -1,7 +1,9 @@
 package com.hk.tm.board.vo;
 
 public class ImageVO {
-
+	private String id;
+	private String sellerId;
+	private String adminId;
 	private int noticeNO;
 	private int travelNO;
 	private int reviewNO;

@@ -109,6 +109,59 @@ public class UserDAO {
 		return review;
 	}
 
+	public int update(UserVO user) {
+		// TODO Auto-generated method stub
+		int result = sqlSession.update("mapper.memberUser.update",user);
+		return result;
+	}
+
+	public int delete(String userId) {
+		// TODO Auto-generated method stub
+		int result = sqlSession.delete("mapper.memberUser.delete",userId);
+		return result;
+	}
+
+	public int deleteTravel(String userId) {
+		// TODO Auto-generated method stub
+		int result = sqlSession.delete("mapper.boardTravel.deleteUserTravel",userId);
+		return result;
+	}
+
+	public int deleteComment(String userId) {
+		// TODO Auto-generated method stub
+		int result = sqlSession.delete("mapper.boardComment.delete",userId);
+		return result;
+	}
+
+	public int deleteReview(String userId) {
+		// TODO Auto-generated method stub
+		int result = sqlSession.delete("mapper.boardReview.deleteUserOne",userId);
+		return result;
+	}
+
+	public int deleteLikeyou(String userId) {
+		// TODO Auto-generated method stub
+		int result = sqlSession.delete("mapper.boardLikeyou.delete",userId);
+		return result;
+	}
+	
+	public int deleteEventProduct(String userId) {
+		int result = sqlSession.delete("mapper.boardEvent.delete",userId);
+		return result;
+	}
+
+	public int delectReservation(String userId) {
+		// TODO Auto-generated method stub
+		int result = sqlSession.delete("mapper.boardReservation.deleteOneUser",userId);
+		return result;
+	}
+
+	public int deleteImage(String userId) {
+		// TODO Auto-generated method stub
+		int result = sqlSession.delete("mapper.boardImage.deleteUser",userId);
+		return 0;
+	}
+
 	
 
 }

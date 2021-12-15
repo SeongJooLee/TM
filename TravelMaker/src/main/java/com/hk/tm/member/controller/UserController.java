@@ -49,6 +49,10 @@ public class UserController {
 	}
 	@RequestMapping(value="/member/logout",method=RequestMethod.GET)
 	public String memberLogout(HttpSession session) {
+//		if(key == 1) {
+//			session.invalidate();
+//			return "logoutUpdate";
+//		}
 		session.invalidate();
 		System.out.println("세션삭제");
 		return "logout";
@@ -141,7 +145,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/member/mypage",method=RequestMethod.GET)
-	public String memberMyPage(@ModelAttribute UserVO userVO,Model model,HttpSession session,@RequestParam(required = false,value="promotionNO") String proNO,@RequestParam(required = false,value="travelNO") String traNO,@RequestParam(required=false,value="reviewNO") String revNO) {
+	public String memberMyPage(@ModelAttribute UserVO userVO,Model model,HttpSession session,@RequestParam(required = false,value="promotionNO") String proNO,@RequestParam(required = false,value="travelNO") String traNO,@RequestParam(required=false,value="reviewNO") String revNO,@RequestParam(required=false,value="userId") String userId) {
 		System.out.println("민수야.? = "+session.getAttribute("userSession").getClass().getName());
 		String check = session.getAttribute("userSession").getClass().getName();
 		System.out.println("관리자 세션체크 : "+check);
@@ -166,6 +170,8 @@ public class UserController {
 			ReviewVO reviewVO = userService.selectReview(reviewNO);
 			model.addAttribute("reviewVO",reviewVO);
 			return "userReviewDone";
+		}else if(userId !=null) {
+			
 		}
 		
 		
@@ -192,7 +198,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/member/mypage", method=RequestMethod.POST)
-	public String mypage(HttpSession session,@RequestParam("testKey") String key,Model model){	
+	public String mypage(HttpSession session,@RequestParam(value="testKey",required=false) String key,Model model){	
 //		UserVO user = null;
 //		if(session.getAttribute("userSession")!=null) {
 //			user = (UserVO) session.getAttribute("userSession");
@@ -255,8 +261,43 @@ public class UserController {
 		case "sellerFour":
 			System.out.println("sellerFour실행");
 			return null;
+		
 		}
 		return null;
+	}
+	@RequestMapping(value="/member/mypage/update", method=RequestMethod.GET)
+	public String mypageUpdate(){	
+		return "userMyPageUpdate";
+	}
+	@RequestMapping(value="/member/mypage/update", method=RequestMethod.POST)
+	public String mypageUpdatePost(@ModelAttribute UserVO user,Model model){	
+		System.out.println(user);
+		int result = userService.update(user);
+		model.addAttribute("result",result);
+		return "userMyPageUpdateDone";
+	}
+	
+	@RequestMapping(value="/member/mypage/delete", method=RequestMethod.GET)
+	public String mypageDelete(@RequestParam(value="userId",required=false) String userId,Model model){	
+		if(userId != null) {
+			int likeyouResult = userService.deleteLikeyou(userId);//likeyou
+			int commentResult = userService.deleteComment(userId);//comment
+			int imageResult = userService.deleteImage(userId);
+			int travelResult = userService.deleteTravel(userId);//travel		
+			int reviewResult = userService.deleteReview(userId);//review		
+			int eventProductResult = userService.eventProduct(userId);//eventproduct
+			int reservationResult = userService.delectReservation(userId);//reservation
+			
+			System.out.println(travelResult+" 트레블 삭제완료");
+			System.out.println("실행??");
+			int result = userService.delete(userId);
+			model.addAttribute("result",result);
+		}
+		return "userMyPageDeleteDone";
+	}
+	@RequestMapping(value="/member/mypage/delete", method=RequestMethod.POST)
+	public String mypageDeletePost(@ModelAttribute UserVO user,Model model){	
+		return "";
 	}
 	
 }

@@ -44,5 +44,8 @@
 	<delete id="delete" parameterType="ReviewVO">
 			DELETE FROM REVIEW WHERE reviewNO=#{reviewNO}
 	</delete>
+	<delete id="deleteUserOne" parameterType="ReviewVO">
+			DELETE FROM REVIEW WHERE id=#{userId}
+	</delete>
 	
 </mapper>

@@ -59,7 +59,7 @@
    </insert>
    
    <update id="update" parameterType="UserVO">
-   		UPDATE "USER" SET PW=#{pw}, PHONE=#{phone}, ADDRESS=#{address}, WHERE ID=#{id}
+   		UPDATE "USER" SET PW=#{pw}, PHONE=#{phone}, ADDRESS=#{address} WHERE ID=#{id}
    </update>
    
    <delete id="delete" parameterType="UserVO">
