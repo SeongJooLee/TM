@@ -11,6 +11,10 @@
 <head>
 <meta charset="UTF-8">
 <title>테마 여행 뷰</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="<c:url value="/resources/css/styles.css" />" rel="stylesheet" />
 <script src='http://code.jquery.com/jquery-latest.min.js'></script>
 <script type='text/javascript'>
 var cnt = 1;
@@ -26,11 +30,15 @@ function fn_addFile() {
 	cnt++;
 }
 function fn_enable(obj){
+   document.getElementById("categoryName").disabled = false;
    document.getElementById("title").disabled = false;
    document.getElementById("content").disabled = false;
-   if(document.getElementById("image")!=null){
+   if(document.getElementById("originalFileName")!=null){
    	document.getElementById("imgUpdateBtn").disabled = false;
    }
+	if (document.getElementById("originalFileName") == null) {
+		document.getElementById("imgUpdate").disabled = false;
+	}
    document.getElementById("tr_btn_modify").style.display='block';
    document.getElementById("tr_btn").style.display='none';
 }
@@ -94,7 +102,7 @@ function fn_delete(){
 
 function backToList(obj){
    obj.method ="POST";
-   obj.action = "${contextPath}/tm/board/promotion";
+   obj.action = "${contextPath}/board/promotion";
    obj.submit();
 }
 
@@ -108,17 +116,27 @@ function backToList(obj){
 		<form id="frmPromotion" enctype="multipart/form-data">
 			<table border="1" align="center">
 				<tr>
-					<td>글 번호 : <input type="text" value="${promotion.promotionNO }"
+					<td >글 번호 : <input type="text" value="${promotion.promotionNO }"
 						id="promotionNO" name="promotionNO" readonly />
 					</td>
 					<td><input type="text" value="${promotion.title }" id="title"
 						name="title" disabled />
-					<td><input type="hidden" value="${promotion.name }" name="name" />
+					<input type="hidden" value="${promotion.name }" name="name" />
 					</td>
 				</tr>
 				<tr>
-					<td width="150" align="center">작성자 아이디</td>
-					<td><input type="text" value="${promotion.sellerID }"
+					<td >카테고리 : 	<select name="categoryName" id="categoryName" disabled>
+						<option value="${category.categoryName }">${category.categoryName }</option>
+						<option value="지역">지역</option>
+						<option value="음식">음식</option>
+						<option value="교통">교통</option>
+						<option value="문화">문화</option>
+						<option value="힐링">힐링</option>
+						<option value="체험">체험</option>
+					</select>
+					</td>
+					<td  align="center">작성자 아이디 :
+					<input type="text" value="${promotion.sellerID }"
 						name="sellerID" readonly /></td>
 				</tr>
 
@@ -138,42 +156,42 @@ function backToList(obj){
 								<input type="hidden" id="originalFileName" name="image1"
 									value="${image.image1 }" />
 								<img
-									src="${contextPath }/download?image=${image.image1}&promotionNO=${promotion.promotionNO}&name=${promotion.name}" />
+									src="${contextPath }/board/promotion/download?image=${image.image1}&promotionNO=${promotion.promotionNO}&name=${promotion.name}" />
 							</c:if>
 
 							<c:if test="${not empty image.image2 && image.image2 !='null' }">
 								<input type="hidden" id="originalFileName" name="image2"
 									value="${image.image2 }" />
 								<img
-									src="${contextPath }/download?image=${image.image2}&promotionNO=${promotion.promotionNO}&name=${promotion.name}">
+									src="${contextPath }/board/promotion/download?image=${image.image2}&promotionNO=${promotion.promotionNO}&name=${promotion.name}">
 							</c:if>
 
 							<c:if test="${not empty image.image3 && image.image3 !='null' }">
 								<input type="hidden" id="originalFileName" name="image3"
 									value="${image.image3 }" />
 								<img
-									src="${contextPath }/download?image=${image.image3}&promotionNO=${promotion.promotionNO}&name=${promotion.name}">
+									src="${contextPath }/board/promotion/download?image=${image.image3}&promotionNO=${promotion.promotionNO}&name=${promotion.name}">
 							</c:if>
 
 							<c:if test="${not empty image.image4 && image.image4 !='null' }">
 								<input type="hidden" id="originalFileName" name="image4"
 									value="${image.image4 }" />
 								<img
-									src="${contextPath }/download?image=${image.image4}&promotionNO=${promotion.promotionNO}&name=${promotion.name}">
+									src="${contextPath }/board/promotion/download?image=${image.image4}&promotionNO=${promotion.promotionNO}&name=${promotion.name}">
 							</c:if>
 
 							<c:if test="${not empty image.image5 && image.image5 !='null' }">
 								<input type="hidden" id="originalFileName" name="image5"
 									value="${image.image5 }" />
 								<img
-									src="${contextPath }/download?image=${image.image5}&promotionNO=${promotion.noticeNO}&name=${promotion.name}">
+									src="${contextPath }/board/promotion/download?image=${image.image5}&promotionNO=${promotion.noticeNO}&name=${promotion.name}">
 							</c:if>
 						</div>
 					</td>
 				</tr>
 
 				<tr>
-					<td width="150" align="center">글내용</td>
+					<td  align="center">글내용</td>
 					<td><textarea rows="20" cols="60" name="content" id="content"
 							disabled>${promotion.content } </textarea></td>
 				</tr>

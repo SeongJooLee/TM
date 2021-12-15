@@ -1,7 +1,9 @@
 package com.hk.tm.board.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -10,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
@@ -29,6 +32,8 @@ import com.hk.tm.board.vo.CategoryVO;
 import com.hk.tm.board.vo.ImageVO;
 import com.hk.tm.board.vo.NoticeVO;
 import com.hk.tm.board.vo.PromotionVO;
+
+import net.coobird.thumbnailator.Thumbnails;
 
 @Controller
 public class PromotionController {
@@ -62,7 +67,9 @@ public class PromotionController {
 	}
 	@RequestMapping(value="/board/promotion/addDone", method=RequestMethod.POST)
 	public void promotionAddDone(@ModelAttribute PromotionVO promotionVO,@ModelAttribute CategoryVO categoryVO,MultipartHttpServletRequest request, HttpServletResponse response,Model model) throws IOException, ServletException {
+//		@RequestParam("categoryName") String categoryName
 		request.setCharacterEncoding("utf-8");
+		System.out.println("글쓰기 카테고리확인"+categoryVO.toString());
 		Map<String,Object> map = new HashMap<String,Object>();
 		Enumeration enu=request.getParameterNames();
 		while(enu.hasMoreElements()){
@@ -77,7 +84,6 @@ public class PromotionController {
 		
 		int promotionNO = promotionService.selectMaxPromotion();
 		promotionNO++;
-		
 		promotionVO.setPromotionNO(promotionNO);
 		if(fileList.size()>4) {
 			imageVO.setImage5((String) fileList.get(4));
@@ -115,7 +121,7 @@ public class PromotionController {
 			for(int i=0;i < fileList.size(); i++) {
 				if(fileList.get(i)!=null) {
 					File srcFile = new File(REPO+"\\"+"temp"+"\\"+fileList.get(i));
-					File destDir = new File(REPO+"\\"+promotionVO.getName()+"\\"+promotionVO.getNoticeNO());
+					File destDir = new File(REPO+"\\"+promotionVO.getName()+"\\"+promotionVO.getPromotionNO());
 					destDir.mkdir();
 					FileUtils.moveFileToDirectory(srcFile, destDir, true);
 				}
@@ -139,6 +145,7 @@ public class PromotionController {
 		map.put("fileList", fileList);
 		ImageVO imageVO = new ImageVO();
 		imageVO.setPromotionNO(promotionVO.getPromotionNO());
+		categoryVO.setPromotionNO(promotionVO.getPromotionNO());
 		 if(fileList.size()>4) {
 			imageVO.setImage5((String) fileList.get(4));
 			if(fileList.get(4) == "") {
@@ -178,7 +185,7 @@ public class PromotionController {
 			}
 		}
 
-		promotionService.promotionUpdate(promotionVO,imageVO);
+		promotionService.promotionUpdate(promotionVO,imageVO,categoryVO);
 		
 		for(int i=0;i < fileList.size(); i++) {
 			if(fileList.get(i)!=null) {
@@ -189,9 +196,10 @@ public class PromotionController {
 			}
 	}
 		
-		model.addAttribute("promotion", promotionVO);
-		model.addAttribute("image", imageVO);
-		model.addAttribute("category", categoryVO);
+		map = promotionService.selectOneNotice(promotionVO.getPromotionNO());
+		model.addAttribute("promotion",map.get("promotion"));
+		model.addAttribute("image",map.get("image"));
+		model.addAttribute("category",map.get("category"));
 		
 		return "promotionView";
 		
@@ -212,7 +220,7 @@ public class PromotionController {
 	public Map<String, Object> imgDelete(@RequestParam("promotionNO") int promotionNO) throws IOException {
 		Map<String, Object> map = new HashMap<String, Object>();
 
-		int ret = promotionService.imgDelete(promotionNO);
+		int ret = promotionService.promotionImgDelete(promotionNO);
 		if(ret==0) {
 			map.put("result", "false");
 		} else {
@@ -226,7 +234,43 @@ public class PromotionController {
 		}
 		return map;
 	}	
+	@RequestMapping(value="/board/promotion/download", method=RequestMethod.GET)
+	public void download(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		if(request.getParameter("image") != null) {
+			
+		request.setCharacterEncoding("utf-8");
+		String image = request.getParameter("image");
+		String promotionNO = request.getParameter("promotionNO");
+		String name = request.getParameter("name");
 
+		OutputStream out = response.getOutputStream();
+		String path = "C:\\files\\"+name+"\\"+promotionNO+"\\"+image;
+		File imageFile = new File(path);
+
+		int lastIndex = image.lastIndexOf(".");
+		String fileName = image.substring(0,lastIndex);
+		File destDir = new File(REPO+"\\thumbnail");
+		File thumbnail = new File(REPO+"\\thumbnail\\"+name+"\\"+promotionNO+"\\"+fileName+".png");
+		destDir.mkdir();
+		
+		if(imageFile.exists()) {
+			thumbnail.getParentFile().mkdirs();
+			Thumbnails.of(imageFile).size(500, 500).outputFormat("png").toFile(thumbnail);
+		}
+		
+		FileInputStream in = new FileInputStream(thumbnail);
+		byte[] buffer = new byte[1024*8];
+		while(true) {
+			int count = in.read(buffer);
+			if(count == -1) {
+				break;
+			}
+			out.write(buffer, 0, count);
+		}
+		in.close();
+		out.close();
+	}
+	}
 	private List<String> upload(MultipartHttpServletRequest request) throws ServletException, IOException{
 		List<String> fileList= new ArrayList<String>();
 		Iterator<String> fileNames = request.getFileNames();

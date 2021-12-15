@@ -2,7 +2,9 @@ package com.hk.tm.board.controller;
 
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -11,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
@@ -28,6 +31,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.hk.tm.board.service.NoticeService;
 import com.hk.tm.board.vo.ImageVO;
 import com.hk.tm.board.vo.NoticeVO;
+
+import net.coobird.thumbnailator.Thumbnails;
 
 @Controller
 public class NoticeController {
@@ -154,29 +159,6 @@ public class NoticeController {
 		response.sendRedirect("/tm/board/notice");
 	}
 
-	private List<String> upload(MultipartHttpServletRequest request) throws ServletException, IOException{
-		List<String> fileList= new ArrayList<String>();
-		Iterator<String> fileNames = request.getFileNames();
-		while(fileNames.hasNext()){
-			String fileName = fileNames.next();
-			MultipartFile mFile = request.getFile(fileName);
-			String originalFileName=mFile.getOriginalFilename();
-			fileList.add(originalFileName);
-			File file = new File(REPO +"\\"+ fileName);
-			if(mFile.getSize()!=0){ //File Null Check
-				if(! file.exists()){ //경로상에 파일이 존재하지 않을 경우
-					if(file.getParentFile().mkdirs()){ //경로에 해당하는 디렉토리들을 생성
-						file.createNewFile(); //이후 파일 생성
-					}
-				}
-				File destDir = new File(REPO +"\\temp\\");
-				destDir.mkdir();
-				mFile.transferTo(new File(REPO +"\\temp\\"+ originalFileName)); //임시로 저장된 multipartFile을 실제 파일로 전송
-			}
-		}
-		return fileList;
-	}
-	
 	@RequestMapping(value="/board/notice/update", method=RequestMethod.POST)
 	public String noticeUpdate(@ModelAttribute NoticeVO noticeVO,Model model,MultipartHttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
@@ -272,9 +254,9 @@ public class NoticeController {
 				FileUtils.moveFileToDirectory(srcFile, destDir, true);
 			}
 	}
-		
-		model.addAttribute("notice", noticeVO);
-		model.addAttribute("image", imageVO);
+		map = noticeService.selectOneNotice(noticeVO.getNoticeNO());
+		model.addAttribute("notice",map.get("notice"));
+		model.addAttribute("image",map.get("image"));
 		
 		return "noticeView";
 		
@@ -295,7 +277,7 @@ public class NoticeController {
 	public Map<String, Object> imgDelete(@RequestParam("noticeNO") int noticeNO) throws IOException {
 		Map<String, Object> map = new HashMap<String, Object>();
 
-		int ret = noticeService.imgDelete(noticeNO);
+		int ret = noticeService.noticeImgDelete(noticeNO);
 		if(ret==0) {
 			map.put("result", "false");
 		} else {
@@ -310,4 +292,64 @@ public class NoticeController {
 		return map;
 		
 	}
+	@RequestMapping(value="/board/notice/download", method=RequestMethod.GET)
+	public void download(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		if(request.getParameter("image") != null) {
+			
+		request.setCharacterEncoding("utf-8");
+		String image = request.getParameter("image");
+		String noticeNO = request.getParameter("noticeNO");
+		String name = request.getParameter("name");
+
+		OutputStream out = response.getOutputStream();
+		String path = "C:\\files\\"+name+"\\"+noticeNO+"\\"+image;
+		File imageFile = new File(path);
+
+		int lastIndex = image.lastIndexOf(".");
+		String fileName = image.substring(0,lastIndex);
+		File destDir = new File(REPO+"\\thumbnail");
+		File thumbnail = new File(REPO+"\\thumbnail\\"+name+"\\"+noticeNO+"\\"+fileName+".png");
+		destDir.mkdir();
+		
+		if(imageFile.exists()) {
+			thumbnail.getParentFile().mkdirs();
+			Thumbnails.of(imageFile).size(500, 500).outputFormat("png").toFile(thumbnail);
+		}
+		
+		FileInputStream in = new FileInputStream(thumbnail);
+		byte[] buffer = new byte[1024*8];
+		while(true) {
+			int count = in.read(buffer);
+			if(count == -1) {
+				break;
+			}
+			out.write(buffer, 0, count);
+		}
+		in.close();
+		out.close();
+	}
+	}
+	private List<String> upload(MultipartHttpServletRequest request) throws ServletException, IOException{
+		List<String> fileList= new ArrayList<String>();
+		Iterator<String> fileNames = request.getFileNames();
+		while(fileNames.hasNext()){
+			String fileName = fileNames.next();
+			MultipartFile mFile = request.getFile(fileName);
+			String originalFileName=mFile.getOriginalFilename();
+			fileList.add(originalFileName);
+			File file = new File(REPO +"\\"+ fileName);
+			if(mFile.getSize()!=0){ //File Null Check
+				if(! file.exists()){ //경로상에 파일이 존재하지 않을 경우
+					if(file.getParentFile().mkdirs()){ //경로에 해당하는 디렉토리들을 생성
+						file.createNewFile(); //이후 파일 생성
+					}
+				}
+				File destDir = new File(REPO +"\\temp\\");
+				destDir.mkdir();
+				mFile.transferTo(new File(REPO +"\\temp\\"+ originalFileName)); //임시로 저장된 multipartFile을 실제 파일로 전송
+			}
+		}
+		return fileList;
+	}
+	
 }

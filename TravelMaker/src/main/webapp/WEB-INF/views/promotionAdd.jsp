@@ -11,6 +11,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="<c:url value="/resources/css/styles.css" />" rel="stylesheet" />
 <script src='http://code.jquery.com/jquery-latest.min.js'></script>
 <script type='text/javascript'>
 var cnt = 1;
@@ -31,6 +35,11 @@ function backToList(obj){
 }
 
 function fn_create(){
+	var category = document.getElementById("categoryName").value;
+	if(category=='null'){
+		alert('카테고리를 선택해주세요.');
+		return false;
+	}
 	var title = document.getElementById("title").value;
 	if(!title){
 		alert('제목을 적어주세요.');
@@ -42,7 +51,7 @@ function fn_create(){
 		return false;
 	}
 	var price = document.getElementById("price").value;
-	if(!price){
+	if(!price||price<0){
 		alert('가격을 적어주세요.');
 		return false;
 	}
@@ -66,9 +75,21 @@ function fn_create(){
 	<h1 style="text-align: center">홍보 글 쓰기</h1>
 	<form id="frm" action="addDone" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="sellerID" value="seller">
+		<input type="hidden" name="name" value="promotion">
 		<table border="1" align="center">
 			<tr>
-				<td align='left' colspan="2">
+				<td>
+					<select name="categoryName" id="categoryName" >
+						<option value="null">선택해주세요.</option>
+						<option value="지역">지역</option>
+						<option value="음식">음식</option>
+						<option value="교통">교통</option>
+						<option value="문화">문화</option>
+						<option value="힐링">힐링</option>
+						<option value="체험">체험</option>
+					</select>
+				</td>
+				<td align='left'>
 					&nbsp;&nbsp;글 제목 : <input type="text" name="title" id="title">
 				</td>
 			</tr>

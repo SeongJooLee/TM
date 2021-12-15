@@ -20,4 +20,19 @@ public class CategoryDAO {
 		return categoryVO;
 	}
 
+	public void promotionAdd(CategoryVO categoryVO) {
+		// TODO Auto-generated method stub
+		sql.insert(ns+"insertPromotion",categoryVO);
+	}
+
+	public void promotionUpdate(CategoryVO categoryVO) {
+		// TODO Auto-generated method stub
+		sql.update(ns+"updatePromotion",categoryVO);		
+	}
+
+	public void promotionDelete(int promotionNO) {
+		// TODO Auto-generated method stub
+		sql.delete(ns+"deletePromotion",promotionNO);	
+	}
+
 }

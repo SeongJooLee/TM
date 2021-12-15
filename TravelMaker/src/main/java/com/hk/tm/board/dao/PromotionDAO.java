@@ -39,4 +39,14 @@ public class PromotionDAO {
 		sql.insert(ns+"insertPromotion",promotionVO);
 	}
 
+	public void promotionUpdate(PromotionVO promotionVO) {
+		// TODO Auto-generated method stub
+		sql.update(ns+"updatePromotion", promotionVO);
+	}
+
+	public void promotionDelete(int promotionNO) {
+		// TODO Auto-generated method stub
+		sql.delete(ns+"deletePromotion", promotionNO);
+	}
+
 }

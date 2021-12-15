@@ -33,14 +33,14 @@
 				<div class="card h-100">
 				<img	src="<c:url value="http://encosmall.kr/design/encos0720/shop/img/common/gonggi_top.jpg" />" 	width="100%" height="100%" />
 				<div class="card-footer">
-					<a href="promotion/view?promotionNO=${promotion.promotionNO }">${promotion.title }</a>
+					<a class="btn btn-primary btn-sm">${category.categoryName }</a><a href="promotion/view?promotionNO=${promotion.promotionNO }">${promotion.title }</a>
 				</div>
 				</div>
 			</div>
 		</c:forEach>
 		</div>
 	</div>
-		<a href="notice/add">글쓰기</a>
+		<a href="promotion/add">글쓰기</a>
 
 	<hr>
 	<!-- Bootstrap core JS-->

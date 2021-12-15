@@ -11,14 +11,10 @@
 <head>
 <meta charset="UTF-8">
 <title>테마 여행 뷰</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<style>
-.mySlides {
-	display: none;
-}
-</style>
-
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="<c:url value="/resources/css/styles.css" />" rel="stylesheet" />
 <script type='text/javascript'>
 	var cnt = 1;
 	function fn_addFile() {
@@ -117,14 +113,14 @@
 	<hr>
 	<div align="center">
 		<form id="frmNotice" enctype="multipart/form-data">
-			<table border="1">
+			<table border='1'>
 				<tr>
-					<td>글 번호 : <input type="text" value="${notice.noticeNO }"
+					<td >글 번호 : <input type="text" value="${notice.noticeNO }"
 						id="noticeNO" name="noticeNO" readonly />
 					</td>
 					<td><input type="text" value="${notice.title }" id="title"
 						name="title" disabled />
-					<td><input type="hidden" value="${notice.name }" name="name" />
+					<input type="hidden" value="${notice.name }" name="name" />
 					</td>
 				</tr>
 				<tr>
@@ -132,87 +128,6 @@
 					<td><input type="text" value="${notice.adminID }"
 						name="adminID" readonly /></td>
 				</tr>
-				<tr>
-					<td colspan="2">
-						<div class="w3-content w3-display-container">
-							<c:if test="${not empty image.image1 && image.image1 !='null' }">
-								<input type="hidden" id="originalFileName" name="image1"
-									value="${image.image1 }" />
-								<img class="mySlides" style="width:100%"
-									src="${contextPath }/download?image=${image.image1}&noticeNO=${notice.noticeNO}&name=${notice.name}" />
-							</c:if>
-
-							<c:if test="${not empty image.image2 && image.image2 !='null' }">
-								<input type="hidden" id="originalFileName" name="image2"
-									value="${image.image2 }" />
-								<img class="mySlides" style="width:100%"
-									src="${contextPath }/download?image=${image.image2}&noticeNO=${notice.noticeNO}&name=${notice.name}">
-							</c:if>
-
-							<c:if test="${not empty image.image3 && image.image3 !='null' }">
-								<input type="hidden" id="originalFileName" name="image3"
-									value="${image.image3 }" />
-								<img class="mySlides" style="width:100%"
-									src="${contextPath }/download?image=${image.image3}&noticeNO=${notice.noticeNO}&name=${notice.name}">
-							</c:if>
-
-							<c:if test="${not empty image.image4 && image.image4 !='null' }">
-								<input type="hidden" id="originalFileName" name="image4"
-									value="${image.image4 }" />
-								<img class="mySlides" style="width:100%"
-									src="${contextPath }/download?image=${image.image4}&noticeNO=${notice.noticeNO}&name=${notice.name}">
-							</c:if>
-
-							<c:if test="${not empty image.image5 && image.image5 !='null' }">
-								<input type="hidden" id="originalFileName" name="image5"
-									value="${image.image5 }" />
-								<img class="mySlides" style="width:100%"
-									src="${contextPath }/download?image=${image.image5}&noticeNO=${notice.noticeNO}&name=${notice.name}">
-							</c:if>
-
-							<c:if test="${not empty image.image6 && image.image6 !='null' }">
-								<input type="hidden" id="originalFileName" name="image6"
-									value="${image.image6 }" />
-								<img class="mySlides" style="width:100%"
-									src="${contextPath }/download?image=${image.image6}&noticeNO=${notice.noticeNO}&name=${notice.name}">
-							</c:if>
-
-							<c:if test="${not empty image.image7 && image.image7 !='null' }">
-								<input type="hidden" id="originalFileName" name="image7"
-									value="${image.image7 }" />
-								<img class="mySlides" style="width:100%"
-									src="${contextPath }/download?image=${image.image7}&noticeNO=${notice.noticeNO}&name=${notice.name}">
-							</c:if>
-
-							<c:if test="${not empty image.image8 && image.image8 !='null' }">
-								<input type="hidden" id="originalFileName" name="image8"
-									value="${image.image8 }" />
-								<img class="mySlides" style="width:100%"
-									src="${contextPath }/download?image=${image.image8}&noticeNO=${notice.noticeNO}&name=${notice.name}">
-							</c:if>
-
-							<c:if test="${not empty image.image9 && image.image9 !='null' }">
-								<input type="hidden" id="originalFileName" name="image9"
-									value="${image.image9 }" />
-								<img class="mySlides" style="width:100%"
-									src="${contextPath }/download?image=${image.image9}&noticeNO=${notice.noticeNO}&name=${notice.name}">
-							</c:if>
-
-							<c:if
-								test="${not empty image.image10 && image.image10 !='null' }">
-								<input type="hidden" id="originalFileName" name="image10"
-									value="${image.image10 }" />
-								<img class="mySlides" style="width:100%"
-									src="${contextPath }/download?image=${image.image10}&noticeNO=${notice.noticeNO}&name=${notice.name}">
-							</c:if>
-							<button class="w3-button w3-black w3-display-left"
-								onclick="plusDivs(-1)">&#10094;</button>
-							<button class="w3-button w3-black w3-display-right"
-								onclick="plusDivs(1)">&#10095;</button>
-						</div>
-					</td>
-				</tr>
-
 				<tr align="center">
 					<td align='left' colspan="2">이미지 파일 첨부<br>
 						<div id="update">
@@ -231,62 +146,62 @@
 								<input type="hidden" id="originalFileName" name="image1"
 									value="${image.image1 }" />
 								<img
-									src="${contextPath }/download?image=${image.image1}&noticeNO=${notice.noticeNO}&name=${notice.name}" />
+									src="${contextPath }/board/notice/download?image=${image.image1}&noticeNO=${notice.noticeNO}&name=${notice.name}" />
 							</c:if>
 
 							<c:if test="${not empty image.image2 && image.image2 !='null' }">
 								<input type="hidden" id="originalFileName" name="image2"
 									value="${image.image2 }" />
 								<img
-									src="${contextPath }/download?image=${image.image2}&noticeNO=${notice.noticeNO}&name=${notice.name}">
+									src="${contextPath }/board/notice/download?image=${image.image2}&noticeNO=${notice.noticeNO}&name=${notice.name}">
 							</c:if>
 
 							<c:if test="${not empty image.image3 && image.image3 !='null' }">
 								<input type="hidden" id="originalFileName" name="image3"
 									value="${image.image3 }" />
 								<img
-									src="${contextPath }/download?image=${image.image3}&noticeNO=${notice.noticeNO}&name=${notice.name}">
+									src="${contextPath }/board/notice/download?image=${image.image3}&noticeNO=${notice.noticeNO}&name=${notice.name}">
 							</c:if>
 
 							<c:if test="${not empty image.image4 && image.image4 !='null' }">
 								<input type="hidden" id="originalFileName" name="image4"
 									value="${image.image4 }" />
 								<img
-									src="${contextPath }/download?image=${image.image4}&noticeNO=${notice.noticeNO}&name=${notice.name}">
+									src="${contextPath }/board/notice/download?image=${image.image4}&noticeNO=${notice.noticeNO}&name=${notice.name}">
 							</c:if>
 
 							<c:if test="${not empty image.image5 && image.image5 !='null' }">
 								<input type="hidden" id="originalFileName" name="image5"
 									value="${image.image5 }" />
 								<img
-									src="${contextPath }/download?image=${image.image5}&noticeNO=${notice.noticeNO}&name=${notice.name}">
+									src="${contextPath }/board/notice/download?image=${image.image5}&noticeNO=${notice.noticeNO}&name=${notice.name}">
 							</c:if>
 
 							<c:if test="${not empty image.image6 && image.image6 !='null' }">
 								<input type="hidden" id="originalFileName" name="image6"
 									value="${image.image6 }" />
 								<img
-									src="${contextPath }/download?image=${image.image6}&noticeNO=${notice.noticeNO}&name=${notice.name}">
+									src="${contextPath }/board/notice/download?image=${image.image6}&noticeNO=${notice.noticeNO}&name=${notice.name}">
 							</c:if>
 							<c:if test="${not empty image.image7 && image.image7 !='null' }">
 								<input type="hidden" id="originalFileName" name="image7"
 									value="${image.image7 }" />
 								<img
-									src="${contextPath }/download?image=${image.image7}&noticeNO=${notice.noticeNO}&name=${notice.name}">
+									src="${contextPath }/board/notice/download?image=${image.image7}&noticeNO=${notice.noticeNO}&name=${notice.name}">
 							</c:if>
 
 							<c:if test="${not empty image.image8 && image.image8 !='null' }">
 								<input type="hidden" id="originalFileName" name="image8"
 									value="${image.image8 }" />
 								<img
-									src="${contextPath }/download?image=${image.image8}&noticeNO=${notice.noticeNO}&name=${notice.name}">
+									src="${contextPath }/board/notice/download?image=${image.image8}&noticeNO=${notice.noticeNO}&name=${notice.name}">
 							</c:if>
 
 							<c:if test="${not empty image.image9 && image.image9 !='null' }">
 								<input type="hidden" id="originalFileName" name="image9"
 									value="${image.image9 }" />
 								<img
-									src="${contextPath }/download?image=${image.image9}&noticeNO=${notice.noticeNO}&name=${notice.name}">
+									src="${contextPath }/board/notice/download?image=${image.image9}&noticeNO=${notice.noticeNO}&name=${notice.name}">
 							</c:if>
 
 							<c:if
@@ -294,7 +209,7 @@
 								<input type="hidden" id="originalFileName" name="image10"
 									value="${image.image10 }" />
 								<img
-									src="${contextPath }/download?image=${image.image10}&noticeNO=${notice.noticeNO}&name=${notice.name}">
+									src="${contextPath }/board/notice/download?image=${image.image10}&noticeNO=${notice.noticeNO}&name=${notice.name}">
 							</c:if>
 						</div>
 					</td>
@@ -327,26 +242,6 @@
 			</table>
 		</form>
 	</div>
-
-	<script>
-var slideIndex = 1;
-showDivs(slideIndex);
-
-function plusDivs(n) {
-  showDivs(slideIndex += n);
-}
-
-function showDivs(n) {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  if (n > x.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = x.length}
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";  
-  }
-  x[slideIndex-1].style.display = "block";  
-}
-</script>
 		<hr>
 	<jsp:include page="/resources/include/footer.jsp" />
 </body>

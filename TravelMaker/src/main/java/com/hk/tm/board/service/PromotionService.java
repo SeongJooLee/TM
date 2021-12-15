@@ -12,6 +12,7 @@ import com.hk.tm.board.dao.ImageDAO;
 import com.hk.tm.board.dao.PromotionDAO;
 import com.hk.tm.board.vo.CategoryVO;
 import com.hk.tm.board.vo.ImageVO;
+import com.hk.tm.board.vo.NoticeVO;
 import com.hk.tm.board.vo.PromotionVO;
 
 @Service
@@ -36,10 +37,6 @@ public class PromotionService {
 		ImageVO imageVO = imageDAO.selectOnePromotion(promotionNO);
 		CategoryVO categoryVO = categoryDAO.selectOnePromotion(promotionNO);
 		
-		System.out.println("promotionVO"+promotionVO.toString());
-		System.out.println("promotionVO"+imageVO.toString());
-		System.out.println("promotionVO"+categoryVO.toString());
-		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("promotion", promotionVO);
 		map.put("image", imageVO);
@@ -58,5 +55,28 @@ public class PromotionService {
 		promotionDAO.promotionAdd(promotionVO);
 		imageDAO.promotionAdd(imageVO);
 		categoryDAO.promotionAdd(categoryVO);
+	}
+
+	public void promotionUpdate(PromotionVO promotionVO, ImageVO imageVO, CategoryVO categoryVO) {
+		// TODO Auto-generated method stub
+		promotionDAO.promotionUpdate(promotionVO);
+		imageVO.setPromotionNO(promotionVO.getPromotionNO());
+		categoryVO.setPromotionNO(promotionVO.getPromotionNO());
+		imageDAO.promotionUpdate(imageVO);
+		categoryDAO.promotionUpdate(categoryVO);
+	}
+
+	public PromotionVO promotionDelete(int promotionNO) {
+		// TODO Auto-generated method stub
+		imageDAO.promotionDelete(promotionNO);
+		categoryDAO.promotionDelete(promotionNO);
+		PromotionVO promotionVO = promotionDAO.selectOnePromotion(promotionNO);
+		promotionDAO.promotionDelete(promotionNO);
+		return promotionVO;
+	}
+
+	public int promotionImgDelete(int promotionNO) {
+		// TODO Auto-generated method stub
+		return imageDAO.promotionImgDelete(promotionNO);
 	}
 }

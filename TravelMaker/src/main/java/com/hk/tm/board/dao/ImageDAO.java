@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.hk.tm.board.vo.ImageVO;
 import com.hk.tm.board.vo.NoticeVO;
+import com.hk.tm.board.vo.PromotionVO;
 import com.hk.tm.board.vo.ReviewVO;
 import com.hk.tm.board.vo.TravelVO;
 @Repository
@@ -40,6 +41,15 @@ public class ImageDAO {
 		// TODO Auto-generated method stub
 		sql.delete(ns+"deleteNotice",noticeNO);
 	}
+	public int noticeImgDelete(int noticeNO) {
+		ImageVO imageVO = sql.selectOne(ns+"selectOneNotice",noticeNO);
+		int ret=0;
+		if(imageVO!=null) {
+			ret = sql.delete(ns+"deleteNotice",noticeNO);
+		}
+		return ret;
+	}
+	
 
 	public ImageVO selectOneTravel(int travelNO) {
 		// TODO Auto-generated method stub
@@ -68,14 +78,6 @@ public class ImageDAO {
 		return imageVO;
 	}
 
-	public int imgDelete(int noticeNO) {
-		ImageVO imageVO = sql.selectOne(ns+"selectOneNotice",noticeNO);
-		int ret=0;
-		if(imageVO!=null) {
-			ret = sql.delete(ns+"deleteNotice",noticeNO);
-		}
-		return ret;
-	}
 	
 	public ImageVO selectOne(int reviewNO) {
 		ImageVO imageVO = sql.selectOne(ns+"selectOne",reviewNO);
@@ -91,5 +93,24 @@ public class ImageDAO {
 	public void promotionAdd(ImageVO imageVO) {
 		// TODO Auto-generated method stub
 		sql.insert(ns+"insertPromotion",imageVO);
+	}
+
+	public void promotionUpdate(ImageVO imageVO) {
+		// TODO Auto-generated method stub
+		sql.update(ns+"updatePromotion",imageVO);
+	}
+
+	public void promotionDelete(int promotionNO) {
+		// TODO Auto-generated method stub
+		sql.delete(ns+"deletePromotion",promotionNO);
+	}
+
+	public int promotionImgDelete(int promotionNO) {
+		ImageVO imageVO = sql.selectOne(ns+"selectOnePromotion",promotionNO);
+		int ret=0;
+		if(imageVO!=null) {
+			ret = sql.delete(ns+"deletePromotion",promotionNO);
+		}
+		return ret;
 	}
 }

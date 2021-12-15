@@ -7,6 +7,10 @@
 <head>
 <meta charset="UTF-8">
   <title>공지사항 목록</title>
+          <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="<c:url value="/resources/css/styles.css" />" rel="stylesheet" />
 </head>
 
     <jsp:include page="/resources/include/header.jsp" />

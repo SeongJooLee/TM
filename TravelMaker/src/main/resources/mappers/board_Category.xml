@@ -8,33 +8,29 @@
 	<!--  테이블 컬럼하고 VO하고 1:1 맵핑했을 때 이름이 다르면 안됌. -->
    <resultMap id="categoryResult" type="CategoryVO">
       <result property="promotionNO" column="promotionNO" />
-      <result property="area" column="area" />
-      <result property="food" column="food" />
-      <result property="traffic" column="traffic" />
-      <result property="culture" column="culture" />
-      <result property="healing" column="healing" />
-      <result property="leisure" column="leisure" />
+      <result property="travelNO" column="travelNO" />
+      <result property="categoryName" column="categoryName" />
    </resultMap>
    	
    	<select id="selectAllPromotion" resultMap="categoryResult">
-		SELECT PROMOTIONNO, AREA, FOOD, TRAFFIC, CULTURE, HEALING, LEISURE
+		SELECT PROMOTIONNO, TRAVELNO, CATEGORYNAME
 		 FROM CATEGORY
 	</select>
 	
    	<select id="selectOnePromotion" resultType="CategoryVO">
-		SELECT PROMOTIONNO, AREA, FOOD, TRAFFIC, CULTURE, HEALING, LEISURE
+		SELECT PROMOTIONNO, TRAVELNO, CATEGORYNAME
 		 FROM CATEGORY
 		 where promotionNO=#{promotionNO}
 	</select>
 	
 	<insert id="insertPromotion" parameterType="CategoryVO">
-		  	INSERT INTO CATEGORY (PROMOTIONNO, AREA, FOOD, TRAFFIC, CULTURE, HEALING, LEISURE)
-		  	 VALUES(#{promotionNO}, #{area}, #{food}, #{traffic}, #{culture}, #{healing}, #{leisure})
+		  	INSERT INTO CATEGORY (PROMOTIONNO, TRAVELNO, CATEGORYNAME)
+		  	 VALUES((select max(promotionNO) from promotion), null, #{categoryName})
 	</insert>
 	
 	<update id="updatePromotion" parameterType="CategoryVO">
   	 	UPDATE CATEGORY SET
-  	 	  AREA=#{area}, FOOD=#{food}, TRAFFIC=#{traffic}, CULTURE=#{culture}, HEALING=#{healing}, LEISURE=#{leisure}
+  	 	  CATEGORYNAME=#{categoryName}
   	 	  where promotionNO=#{promotionNO}
 	</update>
 	
