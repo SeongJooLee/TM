@@ -69,7 +69,7 @@ matgin-right: 20px;
 }
 
 ul {
-list-style:none;
+list-style:none; 
 }
 
 
