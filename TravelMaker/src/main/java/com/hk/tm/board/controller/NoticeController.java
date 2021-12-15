@@ -159,6 +159,7 @@ public class NoticeController {
 					destDir.mkdir();
 					FileUtils.moveFileToDirectory(srcFile, destDir, true);
 				}
+				
 			}
 		}
 		response.sendRedirect("/tm/board/notice");
