@@ -28,23 +28,23 @@
    </resultMap>
    
    <select id="selectAll" resultMap="imageResult">
-		SELECT NOTICENO, TRAVELNO, REVIEWNO, PROMOTIONNO, EVENTNO, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5
+		SELECT NOTICENO, TRAVELNO, REVIEWNO, PROMOTIONNO, EVENTNO, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10
 		 FROM IMAGE
 	</select>
 	
 	<select id="selectOneNotice" resultType="imageVO"> 
-		SELECT NOTICENO, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5
+		SELECT NOTICENO, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10
 		 FROM IMAGE
 		 where noticeNO=#{noticeNO}
 	</select>
 	
 	<insert id="insertNotice" parameterType="imageVO">
-	INSERT INTO IMAGE (NOTICENO, TRAVELNO, REVIEWNO, PROMOTIONNO, EVENTNO, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5)
-	 VALUES((select max(noticeNO) from notice), null, null, null, null, #{image1}, #{image2}, #{image3}, #{image4}, #{image5})
+	INSERT INTO IMAGE (NOTICENO, TRAVELNO, REVIEWNO, PROMOTIONNO, EVENTNO, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10)
+	 VALUES((select max(noticeNO) from notice), null, null, null, null, #{image1}, #{image2}, #{image3}, #{image4}, #{image5}, #{image6}, #{image7}, #{image8}, #{image9}, #{image10})
 	</insert>
 	
 	<update id="updateNotice" parameterType="imageVO"> 
-		UPDATE IMAGE SET IMAGE1=#{image1}, IMAGE2=#{image2}, IMAGE3=#{image3}, IMAGE4=#{image4}, IMAGE5=#{image5}
+		UPDATE IMAGE SET IMAGE1=#{image1}, IMAGE2=#{image2}, IMAGE3=#{image3}, IMAGE4=#{image4}, IMAGE5=#{image5}, IMAGE6=#{image6}, IMAGE7=#{image7}, IMAGE8=#{image8}, IMAGE9=#{image9}, IMAGE10=#{image10}
 		 where noticeNO=#{noticeNO}
 	</update>
 	
@@ -72,18 +72,18 @@
 	 -->
 
 	<select id="selectOnePromotion" resultType="imageVO"> 
-		SELECT PROMOTIONNO, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5
+		SELECT PROMOTIONNO, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10
 		 FROM IMAGE
 		 where promotionNO=#{promotionNO}
 	</select>
 	
 	<insert id="insertPromotion" parameterType="imageVO">
-	INSERT INTO IMAGE (NOTICENO, TRAVELNO, REVIEWNO, PROMOTIONNO, EVENTNO, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5)
-	 VALUES(null, null, null, (select max(promotionNO) from promotion), null, #{image1}, #{image2}, #{image3}, #{image4}, #{image5})
+	INSERT INTO IMAGE (NOTICENO, TRAVELNO, REVIEWNO, PROMOTIONNO, EVENTNO, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10)
+	 VALUES(null, null, null, (select max(promotionNO) from promotion), null, #{image1}, #{image2}, #{image3}, #{image4}, #{image5}, #{image6}, #{image7}, #{image8}, #{image9}, #{image10})
 	</insert>
 	
 	<update id="updatePromotion" parameterType="imageVO"> 
-		UPDATE IMAGE SET IMAGE1=#{image1}, IMAGE2=#{image2}, IMAGE3=#{image3}, IMAGE4=#{image4}, IMAGE5=#{image5}
+		UPDATE IMAGE SET IMAGE1=#{image1}, IMAGE2=#{image2}, IMAGE3=#{image3}, IMAGE4=#{image4}, IMAGE5=#{image5}, IMAGE6=#{image6}, IMAGE7=#{image7}, IMAGE8=#{image8}, IMAGE9=#{image9}, IMAGE10=#{image10}
 		 where promotionNO=#{promotionNO}
 	</update>
 	
@@ -92,13 +92,9 @@
 		 where promotionNO=#{promotionNO}
 	</delete>
 	
-	<delete id="deleteSeller" parameterType="imageVO"> 
+	<delete id="deleteUser" parameterType="imageVO"> 
 		DELETE FROM IMAGE
-		 where id=#{sellerId}
-	</delete>
-	<delete id="deleteSeller" parameterType="imageVO"> 
-		DELETE FROM IMAGE
-		 where sellerid=#{sellerId}
+		 where id=#{userId}
 	</delete>
    
    
