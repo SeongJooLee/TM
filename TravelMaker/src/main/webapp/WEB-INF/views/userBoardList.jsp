@@ -101,9 +101,9 @@ width:110px;
   <table class="table table-hover">
     <thead>
 				<tr class="table-primary">
-					<td>게시판 종류</td>
-					<td>글 제목</td>
-					<td>글 내용</td>
+					<th>게시판 종류</th>
+					<th>글 제목</th>
+					<th>글 내용</th>
 				</tr>
     </thead>
     <tbody>
