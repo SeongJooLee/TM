@@ -288,6 +288,7 @@ public class UserController {
 			int eventProductResult = userService.eventProduct(userId);//eventproduct
 			int reservationResult = userService.delectReservation(userId);//reservation
 			
+			
 			System.out.println(travelResult+" 트레블 삭제완료");
 			System.out.println("실행??");
 			int result = userService.delete(userId);
