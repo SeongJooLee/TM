@@ -271,6 +271,7 @@ public class UserController {
 	public String mypageUpdate(){	
 		return "userMyPageUpdate";
 	}
+	
 	@RequestMapping(value="/member/mypage/update", method=RequestMethod.POST)
 	public String mypageUpdatePost(@ModelAttribute UserVO user,Model model){	
 		System.out.println(user);
