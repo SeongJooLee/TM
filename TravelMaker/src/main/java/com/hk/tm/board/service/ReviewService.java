@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.hk.tm.board.dao.ImageDAO;
 import com.hk.tm.board.dao.ReviewDAO;
 import com.hk.tm.board.vo.ImageVO;
+import com.hk.tm.board.vo.NoticeVO;
 import com.hk.tm.board.vo.ReviewVO;
 @Service
 public class ReviewService {
@@ -35,6 +36,16 @@ public class ReviewService {
 		map.put("image", imageVO);
 		
 		return map;
+	}
+
+
+
+	public void reviewUpdate(ReviewVO reviewVO, ImageVO imageVO) {
+		// TODO Auto-generated method stub
+		
+		reviewDAO.reviewUpdate(reviewVO);
+		imageDAO.reviewUpdate(reviewVO,imageVO);
+		
 	}
 
 }
