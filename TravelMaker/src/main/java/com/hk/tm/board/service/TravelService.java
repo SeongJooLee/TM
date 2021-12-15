@@ -36,7 +36,7 @@ public class TravelService {
 	public Map<String, Object> selectOneTravel(int travelNO) {
 		// TODO Auto-generated method stub
 		TravelVO travelVO = travelDAO.selectOneTravel(travelNO);		
-		ImageVO imageVO = imageDAO.selectOneTravel(travelVO.getTravelNO());
+		ImageVO imageVO = imageDAO.selectOneTravel(travelVO.getTravelNO()); // 여기 문제
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("travel", travelVO);		
 		map.put("image", imageVO);
@@ -47,7 +47,7 @@ public class TravelService {
 	public void addTravel(TravelVO travelVO, ImageVO imageVO) {		
 		// TODO Auto-generated method stub
 		travelDAO.addTravel(travelVO);
-		imageDAO.travelAdd(imageVO);
+		imageDAO.travelAdd(imageVO); // 여기 문제
 	}
 
 	public void updateTravel(TravelVO travelVO, ImageVO imageVO) {

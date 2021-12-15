@@ -25,6 +25,7 @@
   <c:forEach var="notice" items="${notice}" varStatus="status">
 
   <tr height="10" align="center" >
+  
      <td >${notice.noticeNO }</td>
      <td><a href="notice/view?noticeNO=${notice.noticeNO }">${notice.title }</a></td>
      <td >${notice.content }</td>

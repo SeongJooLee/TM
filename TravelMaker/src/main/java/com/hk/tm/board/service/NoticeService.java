@@ -65,6 +65,12 @@ public class NoticeService {
 		
 	}
 
+	public int imgDelete(int noticeNO) {
+		// TODO Auto-generated method stub
+				
+		return imageDAO.imgDelete(noticeNO);
+	}
+
 
 
 

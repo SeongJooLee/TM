@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
+	pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath }" />
+<%       
+   request.setCharacterEncoding("utf-8");
+ %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +14,6 @@
 <script src='http://code.jquery.com/jquery-latest.min.js'></script>
 <script type='text/javascript'>
 var cnt = 1;
-var previewCnt = 1;
 function fn_addFile(){
 if(cnt===11){
 	alert("최대 10개만 생성할 수 있습니다.");
@@ -19,6 +22,7 @@ if(cnt===11){
     $("#d_file").append("<br>" + "<p id='image"+cnt+" '><input type='file' name='image" + cnt + " ' />");
     cnt++;
 }
+
 
 function backToList(obj){
 	obj.method ="POST";
@@ -32,9 +36,12 @@ function fn_create(){
         return;
     } else {
         alert("확인(예)을 누르셨습니다.");
+        }
+        
+        
         document.getElementById("frm").submit();
     }
-}
+
 </script>
 </head>
 <body>

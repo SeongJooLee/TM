@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.hk.tm.board.vo.ImageVO;
 import com.hk.tm.board.vo.NoticeVO;
+import com.hk.tm.board.vo.ReviewVO;
 import com.hk.tm.board.vo.TravelVO;
 @Repository
 public class ImageDAO {
@@ -23,13 +24,18 @@ public class ImageDAO {
 
 	public void noticeAdd(ImageVO imageVO) {
 		// TODO Auto-generated method stub
+		System.out.println("인서트 불량1"+imageVO.toString());
 		sql.insert(ns+"insertNotice",imageVO);
+		System.out.println("인서트 불량2"+imageVO.toString());
+
 	}
 
 	public void noticeUpdate(NoticeVO noticeVO, ImageVO imageVO) {
 		// TODO Auto-generated method stub
 		imageVO.setNoticeNO(noticeVO.getNoticeNO());
+		System.out.println("업데이트 불량1"+imageVO.toString());
 		sql.update(ns+"updateNotice",imageVO);
+		System.out.println("업데이트 불량2"+imageVO.toString());
 	}
 
 	public void noticeDelete(int noticeNO) {
@@ -64,4 +70,23 @@ public class ImageDAO {
 		return imageVO;
 	}
 
+	public int imgDelete(int noticeNO) {
+		ImageVO imageVO = sql.selectOne(ns+"selectOneNotice",noticeNO);
+		int ret=0;
+		if(imageVO!=null) {
+			ret = sql.delete(ns+"deleteNotice",noticeNO);
+		}
+		return ret;
+	}
+	
+	public ImageVO selectOne(int reviewNO) {
+		ImageVO imageVO = sql.selectOne(ns+"selectOne",reviewNO);
+		return imageVO;
+	}
+
+	public void reviewUpdate(ReviewVO reviewVO, ImageVO imageVO) {
+		// TODO Auto-generated method stub
+		imageVO.setReviewNO(reviewVO.getReviewNO());
+		sql.update(ns+"reviewUpdate",imageVO);
+	}
 }
