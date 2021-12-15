@@ -87,4 +87,9 @@ public class ImageDAO {
 		imageVO.setReviewNO(reviewVO.getReviewNO());
 		sql.update(ns+"reviewUpdate",imageVO);
 	}
+
+	public void promotionAdd(ImageVO imageVO) {
+		// TODO Auto-generated method stub
+		sql.insert(ns+"insertPromotion",imageVO);
+	}
 }

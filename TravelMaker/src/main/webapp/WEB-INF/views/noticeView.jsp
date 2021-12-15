@@ -79,6 +79,10 @@
 		}
 	}
 
+	function fn_image(obj){
+		   document.getElementById("image").disabled = false;
+		   }
+		
 	function fn_modify_update() {
 		if (!confirm("수정 하시겠습니까?")) {
 			alert("취소(아니오)를 누르셨습니다.");

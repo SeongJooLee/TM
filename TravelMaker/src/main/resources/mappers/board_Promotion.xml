@@ -32,6 +32,11 @@
 		  where promotionNO=#{promotionNO}
 	</select>
 	
+	<select id="selectMaxPromotion" resultType="java.lang.Integer"> 
+		SELECT max(promotionNO)
+		 FROM PROMOTION
+	</select>	
+	
 	<insert id="insertPromotion" parameterType="PromotionVO">
 		INSERT INTO PROMOTION (PROMOTIONNO, TITLE, CONTENT, WRITEDATE, PRICE, SELLERID, NAME)
 		 VALUES((select max(promotionNO)+1 from promotion), #{title}, #{content}, SYSDATE, #{price}, #{sellerID}, 'promotion')

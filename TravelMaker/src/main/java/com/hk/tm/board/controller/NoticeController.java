@@ -39,7 +39,6 @@ public class NoticeController {
 
 	@RequestMapping(value="/board/notice", method= {RequestMethod.GET,RequestMethod.POST})
 	public String noticeList(Model model) {
-
 		List<NoticeVO> list = noticeService.selectAllNotice();
 
 		model.addAttribute("notice",list);

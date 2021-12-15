@@ -47,4 +47,16 @@ public class PromotionService {
 		
 		return map;
 	}
+
+	public int selectMaxPromotion() {
+		// TODO Auto-generated method stub
+		return promotionDAO.selectMaxNotice();
+	}
+
+	public void promotionAdd(PromotionVO promotionVO, ImageVO imageVO, CategoryVO categoryVO) {
+		// TODO Auto-generated method stub
+		promotionDAO.promotionAdd(promotionVO);
+		imageDAO.promotionAdd(imageVO);
+		categoryDAO.promotionAdd(categoryVO);
+	}
 }

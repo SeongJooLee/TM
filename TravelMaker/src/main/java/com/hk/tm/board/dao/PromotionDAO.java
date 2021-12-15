@@ -27,4 +27,16 @@ public class PromotionDAO {
 		return promotionVO;
 	}
 
+	public int selectMaxNotice() {
+		// TODO Auto-generated method stub
+		int promotionNO = sql.selectOne(ns+"selectMaxPromotion",null);
+		
+		return promotionNO;
+	}
+
+	public void promotionAdd(PromotionVO promotionVO) {
+		// TODO Auto-generated method stub
+		sql.insert(ns+"insertPromotion",promotionVO);
+	}
+
 }
