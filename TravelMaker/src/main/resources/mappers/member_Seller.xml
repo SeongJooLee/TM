@@ -41,7 +41,7 @@
    </insert>
    
    <update id="update" parameterType="SellerVO">
-   		UPDATE seller SET PW=#{pw}, PHONE=#{phone}, ADDRESS=#{address}, WHERE sellerID=#{sellerID}
+   		UPDATE seller SET PW=#{pw}, PHONE=#{phone}, ADDRESS=#{address} WHERE sellerID=#{sellerID}
    </update>
    
    <delete id="delete" parameterType="SellerVO">

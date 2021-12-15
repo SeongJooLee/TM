@@ -103,13 +103,13 @@ width:110px;
 		</div>
 		<div class="grid2">
 		<form action='/tm/member/mypage/update' method='post'>
-			아이디: <input type='text' name='id' value='${userSession.id}'><br>
+			아이디: <input type='text' name='id' value='${userSession.id}' readonly><br>
 			비밀번호: <input type='text' name='pw' value='${userSession.pw}'><br>
-			이름: <input type='text' name='name' value='${userSession.name}'><br>
-			생년월일: <input type='text' name='birth' value='${userSession.birth}'><br>
-			연락처: <input type='text' name='phone' value='${userSession.phone}'><br>
+			이름: <input type='text' name='name' value='${userSession.name}' readonly><br>
+			생년월일: <input type='text' name='birth' value='${userSession.birth}' ><br>
+			연락처: <input type='text' name='phone' value='${userSession.phone}' ><br>
 			주소: <input type='text' name='address' value='${userSession.address}'><br>
-			가입날짜: <input type='text' name='joinDate' value='${userSession.joinDate}'><br>
+			가입날짜: <input type='text' name='joinDate' value='${userSession.joinDate}' readonly><br>
 			<input type='hidden' name='testKey' value='userUpdate'>
 			<input type='submit' value='변경하기'>
 		</form>

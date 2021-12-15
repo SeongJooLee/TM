@@ -14,7 +14,7 @@
 	}
 
 	function sellerDelete(){
-		location.href='/tm/member/sellerMypage/delete?sellerId=${userSession.sellerID}';
+
 		}
 </script> 
 <style type="text/css">
@@ -55,13 +55,13 @@
 			<br>
 			<ul style="background-color: CornflowerBlue; text-align: center;" >
 				<li>
-					<form action='mypage' method='post'>
+					<form action='/tm/member/mypage' method='post'>
 						<input type="hidden" name="testKey" value="sellerOne">					
 						<input class='btn' type='submit'  value='회원정보'>
 					</form>
 				</li><br>
 				<li>
-					<form action='mypage' method='post'>
+					<form action='/tm/member/mypage' method='post'>
 						<input type="hidden" name="testKey" value="sellerTwo">					
 						<input class='btn' type='submit'  value='내가 등록한 상품 보기'>
 					</form>			
@@ -70,15 +70,18 @@
 			</ul>
 		</div>
 		<div class="grid2">
-		<p>아이뒤 : ${userSession.sellerID}</p> 
-		<p>비빔면호 : ${userSession.pw}</p> 
-		<p>이름 : ${userSession.name}</p> 
-		<p>연락처 : ${userSession.phone}</p> 
-		<p>주소 : ${userSession.address}</p> 
-		<p>가입날짜 : ${userSession.joinDate}</p> 
 		
-		<button onclick='sellerUpdate()'>수정하기</button>
-		<button onclick='sellerDelete()'>삭제하기</button>
+		<form action='/tm/member/mypage/sellerUpdate' method='post' >
+			아이디: <input type='text' name='sellerID'value='${userSession.sellerID}' readonly><br>
+			비밀번호: <input type='text' name='pw' value='${userSession.pw}'><br>
+			업체이름: <input type='text' name='name' value='${userSession.name}' readonly><br>
+			연락처: <input type='text' name='phone' value='${userSession.phone}'><br>
+			주소: <input type='text' name='address' value='${userSession.address}'><br>
+			<input type='submit' value='변경하기'>
+		</form>
+	
+		
+
 		</div>
 		
 	</div>

@@ -48,14 +48,16 @@ public class UserController {
 		
 	}
 	@RequestMapping(value="/member/logout",method=RequestMethod.GET)
-	public String memberLogout(HttpSession session) {
-//		if(key == 1) {
-//			session.invalidate();
-//			return "logoutUpdate";
-//		}
-		session.invalidate();
-		System.out.println("세션삭제");
-		return "logout";
+	public String memberLogout(HttpSession session,@RequestParam(value="key",required = false)String key) {
+		if(key != null) {
+			session.invalidate();
+			return "logoutUpdate";
+		}else {
+			session.invalidate();
+			System.out.println("세션삭제");
+			return "logout";
+		}
+		
 	}
 	
 	@RequestMapping(value="/member/registerCheck",method=RequestMethod.GET)
@@ -289,16 +291,33 @@ public class UserController {
 			int reservationResult = userService.delectReservation(userId);//reservation
 			
 			
-			System.out.println(travelResult+" 트레블 삭제완료");
-			System.out.println("실행??");
+		
 			int result = userService.delete(userId);
 			model.addAttribute("result",result);
 		}
 		return "userMyPageDeleteDone";
 	}
-	@RequestMapping(value="/member/mypage/delete", method=RequestMethod.POST)
-	public String mypageDeletePost(@ModelAttribute UserVO user,Model model){	
-		return "";
+	@RequestMapping(value="/member/mypage/sellerUpdate", method=RequestMethod.GET)
+	public String sellermypageUpdate(){	
+		return "sellerMyPageUpdate";
 	}
+	@RequestMapping(value="/member/mypage/sellerUpdate", method=RequestMethod.POST)
+	public String sellermypageUpdatePost(@ModelAttribute SellerVO seller,Model model){	
+		System.out.println(seller);
+		int result = userService.updateSeller(seller);
+		model.addAttribute("result",result);
+		System.out.println("실행?? ="+result);
+		return "sellerMyPageUpdateDone";
+	}
+	@RequestMapping(value="/member/sellerMypage/delete", method=RequestMethod.GET)
+	public String sellerMypageDelete(@RequestParam(value="sellerId",required=false) String sellerId,Model model){	
+		if(sellerId != null) {	
+			int promotionResult = userService.promotionDelete(sellerId);
+			int result = userService.sellerDelete(sellerId);
+			model.addAttribute("result",result);
+		}
+		return "sellerMyPageDeleteDone";
+	}
+	
 	
 }
