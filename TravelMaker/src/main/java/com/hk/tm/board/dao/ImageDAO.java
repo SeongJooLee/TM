@@ -63,5 +63,9 @@ public class ImageDAO {
 		ImageVO imageVO = sql.selectOne(ns+"selectOnePromotion",promotionNO);
 		return imageVO;
 	}
-
+	
+	public ImageVO selectOne(int reviewNO) {
+		ImageVO imageVO = sql.selectOne(ns+"selectOne",reviewNO);
+		return imageVO;
+	}
 }

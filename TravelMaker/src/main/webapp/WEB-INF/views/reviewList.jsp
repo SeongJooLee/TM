@@ -15,26 +15,26 @@
 	<table align="center" border="1" width="80%">
 		<tr height="10" align="center" bgcolor="lightgreen">
 			<td>글번호</td>
-			<td>작성자</td>
 			<td>제목</td>
 			<td>내용</td>
 			<td>작성일</td>
+			<td>작성자</td>
+			<td>상품번호</td>
 		</tr>
 
-			<c:forEach var="list" items="${list}" varStatus="status">
+			<c:forEach var="review" items="${review}" varStatus="status">
 				<tr height="10" align="center">
-					<td>${list.reviewNO}</td>
-					<td><a href="list/view?listNO=${review.reviewNO }">${review.title }</a>
-					<td>${list.content }</td>
-				    <td>${notice.writeDate }</td>
-					<td>${list.id }</td>
+					<td>${review.reviewNO}</td>
+					<td><a href="review/view?reviewNO=${review.reviewNO }" >${review.title}</a></td>
+					<td>${review.content }</td>
+				    <td>${review.writeDate }</td>
+					<td>${review.id }</td>
+					<td>${review.promotionNO }</td>
 				</tr>
 			</c:forEach>
 			
 		
 	</table>
-	<a class="cls1" href="review/add"><p class="cls2">글쓰기</p></a>
-	
 <jsp:include page="/resources/include/footer.jsp" />
 </body>
 </html>
