@@ -60,6 +60,7 @@ public class AdminController {
 		if(key ==null && search!=null) {
 			List<UserVO>list = adminService.searchID(search);
 			model.addAttribute("list",list);
+			model.addAttribute("search",search);
 			System.out.println(list);
 			
 			return "userSearchList";

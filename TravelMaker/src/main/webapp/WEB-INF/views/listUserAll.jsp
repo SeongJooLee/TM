@@ -10,9 +10,11 @@
 <title>관리자 마이페이지</title>
 <script>
 	function nameOrder(){
+		alert('이름순으로 보여집니다.');
 		location.href='/tm/admin/mypage?list=name';
 		}
 	function dateOrder(){
+		alert('날짜순으로 보여집니다.');
 		location.href='/tm/admin/mypage?list=date';
 		}
 	

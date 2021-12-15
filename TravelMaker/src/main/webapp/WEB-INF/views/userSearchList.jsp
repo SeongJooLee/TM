@@ -9,6 +9,10 @@
 <meta charset="UTF-8">
 <title>관리자 마이페이지</title>
 <script>
+function success(){
+	alert('${search}로 검색한 결과입니다');
+	
+	}
 	function waitd(){
 		alert('검색 결과가 없습니다 게시판 관리로 이동합니다');
 		location.href='/tm/admin/mypage';
@@ -89,7 +93,7 @@
 			<form action='/tm/admin/mypage' method='post'>
 			아이디 조회 : <input type="search" name='search'><input type='submit' value='검색'>
 			</form>
-			<h3>모든 회원 목록</h3>
+			<h2>검색결과</h2>
 			<table	border='1'>
 				<tr>
 					<td>ID</td>
@@ -115,6 +119,9 @@
 			</c:forEach>
 
 			</table>
+			<script>
+				success();
+			</script>
 		</div>
 	</div>
 </body>
