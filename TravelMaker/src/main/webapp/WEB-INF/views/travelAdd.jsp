@@ -28,25 +28,35 @@ function backToList(obj){
 	obj.action = "${contextPath}/board/travel";
 	obj.submit();
 }
+
+function fn_create(){
+    if (!confirm("글을 생성하시겠습니까?")) {
+        alert("취소(아니오)를 누르셨습니다.");
+        return;
+    } else {
+        alert("확인(예)을 누르셨습니다.");
+        document.getElementById("frm").submit();
+    }
+}
 </script>
 </head>
 <body>
     <jsp:include page="/resources/include/header.jsp" />
     <hr>
-	<h1 style="text-align: center">공지 글 쓰기</h1>
-	<form action="addDone" method="post" enctype="multipart/form-data">
+	<h1 style="text-align: center">여행 글 쓰기</h1>
+	<form id="frm" action="addDone" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="id" value="user">
 		<table border="1" align="center">
 			<tr>
 				<td>
 					<select name="name">
-						<option value="travel">쇼핑</option>
-						<option value="travel">음식</option>
-						<option value="travel">문화</option>
-						<option value="travel">체험</option>
-						<option value="travel">전시</option>
-						<option value="travel">교통</option>
-						<option value="travel">지도</option>
+						<option value="shopping">쇼핑</option>
+						<option value="food">음식</option>
+						<option value="culture">문화</option>
+						<option value="activity">체험</option>
+						<option value="exhibition">전시</option>
+						<option value="transper">교통</option>
+						<option value="map">지도</option>
 					</select>
 				</td>
 				<td>
@@ -70,7 +80,7 @@ function backToList(obj){
 		</table>
 		<br><br>
 		<div align="center">
-			<input type="submit" value="작성하기">
+			<input type="submit" value="작성하기"  onClick="fn_create()">
 			<input type="reset" value="다시 작성">
 			<input type="button" value="목록 보기" onClick="backToList(this.form)">
 		</div>

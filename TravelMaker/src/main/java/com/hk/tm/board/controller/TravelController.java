@@ -9,7 +9,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
@@ -52,10 +51,10 @@ public class TravelController {
 		return "travelList"; //travelList.jsp 호출
 	}
 	
-	@RequestMapping(value="travel/View" , method=RequestMethod.GET)
+	@RequestMapping(value="travel/view" , method=RequestMethod.GET)
 	public String travelView(Model model , @RequestParam("travelNO") int travelNO) {
 		
-		Map<String,Object> map = travelService.selectOneTravel(travelNO);
+		Map<String,Object> map = travelService.selectOneTravel(travelNO); // 여기 문제
 		
 		model.addAttribute("travel", map.get("travel"));		
 		model.addAttribute("image",map.get("image"));
@@ -135,8 +134,9 @@ public class TravelController {
 		} if(fileList.size()>9) {
 			imageVO.setImage10((String) fileList.get(9));
 		}
-		System.out.println("이미지 브이오 어케 댐 "+imageVO.toString());
-		travelService.addTravel(travelVO,imageVO);
+		
+		travelService.addTravel(travelVO,imageVO);// 여기 문제
+		
 		if(imageVO.getImage1()!=null ) {
 			
 			for(int i=0;i < fileList.size(); i++) {

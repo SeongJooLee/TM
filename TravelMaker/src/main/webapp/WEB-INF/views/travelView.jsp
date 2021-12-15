@@ -86,7 +86,7 @@ function backToList(obj){
             <td colspan="2">
 					<p>첫 번째 사진</p>
          		  <input type="hidden" name="originalFileName" value="${image.image1 }" />
-                  <img src="${contextPath }/download?image=${image.image1}&noticeNO=${notice.noticeNO}&name=${notice.name}" />
+                  <img src="${contextPath }/download?image=${image.image1}&travelNO=${travel.travelNO}&name=${travel.name}" />
 					<div align="right">
                   <input  type="button" value="파일 수정" id="imgUpdateBtn" onClick="fn_image(this.form)" disabled />
                   <input type="file" name="image1" id="image" disabled onchange="readURL(this)" /><br>
@@ -94,12 +94,12 @@ function backToList(obj){
              
                <c:if test="${not empty image.image2 && image.image2 !='null' }">
                <input type="hidden" name="image2" value="${image.image2 }" />
-                  <img src="${contextPath }/download?image=${image.image2}&noticeNO=${travel.travelNO}&name=${travel.name}" >
+                  <img src="${contextPath }/download?image=${image.image2}&travelNO=${travel.travelNO}&name=${travel.name}" >
                   &nbsp;<input type="file" name="image2" id="image" disabled onchange="readURL(this)" /><br>
                </c:if>
                
                <c:if test="${not empty image.image3 && image.image3 !='null' }">
-                  <img src="${contextPath }/download?image=${image.image3}&noticeNO=${travel.travelNO}&name=${travel.name}" ><br>
+                  <img src="${contextPath }/download?image=${image.image3}&travelNO=${travel.travelNO}&name=${travel.name}" ><br>
                </c:if>
                <c:if test="${not empty image.image4 && image.image4 !='null' }">
                   <img src="${contextPath }/download?image=${image.image4}&travelNO=${travel.travelNO}&name=${travel.name}" ><br>
@@ -135,8 +135,8 @@ function backToList(obj){
       <tr>
       	<td colspan="2" align="center">
 	      <div id="tr_btn_modify" style="display:none">
-      		<input type="button" value="수정 반영하기" onClick="fn_modify_update(frmNotice)" />
-            <input type="button" value="취소하기" onClick="backToList(frmNotice)" />
+      		<input type="button" value="수정 반영하기" onClick="fn_modify_update(frmTravel)" />
+            <input type="button" value="취소하기" onClick="backToList(frmTravel)" />
 	      </div>
       	</td>
       </tr>
