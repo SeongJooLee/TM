@@ -96,6 +96,10 @@
 		DELETE FROM IMAGE
 		 where id=#{userId}
 	</delete>
+	<delete id="deleteSeller" parameterType="imageVO"> 
+		DELETE FROM IMAGE
+		 where sellerid=#{sellerId}
+	</delete>
    
    
    	<select id="selectOne" resultType="imageVO"> 

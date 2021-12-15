@@ -1,5 +1,6 @@
 package com.hk.tm.member.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,6 +73,20 @@ public class AdminService {
 	public ReservationVO userDetailReservation(String reserNO) {
 		// TODO Auto-generated method stub
 		return adminDAO.userDetailReservation(reserNO);
+	}
+	public List<PromotionVO> listPro() {
+		// TODO Auto-generated method stub
+		
+		
+		
+		return adminDAO.listPro();
+	}
+	public List<ReservationVO> listReser() {
+		// TODO Auto-generated method stub
+		
+		
+		
+		return adminDAO.listReser();
 	}
 	
 

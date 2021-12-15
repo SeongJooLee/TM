@@ -1,5 +1,6 @@
 package com.hk.tm.member.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -60,7 +61,8 @@ public class AdminController {
 			List<UserVO>list = adminService.searchID(search);
 			model.addAttribute("list",list);
 			System.out.println(list);
-			return "userSerachList";
+			
+			return "userSearchList";
 		}
 		
 		if(userBoard!=null) {	
@@ -92,7 +94,11 @@ public class AdminController {
 			model.addAttribute("list",userList);
 			return "listUserAll";
 		case "three":
-			return "listSellerAll";
+			List<PromotionVO>proList = adminService.listPro();
+			List<ReservationVO>reserList = adminService.listReser();
+			model.addAttribute("proList",proList);
+			model.addAttribute("reserList",reserList);
+			return "adminReservationAll";
 		}
 		
 		
@@ -122,9 +128,15 @@ public class AdminController {
 		return "";
 		
 	}
-	@RequestMapping(value="/admin/mypage/detail",method=RequestMethod.POST)
-	public String myPageDetail(Model model){
-		return"";
+	@RequestMapping(value="/admin/mypage/search",method=RequestMethod.GET)
+	public String myPageDetail(@RequestParam(value="search" ,required=false) String search,Model model){
+		
+		List<PromotionVO>proList = adminService.listPro();
+		List<ReservationVO>reserList = adminService.listReser();
+		model.addAttribute("result",search);
+		model.addAttribute("proList",proList);
+		model.addAttribute("reserList",reserList);
+		return "userSearchReservation";
 	}
 	
 }

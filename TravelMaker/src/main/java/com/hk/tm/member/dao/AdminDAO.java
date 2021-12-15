@@ -90,6 +90,20 @@ public class AdminDAO {
 		
 		return reservation;
 	}
+	public List<PromotionVO> listPro() {
+		// TODO Auto-generated method stub
+		List<PromotionVO> list= sqlSession.selectList("mapper.boardPromotion.selectAllPromotion");
+		
+		
+		return list;
+	}
+	public List<ReservationVO> listReser() {
+		// TODO Auto-generated method stub
+		List<ReservationVO> list= sqlSession.selectList("mapper.boardReservation.selectAll");
+		
+		
+		return list;
+	}
 	
 
 }

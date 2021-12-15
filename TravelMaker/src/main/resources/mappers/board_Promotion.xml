@@ -54,7 +54,7 @@
 	
 	<delete id="deleteSeller" parameterType="PromotionVO"> 
 		DELETE FROM PROMOTION
-		 WHERE sellerID=#{sellerID}
+		 WHERE sellerID=#{sellerId}
 	</delete>
    
 </mapper>

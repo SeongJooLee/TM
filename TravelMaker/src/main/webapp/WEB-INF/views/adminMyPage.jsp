@@ -52,12 +52,17 @@
 						<input type='submit' value='회원 조회'>
 					</form>
 				</li><br>
-				
+				<li>
+					<form action='' method='post'>
+						<input type='hidden' name='key' value='three'>
+						<input type='submit' value='예약 조회'>
+					</form>
+				</li><br>
 				
 			</ul>
 		</div>
 		<div class="grid2">
-		content
+		contentd
 		</div>
 	</div>
 </body>

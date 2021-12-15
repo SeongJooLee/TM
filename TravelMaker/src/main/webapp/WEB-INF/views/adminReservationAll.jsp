@@ -2,26 +2,16 @@
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
 <%@ page session="true" %>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관리자 마이페이지</title>
-<script>
-	function nameOrder(){
-		location.href='/tm/admin/mypage?list=name';
-		}
-	function dateOrder(){
-		location.href='/tm/admin/mypage?list=date';
-		}
-	
-</script>
+<title>Insert title here</title>
 <style type="text/css">
 .wrap {
 	display: grid;
 	grid-template-columns: 5% 15% 5% 60% 15%;
-	grid-template-rows: 500px 150px 500px;    
+	grid-template-rows: 100%;    
 }
 
 .wrap>div {
@@ -46,7 +36,7 @@
 </style>
 </head>
 <body>
-	<h1>${userSession.name} 전용 페이지</h1>
+<h1>${userSession.name} 전용 페이지</h1>
 	<div class="wrap">
 		<div class="grid1">
 			
@@ -60,7 +50,7 @@
 				<li>
 					<form action='' method='post'>
 						<input type='hidden' name='key' value='two'>
-						<input type='submit' value='회원조회'>
+						<input type='submit' value='회원 조회'>
 					</form>
 				</li><br>
 				<li>
@@ -70,26 +60,46 @@
 					</form>
 				</li><br>
 				
-				
 			</ul>
 		</div>
 		<div class="grid2">
+		<h3>모든 예약 리스트</h3>
+		<form action='/tm/admin/mypage/search' method='get'>
+			아이디 조회 : <input type="search" name='search'><input type='submit' value='검색'>
+		</form><br><br>
+			<table border='1'>
+	<tr>
+		<td>예약번호</td>
+		<td>예약날짜</td>
+		<td>상품번호</td>
+		<td>상품제목</td>
+		<td>상품내용</td>
+		<td>가격</td>
+		<td>인원수</td>
+		<td>예약자아이디</td>
+	</tr>
+<c:forEach var='proList' items='${proList}'>
+	<tr>
+	<c:forEach var='reserList' items='${reserList}'>
+		<c:if test='${proList.promotionNO==reserList.promotionNO}'>
+			
+				<td><a href='#'>${reserList.reserNO}</a></td>
+				<td>${reserList.reserDate}</td>
+				<td>${proList.promotionNO}</td>
+				<td>${proList.title}</td>
+				<td>${proList.content}</td>
+				<td>${proList.price}</td>
+				<td>${reserList.headCount}</td>
+				<td>${reserList.id}</td>
+			
+		</c:if>
 		
-			<h3>${seller.sellerID}님의 정보</h3>
-			<p>아이디: ${seller.sellerID}</p>
-			<p>비밀번호: ${seller.pw}</p>
-			<p>연락처: ${seller.phone}</p>
-			<p>주소: ${seller.address}</p>
-			<p>사용자 구분: ${seller.grade}</p>
-			
-			<form action='/tm/admin/mypage' method='post'>
-				<input type='hidden' name='selectSellerOne'value='${seller.sellerID}'>
-				<input type='submit' value='상품내역 보기'>
-			</form>
-			
+	</c:forEach>
+	</tr>
+</c:forEach>
+</table>
 		</div>
 	</div>
+
 </body>
-
-
 </html>
