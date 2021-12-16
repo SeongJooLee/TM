@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.hk.tm.board.vo.PromotionImageVO;
 import com.hk.tm.board.vo.PromotionVO;
 
 @Repository
@@ -19,6 +20,12 @@ public class PromotionDAO {
 	public List<PromotionVO> selectAllPromotion() {
 		// TODO Auto-generated method stub
 		List<PromotionVO> list = sql.selectList(ns+"selectAllPromotion");
+		return list;
+	}
+	
+	public List<PromotionImageVO> selectAllPromotionImage() {
+		// TODO Auto-generated method stub
+		List<PromotionImageVO> list = sql.selectList(ns+"selectAllPromotionImage");
 		return list;
 	}
 
@@ -48,5 +55,7 @@ public class PromotionDAO {
 		// TODO Auto-generated method stub
 		sql.delete(ns+"deletePromotion", promotionNO);
 	}
+
+
 
 }

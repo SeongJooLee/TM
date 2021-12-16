@@ -40,6 +40,11 @@ public class PromotionService {
 		return promotionDAO.selectAllPromotion();
 	}
 	
+	public List<PromotionImageVO> selectAllPromotionImage() {
+		// TODO Auto-generated method stub
+		return promotionDAO.selectAllPromotionImage();
+	}
+	
 	public Map<String, Object> selectOneNotice(int promotionNO) {
 		PromotionVO promotionVO = promotionDAO.selectOnePromotion(promotionNO);
 		ImageVO imageVO = imageDAO.selectOnePromotion(promotionNO);
@@ -89,4 +94,6 @@ public class PromotionService {
 		// TODO Auto-generated method stub
 		return imageDAO.promotionImgDelete(promotionNO);
 	}
+
+
 }
