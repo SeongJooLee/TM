@@ -99,18 +99,18 @@ public class AdminController {
 			List<ReservationVO>reserList = adminService.listReser();
 			model.addAttribute("proList",proList);
 			model.addAttribute("reserList",reserList);
-			for (int i = 0; i < proList.size(); i++) {
-				for (int j = 0; j < reserList.size(); j++) {
-					if(proList.get(i).getPromotionNO()==reserList.get(j).getPromotionNO()) {
-						System.out.println(proList.get(i)+" JOIN  "+reserList.get(j));
-						
-						continue;
-					}
-					
-				}
-				
-				
-			}
+//			for (int i = 0; i < proList.size(); i++) {
+//				for (int j = 0; j < reserList.size(); j++) {
+//					if(proList.get(i).getPromotionNO()==reserList.get(j).getPromotionNO()) {
+//						System.out.println(proList.get(i)+" JOIN  "+reserList.get(j));
+//						
+//						continue;
+//					}
+//					
+//				}
+//				
+//				
+//			}
 			return "adminReservationAll";
 		}
 		
@@ -146,7 +146,7 @@ public class AdminController {
 		
 		List<PromotionVO>proList = adminService.listPro();
 		List<ReservationVO>reserList = adminService.listReser();
-		
+		System.out.println("민수야..?"+search);
 		model.addAttribute("result",search);
 		model.addAttribute("proList",proList);
 		model.addAttribute("reserList",reserList);

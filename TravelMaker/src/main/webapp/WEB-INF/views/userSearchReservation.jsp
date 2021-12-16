@@ -68,7 +68,7 @@ function waitd(){
 					</form>
 				</li><br>
 				<li>
-					<form action='' method='post'>
+					<form action='/tm/admin/mypage' method='post'>
 						<input type='hidden' name='key' value='three'>
 						<input type='submit' value='예약 조회'>
 					</form>
@@ -77,7 +77,7 @@ function waitd(){
 			</ul>
 		</div>
 		<div class="grid2">
-		<h2>검색결과</h2>
+		<h2>검색결과${result}</h2>
 		<form action='/tm/admin/mypage/search' method='get'>
 			아이디 조회 : <input type="search" name='search'><input type='submit' value='검색'>
 		</form><br><br>
@@ -95,11 +95,11 @@ function waitd(){
 		<td>상품보기</td>
 	</tr>
 <c:forEach var='proList' items='${proList}' >
-	<tr>
+	
 	<c:forEach var='reserList' items='${reserList}' >
 		
 		<c:if test='${proList.promotionNO==reserList.promotionNO && result.equals(reserList.id)}'>
-			
+			<tr>
 				<td>${reserList.reserNO}</td>
 				<td>${reserList.reserDate}</td>
 				<td>${proList.promotionNO}</td>
@@ -109,20 +109,16 @@ function waitd(){
 				<td>${reserList.headCount}</td>
 				<td>${reserList.id}</td>
 				<td><button onclick='view()'>${proList.title} 상품보기</button></td>
-			
+			</tr>
 		</c:if>
-		<c:if test='${!result.equals(reserList.id)}'>
-					<script>
-						waitd();
-					</script>
-		
-		</c:if>
+		 
 		
 		
 	</c:forEach>
-	</tr>
+	
 	
 </c:forEach>
+	
 	<script>
 			success();
 	</script>

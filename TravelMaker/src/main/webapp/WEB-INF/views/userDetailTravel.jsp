@@ -9,6 +9,9 @@
 <meta charset="UTF-8">
 <title>관리자 마이페이지</title>
 <script>
+	function page(){
+		alert('상세글로 이동합니다');
+		}
 	function nameOrder(){
 		location.href='/tm/admin/mypage?list=name';
 		}
@@ -84,8 +87,8 @@
 				<p>작성자 아이디: ${travel.id}</p>
 				<p>게시판 종류: ${travel.name}</p>
 			
-				<button>수정하기</button>
-				<button>삭제하기</button>
+				<button onclick='page()'>이동하기</button>
+				
 		</div>
 	</div>
 </body>
