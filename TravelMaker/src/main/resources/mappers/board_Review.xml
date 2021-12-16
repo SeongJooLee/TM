@@ -47,5 +47,8 @@
 	<delete id="deleteUserOne" parameterType="ReviewVO">
 			DELETE FROM REVIEW WHERE id=#{userId}
 	</delete>
+	<delete id="deletePro" parameterType="Integer">
+			DELETE FROM REVIEW WHERE promotionNO=#{promotionNO}
+	</delete>
 	
 </mapper>

@@ -316,8 +316,10 @@ public class UserController {
 //			System.out.println(sellerId+" 셀러아이디");
 //			int imageResult = userService.imageDelete(sellerId);
 //			System.out.println("이미지테이블 개수 = "+imageResult);
+			List<PromotionVO> promotion = userService.promotionOne(sellerId);
+			System.out.println("시작 "+promotion);
+			int childDeleteResult = userService.childDeleteAll(promotion);
 			int promotionResult = userService.promotionDelete(sellerId);
-			System.out.println("프로모션테이블 개수 = "+promotionResult);
 			int result = userService.sellerDelete(sellerId);
 			model.addAttribute("result",result);
 		}

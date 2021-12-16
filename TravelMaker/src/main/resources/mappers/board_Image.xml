@@ -139,4 +139,8 @@
 		DELETE FROM IMAGE
 		 where travelNO=#{travelNO}
 	</delete>
+	<delete id="deletePro" parameterType="imageVO"> 
+		DELETE FROM IMAGE
+		 where promotionNO=#{promotionNO}
+	</delete>
 </mapper>

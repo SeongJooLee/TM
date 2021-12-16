@@ -38,5 +38,6 @@
 		   	DELETE FROM CATEGORY
 		   	 WHERE PROMOTIONNO=#{promotionNO}
 	</delete>
+	
 
 </mapper>

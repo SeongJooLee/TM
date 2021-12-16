@@ -53,5 +53,12 @@
 	<delete id="deleteOneUser" parameterType="ReservationVO">
 		DELETE FROM RESERVATION WHERE id=#{userId}
 	</delete>
+	
+	<delete id="delete" parameterType="ReservationVO">
+		DELETE FROM RESERVATION WHERE RESERNO=#{reserNO}
+	</delete>
+	
+	
+	
 
 </mapper>

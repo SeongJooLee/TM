@@ -187,6 +187,36 @@ public class UserDAO {
 		return result;
 	}
 
+	public List<PromotionVO> promotionOne(String sellerId) {
+		// TODO Auto-generated method stub
+		List<PromotionVO> promotion = sqlSession.selectList("mapper.boardPromotion.select", sellerId);
+		return promotion;
+	}
+
+	public int deleteSellerReservation(int promotionNO) {
+		// TODO Auto-generated method stub
+		int result = sqlSession.delete("mapper.boardReservation.deletePro", promotionNO);
+		return result;
+	}
+
+	public int deleteSellerCategory(int promotionNO) {
+		// TODO Auto-generated method stub
+		int result = sqlSession.delete("mapper.boardCategory.deletePromotion", promotionNO);
+		return result;
+	}
+
+	public int deleteSellerReview(int promotionNO) {
+		// TODO Auto-generated method stub
+		int result = sqlSession.delete("mapper.boardReview.deletePro", promotionNO);
+		return result;
+	}
+
+	public int deleteSellerImage(int promotionNO) {
+		// TODO Auto-generated method stub
+		int result = sqlSession.delete("mapper.boardImage.deletePro", promotionNO);
+		return result;
+	}
+
 	
 
 }

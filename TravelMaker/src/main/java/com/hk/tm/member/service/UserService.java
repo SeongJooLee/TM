@@ -147,4 +147,22 @@ public class UserService {
 		// TODO Auto-generated method stub
 		return userDAO.imageDelete(sellerId);
 	}
+
+	public List<PromotionVO> promotionOne(String sellerId) {
+		// TODO Auto-generated method stub
+		return userDAO.promotionOne(sellerId);
+	}
+
+	public int childDeleteAll(List<PromotionVO> promotion) {
+		// TODO Auto-generated method stub
+		for (PromotionVO promotionVO : promotion) {
+			System.out.println("테스트해볼게 "+promotionVO.getPromotionNO());
+			int a = userDAO.deleteSellerReservation(promotionVO.getPromotionNO());
+			int b = userDAO.deleteSellerCategory(promotionVO.getPromotionNO());
+			int c = userDAO.deleteSellerReview(promotionVO.getPromotionNO());
+			int d = userDAO.deleteSellerImage(promotionVO.getPromotionNO());
+			System.out.println(a+" "+b+" "+c+" "+d);
+		}
+		return 0;
+	}
 }
