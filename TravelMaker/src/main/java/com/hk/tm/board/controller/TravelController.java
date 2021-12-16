@@ -122,7 +122,7 @@ public class TravelController {
 				imageVO.setImage1(null);
 				fileList.remove(0);
 			}
-		}
+		}		
 		
 		travelService.addTravel(travelVO, imageVO,categoryVO);
 		
@@ -290,6 +290,5 @@ public class TravelController {
 			}
 		}
 		return fileList;
-	}
-	
+	}	
 }
