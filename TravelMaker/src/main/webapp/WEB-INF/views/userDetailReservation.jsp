@@ -77,6 +77,7 @@
 		<h3>예약 상세보기</h3>
 		
 			
+			
 				<p>예약 번호: ${reservation.reserNO}</p>
 				<p>예약 상품 번호: ${reservation.promotionNO}</p>
 				<p>예약 날짜: ${reservation.reserDate}</p>
