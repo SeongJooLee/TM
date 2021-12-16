@@ -103,6 +103,7 @@ public class AdminController {
 				for (int j = 0; j < reserList.size(); j++) {
 					if(proList.get(i).getPromotionNO()==reserList.get(j).getPromotionNO()) {
 						System.out.println(proList.get(i)+" JOIN  "+reserList.get(j));
+						
 						continue;
 					}
 					
