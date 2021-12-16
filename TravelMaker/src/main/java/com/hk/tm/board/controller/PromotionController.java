@@ -55,6 +55,7 @@ public class PromotionController {
 		List<PromotionImageVO> list = promotionService.selectCategoryPromotion(key);
 		model.addAttribute("promotion",list);
 		return "promotionList";
+		
 	}
 	@RequestMapping(value="/board/promotion/view", method= RequestMethod.GET)
 	public String promotionView(Model model,@RequestParam("promotionNO") int promotionNO) {
