@@ -13,6 +13,7 @@ public class PromotionImageVO {
 	private String image1;
 	private String image2;
 	private String image3;
+	private String categoryName;
 	public int getPromotionNO() {
 		return promotionNO;
 	}
@@ -73,11 +74,18 @@ public class PromotionImageVO {
 	public void setImage3(String image3) {
 		this.image3 = image3;
 	}
+	public String getCategoryName() {
+		return categoryName;
+	}
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
 	@Override
 	public String toString() {
 		return "PromotionImageVO [promotionNO=" + promotionNO + ", title=" + title + ", content=" + content
 				+ ", writeDate=" + writeDate + ", price=" + price + ", sellerID=" + sellerID + ", name=" + name
-				+ ", image1=" + image1 + ", image2=" + image2 + ", image3=" + image3 + "]";
+				+ ", image1=" + image1 + ", image2=" + image2 + ", image3=" + image3 + ", categoryName=" + categoryName
+				+ "]";
 	}
 	
 	

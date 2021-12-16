@@ -41,7 +41,7 @@
 				</c:if>
 				
 				<div class="card-footer">
-					<a class="btn btn-primary btn-sm">${category.categoryName }</a><a href="promotion/view?promotionNO=${promotion.promotionNO }">${promotion.title }</a>
+					<a class="btn btn-primary btn-sm">${promotion.categoryName }</a>&nbsp;&nbsp;&nbsp;<a href="promotion/view?promotionNO=${promotion.promotionNO }">${promotion.title }</a>
 				</div>
 				</div>
 			</div>

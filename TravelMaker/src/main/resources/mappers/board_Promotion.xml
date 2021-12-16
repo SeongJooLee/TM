@@ -23,8 +23,9 @@
    
    <select id="selectAllPromotionImage" resultType="promotionImageVO">
 		SELECT * 
-		FROM PROMOTION p ,IMAGE i 
-		WHERE p.PROMOTIONNO = i.PROMOTIONNO(+) 
+		FROM PROMOTION p ,IMAGE i,CATEGORY c 
+		WHERE p.PROMOTIONNO = i.PROMOTIONNO(+)
+		AND p.PROMOTIONNO = c.PROMOTIONNO (+)
 	</select>
    
    <select id="selectAllPromotion" resultMap="promotionResult">
