@@ -73,12 +73,6 @@ public class ImageDAO {
 		sql.insert(ns+"insertTravel",imageVO);
 	}
 
-	public ImageVO selectOnePromotion(int promotionNO) {
-		ImageVO imageVO = sql.selectOne(ns+"selectOnePromotion",promotionNO);
-		return imageVO;
-	}
-
-	
 	public ImageVO selectOne(int reviewNO) {
 		ImageVO imageVO = sql.selectOne(ns+"selectOne",reviewNO);
 		return imageVO;
@@ -89,7 +83,12 @@ public class ImageDAO {
 		imageVO.setReviewNO(reviewVO.getReviewNO());
 		sql.update(ns+"reviewUpdate",imageVO);
 	}
-
+	
+	public ImageVO selectOnePromotion(int promotionNO) {
+		ImageVO imageVO = sql.selectOne(ns+"selectOnePromotion",promotionNO);
+		return imageVO;
+	}
+	
 	public void promotionAdd(ImageVO imageVO) {
 		// TODO Auto-generated method stub
 		sql.insert(ns+"insertPromotion",imageVO);

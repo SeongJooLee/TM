@@ -14,6 +14,7 @@ import com.hk.tm.board.dao.ReservationDAO;
 import com.hk.tm.board.dao.ReviewDAO;
 import com.hk.tm.board.vo.CategoryVO;
 import com.hk.tm.board.vo.ImageVO;
+import com.hk.tm.board.vo.PromotionImageVO;
 import com.hk.tm.board.vo.PromotionVO;
 
 @Service

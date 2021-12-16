@@ -21,6 +21,12 @@
 		 FROM PROMOTION WHERE SELLERID=#{id}
    </select>
    
+   <select id="selectAllPromotionImage" resultMap="promotionImageVO">
+		SELECT * 
+		FROM PROMOTION p ,IMAGE i 
+		WHERE p.PROMOTIONNO = i.PROMOTIONNO(+) 
+	</select>
+   
    <select id="selectAllPromotion" resultMap="promotionResult">
 		SELECT PROMOTIONNO, TITLE, CONTENT, WRITEDATE, PRICE, SELLERID, NAME
 		 FROM PROMOTION

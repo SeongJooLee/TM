@@ -31,6 +31,7 @@ import com.hk.tm.board.service.PromotionService;
 import com.hk.tm.board.vo.CategoryVO;
 import com.hk.tm.board.vo.ImageVO;
 import com.hk.tm.board.vo.NoticeVO;
+import com.hk.tm.board.vo.PromotionImageVO;
 import com.hk.tm.board.vo.PromotionVO;
 
 import net.coobird.thumbnailator.Thumbnails;
@@ -45,7 +46,7 @@ public class PromotionController {
 
 	@RequestMapping(value="/board/promotion", method= {RequestMethod.GET,RequestMethod.POST})
 	public String promotionList(Model model) {
-		List<PromotionVO> list = promotionService.selectAllPromotion();
+		List<PromotionImageVO> list = promotionService.selectAllPromotion();
 
 		model.addAttribute("promotion",list);
 
