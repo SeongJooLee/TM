@@ -41,7 +41,36 @@
 .button4:hover {background-color: #e7e7e7;}
 	</style>
 	
-
+<script>
+	function wldur(){
+		alert('지역 카테고리');
+		location.href='/tm/board/promotion/category?key=지역';
+		}
+	function dmatlr(){
+		alert('음식 카테고리');
+		location.href='/tm/board/promotion/category?key=음식';
+		}
+	function ryxhd(){
+		alert('교통 카테고리');
+		location.href='/tm/board/promotion/category?key=교통';
+		}
+	function ansghk(){
+		alert('문화 카테고리');
+		location.href='/tm/board/promotion/category?key=문화';
+		}
+	function glffld(){
+		alert('힐링 카테고리');
+		location.href='/tm/board/promotion/category?key=힐링';
+		}
+	function cpgja(){
+		alert('체험 카테고리');
+		location.href='/tm/board/promotion/category?key=체험';
+		}
+	function chrlghk(){
+		alert('설정을 초기화합니다.');
+		location.href='/tm/board/promotion';
+		}
+</script>
 </head>
 <body>
 	<jsp:include page="/resources/include/header.jsp" />
@@ -53,12 +82,13 @@
 	</div>
 	
 	<div class="col-md-12 mb-4">
-		<button type="button" class="button button4">지역</button>&nbsp;&nbsp;
-		<button type="button" class="button button4">음식</button>&nbsp;&nbsp;
-		<button type="button" class="button button4">교통</button>&nbsp;&nbsp;
-		<button type="button" class="button button4">문화</button>&nbsp;&nbsp;
-		<button type="button" class="button button4">힐링</button>&nbsp;&nbsp;
-		<button type="button" class="button button4">체험</button>
+		<button type="button" class="button button4" onclick='wldur()'>지역</button>&nbsp;&nbsp;
+		<button type="button" class="button button4" onclick='dmatlr()'>음식</button>&nbsp;&nbsp;
+		<button type="button" class="button button4" onclick='ryxhd()'>교통</button>&nbsp;&nbsp;
+		<button type="button" class="button button4" onclick='ansghk()'>문화</button>&nbsp;&nbsp;
+		<button type="button" class="button button4" onclick='glffld()'>힐링</button>&nbsp;&nbsp;
+		<button type="button" class="button button4" onclick='cpgja()'>체험</button>&nbsp;&nbsp;
+		<button type="button" class="button button4" onclick='chrlghk()'>설정 초기화</button>
 	</div>
 	
 		<div class="row gx-4 gx-lg-5">
@@ -75,14 +105,14 @@
 				</c:if>
 				
 				<div class="card-footer">
-					<a class="btn btn-primary btn-sm">${promotion.categoryName }</a>&nbsp;&nbsp;&nbsp;<a href="promotion/view?promotionNO=${promotion.promotionNO }">${promotion.title }</a>
+					<a class="btn btn-primary btn-sm">${promotion.categoryName }</a>&nbsp;&nbsp;&nbsp;<a href="${contextPath}/tm/board/promotion/view?promotionNO=${promotion.promotionNO }">${promotion.title }</a>
 				</div>
 				</div>
 			</div>
 		</c:forEach>
 		</div>
 	</div>
-		<a href="promotion/add">글쓰기</a>
+		<a href="${contextPath }/tm/board/promotion/add">글쓰기</a>
 
 	<hr>
 	<!-- Bootstrap core JS-->

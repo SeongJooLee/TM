@@ -46,12 +46,20 @@ public class PromotionController {
 
 	@RequestMapping(value="/board/promotion", method= {RequestMethod.GET,RequestMethod.POST})
 	public String promotionList(Model model) {
+		System.out.println("실행");
 //		List<PromotionVO> list = promotionService.selectAllPromotion();
 		List<PromotionImageVO> list = promotionService.selectAllPromotionImage();
-
+		System.out.println("김민수 실행전");
 		System.out.println("list 값들?"+list.toString());
 		model.addAttribute("promotion",list);
-
+		System.out.println("이해해");
+		return "promotionList";
+	}
+	@RequestMapping(value="/board/promotion/category", method= {RequestMethod.GET})
+	public String promotionCategory(Model model,@RequestParam("key") String key) {
+		System.out.println(key);
+		List<PromotionImageVO> list = promotionService.selectCategoryPromotion(key);
+		model.addAttribute("promotion",list);
 		return "promotionList";
 	}
 	@RequestMapping(value="/board/promotion/view", method= RequestMethod.GET)

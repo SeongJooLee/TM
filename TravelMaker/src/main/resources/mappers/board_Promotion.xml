@@ -69,6 +69,15 @@
 		DELETE FROM PROMOTION
 		 WHERE sellerID=#{sellerID}
 	</delete>
+	
+	<select id="selectCategory" resultType="promotionImageVO" parameterType="java.lang.String">
+		SELECT * 
+		FROM PROMOTION p ,IMAGE i,CATEGORY c 
+		WHERE p.PROMOTIONNO = i.PROMOTIONNO(+)
+		AND p.PROMOTIONNO = c.PROMOTIONNO (+)
+		AND c.CATEGORYNAME = #{key}
+		ORDER BY p.PROMOTIONNO DESC
+	</select>
    
 </mapper>
 

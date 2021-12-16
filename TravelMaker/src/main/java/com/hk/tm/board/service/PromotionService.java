@@ -95,5 +95,10 @@ public class PromotionService {
 		return imageDAO.promotionImgDelete(promotionNO);
 	}
 
+	public List<PromotionImageVO> selectCategoryPromotion(String key) {
+		// TODO Auto-generated method stub
+		return promotionDAO.selectCategoryPromotion(key);
+	}
+
 
 }
