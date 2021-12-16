@@ -125,6 +125,7 @@ public class TravelController {
 			}
 		}		
 		
+		
 		travelService.addTravel(travelVO, imageVO,categoryVO);
 		
 		for(int i=0;i < fileList.size(); i++) {
