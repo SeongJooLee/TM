@@ -59,7 +59,7 @@ public class PromotionController {
 	}
 	@RequestMapping(value="/board/promotion/view", method= RequestMethod.GET)
 	public String promotionView(Model model,@RequestParam("promotionNO") int promotionNO) {
-		Map<String,Object> map = promotionService.selectOneNotice(promotionNO);
+		Map<String,Object> map = promotionService.selectOnePromotion(promotionNO);
 		model.addAttribute("promotion",map.get("promotion"));
 		model.addAttribute("image",map.get("image"));
 		model.addAttribute("category",map.get("category"));
@@ -184,7 +184,7 @@ public class PromotionController {
 			}
 		}
 
-		map = promotionService.selectOneNotice(promotionVO.getPromotionNO());
+		map = promotionService.selectOnePromotion(promotionVO.getPromotionNO());
 		model.addAttribute("promotion",map.get("promotion"));
 		model.addAttribute("image",map.get("image"));
 		model.addAttribute("category",map.get("category"));
