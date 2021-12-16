@@ -12,10 +12,19 @@
 	function reserUpdate(){
 		location.href='/tm/admin/mypage/reservationUpdate?key=${reservation.reserNO}';
 		}
-	function reserDelete(){
-		location.href='/tm/admin/mypage/reservationUpdate';
+	/* function reserDelete(){
+		location.href='/tm/admin/mypage/reservationDelete?key=${reservation.reserNO}';
+		} */
+	function check(){
+		
+		var result = confirm("삭제할거니..?");
+		if(result){
+			location.href = "/tm/admin/mypage/reservationDelete?key=${reservation.reserNO}";
+		}else{
+		    return;
 		}
 	
+	}
 </script>
 <style type="text/css">
 .wrap {
@@ -64,7 +73,7 @@
 					</form>
 				</li><br>
 				<li>
-					<form action='' method='post'>
+					<form action='/tm/admin/mypage' method='post'>
 						<input type='hidden' name='key' value='three'>
 						<input type='submit' value='예약 조회'>
 					</form>
@@ -86,7 +95,7 @@
 				
 			
 				<button onclick='reserUpdate()'>수정하기</button>
-				<button onclick='reserDelete()'>삭제하기</button>
+				<button onclick='check()'>삭제하기</button>
 		</div>
 	</div>
 </body>

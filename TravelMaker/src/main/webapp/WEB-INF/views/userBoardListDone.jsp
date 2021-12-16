@@ -8,9 +8,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
-	function ss(){
-		alert('계정정보가 없어서 로그인 못하지롱~~');
-		location.href = "login";
+	function start(){
+		alert('해당 게시물로 이동합니다.');
+		location.href = "/tm/board/travel/view?travelNO=${travel.travelNO}";
 	}
 </script>
 <style type="text/css">
@@ -45,11 +45,7 @@ width:110px;
 </style>
 </head>
 <body>
-	<%-- <c:if test = '${user==null}'>
-		<script>
-			ss();
-		</script>
-	</c:if>  --%>
+	
 	<h1>일반유저 페이지</h1>
 	<h2>${userSession.id}님 정보</h2> 
 	
@@ -91,8 +87,8 @@ width:110px;
 		<p>내용: ${travel.content}</p> 
 		<p>작성 날짜: ${travel.writeDate}</p> 
 		<p>작성자 ID: ${travel.id}</p> 
-		<button type='button'>수정하기</button>
-		<button type='button'>삭제하기</button>
+		<button type='button' onclick='start()'>글 이동하기</button>
+		
 		</div>
 	
 	</div>

@@ -114,6 +114,11 @@ public class AdminDAO {
 		int result = sqlSession.update("mapper.boardReservation.updateOne", reservation);
 		return result;
 	}
+	public int deleteReservation(String reserNO) {
+		// TODO Auto-generated method stub
+		int result = sqlSession.delete("mapper.boardReservation.delete", reserNO);
+		return result;
+	}
 	
 
 }

@@ -158,11 +158,22 @@ public class AdminController {
 	public String myPageReservationUpdatePost(Model model,@ModelAttribute ReservationVO reservation){
 		
 		int result = adminService.reservationUpdate(reservation);
-		System.out.println("성공?"+result);
+		
 		
 		model.addAttribute("result",result);
 		
 		return "adminMyPage";
 	}
+	@RequestMapping(value="/admin/mypage/reservationDelete",method=RequestMethod.GET)
+	public String myPageReservationDelete(Model model,@RequestParam(value="key",required=false) String reserNO){
+		
+		int result=adminService.deleteReservation(reserNO);
+		
+		model.addAttribute("deleteResult",result);
+		
+		return "adminMyPage";
+	}
+	
+	
 	
 }

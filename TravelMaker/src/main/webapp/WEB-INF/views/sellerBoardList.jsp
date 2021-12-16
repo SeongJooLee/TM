@@ -12,12 +12,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<!-- <script>
-	function ss(){
-		alert('계정정보가 없어서 로그인 못하지롱~~');
-		location.href = "login";
-	}
-</script> -->
+
 <style type="text/css">
 .wrap {
 	display: grid;
@@ -45,6 +40,8 @@
 	border: 3px solid royalblue;
 }
 </style>
+
+
 </head>
 <body>
 	<h1>판매유저 페이지</h1>
@@ -73,8 +70,8 @@
 		</div>
 		<div class="grid2">
 			<div class="container">
-				<h3>${userSession.sellerID}님이등록한상품정보</h3>
-				<p>여기다가 넣어야되나</p>
+				<h2>${userSession.sellerID}님이등록한상품정보</h2>
+				<h4>상품번호를 클릭하면 해당 상품으로 이동합니다.</h4>
 				<table class="table table-hover">
 					<thead>
 						<tr class="table-primary">
@@ -91,17 +88,13 @@
 							<c:forEach var='list' items='${proList}' varStatus='num'>
 
 
-								<td>${list.promotionNO}</td>
+								<td><a href='/tm/board/promotion/view?promotionNO=${list.promotionNO}'>${list.promotionNO}</a></td>
 								<td>${list.title}</td>
 								<td>${list.content}</td>
 								<td>${list.price}</td>
 								<td>${list.sellerID}</td>
 								<td>
-									<!-- <form action='mypage' method='post'>
-					<input type="hidden" name="testKey" value="sellerThree">				
-					<input class='btn' type='submit'  value='예약내역 확인하기'>
-				</form> --> <a
-									href='/tm/member/mypage?promotionNO=${list.promotionNO}'>예약내역
+									<a href='/tm/member/mypage?promotionNO=${list.promotionNO}'>예약내역
 										확인하기</a>
 								</td>
 							</c:forEach>

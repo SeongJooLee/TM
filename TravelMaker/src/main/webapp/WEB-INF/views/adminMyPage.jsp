@@ -40,6 +40,9 @@
 function success(){
 	alert('예약변경이 완료되었습니다람쥐');
 }
+function deleteSuccess(){
+	alert('삭제가 완료되었습니다람쥐');
+}
 </script>
 </head>
 <body>
@@ -47,6 +50,12 @@ function success(){
 	<script>
 
 		success();
+	</script>
+</c:if>
+<c:if test='${deleteResult==1}'>
+	<script>
+
+		deleteSuccess();
 	</script>
 </c:if>
 	<h1>${userSession.name} 전용 페이지</h1>

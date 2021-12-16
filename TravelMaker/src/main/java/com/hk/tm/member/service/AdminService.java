@@ -96,6 +96,10 @@ public class AdminService {
 		// TODO Auto-generated method stub
 		return adminDAO.reservationUpdate(reservation);
 	}
+	public int deleteReservation(String reserNO) {
+		// TODO Auto-generated method stub
+		return adminDAO.deleteReservation(reserNO);
+	}
 	
 
 }
