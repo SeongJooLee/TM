@@ -217,6 +217,12 @@ public class UserDAO {
 		return result;
 	}
 
+	public int addReview(ReviewVO reviewVO) {
+		// TODO Auto-generated method stub
+		int result = sqlSession.insert("mapper.boardReview.insert", reviewVO);
+		return result;
+	}
+
 	
 
 }

@@ -102,7 +102,8 @@
 		</div>
 		<div class="grid2">
 			<div class="container">
-				<h3>예약확인</h3>
+				<h2>예약확인</h2>
+				<h4>예약번호를 누르시면 이용후기를 작성할수있어</h4>
 				<table class="table table-hover">
 					<thead>
 						<tr class="table-primary">
@@ -110,15 +111,17 @@
 							<th>예약 상품번호</th>
 							<th>예약날짜</th>
 							<th>예약자 ID</th>
+							
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
 							<c:forEach var='list' items='${list}' varStatus='num'>
-								<td><a href='#'>${list.reserNO}</a></td>
+								<td><a href='/tm/member/mypage?proNO=${list.promotionNO}'>${list.reserNO}</a></td>
 								<td>${list.promotionNO}</td>
 								<td>${list.reserDate}</td>
 								<td>${list.id}</td>
+								
 							</c:forEach>
 						</tr>
 					</tbody>

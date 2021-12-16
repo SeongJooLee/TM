@@ -147,7 +147,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/member/mypage",method=RequestMethod.GET)
-	public String memberMyPage(@ModelAttribute UserVO userVO,Model model,HttpSession session,@RequestParam(required = false,value="promotionNO") String proNO,@RequestParam(required = false,value="travelNO") String traNO,@RequestParam(required=false,value="reviewNO") String revNO,@RequestParam(required=false,value="userId") String userId) {
+	public String memberMyPage(@ModelAttribute UserVO userVO,Model model,HttpSession session,@RequestParam(required = false,value="promotionNO") String proNO,@RequestParam(required = false,value="travelNO") String traNO,@RequestParam(required=false,value="reviewNO") String revNO,@RequestParam(required=false,value="userId") String userId,@RequestParam(required=false,value="proNO") String promotionNO_) {
 		System.out.println("민수야.? = "+session.getAttribute("userSession").getClass().getName());
 		String check = session.getAttribute("userSession").getClass().getName();
 		System.out.println("관리자 세션체크 : "+check);
@@ -172,7 +172,10 @@ public class UserController {
 			ReviewVO reviewVO = userService.selectReview(reviewNO);
 			model.addAttribute("reviewVO",reviewVO);
 			return "userReviewDone";
-		}else if(userId !=null) {
+		}else if(promotionNO_ !=null) {
+			int promotionNO = Integer.parseInt(promotionNO_);
+			model.addAttribute("promotionNO",promotionNO);
+			return "userReviewAdd";
 			
 		}
 		
@@ -324,6 +327,18 @@ public class UserController {
 			model.addAttribute("result",result);
 		}
 		return "sellerMyPageDeleteDone";
+	}
+	
+	@RequestMapping(value="/member/mypage/review", method=RequestMethod.GET)
+	public String userAddReview(@ModelAttribute ReviewVO reviewVO , Model model,HttpSession session){	
+		
+		UserVO user = (UserVO)session.getAttribute("userSession");
+		reviewVO.setId(user.getId());
+		System.out.println("이거 지우기 "+ reviewVO);
+		int result = 0;
+		result = userService.addReview(reviewVO);
+		model.addAttribute("result",result);
+		return "userReviewAddDone";
 	}
 	
 	

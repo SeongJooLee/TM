@@ -165,4 +165,9 @@ public class UserService {
 		}
 		return 0;
 	}
+
+	public int addReview(ReviewVO reviewVO) {
+		// TODO Auto-generated method stub
+		return userDAO.addReview(reviewVO);
+	}
 }

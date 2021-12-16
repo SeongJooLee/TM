@@ -88,16 +88,16 @@ width:110px;
 			</ul>
 		</div>
 		<div class="grid2">
-		<p>아이뒤 : ${userSession.id}</p> 
-		<p>비빔면호 : ${userSession.pw}</p> 
-		<p>이름 : ${userSession.name}</p> 
-		<p>생년월일 : ${userSession.birth}</p> 
-		<p>연락처 : ${userSession.phone}</p> 
-		<p>주소 : ${userSession.address}</p> 
-		<p>가입날짜 : ${userSession.joinDate}</p> 
-		
-		<button type='button' onclick='updateUser()'>수정하기</button>
-		<button onclick='deleteUser()'>삭제하기</button>
+			<h3>리뷰를 작성해주세요</h3>
+			<form action='/tm/member/mypage/review' method='get'>
+			
+				
+				제목을 적어주세요: <input type='text' name='title'><br>
+				내용을 입력해주세요: <input type='text' name='content'><br>
+				<input type='hidden' type='text' name='promotionNO' value='${promotionNO}'>
+				<input type='submit' value='작성하기'>
+				
+			</form>
 		
 		</div>
 	</div>
