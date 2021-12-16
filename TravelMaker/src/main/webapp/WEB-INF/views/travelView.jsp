@@ -106,27 +106,6 @@ function backToList(obj){
                <c:if test="${not empty image.image3 && image.image3 !='null' }">
                   <img src="${contextPath }/download?image=${image.image3}&travelNO=${travel.travelNO}&name=${travel.name}" ><br>
                </c:if>
-               <c:if test="${not empty image.image4 && image.image4 !='null' }">
-                  <img src="${contextPath }/download?image=${image.image4}&travelNO=${travel.travelNO}&name=${travel.name}" ><br>
-               </c:if>
-               <c:if test="${not empty image.image5 && image.image5 !='null' }">
-                  <img src="${contextPath }/download?image=${image.image5}&travelNO=${travel.travelNO}&name=${travel.name}" ><br>
-               </c:if>
-               <c:if test="${not empty image.image6 && image.image6 !='null' }">
-                  <img src="${contextPath }/download?image=${image.image6}&travelNO=${travel.travelNO}&name=${travel.name}" ><br>
-               </c:if>
-               <c:if test="${not empty image.image7 && image.image7 !='null' }">
-                  <img src="${contextPath }/download?image=${image.image7}&travelNO=${travel.travelNO}&name=${travel.name}" ><br>
-               </c:if>
-               <c:if test="${not empty image.image8 && image.image8 !='null' }">
-                  <img src="${contextPath }/download?image=${image.image8}&travelNO=${travel.travelNO}&name=${travel.name}" ><br>
-               </c:if>
-               <c:if test="${not empty image.image9 && image.image9 !='null' }">
-                  <img src="${contextPath }/download?image=${image.image9}&travelNO=${travel.travelNO}&name=${travel.name}" ><br>
-               </c:if>
-               <c:if test="${not empty image.image10 && image.image10 !='null' }">
-                  <img src="${contextPath }/download?image=${image.image10}&travelNO=${travel.travelNO}&name=${travel.name}" >
-               </c:if>
             </td>
          </tr>
          </c:if>
