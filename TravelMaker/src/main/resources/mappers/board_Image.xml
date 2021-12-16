@@ -15,36 +15,29 @@
       <result property="image1" column="image1" />
       <result property="image2" column="image2" />
       <result property="image3" column="image3" />
-      <result property="image4" column="image4" />
-      <result property="image5" column="image5" />
-      <result property="image6" column="image6" />
-      <result property="image7" column="image7" />
-      <result property="image8" column="image8" />
-      <result property="image9" column="image9" />
-      <result property="image10" column="image10" />
       <result property="id" column="id" />
       <result property="sellerId" column="sellerId" />
       <result property="adminId" column="adminId" />
    </resultMap>
    
    <select id="selectAll" resultMap="imageResult">
-		SELECT NOTICENO, TRAVELNO, REVIEWNO, PROMOTIONNO, EVENTNO, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10
+		SELECT NOTICENO, TRAVELNO, REVIEWNO, PROMOTIONNO, EVENTNO, IMAGE1, IMAGE2, IMAGE3
 		 FROM IMAGE
 	</select>
 	
 	<select id="selectOneNotice" resultType="imageVO"> 
-		SELECT NOTICENO, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10
+		SELECT NOTICENO, IMAGE1, IMAGE2, IMAGE3
 		 FROM IMAGE
 		 where noticeNO=#{noticeNO}
 	</select>
 	
 	<insert id="insertNotice" parameterType="imageVO">
-	INSERT INTO IMAGE (NOTICENO, TRAVELNO, REVIEWNO, PROMOTIONNO, EVENTNO, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10)
-	 VALUES((select max(noticeNO) from notice), null, null, null, null, #{image1}, #{image2}, #{image3}, #{image4}, #{image5}, #{image6}, #{image7}, #{image8}, #{image9}, #{image10})
+	INSERT INTO IMAGE (NOTICENO, TRAVELNO, REVIEWNO, PROMOTIONNO, EVENTNO, IMAGE1, IMAGE2, IMAGE3)
+	 VALUES((select max(noticeNO) from notice), null, null, null, null, #{image1}, #{image2}, #{image3})
 	</insert>
 	
 	<update id="updateNotice" parameterType="imageVO"> 
-		UPDATE IMAGE SET IMAGE1=#{image1}, IMAGE2=#{image2}, IMAGE3=#{image3}, IMAGE4=#{image4}, IMAGE5=#{image5}, IMAGE6=#{image6}, IMAGE7=#{image7}, IMAGE8=#{image8}, IMAGE9=#{image9}, IMAGE10=#{image10}
+		UPDATE IMAGE SET IMAGE1=#{image1}, IMAGE2=#{image2}, IMAGE3=#{image3}
 		 where noticeNO=#{noticeNO}
 	</update>
 	
@@ -72,18 +65,18 @@
 	 -->
 
 	<select id="selectOnePromotion" resultType="imageVO"> 
-		SELECT PROMOTIONNO, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10
+		SELECT PROMOTIONNO, IMAGE1, IMAGE2, IMAGE3
 		 FROM IMAGE
 		 where promotionNO=#{promotionNO}
 	</select>
 	
 	<insert id="insertPromotion" parameterType="imageVO">
-	INSERT INTO IMAGE (NOTICENO, TRAVELNO, REVIEWNO, PROMOTIONNO, EVENTNO, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10)
-	 VALUES(null, null, null, (select max(promotionNO) from promotion), null, #{image1}, #{image2}, #{image3}, #{image4}, #{image5}, #{image6}, #{image7}, #{image8}, #{image9}, #{image10})
+	INSERT INTO IMAGE (NOTICENO, TRAVELNO, REVIEWNO, PROMOTIONNO, EVENTNO, IMAGE1, IMAGE2, IMAGE3)
+	 VALUES(null, null, null, (select max(promotionNO) from promotion), null, #{image1}, #{image2}, #{image3})
 	</insert>
 	
 	<update id="updatePromotion" parameterType="imageVO"> 
-		UPDATE IMAGE SET IMAGE1=#{image1}, IMAGE2=#{image2}, IMAGE3=#{image3}, IMAGE4=#{image4}, IMAGE5=#{image5}, IMAGE6=#{image6}, IMAGE7=#{image7}, IMAGE8=#{image8}, IMAGE9=#{image9}, IMAGE10=#{image10}
+		UPDATE IMAGE SET IMAGE1=#{image1}, IMAGE2=#{image2}, IMAGE3=#{image3}
 		 where promotionNO=#{promotionNO}
 	</update>
 	
@@ -99,18 +92,18 @@
    
    
    	<select id="selectOne" resultType="imageVO"> 
-		SELECT REVIEWNO, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10
+		SELECT REVIEWNO, IMAGE1, IMAGE2, IMAGE3
 		 FROM IMAGE
 		 where reviewNO=#{reviewNO}
 	</select>
 	
 	<insert id="insert" parameterType="imageVO">
-	INSERT INTO IMAGE (NOTICENO, TRAVELNO, REVIEWNO, PROMOTIONNO, EVENTNO, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10)
-	 VALUES(null, null, null, (select max(promotionNO) from promotion), null, #{image1}, #{image2}, #{image3}, #{image4}, #{image5}, #{image6}, #{image7}, #{image8}, #{image9}, #{image10})
+	INSERT INTO IMAGE (NOTICENO, TRAVELNO, REVIEWNO, PROMOTIONNO, EVENTNO, IMAGE1, IMAGE2, IMAGE3)
+	 VALUES(null, null, null, (select max(promotionNO) from promotion), null, #{image1}, #{image2}, #{image3})
 	</insert>
 	
 	<update id="update" parameterType="imageVO"> 
-		UPDATE IMAGE SET IMAGE1=#{image1}, IMAGE2=#{image2}, IMAGE3=#{image3}, IMAGE4=#{image4}, IMAGE5=#{image5}, IMAGE6=#{image6}, IMAGE7=#{image7}, IMAGE8=#{image8}, IMAGE9=#{image9}, IMAGE10=#{image10}
+		UPDATE IMAGE SET IMAGE1=#{image1}, IMAGE2=#{image2}, IMAGE3=#{image3}
 		 where reviewNO=#{reviewNO}
 	</update>
 	
@@ -120,18 +113,18 @@
 	</delete>
 	
 	<select id="selectOneTravel" resultType="imageVO"> 
-		SELECT TRAVELNO, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10
+		SELECT TRAVELNO, IMAGE1, IMAGE2, IMAGE3
 		 FROM IMAGE
 		 where travelNO=#{travelNO}
 	</select>
 	
 	<insert id="insertTravel" parameterType="imageVO">
-	INSERT INTO IMAGE (NOTICENO, TRAVELNO, REVIEWNO, PROMOTIONNO, EVENTNO, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10)
-	 VALUES(null, (select max(travelNO) from travel), null, null, null, #{image1}, #{image2}, #{image3}, #{image4}, #{image5}, #{image6}, #{image7}, #{image8}, #{image9}, #{image10})
+	INSERT INTO IMAGE (NOTICENO, TRAVELNO, REVIEWNO, PROMOTIONNO, EVENTNO, IMAGE1, IMAGE2, IMAGE3)
+	 VALUES(null, (select max(travelNO) from travel), null, null, null, #{image1}, #{image2}, #{image3})
 	</insert>
 	
 	<update id="updateTravel" parameterType="imageVO"> 
-		UPDATE IMAGE SET IMAGE1=#{image1}, IMAGE2=#{image2}, IMAGE3=#{image3}, IMAGE4=#{image4}, IMAGE5=#{image5}, IMAGE6=#{image6}, IMAGE7=#{image7}, IMAGE8=#{image8}, IMAGE9=#{image9}, IMAGE10=#{image10}
+		UPDATE IMAGE SET IMAGE1=#{image1}, IMAGE2=#{image2}, IMAGE3=#{image3}
 		 where travelNO=#{travelNO}
 	</update>
 	

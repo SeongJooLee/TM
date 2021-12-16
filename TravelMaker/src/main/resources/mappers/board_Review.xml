@@ -47,7 +47,12 @@
 	<delete id="deleteUserOne" parameterType="ReviewVO">
 			DELETE FROM REVIEW WHERE id=#{userId}
 	</delete>
+<<<<<<< HEAD
 	<delete id="deletePro" parameterType="Integer">
+=======
+		
+	<delete id="deletePromotion" parameterType="ReviewVO">
+>>>>>>> branch 'main' of https://github.com/SeongJooLee/TM.git
 			DELETE FROM REVIEW WHERE promotionNO=#{promotionNO}
 	</delete>
 	

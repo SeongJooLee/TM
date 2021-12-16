@@ -85,19 +85,7 @@ public class PromotionController {
 		int promotionNO = promotionService.selectMaxPromotion();
 		promotionNO++;
 		promotionVO.setPromotionNO(promotionNO);
-		if(fileList.size()>4) {
-			imageVO.setImage5((String) fileList.get(4));
-			if(fileList.get(4) == "") {
-				imageVO.setImage5(null);
-				fileList.remove(4);
-			}
-		} if(fileList.size()>3) {
-			imageVO.setImage4((String) fileList.get(3));
-			if(fileList.get(3) == "") {
-				imageVO.setImage4(null);
-				fileList.remove(3);
-			}
-		} if(fileList.size()>2) {
+		 if(fileList.size()>2) {
 			imageVO.setImage3((String) fileList.get(2));
 			if(fileList.get(2) == "") {
 				imageVO.setImage3(null);
@@ -146,19 +134,7 @@ public class PromotionController {
 		ImageVO imageVO = new ImageVO();
 		imageVO.setPromotionNO(promotionVO.getPromotionNO());
 		categoryVO.setPromotionNO(promotionVO.getPromotionNO());
-		 if(fileList.size()>4) {
-			imageVO.setImage5((String) fileList.get(4));
-			if(fileList.get(4) == "") {
-				imageVO.setImage5(null);
-				fileList.remove(4);
-			}
-		} if(fileList.size()>3) {
-			imageVO.setImage4((String) fileList.get(3));
-			if(fileList.get(3) == "") {
-				imageVO.setImage4(null);
-				fileList.remove(3);
-			}
-		} if(fileList.size()>2) {
+		 if(fileList.size()>2) {
 			imageVO.setImage3((String) fileList.get(2));
 			if(fileList.get(2) == "") {
 				imageVO.setImage3(null);
@@ -294,3 +270,4 @@ public class PromotionController {
 		return fileList;
 	}	
 }
+

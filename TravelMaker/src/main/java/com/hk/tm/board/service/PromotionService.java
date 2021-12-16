@@ -10,9 +10,10 @@ import org.springframework.stereotype.Service;
 import com.hk.tm.board.dao.CategoryDAO;
 import com.hk.tm.board.dao.ImageDAO;
 import com.hk.tm.board.dao.PromotionDAO;
+import com.hk.tm.board.dao.ReservationDAO;
+import com.hk.tm.board.dao.ReviewDAO;
 import com.hk.tm.board.vo.CategoryVO;
 import com.hk.tm.board.vo.ImageVO;
-import com.hk.tm.board.vo.NoticeVO;
 import com.hk.tm.board.vo.PromotionVO;
 
 @Service
@@ -26,6 +27,12 @@ public class PromotionService {
 	
 	@Autowired
 	CategoryDAO categoryDAO;
+	
+	@Autowired
+	ReservationDAO reservationyDAO;
+	
+	@Autowired
+	ReviewDAO reviewDAO;
 	
 	public List<PromotionVO> selectAllPromotion() {
 		// TODO Auto-generated method stub
@@ -70,6 +77,8 @@ public class PromotionService {
 		// TODO Auto-generated method stub
 		imageDAO.promotionDelete(promotionNO);
 		categoryDAO.promotionDelete(promotionNO);
+		reservationyDAO.promotionDelete(promotionNO);
+		reviewDAO.promotionDelete(promotionNO);
 		PromotionVO promotionVO = promotionDAO.selectOnePromotion(promotionNO);
 		promotionDAO.promotionDelete(promotionNO);
 		return promotionVO;

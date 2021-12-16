@@ -85,49 +85,7 @@ public class NoticeController {
 		
 		noticeVO.setNoticeNO(noticeNO);
 		
-		if(fileList.size()>9) {
-			imageVO.setImage10((String) fileList.get(9));
-			if(fileList.get(9) == "") {
-				imageVO.setImage10(null);
-				fileList.remove(9);
-			}
-		} if(fileList.size()>8) {
-			imageVO.setImage9((String) fileList.get(8));
-			if(fileList.get(8) == "") {
-				imageVO.setImage9(null);
-				fileList.remove(8);
-			}
-		} if(fileList.size()>7) {
-			imageVO.setImage8((String) fileList.get(7));
-			if(fileList.get(7) == "") {
-				imageVO.setImage8(null);
-				fileList.remove(7);
-			}
-		} if(fileList.size()>6) {
-			imageVO.setImage7((String) fileList.get(6));
-			if(fileList.get(6) == "") {
-				imageVO.setImage7(null);
-				fileList.remove(6);
-			}
-		} if(fileList.size()>5) {
-			imageVO.setImage6((String) fileList.get(5));
-			if(fileList.get(5) == "") {
-				imageVO.setImage6(null);
-				fileList.remove(5);
-			}
-		} if(fileList.size()>4) {
-			imageVO.setImage5((String) fileList.get(4));
-			if(fileList.get(4) == "") {
-				imageVO.setImage5(null);
-				fileList.remove(4);
-			}
-		} if(fileList.size()>3) {
-			imageVO.setImage4((String) fileList.get(3));
-			if(fileList.get(3) == "") {
-				imageVO.setImage4(null);
-				fileList.remove(3);
-			}
-		} if(fileList.size()>2) {
+		 if(fileList.size()>2) {
 			imageVO.setImage3((String) fileList.get(2));
 			if(fileList.get(2) == "") {
 				imageVO.setImage3(null);
@@ -175,49 +133,7 @@ public class NoticeController {
 		map.put("fileList", fileList);
 		ImageVO imageVO = new ImageVO();
 		imageVO.setNoticeNO(noticeVO.getNoticeNO());
-		if(fileList.size()>9) {
-			imageVO.setImage10((String) fileList.get(9));
-			if(fileList.get(9) == "") {
-				imageVO.setImage10(null);
-				fileList.remove(9);
-			}
-		} if(fileList.size()>8) {
-			imageVO.setImage9((String) fileList.get(8));
-			if(fileList.get(8) == "") {
-				imageVO.setImage9(null);
-				fileList.remove(8);
-			}
-		} if(fileList.size()>7) {
-			imageVO.setImage8((String) fileList.get(7));
-			if(fileList.get(7) == "") {
-				imageVO.setImage8(null);
-				fileList.remove(7);
-			}
-		} if(fileList.size()>6) {
-			imageVO.setImage7((String) fileList.get(6));
-			if(fileList.get(6) == "") {
-				imageVO.setImage7(null);
-				fileList.remove(6);
-			}
-		} if(fileList.size()>5) {
-			imageVO.setImage6((String) fileList.get(5));
-			if(fileList.get(5) == "") {
-				imageVO.setImage6(null);
-				fileList.remove(5);
-			}
-		} if(fileList.size()>4) {
-			imageVO.setImage5((String) fileList.get(4));
-			if(fileList.get(4) == "") {
-				imageVO.setImage5(null);
-				fileList.remove(4);
-			}
-		} if(fileList.size()>3) {
-			imageVO.setImage4((String) fileList.get(3));
-			if(fileList.get(3) == "") {
-				imageVO.setImage4(null);
-				fileList.remove(3);
-			}
-		} if(fileList.size()>2) {
+		 if(fileList.size()>2) {
 			imageVO.setImage3((String) fileList.get(2));
 			if(fileList.get(2) == "") {
 				imageVO.setImage3(null);
