@@ -38,7 +38,7 @@ public class TravelDAO {
 	}
 	
 	public void updateTravel(TravelVO travelVO) {
-		
+		System.out.println("다오에서의 트레빌"+travelVO.toString());
 		sql.update(ns + "updateTravel", travelVO);
 
 	}

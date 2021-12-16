@@ -19,10 +19,9 @@
 <script type="text/javascript">
 
 var cnt = 1;
-var previewCnt = 1;
 function fn_addFile(){
-if(cnt===11){
-	alert("최대 10개만 생성할 수 있습니다.");
+if(cnt===4){
+	alert("최대 3개만 생성할 수 있습니다.");
 	return;        
     }
     $("#d_file").append("<br>" + "<input type='file' name='image" + cnt + " ' />");
@@ -30,11 +29,26 @@ if(cnt===11){
 }
 function backToList(obj){
 	obj.method ="POST";
-	obj.action = "${contextPath}/board/travel";
+	obj.action = "${contextPath}tm/board/travel";
 	obj.submit();
 }
 
 function fn_create(){
+	var category = document.getElementById("categoryName").value;
+	if(category=='null'){
+		alert('카테고리를 선택해주세요.');
+		return false;
+	}
+	var title = document.getElementById("title").value;
+	if(!title){
+		alert('제목을 적어주세요.');
+		return false;
+	}
+	var content = document.getElementById("content").value;
+	if(!content){
+		alert('내용을 적어주세요.');
+		return false;
+	}
     if (!confirm("글을 생성하시겠습니까?")) {
         alert("취소(아니오)를 누르셨습니다.");
         return;
@@ -52,17 +66,19 @@ function fn_create(){
 	<h1 style="text-align: center">여행 글 쓰기</h1>
 	<form id="frm" action="addDone" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="id" value="user">
+		<input type="hidden" name="name" value="테마여행">
 		<table border="1" align="center">
 			<tr>
 				<td>
-					<select name="name">
-						<option value="shopping">쇼핑</option>
-						<option value="food">음식</option>
-						<option value="culture">문화</option>
-						<option value="activity">체험</option>
-						<option value="exhibition">전시</option>
-						<option value="transper">교통</option>
-						<option value="map">지도</option>
+					<select name="categoryName" id="categoryName">
+						<option value="null">선택해주세요.</option>
+						<option value="쇼핑">쇼핑</option>
+						<option value="음식">음식</option>
+						<option value="문화">문화</option>
+						<option value="체험">체험</option>
+						<option value="전시">전시</option>
+						<option value="교통">교통</option>
+						<option value="지역">지역</option>
 					</select>
 				</td>
 				<td>

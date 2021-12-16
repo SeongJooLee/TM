@@ -50,13 +50,14 @@
 	<insert id="insertTravel" parameterType="TravelVO">
 		INSERT INTO TRAVEL (TRAVELNO, TITLE, CONTENT, WRITEDATE, ID, NAME)
 		VALUES((select max(travelNO)+1 from travel), #{title}, #{content},
-		SYSDATE, #{id}, 'travel')
+		SYSDATE, #{id}, #{name})
 	</insert>
 
 	<update id="updateTravel" parameterType="TravelVO">
 		UPDATE TRAVEL SET
-		TITLE=#{title}, CONTENT=#{content}, WHERE TRAVELNO=#{travelNO}
+		TITLE=#{title}, CONTENT=#{content} WHERE travelNO=#{travelNO}
 	</update>
+	
 
 	<delete id="deleteTravel" parameterType="travelVO">
 		DELETE FROM TRAVEL WHERE TRAVELNO=#{travelNO}

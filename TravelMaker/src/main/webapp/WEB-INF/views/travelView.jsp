@@ -19,23 +19,78 @@
 	rel="stylesheet" />
 <script src='http://code.jquery.com/jquery-latest.min.js'></script>
 <script type='text/javascript'>
-
+var cnt = 1;
+function fn_addFile() {
+	if (cnt === 4) {
+		alert("최대 3개만 생성할 수 있습니다.");
+		return;
+	}
+	$("#d_file")
+			.append(
+					"<br>"
+							+ "<p id='image"+cnt+" '><input type='file' name='image" + cnt + " ' />");
+	cnt++;
+}
 function fn_enable(obj){
+   document.getElementById("categoryName").disabled = false;
    document.getElementById("title").disabled = false;
    document.getElementById("content").disabled = false;
-   if(document.getElementById("image")!=null){
+   if(document.getElementById("originalFileName")!=null){
    	document.getElementById("imgUpdateBtn").disabled = false;
    }
+	if (document.getElementById("originalFileName") == null) {
+		document.getElementById("imgUpdate").disabled = false;
+	}
    document.getElementById("tr_btn_modify").style.display='block';
    document.getElementById("tr_btn").style.display='none';
 }
+function fn_imgUpdateBtn(obj) {
+	document.getElementById("imgUpdate").disabled = false;
+	if (!confirm("사진을 삭제 하시겠습니까?")) {
+		alert("취소(아니오)를 누르셨습니다.");
+		return;
+	} else {
+		alert("확인(예)을 누르셨습니다.");
+		$.ajax({
+			type : 'POST',
+			url : 'imgDelete',
+			dataType : "json",
+			data : {
+				'travelNO' : '${travel.travelNO}'
+			},
+			success : function(data) {
+				if (data.result == 'false') {
+					alert('삭제 실패');
+				} else {
+					alert('파일을 삭제했습니다.');
+					$("#updateResult").remove();
+				}
+			},
+			error : function(err) {
+				//서버로부터 응답이 정상적으로 처리되지 못햇을 때 실행
+				alert('에러떳는데 난 몰랑');
+				return;
+			}
+		});
+		document.getElementById("update").style.display = 'none';
+	}
+}
+
+
 function fn_image(obj){
 	   document.getElementById("image").disabled = false;
 	   }
 
 function fn_modify_update(){
+    if (!confirm("수정 하시겠습니까?")) {
+        alert("취소(아니오)를 누르셨습니다.");
+        return;
+    } else {
+        alert("확인(예)을 누르셨습니다.");
+	document.getElementById('frmTravel').method= "POST";
 	document.getElementById('frmTravel').action = "${contextPath}/board/travel/update";
    document.getElementById('frmTravel').submit();
+}
 }
 
 function fn_delete(){
@@ -48,16 +103,6 @@ function fn_delete(){
     }
 	
 }
-
-function readURL(input){
-	   if(input.files && input.files[0]){
-	      var reader = new FileReader();
-	      reader.onload=function(e){
-	         $('#preview').attr('src',e.target.result);
-	      }
-	      reader.readAsDataURL(input.files[0]);
-	   }
-	}
 
 
 function backToList(obj){
@@ -83,33 +128,57 @@ function backToList(obj){
       </td>
       </tr>
       <tr>
-         <td width="150" align="center">작성자 아이디</td>
+      					<td >카테고리 : 	<select name="categoryName" id="categoryName" disabled>
+						<option value="${category.categoryName }">${category.categoryName }</option>
+						<option value="쇼핑">쇼핑</option>
+						<option value="음식">음식</option>
+						<option value="문화">문화</option>
+						<option value="체험">체험</option>
+						<option value="전시">전시</option>
+						<option value="교통">교통</option>
+						<option value="지역">지역</option>
+					</select>
+					</td>
+         <td  align="center">작성자 아이디</td>
          <td><input type="text" value="${travel.id }" name="id" readonly /></td>
       </tr>
-                 <c:if test="${not empty image.image1 && image.image1 !='null' }">
-         <tr align="center">
-            <td colspan="2">
-					<p>첫 번째 사진</p>
-         		  <input type="hidden" name="originalFileName" value="${image.image1 }" />
-                  <img src="${contextPath }/download?image=${image.image1}&travelNO=${travel.travelNO}&name=${travel.name}" />
-					<div align="right">
-                  <input  type="button" value="파일 수정" id="imgUpdateBtn" onClick="fn_image(this.form)" disabled />
-                  <input type="file" name="image1" id="image" disabled onchange="readURL(this)" /><br>
-					</div>                  
-             
-               <c:if test="${not empty image.image2 && image.image2 !='null' }">
-               <input type="hidden" name="image2" value="${image.image2 }" />
-                  <img src="${contextPath }/download?image=${image.image2}&travelNO=${travel.travelNO}&name=${travel.name}" >
-                  &nbsp;<input type="file" name="image2" id="image" disabled onchange="readURL(this)" /><br>
-               </c:if>
-               
-               <c:if test="${not empty image.image3 && image.image3 !='null' }">
-                  <img src="${contextPath }/download?image=${image.image3}&travelNO=${travel.travelNO}&name=${travel.name}" ><br>
-               </c:if>
-            </td>
-         </tr>
-         </c:if>
-      <tr>
+    			<tr align="center">
+					<td align='left' colspan="2">이미지 파일 첨부<br>
+						<div id="update">
+							<input type="button" value="파일 삭제" id="imgUpdateBtn"
+								onClick="fn_imgUpdateBtn()" disabled /> <small>
+								&nbsp;&nbsp; * 클릭시 전체 파일이 삭제됩니다.</small>
+						</div> <input type="button" value="파일 추가" id="imgUpdate"
+						onClick="fn_addFile()" disabled /> <small> &nbsp;&nbsp; *
+							최대 3개까지 첨부 가능합니다.</small>
+					
+						<div id="d_file"></div>
+						<div id="updateResult">				
+							<c:if test="${not empty image.image1 && image.image1 !='null' }">
+								<input type="hidden" id="originalFileName" name="image1"
+									value="${image.image1 }" />
+								<img
+									src="${contextPath }/board/travel/download?image=${image.image1}&travelNO=${travel.travelNO}&name=${travel.name}" />
+							</c:if>
+
+							<c:if test="${not empty image.image2 && image.image2 !='null' }">
+								<input type="hidden" id="originalFileName" name="image2"
+									value="${image.image2 }" />
+								<img
+									src="${contextPath }/board/travel/download?image=${image.image2}&travelNO=${travel.travelNO}&name=${travel.name}" />
+							</c:if>
+
+							<c:if test="${not empty image.image3 && image.image3 !='null' }">
+								<input type="hidden" id="originalFileName" name="image3"
+									value="${image.image3 }" />
+								<img
+									src="${contextPath }/board/travel/download?image=${image.image3}&travelNO=${travel.travelNO}&name=${travel.name}" />
+							</c:if>
+
+						</div>
+					</td>
+				</tr>
+    <tr>
          <td width="150" align="center">글내용</td>
          <td><textarea rows="20" cols="60" name="content" id="content" disabled >${travel.content } </textarea></td>
       </tr>

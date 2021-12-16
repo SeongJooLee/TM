@@ -81,12 +81,13 @@ function fn_create(){
 				<td>
 					<select name="categoryName" id="categoryName" >
 						<option value="null">선택해주세요.</option>
-						<option value="지역">지역</option>
+						<option value="쇼핑">쇼핑</option>
 						<option value="음식">음식</option>
-						<option value="교통">교통</option>
 						<option value="문화">문화</option>
-						<option value="힐링">힐링</option>
 						<option value="체험">체험</option>
+						<option value="전시">전시</option>
+						<option value="교통">교통</option>
+						<option value="지역">지역</option>
 					</select>
 				</td>
 				<td align='left'>

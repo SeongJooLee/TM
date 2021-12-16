@@ -127,12 +127,13 @@ function backToList(obj){
 				<tr>
 					<td >카테고리 : 	<select name="categoryName" id="categoryName" disabled>
 						<option value="${category.categoryName }">${category.categoryName }</option>
-						<option value="지역">지역</option>
+						<option value="쇼핑">쇼핑</option>
 						<option value="음식">음식</option>
-						<option value="교통">교통</option>
 						<option value="문화">문화</option>
-						<option value="힐링">힐링</option>
 						<option value="체험">체험</option>
+						<option value="전시">전시</option>
+						<option value="교통">교통</option>
+						<option value="지역">지역</option>
 					</select>
 					</td>
 					<td  align="center">작성자 아이디 :
@@ -148,7 +149,7 @@ function backToList(obj){
 								&nbsp;&nbsp; * 클릭시 전체 파일이 삭제됩니다.</small>
 						</div> <input type="button" value="파일 추가" id="imgUpdate"
 						onClick="fn_addFile()" disabled /> <small> &nbsp;&nbsp; *
-							최대 10개까지 첨부 가능합니다.</small>
+							최대 3개까지 첨부 가능합니다.</small>
 					
 						<div id="d_file"></div>
 						<div id="updateResult">				

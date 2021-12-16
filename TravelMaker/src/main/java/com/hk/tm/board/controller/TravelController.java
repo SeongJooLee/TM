@@ -63,7 +63,7 @@ public class TravelController {
 		
 		model.addAttribute("travel", map.get("travel"));		
 		model.addAttribute("image",map.get("image"));
-		
+		model.addAttribute("category",map.get("category"));
 		System.out.println("여기는 view +"+ map.get("travel").toString());
 		return "travelView"; // travelView.jsp 호출
 		
@@ -142,6 +142,7 @@ public class TravelController {
 	
 	@RequestMapping(value="travel/update" ,  method=RequestMethod.POST)
 	public String travelUpdate(@ModelAttribute TravelVO travelVO, @ModelAttribute CategoryVO categoryVO, Model model, MultipartHttpServletRequest request, HttpServletResponse response) throws Exception, ServletException {		
+		System.out.println("업데이트 VO "+travelVO.toString());
 		request.setCharacterEncoding("utf-8");
 		Map<String,Object> map = new HashMap<String,Object>();
 		Enumeration enu=request.getParameterNames();
@@ -155,7 +156,8 @@ public class TravelController {
 		List fileList= upload(request);
 		map.put("fileList", fileList);
 		ImageVO imageVO = new ImageVO();		
-		imageVO.setNoticeNO(travelVO.getTravelNO());
+		imageVO.setTravelNO(travelVO.getTravelNO());
+		categoryVO.setPromotionNO(travelVO.getTravelNO());
 		 if(fileList.size()>2) {
 			imageVO.setImage3((String) fileList.get(2));
 			if(fileList.get(2) == "") {
@@ -196,9 +198,10 @@ public class TravelController {
 		map = travelService.selectOneTravel(travelVO.getTravelNO());
 		model.addAttribute("notice",map.get("notice"));
 		model.addAttribute("image",map.get("image"));
+		model.addAttribute("category",map.get("category"));
 		
 
-		return "noticeView";
+		return "travelView";
 		
 	}
 	
@@ -213,11 +216,11 @@ public class TravelController {
 		response.sendRedirect("/board/travel"); 
 	}
 	
-	@RequestMapping(value="/board/notice/imgDelete", method= {RequestMethod.GET,RequestMethod.POST},produces = "application/json; charset=utf8")
+	@RequestMapping(value="/travel/imgDelete", method= {RequestMethod.GET,RequestMethod.POST},produces = "application/json; charset=utf8")
 	@ResponseBody
 	public Map<String, Object> imgDelete(@RequestParam("travelNO") int travelNO) throws Exception {
 		Map<String, Object> map = new HashMap<String, Object>();
-
+		System.out.println("들어왓니?");
 		int ret = travelService.travelImgDelete(travelNO);
 		if(ret==0) {
 			map.put("result", "false");

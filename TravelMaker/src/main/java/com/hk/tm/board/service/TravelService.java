@@ -63,10 +63,10 @@ public class TravelService {
 	public void updateTravel(TravelVO travelVO, ImageVO imageVO, CategoryVO categoryVO) {
 		// TODO Auto-generated method stub
 		travelDAO.updateTravel(travelVO);
-		imageDAO.travelUpdate(travelVO,imageVO);
-		categoryDAO.updateTravel(categoryVO);
 		imageVO.setTravelNO(travelVO.getTravelNO());
 		categoryVO.setTravelNO(travelVO.getTravelNO());
+		imageDAO.travelUpdate(travelVO,imageVO);
+		categoryDAO.updateTravel(categoryVO);
 	}
 	
 	public TravelVO deleteTravel(int travelNO) {
