@@ -85,8 +85,8 @@ function view(){
 		<td>상품보기</td>
 	</tr>
 <c:forEach var='proList' items='${proList}'>
-	<tr>
 	<c:forEach var='reserList' items='${reserList}'>
+	<tr>
 		<c:if test='${proList.promotionNO==reserList.promotionNO}'>
 			
 				<td>${reserList.reserNO}</td>
@@ -101,8 +101,8 @@ function view(){
 			
 		</c:if>
 		
-	</c:forEach>
 	</tr>
+	</c:forEach>
 </c:forEach>
 </table>
 		</div>

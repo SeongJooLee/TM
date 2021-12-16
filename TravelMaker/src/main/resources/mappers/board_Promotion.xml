@@ -26,6 +26,7 @@
 		FROM PROMOTION p ,IMAGE i,CATEGORY c 
 		WHERE p.PROMOTIONNO = i.PROMOTIONNO(+)
 		AND p.PROMOTIONNO = c.PROMOTIONNO (+)
+		ORDER BY p.PROMOTIONNO DESC
 	</select>
    
    <select id="selectAllPromotion" resultMap="promotionResult">
