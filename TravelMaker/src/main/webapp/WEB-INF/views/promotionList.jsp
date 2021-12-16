@@ -16,6 +16,31 @@
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="<c:url value="/resources/css/styles.css" />"
 	rel="stylesheet" />
+	
+	<style>
+	.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+.button4 {
+    background-color: white;
+    color: black;
+    border: 2px solid #e7e7e7;
+}
+
+.button4:hover {background-color: #e7e7e7;}
+	</style>
+	
 
 </head>
 <body>
@@ -26,7 +51,16 @@
 	<div class="card text-white bg-secondary my-5 py-4 text-center">
 		<div class="card-body"><p class="text-white m-0">홍보상품</p></div>
 	</div>
-	<br>
+	
+	<div class="col-md-12 mb-4">
+		<button type="button" class="button button4">지역</button>
+		<button type="button" class="button button4">음식</button>
+		<button type="button" class="button button4">교통</button>
+		<button type="button" class="button button4">문화</button>
+		<button type="button" class="button button4">힐링</button>
+		<button type="button" class="button button4">체험</button>
+	</div>
+	
 		<div class="row gx-4 gx-lg-5">
 	<c:forEach var="promotion" items="${promotion}" >
 			<div class="col-md-4 mb-5">
