@@ -195,7 +195,7 @@ public class UserDAO {
 
 	public int deleteSellerReservation(int promotionNO) {
 		// TODO Auto-generated method stub
-		int result = sqlSession.delete("mapper.boardReservation.deletePro", promotionNO);
+		int result = sqlSession.delete("mapper.boardReservation.deletePromotion", promotionNO);
 		return result;
 	}
 
