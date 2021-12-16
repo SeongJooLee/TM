@@ -173,19 +173,6 @@ function backToList(obj){
 									src="${contextPath }/board/promotion/download?image=${image.image3}&promotionNO=${promotion.promotionNO}&name=${promotion.name}">
 							</c:if>
 
-							<c:if test="${not empty image.image4 && image.image4 !='null' }">
-								<input type="hidden" id="originalFileName" name="image4"
-									value="${image.image4 }" />
-								<img
-									src="${contextPath }/board/promotion/download?image=${image.image4}&promotionNO=${promotion.promotionNO}&name=${promotion.name}">
-							</c:if>
-
-							<c:if test="${not empty image.image5 && image.image5 !='null' }">
-								<input type="hidden" id="originalFileName" name="image5"
-									value="${image.image5 }" />
-								<img
-									src="${contextPath }/board/promotion/download?image=${image.image5}&promotionNO=${promotion.noticeNO}&name=${promotion.name}">
-							</c:if>
 						</div>
 					</td>
 				</tr>
