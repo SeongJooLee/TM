@@ -21,7 +21,7 @@
 		 FROM PROMOTION WHERE SELLERID=#{id}
    </select>
    
-   <select id="selectAllPromotionImage" resultMap="promotionImageVO">
+   <select id="selectAllPromotionImage" resultType="promotionImageVO">
 		SELECT * 
 		FROM PROMOTION p ,IMAGE i 
 		WHERE p.PROMOTIONNO = i.PROMOTIONNO(+) 
