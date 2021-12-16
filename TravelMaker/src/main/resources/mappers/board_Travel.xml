@@ -33,6 +33,7 @@
 		SELECT TRAVELNO, TITLE,
 		CONTENT, WRITEDATE, ID, NAME
 		FROM TRAVEL
+		ORDER BY TRAVELNO DESC
 	</select>
 
 	<select id="selectOneTravel" resultType="TravelVO">
@@ -77,8 +78,16 @@
 		FROM TRAVEL t ,IMAGE i,CATEGORY c
 		WHERE t.TRAVELNO = i.TRAVELNO(+)
 		AND t.TRAVELNO = c.TRAVELNO (+)
-		ORDER BY
-		t.TRAVELNO DESC
+		ORDER BY t.TRAVELNO DESC
+	</select>
+	
+	<select id="selectCategory" resultType="travelImageVO" parameterType="java.lang.String">
+		SELECT * 
+		FROM TRAVEL t ,IMAGE i,CATEGORY c 
+		WHERE t.TRAVELNO = i.TRAVELNO(+)
+		AND t.TRAVELNO = c.TRAVELNO (+)
+		AND c.CATEGORYNAME = #{key}
+		ORDER BY t.TRAVELNO DESC
 	</select>
 
 	<!-- 테스트중 -->

@@ -47,6 +47,10 @@ public class ImageDAO {
 		ImageVO imageVO = sql.selectOne(ns + "selectOneTravel" , travelNO);
 		return imageVO;
 	}
+	
+	public void addTravel(ImageVO imageVO) {
+		sql.insert(ns+"insertTravel",imageVO);
+	}
 
 	public void travelUpdate(TravelVO travelVO, ImageVO imageVO) {
 		imageVO.setTravelNO(travelVO.getTravelNO());
@@ -55,10 +59,6 @@ public class ImageDAO {
 
 	public void deleteTravel(int travelNO) {
 		sql.delete(ns+"deleteTravel",travelNO);
-	}
-
-	public void addTravel(ImageVO imageVO) {
-		sql.insert(ns+"insertTravel",imageVO);
 	}
 
 	public int travelImgDelete(int travelNO) {
