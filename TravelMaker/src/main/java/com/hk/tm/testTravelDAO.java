@@ -19,15 +19,16 @@ public class testTravelDAO {
 	String ns = "mapper.boardTravel.";
 
 
-	public List selectAllTravels(Map pagingMap) throws DataAccessException {
-		// TODO Auto-generated method stub
-		List<TravelVO> list = sql.selectList(ns+ "selectAllTravels" , pagingMap);
-		
-		return list;
-				
-		public int selectTotTravels() throws DataAccessException {
-			int totTravels = sql.selectOne("mapper.travel.selectTotTravels");
-			return totTravels;
-		}
-	}
+	
+	  public List selectAllTravels(Map pagingMap) throws DataAccessException { //
+	  TODO Auto-generated method stub List<TravelVO> list = sql.selectList(ns+
+	  "selectAllTravels" , pagingMap);
+	  
+	  return list;
+	  
+	  public int selectTotTravels() throws DataAccessException { int totTravels =
+	  sql.selectOne("mapper.travel.selectTotTravels"); return totTravels; } }
+	 
+	
+	
 }
