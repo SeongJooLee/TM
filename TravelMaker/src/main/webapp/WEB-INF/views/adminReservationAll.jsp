@@ -98,9 +98,10 @@ function view(){
 				<td>${reserList.headCount}</td>
 				<td>${reserList.id}</td>
 				<td><button onclick='view()'>${proList.title} 상품보기</button></td>
+				
 			
 		</c:if>
-		
+	
 	</tr>
 	</c:forEach>
 </c:forEach>

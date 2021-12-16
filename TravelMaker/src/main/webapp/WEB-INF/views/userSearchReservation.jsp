@@ -56,7 +56,7 @@ function waitd(){
 			
 			<ul style="background-color: CornflowerBlue; text-align: center;" >
 				<li>
-					<form action='' method='post'>
+					<form action='/tm/admin/mypage' method='post'>
 						<input type='hidden' name='key' value='one'>
 						<input type='submit' value='게시판 글 관리'>
 					</form>
