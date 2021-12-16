@@ -68,7 +68,7 @@ public class ImageDAO {
 		sql.delete(ns+"deleteTravel",travelNO);
 	}
 
-	public void travelAdd(ImageVO imageVO) {
+	public void addTravel(ImageVO imageVO) {
 		// TODO Auto-generated method stub
 		sql.insert(ns+"insertTravel",imageVO);
 	}
@@ -109,6 +109,15 @@ public class ImageDAO {
 		int ret=0;
 		if(imageVO!=null) {
 			ret = sql.delete(ns+"deletePromotion",promotionNO);
+		}
+		return ret;
+	}
+
+	public int travelImgDelete(int travelNO) {
+		ImageVO imageVO = sql.selectOne(ns+"selectOneTravel", travelNO);
+		int ret=0;
+		if(imageVO!=null) {
+			ret = sql.delete(ns+"deleteTravel", travelNO);
 		}
 		return ret;
 	}

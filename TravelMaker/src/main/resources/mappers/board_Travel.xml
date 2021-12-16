@@ -16,52 +16,73 @@
 	</resultMap>
 
 	<select id="selectAll" resultMap="travelResult">
-	
+
 	</select>
-	
+
 	<select id="select" resultMap="travelResult">
-		SELECT TRAVELNO, TITLE, CONTENT, WRITEDATE, ID, NAME
+		SELECT TRAVELNO, TITLE, CONTENT,
+		WRITEDATE, ID, NAME
 		FROM TRAVEL where id=#{id}
 	</select>
 	<select id="selectOne" resultType="travelVO">
 		SELECT TRAVELNO, TITLE, CONTENT, WRITEDATE, ID, NAME
-		FROM TRAVEL WHERE TRAVELNO=#{travelNO}<!--김민수  -->
+		FROM TRAVEL WHERE
+		TRAVELNO=#{travelNO}<!--김민수 -->
 	</select>
 	<select id="selectAllTravels" resultMap="travelResult">
-		SELECT TRAVELNO, TITLE, CONTENT, WRITEDATE, ID, NAME
+		SELECT TRAVELNO, TITLE,
+		CONTENT, WRITEDATE, ID, NAME
 		FROM TRAVEL
 	</select>
-	
+
 	<select id="selectOneTravel" resultType="TravelVO">
-		SELECT TRAVELNO, TITLE, CONTENT, WRITEDATE, ID, NAME
+		SELECT TRAVELNO, TITLE,
+		CONTENT, WRITEDATE, ID, NAME
 		FROM TRAVEL
 		WHERE travelNO=#{travelNO}
 	</select>
-	
-	<select id="selectMaxTravel" resultType="java.lang.Integer"> 
+
+	<select id="selectMaxTravel" resultType="java.lang.Integer">
 		SELECT max(travelNO)
 		FROM TRAVEL
 	</select>
-	
+
 	<insert id="insertTravel" parameterType="TravelVO">
-		 INSERT INTO TRAVEL (TRAVELNO, TITLE, CONTENT, WRITEDATE, ID, NAME)
-		  VALUES((select max(travelNO)+1 from travel), #{title}, #{content}, SYSDATE, #{id},  'travel')
+		INSERT INTO TRAVEL (TRAVELNO, TITLE, CONTENT, WRITEDATE, ID, NAME)
+		VALUES((select max(travelNO)+1 from travel), #{title}, #{content},
+		SYSDATE, #{id}, 'travel')
 	</insert>
-	
+
 	<update id="updateTravel" parameterType="TravelVO">
-		UPDATE TRAVEL SET TITLE=#{title}, CONTENT=#{content}, WHERE TRAVELNO=#{travelNO}
+		UPDATE TRAVEL SET
+		TITLE=#{title}, CONTENT=#{content}, WHERE TRAVELNO=#{travelNO}
 	</update>
-	
+
 	<delete id="deleteTravel" parameterType="travelVO">
-			DELETE FROM TRAVEL WHERE TRAVELNO=#{travelNO}
+		DELETE FROM TRAVEL WHERE TRAVELNO=#{travelNO}
 	</delete>
+
+	<delete id="deleteOne" parameterType="TravelVO">
+		DELETE FROM TRAVEL
+		WHERE id=#{userId}
+	</delete>
+
 	<delete id="deleteUserTravel" parameterType="travelVO">
-			DELETE FROM TRAVEL WHERE id=#{userId}
+		DELETE FROM TRAVEL WHERE id=#{userId}
 	</delete>
-	
+
+	<select id="selectAllTravelImage" resultType="travelImageVO">
+		SELECT *
+		FROM TRAVEL t ,IMAGE i,CATEGORY c
+		WHERE t.TRAVELNO = i.TRAVELNO(+)
+		AND t.TRAVELNO = c.PROMOTIONNO (+)
+		ORDER BY
+		t.TRAVELNO DESC
+	</select>
+
 	<!-- 테스트중 -->
-		<select id = "selectToTravels" resultType="int">
-	select count(travelNO) FROM TRAVEL
+	<select id="selectToTravels" resultType="int">
+		select count(travelNO) FROM TRAVEL
 	</select>
 
 </mapper>

@@ -9,6 +9,7 @@ public class TravelVO {
 	private Date writeDate;
 	private String id;
 	private String name;
+	
 	public int getTravelNO() {
 		return travelNO;
 	}

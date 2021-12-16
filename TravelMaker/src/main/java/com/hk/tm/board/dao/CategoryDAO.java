@@ -34,5 +34,26 @@ public class CategoryDAO {
 		// TODO Auto-generated method stub
 		sql.delete(ns+"deletePromotion",promotionNO);	
 	}
+	
+	public CategoryVO selectOneTravel(int travelNO) {
+		CategoryVO categoryVO = sql.selectOne(ns+"selectOneTravel",travelNO);
+		return categoryVO;
+	}
+
+	public void addTravel(CategoryVO categoryVO) {
+		// TODO Auto-generated method stub
+		sql.insert(ns + "insertTravel", categoryVO);
+		
+	}
+	
+	public void updateTravel(CategoryVO categoryVO) {
+		// TODO Auto-generated method stub
+		sql.update(ns+"updateTravel",categoryVO);		
+	}
+
+	public void deleteTravel(int travelNO) {
+		// TODO Auto-generated method stub
+		sql.delete(ns+"deleteTravel",travelNO);	
+	}
 
 }
