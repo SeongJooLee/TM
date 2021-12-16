@@ -100,7 +100,7 @@
 				<tbody>
 					<c:forEach var='seller' items='${seller}'>
 						<tr>
-							<td><a href='#'>${seller.promotionNO}</a></td>
+							<td><a href='/tm/board/promotion/view?promotionNO=${seller.promotionNO}'>${seller.promotionNO}</a></td>
 							<td>${seller.title}</td>
 							<td>${seller.price}</td>
 							<td>${seller.writeDate}</td>
