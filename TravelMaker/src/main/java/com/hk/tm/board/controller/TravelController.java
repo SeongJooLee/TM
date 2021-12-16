@@ -221,7 +221,7 @@ public class TravelController {
 	}
 	
 	@RequestMapping(value="/delete" ,  method=RequestMethod.GET)
-	public void addTravel(@RequestParam("travelNO") int travelNO, HttpServletResponse response) throws Exception {
+	public void travelDelete(@RequestParam("travelNO") int travelNO, HttpServletResponse response) throws Exception {
 
 		TravelVO travelVO = travelService.deleteTravel(travelNO);		
 		File imgDir = new File(REPO+"\\"+travelVO.getName()+"\\"+travelVO.getTravelNO()); // 요기?????
