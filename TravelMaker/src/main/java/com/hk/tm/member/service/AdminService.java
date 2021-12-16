@@ -88,6 +88,10 @@ public class AdminService {
 		
 		return adminDAO.listReser();
 	}
+	public ReservationVO reservationOne(String reservationNO) {
+		// TODO Auto-generated method stub
+		return adminDAO.reservationOne(reservationNO);
+	}
 	
 
 }

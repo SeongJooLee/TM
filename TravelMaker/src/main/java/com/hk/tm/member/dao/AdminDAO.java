@@ -104,6 +104,11 @@ public class AdminDAO {
 		
 		return list;
 	}
+	public ReservationVO reservationOne(String reserNO) {
+		// TODO Auto-generated method stub
+		ReservationVO reservation = sqlSession.selectOne("mapper.boardReservation.selectOne", reserNO);
+		return reservation;
+	}
 	
 
 }

@@ -9,12 +9,7 @@
 <meta charset="UTF-8">
 <title>관리자 마이페이지</title>
 <script>
-	function reserUpdate(){
-		location.href='/tm/admin/mypage/reservationUpdate?key=${reservation.reserNO}';
-		}
-	function reserDelete(){
-		location.href='/tm/admin/mypage/reservationUpdate';
-		}
+	
 	
 </script>
 <style type="text/css">
@@ -74,19 +69,15 @@
 			</ul>
 		</div>
 		<div class="grid2">
-		<h3>예약 상세보기</h3>
-		
-			
-			
-				<p>예약 번호: ${reservation.reserNO}</p>
-				<p>예약 상품 번호: ${reservation.promotionNO}</p>
-				<p>예약 날짜: ${reservation.reserDate}</p>
-				<p>인원 수: ${reservation.headCount}</p>
-				<p>예약자 아이디: ${reservation.id}</p>
-				
-			
-				<button onclick='reserUpdate()'>수정하기</button>
-				<button onclick='reserDelete()'>삭제하기</button>
+			<h3>변경할 값을 입력해주세요</h3>
+			<form action='/admin/mypage/reservationUpdate' method='post'>
+				예약번호: <input type='text' value='${reservation.reserNO}' readonly><br>
+				예약 상품번호: <input type='text' value='${reservation.promotionNO}' readonly><br>
+				예약 날짜: <input type='date' value='${reservation.reserDate}' ><br>
+				인원 수: <input type='text' value='${reservation.headCount}' readonly><br>
+				예약자 ID: <input type='text' value='${reservation.id}' readonly><br>
+				<input type='submit' value='변경하기'><br>
+			</form>
 		</div>
 	</div>
 </body>

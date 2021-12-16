@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -135,11 +136,32 @@ public class AdminController {
 		
 		List<PromotionVO>proList = adminService.listPro();
 		List<ReservationVO>reserList = adminService.listReser();
-		System.out.println("민수야..?"+search);
+
 		model.addAttribute("result",search);
 		model.addAttribute("proList",proList);
 		model.addAttribute("reserList",reserList);
 		return "userSearchReservation";
+	}
+	@RequestMapping(value="/admin/mypage/reservationUpdate",method=RequestMethod.GET)
+	public String myPageReservationUpdate(Model model,@RequestParam(value="key",required=false) String reservationNO){
+		
+		ReservationVO reservation = adminService.reservationOne(reservationNO);
+		
+		model.addAttribute("reservation",reservation);
+		
+		return "adminReservationUpdate";
+	}
+	@RequestMapping(value="/admin/mypage/reservationUpdate",method=RequestMethod.POST)
+	public String myPageReservationUpdatePost(Model model,@RequestParam(value="key",required=false) String reservationNO){
+		
+		ReservationVO reservation = adminService.reservationOne(reservationNO);
+		List<PromotionVO> list = adminService.listPro();
+		System.out.println("실행인가..?");
+		System.out.println(list);
+		model.addAttribute("proList",list);
+		model.addAttribute("result",reservation);
+		
+		return "adminMyPage";
 	}
 	
 }
