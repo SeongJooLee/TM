@@ -12,6 +12,7 @@ import com.hk.tm.board.vo.ReviewVO;
 public class ReviewDAO {
 	@Autowired
 	SqlSession sql;
+	
 	String ns = "mapper.boardReview.";
 
 	public List<ReviewVO> boardAllList() {
@@ -29,6 +30,11 @@ public class ReviewDAO {
 	public void reviewUpdate(ReviewVO reviewVO) {
 		// TODO Auto-generated method stub
 		sql.update(ns+"update", reviewVO);
+	}
+
+	public void promotionDelete(int promotionNO) {
+		// TODO Auto-generated method stub
+		sql.delete(ns+"deletePromotion",promotionNO);
 	}
 
 } 
