@@ -28,8 +28,10 @@ public class TravelService {
 	@Autowired
 	TravelDAO travelDAO;			
 	
+	@Autowired
 	ImageDAO imageDAO;
 	
+	@Autowired
 	CategoryDAO categoryDAO;
 	
 	public List<TravelVO> selectAllTravels() {

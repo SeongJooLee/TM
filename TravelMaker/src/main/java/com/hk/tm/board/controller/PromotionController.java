@@ -82,7 +82,7 @@ public class PromotionController {
 		}
 		List fileList= upload(request);
 		map.put("fileList", fileList);
-
+		System.out.println("파일리스트 확인"+fileList.toString());
 		ImageVO imageVO = new ImageVO();
 		
 		int promotionNO = promotionService.selectMaxPromotion();

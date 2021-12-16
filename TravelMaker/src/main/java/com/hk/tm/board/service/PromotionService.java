@@ -64,7 +64,6 @@ public class PromotionService {
 	}
 
 	public void promotionAdd(PromotionVO promotionVO, ImageVO imageVO, CategoryVO categoryVO) {
-		// TODO Auto-generated method stub
 		promotionDAO.promotionAdd(promotionVO);
 		imageDAO.promotionAdd(imageVO);
 		categoryDAO.promotionAdd(categoryVO);

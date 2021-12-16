@@ -10,6 +10,11 @@
 <head>
 <meta charset="UTF-8">
 <title>테마 여행 글쓰기창</title>
+<!-- Favicon-->
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<!-- Core theme CSS (includes Bootstrap)-->
+<link href="<c:url value="/resources/css/styles.css" />"
+	rel="stylesheet" />
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
 
@@ -41,8 +46,9 @@ function fn_create(){
 </script>
 </head>
 <body>
-    <jsp:include page="/resources/include/header.jsp" />
-    <hr>
+	<jsp:include page="/resources/include/header.jsp" />
+	<!-- Responsive navbar-->
+	<hr>
 	<h1 style="text-align: center">여행 글 쓰기</h1>
 	<form id="frm" action="addDone" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="id" value="user">

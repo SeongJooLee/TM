@@ -43,7 +43,6 @@ import net.coobird.thumbnailator.Thumbnails;
 public class TravelController {
 	private static final Logger logger = LoggerFactory.getLogger(TravelController.class);
 
-
 	@Autowired
 	TravelService travelService;	
 	
@@ -96,7 +95,9 @@ public class TravelController {
 		//upload 빨간줄 처리
 		List fileList= upload(request);
 		map.put("fileList", fileList);
-				
+		System.out.println("파일리스트 확인1"+fileList.toString());
+		System.out.println("파일리스트 확인2"+travelVO.toString());
+		System.out.println("파일리스트 확인3"+categoryVO.toString());
 		ImageVO imageVO = new ImageVO();
 		
 		int travelNO = travelService.selectMaxTravel();
@@ -135,7 +136,7 @@ public class TravelController {
 			}
 	}
 		
-		response.sendRedirect("/board/travel");
+		response.sendRedirect("/tm/board/travel");
 	}
 
 	
