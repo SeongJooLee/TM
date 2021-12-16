@@ -96,6 +96,7 @@ public class ImageDAO {
 
 	public void promotionUpdate(ImageVO imageVO) {
 		// TODO Auto-generated method stub
+		System.out.println("업데이트 이미지 브이오"+imageVO.toString());
 		sql.update(ns+"updatePromotion",imageVO);
 	}
 
@@ -108,7 +109,7 @@ public class ImageDAO {
 		ImageVO imageVO = sql.selectOne(ns+"selectOnePromotion",promotionNO);
 		int ret=0;
 		if(imageVO!=null) {
-			ret = sql.delete(ns+"deletePromotion",promotionNO);
+			ret = sql.delete(ns+"deletePromotionImage",promotionNO);
 		}
 		return ret;
 	}

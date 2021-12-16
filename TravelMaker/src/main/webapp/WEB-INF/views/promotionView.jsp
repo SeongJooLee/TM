@@ -61,7 +61,8 @@ function fn_imgUpdateBtn(obj) {
 					alert('삭제 실패');
 				} else {
 					alert('파일을 삭제했습니다.');
-					$("#updateResult").remove();
+					$("#d_filetest").remove();
+					location.href="${contextPath}/board/promotion/view?promotionNO=${promotion.promotionNO }";
 				}
 			},
 			error : function(err) {
@@ -119,7 +120,7 @@ function backToList(obj){
 					<td >글 번호 : <input type="text" value="${promotion.promotionNO }"
 						id="promotionNO" name="promotionNO" readonly />
 					</td>
-					<td><input type="text" value="${promotion.title }" id="title"
+					<td>글 제목 : <input type="text" value="${promotion.title }" id="title"
 						name="title" disabled />
 					<input type="hidden" value="${promotion.name }" name="name" />
 					</td>
@@ -136,10 +137,13 @@ function backToList(obj){
 						<option value="지역">지역</option>
 					</select>
 					</td>
-					<td  align="center">작성자 아이디 :
+					<td >작성자 :
 					<input type="text" value="${promotion.sellerID }"
 						name="sellerID" readonly /></td>
 				</tr>
+				<tr>
+					<td>가격 : ${promotion.price } 원<input type="hidden" name="price" value="${promotion.price }" /></td>
+					</tr>
 
 				<tr align="center">
 					<td align='left' colspan="2">이미지 파일 첨부<br>
@@ -152,7 +156,7 @@ function backToList(obj){
 							최대 3개까지 첨부 가능합니다.</small>
 					
 						<div id="d_file"></div>
-						<div id="updateResult">				
+						<div id="d_filetest">
 							<c:if test="${not empty image.image1 && image.image1 !='null' }">
 								<input type="hidden" id="originalFileName" name="image1"
 									value="${image.image1 }" />
@@ -173,7 +177,6 @@ function backToList(obj){
 								<img
 									src="${contextPath }/board/promotion/download?image=${image.image3}&promotionNO=${promotion.promotionNO}&name=${promotion.name}">
 							</c:if>
-
 						</div>
 					</td>
 				</tr>
@@ -184,8 +187,7 @@ function backToList(obj){
 							disabled>${promotion.content } </textarea></td>
 				</tr>
 				<tr>
-					<td>작성 날짜</td>
-					<td>${promotion.writeDate }</td>
+					<td>작성 날짜 :</td><td> ${promotion.writeDate }</td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center">

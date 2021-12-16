@@ -18,7 +18,7 @@ import net.coobird.thumbnailator.Thumbnails;
 public class FileDownloadController {
 	private static String CURR_IMAGE_REPO_PATH = "C:\\files";
 	
-	@RequestMapping(value="/download", method=RequestMethod.GET)
+//	@RequestMapping(value="/download", method=RequestMethod.GET)
 	public void download(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		if(request.getParameter("image") != null) {
 			

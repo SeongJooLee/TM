@@ -123,52 +123,58 @@ public class PromotionController {
 	}
 	
 	@RequestMapping(value="/board/promotion/update", method=RequestMethod.POST)
-	public String noticeUpdate(@ModelAttribute PromotionVO promotionVO,@ModelAttribute CategoryVO categoryVO,Model model,MultipartHttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
+	public String noticeUpdate(@ModelAttribute PromotionVO promotionVO,@ModelAttribute CategoryVO categoryVO,Model model,MultipartHttpServletRequest multi,HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		multi.setCharacterEncoding("utf-8");
 		
 		// 여기서 클라이언트에서 새로 올린파일인지 , 지우려고 체크한 파일인지 , 기존에 디비에 있는데 변경이 없느
 		Map<String,Object> map = new HashMap<String,Object>();
-		Enumeration enu=request.getParameterNames();
+		Enumeration enu=multi.getParameterNames();
 		
 		while(enu.hasMoreElements()){
 			String name=(String)enu.nextElement();
-			String value=request.getParameter(name);
+			String value=multi.getParameter(name);
 			map.put(name,value);
 		}
 		
-		List fileList= upload(request);
+		List fileList= upload(multi);
 		map.put("fileList", fileList);
-		
-		
 		ImageVO imageVO = new ImageVO();
 		imageVO.setPromotionNO(promotionVO.getPromotionNO());
+		imageVO.setImage1(request.getParameter("image1"));
+		imageVO.setImage2(request.getParameter("image2"));
+		imageVO.setImage3(request.getParameter("image3"));
+		System.out.println("업데이트 겟 파라메터 이미지 123"+imageVO.toString());
 		categoryVO.setPromotionNO(promotionVO.getPromotionNO());
-		 if(fileList.size()>2) {
+
+		if(fileList.size()>2) {
 			imageVO.setImage3((String) fileList.get(2));
 			if(fileList.get(2) == "") {
 				imageVO.setImage3(null);
 				fileList.remove(2);
+				System.out.println("이미지3 눌");
 			}
 		} if(fileList.size()>1) {
 			imageVO.setImage2((String) fileList.get(1));
 			if(fileList.get(1) == "") {
 				imageVO.setImage2(null);
 				fileList.remove(1);
+				System.out.println("이미지2 눌");
 			}
 		} if(fileList.size()>0) {
 			imageVO.setImage1((String) fileList.get(0));
 			if(fileList.get(0) == "") {
 				imageVO.setImage1(null);
 				fileList.remove(0);
+				System.out.println("이미지1 눌");
 			}
 		}
 
-		if(promotionVO.getPromotionNO()!=0) {
-			File imgDir = new File(REPO+"\\"+promotionVO.getName()+"\\"+promotionVO.getPromotionNO());
-			if(imgDir.exists()) {
-				FileUtils.deleteDirectory(imgDir);
-			}
-		}
+//		if(promotionVO.getPromotionNO()!=0) {
+//			File imgDir = new File(REPO+"\\"+promotionVO.getName()+"\\"+promotionVO.getPromotionNO());
+//			if(imgDir.exists()) {
+//				FileUtils.deleteDirectory(imgDir);
+//			}
+//		}
 
 		promotionService.promotionUpdate(promotionVO,imageVO,categoryVO);
 		

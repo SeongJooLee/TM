@@ -80,6 +80,11 @@
 		 where promotionNO=#{promotionNO}
 	</update>
 	
+	<update id="deletePromotionImage" parameterType="imageVO"> 
+		UPDATE IMAGE SET IMAGE1=null, IMAGE2=null, IMAGE3=null
+		 where promotionNO=#{promotionNO}
+	</update>
+	
 	<delete id="deletePromotion" parameterType="imageVO"> 
 		DELETE FROM IMAGE
 		 where promotionNO=#{promotionNO}
