@@ -39,5 +39,33 @@
 		   	 WHERE PROMOTIONNO=#{promotionNO}
 	</delete>
 	
+	
+	   	<select id="selectAllTravels" resultMap="categoryResult">
+		SELECT PROMOTIONNO, TRAVELNO, CATEGORYNAME
+		 FROM CATEGORY
+	</select>
+	
+   	<select id="selectOneTravel" resultType="CategoryVO">
+		SELECT PROMOTIONNO, TRAVELNO, CATEGORYNAME
+		 FROM CATEGORY
+		 where travelNO=#{travelNO}
+	</select>
+	
+	<insert id="insertTravel" parameterType="CategoryVO">
+		  	INSERT INTO CATEGORY (PROMOTIONNO, TRAVELNO, CATEGORYNAME)
+		  	 VALUES(null, (select max(travelNO) from travel), #{categoryName})
+	</insert>
+	
+	<update id="updateTravel" parameterType="CategoryVO">
+  	 	UPDATE CATEGORY SET
+  	 	  CATEGORYNAME=#{categoryName}
+  	 	  where travelNO=#{travelNO}
+	</update>
+	
+	<delete id="deleteTravel" parameterType="CategoryVO">
+		   	DELETE FROM CATEGORY
+		   	 WHERE TRAVELNO=#{travelNO}
+	</delete>
+	
 
 </mapper>
