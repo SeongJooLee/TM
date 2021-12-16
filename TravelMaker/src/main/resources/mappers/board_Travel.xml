@@ -67,7 +67,7 @@
 		WHERE id=#{userId}
 	</delete>
 
-	<delete id="deleteUserTravel" parameterType="travelVO">
+	<delete id="deleteUser" parameterType="travelVO">
 		DELETE FROM TRAVEL WHERE id=#{userId}
 	</delete>
 
@@ -75,7 +75,7 @@
 		SELECT *
 		FROM TRAVEL t ,IMAGE i,CATEGORY c
 		WHERE t.TRAVELNO = i.TRAVELNO(+)
-		AND t.TRAVELNO = c.PROMOTIONNO (+)
+		AND t.TRAVELNO = c.TRAVELNO (+)
 		ORDER BY
 		t.TRAVELNO DESC
 	</select>
