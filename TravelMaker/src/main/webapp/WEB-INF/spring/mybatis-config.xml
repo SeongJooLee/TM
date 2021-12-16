@@ -25,6 +25,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 			<typeAlias type="com.hk.tm.board.vo.CategoryVO" alias="CategoryVO" />
 			
 			<typeAlias type="com.hk.tm.board.vo.PromotionImageVO" alias="PromotionImageVO" />
+			<typeAlias type="com.hk.tm.board.vo.TravelImageVO" alias="TravelImageVO" />
 			
 		</typeAliases>
 		
