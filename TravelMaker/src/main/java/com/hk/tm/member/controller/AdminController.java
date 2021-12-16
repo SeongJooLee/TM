@@ -146,20 +146,21 @@ public class AdminController {
 	public String myPageReservationUpdate(Model model,@RequestParam(value="key",required=false) String reservationNO){
 		
 		ReservationVO reservation = adminService.reservationOne(reservationNO);
-		
+		List<PromotionVO> list = adminService.listPro();
+		System.out.println("실행인가..?");
+		System.out.println(list);
+		model.addAttribute("proList",list);
 		model.addAttribute("reservation",reservation);
 		
 		return "adminReservationUpdate";
 	}
 	@RequestMapping(value="/admin/mypage/reservationUpdate",method=RequestMethod.POST)
-	public String myPageReservationUpdatePost(Model model,@RequestParam(value="key",required=false) String reservationNO){
+	public String myPageReservationUpdatePost(Model model,@ModelAttribute ReservationVO reservation){
 		
-		ReservationVO reservation = adminService.reservationOne(reservationNO);
-		List<PromotionVO> list = adminService.listPro();
-		System.out.println("실행인가..?");
-		System.out.println(list);
-		model.addAttribute("proList",list);
-		model.addAttribute("result",reservation);
+		int result = adminService.reservationUpdate(reservation);
+		System.out.println("성공?"+result);
+		
+		model.addAttribute("result",result);
 		
 		return "adminMyPage";
 	}

@@ -109,6 +109,11 @@ public class AdminDAO {
 		ReservationVO reservation = sqlSession.selectOne("mapper.boardReservation.selectOne", reserNO);
 		return reservation;
 	}
+	public int reservationUpdate(ReservationVO reservation) {
+		// TODO Auto-generated method stub
+		int result = sqlSession.update("mapper.boardReservation.updateOne", reservation);
+		return result;
+	}
 	
 
 }

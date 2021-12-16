@@ -62,7 +62,10 @@
 	<!-- <delete id="delete" parameterType="ReservationVO">
 		DELETE FROM RESERVATION WHERE RESERNO=#{reserNO}
 	</delete> -->
-	
+	<update id="updateOne" parameterType="ReservationVO">
+		UPDATE RESERVATION SET promotionNO=#{promotionNO},RESERDATE=#{reserDate}, HEADCOUNT=#{headCount}
+		 WHERE RESERNO=#{reserNO}
+	</update>
 	
 	
 	

@@ -9,7 +9,20 @@
 <meta charset="UTF-8">
 <title>관리자 마이페이지</title>
 <script>
-	
+	function reset(){
+		
+			var result = confirm("취소할거니..?");
+			if(result){
+				location.href = "/tm/admin/mypage";
+			}else{
+			    return;
+			}
+		
+		}
+	function check(){
+		alert('ㅇㅇ');
+		location.href='/tm/admin/mypage';
+		}
 	
 </script>
 <style type="text/css">
@@ -70,14 +83,22 @@
 		</div>
 		<div class="grid2">
 			<h3>변경할 값을 입력해주세요</h3>
-			<form action='/admin/mypage/reservationUpdate' method='post'>
-				예약번호: <input type='text' value='${reservation.reserNO}' readonly><br>
-				예약 상품번호: <input type='text' value='${reservation.promotionNO}' readonly><br>
-				예약 날짜: <input type='date' value='${reservation.reserDate}' ><br>
-				인원 수: <input type='text' value='${reservation.headCount}' readonly><br>
-				예약자 ID: <input type='text' value='${reservation.id}' readonly><br>
-				<input type='submit' value='변경하기'><br>
+			<form action='/tm/admin/mypage/reservationUpdate' method='post'>
+				예약번호: <input type='text' name='reserNO' value='${reservation.reserNO}' readonly><br>
+				
+				<br>변경할 상품을 선택해주세요<br>
+				<c:forEach var='list' items='${proList}'>			
+					${list.title} ${list.promotionNO} <input type='radio'  name='promotionNO' value='${list.promotionNO}' required>
+					<br>
+				</c:forEach>
+				<br>예약 날짜: <input type='date' name='reserDate' value='${reservation.reserDate}' ><br><br>
+				인원 수: <input type='number' name='headCount' value='${reservation.headCount}' ><br><br>
+				예약자 ID: <input type='text'  name='id' value='${reservation.id}' readonly><br><br>
+				<input type='submit' value='변경하기'>
+				
+				
 			</form>
+			<button onclick='reset()'>취소하기</button>
 		</div>
 	</div>
 </body>

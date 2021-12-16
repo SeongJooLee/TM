@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
+<%@ page session="true" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -33,27 +36,38 @@
 	border: 3px solid royalblue;
 }
 </style>
+<script>
+function success(){
+	alert('예약변경이 완료되었습니다람쥐');
+}
+</script>
 </head>
 <body>
+<c:if test='${result==1}'>
+	<script>
+
+		success();
+	</script>
+</c:if>
 	<h1>${userSession.name} 전용 페이지</h1>
 	<div class="wrap">
 		<div class="grid1">
 			
 			<ul style="background-color: CornflowerBlue; text-align: center;" >
 				<li>
-					<form action='' method='post'>
+					<form action='/tm/admin/mypage' method='post'>
 						<input type='hidden' name='key' value='one'>
 						<input type='submit' value='게시판 글 관리'>
 					</form>
 				</li><br>
 				<li>
-					<form action='' method='post'>
+					<form action='/tm/admin/mypage' method='post'>
 						<input type='hidden' name='key' value='two'>
 						<input type='submit' value='회원 조회'>
 					</form>
 				</li><br>
 				<li>
-					<form action='' method='post'>
+					<form action='/tm/admin/mypage' method='post'>
 						<input type='hidden' name='key' value='three'>
 						<input type='submit' value='예약 조회'>
 					</form>
