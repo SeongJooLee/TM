@@ -7,11 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script>
-function view(){
-	alert('상세보기 이동시키기');
-}
-</script>
+
 <style type="text/css">
 .wrap {
 	display: grid;
@@ -82,7 +78,7 @@ function view(){
 		<td>가격</td>
 		<td>인원수</td>
 		<td>예약자아이디</td>
-		<td>상품보기</td>
+	
 	</tr>
 <c:forEach var='proList' items='${proList}'>
 	<c:forEach var='reserList' items='${reserList}'>
@@ -91,13 +87,13 @@ function view(){
 			
 				<td>${reserList.reserNO}</td>
 				<td>${reserList.reserDate}</td>
-				<td>${proList.promotionNO}</td>
+				<td><a href='/tm/board/promotion/view?promotionNO=${proList.promotionNO}'>${proList.promotionNO}</a></td>
 				<td>${proList.title}</td>
 				<td>${proList.content}</td>
 				<td>${proList.price}</td>
 				<td>${reserList.headCount}</td>
 				<td>${reserList.id}</td>
-				<td><button onclick='view()'>${proList.title} 상품보기</button></td>
+				
 				
 			
 		</c:if>

@@ -8,9 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
-function view(){
-	alert('상세이동시키기');
-}
+
 function success(){
 	alert('${result}로 검색한 결과입니다');
 	
@@ -77,7 +75,7 @@ function waitd(){
 			</ul>
 		</div>
 		<div class="grid2">
-		<h2>검색결과${result}</h2>
+		<h2>검색결과</h2>
 		<form action='/tm/admin/mypage/search' method='get'>
 			아이디 조회 : <input type="search" name='search'><input type='submit' value='검색'>
 		</form><br><br>
@@ -92,7 +90,7 @@ function waitd(){
 		<td>가격</td>
 		<td>인원수</td>
 		<td>예약자아이디</td>
-		<td>상품보기</td>
+		
 	</tr>
 <c:forEach var='proList' items='${proList}' >
 	
@@ -102,13 +100,13 @@ function waitd(){
 			<tr>
 				<td>${reserList.reserNO}</td>
 				<td>${reserList.reserDate}</td>
-				<td>${proList.promotionNO}</td>
+				<td><a href='/tm/board/promotion/view?promotionNO=${proList.promotionNO}'>${proList.promotionNO}</a></td>
 				<td>${proList.title}</td>
 				<td>${proList.content}</td>
 				<td>${proList.price}</td>
 				<td>${reserList.headCount}</td>
 				<td>${reserList.id}</td>
-				<td><button onclick='view()'>${proList.title} 상품보기</button></td>
+				
 			</tr>
 		</c:if>
 		 
