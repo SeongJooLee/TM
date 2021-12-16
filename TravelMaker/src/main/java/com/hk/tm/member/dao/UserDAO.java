@@ -123,7 +123,7 @@ public class UserDAO {
 
 	public int deleteTravel(String userId) {
 		// TODO Auto-generated method stub
-		int result = sqlSession.delete("mapper.boardTravel.deleteUserTravel",userId);
+		int result = sqlSession.delete("mapper.boardTravel.deleteOne",userId);
 		return result;
 	}
 
@@ -150,7 +150,7 @@ public class UserDAO {
 		return result;
 	}
 
-	public int delectReservation(String userId) {
+	public int deleteReservation(String userId) {
 		// TODO Auto-generated method stub
 		int result = sqlSession.delete("mapper.boardReservation.deleteOneUser",userId);
 		return result;
@@ -159,7 +159,7 @@ public class UserDAO {
 	public int deleteImage(String userId) {
 		// TODO Auto-generated method stub
 		int result = sqlSession.delete("mapper.boardImage.deleteUser",userId);
-		return 0;
+		return result;
 	}
 
 	public int updateSeller(SellerVO seller) {

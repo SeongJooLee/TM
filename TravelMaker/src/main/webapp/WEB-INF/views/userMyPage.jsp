@@ -17,8 +17,14 @@
 
 		}
 	function deleteUser(){
-		location.href = "/tm/member/mypage/delete?userId=${userSession.id}";
+		var result = confirm("삭제할거니..?");
+		if(result){
+			location.href = "/tm/member/mypage/delete?userId=${userSession.id}";
+		}else{
+		    return;
 		}
+	}
+	
 </script>
 <style type="text/css">
 .wrap {

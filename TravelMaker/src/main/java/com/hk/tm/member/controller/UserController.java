@@ -286,16 +286,7 @@ public class UserController {
 	@RequestMapping(value="/member/mypage/delete", method=RequestMethod.GET)
 	public String mypageDelete(@RequestParam(value="userId",required=false) String userId,Model model){	
 		if(userId != null) {
-			int likeyouResult = userService.deleteLikeyou(userId);//likeyou
-			int commentResult = userService.deleteComment(userId);//comment
-			int imageResult = userService.deleteImage(userId);
-			int travelResult = userService.deleteTravel(userId);//travel		
-			int reviewResult = userService.deleteReview(userId);//review		
-			int eventProductResult = userService.eventProduct(userId);//eventproduct
-			int reservationResult = userService.delectReservation(userId);//reservation
-			
-			
-		
+			int totalResult = userService.deleteTotal(userId);	
 			int result = userService.delete(userId);
 			model.addAttribute("result",result);
 		}

@@ -117,9 +117,9 @@ public class UserService {
 		return userDAO.deleteEventProduct(userId);
 	}
 
-	public int delectReservation(String userId) {
+	public int deletㄷReservation(String userId) {
 		// TODO Auto-generated method stub
-		return userDAO.delectReservation(userId);
+		return userDAO.deleteReservation(userId);
 	}
 
 	public int deleteImage(String userId) {
@@ -169,5 +169,33 @@ public class UserService {
 	public int addReview(ReviewVO reviewVO) {
 		// TODO Auto-generated method stub
 		return userDAO.addReview(reviewVO);
+	}
+
+	public int deleteTotal(String userId) {
+		// TODO Auto-generated method stub
+		//image
+		int imageResult = userDAO.deleteImage(userId);
+		//liktyou삭제
+		int likeyouResult = userDAO.deleteLikeyou(userId);
+		//comment삭제
+		int commentResult = userDAO.deleteComment(userId);
+		//travel삭제
+		int travelResult = userDAO.deleteTravel(userId);
+		//review삭제
+		int reviewResult = userDAO.deleteReview(userId);
+		//eventproduct삭제
+		int eventProductResult = userDAO.deleteEventProduct(userId);
+		//reservation삭제
+		int reservationResult= userDAO.deleteReservation(userId);
+		//user 삭제
+		System.out.println("image 테이블 삭제개수 = "+imageResult);
+		System.out.println("likeyou 테이블 삭제개수 = "+likeyouResult);
+		System.out.println("comment 테이블 삭제개수 = "+commentResult);
+		System.out.println("travel 테이블 삭제개수 = "+travelResult);
+		System.out.println("review 테이블 삭제개수 = "+reviewResult);
+		System.out.println("eventProduct 테이블 삭제개수 = "+eventProductResult);
+		System.out.println("reservation 테이블 삭제개수 = "+reservationResult);
+		
+		return 5;
 	}
 }
