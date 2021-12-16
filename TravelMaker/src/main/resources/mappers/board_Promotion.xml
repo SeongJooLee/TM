@@ -22,6 +22,14 @@
 		 order by noticeNO desc
    </select>
    
+   <select id="selectOnePromotionImage" resultType="promotionImageVO">
+		SELECT *
+		FROM PROMOTION p ,IMAGE i,CATEGORY c 
+		WHERE p.PROMOTIONNO = i.PROMOTIONNO(+)
+		AND p.PROMOTIONNO = c.PROMOTIONNO (+)
+		AND p.PROMOTIONNO = #{promotionNO}
+	</select>
+	
    <select id="selectAllPromotionImage" resultType="promotionImageVO">
 		SELECT * 
 		FROM PROMOTION p ,IMAGE i,CATEGORY c 

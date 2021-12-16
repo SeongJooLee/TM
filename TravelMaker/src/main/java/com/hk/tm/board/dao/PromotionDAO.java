@@ -53,4 +53,10 @@ public class PromotionDAO {
 		List<PromotionImageVO> list = sql.selectList(ns+"selectCategory",key);
 		return list;
 	}
+
+	// 예약하기
+	public PromotionImageVO selectOneReservation(int promotionNO) {
+		PromotionImageVO promotionImageVO = sql.selectOne(ns+"selectOnePromotionImage",promotionNO);
+		return promotionImageVO;
+	}
 }

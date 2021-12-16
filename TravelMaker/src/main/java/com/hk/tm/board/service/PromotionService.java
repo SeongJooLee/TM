@@ -43,7 +43,7 @@ public class PromotionService {
 		return promotionDAO.selectAllPromotionImage();
 	}
 	
-	public Map<String, Object> selectOneNotice(int promotionNO) {
+	public Map<String, Object> selectOnePromotion(int promotionNO) {
 		PromotionVO promotionVO = promotionDAO.selectOnePromotion(promotionNO);
 		ImageVO imageVO = imageDAO.selectOnePromotion(promotionNO);
 		CategoryVO categoryVO = categoryDAO.selectOnePromotion(promotionNO);

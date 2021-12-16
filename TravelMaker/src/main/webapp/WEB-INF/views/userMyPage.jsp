@@ -60,8 +60,9 @@ width:110px;
 <body>
 	
 	<h1>일반유저 페이지</h1>
-	<h2>${userSession.id}님 정보</h2> 
-	
+	<h2>${userSession.id}님 정보</h2>  
+	<h4><a href='/tm'>홈으로 이동</a></h4>
+	<h4><a href='/tm/member/logout'>로그아웃</a></h4>
 	<div class="wrap">
 		<div class="grid1">
 			<br>

@@ -91,6 +91,18 @@ function fn_modify_update(){
     }
 }
 
+function fn_reser(){
+    if (!confirm("예약 하시겠습니까?")) {
+        alert("취소(아니오)를 누르셨습니다.");
+        return;
+    } else {
+        alert("확인(예)을 누르셨습니다.");
+	document.getElementById('frmPromotion').method= "GET";
+	document.getElementById('frmPromotion').action = "${contextPath}/board/reservation";
+   document.getElementById('frmPromotion').submit();
+    }
+}
+
 function fn_delete(){
     if (!confirm("삭제 하시겠습니까?")) {
         alert("취소(아니오)를 누르셨습니다.");
@@ -203,6 +215,12 @@ function backToList(obj){
 						value="수정하기" onClick="fn_enable(this.form)" /> <input
 						type="button" value="삭제하기" onClick="fn_delete(this.form)" /> <input
 						type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />
+					</td>
+				</tr>	
+				<tr id="#">
+					<td colspan="2" align="center">
+					<input type="button"	value="예약하기" onClick="fn_reser(this.form)" />
+					 <input	type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />
 					</td>
 				</tr>
 			</table>
