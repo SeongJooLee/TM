@@ -14,12 +14,8 @@ import com.hk.tm.board.dao.ImageDAO;
 import com.hk.tm.board.dao.TravelDAO;
 import com.hk.tm.board.vo.CategoryVO;
 import com.hk.tm.board.vo.ImageVO;
-import com.hk.tm.board.vo.NoticeVO;
-import com.hk.tm.board.vo.PromotionVO;
 import com.hk.tm.board.vo.TravelImageVO;
 import com.hk.tm.board.vo.TravelVO;
-import com.hk.tm.member.dao.UserDAO;
-import com.hk.tm.member.vo.UserVO;
 
 @Service
 public class TravelService {
@@ -35,12 +31,17 @@ public class TravelService {
 	CategoryDAO categoryDAO;
 	
 	public List<TravelVO> selectAllTravels() {
-		// TODO Auto-generated method stub
+		
 		return travelDAO.selectAllTravels();
 	}
 	
+	public List<TravelImageVO> selectAllTravelImage() {
+		
+		return travelDAO.selectAllTravelImage();
+	}
+	
 	public Map<String, Object> selectOneTravel(int travelNO) {
-		// TODO Auto-generated method stub
+		
 		TravelVO travelVO = travelDAO.selectOneTravel(travelNO);		
 		ImageVO imageVO = imageDAO.selectOneTravel(travelNO); // 여기 문제
 		CategoryVO categoryVO = categoryDAO.selectOneTravel(travelNO);
@@ -53,18 +54,21 @@ public class TravelService {
 		return map;
 	}
 	
+	public int selectMaxTravel() {
+		
+		return travelDAO.selectMaxTravel();
+	}
+	
 	public void addTravel(TravelVO travelVO, ImageVO imageVO, CategoryVO categoryVO) {		
-		// TODO Auto-generated method stub
+		
 		travelDAO.addTravel(travelVO);
 		imageDAO.addTravel(imageVO);
-		categoryDAO.addTravel(categoryVO);// 여기 문제
+		categoryDAO.addTravel(categoryVO);
 	}
 
 	public void updateTravel(TravelVO travelVO, ImageVO imageVO, CategoryVO categoryVO) {
-		// TODO Auto-generated method stub
+		
 		travelDAO.updateTravel(travelVO);
-		imageVO.setTravelNO(travelVO.getTravelNO());
-		categoryVO.setTravelNO(travelVO.getTravelNO());
 		imageDAO.travelUpdate(travelVO,imageVO);
 		categoryDAO.updateTravel(categoryVO);
 	}
@@ -73,23 +77,21 @@ public class TravelService {
 		imageDAO.deleteTravel(travelNO);
 		categoryDAO.deleteTravel(travelNO);		
 		travelDAO.deleteTravel(travelNO);
+		
 		TravelVO travelVO = travelDAO.selectOneTravel(travelNO);		
 		
 		return travelVO;
 	}
-
-	public int selectMaxTravel() {
-		// TODO Auto-generated method stub
-		return travelDAO.selectMaxTravel();
-	}
 	
 	public int travelImgDelete(int travelNO) {
-		// TODO Auto-generated method stub				
+					
 		return imageDAO.travelImgDelete(travelNO);
 	}
 
-	public List<TravelImageVO> selectAllTravelImage() {
-		// TODO Auto-generated method stub
-		return travelDAO.selectAllTravelImage();
+
+
+	public List<TravelImageVO> selectCategoryTravel(String key) {
+		
+		return travelDAO.selectCategoryTravel(key);
 	}
 }	

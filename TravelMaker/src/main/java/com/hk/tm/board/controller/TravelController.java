@@ -37,7 +37,7 @@ import com.hk.tm.board.vo.TravelVO;
 import net.coobird.thumbnailator.Thumbnails;
 
 @Controller
-@RequestMapping(value="/board/")
+@RequestMapping(value="/board/travel")
 public class TravelController {
 	private static final Logger logger = LoggerFactory.getLogger(TravelController.class);
 
@@ -46,7 +46,7 @@ public class TravelController {
 	
 	String REPO = "C:\\files";
 	
-	@RequestMapping(value="travel" , method = {RequestMethod.GET, RequestMethod.POST}) 
+	@RequestMapping(value="" , method = {RequestMethod.GET, RequestMethod.POST}) 
 		public String travelList(Model model) {
 		
 		List<TravelImageVO> list = travelService.selectAllTravelImage();
@@ -56,26 +56,35 @@ public class TravelController {
 		return "travelList"; //travelList.jsp 호출
 	}
 	
-	@RequestMapping(value="travel/view" , method=RequestMethod.GET)
+	@RequestMapping(value="/category", method= {RequestMethod.GET})
+	public String travelCategory(Model model,@RequestParam("key") String key) {
+		List<TravelImageVO> list = travelService.selectCategoryTravel(key);
+		model.addAttribute("travel",list);
+		return "travelList"; //travelList.jsp 호출
+		
+	}
+	
+	@RequestMapping(value="/view" , method=RequestMethod.GET)
 	public String travelView(Model model , @RequestParam("travelNO") int travelNO) {
 		
-		Map<String,Object> map = travelService.selectOneTravel(travelNO); // 여기 문제
+		Map<String,Object> map = travelService.selectOneTravel(travelNO);
 		
 		model.addAttribute("travel", map.get("travel"));		
 		model.addAttribute("image",map.get("image"));
 		model.addAttribute("category",map.get("category"));
 		System.out.println("여기는 view +"+ map.get("travel").toString());
+		
 		return "travelView"; // travelView.jsp 호출
 		
 	}
 	
-	@RequestMapping(value="travel/add" ,  method=RequestMethod.GET)
+	@RequestMapping(value="/add" ,  method=RequestMethod.GET)
 	public String travelAdd(Model model) {			
 		return "travelAdd"; // travelAdd.jsp 호출
 		
 	}
 	
-	@RequestMapping(value="travel/addDone" ,  method=RequestMethod.POST)
+	@RequestMapping(value="/addDone" ,  method=RequestMethod.POST)
 	public void travelAddDone(@ModelAttribute TravelVO travelVO, @ModelAttribute CategoryVO categoryVO, MultipartHttpServletRequest request, HttpServletResponse response,Model model) throws Exception, ServletException {
 		
 		//logger.debug("title", travelVO.getTitle());
@@ -136,11 +145,11 @@ public class TravelController {
 			}
 	}
 		
-		response.sendRedirect("/tm/board/travel");
+		response.sendRedirect("/tm/board/travel");  //travelList.jsp로 이동			
 	}
 
 	
-	@RequestMapping(value="travel/update" ,  method=RequestMethod.POST)
+	@RequestMapping(value="/update" ,  method=RequestMethod.POST)
 	public String travelUpdate(@ModelAttribute TravelVO travelVO, @ModelAttribute CategoryVO categoryVO, Model model, MultipartHttpServletRequest request, HttpServletResponse response) throws Exception, ServletException {		
 		request.setCharacterEncoding("utf-8");
 		Map<String,Object> map = new HashMap<String,Object>();
@@ -157,9 +166,14 @@ public class TravelController {
 		
 		System.out.println("파일리스트 : "+fileList.toString());
 		
-		ImageVO imageVO = new ImageVO();		
+		ImageVO imageVO = new ImageVO();				
 		imageVO.setTravelNO(travelVO.getTravelNO());
-		categoryVO.setPromotionNO(travelVO.getTravelNO());
+		imageVO.setImage1(request.getParameter("image1"));
+		imageVO.setImage2(request.getParameter("image2"));
+		imageVO.setImage3(request.getParameter("image3"));
+		
+		categoryVO.setTravelNO(travelVO.getTravelNO());
+		
 		 if(fileList.size()>2) {
 			imageVO.setImage3((String) fileList.get(2));
 			if(fileList.get(2) == "") {
@@ -180,12 +194,11 @@ public class TravelController {
 			}
 		}
 
-		if(travelVO.getTravelNO()!=0) {
-			File imgDir = new File(REPO+"\\"+travelVO.getName()+"\\"+travelVO.getTravelNO());
-			if(imgDir.exists()) {
-				FileUtils.deleteDirectory(imgDir);
-			}
-		}
+		/*
+		 * if(travelVO.getTravelNO()!=0) { File imgDir = new
+		 * File(REPO+"\\"+travelVO.getName()+"\\"+travelVO.getTravelNO());
+		 * if(imgDir.exists()) { FileUtils.deleteDirectory(imgDir); } }
+		 */
 
 		travelService.updateTravel(travelVO,imageVO,categoryVO);
 		
@@ -198,27 +211,30 @@ public class TravelController {
 			}
 	}
 		map = travelService.selectOneTravel(travelVO.getTravelNO());
-		model.addAttribute("notice",map.get("notice"));
+		model.addAttribute("travel",map.get("travel"));
 		model.addAttribute("image",map.get("image"));
 		model.addAttribute("category",map.get("category"));
 		
 
-		return "travelView";
+		return "travelView"; // tavelView.jsp로 이동
 		
 	}
 	
-	@RequestMapping(value="travel/delete" ,  method=RequestMethod.GET)
+	@RequestMapping(value="/delete" ,  method=RequestMethod.GET)
 	public void addTravel(@RequestParam("travelNO") int travelNO, HttpServletResponse response) throws Exception {
 
 		TravelVO travelVO = travelService.deleteTravel(travelNO);		
-		File imgDir = new File(REPO+"\\"+travelVO.getName()+"\\"+travelVO.getTravelNO());
+		File imgDir = new File(REPO+"\\"+travelVO.getName()+"\\"+travelVO.getTravelNO()); // 요기?????
+		System.out.println("계세요???");
 		if(imgDir.exists()) {
 			FileUtils.deleteDirectory(imgDir);
+			imgDelete(travelVO.getTravelNO());
 		}
-		response.sendRedirect("/board/travel"); 
+		response.sendRedirect("/tm/board/travel"); //travelList.jsp로 이동	
 	}
 	
-	@RequestMapping(value="/travel/imgDelete", method= {RequestMethod.GET,RequestMethod.POST},produces = "application/json; charset=utf8")
+	
+	@RequestMapping(value="/imgDelete", method= {RequestMethod.GET,RequestMethod.POST},produces = "application/json; charset=utf8")
 	@ResponseBody
 	public Map<String, Object> imgDelete(@RequestParam("travelNO") int travelNO) throws Exception {
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -229,7 +245,7 @@ public class TravelController {
 		} else {
 			map.put("result", "true");
 			File imgDir = new File(REPO+"\\travel\\"+travelNO);
-			File thumbnail = new File(REPO+"\\thumbnail\\travel");
+			File thumbnail = new File(REPO+"\\thumbnail\\travel\\"+travelNO);
 			if(imgDir.exists()) {
 				FileUtils.deleteDirectory(imgDir);
 				FileUtils.deleteDirectory(thumbnail);
@@ -238,7 +254,7 @@ public class TravelController {
 		return map;			
 }
 	
-	@RequestMapping(value="/travel/download", method=RequestMethod.GET)
+	@RequestMapping(value="/download", method=RequestMethod.GET)
 	public void download(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		if(request.getParameter("image") != null) {
 			
@@ -278,12 +294,14 @@ public class TravelController {
 	private List<String> upload(MultipartHttpServletRequest request) throws ServletException, Exception{
 		List<String> fileList= new ArrayList<String>();
 		Iterator<String> fileNames = request.getFileNames();
+		
 		while(fileNames.hasNext()){
 			String fileName = fileNames.next();
 			MultipartFile mFile = request.getFile(fileName);
 			String originalFileName=mFile.getOriginalFilename();
 			fileList.add(originalFileName);
 			File file = new File(REPO +"\\"+ fileName);
+			
 			if(mFile.getSize()!=0){ //File Null Check
 				if(! file.exists()){ //경로상에 파일이 존재하지 않을 경우
 					if(file.getParentFile().mkdirs()){ //경로에 해당하는 디렉토리들을 생성
@@ -296,6 +314,5 @@ public class TravelController {
 			}
 		}
 		return fileList;
-	}
-	
+	}	
 }

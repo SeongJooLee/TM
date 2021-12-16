@@ -6,7 +6,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.hk.tm.board.vo.PromotionImageVO;
 import com.hk.tm.board.vo.TravelImageVO;
 import com.hk.tm.board.vo.TravelVO;
 
@@ -19,9 +18,15 @@ public class TravelDAO {
 	String ns = "mapper.boardTravel.";
 	
 	public List<TravelVO> selectAllTravels() {
-		// TODO Auto-generated method stub
+		
 		List<TravelVO> list = sql.selectList(ns+ "selectAllTravels");
 		
+		return list;
+	}
+	
+	public List<TravelImageVO> selectAllTravelImage() {
+		
+		List<TravelImageVO> list = sql.selectList(ns+"selectAllTravelImage");
 		return list;
 	}
 	
@@ -29,6 +34,13 @@ public class TravelDAO {
 		TravelVO travelVO = sql.selectOne(ns + "selectOneTravel" , travelNO);
 		
 		return travelVO;
+	}
+	
+	public int selectMaxTravel() {
+		
+		int travelNO = sql.selectOne(ns+"selectMaxTravel", null);
+		
+		return travelNO;
 	}
 
 	public void addTravel(TravelVO travelVO) {		
@@ -49,16 +61,14 @@ public class TravelDAO {
 
 	}
 
-	public int selectMaxTravel() {
-		
-		int travelNO = sql.selectOne(ns+"selectMaxTravel", null);
-		
-		return travelNO;
+	public void promotionDelete(int travelNO) {
+		sql.delete(ns+"deleteTravel", travelNO);
 	}
-	
-	public List<TravelImageVO> selectAllTravelImage() {
-		// TODO Auto-generated method stub
-		List<TravelImageVO> list = sql.selectList(ns+"selectAllTravelImage");
+
+	public List<TravelImageVO> selectCategoryTravel(String key) {
+		List<TravelImageVO> list = sql.selectList(ns+"selectCategory",key);
 		return list;
 	}
+	
+
 }

@@ -15,8 +15,7 @@
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Core theme CSS (includes Bootstrap)-->
-<link href="<c:url value="/resources/css/styles.css" />"
-	rel="stylesheet" />
+<link href="<c:url value="/resources/css/styles.css" />" rel="stylesheet" />
 <script src='http://code.jquery.com/jquery-latest.min.js'></script>
 <script type='text/javascript'>
 var cnt = 1;
@@ -63,7 +62,8 @@ function fn_imgUpdateBtn(obj) {
 					alert('삭제 실패');
 				} else {
 					alert('파일을 삭제했습니다.');
-					$("#updateResult").remove();
+					$("#d_filetest").remove();
+					location.href="${contextPath}/board/travel/view?travelNO=${travel.travelNO }";
 				}
 			},
 			error : function(err) {
@@ -153,7 +153,7 @@ function backToList(obj){
 							최대 3개까지 첨부 가능합니다.</small>
 					
 						<div id="d_file"></div>
-						<div id="updateResult">				
+						<div id="d_filetest">				
 							<c:if test="${not empty image.image1 && image.image1 !='null' }">
 								<input type="hidden" id="originalFileName" name="image1"
 									value="${image.image1 }" />
@@ -179,7 +179,7 @@ function backToList(obj){
 					</td>
 				</tr>
     <tr>
-         <td width="150" align="center">글내용</td>
+         <td align="center">글내용</td>
          <td><textarea rows="20" cols="60" name="content" id="content" disabled >${travel.content } </textarea></td>
       </tr>
       <tr>
