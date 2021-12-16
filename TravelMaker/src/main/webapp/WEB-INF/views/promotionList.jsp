@@ -31,9 +31,17 @@
 	<c:forEach var="promotion" items="${promotion}" >
 			<div class="col-md-4 mb-5">
 				<div class="card h-100">
+				
+				<c:if test="${promotion.image1 != null }">
+				<img	src="${contextPath }/tm/board/promotion/download?image=${promotion.image1}&promotionNO=${promotion.promotionNO}&name=${promotion.name}"  	width="100%" height="100%" />
+				</c:if>
+				
+				<c:if test="${promotion.image1 == null }">
 				<img	src="<c:url value="http://encosmall.kr/design/encos0720/shop/img/common/gonggi_top.jpg" />" 	width="100%" height="100%" />
+				</c:if>
+				
 				<div class="card-footer">
-					<a class="btn btn-primary btn-sm">${category.categoryName }</a><a href="promotion/view?promotionNO=${promotion.promotionNO }">${promotion.title }</a>
+					<a class="btn btn-primary btn-sm">${promotion.categoryName }</a>&nbsp;&nbsp;&nbsp;<a href="promotion/view?promotionNO=${promotion.promotionNO }">${promotion.title }</a>
 				</div>
 				</div>
 			</div>
