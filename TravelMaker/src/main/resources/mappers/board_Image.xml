@@ -20,11 +20,7 @@
       <result property="adminId" column="adminId" />
    </resultMap>
    
-   <select id="selectAll" resultMap="imageResult">
-		SELECT NOTICENO, TRAVELNO, REVIEWNO, PROMOTIONNO, EVENTNO, IMAGE1, IMAGE2, IMAGE3
-		 FROM IMAGE
-	</select>
-	
+   <!--  공지 사항  -->
 	<select id="selectOneNotice" resultType="imageVO"> 
 		SELECT NOTICENO, IMAGE1, IMAGE2, IMAGE3
 		 FROM IMAGE
@@ -41,10 +37,16 @@
 		 where noticeNO=#{noticeNO}
 	</update>
 	
+	<update id="deleteNoticeImage" parameterType="imageVO"> 
+		UPDATE IMAGE SET IMAGE1=null, IMAGE2=null, IMAGE3=null
+		 where noticeNO=#{noticeNO}
+	</update>
+	
 	<delete id="deleteNotice" parameterType="imageVO"> 
 		DELETE FROM IMAGE
 		 where noticeNO=#{noticeNO}
 	</delete>
+	
 <!-- 	
 	<insert id="insertTravel" parameterType="imageVO">
 	INSERT INTO IMAGE (NOTICENO, TRAVELNO, REVIEWNO, PROMOTIONNO, EVENTNO, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10)
@@ -63,7 +65,7 @@
 	 VALUES(null, null, null, null, (select max(eventNO) from event), #{image1}, #{image2}, #{image3}, #{image4}, #{image5}, #{image6}, #{image7}, #{image8}, #{image9}, #{image10})
 	</insert>
 	 -->
-
+	<!--  홍보상품  -->
 	<select id="selectOnePromotion" resultType="imageVO"> 
 		SELECT PROMOTIONNO, IMAGE1, IMAGE2, IMAGE3
 		 FROM IMAGE

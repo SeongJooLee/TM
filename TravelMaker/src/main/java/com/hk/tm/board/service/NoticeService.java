@@ -23,14 +23,13 @@ public class NoticeService {
 	ImageDAO imageDAO;
 	
 	public List<NoticeVO> selectAllNotice() {
-		// TODO Auto-generated method stub
 		return noticeDAO.selectAllNotice();
 	}
 
 	public Map<String, Object> selectOneNotice(int noticeNO) {
-		// TODO Auto-generated method stub
 		NoticeVO noticeVO = noticeDAO.selectOneNotice(noticeNO);
-		ImageVO imageVO = imageDAO.oneListNotice(noticeVO.getNoticeNO());
+		ImageVO imageVO = imageDAO.selectOneNotice(noticeVO.getNoticeNO());
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("notice", noticeVO);
 		map.put("image", imageVO);
@@ -39,26 +38,25 @@ public class NoticeService {
 	}
 	
 	public int selectMaxNotice() {
-		// TODO Auto-generated method stub
 		return noticeDAO.selectMaxNotice();
 	}
 
-	public void boardAdd(NoticeVO noticeVO, ImageVO imageVO) {
-		// TODO Auto-generated method stub
-		noticeDAO.boardAdd(noticeVO);
+	public void noticeAdd(NoticeVO noticeVO, ImageVO imageVO) {
+		noticeDAO.noticeAdd(noticeVO);
 		imageDAO.noticeAdd(imageVO);
 	}
 	
-	public void boardUpdate(NoticeVO noticeVO, ImageVO imageVO) {
+	public void noticeUpdate(NoticeVO noticeVO, ImageVO imageVO) {
 		// TODO Auto-generated method stub
-		noticeDAO.boardUpdate(noticeVO);
-		imageDAO.noticeUpdate(noticeVO,imageVO);
+		noticeDAO.noticeUpdate(noticeVO);
+		imageDAO.noticeUpdate(imageVO);
 	}
 
 	public NoticeVO noticeDelete(int noticeNO) {
-		// TODO Auto-generated method stub
 		imageDAO.noticeDelete(noticeNO);
+		
 		NoticeVO noticeVO = noticeDAO.selectOneNotice(noticeNO);
+		
 		noticeDAO.noticeDelete(noticeNO);
 		
 		return noticeVO;
@@ -66,8 +64,10 @@ public class NoticeService {
 	}
 
 	public int noticeImgDelete(int noticeNO) {
-		// TODO Auto-generated method stub
-				
 		return imageDAO.noticeImgDelete(noticeNO);
+	}
+
+	public List<NoticeVO> selectCategoryNotice(String key) {
+		return noticeDAO.selectCategoryNotice(key);
 	}
 }

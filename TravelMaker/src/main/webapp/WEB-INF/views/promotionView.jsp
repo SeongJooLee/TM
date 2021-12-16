@@ -46,7 +46,7 @@ function fn_imgUpdateBtn(obj) {
 	document.getElementById("imgUpdate").disabled = false;
 	if (!confirm("사진을 삭제 하시겠습니까?")) {
 		alert("취소(아니오)를 누르셨습니다.");
-		return;
+		return false;
 	} else {
 		alert("확인(예)을 누르셨습니다.");
 		$.ajax({
@@ -112,8 +112,8 @@ function backToList(obj){
 <body>
 	<jsp:include page="/resources/include/header.jsp" />
 	<hr>
+	
 	<div align="center">
-
 		<form id="frmPromotion" enctype="multipart/form-data">
 			<table border="1" align="center">
 				<tr>
@@ -187,7 +187,7 @@ function backToList(obj){
 							disabled>${promotion.content } </textarea></td>
 				</tr>
 				<tr>
-					<td>작성 날짜 :</td><td> ${promotion.writeDate }</td>
+					<td align="center">작성 날짜 :</td><td> ${promotion.writeDate }</td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center">

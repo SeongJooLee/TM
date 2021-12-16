@@ -18,8 +18,8 @@
 <script type='text/javascript'>
 	var cnt = 1;
 	function fn_addFile() {
-		if (cnt === 11) {
-			alert("최대 10개만 생성할 수 있습니다.");
+		if (cnt === 4) {
+			alert("최대 3개만 생성할 수 있습니다.");
 			return;
 		}
 		$("#d_file")
@@ -30,7 +30,6 @@
 	}
 
 	function fn_enable(obj) {
-
 		document.getElementById("title").disabled = false;
 		document.getElementById("content").disabled = false;
 		if (document.getElementById("originalFileName") != null) {
@@ -42,7 +41,6 @@
 		document.getElementById("tr_btn_modify").style.display = 'block';
 		document.getElementById("tr_btn").style.display = 'none';
 	}
-
 	function fn_imgUpdateBtn(obj) {
 		document.getElementById("imgUpdate").disabled = false;
 		if (!confirm("사진을 삭제 하시겠습니까?")) {
@@ -62,7 +60,8 @@
 						alert('삭제 실패');
 					} else {
 						alert('파일을 삭제했습니다.');
-						$("#updateResult").remove();
+						$("#d_filetest").remove();
+						location.href="${contextPath}/board/notice/view?noticeNO=${notice.noticeNO }";
 					}
 				},
 				error : function(err) {
@@ -111,20 +110,21 @@
 <body>
 	<jsp:include page="/resources/include/header.jsp" />
 	<hr>
+	
 	<div align="center">
 		<form id="frmNotice" enctype="multipart/form-data">
-			<table border='1'>
+			<table border='1' align="center">
 				<tr>
 					<td >글 번호 : <input type="text" value="${notice.noticeNO }"
 						id="noticeNO" name="noticeNO" readonly />
 					</td>
-					<td><input type="text" value="${notice.title }" id="title"
+					<td>글 제목 : <input type="text" value="${notice.title }" id="title"
 						name="title" disabled />
 					<input type="hidden" value="${notice.name }" name="name" />
 					</td>
 				</tr>
 				<tr>
-					<td align="center">작성자 아이디</td>
+					<td>작성자</td>
 					<td><input type="text" value="${notice.adminID }"
 						name="adminID" readonly /></td>
 				</tr>
@@ -136,12 +136,10 @@
 								&nbsp;&nbsp; * 클릭시 전체 파일이 삭제됩니다.</small>
 						</div> <input type="button" value="파일 추가" id="imgUpdate"
 						onClick="fn_addFile()" disabled /> <small> &nbsp;&nbsp; *
-							최대 10개까지 첨부 가능합니다.</small>
+							최대 3개까지 첨부 가능합니다.</small>
 					
 						<div id="d_file"></div>
-						<div id="updateResult">
-
-
+						<div id="d_filetest">
 							<c:if test="${not empty image.image1 && image.image1 !='null' }">
 								<input type="hidden" id="originalFileName" name="image1"
 									value="${image.image1 }" />
@@ -172,7 +170,7 @@
 							disabled>${notice.content } </textarea></td>
 				</tr>
 				<tr>
-					<td>작성 날짜</td>
+					<td align="center">작성 날짜 : </td>
 					<td>${notice.writeDate }</td>
 				</tr>
 				<tr>

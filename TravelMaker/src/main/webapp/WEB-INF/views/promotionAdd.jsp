@@ -27,7 +27,6 @@ if(cnt===4){
     cnt++;
 }
 
-
 function backToList(obj){
 	obj.method ="POST";
 	obj.action = "${contextPath}/tm/board/promotion";
@@ -62,8 +61,6 @@ function fn_create(){
     } else {
         alert("확인(예)을 누르셨습니다.");
         }
-        
-        
         document.getElementById("frm").submit();
     }
 
@@ -72,6 +69,7 @@ function fn_create(){
 <body>
     <jsp:include page="/resources/include/header.jsp" />
     <hr>
+    
 	<h1 style="text-align: center">홍보 글 쓰기</h1>
 	<form id="frm" action="addDone" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="sellerID" value="seller">

@@ -36,12 +36,10 @@ public class PromotionService {
 	ReviewDAO reviewDAO;
 	
 	public List<PromotionVO> selectAllPromotion() {
-		// TODO Auto-generated method stub
 		return promotionDAO.selectAllPromotion();
 	}
 	
 	public List<PromotionImageVO> selectAllPromotionImage() {
-		// TODO Auto-generated method stub
 		return promotionDAO.selectAllPromotionImage();
 	}
 	
@@ -59,8 +57,7 @@ public class PromotionService {
 	}
 
 	public int selectMaxPromotion() {
-		// TODO Auto-generated method stub
-		return promotionDAO.selectMaxNotice();
+		return promotionDAO.selectMaxPromotion();
 	}
 
 	public void promotionAdd(PromotionVO promotionVO, ImageVO imageVO, CategoryVO categoryVO) {
@@ -70,32 +67,29 @@ public class PromotionService {
 	}
 
 	public void promotionUpdate(PromotionVO promotionVO, ImageVO imageVO, CategoryVO categoryVO) {
-		// TODO Auto-generated method stub
 		promotionDAO.promotionUpdate(promotionVO);
-		imageVO.setPromotionNO(promotionVO.getPromotionNO());
-		categoryVO.setPromotionNO(promotionVO.getPromotionNO());
 		imageDAO.promotionUpdate(imageVO);
 		categoryDAO.promotionUpdate(categoryVO);
 	}
 
 	public PromotionVO promotionDelete(int promotionNO) {
-		// TODO Auto-generated method stub
 		imageDAO.promotionDelete(promotionNO);
 		categoryDAO.promotionDelete(promotionNO);
 		reservationyDAO.promotionDelete(promotionNO);
 		reviewDAO.promotionDelete(promotionNO);
+		
 		PromotionVO promotionVO = promotionDAO.selectOnePromotion(promotionNO);
+		
 		promotionDAO.promotionDelete(promotionNO);
+		
 		return promotionVO;
 	}
 
 	public int promotionImgDelete(int promotionNO) {
-		// TODO Auto-generated method stub
 		return imageDAO.promotionImgDelete(promotionNO);
 	}
 
 	public List<PromotionImageVO> selectCategoryPromotion(String key) {
-		// TODO Auto-generated method stub
 		return promotionDAO.selectCategoryPromotion(key);
 	}
 

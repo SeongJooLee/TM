@@ -10,7 +10,9 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
+
 <title>Small Business - Start Bootstrap Template</title>
+
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Core theme CSS (includes Bootstrap)-->
@@ -42,6 +44,10 @@
 	</style>
 	
 <script>
+	function tyvld(){
+		alert('쇼핑 카테고리');
+		location.href='/tm/board/promotion/category?key=쇼핑';
+		}
 	function wldur(){
 		alert('지역 카테고리');
 		location.href='/tm/board/promotion/category?key=지역';
@@ -58,9 +64,9 @@
 		alert('문화 카테고리');
 		location.href='/tm/board/promotion/category?key=문화';
 		}
-	function glffld(){
-		alert('힐링 카테고리');
-		location.href='/tm/board/promotion/category?key=힐링';
+	function wjstl(){
+		alert('전시 카테고리');
+		location.href='/tm/board/promotion/category?key=전시';
 		}
 	function cpgja(){
 		alert('체험 카테고리');
@@ -73,6 +79,7 @@
 </script>
 </head>
 <body>
+
 	<jsp:include page="/resources/include/header.jsp" />
 	<!-- Responsive navbar-->
 	<hr>
@@ -82,15 +89,15 @@
 	</div>
 	
 	<div class="col-md-12 mb-4">
-		<button type="button" class="button button4" onclick='wldur()'>지역</button>&nbsp;&nbsp;
+		<button type="button" class="button button4" onclick='tyvld()'>쇼핑</button>&nbsp;&nbsp;
 		<button type="button" class="button button4" onclick='dmatlr()'>음식</button>&nbsp;&nbsp;
-		<button type="button" class="button button4" onclick='ryxhd()'>교통</button>&nbsp;&nbsp;
 		<button type="button" class="button button4" onclick='ansghk()'>문화</button>&nbsp;&nbsp;
-		<button type="button" class="button button4" onclick='glffld()'>힐링</button>&nbsp;&nbsp;
 		<button type="button" class="button button4" onclick='cpgja()'>체험</button>&nbsp;&nbsp;
+		<button type="button" class="button button4" onclick='wjstl()'>전시</button>&nbsp;&nbsp;
+		<button type="button" class="button button4" onclick='ryxhd()'>교통</button>&nbsp;&nbsp;
+		<button type="button" class="button button4" onclick='wldur()'>지역</button>&nbsp;&nbsp;
 		<button type="button" class="button button4" onclick='chrlghk()'>설정 초기화</button>
 	</div>
-	
 		<div class="row gx-4 gx-lg-5">
 	<c:forEach var="promotion" items="${promotion}" >
 			<div class="col-md-4 mb-5">

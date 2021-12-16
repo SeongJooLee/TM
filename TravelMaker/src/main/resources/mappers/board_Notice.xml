@@ -18,6 +18,7 @@
 	<select id="selectAllNotice" resultMap="noticeResult">
 		SELECT NOTICENO, TITLE, CONTENT, ADMINID, NAME, WRITEDATE
 		 FROM NOTICE
+		 order by noticeNO desc
 	</select>
 	
 	<select id="selectOneNotice" resultType="NoticeVO"> 
@@ -45,5 +46,12 @@
 		DELETE FROM NOTICE
 		 where noticeNO=#{noticeNO} 
 	</delete>
+	
+	<select id="selectCategory" resultType="NoticeVO" parameterType="java.lang.String">
+		SELECT NOTICENO, TITLE, CONTENT, ADMINID, NAME, WRITEDATE
+		 FROM NOTICE
+		 where name=#{key}
+		 order by noticeNO desc
+	</select>
 	
 </mapper>

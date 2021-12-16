@@ -5,8 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.hk.tm.board.vo.ImageVO;
-import com.hk.tm.board.vo.NoticeVO;
-import com.hk.tm.board.vo.PromotionVO;
 import com.hk.tm.board.vo.ReviewVO;
 import com.hk.tm.board.vo.TravelVO;
 @Repository
@@ -17,101 +15,50 @@ public class ImageDAO {
 	
 	String ns = "mapper.boardImage.";
 	
-	public ImageVO oneListNotice(int noticeNO) {
-		// TODO Auto-generated method stub
+	// 공지사항
+	public ImageVO selectOneNotice(int noticeNO) {
 		ImageVO imageVO = sql.selectOne(ns+"selectOneNotice",noticeNO);
 		return imageVO;
 	}
 
 	public void noticeAdd(ImageVO imageVO) {
-		// TODO Auto-generated method stub
-		System.out.println("인서트 불량1"+imageVO.toString());
 		sql.insert(ns+"insertNotice",imageVO);
-		System.out.println("인서트 불량2"+imageVO.toString());
-
 	}
 
-	public void noticeUpdate(NoticeVO noticeVO, ImageVO imageVO) {
-		// TODO Auto-generated method stub
-		imageVO.setNoticeNO(noticeVO.getNoticeNO());
+	public void noticeUpdate(ImageVO imageVO) {
 		sql.update(ns+"updateNotice",imageVO);
 	}
 
 	public void noticeDelete(int noticeNO) {
-		// TODO Auto-generated method stub
 		sql.delete(ns+"deleteNotice",noticeNO);
 	}
+	
 	public int noticeImgDelete(int noticeNO) {
 		ImageVO imageVO = sql.selectOne(ns+"selectOneNotice",noticeNO);
 		int ret=0;
 		if(imageVO!=null) {
-			ret = sql.delete(ns+"deleteNotice",noticeNO);
+			ret = sql.update(ns+"deleteNoticeImage",noticeNO);
 		}
 		return ret;
 	}
-	
 
+	//테마여행
 	public ImageVO selectOneTravel(int travelNO) {
-		// TODO Auto-generated method stub
 		ImageVO imageVO = sql.selectOne(ns + "selectOneTravel" , travelNO);
 		return imageVO;
 	}
 
 	public void travelUpdate(TravelVO travelVO, ImageVO imageVO) {
-		// TODO Auto-generated method stub
 		imageVO.setTravelNO(travelVO.getTravelNO());
 		sql.update(ns+"updateTravel",imageVO);
 	}
 
 	public void deleteTravel(int travelNO) {
-		// TODO Auto-generated method stub
 		sql.delete(ns+"deleteTravel",travelNO);
 	}
 
 	public void addTravel(ImageVO imageVO) {
-		// TODO Auto-generated method stub
 		sql.insert(ns+"insertTravel",imageVO);
-	}
-
-	public ImageVO selectOne(int reviewNO) {
-		ImageVO imageVO = sql.selectOne(ns+"selectOne",reviewNO);
-		return imageVO;
-	}
-
-	public void reviewUpdate(ReviewVO reviewVO, ImageVO imageVO) {
-		// TODO Auto-generated method stub
-		imageVO.setReviewNO(reviewVO.getReviewNO());
-		sql.update(ns+"reviewUpdate",imageVO);
-	}
-	
-	public ImageVO selectOnePromotion(int promotionNO) {
-		ImageVO imageVO = sql.selectOne(ns+"selectOnePromotion",promotionNO);
-		return imageVO;
-	}
-	
-	public void promotionAdd(ImageVO imageVO) {
-		// TODO Auto-generated method stub
-		sql.insert(ns+"insertPromotion",imageVO);
-	}
-
-	public void promotionUpdate(ImageVO imageVO) {
-		// TODO Auto-generated method stub
-		System.out.println("업데이트 이미지 브이오"+imageVO.toString());
-		sql.update(ns+"updatePromotion",imageVO);
-	}
-
-	public void promotionDelete(int promotionNO) {
-		// TODO Auto-generated method stub
-		sql.delete(ns+"deletePromotion",promotionNO);
-	}
-
-	public int promotionImgDelete(int promotionNO) {
-		ImageVO imageVO = sql.selectOne(ns+"selectOnePromotion",promotionNO);
-		int ret=0;
-		if(imageVO!=null) {
-			ret = sql.delete(ns+"deletePromotionImage",promotionNO);
-		}
-		return ret;
 	}
 
 	public int travelImgDelete(int travelNO) {
@@ -119,6 +66,44 @@ public class ImageDAO {
 		int ret=0;
 		if(imageVO!=null) {
 			ret = sql.delete(ns+"deleteTravel", travelNO);
+		}
+		return ret;
+	}
+
+	// 이용후기
+	public ImageVO selectOne(int reviewNO) {
+		ImageVO imageVO = sql.selectOne(ns+"selectOne",reviewNO);
+		return imageVO;
+	}
+
+	public void reviewUpdate(ReviewVO reviewVO, ImageVO imageVO) {
+		imageVO.setReviewNO(reviewVO.getReviewNO());
+		sql.update(ns+"reviewUpdate",imageVO);
+	}
+	
+	//홍보상품
+	public ImageVO selectOnePromotion(int promotionNO) {
+		ImageVO imageVO = sql.selectOne(ns+"selectOnePromotion",promotionNO);
+		return imageVO;
+	}
+	
+	public void promotionAdd(ImageVO imageVO) {
+		sql.insert(ns+"insertPromotion",imageVO);
+	}
+
+	public void promotionUpdate(ImageVO imageVO) {
+		sql.update(ns+"updatePromotion",imageVO);
+	}
+
+	public void promotionDelete(int promotionNO) {
+		sql.delete(ns+"deletePromotion",promotionNO);
+	}
+
+	public int promotionImgDelete(int promotionNO) {
+		ImageVO imageVO = sql.selectOne(ns+"selectOnePromotion",promotionNO);
+		int ret=0;
+		if(imageVO!=null) {
+			ret = sql.update(ns+"deletePromotionImage",promotionNO);
 		}
 		return ret;
 	}

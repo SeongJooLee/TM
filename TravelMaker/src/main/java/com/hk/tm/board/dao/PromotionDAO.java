@@ -18,13 +18,11 @@ public class PromotionDAO {
 	String ns = "mapper.boardPromotion.";
 	
 	public List<PromotionVO> selectAllPromotion() {
-		// TODO Auto-generated method stub
 		List<PromotionVO> list = sql.selectList(ns+"selectAllPromotion");
 		return list;
 	}
 	
 	public List<PromotionImageVO> selectAllPromotionImage() {
-		// TODO Auto-generated method stub
 		List<PromotionImageVO> list = sql.selectList(ns+"selectAllPromotionImage");
 		return list;
 	}
@@ -34,34 +32,25 @@ public class PromotionDAO {
 		return promotionVO;
 	}
 
-	public int selectMaxNotice() {
-		// TODO Auto-generated method stub
+	public int selectMaxPromotion() {
 		int promotionNO = sql.selectOne(ns+"selectMaxPromotion",null);
-		
 		return promotionNO;
 	}
 
 	public void promotionAdd(PromotionVO promotionVO) {
-		// TODO Auto-generated method stub
 		sql.insert(ns+"insertPromotion",promotionVO);
 	}
 
 	public void promotionUpdate(PromotionVO promotionVO) {
-		// TODO Auto-generated method stub
 		sql.update(ns+"updatePromotion", promotionVO);
 	}
 
 	public void promotionDelete(int promotionNO) {
-		// TODO Auto-generated method stub
 		sql.delete(ns+"deletePromotion", promotionNO);
 	}
 
 	public List<PromotionImageVO> selectCategoryPromotion(String key) {
-		// TODO Auto-generated method stub
 		List<PromotionImageVO> list = sql.selectList(ns+"selectCategory",key);
 		return list;
 	}
-
-
-
 }

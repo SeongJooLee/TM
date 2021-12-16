@@ -45,9 +45,13 @@ public class NoticeController {
 	@RequestMapping(value="/board/notice", method= {RequestMethod.GET,RequestMethod.POST})
 	public String noticeList(Model model) {
 		List<NoticeVO> list = noticeService.selectAllNotice();
-
 		model.addAttribute("notice",list);
-
+		return "noticeList";
+	}
+	@RequestMapping(value="/board/notice/category", method= {RequestMethod.GET})
+	public String noticeCategory(Model model,@RequestParam("key") String key) {
+		List<NoticeVO> list = noticeService.selectCategoryNotice(key);
+		model.addAttribute("notice",list);
 		return "noticeList";
 	}
 
@@ -56,7 +60,7 @@ public class NoticeController {
 		Map<String,Object> map = noticeService.selectOneNotice(noticeNO);
 		model.addAttribute("notice",map.get("notice"));
 		model.addAttribute("image",map.get("image"));
-		
+
 		return "noticeView";
 	}
 
@@ -77,15 +81,13 @@ public class NoticeController {
 		}
 		List fileList= upload(request);
 		map.put("fileList", fileList);
-
 		ImageVO imageVO = new ImageVO();
-		
+
 		int noticeNO = noticeService.selectMaxNotice();
 		noticeNO++;
-		
 		noticeVO.setNoticeNO(noticeNO);
-		
-		 if(fileList.size()>2) {
+
+		if(fileList.size()>2) {
 			imageVO.setImage3((String) fileList.get(2));
 			if(fileList.get(2) == "") {
 				imageVO.setImage3(null);
@@ -104,64 +106,8 @@ public class NoticeController {
 				fileList.remove(0);
 			}
 		}
-		noticeService.boardAdd(noticeVO,imageVO);
-		
-			for(int i=0;i < fileList.size(); i++) {
-				if(fileList.get(i)!=null) {
-					File srcFile = new File(REPO+"\\"+"temp"+"\\"+fileList.get(i));
-					File destDir = new File(REPO+"\\"+noticeVO.getName()+"\\"+noticeVO.getNoticeNO());
-					destDir.mkdir();
-					FileUtils.moveFileToDirectory(srcFile, destDir, true);
-				}
-		}
-		response.sendRedirect("/tm/board/notice");
-	}
+		noticeService.noticeAdd(noticeVO,imageVO);
 
-	@RequestMapping(value="/board/notice/update", method=RequestMethod.POST)
-	public String noticeUpdate(@ModelAttribute NoticeVO noticeVO,Model model,MultipartHttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		Map<String,Object> map = new HashMap<String,Object>();
-		Enumeration enu=request.getParameterNames();
-		
-		while(enu.hasMoreElements()){
-			String name=(String)enu.nextElement();
-			String value=request.getParameter(name);
-			map.put(name,value);
-		}
-		
-		List fileList= upload(request);
-		map.put("fileList", fileList);
-		ImageVO imageVO = new ImageVO();
-		imageVO.setNoticeNO(noticeVO.getNoticeNO());
-		 if(fileList.size()>2) {
-			imageVO.setImage3((String) fileList.get(2));
-			if(fileList.get(2) == "") {
-				imageVO.setImage3(null);
-				fileList.remove(2);
-			}
-		} if(fileList.size()>1) {
-			imageVO.setImage2((String) fileList.get(1));
-			if(fileList.get(1) == "") {
-				imageVO.setImage2(null);
-				fileList.remove(1);
-			}
-		} if(fileList.size()>0) {
-			imageVO.setImage1((String) fileList.get(0));
-			if(fileList.get(0) == "") {
-				imageVO.setImage1(null);
-				fileList.remove(0);
-			}
-		}
-
-		if(noticeVO.getNoticeNO()!=0) {
-			File imgDir = new File(REPO+"\\"+noticeVO.getName()+"\\"+noticeVO.getNoticeNO());
-			if(imgDir.exists()) {
-				FileUtils.deleteDirectory(imgDir);
-			}
-		}
-
-		noticeService.boardUpdate(noticeVO,imageVO);
-		
 		for(int i=0;i < fileList.size(); i++) {
 			if(fileList.get(i)!=null) {
 				File srcFile = new File(REPO+"\\"+"temp"+"\\"+fileList.get(i));
@@ -169,17 +115,77 @@ public class NoticeController {
 				destDir.mkdir();
 				FileUtils.moveFileToDirectory(srcFile, destDir, true);
 			}
+		}
+		response.sendRedirect("/tm/board/notice");
 	}
+
+	@RequestMapping(value="/board/notice/update", method=RequestMethod.POST)
+	public String noticeUpdate(@ModelAttribute NoticeVO noticeVO,Model model,MultipartHttpServletRequest multi,HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		Map<String,Object> map = new HashMap<String,Object>();
+		Enumeration enu=multi.getParameterNames();
+
+		while(enu.hasMoreElements()){
+			String name=(String)enu.nextElement();
+			String value=multi.getParameter(name);
+			map.put(name,value);
+		}
+
+		List fileList= upload(multi);
+		map.put("fileList", fileList);
+		ImageVO imageVO = new ImageVO();
+		imageVO.setNoticeNO(noticeVO.getNoticeNO());
+		imageVO.setImage1(request.getParameter("image1"));
+		imageVO.setImage2(request.getParameter("image2"));
+		imageVO.setImage3(request.getParameter("image3"));
+
+		if(fileList.size()>2) {
+			imageVO.setImage3((String) fileList.get(2));
+			if(fileList.get(2) == "") {
+				imageVO.setImage3(null);
+				fileList.remove(2);
+			}
+		} if(fileList.size()>1) {
+			imageVO.setImage2((String) fileList.get(1));
+			if(fileList.get(1) == "") {
+				imageVO.setImage2(null);
+				fileList.remove(1);
+			}
+		} if(fileList.size()>0) {
+			imageVO.setImage1((String) fileList.get(0));
+			if(fileList.get(0) == "") {
+				imageVO.setImage1(null);
+				fileList.remove(0);
+			}
+		}
+
+		//		if(noticeVO.getNoticeNO()!=0) {
+		//			File imgDir = new File(REPO+"\\"+noticeVO.getName()+"\\"+noticeVO.getNoticeNO());
+		//			if(imgDir.exists()) {
+		//				FileUtils.deleteDirectory(imgDir);
+		//			}
+		//		}
+
+		noticeService.noticeUpdate(noticeVO,imageVO);
+
+		for(int i=0;i < fileList.size(); i++) {
+			if(fileList.get(i)!=null) {
+				File srcFile = new File(REPO+"\\"+"temp"+"\\"+fileList.get(i));
+				File destDir = new File(REPO+"\\"+noticeVO.getName()+"\\"+noticeVO.getNoticeNO());
+				destDir.mkdir();
+				FileUtils.moveFileToDirectory(srcFile, destDir, true);
+			}
+		}
 		map = noticeService.selectOneNotice(noticeVO.getNoticeNO());
 		model.addAttribute("notice",map.get("notice"));
 		model.addAttribute("image",map.get("image"));
-		
+
 		return "noticeView";
-		
+
 	}
 	@RequestMapping(value="/board/notice/delete", method=RequestMethod.GET)
 	public void noticeDelete(@RequestParam("noticeNO") int noticeNO, HttpServletResponse response) throws IOException {
-		
+
 		NoticeVO noticeVO = noticeService.noticeDelete(noticeNO);
 		File imgDir = new File(REPO+"\\"+noticeVO.getName()+"\\"+noticeVO.getNoticeNO());
 		if(imgDir.exists()) {
@@ -187,7 +193,7 @@ public class NoticeController {
 		}
 		response.sendRedirect("/tm/board/notice");
 	}
-	
+
 	@RequestMapping(value="/board/notice/imgDelete", method= {RequestMethod.GET,RequestMethod.POST},produces = "application/json; charset=utf8")
 	@ResponseBody
 	public Map<String, Object> imgDelete(@RequestParam("noticeNO") int noticeNO) throws IOException {
@@ -199,61 +205,64 @@ public class NoticeController {
 		} else {
 			map.put("result", "true");
 			File imgDir = new File(REPO+"\\notice\\"+noticeNO);
-			File thumbnail = new File(REPO+"\\thumbnail\\notice");
+			File thumbnail = new File(REPO+"\\thumbnail\\notice\\"+noticeNO);
 			if(imgDir.exists()) {
 				FileUtils.deleteDirectory(imgDir);
 				FileUtils.deleteDirectory(thumbnail);
 			}
 		}
 		return map;
-		
 	}
+
 	@RequestMapping(value="/board/notice/download", method=RequestMethod.GET)
 	public void download(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		if(request.getParameter("image") != null) {
-			
-		request.setCharacterEncoding("utf-8");
-		String image = request.getParameter("image");
-		String noticeNO = request.getParameter("noticeNO");
-		String name = request.getParameter("name");
 
-		OutputStream out = response.getOutputStream();
-		String path = "C:\\files\\"+name+"\\"+noticeNO+"\\"+image;
-		File imageFile = new File(path);
+			request.setCharacterEncoding("utf-8");
+			String image = request.getParameter("image");
+			String noticeNO = request.getParameter("noticeNO");
+			String name = request.getParameter("name");
 
-		int lastIndex = image.lastIndexOf(".");
-		String fileName = image.substring(0,lastIndex);
-		File destDir = new File(REPO+"\\thumbnail");
-		File thumbnail = new File(REPO+"\\thumbnail\\"+name+"\\"+noticeNO+"\\"+fileName+".png");
-		destDir.mkdir();
-		
-		if(imageFile.exists()) {
-			thumbnail.getParentFile().mkdirs();
-			Thumbnails.of(imageFile).size(500, 500).outputFormat("png").toFile(thumbnail);
-		}
-		
-		FileInputStream in = new FileInputStream(thumbnail);
-		byte[] buffer = new byte[1024*8];
-		while(true) {
-			int count = in.read(buffer);
-			if(count == -1) {
-				break;
+			OutputStream out = response.getOutputStream();
+			String path = "C:\\files\\"+name+"\\"+noticeNO+"\\"+image;
+			File imageFile = new File(path);
+
+			int lastIndex = image.lastIndexOf(".");
+			String fileName = image.substring(0,lastIndex);
+			File destDir = new File(REPO+"\\thumbnail");
+			File thumbnail = new File(REPO+"\\thumbnail\\"+name+"\\"+noticeNO+"\\"+fileName+".png");
+			destDir.mkdir();
+
+			if(imageFile.exists()) {
+				thumbnail.getParentFile().mkdirs();
+				Thumbnails.of(imageFile).size(500, 500).outputFormat("png").toFile(thumbnail);
 			}
-			out.write(buffer, 0, count);
+
+			FileInputStream in = new FileInputStream(thumbnail);
+			byte[] buffer = new byte[1024*8];
+			while(true) {
+				int count = in.read(buffer);
+				if(count == -1) {
+					break;
+				}
+				out.write(buffer, 0, count);
+			}
+			in.close();
+			out.close();
 		}
-		in.close();
-		out.close();
 	}
-	}
+	
 	private List<String> upload(MultipartHttpServletRequest request) throws ServletException, IOException{
 		List<String> fileList= new ArrayList<String>();
 		Iterator<String> fileNames = request.getFileNames();
+		
 		while(fileNames.hasNext()){
 			String fileName = fileNames.next();
 			MultipartFile mFile = request.getFile(fileName);
 			String originalFileName=mFile.getOriginalFilename();
 			fileList.add(originalFileName);
 			File file = new File(REPO +"\\"+ fileName);
+			
 			if(mFile.getSize()!=0){ //File Null Check
 				if(! file.exists()){ //경로상에 파일이 존재하지 않을 경우
 					if(file.getParentFile().mkdirs()){ //경로에 해당하는 디렉토리들을 생성
@@ -267,5 +276,4 @@ public class NoticeController {
 		}
 		return fileList;
 	}
-	
 }
