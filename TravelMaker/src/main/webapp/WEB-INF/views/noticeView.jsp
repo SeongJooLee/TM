@@ -163,54 +163,6 @@
 									src="${contextPath }/board/notice/download?image=${image.image3}&noticeNO=${notice.noticeNO}&name=${notice.name}">
 							</c:if>
 
-							<c:if test="${not empty image.image4 && image.image4 !='null' }">
-								<input type="hidden" id="originalFileName" name="image4"
-									value="${image.image4 }" />
-								<img
-									src="${contextPath }/board/notice/download?image=${image.image4}&noticeNO=${notice.noticeNO}&name=${notice.name}">
-							</c:if>
-
-							<c:if test="${not empty image.image5 && image.image5 !='null' }">
-								<input type="hidden" id="originalFileName" name="image5"
-									value="${image.image5 }" />
-								<img
-									src="${contextPath }/board/notice/download?image=${image.image5}&noticeNO=${notice.noticeNO}&name=${notice.name}">
-							</c:if>
-
-							<c:if test="${not empty image.image6 && image.image6 !='null' }">
-								<input type="hidden" id="originalFileName" name="image6"
-									value="${image.image6 }" />
-								<img
-									src="${contextPath }/board/notice/download?image=${image.image6}&noticeNO=${notice.noticeNO}&name=${notice.name}">
-							</c:if>
-							<c:if test="${not empty image.image7 && image.image7 !='null' }">
-								<input type="hidden" id="originalFileName" name="image7"
-									value="${image.image7 }" />
-								<img
-									src="${contextPath }/board/notice/download?image=${image.image7}&noticeNO=${notice.noticeNO}&name=${notice.name}">
-							</c:if>
-
-							<c:if test="${not empty image.image8 && image.image8 !='null' }">
-								<input type="hidden" id="originalFileName" name="image8"
-									value="${image.image8 }" />
-								<img
-									src="${contextPath }/board/notice/download?image=${image.image8}&noticeNO=${notice.noticeNO}&name=${notice.name}">
-							</c:if>
-
-							<c:if test="${not empty image.image9 && image.image9 !='null' }">
-								<input type="hidden" id="originalFileName" name="image9"
-									value="${image.image9 }" />
-								<img
-									src="${contextPath }/board/notice/download?image=${image.image9}&noticeNO=${notice.noticeNO}&name=${notice.name}">
-							</c:if>
-
-							<c:if
-								test="${not empty image.image10 && image.image10 !='null' }">
-								<input type="hidden" id="originalFileName" name="image10"
-									value="${image.image10 }" />
-								<img
-									src="${contextPath }/board/notice/download?image=${image.image10}&noticeNO=${notice.noticeNO}&name=${notice.name}">
-							</c:if>
 						</div>
 					</td>
 				</tr>

@@ -53,11 +53,11 @@
 	</div>
 	
 	<div class="col-md-12 mb-4">
-		<button type="button" class="button button4">지역</button>
-		<button type="button" class="button button4">음식</button>
-		<button type="button" class="button button4">교통</button>
-		<button type="button" class="button button4">문화</button>
-		<button type="button" class="button button4">힐링</button>
+		<button type="button" class="button button4">지역</button>&nbsp;&nbsp;
+		<button type="button" class="button button4">음식</button>&nbsp;&nbsp;
+		<button type="button" class="button button4">교통</button>&nbsp;&nbsp;
+		<button type="button" class="button button4">문화</button>&nbsp;&nbsp;
+		<button type="button" class="button button4">힐링</button>&nbsp;&nbsp;
 		<button type="button" class="button button4">체험</button>
 	</div>
 	
