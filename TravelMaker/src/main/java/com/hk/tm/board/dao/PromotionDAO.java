@@ -56,6 +56,12 @@ public class PromotionDAO {
 		sql.delete(ns+"deletePromotion", promotionNO);
 	}
 
+	public List<PromotionImageVO> selectCategoryPromotion(String key) {
+		// TODO Auto-generated method stub
+		List<PromotionImageVO> list = sql.selectList(ns+"selectCategory",key);
+		return list;
+	}
+
 
 
 }
