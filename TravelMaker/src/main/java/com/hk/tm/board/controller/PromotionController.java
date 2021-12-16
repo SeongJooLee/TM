@@ -46,13 +46,9 @@ public class PromotionController {
 
 	@RequestMapping(value="/board/promotion", method= {RequestMethod.GET,RequestMethod.POST})
 	public String promotionList(Model model) {
-		System.out.println("실행");
 //		List<PromotionVO> list = promotionService.selectAllPromotion();
 		List<PromotionImageVO> list = promotionService.selectAllPromotionImage();
-		System.out.println("김민수 실행전");
-		System.out.println("list 값들?"+list.toString());
 		model.addAttribute("promotion",list);
-		System.out.println("이해해");
 		return "promotionList";
 	}
 	@RequestMapping(value="/board/promotion/category", method= {RequestMethod.GET})
@@ -80,7 +76,6 @@ public class PromotionController {
 	public void promotionAddDone(@ModelAttribute PromotionVO promotionVO,@ModelAttribute CategoryVO categoryVO,MultipartHttpServletRequest request, HttpServletResponse response,Model model) throws IOException, ServletException {
 //		@RequestParam("categoryName") String categoryName
 		request.setCharacterEncoding("utf-8");
-		System.out.println("글쓰기 카테고리확인"+categoryVO.toString());
 		Map<String,Object> map = new HashMap<String,Object>();
 		Enumeration enu=request.getParameterNames();
 		while(enu.hasMoreElements()){
@@ -90,7 +85,6 @@ public class PromotionController {
 		}
 		List fileList= upload(request);
 		map.put("fileList", fileList);
-		System.out.println("파일리스트 확인"+fileList.toString());
 		ImageVO imageVO = new ImageVO();
 		
 		int promotionNO = promotionService.selectMaxPromotion();
@@ -131,6 +125,8 @@ public class PromotionController {
 	@RequestMapping(value="/board/promotion/update", method=RequestMethod.POST)
 	public String noticeUpdate(@ModelAttribute PromotionVO promotionVO,@ModelAttribute CategoryVO categoryVO,Model model,MultipartHttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		
+		// 여기서 클라이언트에서 새로 올린파일인지 , 지우려고 체크한 파일인지 , 기존에 디비에 있는데 변경이 없느
 		Map<String,Object> map = new HashMap<String,Object>();
 		Enumeration enu=request.getParameterNames();
 		
@@ -142,6 +138,8 @@ public class PromotionController {
 		
 		List fileList= upload(request);
 		map.put("fileList", fileList);
+		
+		
 		ImageVO imageVO = new ImageVO();
 		imageVO.setPromotionNO(promotionVO.getPromotionNO());
 		categoryVO.setPromotionNO(promotionVO.getPromotionNO());
@@ -198,6 +196,7 @@ public class PromotionController {
 		File imgDir = new File(REPO+"\\"+promotionVO.getName()+"\\"+promotionVO.getPromotionNO());
 		if(imgDir.exists()) {
 			FileUtils.deleteDirectory(imgDir);
+			imgDelete(promotionVO.getPromotionNO());
 		}
 		response.sendRedirect("/tm/board/promotion");
 	}
@@ -212,8 +211,9 @@ public class PromotionController {
 			map.put("result", "false");
 		} else {
 			map.put("result", "true");
+			
 			File imgDir = new File(REPO+"\\promotion\\"+promotionNO);
-			File thumbnail = new File(REPO+"\\thumbnail\\promotion");
+			File thumbnail = new File(REPO+"\\thumbnail\\promotion\\"+promotionNO);
 			if(imgDir.exists()) {
 				FileUtils.deleteDirectory(imgDir);
 				FileUtils.deleteDirectory(thumbnail);
@@ -261,10 +261,14 @@ public class PromotionController {
 	private List<String> upload(MultipartHttpServletRequest request) throws ServletException, IOException{
 		List<String> fileList= new ArrayList<String>();
 		Iterator<String> fileNames = request.getFileNames();
+		
 		while(fileNames.hasNext()){
 			String fileName = fileNames.next();
+			
 			MultipartFile mFile = request.getFile(fileName);
+			
 			String originalFileName=mFile.getOriginalFilename();
+			
 			fileList.add(originalFileName);
 			File file = new File(REPO +"\\"+ fileName);
 			if(mFile.getSize()!=0){ //File Null Check

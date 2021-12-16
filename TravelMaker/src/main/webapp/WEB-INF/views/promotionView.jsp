@@ -19,8 +19,8 @@
 <script type='text/javascript'>
 var cnt = 1;
 function fn_addFile() {
-	if (cnt === 6) {
-		alert("최대 5개만 생성할 수 있습니다.");
+	if (cnt === 4) {
+		alert("최대 3개만 생성할 수 있습니다.");
 		return;
 	}
 	$("#d_file")

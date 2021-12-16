@@ -74,7 +74,7 @@ public class PromotionService {
 		promotionDAO.promotionUpdate(promotionVO);
 		imageVO.setPromotionNO(promotionVO.getPromotionNO());
 		categoryVO.setPromotionNO(promotionVO.getPromotionNO());
-		imageDAO.promotionUpdate(imageVO);
+//		imageDAO.promotionUpdate(imageVO);
 		categoryDAO.promotionUpdate(categoryVO);
 	}
 

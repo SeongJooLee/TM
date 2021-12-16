@@ -19,8 +19,8 @@
 <script type='text/javascript'>
 var cnt = 1;
 function fn_addFile(){
-if(cnt===6){
-	alert("최대 5개만 생성할 수 있습니다.");
+if(cnt===4){
+	alert("최대 3개만 생성할 수 있습니다.");
 	return;        
     }
     $("#d_file").append("<br>" + "<p id='image"+cnt+" '><input type='file' name='image" + cnt + " ' />");
@@ -101,7 +101,7 @@ function fn_create(){
 			</tr>
 			<tr>
 				<td align='left' colspan="2">이미지 파일 첨부<br>
-					<p><input type="button" value="파일 추가" onClick="fn_addFile()"><small> &nbsp;&nbsp;*최대 10개까지 첨부 가능합니다.</small>
+					<p><input type="button" value="파일 추가" onClick="fn_addFile()"><small> &nbsp;&nbsp;*최대 3개까지 첨부 가능합니다.</small>
 					<div id="d_file">
 					
 					</div>
