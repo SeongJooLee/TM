@@ -142,7 +142,6 @@ public class TravelController {
 	
 	@RequestMapping(value="travel/update" ,  method=RequestMethod.POST)
 	public String travelUpdate(@ModelAttribute TravelVO travelVO, @ModelAttribute CategoryVO categoryVO, Model model, MultipartHttpServletRequest request, HttpServletResponse response) throws Exception, ServletException {		
-		System.out.println("업데이트 VO "+travelVO.toString());
 		request.setCharacterEncoding("utf-8");
 		Map<String,Object> map = new HashMap<String,Object>();
 		Enumeration enu=request.getParameterNames();
@@ -155,6 +154,9 @@ public class TravelController {
 		
 		List fileList= upload(request);
 		map.put("fileList", fileList);
+		
+		System.out.println("파일리스트 : "+fileList.toString());
+		
 		ImageVO imageVO = new ImageVO();		
 		imageVO.setTravelNO(travelVO.getTravelNO());
 		categoryVO.setPromotionNO(travelVO.getTravelNO());
@@ -187,7 +189,7 @@ public class TravelController {
 
 		travelService.updateTravel(travelVO,imageVO,categoryVO);
 		
-		for(int i=0;i < fileList.size(); i++) {
+		for(int i=0; i < fileList.size(); i++) {
 			if(fileList.get(i)!=null) {
 				File srcFile = new File(REPO+"\\"+"temp"+"\\"+fileList.get(i));
 				File destDir = new File(REPO+"\\"+travelVO.getName()+"\\"+travelVO.getTravelNO());
