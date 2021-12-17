@@ -70,4 +70,9 @@ public class NoticeService {
 	public List<NoticeVO> selectCategoryNotice(String key) {
 		return noticeDAO.selectCategoryNotice(key);
 	}
+
+	public List<NoticeVO> selectPageNotice(NoticeVO noticeVO) {
+		// TODO Auto-generated method stub
+		return noticeDAO.selectPageNotice(noticeVO);
+	}
 }

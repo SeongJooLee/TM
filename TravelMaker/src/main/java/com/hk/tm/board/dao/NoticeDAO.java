@@ -48,4 +48,10 @@ public class NoticeDAO {
 		List<NoticeVO> list = sql.selectList(ns+"selectCategory",key);
 		return list;
 	}
+
+	public List<NoticeVO> selectPageNotice(NoticeVO noticeVO) {
+		// TODO Auto-generated method stub
+		List<NoticeVO>list = sql.selectList(ns+"selectPageNotice", noticeVO);
+		return list;
+	}
 }

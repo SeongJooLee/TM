@@ -98,7 +98,11 @@
 			  </c:forEach>
 		 </table>
 		 <div align="center">
-		 	<a href="${contextPath }/tm/board/notice/view?noticeNO="> 1 </a>
+		 <c:forEach items="${notice }" var="list">
+		 	<c:if test="${list.count%10==0}" >
+			 	<a href="${contextPath }/tm/board/notice?page=${list.count/10}"> ${list.count/10 } </a>&nbsp;&nbsp;&nbsp;
+		 	</c:if>
+		 </c:forEach>
 		 </div>
 		 
 	 </div>

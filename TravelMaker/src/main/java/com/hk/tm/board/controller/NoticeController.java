@@ -52,11 +52,34 @@ public class NoticeController {
 //	}
 	
 	@RequestMapping(value="/board/notice", method= RequestMethod.GET)
-	public String noticeList(Model model,@RequestParam(value="page",required=false) String page) {
+	public String noticeList(Model model,@RequestParam(value="page",required=false) String pag1e) {
+		if(pag1e!=null) {
+			pag1e.substring(pag1e.lastIndexOf(".")+1);
+			System.out.println("pag1e"+pag1e);
+			int page = Integer.parseInt(pag1e);
+			int countPage =10;
+			int startPage = ((page-1)/countPage)*countPage+1;
+			int endPage = startPage + countPage -1;
+			
+			NoticeVO noticeVO = new NoticeVO();
+			
+			noticeVO.setX(startPage);
+			noticeVO.setY(endPage);
+			
+			List<NoticeVO> list = noticeService.selectPageNotice(noticeVO);
+			
+			model.addAttribute("notice",list);
+			
+			return "noticeList";
+		}
+		
+		
 		List<NoticeVO> list = noticeService.selectAllNotice();
 		model.addAttribute("notice",list);
 		return "noticeList";
 	}
+	
+	
 	@RequestMapping(value="/board/notice/category", method= {RequestMethod.GET})
 	public String noticeCategory(Model model,@RequestParam("key") String key) {
 		List<NoticeVO> list = noticeService.selectCategoryNotice(key);

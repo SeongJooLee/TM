@@ -7,6 +7,7 @@
 
 	<!--  테이블 컬럼하고 VO하고 1:1 맵핑했을 때 이름이 다르면 안됌. -->
    <resultMap id="noticeResult" type="NoticeVO">
+      <result property="count" column="count" />
       <result property="noticeNO" column="noticeNO" />
       <result property="title" column="title" />
       <result property="content" column="content" />
@@ -15,10 +16,16 @@
       <result property="writeDate" column="writeDate" />
    </resultMap>
    
-	<select id="selectAllNotice" resultMap="noticeResult">
-		SELECT NOTICENO, TITLE, CONTENT, ADMINID, NAME, WRITEDATE
-		 FROM NOTICE
-		 order by noticeNO desc
+	<select id="selectAllNotice" resultMap="noticeResult" >
+		SELECT * FROM
+		 (SELECT ROW_NUMBER()over(ORDER BY noticeNO DESC) count,noticeNO ,title,content,adminID,name, writeDate
+		  FROM notice r)  r2
+	</select>
+	
+	<select id="selectPageNotice" resultType="NoticeVO">
+		SELECT * FROM
+		 (SELECT ROW_NUMBER()over(ORDER BY noticeNO DESC) count,noticeNO ,title,content,adminID,name, writeDate
+		  FROM notice r)  r2 WHERE r2.count BETWEEN #{x} AND #{y}
 	</select>
 	
 	<select id="selectOneNotice" resultType="NoticeVO"> 
