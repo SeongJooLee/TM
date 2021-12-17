@@ -181,7 +181,7 @@ public class ReviewController {
 		response.sendRedirect("/tm/board/review");
 	}
 	
-	@RequestMapping(value="/board/review/imgDelete", method= {RequestMethod.GET,RequestMethod.POST},produces = "application/json; charset=utf8")
+	@RequestMapping(value="/board/review/reviewImgDelete", method= {RequestMethod.GET,RequestMethod.POST},produces = "application/json; charset=utf8")
 	@ResponseBody
 	public Map<String, Object> imgDelete(@RequestParam("reviewNO") int reviewNO) throws IOException {
 		Map<String, Object> map = new HashMap<String, Object>();
