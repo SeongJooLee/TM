@@ -7,6 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <title>이용후기 목록</title>
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<!-- Core theme CSS (includes Bootstrap)-->
+<link href="<c:url value="/resources/css/styles.css" />"
+	rel="stylesheet" />
 </head>
 <body>
 
