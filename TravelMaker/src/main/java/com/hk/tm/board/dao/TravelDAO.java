@@ -65,6 +65,12 @@ public class TravelDAO {
 		List<TravelImageVO> list = sql.selectList(ns+"selectCategory",key);
 		return list;
 	}
+
+	public List<TravelVO> selectUserTravel(String id) {
+		// TODO Auto-generated method stub
+		List<TravelVO> list = sql.selectList(ns+"select",id);
+		return list;
+	}
 	
 
 }

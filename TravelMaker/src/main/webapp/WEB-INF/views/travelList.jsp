@@ -118,8 +118,9 @@
 		</div>
 	</div>
   
+  <c:if test='${userSession.grade.equals("user")}'>
   <a href="${contextPath }/board/travel/add">글쓰기</a>  
-  
+  </c:if>
     <hr>
   	<!-- Bootstrap core JS-->
 	<script

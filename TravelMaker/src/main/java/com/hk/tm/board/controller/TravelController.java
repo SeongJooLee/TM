@@ -13,6 +13,7 @@ import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
@@ -33,6 +34,7 @@ import com.hk.tm.board.vo.CategoryVO;
 import com.hk.tm.board.vo.ImageVO;
 import com.hk.tm.board.vo.TravelImageVO;
 import com.hk.tm.board.vo.TravelVO;
+import com.hk.tm.member.vo.UserVO;
 
 import net.coobird.thumbnailator.Thumbnails;
 
@@ -65,7 +67,7 @@ public class TravelController {
 	}
 	
 	@RequestMapping(value="/view" , method=RequestMethod.GET)
-	public String travelView(Model model , @RequestParam("travelNO") int travelNO) {
+	public String travelView(Model model , @RequestParam("travelNO") int travelNO,HttpSession session) {
 		
 		Map<String,Object> map = travelService.selectOneTravel(travelNO);
 		
@@ -74,6 +76,16 @@ public class TravelController {
 		model.addAttribute("category",map.get("category"));
 		System.out.println("여기는 view +"+ map.get("travel").toString());
 		
+		try {
+			UserVO userVO = (UserVO)session.getAttribute("userSession");
+			System.out.println(userVO);
+			List<TravelVO> list = travelService.selectUserTravel(userVO.getId());
+			System.out.println(userVO.getId()+"님의 테마여행 리스트  "+list);
+			model.addAttribute("list",list);
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("오류발생");
+		}
 		return "travelView"; // travelView.jsp 호출
 		
 	}

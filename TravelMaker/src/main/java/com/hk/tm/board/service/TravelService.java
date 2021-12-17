@@ -95,4 +95,9 @@ public class TravelService {
 		
 		return travelDAO.selectCategoryTravel(key);
 	}
+
+	public List<TravelVO> selectUserTravel(String id) {
+		// TODO Auto-generated method stub
+		return travelDAO.selectUserTravel(id);
+	}
 }	
