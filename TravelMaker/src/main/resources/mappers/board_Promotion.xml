@@ -19,7 +19,7 @@
    <select id='select' resultMap='promotionResult'>
    		SELECT PROMOTIONNO, TITLE, CONTENT, WRITEDATE, PRICE, SELLERID, NAME
 		 FROM PROMOTION WHERE SELLERID=#{id}
-		 order by noticeNO desc
+		 order by PROMOTIONNO DESC
    </select>
    
    <select id="selectOnePromotionImage" resultType="promotionImageVO">
