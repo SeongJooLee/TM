@@ -29,6 +29,18 @@ public class AdminController {
 	public String adminMyPage(Model model,@RequestParam(value="list",required=false) String list,@RequestParam(value="id",required=false) String id,@RequestParam(value="grade",required=false) String grade) {
 		
 		if(list == null && id==null) {
+			
+			List<NoticeVO> noticeList = adminService.noticeAllList();
+			List<PromotionVO> promotionList = adminService.promotionAllList();
+			List<ReviewVO> reviewList = adminService.reviewAllList();
+			List<TravelVO> travelList = adminService.travelAllList();
+			
+			model.addAttribute("noticeList",noticeList);
+			model.addAttribute("promotionList",promotionList);
+			model.addAttribute("reviewList",reviewList);
+			model.addAttribute("travelList",travelList);
+			
+			
 			return"adminMyPage";
 		}else if(id!=null&&grade.equals("user")) {
 			
@@ -86,6 +98,7 @@ public class AdminController {
 		switch(key) {
 		
 		case "one":
+			System.out.println("post요청");
 			List<NoticeVO> noticeList = adminService.noticeAllList();
 			List<PromotionVO> promotionList = adminService.promotionAllList();
 			List<ReviewVO> reviewList = adminService.reviewAllList();
