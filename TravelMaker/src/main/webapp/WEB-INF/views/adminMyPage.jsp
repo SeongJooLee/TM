@@ -9,6 +9,10 @@
 <head>
 <meta charset="UTF-8">
 <title>관리자 마이페이지</title>
+       <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="<c:url value="/resources/css/styles.css" />" rel="stylesheet" />
 <style type="text/css">
 .wrap {
 	display: grid;
@@ -46,6 +50,7 @@ function deleteSuccess(){
 </script>
 </head>
 <body>
+<jsp:include page="/resources/include/header.jsp" />
 <c:if test='${result==1}'>
 	<script>
 
@@ -59,8 +64,6 @@ function deleteSuccess(){
 	</script>
 </c:if>
 	<h1>${userSession.name} 전용 페이지</h1>
-	<h4><a href='/tm'>홈으로 이동</a></h4>
-	<h4><a href='/tm/member/logout'>로그아웃</a></h4>
 	<div class="wrap">
 		<div class="grid1">
 			
@@ -90,6 +93,7 @@ function deleteSuccess(){
 		contentd
 		</div>
 	</div>
+<jsp:include page="/resources/include/footer.jsp" />
 </body>
 
 

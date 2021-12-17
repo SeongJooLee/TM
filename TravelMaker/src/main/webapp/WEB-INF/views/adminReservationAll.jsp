@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
 <%@ page session="true" %>
@@ -6,8 +6,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-
+<title>관리자 전용 페이지 예약조회</title>
+       <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="<c:url value="/resources/css/styles.css" />" rel="stylesheet" />
 <style type="text/css">
 .wrap {
 	display: grid;
@@ -37,6 +40,7 @@
 </style>
 </head>
 <body>
+<jsp:include page="/resources/include/header.jsp" />
 <h1>${userSession.name} 전용 페이지</h1>
 	<div class="wrap">
 		<div class="grid1">
@@ -104,6 +108,6 @@
 </table>
 		</div>
 	</div>
-
+<jsp:include page="/resources/include/footer.jsp" />
 </body>
 </html>
