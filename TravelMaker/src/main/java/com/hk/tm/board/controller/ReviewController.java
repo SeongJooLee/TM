@@ -72,6 +72,7 @@ public class ReviewController {
 			List<ReviewVO> list = reviewService.userReviewList(userVO);
 			System.out.println("저장된 리스트 ="+list);
 			model.addAttribute("list",list);
+			
 		} catch (Exception e) {
 			System.out.println("오류발생");
 		}
