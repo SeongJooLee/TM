@@ -57,7 +57,7 @@
 	
 	<insert id="insertPromotion" parameterType="PromotionVO">
 		INSERT INTO PROMOTION (PROMOTIONNO, TITLE, CONTENT, WRITEDATE, PRICE, SELLERID, NAME)
-		 VALUES((SELECT MAX(PROMOTIONNO)+1 FROM PROMOTION), #{title}, #{content}, SYSDATE, #{price}, #{sellerID}, 'promotion')
+		 VALUES((SELECT MAX(PROMOTIONNO)+1 FROM PROMOTION), #{title}, #{content}, SYSDATE, #{price}, #{sellerID}, #{name})
 	</insert>
 	
 	<update id="updatePromotion" parameterType="PromotionVO"> 

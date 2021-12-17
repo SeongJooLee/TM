@@ -151,7 +151,7 @@ function backToList(obj){
 					</td>
 					<td >작성자 :
 					<input type="text" value="${promotion.sellerID }"
-						name="${userSession.sellerID}" readonly /></td>
+						name="sellerID" readonly /></td>
 				</tr>
 				<tr>
 					<td>가격 : ${promotion.price } 원<input type="hidden" name="price" value="${promotion.price }" /></td>
