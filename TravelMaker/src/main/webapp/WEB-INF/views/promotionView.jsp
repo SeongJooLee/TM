@@ -204,6 +204,9 @@ function backToList(obj){
 				<tr>
 					<td colspan="2" align="center">
 						<div id="tr_btn_modify" style="display: none">
+						
+						
+						
 							<input type="button" value="수정 반영하기"
 								onClick="fn_modify_update(frmPromotion)" /> <input type="button"
 								value="취소하기" onClick="backToList(frmPromotion)" />
