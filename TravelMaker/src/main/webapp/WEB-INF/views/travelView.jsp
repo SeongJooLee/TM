@@ -230,12 +230,12 @@ function backToList(obj){
 				<div>
 				<tr height="10" align="center">
 					<th>이전글</th>						
-					<td><a href="travel/view?content=${travel.content}">${travel.content }</a></td>
+					<td><a href="travel/view?content=${travel.travelNO}">${travel.content }</a></td>
 				</tr>
 				
 				<tr height="10" align="center" >
 					<th>다음글</th>					
-					<td><a href="travel/view?content=${travel.content}">${travel.content }</a></td>							  
+					<td><a href="travel/view?content=${travel.travelNO}">${travel.content }</a></td>							  
 				</tr>
 				</div>
 					

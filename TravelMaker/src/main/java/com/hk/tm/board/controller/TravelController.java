@@ -225,7 +225,7 @@ public class TravelController {
 
 		TravelVO travelVO = travelService.deleteTravel(travelNO);		
 		File imgDir = new File(REPO+"\\"+travelVO.getName()+"\\"+travelVO.getTravelNO()); // 요기?????
-		System.out.println("계세요???");
+		System.out.println("왜 안계세요???ㅜㅜ");
 		if(imgDir.exists()) {
 			FileUtils.deleteDirectory(imgDir);
 			imgDelete(travelVO.getTravelNO());
