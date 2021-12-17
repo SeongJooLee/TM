@@ -222,7 +222,7 @@ public class PromotionController {
 		response.sendRedirect("/tm/board/promotion");
 	}
 
-	@RequestMapping(value="/board/promotion/imgDelete", method= {RequestMethod.GET,RequestMethod.POST},produces = "application/json; charset=utf8")
+	@RequestMapping(value="/board/promotion/promotionImgDelete", method= {RequestMethod.GET,RequestMethod.POST},produces = "application/json; charset=utf8")
 	@ResponseBody
 	public Map<String, Object> imgDelete(@RequestParam("promotionNO") int promotionNO) throws IOException {
 		Map<String, Object> map = new HashMap<String, Object>();

@@ -51,7 +51,7 @@ function fn_imgUpdateBtn(obj) {
 		alert("확인(예)을 누르셨습니다.");
 		$.ajax({
 			type : 'POST',
-			url : 'imgDelete',
+			url : 'promotionImgDelete',
 			dataType : "json",
 			data : {
 				'promotionNO' : '${promotion.promotionNO}'
