@@ -6,7 +6,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>로그인</title>
+       <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="<c:url value="/resources/css/styles.css" />" rel="stylesheet" />
 <script>
 	
 	function register() {
@@ -19,6 +23,8 @@
 </script>
 </head>
 <body>
+
+<jsp:include page="/resources/include/header.jsp" />
 
 	<form action='login' method='post'>
 		<h1>로그인 구분 방식을 선택해주세용^^</h1>
@@ -33,5 +39,7 @@
 	<button type='button' onclick='find()'>ID/PW찾기</button>
 	<button type='button' onclick='register()'>회원가입</button>
 	
+	
+<jsp:include page="/resources/include/footer.jsp" />
 </body>
 </html>

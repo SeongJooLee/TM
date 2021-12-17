@@ -39,7 +39,7 @@ $('.btn_gotop').click(function(){
 .btn_gotop {
 	display:none;
 	position:fixed;
-	bottom:30px;
+	bottom:55px;
 	right:30px;
 	z-index:999;
 	border:1px solid #ccc;
