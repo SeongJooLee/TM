@@ -35,17 +35,12 @@ table {
 
 	function fn_create() {
 		var reserDate = document.getElementById("reserDate").value;
-		if (reserDate == 'null') {
+		if (reserDate == '2021-12-21') {
 			alert('예약날짜를 선택해주세요.');
 			return false;
 		}
-		var phone = document.getElementById("phone").value;
-		if (!phone) {
-			alert('핸드폰 번호를 입력해주세요.');
-			return false;
-		}
 		var headCount = document.getElementById("headCount").value;
-		if (!headCount) {
+		if (headCount=='null') {
 			alert('인원 수를 선택해주세요.');
 			return false;
 		}
@@ -67,7 +62,7 @@ table {
 		<h1 style="text-align: center">예약 하기</h1>
 		<br>
 		<br>
-		<form id="frm" action="reservationview" method="post">
+		<form id="frm" action="reservation/done" method="post">
 			<table border="1" style="width:1000px">
 				<thead>
 					<tr>
@@ -78,11 +73,16 @@ table {
 				<tbody>
 					<tr>
 						<td>상품 제목</td>
-						<td><input type="hidden" name="title" value="${reser.title}">${reser.title}</td>
+						<td>
+							<input type="hidden" name="promotionNO" value="${reser.promotionNO }" >
+							<input type="hidden" name="title" value="${reser.title }" >
+							${reser.title}
+						</td>
 						<td rowspan="4">
 							<c:if test="${reser.image1 != null }">
 								<img	src="${contextPath }/board/promotion/download?image=${reser.image1}&promotionNO=${reser.promotionNO}&name=${reser.name}"  	width="100%" height="100%" />
-				</c:if></td>
+							</c:if>
+						</td>
 					</tr>
 					<tr>
 						<td>예약자 성명</td>
@@ -97,8 +97,17 @@ table {
 					</tr>
 					<tr>
 						<td>연락처</td>
-						<td><input type="tel" id="phone" name="phone"
-						 pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" required><small>ex) 010-xxxx-xxxx</small></td>
+					<c:if test="${user.phone != null}">
+						<td> [ ${user.phone } ]</td>
+					</c:if>
+					<c:if test="${user.phone == null}">
+						<td>
+							<small>등록된 번호가 없습니다.</small><br>
+							<small>마이페이지에서 번호 등록을 해주세요.</small>
+								
+						</td>
+					</c:if>
+						
 					</tr>
 					<tr>
 						<td>인원 수</td>

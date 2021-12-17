@@ -34,21 +34,31 @@
 		 where reserNO=#{reserNO}
 	</select>
 	
+	<select id="selectOneReservation" resultType="ReservationVO">
+		SELECT RESERNO, PROMOTIONNO, RESERDATE, HEADCOUNT, ID
+		 FROM RESERVATION
+		 where id = 'user'
+		 and promotionNO = #{promotionNO}
+		 and reserDate = #{reserDate}
+		 and headCount = #{headCount}
+	</select>
 	
 	
-	<insert id="insert" parameterType="ReservationVO">
+	
+	<insert id="insertReservation" parameterType="ReservationVO">
 		INSERT INTO RESERVATION (RESERNO, PROMOTIONNO, RESERDATE, HEADCOUNT, ID)
- 		VALUES(TO_CHAR(SYSDATE,'YYYY/MM/DD/HH/MI/SS'), #{promotionNO}, #{reserDate}, #{headCount}, #{id})	
+ 		VALUES(TO_CHAR(SYSDATE,'YYYY/MM/DD/HH/MI/SS'), #{promotionNO}, #{reserDate}, #{headCount}, 'user')	
 	</insert>
+	
+	<delete id="deleteReservation" parameterType="ReservationVO">
+		DELETE FROM RESERVATION WHERE RESERNO=#{reserNO}
+	</delete>
 	
 	<update id="update" parameterType="ReservationVO">
 		UPDATE RESERVATION SET RESERDATE=#{reserDate}, HEADCOUNT=#{headCount}
 		 WHERE RESERNO=#{reserNO}
 	</update>
 	
-	<delete id="delete" parameterType="ReservationVO">
-		DELETE FROM RESERVATION WHERE RESERNO=#{reserNO}
-	</delete>
 
 	<delete id="deletePromotion" parameterType="ReservationVO">
 		DELETE FROM RESERVATION WHERE promotionNO=#{promotionNO}
