@@ -6,7 +6,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>판매자 마이페이지 메인</title>
+       <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="<c:url value="/resources/css/styles.css" />" rel="stylesheet" />
 <script>
 	function sellerUpdate(){
 		
@@ -46,11 +50,10 @@
 </style>
 </head>
 <body> 
-<%--  <jsp:include page="/resources/include/header.jsp" /> --%>
+<jsp:include page="/resources/include/header.jsp" />
 	<h1>판매유저 페이지</h1>
 	<h2>${userSession.sellerID}님 정보</h2> 
-	<h4><a href='/tm'>홈으로 이동</a></h4>
-	<h4><a href='/tm/member/logout'>로그아웃</a></h4>
+
 	<div class="wrap">
 		<div class="grid1">
 			<br>
@@ -83,6 +86,6 @@
 		</div>
 		
 	</div>
-<%--   <jsp:include page="/resources/include/footer.jsp" />  --%>
+<jsp:include page="/resources/include/footer.jsp" />
 </body>
 </html>

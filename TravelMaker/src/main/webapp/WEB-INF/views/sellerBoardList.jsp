@@ -5,7 +5,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Insert title here</title>
+<title>판매자 마이페이지 내가 등록한 상품 보기</title>
+       <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="<c:url value="/resources/css/styles.css" />" rel="stylesheet" />
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -44,6 +48,8 @@
 
 </head>
 <body>
+
+<jsp:include page="/resources/include/header.jsp" />
 	<h1>판매유저 페이지</h1>
 	<h2>${userSession.sellerID}님정보</h2>
 
@@ -105,5 +111,6 @@
 		</div>
 	</div>
 
+<jsp:include page="/resources/include/footer.jsp" />
 </body>
 </html>

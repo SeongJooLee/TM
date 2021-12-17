@@ -6,7 +6,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>판매자 마이페이지 상품정보</title>
+       <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="<c:url value="/resources/css/styles.css" />" rel="stylesheet" />
 <!-- <script>
 	function ss(){
 		alert('계정정보가 없어서 로그인 못하지롱~~');
@@ -42,6 +46,7 @@
 </style>
 </head>
 <body> 
+<jsp:include page="/resources/include/header.jsp" />
 	<h1>판매유저 페이지</h1>
 	<h2>${userSession.sellerID}님 정보</h2> 
 	
@@ -66,7 +71,6 @@
 		</div>
 		<div class="grid2">
 		<h3>${userSession.sellerID}님이 등록한 상품정보</h3>
-		<p>여기다가 넣어야되나</p>
 		<table border='1'>
 		
 		<tr>
@@ -96,6 +100,6 @@
 		</div>
 		
 	</div>
-	
+<jsp:include page="/resources/include/footer.jsp" />
 </body>
 </html>
