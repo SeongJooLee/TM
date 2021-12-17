@@ -50,9 +50,7 @@ public class TravelController {
 	
 	@RequestMapping(value="" , method = {RequestMethod.GET, RequestMethod.POST}) 
 		public String travelList(Model model) {
-		
 		List<TravelImageVO> list = travelService.selectAllTravelImage();
-		
 		model.addAttribute("travel", list);
 		//logger.debug("---------/list called");
 		return "travelList"; //travelList.jsp 호출
@@ -256,8 +254,8 @@ public class TravelController {
 			map.put("result", "false");
 		} else {
 			map.put("result", "true");
-			File imgDir = new File(REPO+"\\travel\\"+travelNO);
-			File thumbnail = new File(REPO+"\\thumbnail\\travel\\"+travelNO);
+			File imgDir = new File(REPO+"\\테마여행\\"+travelNO);
+			File thumbnail = new File(REPO+"\\thumbnail\\테마여행\\"+travelNO);
 			if(imgDir.exists()) {
 				FileUtils.deleteDirectory(imgDir);
 				FileUtils.deleteDirectory(thumbnail);

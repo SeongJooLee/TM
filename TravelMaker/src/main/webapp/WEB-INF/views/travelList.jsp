@@ -102,7 +102,7 @@
 				<div class="card h-100">
 				
 				<c:if test="${travel.image1 != null }">
-				<img	src="${contextPath }/tm/board/travel/download?image=${travel.image1}&travelNO=${travel.travelNO}&name=${travel.name}"  	width="100%" height="100%" />
+				<img	src="${contextPath }/board/travel/download?image=${travel.image1}&travelNO=${travel.travelNO}&name=${travel.name}"  	width="100%" height="100%" />
 				</c:if>
 				
 				<c:if test="${travel.image1 == null }">

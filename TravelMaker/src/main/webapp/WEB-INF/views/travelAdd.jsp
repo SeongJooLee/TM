@@ -66,7 +66,7 @@ function fn_create(){
 	<hr>
 	<h1 style="text-align: center">여행 글 쓰기</h1>
 	<form id="frm" action="addDone" method="post" enctype="multipart/form-data">
-		<input type="hidden" name="id" value="user">
+		<input type="hidden" name="id" value="${userSession.id}">
 		<input type="hidden" name="name" value="테마여행">
 		<table border="1" align="center">
 			<tr>

@@ -47,7 +47,6 @@ public class PromotionController {
 
 	@RequestMapping(value="/board/promotion", method= {RequestMethod.GET,RequestMethod.POST})
 	public String promotionList(Model model) {
-		//		List<PromotionVO> list = promotionService.selectAllPromotion();
 		List<PromotionImageVO> list = promotionService.selectAllPromotionImage();
 		model.addAttribute("promotion",list);
 		return "promotionList";
@@ -75,11 +74,6 @@ public class PromotionController {
 		} catch (Exception e) {
 			System.out.println("오류발생");
 		}
-		
-		
-		
-		
-		
 		
 		return "promotionView";
 	}
@@ -232,8 +226,8 @@ public class PromotionController {
 			map.put("result", "false");
 		} else {
 			map.put("result", "true");
-			File imgDir = new File(REPO+"\\promotion\\"+promotionNO);
-			File thumbnail = new File(REPO+"\\thumbnail\\promotion\\"+promotionNO);
+			File imgDir = new File(REPO+"\\홍보상품\\"+promotionNO);
+			File thumbnail = new File(REPO+"\\thumbnail\\홍보상품\\"+promotionNO);
 			if(imgDir.exists()) {
 				FileUtils.deleteDirectory(imgDir);
 				FileUtils.deleteDirectory(thumbnail);

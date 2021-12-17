@@ -72,8 +72,8 @@ function fn_create(){
     
 	<h1 style="text-align: center">홍보 글 쓰기</h1>
 	<form id="frm" action="addDone" method="post" enctype="multipart/form-data">
-		<input type="hidden" name="sellerID" value="seller">
-		<input type="hidden" name="name" value="promotion">
+		<input type="hidden" name="sellerID" value="${userSession.sellerID}">
+		<input type="hidden" name="name" value="홍보상품">
 		<table border="1" align="center">
 			<tr>
 				<td>
