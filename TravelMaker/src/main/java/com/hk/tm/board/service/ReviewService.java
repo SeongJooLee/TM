@@ -48,7 +48,7 @@ public class ReviewService {
 		// TODO Auto-generated method stub
 		
 		reviewDAO.reviewUpdate(reviewVO);
-		imageDAO.reviewUpdate(reviewVO,imageVO);
+		imageDAO.reviewUpdate(imageVO);
 		
 	}
 	

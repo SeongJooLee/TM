@@ -76,8 +76,7 @@ public class ImageDAO {
 		return imageVO;
 	}
 
-	public void reviewUpdate(ReviewVO reviewVO, ImageVO imageVO) {
-		imageVO.setReviewNO(reviewVO.getReviewNO());
+	public void reviewUpdate(ImageVO imageVO) {
 		sql.update(ns+"reviewUpdate",imageVO);
 	}
 	
