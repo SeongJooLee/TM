@@ -234,11 +234,11 @@ public class TravelController {
 	}
 	
 	
-	@RequestMapping(value="/imgTravelUpdate", method= {RequestMethod.GET,RequestMethod.POST},produces = "application/json; charset=utf8")
+	@RequestMapping(value="/travelImgDelete", method= {RequestMethod.GET,RequestMethod.POST},produces = "application/json; charset=utf8")
 	@ResponseBody
 	public Map<String, Object> imgDelete(@RequestParam("travelNO") int travelNO) throws Exception {
 		Map<String, Object> map = new HashMap<String, Object>();
-		System.out.println("들어왓니?");
+		System.out.println("들어왓니?"+travelNO);
 		int ret = travelService.travelImgDelete(travelNO);
 		if(ret==0) {
 			map.put("result", "false");

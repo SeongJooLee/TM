@@ -45,7 +45,7 @@ function fn_enable(obj){
 }
 
 function fn_imgUpdateBtn(obj) {
-	document.getElementById("imgTravelUpdate").disabled = false; // 여기 수정
+	document.getElementById("imgUpdate").disabled = false; // 여기 수정
 	if (!confirm("사진을 삭제 하시겠습니까?")) {
 		alert("취소(아니오)를 누르셨습니다.");
 		return;
@@ -53,7 +53,7 @@ function fn_imgUpdateBtn(obj) {
 		alert("확인(예)을 누르셨습니다.");
 		$.ajax({
 			type : 'POST',
-			url : 'imgDelete',
+			url : 'travelImgDelete',
 			dataType : "json",
 			data : {
 				'travelNO' : '${travel.travelNO}'

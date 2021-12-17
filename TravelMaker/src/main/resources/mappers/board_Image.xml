@@ -147,7 +147,7 @@
 	
 	<update id="deleteTravelImage" parameterType="imageVO"> 
 		UPDATE IMAGE SET IMAGE1=null, IMAGE2=null, IMAGE3=null
-		 where traveleNO=#{travelNO}
+		 where travelNO=#{travelNO}
 	</update>
 	
 	
