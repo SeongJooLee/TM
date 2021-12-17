@@ -1,6 +1,6 @@
 package com.hk.tm.board.vo;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class CommentVO {
 	private String id;
