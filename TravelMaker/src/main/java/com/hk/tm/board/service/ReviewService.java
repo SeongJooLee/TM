@@ -12,6 +12,7 @@ import com.hk.tm.board.dao.ReviewDAO;
 import com.hk.tm.board.vo.ImageVO;
 import com.hk.tm.board.vo.NoticeVO;
 import com.hk.tm.board.vo.ReviewVO;
+import com.hk.tm.member.vo.UserVO;
 @Service
 public class ReviewService {
 
@@ -65,6 +66,11 @@ public class ReviewService {
 
 	public int reviewImgDelete(int reviewNO) {
 		return imageDAO.reviewImgDelete(reviewNO);
+	}
+
+	public List<ReviewVO> userReviewList(UserVO userVO) {
+		// TODO Auto-generated method stub
+		return reviewDAO.userReviewList(userVO);
 	}
 
 }

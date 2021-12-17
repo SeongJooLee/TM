@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.hk.tm.board.vo.NoticeVO;
 import com.hk.tm.board.vo.ReviewVO;
+import com.hk.tm.member.vo.UserVO;
 @Repository
 public class ReviewDAO {
 	@Autowired
@@ -46,6 +47,12 @@ public class ReviewDAO {
 		// TODO Auto-generated method stub
 		sql.delete(ns+"deletePromotion",promotionNO);
 		
+	}
+
+	public List<ReviewVO> userReviewList(UserVO userVO) {
+		// TODO Auto-generated method stub
+		List<ReviewVO> list = sql.selectList(ns+"selectUserReview",userVO.getId());
+		return list;
 	}
 
 

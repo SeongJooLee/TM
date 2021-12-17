@@ -197,11 +197,40 @@ function backToList(obj){
 					</td>
 				</tr>
 				<tr id="tr_btn">
-					<td colspan="2" align="center"><input type="button"
-						value="수정하기" onClick="fn_enable(this.form)" /> <input
-						type="button" value="삭제하기" onClick="fn_delete(this.form)" /> <input
-						type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />
+					
+					<td colspan="2" align="center">
+						<c:if test='${userSession.grade.equals("user")}'>
+							<c:forEach var='list' items='${list}'>
+							
+								 <c:if test='${list.reviewNO == review.reviewNO}'> 
+									<input type="button" value="수정하기" onClick="fn_enable(this.form)" /> 
+									<input type="button" value="삭제하기" onClick="fn_delete(this.form)" />
+									<input type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />	
+									<c:set var="check" value="1" />															
+								 </c:if>  				
+							</c:forEach>	
+								<c:if test='${check!=1}'>
+									<input type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />
+								</c:if>	
+						</c:if>
+						
+						<c:choose>
+							<c:when test='${userSession.grade.equals("admin")}'>
+								<input type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />
+							</c:when>
+							
+							<c:when test='${userSession.grade.equals("seller")}'>
+								<input type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />
+							</c:when>
+							
+							<c:when test='${userSession.grade==null}'>
+								<input type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />
+							</c:when>
+						</c:choose>
 					</td>
+					
+					
+					
 				</tr>
 			</table>
 		</form>
