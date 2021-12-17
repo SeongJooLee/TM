@@ -115,15 +115,15 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
 							<c:forEach var='list' items='${list}' varStatus='num'>
-								<td><a href='/tm/member/mypage?proNO=${list.promotionNO}'>${list.reserNO}</a></td>
+						<tr>
+								<td><a href='${contextPath }/tm/board/reservation/view?reserNO=${list.reserNO }' > ${list.reserNO}</a></td>
 								<td>${list.promotionNO}</td>
 								<td>${list.reserDate}</td>
 								<td>${list.id}</td>
 								
-							</c:forEach>
 						</tr>
+							</c:forEach>
 					</tbody>
 				</table>
 			</div>

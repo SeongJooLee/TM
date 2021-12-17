@@ -33,4 +33,10 @@ public class ReservationDAO {
 		return ret;
 	}
 
+	public ReservationVO selectOneReservation(ReservationVO reserVO) {
+		// TODO Auto-generated method stub
+		reserVO = sql.selectOne(ns+"selectOneReservationView",reserVO);
+		return reserVO;
+	}
+
 }

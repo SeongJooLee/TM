@@ -29,7 +29,7 @@ table {
 	        return;
 	    } else {
 	        alert("확인(예)을 누르셨습니다.");
-			location.href="${contextPath}/board/promotion/view?promotionNO=${reser.promotionNO}";
+			location.href="${contextPath}/board/promotion";
 	    }
 	}
  

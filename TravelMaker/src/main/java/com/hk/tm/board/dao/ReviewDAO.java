@@ -42,6 +42,12 @@ public class ReviewDAO {
 		sql.delete(ns+"reviewDelete",reviewNO);
 	}
 
+	public void promotionDelete(int promotionNO) {
+		// TODO Auto-generated method stub
+		sql.delete(ns+"deletePromotion",promotionNO);
+		
+	}
+
 
 
 } 

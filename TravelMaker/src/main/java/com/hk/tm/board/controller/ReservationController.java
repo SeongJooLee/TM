@@ -1,6 +1,8 @@
 package com.hk.tm.board.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -33,7 +35,7 @@ public class ReservationController {
 		return "reservation";
 	}
 
-	@RequestMapping(value="/board/reservation/done", method=RequestMethod.POST)
+	@RequestMapping(value="/board/reservation/done", method={RequestMethod.GET,RequestMethod.POST})
 	public String reservationDone(@ModelAttribute ReservationVO reserVO,@RequestParam("promotionNO") int promotionNO,@RequestParam("title") String title ,@RequestParam("price") int price,Model model) {
 		//reserVO에 저장될 값
 		//reserNO, promotionNO, reserDate, headCount, id(user)
@@ -56,6 +58,16 @@ public class ReservationController {
 		return "reservationView";
 	}
 	
+	@RequestMapping(value="/board/reservation/view", method=RequestMethod.GET)
+	public String reservationDone(@ModelAttribute ReservationVO reserVO,Model model) {
+		Map<String, Object> map =reserService.selectOneReservation(reserVO);
+		
+		model.addAttribute("reser",map.get("reser"));
+		model.addAttribute("promotion",map.get("promotion"));
+		
+		return "reservationView";
+	}
+	
 	@RequestMapping(value="/board/reservation/delete", method=RequestMethod.GET)
 	public String reservationDelete(@ModelAttribute ReservationVO reserVO,HttpServletResponse response) throws IOException {
 		
@@ -68,6 +80,6 @@ public class ReservationController {
 			
 		}
 	
-		return "reservationView";
+		return "promotionList";
 	}
 }

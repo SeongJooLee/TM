@@ -43,6 +43,12 @@
 		 and headCount = #{headCount}
 	</select>
 	
+	<select id="selectOneReservationView" resultType="ReservationVO">
+		SELECT RESERNO, PROMOTIONNO, RESERDATE, HEADCOUNT, ID
+		 FROM RESERVATION
+		 where RESERNO = #{reserNO}
+	</select>
+	
 	
 	
 	<insert id="insertReservation" parameterType="ReservationVO">
