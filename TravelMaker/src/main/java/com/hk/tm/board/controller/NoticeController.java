@@ -44,39 +44,47 @@ public class NoticeController {
 
 	String REPO = "C:\\files";
 
-//	@RequestMapping(value="/board/notice", method= {RequestMethod.GET,RequestMethod.POST})
-//	public String noticeList(Model model) {
-//		List<NoticeVO> list = noticeService.selectAllNotice();
-//		model.addAttribute("notice",list);
-//		return "noticeList";
-//	}
-	
-	@RequestMapping(value="/board/notice", method= RequestMethod.GET)
-	public String noticeList(Model model,@RequestParam(value="page",required=false) String pag1e) {
-		if(pag1e!=null) {
-			pag1e.substring(pag1e.lastIndexOf(".")+1);
-			System.out.println("pag1e"+pag1e);
-			int page = Integer.parseInt(pag1e);
-			int countPage =10;
-			int startPage = ((page-1)/countPage)*countPage+1;
-			int endPage = startPage + countPage -1;
-			
-			NoticeVO noticeVO = new NoticeVO();
-			
-			
-			noticeVO.setX(startPage);
-			noticeVO.setY(endPage);
-			
-			List<NoticeVO> list = noticeService.selectPageNotice(noticeVO);
-			
-			model.addAttribute("notice",list);
-			
-			return "noticeList";
-		}
-		
-		
+	@RequestMapping(value="/board/notice", method= {RequestMethod.GET,RequestMethod.POST})
+	public String noticeList(Model model) {
 		List<NoticeVO> list = noticeService.selectAllNotice();
-		model.addAttribute("notice",list);
+		int listCount = list.size(); //전체 게시물의 개수
+		int listSize = 10; //한 페이지에 보일 갯수
+		int page = (listCount+10)/listSize; //현재 목록의 페이지 번호
+		
+		int endList = 1*listSize;
+		int startList = endList-9;
+		
+		NoticeVO noticeVO = new NoticeVO();
+
+		noticeVO.setX(startList);
+		noticeVO.setY(endList);
+		List<NoticeVO> selectList = noticeService.selectPageNotice(noticeVO);
+		model.addAttribute("notice",selectList);
+		model.addAttribute("page",page);
+		
+		return "noticeList";
+	}
+	
+	@RequestMapping(value="/board/noticeSelect", method= RequestMethod.GET)
+	public String noticeSelectList(Model model,@RequestParam(value="selectPage",required=false) int selectPage,@RequestParam(value="selecter",required=false) String selecter) {
+		List<NoticeVO> list = noticeService.selectAllNotice();
+		int listCount = list.size(); //전체 게시물의 개수
+		int listSize = 10; //한 페이지에 보일 갯수
+		int page = (listCount+10)/listSize; //현재 목록의 페이지 번호
+
+		int endList = 0;
+		int startList = 0;
+		NoticeVO noticeVO = new NoticeVO();
+
+		endList = selectPage*listSize;
+		startList = endList-9;
+
+		noticeVO.setX(startList);
+		noticeVO.setY(endList);
+		List<NoticeVO> selectList = noticeService.selectPageNotice(noticeVO);
+		model.addAttribute("notice",selectList);
+		model.addAttribute("page",page);
+
 		return "noticeList";
 	}
 	
