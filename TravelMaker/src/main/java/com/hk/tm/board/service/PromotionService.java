@@ -93,5 +93,10 @@ public class PromotionService {
 		return promotionDAO.selectCategoryPromotion(key);
 	}
 
+	public List<PromotionVO> selectSellerPromotion(String sellerID) {
+		// TODO Auto-generated method stub
+		return promotionDAO.selectSellerPromotion(sellerID);
+	}
+
 
 }

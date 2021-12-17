@@ -59,4 +59,10 @@ public class PromotionDAO {
 		PromotionImageVO promotionImageVO = sql.selectOne(ns+"selectOnePromotionImage",promotionNO);
 		return promotionImageVO;
 	}
+
+	public List<PromotionVO> selectSellerPromotion(String sellerID) {
+		// TODO Auto-generated method stub
+		List<PromotionVO> list = sql.selectList(ns+"selectSellerPromotion",sellerID);
+		return list;
+	}
 }

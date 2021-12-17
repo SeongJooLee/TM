@@ -14,6 +14,7 @@ import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,7 @@ import com.hk.tm.board.vo.CategoryVO;
 import com.hk.tm.board.vo.ImageVO;
 import com.hk.tm.board.vo.PromotionImageVO;
 import com.hk.tm.board.vo.PromotionVO;
+import com.hk.tm.member.vo.SellerVO;
 
 import net.coobird.thumbnailator.Thumbnails;
 
@@ -58,12 +60,27 @@ public class PromotionController {
 		
 	}
 	@RequestMapping(value="/board/promotion/view", method= RequestMethod.GET)
-	public String promotionView(Model model,@RequestParam("promotionNO") int promotionNO) {
+	public String promotionView(Model model,@RequestParam("promotionNO") int promotionNO,HttpSession session) {
 		Map<String,Object> map = promotionService.selectOnePromotion(promotionNO);
 		model.addAttribute("promotion",map.get("promotion"));
 		model.addAttribute("image",map.get("image"));
 		model.addAttribute("category",map.get("category"));
-
+		try {
+			SellerVO sellerVO = (SellerVO) session.getAttribute("userSession");
+			System.out.println(sellerVO.getSellerID());
+			List<PromotionVO> list = promotionService.selectSellerPromotion(sellerVO.getSellerID());
+			System.out.println(sellerVO.getSellerID()+"님이 등록한 상품은 "+list);
+			model.addAttribute("proList",list);
+			
+		} catch (Exception e) {
+			System.out.println("오류발생");
+		}
+		
+		
+		
+		
+		
+		
 		return "promotionView";
 	}
 

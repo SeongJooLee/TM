@@ -89,5 +89,8 @@
 		ORDER BY p.PROMOTIONNO DESC
 	</select>
    
+   <select id='selectSellerPromotion' resultMap='promotionResult'>
+   		select * from promotion where sellerID = #{sellerID}
+   </select>
 </mapper>
 

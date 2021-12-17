@@ -15,6 +15,7 @@ import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.hk.tm.board.service.NoticeService;
 import com.hk.tm.board.vo.ImageVO;
 import com.hk.tm.board.vo.NoticeVO;
+import com.hk.tm.member.vo.AdminVO;
 
 import net.coobird.thumbnailator.Thumbnails;
 
@@ -56,10 +58,12 @@ public class NoticeController {
 	}
 
 	@RequestMapping(value="/board/notice/view", method=RequestMethod.GET)
-	public String noticeView(Model model,@RequestParam("noticeNO") int noticeNO) {
+	public String noticeView(Model model,@RequestParam("noticeNO") int noticeNO,HttpSession session) {
+		System.out.println("실행123");
 		Map<String,Object> map = noticeService.selectOneNotice(noticeNO);
 		model.addAttribute("notice",map.get("notice"));
 		model.addAttribute("image",map.get("image"));
+
 
 		return "noticeView";
 	}

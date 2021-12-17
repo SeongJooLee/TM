@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
-<%@ page session="false" %>
+<%@ page session="true" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -99,8 +99,9 @@
 		 </table>
 	 </div>
 
+<c:if test='${userSession.grade.equals("admin")}'>
  <a href="${contextPath }/tm/board/notice/add">글쓰기</a>
- 
+ </c:if>
 	<hr>
 	<!-- Bootstrap core JS-->
 	<script

@@ -211,16 +211,37 @@ function backToList(obj){
 					</td>
 				</tr>
 				<tr id="tr_btn">
-					<td colspan="2" align="center"><input type="button"
-						value="수정하기" onClick="fn_enable(this.form)" /> <input
-						type="button" value="삭제하기" onClick="fn_delete(this.form)" /> <input
-						type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />
+					<td colspan="2" align="center">
+					<c:if test='${userSession.grade.equals("seller")}'>
+						<c:forEach var='list' items='${proList}'>
+							<c:if test='${list.promotionNO == promotion.promotionNO}'>
+								<input type="button" value="수정하기" onClick="fn_enable(this.form)" /> 
+								<input type="button" value="삭제하기" onClick="fn_delete(this.form)" />
+								<input type="button" value="리스트로 돌아가기1" onClick="backToList(this.form)" />	 				
+							</c:if>				
+						</c:forEach>		
+						
+						<c:forEach var='listDone' items='${proList}'>
+							<c:if test='${listDone.promotionNO != promotion.promotionNO}'>						
+								<input type="button" value="리스트로 돌아가기2" onClick="backToList(this.form)" />					
+							</c:if>				
+						</c:forEach>	 			
+					</c:if>
+					
+					<%-- <c:if test='${userSession.grade == null}'>
+						<input type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />
+					</c:if> --%>
 					</td>
 				</tr>	
 				<tr id="#">
 					<td colspan="2" align="center">
+					<c:if test='${userSession.grade.equals("user")}'>
 					<input type="button"	value="예약하기" onClick="fn_reser(this.form)" />
+					</c:if>
+					
+					<c:if test='${!userSession.grade.equals("seller")}'>
 					 <input	type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />
+					 </c:if>
 					</td>
 				</tr>
 			</table>
