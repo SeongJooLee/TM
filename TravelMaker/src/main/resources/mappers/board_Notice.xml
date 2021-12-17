@@ -41,7 +41,7 @@
 	
 	<insert id="insertNotice" parameterType="NoticeVO">
 		INSERT INTO NOTICE (NOTICENO, TITLE, CONTENT, ADMINID, NAME, WRITEDATE)
-		 VALUES((select max(noticeNO)+1 from notice), #{title}, #{content}, #{adminID}, #{name}, sysdate)
+		 VALUES((SELECT nvl(MAX(NOTICENO) ,0)+1 FROM NOTICE), #{title}, #{content}, #{adminID}, #{name}, sysdate)
 	</insert>
 	
 	<update id="updateNotice" parameterType="NoticeVO">

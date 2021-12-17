@@ -18,6 +18,7 @@
     <select id="selectAll" resultMap="eventResult">
 		SELECT EVENTNO, NAME, PRICE, COUNT, ID, WRITEDATE
 		 FROM EVENTPRODUCT
+		 order by eventNO desc
 	</select>
 	
 	<select id="selectOne" resultType="EventVO"> 
@@ -28,7 +29,7 @@
 	
 	<insert id="insert" parameterType="EventVO">
 		INSERT INTO EVENTPRODUCT (EVENTNO, NAME, PRICE, COUNT, ID, WRITEDATE)
-		 VALUES((select max(eventNO)+1 from event), #{name}, #{price}, #{count}, #{id}, sysdate)
+		 VALUES((SELECT MAX(eventNO)+1 FROM event), #{name}, #{price}, #{count}, #{id}, sysdate)
 	</insert>
 	
 <!-- 모르겟다 테스트로 실험 해봐야할듯... -->

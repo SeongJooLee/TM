@@ -17,15 +17,18 @@
    	<select id="selectId" resultMap="reservationResult">
 		SELECT RESERNO, PROMOTIONNO, RESERDATE, HEADCOUNT, ID
 		 FROM RESERVATION WHERE id=#{id}
+		 order by reserNO desc
 	</select>
    	<select id="select" resultType="ReservationVO">
 		SELECT RESERNO, PROMOTIONNO, RESERDATE, HEADCOUNT, ID
 		 FROM RESERVATION WHERE PROMOTIONNO=#{promotionNO}
+		 order by reserNO desc
 	</select>
 	
    	<select id="selectAll" resultMap="reservationResult">
 		SELECT RESERNO, PROMOTIONNO, RESERDATE, HEADCOUNT, ID
 		 FROM RESERVATION
+		 order by reserNO desc
 	</select>
 	
 	<select id="selectOne" resultType="ReservationVO">

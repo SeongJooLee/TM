@@ -19,11 +19,13 @@
    <select id="select" resultMap="reviewResult">
 		SELECT REVIEWNO, TITLE, CONTENT, WRITEDATE, ID, NAME, PROMOTIONNO
 		 FROM REVIEW where id=#{id}
+		 order by reviewNO desc
 	</select>
 	<!-- 전체리스트 뽑는 아이디 selectAll -->
 	<select id="selectAll" resultMap="reviewResult"> 
 		SELECT REVIEWNO, TITLE, CONTENT, WRITEDATE, ID, NAME, PROMOTIONNO
 		 FROM REVIEW
+		 order by reviewNO desc
 	</select>
 	
 	<select id="selectOne" resultType="ReviewVO">
@@ -34,7 +36,7 @@
 	
 	<insert id="insert" parameterType="ReviewVO">
 		 INSERT INTO REVIEW (REVIEWNO, TITLE, CONTENT, WRITEDATE, ID, NAME, PROMOTIONNO)
-		  VALUES((select max(reviewNO)+1 from REVIEW), #{title}, #{content}, SYSDATE , #{id}, 'review',#{promotionNO})
+		  VALUES((SELECT nvl(MAX(REVIEWNO) ,0)+1 FROM REVIEW), #{title}, #{content}, SYSDATE , #{id}, #{name},#{promotionNO})
 	</insert>
 	
 	<update id="reviewUpdate" parameterType="ReviewVO">
@@ -64,6 +66,7 @@
 	<select id="selectReviewAll" resultMap="reviewResult"> 
 		SELECT REVIEWNO, TITLE, CONTENT, WRITEDATE, ID, NAME, PROMOTIONNO
 		 FROM REVIEW
+		 order by reviewNO desc
 	</select>
 	
 </mapper>

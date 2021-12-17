@@ -17,6 +17,7 @@
 	<select id="selectAll" resultMap="commentResult">
 		SELECT ID, CONTENT, WRITEDATE, TRAVELNO, REVIEWNO
 		 FROM "COMMENT"
+		 order by writeDate asc
 	</select>
 	
 	<select id="selectOne" resultType="CommentVO">
