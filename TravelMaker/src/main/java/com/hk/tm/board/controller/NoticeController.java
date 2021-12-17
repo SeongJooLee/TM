@@ -198,7 +198,7 @@ public class NoticeController {
 		response.sendRedirect("/tm/board/notice");
 	}
 
-	@RequestMapping(value="/board/notice/imgDelete", method= {RequestMethod.GET,RequestMethod.POST},produces = "application/json; charset=utf8")
+	@RequestMapping(value="/board/notice/noticeImgDelete", method= {RequestMethod.GET,RequestMethod.POST},produces = "application/json; charset=utf8")
 	@ResponseBody
 	public Map<String, Object> imgDelete(@RequestParam("noticeNO") int noticeNO) throws IOException {
 		Map<String, Object> map = new HashMap<String, Object>();

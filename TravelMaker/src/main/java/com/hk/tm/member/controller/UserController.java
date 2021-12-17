@@ -152,6 +152,7 @@ public class UserController {
 		String check = session.getAttribute("userSession").getClass().getName();
 		System.out.println("관리자 세션체크 : "+check);
 		
+		
 		if(proNO!=null) {
 			int promotionNO = Integer.parseInt(proNO);
 			List<ReservationVO> result = userService.checkReservation(promotionNO);

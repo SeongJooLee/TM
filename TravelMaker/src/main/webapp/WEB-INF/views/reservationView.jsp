@@ -23,6 +23,15 @@ table {
 </style>
 <script src='http://code.jquery.com/jquery-latest.min.js'></script>
 <script type='text/javascript'>
+function fn_create(){
+	    if (!confirm("확인을 누르면 이용 후기 페이지로 이동합니다.")) {
+	        alert("취소(아니오)를 누르셨습니다.");
+	        return;
+	    } else {
+	        alert("확인(예)을 누르셨습니다.");
+			location.href="${contextPath}/board/review/add?promotionNO=${reser.promotionNO}";
+	    }
+    }
  	function goHome(obj) {
 	    if (!confirm("확인을 누르면 상품페이지로 이동합니다.")) {
 	        alert("취소(아니오)를 누르셨습니다.");
@@ -95,6 +104,8 @@ table {
 			</tr>
 			<tr align="right">
 				<td>
+					<input type="button" value="이용 후기 작성" onClick="fn_create()">
+					<br><br>
 					<input type="button" value="예약 취소" onClick="fn_delete()">
 					<input type="button" value="메인 화면으로 이동" onClick="goHome()">
 				</td>

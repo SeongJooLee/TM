@@ -14,6 +14,7 @@ import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.hk.tm.board.service.ReviewService;
 import com.hk.tm.board.vo.ImageVO;
 import com.hk.tm.board.vo.ReviewVO;
+import com.hk.tm.member.vo.UserVO;
 
 import net.coobird.thumbnailator.Thumbnails;
 
@@ -51,12 +53,29 @@ public class ReviewController {
 		
 	}
 	
+	@RequestMapping(value="/board/review/add", method=RequestMethod.GET)
+	public String reviewAdd(Model model,@RequestParam("promotionNO") int promotionNO) {
+		System.out.println("해치웟나?"+promotionNO);
+		
+		model.addAttribute("promotionNO",promotionNO);
+		
+		return "userReviewAdd";
+	}
+	
 	@RequestMapping(value="/board/review/view", method=RequestMethod.GET)
-	public String reviewView(Model model,@RequestParam("reviewNO") int reviewNO) {
+	public String reviewView(Model model,@RequestParam("reviewNO") int reviewNO,HttpSession session) {
 		Map<String,Object> map = reviewService.selectOne(reviewNO);
 		model.addAttribute("review",map.get("review"));
 		model.addAttribute("image",map.get("image"));
-		
+		try {
+			UserVO userVO = (UserVO)session.getAttribute("userSession");
+			List<ReviewVO> list = reviewService.userReviewList(userVO);
+			System.out.println("저장된 리스트 ="+list);
+			model.addAttribute("list",list);
+			
+		} catch (Exception e) {
+			System.out.println("오류발생");
+		}
 		return "reviewView";
 	}
 	
