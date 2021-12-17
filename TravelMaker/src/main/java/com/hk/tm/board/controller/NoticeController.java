@@ -63,6 +63,7 @@ public class NoticeController {
 			
 			NoticeVO noticeVO = new NoticeVO();
 			
+			
 			noticeVO.setX(startPage);
 			noticeVO.setY(endPage);
 			
