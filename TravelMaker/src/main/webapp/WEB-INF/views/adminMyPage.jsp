@@ -48,6 +48,7 @@ function deleteSuccess(){
 	alert('삭제가 완료되었습니다람쥐');
 }
 
+
 </script>
 </head>
 <body>
@@ -105,7 +106,7 @@ function deleteSuccess(){
 				<c:forEach var='list' items='${boardList}'>
 					<tr>
 						<td>${list.count}</td>
-						<td>${list.noticeNO}</td>
+						<td><a href='/tm/admin/mypage/check?randomNO=${list.noticeNO}&randomName=${list.name}'>${list.noticeNO}번</a></td>
 						<td>${list.title}</td>
 						<td>${list.name}</td>
 					</tr>

@@ -208,6 +208,7 @@ public class AdminController {
 		
 		
 			List<NoticeVO> list = adminService.selectBoardAll(noticeVO);
+			
 			if(list.size()==0) {
 				model.addAttribute("list",list);
 				return "adminMyPage";
@@ -243,6 +244,39 @@ public class AdminController {
 		List<NoticeVO> list = adminService.selectBoardAll(noticeVO);
 		model.addAttribute("boardList", list);
 		model.addAttribute("notice",noticeVO);
+		return "adminMyPage";
+	}
+	
+	@RequestMapping(value="/admin/mypage/check",method=RequestMethod.GET)
+	public String checkGet(Model model,@RequestParam(value="randomNO",required=false) int randomNO,@RequestParam(value="randomName",required=false)String randomName){
+		
+		System.out.println(randomNO);
+		System.out.println(randomName);
+		
+		switch(randomName) {
+		case "notice":
+			noticeVO = adminService.selectNoticeOne(randomNO);
+			model.addAttribute("notice",noticeVO);
+			return "adminRandomLocation";
+		case "event":
+			noticeVO = adminService.selectNoticeOne(randomNO);
+			model.addAttribute("notice",noticeVO);
+			return "adminRandomLocation";
+		case "promotion":
+			PromotionVO promotionVO = adminService.selectPromotionOne(randomNO);
+			model.addAttribute("promotion",promotionVO);
+			return "adminRandomLocation";
+		case "review":
+			ReviewVO reviewVO = adminService.selectReviewOne(randomNO);
+			model.addAttribute("review",reviewVO);
+			return "adminRandomLocation";
+		case "travel":
+			TravelVO travelVO = adminService.selectTravelOne(randomNO);
+			model.addAttribute("travel", travelVO);
+			return "adminRandomLocation";
+			
+		}
+		
 		return "adminMyPage";
 	}
 	

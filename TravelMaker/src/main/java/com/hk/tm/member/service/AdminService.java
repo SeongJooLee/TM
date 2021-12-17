@@ -120,6 +120,22 @@ public class AdminService {
 		// TODO Auto-generated method stub
 		return adminDAO.selectBoardAll(notice);
 	}
+	public NoticeVO selectNoticeOne(int randomNO) {
+		// TODO Auto-generated method stub
+		return adminDAO.selectNoticeOne(randomNO);
+	}
+	public PromotionVO selectPromotionOne(int randomNO) {
+		// TODO Auto-generated method stub
+		return adminDAO.selectPromotionOne(randomNO);
+	}
+	public ReviewVO selectReviewOne(int randomNO) {
+		// TODO Auto-generated method stub
+		return adminDAO.selectReviewOne(randomNO);
+	}
+	public TravelVO selectTravelOne(int randomNO) {
+		// TODO Auto-generated method stub
+		return adminDAO.selectTravelOne(randomNO);
+	}
 	
 
 }

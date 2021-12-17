@@ -74,7 +74,7 @@ public class PromotionController {
 		} catch (Exception e) {
 			System.out.println("오류발생");
 		}
-		
+		System.out.println("전송?삭제하기");
 		return "promotionView";
 	}
 
