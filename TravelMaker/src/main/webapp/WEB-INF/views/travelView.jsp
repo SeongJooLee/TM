@@ -111,6 +111,10 @@ function backToList(obj){
    obj.submit();
 }
 
+function next(){
+	location.href = "${contextPath}/board/travel/view?travelNO=${travel.travelNO}&page=page";
+}
+
 </script>
 </head>
 <body>
@@ -206,7 +210,7 @@ function backToList(obj){
 					<td colspan="2" align="center">
 						<input type="button" value="수정하기" onClick="fn_enable(this.form)" /> 
 						<input type="button" value="삭제하기" onClick="fn_delete(this.form)" /> 
-						<input type="button" value="댓글쓰기" onClick="" /> 
+						<input type="button" value="댓글쓰기" onClick="fn_create(this.form)" /> 
 						<input type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />
 					</td>
 				</tr>
@@ -230,12 +234,13 @@ function backToList(obj){
 				<div>
 				<tr height="10" align="center">
 					<th>이전글</th>						
-					<td><a href="travel/view?content=${travel.travelNO}">${travel.content }</a></td>
+					<%-- <td><a href="travel/view?content=${travel.travelNO}">${travel.content }</a></td> --%>	
 				</tr>
 				
 				<tr height="10" align="center" >
 					<th>다음글</th>					
-					<td><a href="travel/view?content=${travel.travelNO}">${travel.content }</a></td>							  
+					<%-- <td><a href="travel/view?content=${travel.travelNO}">${travel.content }</a></td> --%>	
+					<td><button type="button" onClick="next()"> 다음 글 보기</button></td>						  
 				</tr>
 				</div>
 					
