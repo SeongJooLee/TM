@@ -87,7 +87,41 @@ function deleteSuccess(){
 			</ul>
 		</div>
 		<div class="grid2">
-		contentd
+			<table border='1'>
+				<tr>
+	  
+					<td>게시판 구분</td>
+					<td>글 제목</td>
+				</tr>	
+				
+					<c:forEach var='noticeList' items='${noticeList}'>
+						<tr>
+							<td>${noticeList.name}</td>
+							<td>${noticeList.title}</td>	
+						</tr>							
+					</c:forEach>
+					<c:forEach var='promotionList' items='${promotionList}'>
+						<tr>
+							<td>${promotionList.name}</td>
+							<td>${promotionList.title}</td>
+						</tr>
+					</c:forEach>
+					<c:forEach var='reviewList' items='${reviewList}'>
+						<tr>
+							<td>${reviewList.name}</td>
+							<td>${reviewList.title}</td>
+						</tr>
+					</c:forEach>
+					<c:forEach var='travelList' items='${travelList}'>
+						<tr>				
+							<td>${travelList.name}</td>
+							<td>${travelList.title}</td>
+						</tr>	
+					</c:forEach>
+				
+				
+			</table>
+			
 		</div>
 	</div>
 </body>

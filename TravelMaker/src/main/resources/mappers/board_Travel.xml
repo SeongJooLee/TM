@@ -94,5 +94,12 @@
 	<select id="selectToTravels" resultType="int">
 		select count(travelNO) FROM TRAVEL
 	</select>
+	
+	<select id="selectTravelAll" resultMap="travelResult">
+		SELECT TRAVELNO, TITLE,
+		CONTENT, WRITEDATE, ID, NAME
+		FROM TRAVEL
+		
+	</select>
 
 </mapper>

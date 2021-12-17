@@ -61,4 +61,9 @@
 		 FROM REVIEW where id=#{id}
 	</select>
 	
+	<select id="selectReviewAll" resultMap="reviewResult"> 
+		SELECT REVIEWNO, TITLE, CONTENT, WRITEDATE, ID, NAME, PROMOTIONNO
+		 FROM REVIEW
+	</select>
+	
 </mapper>
