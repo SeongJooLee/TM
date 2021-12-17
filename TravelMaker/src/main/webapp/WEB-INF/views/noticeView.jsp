@@ -53,7 +53,8 @@
 				url : 'noticeImgDelete',
 				dataType : "json",
 				data : {
-					'noticeNO' : '${notice.noticeNO}'
+					'noticeNO' : '${notice.noticeNO}',
+					'name' : '${notice.name}'
 				},
 				success : function(data) {
 					if (data.result == 'false') {
