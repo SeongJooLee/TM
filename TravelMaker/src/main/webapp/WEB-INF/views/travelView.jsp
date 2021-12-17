@@ -210,23 +210,35 @@ function backToList(obj){
 						<input type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />
 					</td>
 				</tr>
-
+				<div>
 				<tr height="10" align="center" bgcolor="cornflowerblue" border="1" width="40%">
-					<td>댓글번호</td>
-					<td>내용</td>
-					<td>작성일</td>
-					<td>작성자</td>
+					<th rowspan="2">댓글</th>
+					<th>내용</th>
+					<th>작성일</th>
+					<th>작성자</th>
 				</tr>
 
-				<tr height="10" align="center">
+				<tr height="10" align="center" >
 					<%-- <td><a href="travel/view?travelNO=${travel.travelNO }">${travel.travelNO}</a></td> --%>
-					<td>${travel.travelNO}</a></td>
+					<%-- <td>${travel.travelNO}</a></td> --%>
 					<td>${travel.content }</td>
 					<td>${travel.writeDate }</td>
-					<td>${travel.id }</td>
-					  
+					<td>${travel.id }</td>					  
+				</tr>
+				</div>
+				
+				<div>
+				<tr height="10" align="center">
+					<th>이전글</th>						
+					<td><a href="travel/view?content=${travel.content}">${travel.content }</a></td>
 				</tr>
 				
+				<tr height="10" align="center" >
+					<th>다음글</th>					
+					<td><a href="travel/view?content=${travel.content}">${travel.content }</a></td>							  
+				</tr>
+				</div>
+					
 			</table>
 		</form>
 	</div>
