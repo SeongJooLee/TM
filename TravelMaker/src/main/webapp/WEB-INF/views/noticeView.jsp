@@ -17,6 +17,7 @@
         <link href="<c:url value="/resources/css/styles.css" />" rel="stylesheet" />
 <script type='text/javascript'>
 	var cnt = 1;
+	
 	function fn_addFile() {
 		if (cnt === 4) {
 			alert("최대 3개만 생성할 수 있습니다.");
