@@ -18,7 +18,7 @@
 	}
 
 	function find() {
-		alert('내년에 개발예정');
+		alert('내년에 개발예정'); 
 	}
 </script>
 </head>
