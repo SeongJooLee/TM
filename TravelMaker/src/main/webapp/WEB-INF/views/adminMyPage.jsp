@@ -47,6 +47,7 @@ function success(){
 function deleteSuccess(){
 	alert('삭제가 완료되었습니다람쥐');
 }
+
 </script>
 </head>
 <body>
@@ -90,40 +91,30 @@ function deleteSuccess(){
 			</ul>
 		</div>
 		<div class="grid2">
+			<h1>모든 게시판 글</h1>
 			<table border='1'>
 				<tr>
-	  
-					<td>게시판 구분</td>
+	  				<td>index</td>
+	  				<td>게시판 PK</td>			
 					<td>글 제목</td>
+					<td>게시판 구분</td>
 				</tr>	
 				
-					<c:forEach var='noticeList' items='${noticeList}'>
-						<tr>
-							<td>${noticeList.name}</td>
-							<td>${noticeList.title}</td>	
-						</tr>							
-					</c:forEach>
-					<c:forEach var='promotionList' items='${promotionList}'>
-						<tr>
-							<td>${promotionList.name}</td>
-							<td>${promotionList.title}</td>
-						</tr>
-					</c:forEach>
-					<c:forEach var='reviewList' items='${reviewList}'>
-						<tr>
-							<td>${reviewList.name}</td>
-							<td>${reviewList.title}</td>
-						</tr>
-					</c:forEach>
-					<c:forEach var='travelList' items='${travelList}'>
-						<tr>				
-							<td>${travelList.name}</td>
-							<td>${travelList.title}</td>
-						</tr>	
-					</c:forEach>
+					
 				
+				<c:forEach var='list' items='${boardList}'>
+					<tr>
+						<td>${list.count}</td>
+						<td>${list.noticeNO}</td>
+						<td>${list.title}</td>
+						<td>${list.name}</td>
+					</tr>
+				</c:forEach>
 				
 			</table>
+			
+			<a href='/tm/admin/mypage/before?indexOne=${notice.x}&indexTwo=${notice.y}'>이전페이지</a>
+			<a href='/tm/admin/mypage/next?indexOne=${notice.x}&indexTwo=${notice.y}'>다음페이지</a>
 			
 		</div>
 	</div>

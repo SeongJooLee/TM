@@ -65,4 +65,15 @@
 		SELECT * FROM NOTICE
 	</select>
 	
+	<select id="selectUnion" resultType="NoticeVO" >
+		SELECT * FROM (SELECT ROW_NUMBER()OVER(ORDER BY name) as count ,noticeNO,title,name FROM 
+		(SELECT noticeNO,title,name FROM (SELECT NOTICENO ,title,name FROM NOTICE n
+           	UNION ALL
+        SELECT promotionNO,title,name FROM PROMOTION p) 
+			UNION ALL
+		SELECT REVIEWNO NO,title,name FROM (SELECT reviewNO,title,name FROM REVIEW r 
+            UNION ALL
+         SELECT travelNO,title ,name FROM TRAVEL t))) aa WHERE aa.count BETWEEN #{x} AND #{y}
+	</select>
+	
 </mapper>

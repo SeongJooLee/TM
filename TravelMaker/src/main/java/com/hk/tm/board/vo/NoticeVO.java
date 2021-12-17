@@ -2,6 +2,8 @@ package com.hk.tm.board.vo;
 
 import java.sql.Date;
 
+import org.springframework.stereotype.Component;
+@Component
 public class NoticeVO {
 	private int count;
 	private int noticeNO;

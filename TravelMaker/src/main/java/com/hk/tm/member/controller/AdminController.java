@@ -1,5 +1,6 @@
 package com.hk.tm.member.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,8 @@ import com.hk.tm.member.vo.UserVO;
 public class AdminController {
 	@Autowired
 	AdminService adminService;
+	@Autowired
+	NoticeVO noticeVO;
 	
 	
 	@RequestMapping(value="/admin/mypage",method=RequestMethod.GET)
@@ -30,17 +33,26 @@ public class AdminController {
 		
 		if(list == null && id==null) {
 			
-			List<NoticeVO> noticeList = adminService.noticeAllList();
-			List<PromotionVO> promotionList = adminService.promotionAllList();
-			List<ReviewVO> reviewList = adminService.reviewAllList();
-			List<TravelVO> travelList = adminService.travelAllList();
+//			List<NoticeVO> noticeList = adminService.noticeAllList();
+//			List<PromotionVO> promotionList = adminService.promotionAllList();
+//			List<ReviewVO> reviewList = adminService.reviewAllList();
+//			List<TravelVO> travelList = adminService.travelAllList();
+//			
+//			model.addAttribute("noticeList",noticeList);
+//			model.addAttribute("promotionList",promotionList);
+//			model.addAttribute("reviewList",reviewList);
+//			model.addAttribute("travelList",travelList);
 			
-			model.addAttribute("noticeList",noticeList);
-			model.addAttribute("promotionList",promotionList);
-			model.addAttribute("reviewList",reviewList);
-			model.addAttribute("travelList",travelList);
+//			List<Integer> in = new ArrayList<>();
+//			in.add(1);
+//			in.add(5);
 			
+			noticeVO.setX(1);
+			noticeVO.setY(5);
 			
+			List<NoticeVO> boardList = adminService.selectBoardAll(noticeVO);
+			model.addAttribute("boardList",boardList);
+			model.addAttribute("notice",noticeVO);
 			return"adminMyPage";
 		}else if(id!=null&&grade.equals("user")) {
 			
@@ -99,15 +111,12 @@ public class AdminController {
 		
 		case "one":
 			System.out.println("post요청");
-			List<NoticeVO> noticeList = adminService.noticeAllList();
-			List<PromotionVO> promotionList = adminService.promotionAllList();
-			List<ReviewVO> reviewList = adminService.reviewAllList();
-			List<TravelVO> travelList = adminService.travelAllList();
 			
-			model.addAttribute("noticeList",noticeList);
-			model.addAttribute("promotionList",promotionList);
-			model.addAttribute("reviewList",reviewList);
-			model.addAttribute("travelList",travelList);
+			noticeVO.setX(1);
+			noticeVO.setY(5);
+			List<NoticeVO> boardList = adminService.selectBoardAll(noticeVO);
+			model.addAttribute("boardList",boardList);
+			model.addAttribute("notice",noticeVO);
 			return "adminMyPage";
 		case "two":
 			List<UserVO>userList = adminService.userListAll();
@@ -193,6 +202,51 @@ public class AdminController {
 		
 		return "adminMyPage";
 	}
+	
+	@RequestMapping(value="/admin/mypage/next",method=RequestMethod.GET)
+	public String nextPage(Model model,@RequestParam(value="indexOne",required=false)int x,@RequestParam(value="indexTwo",required=false)int y){
+		
+		
+			List<NoticeVO> list = adminService.selectBoardAll(noticeVO);
+			if(list.size()==0) {
+				model.addAttribute("list",list);
+				return "adminMyPage";
+			}else if(list.size()!=5) {
+				noticeVO.setX(1);
+				noticeVO.setY(5);
+				model.addAttribute("notice",noticeVO);
+				model.addAttribute("list",list);
+				return "adminMyPage";
+			}
+			noticeVO.setX(x+4);
+			noticeVO.setY(y+4);	
+			model.addAttribute("boardList", list);
+			model.addAttribute("notice",noticeVO);
+			return "adminMyPage";
+		
+		
+	}
+	
+	@RequestMapping(value="/admin/mypage/before",method=RequestMethod.GET)
+	public String beforePage(Model model,@RequestParam(value="indexOne",required=false)int x,@RequestParam(value="indexTwo",required=false)int y){
+		
+		noticeVO.setX(x-4);
+		noticeVO.setY(y-4);
+		
+		
+		if(noticeVO.getX()<=0 || noticeVO.getY()<=0) {
+			noticeVO.setX(1);
+			noticeVO.setY(5);
+		}
+		
+		
+		List<NoticeVO> list = adminService.selectBoardAll(noticeVO);
+		model.addAttribute("boardList", list);
+		model.addAttribute("notice",noticeVO);
+		return "adminMyPage";
+	}
+	
+	
 	
 	
 	

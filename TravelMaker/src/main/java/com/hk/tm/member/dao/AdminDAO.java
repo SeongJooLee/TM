@@ -140,6 +140,11 @@ public class AdminDAO {
 		List<TravelVO> list = sqlSession.selectList("mapper.boardTravel.selectTravelAll");
 		return list;
 	}
+	public List<NoticeVO> selectBoardAll(NoticeVO notice) {
+		// TODO Auto-generated method stub
+		List<NoticeVO> list = sqlSession.selectList("mapper.boardNotice.selectUnion",notice);
+		return list;
+	}
 	
 
 }
