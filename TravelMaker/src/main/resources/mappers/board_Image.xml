@@ -111,15 +111,15 @@
 	
 	<insert id="insert" parameterType="imageVO">
 	INSERT INTO IMAGE (NOTICENO, TRAVELNO, REVIEWNO, PROMOTIONNO, EVENTNO, IMAGE1, IMAGE2, IMAGE3)
-	 VALUES(null, null, null, (select max(promotionNO) from promotion), null, #{image1}, #{image2}, #{image3})
+	 VALUES(null, null, (select max(reviewNO) from review), null, null, #{image1}, #{image2}, #{image3})
 	</insert>
 	
-	<update id="update" parameterType="imageVO"> 
+	<update id="reviewUpdate" parameterType="imageVO"> 
 		UPDATE IMAGE SET IMAGE1=#{image1}, IMAGE2=#{image2}, IMAGE3=#{image3}
 		 where reviewNO=#{reviewNO}
 	</update>
 	
-	<delete id="delete" parameterType="imageVO"> 
+	<delete id="reviewDelete" parameterType="imageVO"> 
 		DELETE FROM IMAGE
 		 where reviewNO=#{reviewNO}
 	</delete>

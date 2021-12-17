@@ -21,6 +21,11 @@ public class ReviewDAO {
 		return list;
 	}
 	
+	public int selectMaxReview() {
+		int reviewNO = sql.selectOne(ns+"selectMaxReview",null);
+		return reviewNO;
+	}
+	
 	public ReviewVO selectOne(int reviewNO) {
 		// TODO Auto-generated method stub
 		ReviewVO reviewVO = sql.selectOne(ns+"selectOne",reviewNO);
@@ -29,12 +34,14 @@ public class ReviewDAO {
 
 	public void reviewUpdate(ReviewVO reviewVO) {
 		// TODO Auto-generated method stub
-		sql.update(ns+"update", reviewVO);
+		sql.update(ns+"reviewUpdate", reviewVO);
 	}
 
-	public void promotionDelete(int promotionNO) {
+	public void reviewDelete(int reviewNO) {
 		// TODO Auto-generated method stub
-		sql.delete(ns+"deletePromotion",promotionNO);
+		sql.delete(ns+"reviewDelete",reviewNO);
 	}
+
+
 
 } 

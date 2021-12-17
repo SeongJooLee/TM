@@ -37,11 +37,11 @@
 		  VALUES((select max(reviewNO)+1 from REVIEW), #{title}, #{content}, SYSDATE , #{id}, 'review',#{promotionNO})
 	</insert>
 	
-	<update id="update" parameterType="ReviewVO">
-		UPDATE REVIEW SET TITLE=#{title}, CONTENT=#{content}, WHERE reviewNO=#{reviewNO}
+	<update id="reviewUpdate" parameterType="ReviewVO">
+		UPDATE REVIEW SET TITLE=#{title}, CONTENT=#{content} WHERE REVIEWNO=#{reviewNO}
 	</update>
 	
-	<delete id="delete" parameterType="ReviewVO">
+	<delete id="reviewDelete" parameterType="ReviewVO">
 			DELETE FROM REVIEW WHERE reviewNO=#{reviewNO}
 	</delete>
 	<delete id="deleteUserOne" parameterType="ReviewVO">

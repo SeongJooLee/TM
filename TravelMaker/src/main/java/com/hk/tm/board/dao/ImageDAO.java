@@ -81,6 +81,20 @@ public class ImageDAO {
 		sql.update(ns+"reviewUpdate",imageVO);
 	}
 	
+	public void reviewDelete(int reviewNO) {
+		sql.delete(ns+"reviewDelete",reviewNO);
+	}
+	
+	public int reviewImgDelete(int reviewNO) {
+		ImageVO imageVO = sql.selectOne(ns+"selectOne",reviewNO);
+		int ret=0;
+		if(imageVO!=null) {
+			ret = sql.update(ns+"deleteReviewImage",reviewNO);
+		}
+		return ret;
+	}
+	
+	
 	//홍보상품
 	public ImageVO selectOnePromotion(int promotionNO) {
 		ImageVO imageVO = sql.selectOne(ns+"selectOnePromotion",promotionNO);

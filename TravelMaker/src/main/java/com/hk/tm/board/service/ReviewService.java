@@ -31,6 +31,7 @@ public class ReviewService {
 		// TODO Auto-generated method stub
 		ReviewVO reviewVO = reviewDAO.selectOne(reviewNO);
 		ImageVO imageVO = imageDAO.selectOne(reviewVO.getReviewNO());
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("review", reviewVO);
 		map.put("image", imageVO);
@@ -38,6 +39,9 @@ public class ReviewService {
 		return map;
 	}
 
+	public int selectMaxReview() {
+		return reviewDAO.selectMaxReview();
+	}
 
 
 	public void reviewUpdate(ReviewVO reviewVO, ImageVO imageVO) {
@@ -46,6 +50,21 @@ public class ReviewService {
 		reviewDAO.reviewUpdate(reviewVO);
 		imageDAO.reviewUpdate(reviewVO,imageVO);
 		
+	}
+	
+	public ReviewVO reviewDelete(int reviewNO) {
+		imageDAO.reviewDelete(reviewNO);
+		
+		ReviewVO reviewVO = reviewDAO.selectOne(reviewNO);
+		
+		reviewDAO.reviewDelete(reviewNO);
+		
+		return reviewVO;
+		
+	}
+
+	public int reviewImgDelete(int reviewNO) {
+		return imageDAO.reviewImgDelete(reviewNO);
 	}
 
 }
