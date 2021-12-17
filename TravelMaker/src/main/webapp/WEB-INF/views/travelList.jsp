@@ -118,7 +118,7 @@
 		</div>
 	</div>
   
-  <a href="${contextPath }/tm/board/travel/add">글쓰기</a>  
+  <a href="${contextPath }/board/travel/add">글쓰기</a>  
   
     <hr>
   	<!-- Bootstrap core JS-->
