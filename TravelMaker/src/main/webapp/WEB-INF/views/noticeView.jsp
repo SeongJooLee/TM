@@ -50,7 +50,7 @@
 			alert("확인(예)을 누르셨습니다.");
 			$.ajax({
 				type : 'POST',
-				url : 'imgDelete',
+				url : 'noticeImgDelete',
 				dataType : "json",
 				data : {
 					'noticeNO' : '${notice.noticeNO}'
