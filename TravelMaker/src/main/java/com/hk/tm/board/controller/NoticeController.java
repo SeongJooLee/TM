@@ -32,7 +32,6 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.hk.tm.board.service.NoticeService;
 import com.hk.tm.board.vo.ImageVO;
 import com.hk.tm.board.vo.NoticeVO;
-import com.hk.tm.member.vo.AdminVO;
 
 import net.coobird.thumbnailator.Thumbnails;
 
@@ -66,7 +65,7 @@ public class NoticeController {
 	}
 	
 	@RequestMapping(value="/board/noticeSelect", method= RequestMethod.GET)
-	public String noticeSelectList(Model model,@RequestParam(value="selectPage",required=false) int selectPage,@RequestParam(value="selecter",required=false) String selecter) {
+	public String noticeSelectList(Model model,@RequestParam(value="selectPage",required=false) int selectPage) {
 		List<NoticeVO> list = noticeService.selectAllNotice();
 		int listCount = list.size(); //전체 게시물의 개수
 		int listSize = 10; //한 페이지에 보일 갯수

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="true"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,7 +61,6 @@
 		alert('설정을 초기화합니다.');
 		location.href='/tm/board/notice';
 		}
-
 </script>
 </head>
 <body>
@@ -108,8 +108,7 @@
 		</table>
 		<div align="center">
 			<c:forEach var="i" begin="1" end="${page }">
-				<a href="${contextPath }/tm/board/noticeSelect?selectPage=${i}&selecter=Yes">
-					${i } </a>&nbsp;&nbsp;&nbsp;
+				<a href="${contextPath }/board/noticeSelect?selectPage=${i}">	${i } </a>&nbsp;&nbsp;&nbsp;
 				</c:forEach>
 		</div>
 
