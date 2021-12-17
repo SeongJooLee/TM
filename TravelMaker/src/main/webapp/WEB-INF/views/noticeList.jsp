@@ -93,10 +93,14 @@
 			     <td >${notice.adminID }</td>
 			     <td >${notice.writeDate }</td>
 			     <td >${notice.name }</td>
+			     
 			  </tr>
 			  </c:forEach>
-		  
 		 </table>
+		 <div align="center">
+		 	<a href="${contextPath }/tm/board/notice/view?noticeNO="> 1 </a>
+		 </div>
+		 
 	 </div>
 
 <c:if test='${userSession.grade.equals("admin")}'>
