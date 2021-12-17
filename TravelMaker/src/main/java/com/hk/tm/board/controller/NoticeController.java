@@ -115,7 +115,7 @@ public class NoticeController {
 	}
 
 	@RequestMapping(value="/board/notice/addDone", method=RequestMethod.POST)
-	public void noticeAddDone(@ModelAttribute NoticeVO noticeVO,MultipartHttpServletRequest request, HttpServletResponse response,Model model) throws IOException, ServletException {
+	public void noticeAddDone(@ModelAttribute NoticeVO noticeVO,MultipartHttpServletRequest request, HttpServletResponse response,Model model,HttpSession session) throws IOException, ServletException {
 		request.setCharacterEncoding("utf-8");
 		Map<String,Object> map = new HashMap<String,Object>();
 		Enumeration enu=request.getParameterNames();
@@ -241,7 +241,7 @@ public class NoticeController {
 
 	@RequestMapping(value="/board/notice/noticeImgDelete", method= {RequestMethod.GET,RequestMethod.POST},produces = "application/json; charset=utf8")
 	@ResponseBody
-	public Map<String, Object> imgDelete(@RequestParam("noticeNO") int noticeNO) throws IOException {
+	public Map<String, Object> imgDelete(@RequestParam("noticeNO") int noticeNO,@RequestParam("name") String name) throws IOException {
 		Map<String, Object> map = new HashMap<String, Object>();
 
 		int ret = noticeService.noticeImgDelete(noticeNO);
@@ -249,8 +249,8 @@ public class NoticeController {
 			map.put("result", "false");
 		} else {
 			map.put("result", "true");
-			File imgDir = new File(REPO+"\\notice\\"+noticeNO);
-			File thumbnail = new File(REPO+"\\thumbnail\\notice\\"+noticeNO);
+			File imgDir = new File(REPO+"\\"+name+"\\"+noticeNO);
+			File thumbnail = new File(REPO+"\\thumbnail\\"+name+"\\"+noticeNO);
 			if(imgDir.exists()) {
 				FileUtils.deleteDirectory(imgDir);
 				FileUtils.deleteDirectory(thumbnail);

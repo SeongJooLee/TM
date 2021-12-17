@@ -29,7 +29,7 @@ if(cnt===4){
 
 function backToList(obj){
 	obj.method ="POST";
-	obj.action = "${contextPath}/tm/board/notice";
+	obj.action = "/tm/board/notice";
 	obj.submit();
 }
 
@@ -62,13 +62,13 @@ function fn_create(){
     
 	<h1 style="text-align: center">공지 글 쓰기</h1>
 	<form id="frm" action="addDone" method="post" enctype="multipart/form-data">
-		<input type="hidden" name="adminID" value="admin">
+		<input type="hidden" name="adminID" value="${userSession.adminID}">
 		<table border="1" align="center">
 			<tr>
 				<td>
 					<select name="name">
-						<option value="notice">공지사항</option>
-						<option value="event">이벤트</option>
+						<option value="공지사항">공지사항</option>
+						<option value="이벤트">이벤트</option>
 					</select>
 				</td>
 				<td>

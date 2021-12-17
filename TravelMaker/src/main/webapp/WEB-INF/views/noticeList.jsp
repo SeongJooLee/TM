@@ -97,7 +97,7 @@
 
 					<td>${notice.noticeNO }</td>
 					<td><a
-						href="${contextPath }/tm/board/notice/view?noticeNO=${notice.noticeNO }">${notice.title }</a></td>
+						href="/tm/board/notice/view?noticeNO=${notice.noticeNO }">${notice.title }</a></td>
 					<td>${notice.content }</td>
 					<td>${notice.adminID }</td>
 					<td>${notice.writeDate }</td>
@@ -108,14 +108,14 @@
 		</table>
 		<div align="center">
 			<c:forEach var="i" begin="1" end="${page }">
-				<a href="${contextPath }/board/noticeSelect?selectPage=${i}">	${i } </a>&nbsp;&nbsp;&nbsp;
+				<a href="tm/board/noticeSelect?selectPage=${i}">	${i } </a>&nbsp;&nbsp;&nbsp;
 				</c:forEach>
 		</div>
 
 	</div>
 
 	<c:if test='${userSession.grade.equals("admin")}'>
-		<a href="${contextPath }/tm/board/notice/add">글쓰기</a>
+		<a href="/tm/board/notice/add">글쓰기</a>
 	</c:if>
 	<hr>
 	<!-- Bootstrap core JS-->
