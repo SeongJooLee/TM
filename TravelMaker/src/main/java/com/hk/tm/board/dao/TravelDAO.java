@@ -38,7 +38,7 @@ public class TravelDAO {
 	
 	public int selectMaxTravel() {
 		
-		int travelNO = sql.selectOne(ns+"selectMaxTravel", null);
+		int travelNO = sql.selectOne(ns+"selectMaxTravel", null); // 여기?
 		
 		return travelNO;
 	}
@@ -59,10 +59,6 @@ public class TravelDAO {
 		
 		sql.delete(ns + "deleteTravel", travelNO);
 
-	}
-
-	public void promotionDelete(int travelNO) {
-		sql.delete(ns+"deleteTravel", travelNO);
 	}
 
 	public List<TravelImageVO> selectCategoryTravel(String key) {

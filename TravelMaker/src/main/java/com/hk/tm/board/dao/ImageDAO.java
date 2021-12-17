@@ -65,7 +65,7 @@ public class ImageDAO {
 		ImageVO imageVO = sql.selectOne(ns+"selectOneTravel", travelNO);
 		int ret=0;
 		if(imageVO!=null) {
-			ret = sql.delete(ns+"deleteTravel", travelNO);
+			ret = sql.delete(ns+"deleteTravelImage", travelNO);
 		}
 		return ret;
 	}

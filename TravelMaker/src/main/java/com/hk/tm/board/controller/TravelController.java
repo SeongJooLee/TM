@@ -107,7 +107,7 @@ public class TravelController {
 		System.out.println("파일리스트 확인3"+categoryVO.toString());
 		ImageVO imageVO = new ImageVO();
 		
-		int travelNO = travelService.selectMaxTravel();
+		int travelNO = travelService.selectMaxTravel(); // 여기?
 		travelNO++;
 		
 		travelVO.setTravelNO(travelNO);
@@ -234,7 +234,7 @@ public class TravelController {
 	}
 	
 	
-	@RequestMapping(value="/imgDelete", method= {RequestMethod.GET,RequestMethod.POST},produces = "application/json; charset=utf8")
+	@RequestMapping(value="/imgTravelUpdate", method= {RequestMethod.GET,RequestMethod.POST},produces = "application/json; charset=utf8")
 	@ResponseBody
 	public Map<String, Object> imgDelete(@RequestParam("travelNO") int travelNO) throws Exception {
 		Map<String, Object> map = new HashMap<String, Object>();
