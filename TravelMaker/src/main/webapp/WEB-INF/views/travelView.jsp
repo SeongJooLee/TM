@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"
-    isELIgnored = "false" %>
+	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-   <c:set var="contextPath" value="${pageContext.request.contextPath }" />
+<c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <%       
    request.setCharacterEncoding("utf-8");
  %>
@@ -15,7 +14,8 @@
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Core theme CSS (includes Bootstrap)-->
-<link href="<c:url value="/resources/css/styles.css" />" rel="stylesheet" />
+<link href="<c:url value="/resources/css/styles.css" />"
+	rel="stylesheet" />
 <script src='http://code.jquery.com/jquery-latest.min.js'></script>
 <script type='text/javascript'>
 var cnt = 1;
@@ -43,6 +43,7 @@ function fn_enable(obj){
    document.getElementById("tr_btn_modify").style.display='block';
    document.getElementById("tr_btn").style.display='none';
 }
+
 function fn_imgUpdateBtn(obj) {
 	document.getElementById("imgUpdate").disabled = false;
 	if (!confirm("사진을 삭제 하시겠습니까?")) {
@@ -104,7 +105,6 @@ function fn_delete(){
 	
 }
 
-
 function backToList(obj){
    obj.method ="POST";
    obj.action = "${contextPath}/board/travel";
@@ -114,35 +114,39 @@ function backToList(obj){
 </script>
 </head>
 <body>
-    <jsp:include page="/resources/include/header.jsp" />
-    <hr>
-<div align="center">
+	<jsp:include page="/resources/include/header.jsp" />
+	<hr>
+	<div align="center">
 
-<form id="frmTravel" enctype="multipart/form-data">
-   <table border="1" align="center">
-      <tr>
-         <td>글 번호 : <input type="text" value="${travel.travelNO }" id="travelNO" name="travelNO" readonly />
-         </td>
-         <td><input type="text" value="${travel.title }" id="title" name="title" disabled />
-         <td><input type="hidden" value="${travel.name }"  name="name" />
-      </td>
-      </tr>
-      <tr>
-      					<td >카테고리 : 	<select name="categoryName" id="categoryName" disabled>
-						<option value="${category.categoryName }">${category.categoryName }</option>
-						<option value="쇼핑">쇼핑</option>
-						<option value="음식">음식</option>
-						<option value="문화">문화</option>
-						<option value="체험">체험</option>
-						<option value="전시">전시</option>
-						<option value="교통">교통</option>
-						<option value="지역">지역</option>
+		<form id="frmTravel" enctype="multipart/form-data">
+			<table border="1" align="center">
+				<tr>
+					<td>글 번호 : <input type="text" value="${travel.travelNO }"
+						id="travelNO" name="travelNO" readonly />
+					</td>
+					<td><input type="text" value="${travel.title }" id="title"
+						name="title" disabled />
+					<td><input type="hidden" value="${travel.name }" name="name" />
+					</td>
+				</tr>
+				<tr>
+					<td>카테고리 : <select name="categoryName" id="categoryName"
+						disabled>
+							<option value="${category.categoryName }">${category.categoryName }</option>
+							<option value="쇼핑">쇼핑</option>
+							<option value="음식">음식</option>
+							<option value="문화">문화</option>
+							<option value="체험">체험</option>
+							<option value="전시">전시</option>
+							<option value="교통">교통</option>
+							<option value="지역">지역</option>
 					</select>
 					</td>
-         <td  align="center">작성자 아이디</td>
-         <td><input type="text" value="${travel.id }" name="id" readonly /></td>
-      </tr>
-    			<tr align="center">
+					<td align="center">작성자 아이디</td>
+					<td><input type="text" value="${travel.id }" name="id"
+						readonly /></td>
+				</tr>
+				<tr align="center">
 					<td align='left' colspan="2">이미지 파일 첨부<br>
 						<div id="update">
 							<input type="button" value="파일 삭제" id="imgUpdateBtn"
@@ -151,9 +155,9 @@ function backToList(obj){
 						</div> <input type="button" value="파일 추가" id="imgUpdate"
 						onClick="fn_addFile()" disabled /> <small> &nbsp;&nbsp; *
 							최대 3개까지 첨부 가능합니다.</small>
-					
+
 						<div id="d_file"></div>
-						<div id="d_filetest">				
+						<div id="d_filetest">
 							<c:if test="${not empty image.image1 && image.image1 !='null' }">
 								<input type="hidden" id="originalFileName" name="image1"
 									value="${image.image1 }" />
@@ -178,32 +182,63 @@ function backToList(obj){
 						</div>
 					</td>
 				</tr>
-    <tr>
-         <td align="center">글내용</td>
-         <td><textarea rows="20" cols="60" name="content" id="content" disabled >${travel.content } </textarea></td>
-      </tr>
-      <tr>
-         <td>작성 날짜 </td><td>${travel.writeDate }</td>
-      </tr>
-      <tr>
-      	<td colspan="2" align="center">
-	      <div id="tr_btn_modify" style="display:none">
-      		<input type="button" value="수정 반영하기" onClick="fn_modify_update(frmTravel)" />
-            <input type="button" value="취소하기" onClick="backToList(frmTravel)" />
-	      </div>
-      	</td>
-      </tr>
-      <tr id="tr_btn">
-         <td colspan="2" align="center" >
-            <input type="button" value="수정하기" onClick="fn_enable(this.form)" />
-            <input type="button" value="삭제하기" onClick="fn_delete(this.form)" />
-            <input type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />
-         </td>
-      </tr>
-   </table>
-   </form>
-</div>
- <hr>
-     <jsp:include page="/resources/include/footer.jsp" />
+				<tr>
+					<td align="center">글내용</td>
+					<td><textarea rows="20" cols="60" name="content" id="content"
+							disabled>${travel.content } </textarea></td>
+				</tr>
+				<tr>
+					<td>작성 날짜</td>
+					<td>${travel.writeDate }</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<div id="tr_btn_modify" style="display: none">
+							<input type="button" value="수정 반영하기"
+								onClick="fn_modify_update(frmTravel)" /> <input type="button"
+								value="취소하기" onClick="backToList(frmTravel)" />
+						</div>
+					</td>
+				</tr>
+
+
+				<tr id="tr_btn">
+					<td colspan="2" align="center">
+						<input type="button" value="수정하기" onClick="fn_enable(this.form)" /> 
+						<input type="button" value="삭제하기" onClick="fn_delete(this.form)" /> 
+						<input type="button" value="댓글쓰기" onClick="" /> 
+						<input type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />
+					</td>
+				</tr>
+
+				<tr height="10" align="center" bgcolor="cornflowerblue" border="1" width="40%">
+					<td>댓글번호</td>
+					<td>내용</td>
+					<td>작성일</td>
+					<td>작성자</td>
+				</tr>
+
+				<tr height="10" align="center">
+					<%-- <td><a href="travel/view?travelNO=${travel.travelNO }">${travel.travelNO}</a></td> --%>
+					<td>${travel.travelNO}</a></td>
+					<td>${travel.content }</td>
+					<td>${travel.writeDate }</td>
+					<td>${travel.id }</td>
+					  
+				</tr>
+				
+			</table>
+		</form>
+	</div>
+	
+  
+  
+    <hr>
+  	<!-- Bootstrap core JS-->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- Core theme JS-->
+
+ <jsp:include page="/resources/include/footer.jsp" /> >
 </body>
 </html>

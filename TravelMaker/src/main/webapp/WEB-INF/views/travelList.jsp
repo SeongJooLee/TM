@@ -102,7 +102,7 @@
 				<div class="card h-100">
 				
 				<c:if test="${travel.image1 != null }">
-				<img	src="${contextPath }/tm/board/travel/download?image=${travel.image1}&promotionNO=${travel.travelNO}&name=${travel.name}"  	width="100%" height="100%" />
+				<img	src="${contextPath }/tm/board/travel/download?image=${travel.image1}&travelNO=${travel.travelNO}&name=${travel.name}"  	width="100%" height="100%" />
 				</c:if>
 				
 				<c:if test="${travel.image1 == null }">
@@ -110,7 +110,7 @@
 				</c:if>
 				
 				<div class="card-footer">
-					<a class="btn btn-primary btn-sm">${travel.categoryName }</a>&nbsp;&nbsp;&nbsp;<a href="${contextPath}/tm/board/travel/view?travelNO=${travel.travelNO }">${travel.title }</a>
+					<a class="btn btn-primary btn-sm">${travel.categoryName }</a>&nbsp;&nbsp;&nbsp;<a href="${contextPath}/board/travel/view?travelNO=${travel.travelNO }">${travel.title }</a>
 				</div>
 				</div>
 			</div>
