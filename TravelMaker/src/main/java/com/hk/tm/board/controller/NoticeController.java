@@ -44,8 +44,15 @@ public class NoticeController {
 
 	String REPO = "C:\\files";
 
-	@RequestMapping(value="/board/notice", method= {RequestMethod.GET,RequestMethod.POST})
-	public String noticeList(Model model) {
+//	@RequestMapping(value="/board/notice", method= {RequestMethod.GET,RequestMethod.POST})
+//	public String noticeList(Model model) {
+//		List<NoticeVO> list = noticeService.selectAllNotice();
+//		model.addAttribute("notice",list);
+//		return "noticeList";
+//	}
+	
+	@RequestMapping(value="/board/notice", method= RequestMethod.GET)
+	public String noticeList(Model model,@RequestParam(value="page",required=false) String page) {
 		List<NoticeVO> list = noticeService.selectAllNotice();
 		model.addAttribute("notice",list);
 		return "noticeList";
@@ -58,8 +65,11 @@ public class NoticeController {
 	}
 
 	@RequestMapping(value="/board/notice/view", method=RequestMethod.GET)
-	public String noticeView(Model model,@RequestParam("noticeNO") int noticeNO,HttpSession session) {
-		System.out.println("실행123");
+	public String noticeView(Model model,@RequestParam("noticeNO") int noticeNO,@RequestParam(value="page",required=false) String page,HttpSession session) {
+		if(page!=null) {
+			noticeNO++;
+		}
+		
 		Map<String,Object> map = noticeService.selectOneNotice(noticeNO);
 		model.addAttribute("notice",map.get("notice"));
 		model.addAttribute("image",map.get("image"));

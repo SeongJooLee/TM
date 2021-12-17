@@ -1,9 +1,6 @@
 package com.hk.tm.member.controller;
 
-import java.util.HashMap;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.hk.tm.board.vo.NoticeVO;
 import com.hk.tm.board.vo.PromotionVO;
 import com.hk.tm.board.vo.ReservationVO;
 import com.hk.tm.board.vo.ReviewVO;
@@ -88,6 +86,15 @@ public class AdminController {
 		switch(key) {
 		
 		case "one":
+			List<NoticeVO> noticeList = adminService.noticeAllList();
+			List<PromotionVO> promotionList = adminService.promotionAllList();
+			List<ReviewVO> reviewList = adminService.reviewAllList();
+			List<TravelVO> travelList = adminService.travelAllList();
+			
+			model.addAttribute("noticeList",noticeList);
+			model.addAttribute("promotionList",promotionList);
+			model.addAttribute("reviewList",reviewList);
+			model.addAttribute("travelList",travelList);
 			return "adminMyPage";
 		case "two":
 			List<UserVO>userList = adminService.userListAll();

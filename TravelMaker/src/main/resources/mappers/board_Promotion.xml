@@ -92,5 +92,10 @@
    <select id='selectSellerPromotion' resultMap='promotionResult'>
    		select * from promotion where sellerID = #{sellerID}
    </select>
+   
+   <select id="selectPromotionAll" resultMap="promotionResult">
+		SELECT PROMOTIONNO, TITLE, CONTENT, WRITEDATE, PRICE, SELLERID, NAME
+		 FROM PROMOTION
+	</select>
 </mapper>
 

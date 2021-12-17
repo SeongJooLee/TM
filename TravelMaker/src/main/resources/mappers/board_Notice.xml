@@ -54,4 +54,8 @@
 		 order by noticeNO desc
 	</select>
 	
+	<select id="selectNoticeAll" resultType="NoticeVO" >
+		SELECT * FROM NOTICE
+	</select>
+	
 </mapper>

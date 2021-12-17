@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.hk.tm.board.vo.NoticeVO;
 import com.hk.tm.board.vo.PromotionVO;
 import com.hk.tm.board.vo.ReservationVO;
 import com.hk.tm.board.vo.ReviewVO;
@@ -118,6 +119,26 @@ public class AdminDAO {
 		// TODO Auto-generated method stub
 		int result = sqlSession.delete("mapper.boardReservation.delete", reserNO);
 		return result;
+	}
+	public List<NoticeVO> noticeAllList() {
+		// TODO Auto-generated method stub
+		List<NoticeVO> list = sqlSession.selectList("mapper.boardNotice.selectNoticeAll");
+		return list;
+	}
+	public List<PromotionVO> promotionAllList() {
+		// TODO Auto-generated method stub
+		List<PromotionVO> list = sqlSession.selectList("mapper.boardPromotion.selectPromotionAll");
+		return list;
+	}
+	public List<ReviewVO> reviewAllList() {
+		// TODO Auto-generated method stub
+		List<ReviewVO> list = sqlSession.selectList("mapper.boardReview.selectReviewAll");
+		return list;
+	}
+	public List<TravelVO> travelAllList() {
+		// TODO Auto-generated method stub
+		List<TravelVO> list = sqlSession.selectList("mapper.boardTravel.selectTravelAll");
+		return list;
 	}
 	
 

@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hk.tm.board.vo.NoticeVO;
 import com.hk.tm.board.vo.PromotionVO;
 import com.hk.tm.board.vo.ReservationVO;
 import com.hk.tm.board.vo.ReviewVO;
@@ -99,6 +100,22 @@ public class AdminService {
 	public int deleteReservation(String reserNO) {
 		// TODO Auto-generated method stub
 		return adminDAO.deleteReservation(reserNO);
+	}
+	public List<NoticeVO> noticeAllList() {
+		// TODO Auto-generated method stub
+		return adminDAO.noticeAllList();
+	}
+	public List<PromotionVO> promotionAllList() {
+		// TODO Auto-generated method stub
+		return adminDAO.promotionAllList();
+	}
+	public List<ReviewVO> reviewAllList() {
+		// TODO Auto-generated method stub
+		return adminDAO.reviewAllList();
+	}
+	public List<TravelVO> travelAllList() {
+		// TODO Auto-generated method stub
+		return adminDAO.travelAllList();
 	}
 	
 

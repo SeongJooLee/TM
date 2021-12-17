@@ -105,6 +105,12 @@
 		obj.action = "${contextPath}/board/notice";
 		obj.submit();
 	}
+	
+	function next(){
+		location.href = "${contextPath}/board/notice/view?noticeNO=${notice.noticeNO}&page=page";
+	}
+	
+	
 </script>
 </head>
 <body>
@@ -193,6 +199,7 @@
 					</td>
 				</tr>
 			</table>
+			<button type="button" onClick="next()"> 다음 글 보기</button>
 		</form>
 	</div>
 		<hr>
