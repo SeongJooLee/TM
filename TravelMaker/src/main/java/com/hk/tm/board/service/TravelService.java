@@ -76,9 +76,10 @@ public class TravelService {
 	public TravelVO deleteTravel(int travelNO) {
 		imageDAO.deleteTravel(travelNO);
 		categoryDAO.deleteTravel(travelNO);		
+		TravelVO travelVO = travelDAO.selectOneTravel(travelNO);		
+
 		travelDAO.deleteTravel(travelNO);
 		
-		TravelVO travelVO = travelDAO.selectOneTravel(travelNO);		
 		
 		return travelVO;
 	}
