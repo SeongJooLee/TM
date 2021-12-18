@@ -119,9 +119,8 @@ function next(){
 function fn_enable_comment(obj){	  
 	   
 	   document.getElementById("content_comment").disabled = false;
-
-	   document.getElementById("tr_btn_create_comment").style.display='block';
-	   document.getElementById("tr_btn").style.display='none';
+	   document.getElementById("tr_btn_modify_comment").style.display='block';
+	   document.getElementById("tr_btn_comment").style.display='none';
 	}
 
 function fn_create_comment(){
@@ -146,10 +145,10 @@ function fn_modify_update_comment(){
         return;
     } else {
         alert("확인(예)을 누르셨습니다.");
-	document.getElementById('frmTravel').method= "POST";
-	document.getElementById('frmTravel').action = "${contextPath}/board/travel/update";
-   document.getElementById('frmTravel').submit();
-}
+	document.getElementById('frmComment').method= "POST";
+	document.getElementById('frmComment').action = "${contextPath}/board/comment/update";
+    document.getElementById('frmComment').submit();
+	}
 }
 
 function fn_delete_comment(){
@@ -159,7 +158,7 @@ function fn_delete_comment(){
     } else {
         alert("확인(예)을 누르셨습니다.");
         location.href="${contextPath}/board/travel/delete?travelNO=${travel.travelNO}";
-    }
+    }     
 	
 }
 
@@ -292,9 +291,9 @@ function fn_delete_comment(){
 	
 	
 	//댓글목록
-	<form action="${contextPath}/board/travel/view?travelNO=${travel.travelNO }" method="post">
+	<form name="frmComment" action="${contextPath}/board/travel/view?travelNO=${travel.travelNO }" method="post">
 		<table border="3" align="center">
-			<input type="hidden" name="travelComment" value="commentList">				
+			<input type="hidden" name="travelNO" value="${travel.travelNO}"/>				
 				<div>
 					<tr height="10" align="center" bgcolor="cornflowerblue" border="1" >
 						<th rowspan="2">댓글</th>
@@ -336,32 +335,55 @@ function fn_delete_comment(){
 	
 	
 	// 댓글쓰기
-	<form action="${contextPath}/board/travel/view?travelNO=${travel.travelNO }" method="post">
+	<form name="frmComment" action="${contextPath}/board/travel/view?travelNO=${travel.travelNO }" method="post">
 		
 			<table border="3" align="center">
 			<tr>
-				<td  height="10" align="center" valign="top">댓글내용</td>
+				<td width="150" align="center" bgcolor="cornflowerblue">댓글내용</td>
 				<td colspan=2>
-					<textarea name="content" rows="10" cols="50" maxlength="500"></textarea>
+					<textarea name="content" rows="10" cols="50" maxlength="500" id="content_comment" disabled />${comment.content }</textarea>
 				</td>
 			</tr>
 			
-			<tr height="10" align="center">
+			<tr>
+      			<td width="150" align="center" bgcolor="cornflowerblue">
+        			 작성일
+      			</td>
+      		<td>
+       			<input type=text value="<fmt:formatDate value="${comment.writeDate}" />" disabled />
+      		</td> 
+     	    <td width="150" align="center" bgcolor="cornflowerblue">
+     			 	작성자
+  			</td>  
+  			<td >
+   				<input type=text value="${travel.id }" name="writer"  disabled />    			
+   			</td>
+  			
+  			</tr>
+			
+			<tr id="tr_btn_modify_comment">
 				<td colspan="2" align="center">
 					<div id="tr_btn_create_comment" style="display: none">
 						<input type="button" value="댓글 작성하기" onClick="fn_create_comment()" /> 
-						<input type="reset" value="다시 작성하기" />
-						<input type="button" value="리스트로 돌아가기" onClick="backToList(this.form)">
+						<input type="button" value="이전으로" onClick="backToList(frmTravel)"/>
+						
 					</div>
 				</td>			
 			</tr>
 			
+			<tr  id="tr_btn_comment">
+   				<td colspan="2" align="center">
+       				<input type=button value="수정하기" onClick="fn_enable_comment(this.form)">
+       				<input type=button value="삭제하기" onClick="fn_remove_comment('delete' , ${comment.id})">
+      				<input type=button value="이전으로 돌아가기"  onClick="backToList(frmTravel)">        			
+   				</td>
+  			</tr>
 			
 			
-		</table>
-		
+			
+		</table>		
 	</form>
-  
+	  
   
     <hr>
   	<!-- Bootstrap core JS-->
