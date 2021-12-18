@@ -192,7 +192,7 @@ public class AdminController {
 		
 		model.addAttribute("result",result);
 		
-		return "adminMyPage";
+		return "adminLastCheck";
 	}
 	@RequestMapping(value="/admin/mypage/reservationDelete",method=RequestMethod.GET)
 	public String myPageReservationDelete(Model model,@RequestParam(value="key",required=false) String reserNO){
@@ -201,7 +201,7 @@ public class AdminController {
 		
 		model.addAttribute("deleteResult",result);
 		
-		return "adminMyPage";
+		return "adminLastCheck";
 	}
 	
 	@RequestMapping(value="/admin/mypage/next",method=RequestMethod.GET)

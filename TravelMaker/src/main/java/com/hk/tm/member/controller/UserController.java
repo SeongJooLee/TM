@@ -328,7 +328,7 @@ public class UserController {
 		reviewVO.setId(user.getId());
 		
 		int result = 0;
-		System.out.println("12월18일 reviewVO= "+reviewVO);
+		
 		result = userService.addReview(reviewVO);
 		model.addAttribute("result",result);
 		return "userReviewAddDone";

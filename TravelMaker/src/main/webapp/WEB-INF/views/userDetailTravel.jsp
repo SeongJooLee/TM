@@ -11,6 +11,7 @@
 <script>
 	function page(){
 		alert('상세글로 이동합니다');
+		location.href='/tm/board/travel/view?travelNO=${travel.travelNO}';
 		}
 	function nameOrder(){
 		location.href='/tm/admin/mypage?list=name';
