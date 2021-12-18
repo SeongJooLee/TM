@@ -116,7 +116,6 @@
 				</c:if>
 				</c:forEach>
 		</div>
-
 	</div>
 
 	<c:if test='${userSession.grade.equals("admin")}'>
