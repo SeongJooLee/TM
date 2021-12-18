@@ -31,9 +31,9 @@ $('.btn_gotop').click(function(){
 </script>
 <style>
 .sns_test {
-	float: right;
-	margin: 5px;
+	
 	font-size: 40px;
+
 }
 
 .btn_gotop {
@@ -73,29 +73,132 @@ list-style:none;
 }
 
 
+.footer_inner {
+	padding:0; margin:0; 
+}
+.footer_inner:after {
+	display:block;
+	clear:both;
+	content:''
+}
+.footer_inner .box_cs {
+	position : relative;
+	float: left;
+	width: 33%;
+	height: 210px;
+	border-right: 1px solid #f5f5f5;
+	padding: 10px 60px 10px 50px;
+}
+.footer_inner .box_cs .tit {
+	font-size:11px;
+	color:#444;
+}
+.footer_inner .box_cs .bignum {
+	font-size: 36px;
+	margin: 10px 0;
+	font-family: "Roboto", sans-serif;
+	letter-spacing: 0.05em;
+	font-weight:bold;
+}
+.footer_inner .box_cs .ss_txt {
+	font-size:11px;
+	color:#666;
+	margin-bottom:3px;
+}
+.footer_inner .box_cs .partner {
+	margin: 15px 0 0 0;
+}
+.footer_inner .promo {
+	position: relative;
+	float: left;
+	width: 33%;
+	height: 210px;
+	border-right: 1px solid #f5f5f5;
+	padding: 10px 60px 10px 50px;
+}
+.footer_inner .promo .tit {
+	font-size:11px;
+	color:#444;
+	margin-bottom:20px;
+}
+
+.footer_inner .promo .team {
+	margin-bottom: 13px;
+	font-size: 13px;
+	color: black;
+}
+
+.footer_inner .box_quick {
+	float: left;
+	width: 145px;
+	height: 260px;
+	border-right: 1px solid #f5f5f5;
+	padding: 0 70px 0 55px;
+}
+.footer_inner .box_quick .tit {
+	font-size:11px;
+	color:#444;
+	margin-bottom:7px;
+}
+.footer_inner .box_quick .quick {
+	margin-bottom:4px;
+}
+.footer_inner .box_quick .quick a img {margin-right:10px; height:28px;}
+.footer_inner .box_about {
+    position: relative;
+	float: right;
+	width: 33%;
+    height: 210px;
+    padding-left: 45px;
+    padding: 10px 60px 10px 50px;
+}
+.footer_inner .box_about .tit {
+	font-size:11px;
+	color:#444;
+	margin-bottom:20px;
+}
+.footer_inner .box_about .txt {
+	color: #666;
+	font-size: 13px;
+	margin-bottom: 8px;
+}
 </style>
 </head>
 <body>
-		<div class="sns_test">
-        	<a class="sns-link" href="https://www.instagram.com/"><i class="fab fa-instagram" ></i></a>
-        	<a class="sns-link" href="https://www.facebook.com/"><i class="fab fa-facebook" ></i></a>
-        	<a class="sns-link" href="https://www.twitter.com/"><i class="fab fa-twitter" ></i></a>
-   	    </div>
-   	    <div class="caution_text" style = "background-color: lightgray;">
-   	    <div class="corp_area" data-clk-prefix="plc"> 
-   	    	<ul class="list_corp"> 
-   	    		<li class="corp_item"><a href="https://www.navercorp.com">회사소개</a></li> 
-   	    		<li class="corp_item"><a href="https://recruit.navercorp.com/naver/recruitMain" >광고문의</a></li> 
-   	    		<li class="corp_item"><a href="https://www.navercorp.com/naver/proposalGuide" >이용약관</a></li>
-   	    		<li class="corp_item"><a href="/policy/service.html" >개인정보처리방침</a></li>
-   	        </ul>
-   	    </div>
-   	    </div>
-   	    <a href="#" class="btn_gotop">
-  		<span class="glyphicon glyphicon-chevron-up">
-  		<img src="https://www.iconpacks.net/icons/2/free-curved-arrow-icon-2259-thumb.png" style="width:20px">
- 		</span>
-		</a>
-	
+ <div class="footer_inner">
+    <div class="box_cs">
+      <div class="tit">고객센터</div>
+      <div class="bignum">1234-1234</div>
+      <div class="ss_txt">MON-FRI : AM 10:00 ~ PM 05:00</div>
+      <div class="ss_txt">LUNCH: PM 01:00 ~ PM 02:00</div>
+          <div class="sns_test">
+           <a class="sns-link" href="https://www.instagram.com/"><i class="fab fa-instagram" ></i></a>
+           <a class="sns-link" href="https://www.facebook.com/"><i class="fab fa-facebook" ></i></a>
+           <a class="sns-link" href="https://www.twitter.com/"><i class="fab fa-twitter" ></i></a>
+          </div>
+    
+    </div>
+    <div class="promo">
+      <div class="tit">홍보 문의</div>
+      <div class="team"> · 대표 : 김나연 acourve@naver.com</div>
+      <div class="team"> · 개발팀 : 이성주 tjdwn0948@naver.com </div>
+      <div class="team"> · 품질관리팀 : 김민수 kms970408@naver.com</div>
+      <div class="team"> · 기획팀 : 김강민 kkm8057@naver.com </div>
+    </div>
+    <div class="box_about">
+      <div class="tit">회사 정보</div>
+      <div class="txt">Travel Maker</div>
+      <div class="txt">사업자 등록 번호 : 123-45-6789</div>
+      <div class="txt">E-mail : kkm8057@naver.com</div>
+      <div class="txt">주소 : 경기도 고양시 덕양구 행신2동</div>
+      <div class="txt">책임자 : 김나연, 이성주, 김민수, 김강민 <a href="http://www.ftc.go.kr/bizCommPop.do?wrkr_no=&apv_perm_no=2011386021230200126" target="_blank"> [사업자정보확인]</a></div>
+    </div>
+  </div>
+            <a href="#" class="btn_gotop">
+        <span class="glyphicon glyphicon-chevron-up">
+        <img src="https://www.iconpacks.net/icons/2/free-curved-arrow-icon-2259-thumb.png" style="width:20px">
+       </span>
+      </a>
+  
 </body>
 </html>
