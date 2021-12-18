@@ -90,7 +90,7 @@ public class TravelController {
 	
 	// 댓글쓰기
 	@RequestMapping(value="/view" , method=RequestMethod.POST)
-	public String travelComment(HttpSession session, @RequestParam(value="comment", required=false)String travelComment, Model model) {
+	public String travelComment(HttpSession session, @RequestParam(value="commentAdd", required=false)String travelComment, Model model) {
 		return "travelView";
 		
 

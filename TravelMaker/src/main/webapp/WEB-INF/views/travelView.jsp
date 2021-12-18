@@ -234,7 +234,8 @@ function next(){
 						</c:if>
 					</td>
 				</tr>
-				<div>
+				
+<%-- 				<div>
 				<tr height="10" align="center" bgcolor="cornflowerblue" border="1" width="40%">
 					<th rowspan="2">댓글</th>
 					<th>내용</th>
@@ -243,8 +244,8 @@ function next(){
 				</tr>
 
 				<tr height="10" align="center" >
-					<%-- <td><a href="travel/view?travelNO=${travel.travelNO }">${travel.travelNO}</a></td> --%>
-					<%-- <td>${travel.travelNO}</a></td> --%>
+					<td><a href="travel/view?travelNO=${travel.travelNO }">${travel.travelNO}</a></td>
+					<td>${travel.travelNO}</a></td>
 					<td>${travel.content }</td>
 					<td>${travel.writeDate }</td>
 					<td>${travel.id }</td>					  
@@ -254,24 +255,74 @@ function next(){
 				<div>
 				<tr height="10" align="center">
 					<th>이전글</th>						
-					<%-- <td><a href="travel/view?content=${travel.travelNO}">${travel.content }</a></td> --%>	
+					<td><a href="travel/view?content=${travel.travelNO}">${travel.content }</a></td>	
 				</tr>
 				
 				<tr height="10" align="center" >
 					<th>다음글</th>					
-					<%-- <td><a href="travel/view?content=${travel.travelNO}">${travel.content }</a></td> --%>	
+					<td><a href="travel/view?content=${travel.travelNO}">${travel.content }</a></td>	
 					<td><button type="button" onClick="next()"> 다음 글 보기</button></td>						  
 				</tr>
-				</div>
+				</div> --%>
 					
 			</table>
 		</form>
 	</div>
 	
+	
+	//댓글목록
+	<form action="${contextPath}/board/travel/view?travelNO=${travel.travelNO }" method="post">
+	<table border="3" align="center">
+		<input type="hidden" name="travelComment" value="commentList">		
+		
+			<div>
+				<tr align="center" bgcolor="cornflowerblue" border="1" >
+					<th rowspan="2">댓글</th>
+					<th>내용</th>
+					<th>작성일</th>
+					<th>작성자</th>
+				</tr>
+
+				<tr align="center" border="1">
+					<%-- <td><a href="travel/view?travelNO=${travel.travelNO }">${travel.travelNO}</a></td> --%>
+					<%-- <td>${travel.travelNO}</a></td> --%>
+					<td>${travel.content }</td>
+					<td>${travel.writeDate }</td>
+					<td>${travel.id }</td>					  
+				</tr>
+			</div>
+				
+			<div>
+				<tr align="center" border="1">
+					<th>이전글</th>						
+					<%-- <td><a href="travel/view?content=${travel.travelNO}">${travel.content }</a></td> --%>	
+				</tr>
+				
+				<tr align="center" border="1">
+					<th>다음글</th>					
+					<%-- <td><a href="travel/view?content=${travel.travelNO}">${travel.content }</a></td> --%>	
+					<td><button type="button" onClick="next()"> 다음 글 보기</button></td>						  
+				</tr>
+			</div>
+		</table>	
+	</form>
+	
+	
 	// 댓글쓰기
 	<form action="${contextPath}/board/travel/view?travelNO=${travel.travelNO }" method="post">
-		<input type="hidden" name="travelComment" value="comment">
-		<input class="btn" type="submit" value="댓글쓰기">
+		<input type="hidden" name="travelComment" value="commentAdd">
+		<input type="submit" value="댓글쓰기">
+		
+			<table border="3" align="center">
+			<tr>
+				<td align="center" valign="top">댓글내용</td>
+				<td colspan=2>
+					<textarea name="content" rows="10" cols="50" maxlength="500"></textarea>
+				</td>
+			</tr>			
+
+		</table>
+		
 	</form>
   
   
