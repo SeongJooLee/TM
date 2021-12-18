@@ -76,4 +76,42 @@
          SELECT travelNO,title ,name FROM TRAVEL t))) aa WHERE aa.count BETWEEN #{x} AND #{y}
 	</select>
 	
+	<select id="selectUnionSearchAll" resultMap="noticeResult" >
+		SELECT * 
+		FROM (SELECT ROW_NUMBER()OVER(ORDER BY name) as count,name,adminid,title,content,noticeNO 
+		FROM (SELECT name,adminid,title,content,noticeNO 
+		FROM (SELECT name,adminid,title,content,noticeNO 
+		FROM (SELECT name,adminid,title,content,noticeNO 
+		FROM NOTICE n
+		UNION ALL
+		SELECT name,sellerid,title,content,promotionNO 
+		FROM PROMOTION p) 
+		UNION ALL
+		SELECT name,id,title,content,reviewNO 
+		FROM (SELECT name,id,title,content,reviewNO 
+		FROM REVIEW r 
+		UNION ALL
+		SELECT name,id,title,content,travelNO FROM TRAVEL t)))) minsu 
+	</select>
+	
+	<select id="selectUnionSearchID" resultMap="noticeResult" parameterType='java.lang.String'>
+
+		SELECT ROW_NUMBER()over(ORDER BY name) AS count,name,adminid,title,content,noticeNO 
+		FROM (SELECT * 
+		FROM (SELECT ROW_NUMBER()OVER(ORDER BY name) as count,name,adminid,title,content,noticeNO 
+		FROM (SELECT name,adminid,title,content,noticeNO 
+		FROM (SELECT name,adminid,title,content,noticeNO 
+		FROM (SELECT name,adminid,title,content,noticeNO 
+		FROM NOTICE n
+		UNION ALL
+		SELECT name,sellerid,title,content,promotionNO 
+		FROM PROMOTION p) 
+		UNION ALL
+		SELECT name,id,title,content,reviewNO 
+		FROM (SELECT name,id,title,content,reviewNO 
+		FROM REVIEW r 
+		UNION ALL
+		SELECT name,id,title,content,travelNO FROM TRAVEL t)))) minsu WHERE adminid=#{result})
+	</select>
+	
 </mapper>
