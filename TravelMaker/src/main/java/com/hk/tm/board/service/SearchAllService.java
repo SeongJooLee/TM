@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.hk.tm.board.dao.SearchAllDAO;
 import com.hk.tm.board.vo.NoticeVO;
+import com.hk.tm.board.vo.PromotionVO;
+import com.hk.tm.board.vo.ReviewVO;
+import com.hk.tm.board.vo.TravelVO;
 
 @Service
 public class SearchAllService {
@@ -36,5 +39,25 @@ public class SearchAllService {
 	public List<NoticeVO> searchTitleContentList(String result) {
 		// TODO Auto-generated method stub
 		return searchAllDAO.searchTitleContentList(result);
+	}
+
+	public NoticeVO selectNoticeOne(int randomNO) {
+		// TODO Auto-generated method stub
+		return searchAllDAO.selectNoticeOne(randomNO);
+	}
+
+	public PromotionVO selectPromotionOne(int randomNO) {
+		// TODO Auto-generated method stub
+		return searchAllDAO.selectPromotionOne(randomNO);
+	}
+
+	public ReviewVO selectReviewOne(int randomNO) {
+		// TODO Auto-generated method stub
+		return searchAllDAO.selectReviewOne(randomNO);
+	}
+
+	public TravelVO selectTravelOne(int randomNO) {
+		// TODO Auto-generated method stub
+		return searchAllDAO.selectTravelOne(randomNO);
 	}
 }

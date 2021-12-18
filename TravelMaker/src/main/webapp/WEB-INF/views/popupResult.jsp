@@ -49,7 +49,7 @@ function listAll() {
     				<td>${list.count}</td>
     				<td>${list.name}</td>
     				<td>${list.adminID}</td>
-    				<td>${list.title}</td>
+    				<td><a href='/tm/board/popupCheck?randomNO=${list.noticeNO}&randomName=${list.name}'>${list.title}</a></td>
     				<td>${list.content}</td>
     			</tr>
     		</c:forEach>

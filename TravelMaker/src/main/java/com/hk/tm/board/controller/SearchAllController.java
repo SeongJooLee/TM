@@ -5,14 +5,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hk.tm.board.service.SearchAllService;
 import com.hk.tm.board.vo.NoticeVO;
+import com.hk.tm.board.vo.PromotionVO;
+import com.hk.tm.board.vo.ReviewVO;
+import com.hk.tm.board.vo.TravelVO;
 
 @Controller
 public class SearchAllController {
@@ -46,6 +47,34 @@ public class SearchAllController {
 			model.addAttribute("list",listTitleContent);
 			return "popupResult";
 		
+		}
+		return null;
+	}
+	
+	@RequestMapping(value="/board/popupCheck", method=RequestMethod.GET)
+	public String popupCheckGet(Model model,@RequestParam(value="randomNO",required=false)int randomNO,@RequestParam(value="randomName",required=false)String randomName){	
+	
+		switch(randomName) {
+		case "notice":
+			NoticeVO notice = searchAllService.selectNoticeOne(randomNO);
+			model.addAttribute("notice",notice);
+			return "popupCheckDone";
+		case "event":
+			NoticeVO event = searchAllService.selectNoticeOne(randomNO);
+			model.addAttribute("notice",event);
+			return "popupCheckDone";
+		case "promotion":
+			PromotionVO promotion = searchAllService.selectPromotionOne(randomNO);
+			model.addAttribute("promotion",promotion);
+			return "popupCheckDone";
+		case "review":
+			ReviewVO review = searchAllService.selectReviewOne(randomNO);
+			model.addAttribute("review",review);
+			return "popupCheckDone";
+		case "travel":
+			TravelVO travel = searchAllService.selectTravelOne(randomNO);
+			model.addAttribute("travel",travel);
+			return "popupCheckDone";
 		}
 		return null;
 	}

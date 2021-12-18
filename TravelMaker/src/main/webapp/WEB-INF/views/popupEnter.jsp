@@ -7,6 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+	
+</script>
 </head>
 <body>
 	<h1>비빔짬뽕먹고싶다비빔짬뽕먹고싶다</h1>
@@ -36,7 +39,7 @@
     				<td>${list.count}</td>
     				<td>${list.name}</td>
     				<td>${list.adminID}</td>
-    				<td>${list.title}</td>
+    				<td><a href='/tm/board/popupCheck?randomNO=${list.noticeNO}&randomName=${list.name}'>${list.title}</a></td>
     				<td>${list.content}</td>
     			</tr>
     		</c:forEach>
