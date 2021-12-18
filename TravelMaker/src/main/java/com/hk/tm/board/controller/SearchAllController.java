@@ -55,23 +55,23 @@ public class SearchAllController {
 	public String popupCheckGet(Model model,@RequestParam(value="randomNO",required=false)int randomNO,@RequestParam(value="randomName",required=false)String randomName){	
 	
 		switch(randomName) {
-		case "notice":
+		case "공지사항":
 			NoticeVO notice = searchAllService.selectNoticeOne(randomNO);
 			model.addAttribute("notice",notice);
 			return "popupCheckDone";
-		case "event":
+		case "이벤트":
 			NoticeVO event = searchAllService.selectNoticeOne(randomNO);
 			model.addAttribute("notice",event);
 			return "popupCheckDone";
-		case "promotion":
+		case "홍보상품":
 			PromotionVO promotion = searchAllService.selectPromotionOne(randomNO);
 			model.addAttribute("promotion",promotion);
 			return "popupCheckDone";
-		case "review":
+		case "이용후기":
 			ReviewVO review = searchAllService.selectReviewOne(randomNO);
 			model.addAttribute("review",review);
 			return "popupCheckDone";
-		case "travel":
+		case "테마여행":
 			TravelVO travel = searchAllService.selectTravelOne(randomNO);
 			model.addAttribute("travel",travel);
 			return "popupCheckDone";
