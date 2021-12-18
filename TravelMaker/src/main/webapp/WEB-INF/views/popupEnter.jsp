@@ -15,13 +15,14 @@
 	<h1>비빔짬뽕먹고싶다비빔짬뽕먹고싶다</h1>
 
 	<form action='/tm/board/popupEnter' method='post'>
-		<select name="searchOption">
-   	    	<option value="person" selected="selected">작성자</option>
+		<select name="searchOption" required>
+			<option value="">옵션 선택</option>
+   	    	<option value="person">작성자</option>
    			<option value="title">제목</option>
     		<option value="content">내용</option>
     		<option value="titleContent">제목+내용</option>
 		</select>
-		<input type='text' name='searchResult' placeholder='검색어 입력해'>
+		<input type='text' name='searchResult' placeholder='검색어입력 "해줘"' required>
         <input type='submit' value='검색하기'>
         <button onclick='self.close();'>검색창 닫기</button>
     </form>

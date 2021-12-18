@@ -8,10 +8,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
-function moveClose() {
-	  opener.location.href="/tm/board/notice/view?noticeNO=1";
-	  self.close();
-	}
+
+function resultCount(){
+	alert('${list.size()}개가 검색되었습니다');
+}
+function resultZero(){
+	alert('검색결과가 없습니다');
+}
 
 function listAll() {
 	  location.href="/tm/board/popupEnter";
@@ -23,13 +26,14 @@ function listAll() {
 	<h1>비빔짬뽕먹고싶다비빔짬뽕먹고싶다</h1>
 
 	<form action='/tm/board/popupEnter' method='post'>
-		<select name="searchOption">
-    		<option value="person" selected="selected">작성자</option>
+		<select name="searchOption" required>
+			<option value="" >옵션선택</option>
+    		<option value="person">작성자</option>
     		<option value="title">제목</option>
     		<option value="content">내용</option>
     		<option value="titleContent">제목+내용</option>
 		</select>
-	 	<input type='text' name='searchResult' placeholder='검색어 입력해'>
+	 	<input type='text' name='searchResult' placeholder='검색어입력 "해줘"' required>
    		<input type='submit' value='검색하기'>
    		
    		<button onclick='self.close();'>검색창 닫기</button>
@@ -55,7 +59,16 @@ function listAll() {
     		</c:forEach>
     
     </table>
-	
+	<c:if test='${list.size()!=0}'>
+		<script>
+			resultCount();
+		</script>
+	</c:if>
+	<c:if test='${list.size()==0}'>
+		<script>
+			resultZero();
+		</script>
+	</c:if>
 	<!-- <button onclick='moveClose()'>이동하기</button> -->
 </body>
 </html>
