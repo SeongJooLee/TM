@@ -104,7 +104,12 @@ function fn_create(){
 			</tr>
 			<tr align="right">
 				<td>
-					<input type="button" value="이용 후기 작성" onClick="fn_create()">
+				<br><br>
+					<form method="post" action="${contextPath }/kakaoPay">
+						<button>카카오페이로 결제하기</button>
+					</form>
+				<br><br>
+					 <input type="button" value="이용 후기 작성" onClick="fn_create()">
 					<br><br>
 					<input type="button" value="예약 취소" onClick="fn_delete()">
 					<input type="button" value="메인 화면으로 이동" onClick="goHome()">
