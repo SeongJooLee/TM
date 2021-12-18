@@ -119,6 +119,7 @@ public class AdminController {
 			model.addAttribute("notice",noticeVO);
 			return "adminMyPage";
 		case "two":
+			System.out.println("시작해보자");
 			List<UserVO>userList = adminService.userListAll();
 			List<SellerVO>sellerList = adminService.sellerListAll();
 			model.addAttribute("sellerList",sellerList);

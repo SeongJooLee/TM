@@ -36,7 +36,7 @@
 	
 	<insert id="insert" parameterType="ReviewVO">
 		 INSERT INTO REVIEW (REVIEWNO, TITLE, CONTENT, WRITEDATE, ID, NAME, PROMOTIONNO)
-		  VALUES((SELECT nvl(MAX(REVIEWNO) ,0)+1 FROM REVIEW), #{title}, #{content}, SYSDATE , #{id}, #{name},#{promotionNO})
+		  VALUES((SELECT nvl(MAX(REVIEWNO) ,0)+1 FROM REVIEW), #{title}, #{content}, SYSDATE , #{id}, 'review',#{promotionNO})
 	</insert>
 	
 	<update id="reviewUpdate" parameterType="ReviewVO">
