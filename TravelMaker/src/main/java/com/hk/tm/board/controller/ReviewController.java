@@ -68,7 +68,7 @@ public class ReviewController {
 		
 	}
 	
-	@RequestMapping(value = "/board/reviewSelect", method= RequestMethod.GET)
+	@RequestMapping(value = "/board/review/select", method= RequestMethod.GET)
 	public String reviewSelectList(Model model,@RequestParam(value="selectPage",required=false) int selectPage) {
 		List<ReviewVO> list = reviewService.boardAllList();
 		

@@ -32,6 +32,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.hk.tm.board.service.TravelService;
 import com.hk.tm.board.vo.CategoryVO;
 import com.hk.tm.board.vo.ImageVO;
+import com.hk.tm.board.vo.SelectPageVO;
 import com.hk.tm.board.vo.TravelImageVO;
 import com.hk.tm.board.vo.TravelVO;
 import com.hk.tm.member.vo.UserVO;
@@ -50,9 +51,53 @@ public class TravelController {
 	
 	@RequestMapping(value="" , method = {RequestMethod.GET, RequestMethod.POST}) 
 		public String travelList(Model model) {
-		List<TravelImageVO> list = travelService.selectAllTravelImage();
-		model.addAttribute("travel", list);
-		//logger.debug("---------/list called");
+		List<TravelVO> list = travelService.selectAllTravels();
+		
+		int listCount = list.size(); //전체 게시물의 개수
+		int listSize = 6; //한 페이지에 보일 갯수
+		int page = (listCount+5)/listSize; //현재 목록의 페이지 번호
+		
+		int endList = 1*listSize;
+		int startList = endList-5;
+		
+		SelectPageVO selectPageVO = new SelectPageVO();
+		
+		selectPageVO.setStartPage(startList);
+		selectPageVO.setEndPage(endList);
+		
+		List<TravelImageVO> selectList = travelService.selectAllTravelImage(selectPageVO);
+		
+		model.addAttribute("travel", selectList);
+		model.addAttribute("page",page);
+		
+		return "travelList"; //travelList.jsp 호출
+	}
+	
+	@RequestMapping(value="/select" , method = RequestMethod.GET) 
+	public String travelSelectList(Model model,@RequestParam(value="selectPage",required=false) int selectPage) {
+		List<TravelVO> list = travelService.selectAllTravels();
+		
+		int listCount = list.size(); //전체 게시물의 개수
+		int listSize = 6; //한 페이지에 보일 갯수
+		int page = (listCount+5)/listSize; //현재 목록의 페이지 번호
+		
+		int endList = 0;
+		int startList = 0;
+
+		endList = selectPage*listSize;
+		startList = endList-5;
+		
+		SelectPageVO selectPageVO = new SelectPageVO();
+		
+		selectPageVO.setStartPage(startList);
+		selectPageVO.setEndPage(endList);
+		
+		List<TravelImageVO> selectList = travelService.selectAllTravelImage(selectPageVO);
+		
+		model.addAttribute("travel", selectList);
+		model.addAttribute("page",page);
+		model.addAttribute("selectPage",selectPage);
+
 		return "travelList"; //travelList.jsp 호출
 	}
 	

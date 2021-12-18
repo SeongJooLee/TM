@@ -14,6 +14,7 @@ import com.hk.tm.board.dao.ImageDAO;
 import com.hk.tm.board.dao.TravelDAO;
 import com.hk.tm.board.vo.CategoryVO;
 import com.hk.tm.board.vo.ImageVO;
+import com.hk.tm.board.vo.SelectPageVO;
 import com.hk.tm.board.vo.TravelImageVO;
 import com.hk.tm.board.vo.TravelVO;
 
@@ -35,9 +36,9 @@ public class TravelService {
 		return travelDAO.selectAllTravels();
 	}
 	
-	public List<TravelImageVO> selectAllTravelImage() {
+	public List<TravelImageVO> selectAllTravelImage(SelectPageVO selectPageVO) {
 		
-		return travelDAO.selectAllTravelImage();
+		return travelDAO.selectAllTravelImage(selectPageVO);
 	}
 	
 	public Map<String, Object> selectOneTravel(int travelNO) {

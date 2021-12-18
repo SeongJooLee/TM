@@ -67,7 +67,7 @@ public class NoticeController {
 		return "noticeList";
 	}
 	
-	@RequestMapping(value="/board/noticeSelect", method= RequestMethod.GET)
+	@RequestMapping(value="/board/notice/select", method= RequestMethod.GET)
 	public String noticeSelectList(Model model,@RequestParam(value="selectPage",required=false) int selectPage) {
 		List<NoticeVO> list = noticeService.selectAllNotice();
 		int listCount = list.size(); //전체 게시물의 개수

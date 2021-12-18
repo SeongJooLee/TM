@@ -68,7 +68,7 @@ public class PromotionController {
 		
 		return "promotionList";
 	}
-	@RequestMapping(value="/board/promotionSelect", method= RequestMethod.GET)
+	@RequestMapping(value="/board/promotion/select", method= RequestMethod.GET)
 	public String promotionSelectList(Model model,@RequestParam(value="selectPage",required=false) int selectPage) {
 		List<PromotionVO> list = promotionService.selectAllPromotion();
 		int listCount = list.size(); //전체 게시물의 개수
@@ -85,11 +85,13 @@ public class PromotionController {
 		
 		selectPageVO.setStartPage(startList);
 		selectPageVO.setEndPage(endList);
+		
 		List<PromotionImageVO> selectList = promotionService.selectAllPromotionImage(selectPageVO);
 		
 		model.addAttribute("promotion",selectList);
 		model.addAttribute("page",page);
 		model.addAttribute("selectPage",selectPage);
+		
 		return "promotionList";
 	}
 	@RequestMapping(value="/board/promotion/category", method= {RequestMethod.GET})

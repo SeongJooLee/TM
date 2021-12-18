@@ -84,6 +84,15 @@
 		ORDER BY t.TRAVELNO DESC
 	</select>
 	
+	  <select id="selectPageAllTravelImage" resultType="travelImageVO">
+		SELECT * FROM
+		(SELECT ROW_NUMBER()over(ORDER BY travelNO DESC) count,travelNO, title,content,writeDate,id, name
+		FROM TRAVEL ) t, IMAGE i,CATEGORY c 
+		WHERE t.TRAVELNO = i.TRAVELNO(+)
+		AND t.TRAVELNO = c.TRAVELNO (+)
+		AND t.count BETWEEN #{startPage} AND #{endPage}
+	</select>
+	
 	<select id="selectCategory" resultType="travelImageVO" parameterType="java.lang.String">
 		SELECT * 
 		FROM TRAVEL t ,IMAGE i,CATEGORY c 

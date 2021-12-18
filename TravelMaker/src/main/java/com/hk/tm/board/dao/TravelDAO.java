@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.hk.tm.board.vo.SelectPageVO;
 import com.hk.tm.board.vo.TravelImageVO;
 import com.hk.tm.board.vo.TravelVO;
 
@@ -24,9 +25,9 @@ public class TravelDAO {
 		return list;
 	}
 	
-	public List<TravelImageVO> selectAllTravelImage() {
+	public List<TravelImageVO> selectAllTravelImage(SelectPageVO selectPageVO) {
 		
-		List<TravelImageVO> list = sql.selectList(ns+"selectAllTravelImage");
+		List<TravelImageVO> list = sql.selectList(ns+"selectPageAllTravelImage",selectPageVO);
 		return list;
 	}
 	
