@@ -118,11 +118,18 @@
 			</div>
 		</c:forEach>
 		</div>
+		
 		<div align="center">
 			<c:forEach var="i" begin="1" end="${page }">
-				<a href="tm/board/promotionSelect?selectPage=${i}"> ${i } </a>&nbsp;&nbsp;&nbsp;
+				<c:if test="${selectPage == i}">
+				<strong><a href="${contextPath }/board/promotionSelect?selectPage=${i}">	${i } </a>&nbsp;&nbsp;&nbsp;</strong>
+				</c:if>
+				<c:if test="${selectPage != i }">
+					<a href="${contextPath }/board/promotionSelect?selectPage=${i}">	${i } </a>&nbsp;&nbsp;&nbsp;
+				</c:if>
 				</c:forEach>
 		</div>
+		
 	</div>
 		<c:if test='${userSession.grade.equals("seller")}'>
 		<a href="${contextPath }/tm/board/promotion/add">글쓰기</a>

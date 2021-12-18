@@ -131,11 +131,18 @@
 				</div>
 			</c:forEach>
 		</div>
+		
 		<div align="center">
 			<c:forEach var="i" begin="1" end="${page }">
-				<a href="tm/board/travelSelect?selectPage=${i}"> ${i } </a>&nbsp;&nbsp;&nbsp;
+				<c:if test="${selectPage == i}">
+				<strong><a href="${contextPath }/board/travelSelect?selectPage=${i}">	${i } </a>&nbsp;&nbsp;&nbsp;</strong>
+				</c:if>
+				<c:if test="${selectPage != i }">
+					<a href="${contextPath }/board/travelSelect?selectPage=${i}">	${i } </a>&nbsp;&nbsp;&nbsp;
+				</c:if>
 				</c:forEach>
 		</div>
+		
 	</div>
 
 	<c:if test='${userSession.grade.equals("user")}'>

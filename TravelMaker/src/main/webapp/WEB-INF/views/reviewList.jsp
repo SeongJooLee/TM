@@ -37,11 +37,16 @@
 				</tr>
 			</c:forEach>
 	</table>
-	<div align="center">
-		<c:forEach var="i" begin="1" end="${page }">
-			<a href="tm/board/reviewSelect?selectPage=${i}"> ${i } </a>&nbsp;&nbsp;&nbsp;
+		<div align="center">
+			<c:forEach var="i" begin="1" end="${page }">
+				<c:if test="${selectPage == i}">
+				<strong><a href="${contextPath }/board/reviewSelect?selectPage=${i}">	${i } </a>&nbsp;&nbsp;&nbsp;</strong>
+				</c:if>
+				<c:if test="${selectPage != i }">
+					<a href="${contextPath }/board/reviewSelect?selectPage=${i}">	${i } </a>&nbsp;&nbsp;&nbsp;
+				</c:if>
 				</c:forEach>
-	</div>
+		</div>
 
 	<jsp:include page="/resources/include/footer.jsp" />
 </body>
