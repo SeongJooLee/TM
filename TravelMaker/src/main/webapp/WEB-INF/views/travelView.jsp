@@ -272,26 +272,32 @@ function next(){
 	
 	//댓글목록
 	<form action="${contextPath}/board/travel/view?travelNO=${travel.travelNO }" method="post">
-	<table border="3" align="center">
-		<input type="hidden" name="travelComment" value="commentList">		
-		
-			<div>
-				<tr align="center" bgcolor="cornflowerblue" border="1" >
-					<th rowspan="2">댓글</th>
-					<th>내용</th>
-					<th>작성일</th>
-					<th>작성자</th>
-				</tr>
-
-				<tr align="center" border="1">
-					<%-- <td><a href="travel/view?travelNO=${travel.travelNO }">${travel.travelNO}</a></td> --%>
-					<%-- <td>${travel.travelNO}</a></td> --%>
-					<td>${travel.content }</td>
-					<td>${travel.writeDate }</td>
-					<td>${travel.id }</td>					  
-				</tr>
-			</div>
+		<table border="3" align="center">
+			<input type="hidden" name="travelComment" value="commentList">				
+				<div>
+					<tr align="center" bgcolor="cornflowerblue" border="1" >
+						<th rowspan="2">댓글</th>
+						<th>내용</th>
+						<th>작성일</th>
+						<th>작성자</th>					
+					</tr>
 				
+
+					<tr align="center" border="1">
+						<%-- <td><a href="travel/view?travelNO=${travel.travelNO }">${travel.travelNO}</a></td> --%>
+						<%-- <td>${travel.travelNO}</a></td> --%>
+						<td>${travel.content }</td>
+						<td>${travel.writeDate }</td>
+						<td>${travel.id }</td>
+						<td><input type="button" value="댓글쓰기" onClick="fn_create()"></td>					  
+					</tr>
+				</div>
+		</table>	
+	</form>
+	
+	// 게시판 글 목록	
+	<form action="${contextPath}/board/travel/view?travelNO=${travel.travelNO }" method="post">
+		<table border="3" align="center">			
 			<div>
 				<tr align="center" border="1">
 					<th>이전글</th>						
@@ -310,8 +316,6 @@ function next(){
 	
 	// 댓글쓰기
 	<form action="${contextPath}/board/travel/view?travelNO=${travel.travelNO }" method="post">
-		<input type="hidden" name="travelComment" value="commentAdd">
-		<input type="submit" value="댓글쓰기">
 		
 			<table border="3" align="center">
 			<tr>
@@ -319,8 +323,15 @@ function next(){
 				<td colspan=2>
 					<textarea name="content" rows="10" cols="50" maxlength="500"></textarea>
 				</td>
-			</tr>			
-
+			</tr>
+			<tr align="center">
+				<td>
+					<input type="hidden" name="travelComment" value="commentAdd">
+					<input type="button" value="작성" onClick="fn_create()">
+					<input type="reset" value="취소">
+					<input type="button" value="목록 보기" onClick="backToList(this.form)">
+				</td>			
+			</tr>
 		</table>
 		
 	</form>
