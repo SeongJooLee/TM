@@ -30,20 +30,20 @@ public class SearchAllController {
 	public String popupEnterPost(Model model,@RequestParam("searchOption")String option,@RequestParam("searchResult")String result){	
 		switch(option) {
 		case "person" : //검색옵션 == 작성자
-			List<NoticeVO> list = searchAllService.searchIdList(result);
-			model.addAttribute("list",list);
+			List<NoticeVO> listID = searchAllService.searchIdList(result);
+			model.addAttribute("list",listID);
 			return "popupResult";
 		case "title" : //검색옵션 == 제목
-			model.addAttribute("option",option);
-			model.addAttribute("result",result);
+			List<NoticeVO> listTitle = searchAllService.searchTitleList(result);
+			model.addAttribute("list",listTitle);
 			return "popupResult";
 		case "content": //검색옵션 == 내용
-			model.addAttribute("option",option);
-			model.addAttribute("result",result);
+			List<NoticeVO> listContent = searchAllService.searchContentList(result);
+			model.addAttribute("list",listContent);
 			return "popupResult";
 		case "titleContent": //검색옵션 == 제목+내용
-			model.addAttribute("option",option);
-			model.addAttribute("result",result);
+			List<NoticeVO> listTitleContent = searchAllService.searchTitleContentList(result);
+			model.addAttribute("list",listTitleContent);
 			return "popupResult";
 		
 		}

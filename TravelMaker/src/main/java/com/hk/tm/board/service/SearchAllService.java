@@ -22,4 +22,19 @@ public class SearchAllService {
 		// TODO Auto-generated method stub
 		return searchAllDAO.searchIdList(result);
 	}
+
+	public List<NoticeVO> searchTitleList(String result) {
+		// TODO Auto-generated method stub
+		return searchAllDAO.searchTitleList(result);
+	}
+
+	public List<NoticeVO> searchContentList(String result) {
+		// TODO Auto-generated method stub
+		return searchAllDAO.searchContentList(result);
+	}
+
+	public List<NoticeVO> searchTitleContentList(String result) {
+		// TODO Auto-generated method stub
+		return searchAllDAO.searchTitleContentList(result);
+	}
 }

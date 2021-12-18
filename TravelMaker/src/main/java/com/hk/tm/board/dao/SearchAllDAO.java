@@ -24,4 +24,22 @@ public class SearchAllDAO {
 		List<NoticeVO>list = sqlSession.selectList("mapper.boardNotice.selectUnionSearchID",result);
 		return list;
 	}
+
+	public List<NoticeVO> searchTitleList(String result) {
+		// TODO Auto-generated method stub
+		List<NoticeVO>list = sqlSession.selectList("mapper.boardNotice.selectUnionSearchTitle",result);
+		return list;
+	}
+
+	public List<NoticeVO> searchContentList(String result) {
+		// TODO Auto-generated method stub
+		List<NoticeVO>list = sqlSession.selectList("mapper.boardNotice.selectUnionSearchContent",result);
+		return list;
+	}
+
+	public List<NoticeVO> searchTitleContentList(String result) {
+		// TODO Auto-generated method stub
+		List<NoticeVO>list = sqlSession.selectList("mapper.boardNotice.selectUnionSearchTitleContent",result);
+		return list;
+	}
 }

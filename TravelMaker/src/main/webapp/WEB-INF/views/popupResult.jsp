@@ -12,6 +12,11 @@ function moveClose() {
 	  opener.location.href="/tm/board/notice/view?noticeNO=1";
 	  self.close();
 	}
+
+function listAll() {
+	  location.href="/tm/board/popupEnter";
+	  
+	}
 </script>
 </head>
 <body>
@@ -26,8 +31,10 @@ function moveClose() {
 		</select>
 	 	<input type='text' name='searchResult' placeholder='검색어 입력해'>
    		<input type='submit' value='검색하기'>
+   		
+   		<button onclick='self.close();'>검색창 닫기</button>
 	</form>
-	
+	<button onclick='listAll()'>모두보기</button>
 	<br><br><br>
 	<table border='1'>
     	<tr>

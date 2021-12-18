@@ -114,4 +114,67 @@
 		SELECT name,id,title,content,travelNO FROM TRAVEL t)))) minsu WHERE adminid=#{result})
 	</select>
 	
+	<select id="selectUnionSearchTitle" resultMap="noticeResult" parameterType='java.lang.String'>
+
+		SELECT ROW_NUMBER()over(ORDER BY name) AS count,name,adminid,title,content,noticeNO 
+		FROM (SELECT * 
+		FROM (SELECT ROW_NUMBER()OVER(ORDER BY name) as count,name,adminid,title,content,noticeNO 
+		FROM (SELECT name,adminid,title,content,noticeNO 
+		FROM (SELECT name,adminid,title,content,noticeNO 
+		FROM (SELECT name,adminid,title,content,noticeNO 
+		FROM NOTICE n
+		UNION ALL
+		SELECT name,sellerid,title,content,promotionNO 
+		FROM PROMOTION p) 
+		UNION ALL
+		SELECT name,id,title,content,reviewNO 
+		FROM (SELECT name,id,title,content,reviewNO 
+		FROM REVIEW r 
+		UNION ALL
+		SELECT name,id,title,content,travelNO FROM TRAVEL t)))) minsu WHERE title=#{result})
+	</select>
+	
+	<select id="selectUnionSearchContent" resultMap="noticeResult" parameterType='java.lang.String'>
+
+		SELECT ROW_NUMBER()over(ORDER BY name) AS count,name,adminid,title,content,noticeNO 
+		FROM (SELECT * 
+		FROM (SELECT ROW_NUMBER()OVER(ORDER BY name) as count,name,adminid,title,content,noticeNO 
+		FROM (SELECT name,adminid,title,content,noticeNO 
+		FROM (SELECT name,adminid,title,content,noticeNO 
+		FROM (SELECT name,adminid,title,content,noticeNO 
+		FROM NOTICE n
+		UNION ALL
+		SELECT name,sellerid,title,content,promotionNO 
+		FROM PROMOTION p) 
+		UNION ALL
+		SELECT name,id,title,content,reviewNO 
+		FROM (SELECT name,id,title,content,reviewNO 
+		FROM REVIEW r 
+		UNION ALL
+		SELECT name,id,title,content,travelNO FROM TRAVEL t)))) minsu WHERE content=#{result})
+	</select>
+	
+	
+	<select id="selectUnionSearchTitleContent" resultMap="noticeResult" parameterType='java.lang.String'>
+
+		SELECT ROW_NUMBER()over(ORDER BY name) AS count,name,adminid,title,content,noticeNO 
+		FROM (SELECT * 
+		FROM (SELECT ROW_NUMBER()OVER(ORDER BY name) as count,name,adminid,title,content,noticeNO 
+		FROM (SELECT name,adminid,title,content,noticeNO 
+		FROM (SELECT name,adminid,title,content,noticeNO 
+		FROM (SELECT name,adminid,title,content,noticeNO 
+		FROM NOTICE n
+		UNION ALL
+		SELECT name,sellerid,title,content,promotionNO 
+		FROM PROMOTION p) 
+		UNION ALL
+		SELECT name,id,title,content,reviewNO 
+		FROM (SELECT name,id,title,content,reviewNO 
+		FROM REVIEW r 
+		UNION ALL
+		SELECT name,id,title,content,travelNO 
+		FROM TRAVEL t)))) minsu 
+		WHERE title LIKE '%'||#{result}||'%' 
+		OR content LIKE '%'||#{result}||'%') 
+	</select>
 </mapper>
