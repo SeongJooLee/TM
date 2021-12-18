@@ -31,43 +31,16 @@ public class CommentController {
 	@RequestMapping(value="" , method = {RequestMethod.GET, RequestMethod.POST}) 
 	public String commentlList(Model model) {
 	
-	List<CommentVO> list = commentService.selectAllcomments();
-	
-	int listCount = list.size(); //전체 게시물의 개수
-	int listSize = 6; //한 페이지에 보일 갯수
-	int page = (listCount+5)/listSize; //현재 목록의 페이지 번호
-	
-	int endList = 1*listSize;
-	int startList = endList-5;
-	
-	SelectPageVO selectPageVO = new SelectPageVO();
-	
-	selectPageVO.setStartPage(startList);
-	selectPageVO.setEndPage(endList);
+	List<CommentVO> list = commentService.selectAllComments();
 	
 	return "commentList"; //commentList.jsp 호출
 }
 	
 	@RequestMapping(value="/select" , method = RequestMethod.GET) 
-	public String commentSelectList(Model model,@RequestParam(value="selectPage",required=false) int selectPage) {
-		List<CommentVO> list = commentService.selectAllcomments();
-		
-		int listCount = list.size(); //전체 게시물의 개수
-		int listSize = 6; //한 페이지에 보일 갯수
-		int page = (listCount+5)/listSize; //현재 목록의 페이지 번호
-		
-		int endList = 0;
-		int startList = 0;
+	public String commentSelectList(Model model) {
+		List<CommentVO> list = commentService.selectAllComments();
 
-		endList = selectPage*listSize;
-		startList = endList-5;
-		
-		SelectPageVO selectPageVO = new SelectPageVO();
-		
-		selectPageVO.setStartPage(startList);
-		selectPageVO.setEndPage(endList);
-
-		return "travelList"; //travelList.jsp 호출
+		return "commentList"; //travelList.jsp 호출
 	}
 	
 	@RequestMapping(value="/view" , method=RequestMethod.GET)
@@ -88,7 +61,7 @@ public class CommentController {
 			// TODO: handle exception
 			System.out.println("오류발생");
 		}
-		return "travelView"; // travelView.jsp 호출
+		return "commentView"; // travelView.jsp 호출
 		
 	}
 	
@@ -101,13 +74,13 @@ public class CommentController {
 	@RequestMapping(value="/addDone" ,  method=RequestMethod.POST)
 	public void commentAddDone(@ModelAttribute CommentVO commentVO, MultipartHttpServletRequest request, HttpServletResponse response,Model model) throws Exception, ServletException {
 		
-		response.sendRedirect("/tm/board/travel");  //travelList.jsp로 이동	
+		response.sendRedirect("/tm/board/comment");  //travelList.jsp로 이동	
 	}		
 
 	@RequestMapping(value="/update" ,  method=RequestMethod.POST)
 	public String commentUpdate(@ModelAttribute CommentVO commentVO, Model model, MultipartHttpServletRequest request, HttpServletResponse response) throws Exception, ServletException {		
 		
-		return "travelView"; // tavelView.jsp로 이동
+		return "commentView"; // tavelView.jsp로 이동
 		
 	}
 	
@@ -116,7 +89,7 @@ public class CommentController {
 
 		CommentVO commentVO = commentService.deleteComment(commentNO);		
 
-	response.sendRedirect("/tm/board/travel"); //travelList.jsp로 이동
+	response.sendRedirect("/tm/board/comment"); //travelList.jsp로 이동
 	}
 }
 

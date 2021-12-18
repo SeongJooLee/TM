@@ -9,8 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.hk.tm.board.dao.CommentDAO;
 import com.hk.tm.board.vo.CommentVO;
-import com.hk.tm.board.vo.TravelVO;
-
 
 @Service
 public class CommentService {
@@ -18,7 +16,7 @@ public class CommentService {
 	@Autowired
 	CommentDAO commentDAO;	
 
-	public List<CommentVO> selectAllcomments() {
+	public List<CommentVO> selectAllComments() {
 		// TODO Auto-generated method stub
 		return commentDAO.selectAllComments();
 	}

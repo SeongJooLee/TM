@@ -140,13 +140,25 @@ function fn_create_comment(){
     }
 }
 
+function fn_modify_update_comment(){
+    if (!confirm("수정 하시겠습니까?")) {
+        alert("취소(아니오)를 누르셨습니다.");
+        return;
+    } else {
+        alert("확인(예)을 누르셨습니다.");
+	document.getElementById('frmTravel').method= "POST";
+	document.getElementById('frmTravel').action = "${contextPath}/board/travel/update";
+   document.getElementById('frmTravel').submit();
+}
+}
+
 function fn_delete_comment(){
     if (!confirm("삭제 하시겠습니까?")) {
         alert("취소(아니오)를 누르셨습니다.");
         return;
     } else {
         alert("확인(예)을 누르셨습니다.");
-        location.href="";
+        location.href="${contextPath}/board/travel/delete?travelNO=${travel.travelNO}";
     }
 	
 }
@@ -284,7 +296,7 @@ function fn_delete_comment(){
 		<table border="3" align="center">
 			<input type="hidden" name="travelComment" value="commentList">				
 				<div>
-					<tr align="center" bgcolor="cornflowerblue" border="1" >
+					<tr height="10" align="center" bgcolor="cornflowerblue" border="1" >
 						<th rowspan="2">댓글</th>
 						<th>내용</th>
 						<th>작성일</th>
@@ -292,7 +304,7 @@ function fn_delete_comment(){
 					</tr>
 				
 
-					<tr align="center" border="1">
+					<tr height="10" align="center" border="1">
 						<%-- <td><a href="travel/view?travelNO=${travel.travelNO }">${travel.travelNO}</a></td> --%>
 						<%-- <td>${travel.travelNO}</a></td> --%>
 						<td>${travel.content }</td>
@@ -308,7 +320,7 @@ function fn_delete_comment(){
 	<form action="${contextPath}/board/travel/view?travelNO=${travel.travelNO }" method="post">
 		<table border="3" align="center">			
 			<div>
-				<tr align="center" border="1">
+				<tr height="10" align="center" border="1">
 					<th>이전글</th>						
 					<%-- <td><a href="travel/view?content=${travel.travelNO}">${travel.content }</a></td> --%>	
 				</tr>
@@ -328,21 +340,23 @@ function fn_delete_comment(){
 		
 			<table border="3" align="center">
 			<tr>
-				<td align="center" valign="top">댓글내용</td>
+				<td  height="10" align="center" valign="top">댓글내용</td>
 				<td colspan=2>
 					<textarea name="content" rows="10" cols="50" maxlength="500"></textarea>
 				</td>
 			</tr>
 			
-			<tr align="center">
+			<tr height="10" align="center">
 				<td colspan="2" align="center">
 					<div id="tr_btn_create_comment" style="display: none">
 						<input type="button" value="댓글 작성하기" onClick="fn_create_comment()" /> 
-						<input type="reset" value="취소하기" onClick="" />
+						<input type="reset" value="다시 작성하기" />
 						<input type="button" value="리스트로 돌아가기" onClick="backToList(this.form)">
 					</div>
 				</td>			
 			</tr>
+			
+			
 			
 		</table>
 		

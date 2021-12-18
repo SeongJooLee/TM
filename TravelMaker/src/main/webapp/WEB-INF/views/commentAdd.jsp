@@ -1,22 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+     pageEncoding="UTF-8"
+    isELIgnored="false" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+  request.setCharacterEncoding("UTF-8");
+%> 
+<c:set var="contextPath"  value="${pageContext.request.contextPath}"  /> 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>댓글 작성 창</title>
-<script>
-
+<title>Insert title here</title>
+<!-- Favicon-->
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<!-- Core theme CSS (includes Bootstrap)-->
+<link href="<c:url value="/resources/css/styles.css" />"
+	rel="stylesheet" />
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
 
 function backToList(obj){
 	obj.method ="POST";
-	obj.action = "${contextPath}/board/travelView";
+	obj.action = "${contextPath}/board/comment";
 	obj.submit();
 }
 
-
 function fn_create(){
-
+	var title = document.getElementById("title").value;
+	if(!title){
+		alert('제목을 적어주세요.');
+		return false;
+	}
 	var content = document.getElementById("content").value;
 	if(!content){
 		alert('내용을 적어주세요.');
@@ -38,35 +53,29 @@ function fn_create(){
 	<hr>
 	<h1 style="text-align: center">댓글 쓰기</h1>
 	<form id="frm" action="addDone" method="post" enctype="multipart/form-data">
-		<input type="hidden" name="id" value="user">
-		<input type="hidden" name="name" value="테마여행">
+		<input type="hidden" name="id" value="${userSession.id}">
+		<input type="hidden" name="name" value="comment">
 		<table border="1" align="center">
+			<tr>
+				<td>
+					&nbsp;&nbsp;글 제목 : <input type="text" name="title" id="title">
+				</td>
+			</tr>
 
 			<tr>
 				<td align="center" valign="top">글내용</td>
 				<td colspan=2>
-					<textarea name="content" rows="5" cols="30" maxlength="100"></textarea>
+					<textarea name="content" rows="10" cols="65" maxlength="4000"></textarea>
 				</td>
 			</tr>
-			
-				<tr id="tr_btn">
-					<td colspan="2" align="center">
-						<input type="button" value="수정하기" onClick="fn_enable(this.form)" /> 
-						<input type="button" value="삭제하기" onClick="fn_delete(this.form)" /> 
-						<input type="button" value="댓글쓰기" onClick="fn_create(this.form)" /> 
-						<input type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />
-					</td>
-				</tr>
-				
 		</table>
 		<br><br>
 		<div align="center">
 			<input type="submit" value="작성하기"  onClick="fn_create()">
+			<input type="reset" value="다시 작성">
+			<input type="button" value="목록 보기" onClick="backToList(this.form)">
 		</div>
 	</form>
-	
-	  <a href="${contextPath }/board/travel/commentAdd">글쓰기</a> 
-	  
  <hr>
      <jsp:include page="/resources/include/footer.jsp" />
 </body>
