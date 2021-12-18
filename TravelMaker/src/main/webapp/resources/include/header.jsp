@@ -76,7 +76,13 @@
    		 </ul>
     <form class="form-inline my-2 my-lg-0">
       
-     			    <button class="btn btn-outline-success my-2 my-sm-0" type=button onclick = "location.href = 'board/popupEnter' "> 통합검색</button>
+     			    <button class="btn btn-outline-success my-2 my-sm-0" type=button onclick = "showPopup() "> 통합검색</button>
+   						<!--location.href = '/tm/board/popupEnter'  -->
     </form>
+    <script>
+	function showPopup(){
+		window.open("/tm/board/popupEnter", "a", "width=700, height=450, left=100, top=50");
+		}
+    </script>
   </div>
 </nav>
