@@ -326,8 +326,9 @@ public class UserController {
 		
 		UserVO user = (UserVO)session.getAttribute("userSession");
 		reviewVO.setId(user.getId());
-		System.out.println("이거 지우기 "+ reviewVO);
+		
 		int result = 0;
+		System.out.println("12월18일 reviewVO= "+reviewVO);
 		result = userService.addReview(reviewVO);
 		model.addAttribute("result",result);
 		return "userReviewAddDone";
