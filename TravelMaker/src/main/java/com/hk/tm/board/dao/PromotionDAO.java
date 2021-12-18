@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.hk.tm.board.vo.PromotionImageVO;
 import com.hk.tm.board.vo.PromotionVO;
+import com.hk.tm.board.vo.SelectPageVO;
 
 @Repository
 public class PromotionDAO {
@@ -22,8 +23,8 @@ public class PromotionDAO {
 		return list;
 	}
 	
-	public List<PromotionImageVO> selectAllPromotionImage(PromotionImageVO promotionImageVO) {
-		List<PromotionImageVO> list = sql.selectList(ns+"selectAllPromotionImage");
+	public List<PromotionImageVO> selectAllPromotionImage(SelectPageVO selectPageVO) {
+		List<PromotionImageVO> list = sql.selectList(ns+"selectPagePromotionImage",selectPageVO);
 		return list;
 	}
 

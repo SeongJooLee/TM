@@ -33,6 +33,7 @@ import com.hk.tm.board.vo.CategoryVO;
 import com.hk.tm.board.vo.ImageVO;
 import com.hk.tm.board.vo.PromotionImageVO;
 import com.hk.tm.board.vo.PromotionVO;
+import com.hk.tm.board.vo.SelectPageVO;
 import com.hk.tm.member.vo.SellerVO;
 
 import net.coobird.thumbnailator.Thumbnails;
@@ -55,14 +56,40 @@ public class PromotionController {
 		int endList = 1*listSize;
 		int startList = endList-5;
 		
-		PromotionImageVO promotionImageVO = new PromotionImageVO();
+		SelectPageVO selectPageVO = new SelectPageVO();
 		
-		promotionImageVO.setX(startList);
-		promotionImageVO.setY(endList);
+		selectPageVO.setStartPage(startList);
+		selectPageVO.setEndPage(endList);
 		
-		List<PromotionImageVO> selectList = promotionService.selectAllPromotionImage(promotionImageVO);
+		List<PromotionImageVO> selectList = promotionService.selectAllPromotionImage(selectPageVO);
 		
 		model.addAttribute("promotion",selectList);
+		model.addAttribute("page",page);
+		
+		return "promotionList";
+	}
+	@RequestMapping(value="/board/promotionSelect", method= RequestMethod.GET)
+	public String promotionSelectList(Model model,@RequestParam(value="selectPage",required=false) int selectPage) {
+		List<PromotionVO> list = promotionService.selectAllPromotion();
+		int listCount = list.size(); //전체 게시물의 개수
+		int listSize = 6; //한 페이지에 보일 갯수
+		int page = (listCount+6)/listSize; //현재 목록의 페이지 번호
+
+		int endList = 0;
+		int startList = 0;
+
+		endList = selectPage*listSize;
+		startList = endList-5;
+		
+		SelectPageVO selectPageVO = new SelectPageVO();
+		
+		selectPageVO.setStartPage(startList);
+		selectPageVO.setEndPage(endList);
+		List<PromotionImageVO> selectList = promotionService.selectAllPromotionImage(selectPageVO);
+		
+		model.addAttribute("promotion",selectList);
+		model.addAttribute("page",page);
+		model.addAttribute("selectPage",selectPage);
 		return "promotionList";
 	}
 	@RequestMapping(value="/board/promotion/category", method= {RequestMethod.GET})

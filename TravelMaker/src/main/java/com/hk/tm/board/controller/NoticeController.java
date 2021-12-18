@@ -58,7 +58,9 @@ public class NoticeController {
 		
 		selectPageVO.setStartPage(startList);
 		selectPageVO.setEndPage(endList);
+		
 		List<NoticeVO> selectList = noticeService.selectPageNotice(selectPageVO);
+		
 		model.addAttribute("notice",selectList);
 		model.addAttribute("page",page);
 		

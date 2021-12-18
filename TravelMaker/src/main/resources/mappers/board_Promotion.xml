@@ -37,6 +37,15 @@
 		AND p.PROMOTIONNO = c.PROMOTIONNO (+)
 		ORDER BY p.PROMOTIONNO DESC
 	</select>
+	
+   <select id="selectPagePromotionImage" resultType="promotionImageVO">
+		SELECT * FROM
+		 (SELECT ROW_NUMBER()over(ORDER BY promotionNO DESC) count,promotionNO, title,content,sellerID,name, writeDate
+		  FROM promotion )  p,IMAGE i,CATEGORY c 
+		  WHERE p.PROMOTIONNO = i.PROMOTIONNO(+)
+		  AND p.PROMOTIONNO = c.PROMOTIONNO (+)
+		  AND p.count BETWEEN #{startPage} AND #{endPage}
+	</select>
    
    <select id="selectAllPromotion" resultMap="promotionResult">
 		SELECT PROMOTIONNO, TITLE, CONTENT, WRITEDATE, PRICE, SELLERID, NAME

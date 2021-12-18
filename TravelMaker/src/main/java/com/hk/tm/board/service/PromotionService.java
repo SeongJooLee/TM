@@ -16,6 +16,7 @@ import com.hk.tm.board.vo.CategoryVO;
 import com.hk.tm.board.vo.ImageVO;
 import com.hk.tm.board.vo.PromotionImageVO;
 import com.hk.tm.board.vo.PromotionVO;
+import com.hk.tm.board.vo.SelectPageVO;
 
 @Service
 public class PromotionService {
@@ -39,8 +40,8 @@ public class PromotionService {
 		return promotionDAO.selectAllPromotion();
 	}
 	
-	public List<PromotionImageVO> selectAllPromotionImage(PromotionImageVO promotionImageVO) {
-		return promotionDAO.selectAllPromotionImage(promotionImageVO);
+	public List<PromotionImageVO> selectAllPromotionImage(SelectPageVO selectPageVO) {
+		return promotionDAO.selectAllPromotionImage(selectPageVO);
 	}
 	
 	public Map<String, Object> selectOnePromotion(int promotionNO) {

@@ -122,10 +122,10 @@
 		<div align="center">
 			<c:forEach var="i" begin="1" end="${page }">
 				<c:if test="${selectPage == i}">
-				<strong><a href="${contextPath }/board/promotionSelect?selectPage=${i}">	${i } </a>&nbsp;&nbsp;&nbsp;</strong>
+				<strong><a href="${contextPath }/tm/board/promotionSelect?selectPage=${i}">	${i } </a>&nbsp;&nbsp;&nbsp;</strong>
 				</c:if>
 				<c:if test="${selectPage != i }">
-					<a href="${contextPath }/board/promotionSelect?selectPage=${i}">	${i } </a>&nbsp;&nbsp;&nbsp;
+					<a href="${contextPath }/tm/board/promotionSelect?selectPage=${i}">	${i } </a>&nbsp;&nbsp;&nbsp;
 				</c:if>
 				</c:forEach>
 		</div>
