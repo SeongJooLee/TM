@@ -7,6 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+       <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="<c:url value="/resources/css/styles.css" />" rel="stylesheet" />
 
 <script>
 	function ss(){
@@ -62,6 +66,7 @@ width:110px;
 </style>
 </head>
 <body>
+<jsp:include page="/resources/include/header.jsp" />
 	<%-- <c:if test = '${user==null}'>
 		<script>
 			ss();
@@ -118,5 +123,6 @@ width:110px;
 		
 		</div>
 	</div>
+<jsp:include page="/resources/include/footer.jsp" />
 </body>
 </html>

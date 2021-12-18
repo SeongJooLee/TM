@@ -7,6 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="<c:url value="/resources/css/styles.css" />" rel="stylesheet" />
 
 <script>
 	
@@ -58,11 +62,9 @@ width:110px;
 </style>
 </head>
 <body>
-	
+<jsp:include page="/resources/include/header.jsp" />
 	<h1>일반유저 페이지</h1>
 	<h2>${userSession.id}님 정보</h2>  
-	<h4><a href='/tm'>홈으로 이동</a></h4>
-	<h4><a href='/tm/member/logout'>로그아웃</a></h4>
 	<div class="wrap">
 		<div class="grid1">
 			<br>
@@ -90,13 +92,12 @@ width:110px;
 						<input type="hidden" name="testKey" value="four">					
 						<input class='btn' type='submit'  value='추천한 글(보류중)'>
 					</form>	
-				</li><br>
-				<li><a href="#">로스트아크 인벤이동</a></li><br>
+				</li>
 			</ul>
 		</div>
 		<div class="grid2">
-		<p>아이뒤 : ${userSession.id}</p> 
-		<p>비빔면호 : ${userSession.pw}</p> 
+		<p>아이디 : ${userSession.id}</p> 
+		<p>비빌번호 : ${userSession.pw}</p> 
 		<p>이름 : ${userSession.name}</p> 
 		<p>생년월일 : ${userSession.birth}</p> 
 		<p>연락처 : ${userSession.phone}</p> 
@@ -108,5 +109,6 @@ width:110px;
 		
 		</div>
 	</div>
+<jsp:include page="/resources/include/footer.jsp" />
 </body>
 </html>

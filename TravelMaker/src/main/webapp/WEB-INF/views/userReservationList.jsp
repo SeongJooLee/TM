@@ -7,15 +7,10 @@
 <head>
 <title>Insert title here</title>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+       <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="<c:url value="/resources/css/styles.css" />" rel="stylesheet" />
 <script>
 	function ss() {
 		alert('계정정보가 없어서 로그인 못하지롱~~');
@@ -56,6 +51,7 @@
 </style>
 </head>
 <body>
+<jsp:include page="/resources/include/header.jsp" />
 	<%-- <c:if test = '${user==null}'>
 		<script>
 			ss();
@@ -89,21 +85,18 @@
 					</form>
 				</li>
 				<br>
-				<li>
+				<li> 
 					<form action='mypage' method='post'>
 						<input type="hidden" name="testKey" value="four"> <input
 							class='btn' type='submit' value='추천한 글(보류중)'>
 					</form>
 				</li>
-				<br>
-				<li><a href="#">로스트아크 인벤이동</a></li>
-				<br>
 			</ul>
 		</div>
 		<div class="grid2">
 			<div class="container">
 				<h2>예약확인</h2>
-				<h4>예약번호를 누르시면 이용후기를 작성할수있어</h4>
+				<h4>예약번호를 누르시면 이용후기 작성이 가능합니다.</h4>
 				<table class="table table-hover">
 					<thead>
 						<tr class="table-primary">
@@ -128,5 +121,7 @@
 				</table>
 			</div>
 		</div>
+	</div>
+<jsp:include page="/resources/include/footer.jsp" />
 </body>
 </html>

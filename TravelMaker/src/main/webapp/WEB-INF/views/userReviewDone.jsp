@@ -7,6 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+       <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="<c:url value="/resources/css/styles.css" />" rel="stylesheet" />
 <script>
 	function start(){
 		alert('해당 게시물로 이동합니다');
@@ -45,7 +49,7 @@ width:110px;
 </style>
 </head>
 <body>
-	
+<jsp:include page="/resources/include/header.jsp" />
 	<h1>일반유저 페이지</h1>
 	<h2>${userSession.id}님 정보</h2> 
 	
@@ -76,8 +80,7 @@ width:110px;
 						<input type="hidden" name="testKey" value="four">					
 						<input class='btn' type='submit'  value='추천한 글(보류중)'>
 					</form>	
-				</li><br>
-				<li><a href="#">로스트아크 인벤이동</a></li><br>
+				</li>		
 			</ul>
 		</div>
 		<div class="grid2">
@@ -100,5 +103,6 @@ width:110px;
 		
 		</div>
 	</div>
+<jsp:include page="/resources/include/footer.jsp" />
 </body>
 </html>
