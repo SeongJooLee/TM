@@ -122,7 +122,7 @@ function fn_enable_comment(obj){
 	   document.getElementById("tr_btn_modify_comment").style.display='block';
 	   document.getElementById("tr_btn_comment").style.display='none';
 	}
-
+// 댓글 작성
 function fn_create_comment(){
 
 	var content = document.getElementById("").value;
@@ -138,7 +138,7 @@ function fn_create_comment(){
         document.getElementById("").submit();
     }
 }
-
+// 댓글 수정
 function fn_modify_update_comment(){
     if (!confirm("수정 하시겠습니까?")) {
         alert("취소(아니오)를 누르셨습니다.");
@@ -150,7 +150,7 @@ function fn_modify_update_comment(){
     document.getElementById('frmComment').submit();
 	}
 }
-
+// 댓글 삭제
 function fn_delete_comment(){
     if (!confirm("삭제 하시겠습니까?")) {
         alert("취소(아니오)를 누르셨습니다.");
@@ -246,9 +246,8 @@ function fn_delete_comment(){
 				<tr>
 					<td colspan="2" align="center">
 						<div id="tr_btn_modify" style="display: none">
-							<input type="button" value="수정 반영하기"
-								onClick="fn_modify_update(frmTravel)" /> <input type="button"
-								value="취소하기" onClick="backToList(frmTravel)" />
+							<input type="button" value="수정 반영하기" onClick="fn_modify_update(frmTravel)" /> 
+							<input type="button" value="취소하기" onClick="backToList(frmTravel)" />
 						</div>
 					</td>
 				</tr>
@@ -372,14 +371,36 @@ function fn_delete_comment(){
 			</tr>
 			
 			<tr  id="tr_btn_comment">
-   				<td colspan="2" align="center">
-       				<input type=button value="수정하기" onClick="fn_enable_comment(this.form)">
-       				<input type=button value="삭제하기" onClick="fn_remove_comment('delete' , ${comment.id})">
-      				<input type=button value="이전으로 돌아가기"  onClick="backToList(frmTravel)">        			
+				<c:if test='${userSession.grade.equals("user")}'>
+				<c:forEach var='list' items='${list}'>
+				<c:if test='${list.travelNO == travel.travelNO}'>
+   					<td colspan="2" align="center">
+       					<input type=button value="수정하기" onClick="fn_enable_comment(this.form)">
+       					<input type=button value="삭제하기" onClick="fn_remove_comment(this.form)">
+      					<input type=button value="이전으로 돌아가기"  onClick="backToList(frmTravel)">  
+      				<c:set var="check" value="1" />	
+      			</c:if>	
+      			</c:forEach>	
+      			<c:if test='${check==0}'>
+					<input type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />
+				</c:if>
+							
+				</c:if>
+						
+				<c:if test='${userSession.grade.equals("admin")}'>			
+					<input type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />
+				</c:if>
+						
+				<c:if test='${userSession.grade.equals("seller")}'>			
+					<input type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />
+				</c:if>
+						
+				<c:if test='${userSession.grade == null}'>			
+					<input type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />
+				</c:if>      			
    				</td>
-  			</tr>
-			
-			
+  			</tr>			
+
 			
 		</table>		
 	</form>
