@@ -213,7 +213,7 @@ function next(){
 								<c:if test='${list.travelNO == travel.travelNO}'>
 									<input type="button" value="수정하기" onClick="fn_enable(this.form)" /> 
 									<input type="button" value="삭제하기" onClick="fn_delete(this.form)" /> 
-									<input type="button" value="댓글쓰기" onClick="fn_create(this.form)" /> 
+									<!-- <input type="button" value="댓글쓰기" onClick="fn_create(this.form)" />  -->
 									<input type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />
 									<c:set var="check" value="1" />	
 								</c:if>
@@ -268,6 +268,11 @@ function next(){
 		</form>
 	</div>
 	
+	// 댓글쓰기
+	<form action="${contextPath}/board/travel/view?travelNO=${travel.travelNO }" method="post">
+		<input type="hidden" name="" value="comment">
+		<input class="btn" type="submit" value="댓글쓰기">
+	</form>
   
   
     <hr>

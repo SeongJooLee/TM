@@ -124,8 +124,8 @@
 						</c:if>
 
 						<div class="card-footer">
-							<a class="btn btn-primary btn-sm">${travel.categoryName }</a>&nbsp;&nbsp;&nbsp;<a
-								href="${contextPath}/board/travel/view?travelNO=${travel.travelNO }">${travel.title }</a>
+							<a class="btn btn-primary btn-sm">${travel.categoryName }</a>&nbsp;&nbsp;&nbsp;
+							<a href="${contextPath}/board/travel/view?travelNO=${travel.travelNO }">${travel.title }</a>
 						</div>
 					</div>
 				</div>
