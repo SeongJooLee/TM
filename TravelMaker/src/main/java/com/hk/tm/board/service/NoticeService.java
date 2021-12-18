@@ -73,7 +73,6 @@ public class NoticeService {
 	}
 
 	public List<NoticeVO> selectPageNotice(SelectPageVO selectPageVO) {
-		// TODO Auto-generated method stub
 		return noticeDAO.selectPageNotice(selectPageVO);
 	}
 }

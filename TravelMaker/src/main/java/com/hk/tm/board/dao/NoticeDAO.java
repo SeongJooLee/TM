@@ -51,7 +51,6 @@ public class NoticeDAO {
 	}
 
 	public List<NoticeVO> selectPageNotice(SelectPageVO selectPageVO) {
-		// TODO Auto-generated method stub
 		List<NoticeVO>list = sql.selectList(ns+"selectPageNotice", selectPageVO);
 		return list;
 	}
