@@ -51,7 +51,7 @@ public class PromotionController {
 		List<PromotionVO> list = promotionService.selectAllPromotion();
 		int listCount = list.size(); //전체 게시물의 개수
 		int listSize = 6; //한 페이지에 보일 갯수
-		int page = (listCount+6)/listSize; //현재 목록의 페이지 번호
+		int page = (listCount+5)/listSize; //현재 목록의 페이지 번호
 		
 		int endList = 1*listSize;
 		int startList = endList-5;
@@ -73,7 +73,7 @@ public class PromotionController {
 		List<PromotionVO> list = promotionService.selectAllPromotion();
 		int listCount = list.size(); //전체 게시물의 개수
 		int listSize = 6; //한 페이지에 보일 갯수
-		int page = (listCount+6)/listSize; //현재 목록의 페이지 번호
+		int page = (listCount+5)/listSize; //현재 목록의 페이지 번호
 
 		int endList = 0;
 		int startList = 0;
