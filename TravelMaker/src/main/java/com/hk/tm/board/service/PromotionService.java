@@ -39,8 +39,8 @@ public class PromotionService {
 		return promotionDAO.selectAllPromotion();
 	}
 	
-	public List<PromotionImageVO> selectAllPromotionImage() {
-		return promotionDAO.selectAllPromotionImage();
+	public List<PromotionImageVO> selectAllPromotionImage(PromotionImageVO promotionImageVO) {
+		return promotionDAO.selectAllPromotionImage(promotionImageVO);
 	}
 	
 	public Map<String, Object> selectOnePromotion(int promotionNO) {

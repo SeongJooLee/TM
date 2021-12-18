@@ -108,7 +108,7 @@
 		</table>
 		<div align="center">
 			<c:forEach var="i" begin="1" end="${page }">
-				<a href="tm/board/noticeSelect?selectPage=${i}">	${i } </a>&nbsp;&nbsp;&nbsp;
+				<a href="${contextPath }/board/noticeSelect?selectPage=${i}">	${i } </a>&nbsp;&nbsp;&nbsp;
 				</c:forEach>
 		</div>
 

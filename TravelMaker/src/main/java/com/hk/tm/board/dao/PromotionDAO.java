@@ -22,7 +22,7 @@ public class PromotionDAO {
 		return list;
 	}
 	
-	public List<PromotionImageVO> selectAllPromotionImage() {
+	public List<PromotionImageVO> selectAllPromotionImage(PromotionImageVO promotionImageVO) {
 		List<PromotionImageVO> list = sql.selectList(ns+"selectAllPromotionImage");
 		return list;
 	}

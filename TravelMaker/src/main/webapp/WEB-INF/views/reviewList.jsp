@@ -36,9 +36,13 @@
 					<td>${review.promotionNO }</td>
 				</tr>
 			</c:forEach>
-			
-		
 	</table>
-<jsp:include page="/resources/include/footer.jsp" />
+	<div align="center">
+		<c:forEach var="i" begin="1" end="${page }">
+			<a href="tm/board/reviewSelect?selectPage=${i}"> ${i } </a>&nbsp;&nbsp;&nbsp;
+				</c:forEach>
+	</div>
+
+	<jsp:include page="/resources/include/footer.jsp" />
 </body>
 </html>

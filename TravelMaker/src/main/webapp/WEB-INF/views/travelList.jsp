@@ -82,43 +82,63 @@
 	<!-- Responsive navbar-->
 	<hr>
 	<div class="container px-4 px-lg-5">
-	<div class="card text-white bg-secondary my-5 py-4 text-center">
-	<div class="card-body"><p class="text-white m-0">테마여행</p></div>
-	</div>
-
-	<div class="col-md-12 mb-4">
-		<button type="button" class="button button4" onclick='tyvld()'>쇼핑</button>&nbsp;&nbsp;
-		<button type="button" class="button button4" onclick='dmatlr()'>음식</button>&nbsp;&nbsp;
-		<button type="button" class="button button4" onclick='ansghk()'>문화</button>&nbsp;&nbsp;
-		<button type="button" class="button button4" onclick='cpgja()'>체험</button>&nbsp;&nbsp;
-		<button type="button" class="button button4" onclick='wjstl()'>전시</button>&nbsp;&nbsp;
-		<button type="button" class="button button4" onclick='ryxhd()'>교통</button>&nbsp;&nbsp;
-		<button type="button" class="button button4" onclick='wldur()'>지역</button>&nbsp;&nbsp;
-		<button type="button" class="button button4" onclick='chrlghk()'>설정 초기화</button>
-	</div>
-			<div class="row gx-4 gx-lg-5">
-	<c:forEach var="travel" items="${travel}" >
-			<div class="col-md-4 mb-5">
-				<div class="card h-100">
-				
-				<c:if test="${travel.image1 != null }">
-				<img	src="${contextPath }/board/travel/download?image=${travel.image1}&travelNO=${travel.travelNO}&name=${travel.name}"  	width="100%" height="100%" />
-				</c:if>
-				
-				<c:if test="${travel.image1 == null }">
-				<img	src="<c:url value="http://encosmall.kr/design/encos0720/shop/img/common/gonggi_top.jpg" />" 	width="100%" height="100%" />
-				</c:if>
-				
-				<div class="card-footer">
-					<a class="btn btn-primary btn-sm">${travel.categoryName }</a>&nbsp;&nbsp;&nbsp;<a href="${contextPath}/board/travel/view?travelNO=${travel.travelNO }">${travel.title }</a>
-				</div>
-				</div>
+		<div class="card text-white bg-secondary my-5 py-4 text-center">
+			<div class="card-body">
+				<p class="text-white m-0">테마여행</p>
 			</div>
-		</c:forEach>
+		</div>
+
+		<div class="col-md-12 mb-4">
+			<button type="button" class="button button4" onclick='tyvld()'>쇼핑</button>
+			&nbsp;&nbsp;
+			<button type="button" class="button button4" onclick='dmatlr()'>음식</button>
+			&nbsp;&nbsp;
+			<button type="button" class="button button4" onclick='ansghk()'>문화</button>
+			&nbsp;&nbsp;
+			<button type="button" class="button button4" onclick='cpgja()'>체험</button>
+			&nbsp;&nbsp;
+			<button type="button" class="button button4" onclick='wjstl()'>전시</button>
+			&nbsp;&nbsp;
+			<button type="button" class="button button4" onclick='ryxhd()'>교통</button>
+			&nbsp;&nbsp;
+			<button type="button" class="button button4" onclick='wldur()'>지역</button>
+			&nbsp;&nbsp;
+			<button type="button" class="button button4" onclick='chrlghk()'>설정
+				초기화</button>
+		</div>
+		<div class="row gx-4 gx-lg-5">
+			<c:forEach var="travel" items="${travel}">
+				<div class="col-md-4 mb-5">
+					<div class="card h-100">
+
+						<c:if test="${travel.image1 != null }">
+							<img
+								src="${contextPath }/board/travel/download?image=${travel.image1}&travelNO=${travel.travelNO}&name=${travel.name}"
+								width="100%" height="100%" />
+						</c:if>
+
+						<c:if test="${travel.image1 == null }">
+							<img
+								src="<c:url value="http://encosmall.kr/design/encos0720/shop/img/common/gonggi_top.jpg" />"
+								width="100%" height="100%" />
+						</c:if>
+
+						<div class="card-footer">
+							<a class="btn btn-primary btn-sm">${travel.categoryName }</a>&nbsp;&nbsp;&nbsp;<a
+								href="${contextPath}/board/travel/view?travelNO=${travel.travelNO }">${travel.title }</a>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
+		</div>
+		<div align="center">
+			<c:forEach var="i" begin="1" end="${page }">
+				<a href="tm/board/travelSelect?selectPage=${i}"> ${i } </a>&nbsp;&nbsp;&nbsp;
+				</c:forEach>
 		</div>
 	</div>
-  
-  <c:if test='${userSession.grade.equals("user")}'>
+
+	<c:if test='${userSession.grade.equals("user")}'>
   <a href="${contextPath }/board/travel/add">글쓰기</a>  
   </c:if>
     <hr>

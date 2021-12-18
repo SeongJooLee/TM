@@ -47,8 +47,22 @@ public class PromotionController {
 
 	@RequestMapping(value="/board/promotion", method= {RequestMethod.GET,RequestMethod.POST})
 	public String promotionList(Model model) {
-		List<PromotionImageVO> list = promotionService.selectAllPromotionImage();
-		model.addAttribute("promotion",list);
+		List<PromotionVO> list = promotionService.selectAllPromotion();
+		int listCount = list.size(); //전체 게시물의 개수
+		int listSize = 6; //한 페이지에 보일 갯수
+		int page = (listCount+6)/listSize; //현재 목록의 페이지 번호
+		
+		int endList = 1*listSize;
+		int startList = endList-5;
+		
+		PromotionImageVO promotionImageVO = new PromotionImageVO();
+		
+		promotionImageVO.setX(startList);
+		promotionImageVO.setY(endList);
+		
+		List<PromotionImageVO> selectList = promotionService.selectAllPromotionImage(promotionImageVO);
+		
+		model.addAttribute("promotion",selectList);
 		return "promotionList";
 	}
 	@RequestMapping(value="/board/promotion/category", method= {RequestMethod.GET})
