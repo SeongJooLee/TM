@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.hk.tm.board.vo.NoticeVO;
 import com.hk.tm.board.vo.PromotionImageVO;
+import com.hk.tm.board.vo.SelectPageVO;
 
 @Repository
 public class NoticeDAO {
@@ -49,9 +50,9 @@ public class NoticeDAO {
 		return list;
 	}
 
-	public List<NoticeVO> selectPageNotice(NoticeVO noticeVO) {
+	public List<NoticeVO> selectPageNotice(SelectPageVO selectPageVO) {
 		// TODO Auto-generated method stub
-		List<NoticeVO>list = sql.selectList(ns+"selectPageNotice", noticeVO);
+		List<NoticeVO>list = sql.selectList(ns+"selectPageNotice", selectPageVO);
 		return list;
 	}
 }

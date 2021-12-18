@@ -25,7 +25,7 @@
 	<select id="selectPageNotice" resultType="NoticeVO">
 		SELECT * FROM
 		 (SELECT ROW_NUMBER()over(ORDER BY noticeNO DESC) count,noticeNO ,title,content,adminID,name, writeDate
-		  FROM notice r)  r2 WHERE r2.count BETWEEN #{x} AND #{y}
+		  FROM notice r)  r2 WHERE r2.count BETWEEN #{startPage} AND #{endPage}
 	</select>
 	
 	<select id="selectOneNotice" resultType="NoticeVO"> 

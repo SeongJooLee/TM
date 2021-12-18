@@ -12,6 +12,7 @@ import com.hk.tm.board.dao.ImageDAO;
 import com.hk.tm.board.dao.NoticeDAO;
 import com.hk.tm.board.vo.ImageVO;
 import com.hk.tm.board.vo.NoticeVO;
+import com.hk.tm.board.vo.SelectPageVO;
 
 @Service
 public class NoticeService {
@@ -71,8 +72,8 @@ public class NoticeService {
 		return noticeDAO.selectCategoryNotice(key);
 	}
 
-	public List<NoticeVO> selectPageNotice(NoticeVO noticeVO) {
+	public List<NoticeVO> selectPageNotice(SelectPageVO selectPageVO) {
 		// TODO Auto-generated method stub
-		return noticeDAO.selectPageNotice(noticeVO);
+		return noticeDAO.selectPageNotice(selectPageVO);
 	}
 }

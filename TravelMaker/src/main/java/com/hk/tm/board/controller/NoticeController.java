@@ -32,6 +32,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.hk.tm.board.service.NoticeService;
 import com.hk.tm.board.vo.ImageVO;
 import com.hk.tm.board.vo.NoticeVO;
+import com.hk.tm.board.vo.SelectPageVO;
 
 import net.coobird.thumbnailator.Thumbnails;
 
@@ -53,11 +54,11 @@ public class NoticeController {
 		int endList = 1*listSize;
 		int startList = endList-9;
 		
-		NoticeVO noticeVO = new NoticeVO();
-
-		noticeVO.setX(startList);
-		noticeVO.setY(endList);
-		List<NoticeVO> selectList = noticeService.selectPageNotice(noticeVO);
+		SelectPageVO selectPageVO = new SelectPageVO();
+		
+		selectPageVO.setStartPage(startList);
+		selectPageVO.setEndPage(endList);
+		List<NoticeVO> selectList = noticeService.selectPageNotice(selectPageVO);
 		model.addAttribute("notice",selectList);
 		model.addAttribute("page",page);
 		
@@ -73,14 +74,15 @@ public class NoticeController {
 
 		int endList = 0;
 		int startList = 0;
-		NoticeVO noticeVO = new NoticeVO();
 
 		endList = selectPage*listSize;
 		startList = endList-9;
-
-		noticeVO.setX(startList);
-		noticeVO.setY(endList);
-		List<NoticeVO> selectList = noticeService.selectPageNotice(noticeVO);
+		
+		SelectPageVO selectPageVO = new SelectPageVO();
+		
+		selectPageVO.setStartPage(startList);
+		selectPageVO.setEndPage(endList);
+		List<NoticeVO> selectList = noticeService.selectPageNotice(selectPageVO);
 		model.addAttribute("notice",selectList);
 		model.addAttribute("page",page);
 
