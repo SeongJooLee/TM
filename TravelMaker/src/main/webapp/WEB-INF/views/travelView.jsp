@@ -115,6 +115,42 @@ function next(){
 	location.href = "${contextPath}/board/travel/view?travelNO=${travel.travelNO}&page=page";
 }
 
+// 댓글 관련
+function fn_enable_comment(obj){	  
+	   
+	   document.getElementById("content_comment").disabled = false;
+
+	   document.getElementById("tr_btn_create_comment").style.display='block';
+	   document.getElementById("tr_btn").style.display='none';
+	}
+
+function fn_create_comment(){
+
+	var content = document.getElementById("").value;
+	if(!content){
+		alert('내용을 적어주세요.');
+		return false;
+	}
+    if (!confirm("글을 생성하시겠습니까?")) {
+        alert("취소(아니오)를 누르셨습니다.");
+        return;
+    } else {
+        alert("확인(예)을 누르셨습니다.");
+        document.getElementById("").submit();
+    }
+}
+
+function fn_delete_comment(){
+    if (!confirm("삭제 하시겠습니까?")) {
+        alert("취소(아니오)를 누르셨습니다.");
+        return;
+    } else {
+        alert("확인(예)을 누르셨습니다.");
+        location.href="";
+    }
+	
+}
+
 </script>
 </head>
 <body>
@@ -195,6 +231,7 @@ function next(){
 					<td>작성 날짜</td>
 					<td>${travel.writeDate }</td>
 				</tr>
+				
 				<tr>
 					<td colspan="2" align="center">
 						<div id="tr_btn_modify" style="display: none">
@@ -205,65 +242,37 @@ function next(){
 					</td>
 				</tr>
 
-
 				<tr id="tr_btn">
 					<td colspan="2" align="center">
 						<c:if test='${userSession.grade.equals("user")}'>
 							<c:forEach var='list' items='${list}'>
 								<c:if test='${list.travelNO == travel.travelNO}'>
 									<input type="button" value="수정하기" onClick="fn_enable(this.form)" /> 
-									<input type="button" value="삭제하기" onClick="fn_delete(this.form)" /> 
-									<!-- <input type="button" value="댓글쓰기" onClick="fn_create(this.form)" />  -->
+									<input type="button" value="삭제하기" onClick="fn_delete(this.form)" /> 									
 									<input type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />
 									<c:set var="check" value="1" />	
 								</c:if>
 							</c:forEach>
+							
 							<c:if test='${check==0}'>
 								<input type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />
 							</c:if>
 							
 						</c:if>
+						
 						<c:if test='${userSession.grade.equals("admin")}'>			
 							<input type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />
 						</c:if>
+						
 						<c:if test='${userSession.grade.equals("seller")}'>			
 							<input type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />
 						</c:if>
+						
 						<c:if test='${userSession.grade == null}'>			
 							<input type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />
 						</c:if>
 					</td>
-				</tr>
-				
-<%-- 				<div>
-				<tr height="10" align="center" bgcolor="cornflowerblue" border="1" width="40%">
-					<th rowspan="2">댓글</th>
-					<th>내용</th>
-					<th>작성일</th>
-					<th>작성자</th>
-				</tr>
-
-				<tr height="10" align="center" >
-					<td><a href="travel/view?travelNO=${travel.travelNO }">${travel.travelNO}</a></td>
-					<td>${travel.travelNO}</a></td>
-					<td>${travel.content }</td>
-					<td>${travel.writeDate }</td>
-					<td>${travel.id }</td>					  
-				</tr>
-				</div>
-				
-				<div>
-				<tr height="10" align="center">
-					<th>이전글</th>						
-					<td><a href="travel/view?content=${travel.travelNO}">${travel.content }</a></td>	
-				</tr>
-				
-				<tr height="10" align="center" >
-					<th>다음글</th>					
-					<td><a href="travel/view?content=${travel.travelNO}">${travel.content }</a></td>	
-					<td><button type="button" onClick="next()"> 다음 글 보기</button></td>						  
-				</tr>
-				</div> --%>
+				</tr>		
 					
 			</table>
 		</form>
@@ -289,7 +298,7 @@ function next(){
 						<td>${travel.content }</td>
 						<td>${travel.writeDate }</td>
 						<td>${travel.id }</td>
-						<td><input type="button" value="댓글쓰기" onClick="fn_create()"></td>					  
+						<td><input type="button" value="댓글쓰기" onClick="fn_create_comment"></td>					  
 					</tr>
 				</div>
 		</table>	
@@ -324,14 +333,17 @@ function next(){
 					<textarea name="content" rows="10" cols="50" maxlength="500"></textarea>
 				</td>
 			</tr>
+			
 			<tr align="center">
-				<td>
-					<input type="hidden" name="travelComment" value="commentAdd">
-					<input type="button" value="작성" onClick="fn_create()">
-					<input type="reset" value="취소">
-					<input type="button" value="목록 보기" onClick="backToList(this.form)">
+				<td colspan="2" align="center">
+					<div id="tr_btn_create_comment" style="display: none">
+						<input type="button" value="댓글 작성하기" onClick="fn_create_comment()" /> 
+						<input type="reset" value="취소하기" onClick="" />
+						<input type="button" value="리스트로 돌아가기" onClick="backToList(this.form)">
+					</div>
 				</td>			
 			</tr>
+			
 		</table>
 		
 	</form>

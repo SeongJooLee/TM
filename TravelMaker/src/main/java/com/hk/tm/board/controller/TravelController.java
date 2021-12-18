@@ -163,7 +163,7 @@ public class TravelController {
 			//System.out.println(name+", "+value);
 			map.put(name,value);
 		}
-		//upload 빨간줄 처리
+		
 		List fileList= upload(request);
 		map.put("fileList", fileList);
 		System.out.println("파일리스트 확인1"+fileList.toString());
@@ -171,7 +171,7 @@ public class TravelController {
 		System.out.println("파일리스트 확인3"+categoryVO.toString());
 		ImageVO imageVO = new ImageVO();
 		
-		int travelNO = travelService.selectMaxTravel(); // 여기?
+		int travelNO = travelService.selectMaxTravel(); 
 		travelNO++;
 		
 		travelVO.setTravelNO(travelNO);
@@ -288,7 +288,7 @@ public class TravelController {
 	public void travelDelete(@RequestParam("travelNO") int travelNO, HttpServletResponse response) throws Exception {
 
 		TravelVO travelVO = travelService.deleteTravel(travelNO);		
-		File imgDir = new File(REPO+"\\"+travelVO.getName()+"\\"+travelVO.getTravelNO()); // 요기?????
+		File imgDir = new File(REPO+"\\"+travelVO.getName()+"\\"+travelVO.getTravelNO());
 		System.out.println("왜 안계세요???ㅜㅜ");
 		if(imgDir.exists()) {
 			FileUtils.deleteDirectory(imgDir);
