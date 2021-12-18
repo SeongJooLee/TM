@@ -270,7 +270,7 @@ function next(){
 	
 	// 댓글쓰기
 	<form action="${contextPath}/board/travel/view?travelNO=${travel.travelNO }" method="post">
-		<input type="hidden" name="" value="comment">
+		<input type="hidden" name="travelComment" value="comment">
 		<input class="btn" type="submit" value="댓글쓰기">
 	</form>
   

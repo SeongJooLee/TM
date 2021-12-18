@@ -38,7 +38,7 @@ public class TravelDAO {
 	
 	public int selectMaxTravel() {
 		
-		int travelNO = sql.selectOne(ns+"selectMaxTravel", null); // 여기?
+		int travelNO = sql.selectOne(ns+"selectMaxTravel", null); 
 		
 		return travelNO;
 	}

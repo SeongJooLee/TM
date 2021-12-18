@@ -43,7 +43,7 @@ public class TravelService {
 	public Map<String, Object> selectOneTravel(int travelNO) {
 		
 		TravelVO travelVO = travelDAO.selectOneTravel(travelNO);		
-		ImageVO imageVO = imageDAO.selectOneTravel(travelNO); // 여기 문제
+		ImageVO imageVO = imageDAO.selectOneTravel(travelNO); 
 		CategoryVO categoryVO = categoryDAO.selectOneTravel(travelNO);
 		
 		Map<String,Object> map = new HashMap<String,Object>();
