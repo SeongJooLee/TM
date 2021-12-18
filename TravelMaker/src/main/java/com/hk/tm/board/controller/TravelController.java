@@ -133,15 +133,6 @@ public class TravelController {
 		
 	}
 	
-	// 댓글쓰기
-	@RequestMapping(value="/view" , method=RequestMethod.POST)
-	public String travelComment(HttpSession session, @RequestParam(value="commentAdd", required=false)String travelComment, Model model) {
-		return "travelView";
-		
-
-		
-	}
-	
 	@RequestMapping(value="/add" ,  method=RequestMethod.GET)
 	public String travelAdd(Model model) {			
 		return "travelAdd"; // travelAdd.jsp 호출

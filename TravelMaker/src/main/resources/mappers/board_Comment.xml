@@ -14,29 +14,29 @@
 		<result property="reviewNO" column="reviewNO" />
 	</resultMap>
 
-	<select id="selectAll" resultMap="commentResult">
+	<select id="selectAllComments" resultMap="commentResult">
 		SELECT ID, CONTENT, WRITEDATE, TRAVELNO, REVIEWNO
 		 FROM "COMMENT"
 		 order by writeDate asc
 	</select>
 	
-	<select id="selectOne" resultType="CommentVO">
+	<select id="selectOneComment" resultType="CommentVO">
 		SELECT ID, CONTENT, WRITEDATE, TRAVELNO, REVIEWNO
 		 FROM "COMMENT"
 		 where id=#{id}
 	</select>
 	
-	<insert id="insert" parameterType="CommentVO">
+	<insert id="insertComment" parameterType="CommentVO">
 		INSERT INTO "COMMENT" (ID, CONTENT, WRITEDATE, TRAVELNO, REVIEWNO)
 		 VALUES(#{id}, #{content}, SYSDATE, #{travelNO}, #{reviewNO})
 	</insert>
 	
-	<update id="update" parameterType="CommentVO">
+	<update id="updateComment" parameterType="CommentVO">
 		UPDATE "COMMENT" SET CONTENT=#{content}
 		 where id=#{id}
 	</update>
 	
-	<delete id="delete" parameterType="CommentVO"> 
+	<delete id="deleteComment" parameterType="CommentVO"> 
 		DELETE FROM "COMMENT" WHERE ID=#{userId} 
 	</delete>
 	
