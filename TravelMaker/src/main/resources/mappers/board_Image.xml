@@ -47,24 +47,6 @@
 		 where noticeNO=#{noticeNO}
 	</delete>
 	
-<!-- 	
-	<insert id="insertTravel" parameterType="imageVO">
-	INSERT INTO IMAGE (NOTICENO, TRAVELNO, REVIEWNO, PROMOTIONNO, EVENTNO, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10)
-	 VALUES(null, (select max(travelNO) from travel), null, null, null, #{image1}, #{image2}, #{image3}, #{image4}, #{image5}, #{image6}, #{image7}, #{image8}, #{image9}, #{image10})
-	</insert>
-	<insert id="insertReview" parameterType="imageVO">
-	INSERT INTO IMAGE (NOTICENO, TRAVELNO, REVIEWNO, PROMOTIONNO, EVENTNO, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10)
-	 VALUES(null, null, (select max(reviewNO) from review), null, null, #{image1}, #{image2}, #{image3}, #{image4}, #{image5}, #{image6}, #{image7}, #{image8}, #{image9}, #{image10})
-	</insert>
-	<insert id="insertPromotion" parameterType="imageVO">
-	INSERT INTO IMAGE (NOTICENO, TRAVELNO, REVIEWNO, PROMOTIONNO, EVENTNO, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10)
-	 VALUES(null, null, null, (select max(promotionNO) from promotion), null}, #{image1}, #{image2}, #{image3}, #{image4}, #{image5}, #{image6}, #{image7}, #{image8}, #{image9}, #{image10})
-	</insert>
-	<insert id="insertEvent" parameterType="imageVO">
-	INSERT INTO IMAGE (NOTICENO, TRAVELNO, REVIEWNO, PROMOTIONNO, EVENTNO, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10)
-	 VALUES(null, null, null, null, (select max(eventNO) from event), #{image1}, #{image2}, #{image3}, #{image4}, #{image5}, #{image6}, #{image7}, #{image8}, #{image9}, #{image10})
-	</insert>
-	 -->
 	<!--  홍보상품  -->
 	<select id="selectOnePromotion" resultType="imageVO"> 
 		SELECT PROMOTIONNO, IMAGE1, IMAGE2, IMAGE3
@@ -148,6 +130,11 @@
 	<update id="deleteTravelImage" parameterType="imageVO"> 
 		UPDATE IMAGE SET IMAGE1=null, IMAGE2=null, IMAGE3=null
 		 where travelNO=#{travelNO}
+	</update>
+	
+	<update id="deleteReviewImage" parameterType="imageVO"> 
+		UPDATE IMAGE SET IMAGE1=null, IMAGE2=null, IMAGE3=null
+		 where reviewNO=#{reviewNO}
 	</update>
 	
 	
