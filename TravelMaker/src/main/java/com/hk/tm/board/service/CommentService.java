@@ -31,10 +31,10 @@ public class CommentService {
 		return commentDAO.selectAllComments();
 	}
 
-	public Map<String, Object> selectOneComment(String id) {
+	public Map<String, Object> selectOneComment(int TravelNO) {
 		
-		CommentVO commentVO = commentDAO.selectOneComment(id);
-		TravelVO travelVO = TravelDAO.selectOneComment(id);
+		CommentVO commentVO = commentDAO.selectOneComment(TravelNO);
+		TravelVO travelVO = TravelDAO.selectOneComment(TravelNO);
 		//ReviewVO reviewVO = ReviewDAO.selectOneComment(id);
 		
 		Map<String,Object> map = new HashMap<String,Object>();
@@ -50,17 +50,15 @@ public class CommentService {
 		commentDAO.updateComment(commentVO);
 	}
 	
-	public void addComment(CommentVO commentVO, TravelVO travelVO, ReviewVO reviewVO) {		
+	public void addComment(CommentVO commentVO) {		
 		
 		commentDAO.addComment(commentVO);// 여기문제
-		travelDAO.addTravel(travelVO);
-		reviewDAO.addReview(reviewVO);
 	}
 
-	public CommentVO deleteComment(String id) {
+	public CommentVO deleteComment(int travelNO) {
 		// TODO Auto-generated method stub
-		CommentVO commentVO = commentDAO.selectOneComment(id);
-		commentDAO.deleteComment(id);
+		CommentVO commentVO = commentDAO.selectOneComment(travelNO);
+		commentDAO.deleteComment(travelNO);
 		
 		return commentVO;
 	}

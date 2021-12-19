@@ -23,12 +23,12 @@
 	<select id="selectOneComment" resultType="CommentVO">
 		SELECT ID, CONTENT, WRITEDATE, TRAVELNO, REVIEWNO
 		 FROM "COMMENT"
-		 where id=#{id}
+		 where travelNO=#{travelNO}
 	</select>
 	
 	<insert id="insertComment" parameterType="CommentVO">
 		INSERT INTO "COMMENT" (ID, CONTENT, WRITEDATE, TRAVELNO, REVIEWNO)
-		 VALUES(#{id}, #{content}, SYSDATE, #{travelNO}, #{reviewNO})
+		 VALUES(#{id}, #{content}, SYSDATE, #{travelNO}, null)
 	</insert>
 	
 	<update id="updateComment" parameterType="CommentVO">

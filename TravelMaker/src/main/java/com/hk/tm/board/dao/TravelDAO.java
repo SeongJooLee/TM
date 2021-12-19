@@ -72,11 +72,9 @@ public class TravelDAO {
 		List<TravelVO> list = sql.selectList(ns+"select",id);
 		return list;
 	}
-
-	public static TravelVO selectOneComment(String id) {
+	
+	public static TravelVO selectOneComment(int travelNO) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-
 }

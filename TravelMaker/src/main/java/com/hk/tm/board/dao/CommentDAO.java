@@ -24,9 +24,9 @@ public class CommentDAO {
 		return list;
 	}
 	
-	public CommentVO selectOneComment(String id) {
+	public CommentVO selectOneComment(int travelNO) {
 		
-		CommentVO commentVO = sql.selectOne(ns + "selectOneComment" , id);
+		CommentVO commentVO = sql.selectOne(ns + "selectOneComment" , travelNO);
 
 		return commentVO;
 	}
@@ -41,9 +41,9 @@ public class CommentDAO {
 		sql.update(ns + "updateComment", commentVO);
 	}
 
-	public void deleteComment(String id) {
+	public void deleteComment(int travelNO) {
 		
-		sql.delete(ns + "deleteComment", id);
+		sql.delete(ns + "deleteComment", travelNO);
 	}
 
 	public List<CommentVO> selectUserComment(String id) {

@@ -30,7 +30,7 @@ public class CommentController {
 	CommentService commentService;
 	
 	@RequestMapping(value="" , method = {RequestMethod.GET, RequestMethod.POST}) 
-	public String commentlList(Model model) {
+	public String commentList(Model model) {
 	
 	List<CommentVO> list = commentService.selectAllComments();
 	
@@ -41,13 +41,30 @@ public class CommentController {
 	public String commentSelectList(Model model) {
 		List<CommentVO> list = commentService.selectAllComments();
 
-		return "tavelView"; 
+		return "commentView"; 
 	}
 	
-	@RequestMapping(value="/view" , method=RequestMethod.GET)
-	public String commentView(Model model , @RequestParam("commentNO") String id,HttpSession session) {
+	@RequestMapping(value="/add" ,  method=RequestMethod.GET)
+	public String commentAdd(Model model, @RequestParam("travelNO") int travelNO) {			
 		
-		Map<String,Object> map = commentService.selectOneComment(id);
+		model.addAttribute("travelNO" , travelNO);
+		
+		return "commentAdd"; 
+		
+	}
+	
+	@RequestMapping(value="/addDone" ,  method=RequestMethod.POST)
+	public void commentAddDone(@ModelAttribute CommentVO commentVO,@ModelAttribute TravelVO travelVO, @ModelAttribute ReviewVO reviewVO , MultipartHttpServletRequest request, HttpServletResponse response,Model model) throws Exception, ServletException {
+		
+		commentService.addComment(commentVO);// 여기문제
+		
+		response.sendRedirect("/tm/board/comment");  	
+	}		
+	
+	@RequestMapping(value="/view" , method=RequestMethod.GET)
+	public String commentView(Model model , @RequestParam("travelNO") int travelNO,HttpSession session) {
+		
+		Map<String,Object> map = commentService.selectOneComment(travelNO);
 		
 		model.addAttribute("comment", map.get("comment"));		
 		System.out.println("여기는 view +"+ map.get("comment").toString());
@@ -62,23 +79,9 @@ public class CommentController {
 			// TODO: handle exception
 			System.out.println("오류발생");
 		}
-		return "tavelView"; 
+		return "commentView"; 
 		
 	}
-	
-	@RequestMapping(value="/add" ,  method=RequestMethod.GET)
-	public String commentAdd(Model model) {			
-		return "commentAdd"; 
-		
-	}
-	
-	@RequestMapping(value="/addDone" ,  method=RequestMethod.POST)
-	public void commentAddDone(@ModelAttribute CommentVO commentVO,@ModelAttribute TravelVO travelVO, @ModelAttribute ReviewVO reviewVO , MultipartHttpServletRequest request, HttpServletResponse response,Model model) throws Exception, ServletException {
-		
-		commentService.addComment(commentVO, travelVO, reviewVO);// 여기문제
-		
-		response.sendRedirect("/tm/board/comment");  	
-	}		
 
 	@RequestMapping(value="/update" ,  method=RequestMethod.POST)
 	public String commentUpdate(@ModelAttribute CommentVO commentVO, Model model, MultipartHttpServletRequest request, HttpServletResponse response) throws Exception, ServletException {		
@@ -90,9 +93,9 @@ public class CommentController {
 	}
 	
 	@RequestMapping(value="/delete" ,  method=RequestMethod.GET) 
-		public void commentDelete(@RequestParam("id") String id, HttpServletResponse response) throws Exception {		
+		public void commentDelete(@RequestParam("travelNO") int travelNO, HttpServletResponse response) throws Exception {		
 
-		CommentVO commentVO = commentService.deleteComment(id);	
+		CommentVO commentVO = commentService.deleteComment(travelNO);	
 
 	response.sendRedirect("/tm/board/comment"); 
 	}
