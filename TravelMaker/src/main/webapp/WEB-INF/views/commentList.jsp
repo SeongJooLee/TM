@@ -15,12 +15,12 @@
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="<c:url value="/resources/css/styles.css" />"
-	rel="stylesheet" />
+	rel="stylesheet" />	
 </head>
 <body>
-
 	<jsp:include page="/resources/include/header.jsp" />
-
+	<!-- Responsive navbar-->
+	<hr>
 	<table align="center" border="1" width="80%">
 		<tr height="10" align="center" bgcolor="lightblue">
 			<td>작성자</td>
@@ -42,6 +42,15 @@
 	</table>
 
 
-	<jsp:include page="/resources/include/footer.jsp" />
+	<c:if test='${userSession.grade.equals("user")}'>
+  <a href="${contextPath }/board/comment/add">글쓰기</a>  
+  </c:if>
+    <hr>
+  	<!-- Bootstrap core JS-->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- Core theme JS-->
+
+ <jsp:include page="/resources/include/footer.jsp" /> 
 </body>
 </html>

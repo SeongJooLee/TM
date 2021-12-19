@@ -73,7 +73,7 @@ public class CommentController {
 	@RequestMapping(value="/addDone" ,  method=RequestMethod.POST)
 	public void commentAddDone(@ModelAttribute CommentVO commentVO, MultipartHttpServletRequest request, HttpServletResponse response,Model model) throws Exception, ServletException {
 		
-		response.sendRedirect("/tm/board/tavelView");  	
+		response.sendRedirect("/tm/board/comment");  	
 	}		
 
 	@RequestMapping(value="/update" ,  method=RequestMethod.POST)
@@ -81,7 +81,7 @@ public class CommentController {
 		
 		commentService.updateComment(commentVO);		
 
-		return "tavelView"; 
+		return "commentView"; 
 		
 	}
 	
@@ -90,7 +90,7 @@ public class CommentController {
 
 		CommentVO commentVO = commentService.deleteComment(id);	
 
-	response.sendRedirect("/tm/board/tavelView"); 
+	response.sendRedirect("/tm/board/comment"); 
 	}
 }
 

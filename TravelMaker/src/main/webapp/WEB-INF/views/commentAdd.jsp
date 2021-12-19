@@ -54,13 +54,8 @@ function fn_create(){
 	<h1 style="text-align: center">댓글 쓰기</h1>
 	<form id="frm" action="addDone" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="id" value="${userSession.id}">
-		<input type="hidden" name="name" value="comment">
+		<input type="hidden" name="name" value="댓글">
 		<table border="1" align="center">
-			<tr>
-				<td>
-					&nbsp;&nbsp;글 제목 : <input type="text" name="title" id="title">
-				</td>
-			</tr>
 
 			<tr>
 				<td align="center" valign="top">글내용</td>
