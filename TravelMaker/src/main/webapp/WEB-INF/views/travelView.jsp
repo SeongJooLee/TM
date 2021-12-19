@@ -173,7 +173,7 @@ function fn_delete_comment(){
 	<jsp:include page="/resources/include/header.jsp" />
 	<hr>
 	<div align="center">
-
+	<h1>테마여행 글번호 : ${travel.travelNO }</h1>
 		<form id="frmTravel" enctype="multipart/form-data">
 			<table border="1" align="center">
 				<tr>
@@ -294,8 +294,39 @@ function fn_delete_comment(){
 	</div>
 	
 	
-	<!-- 댓글 목록 -->
+	 <!--  해당 글 댓글 보이기 -->
+	 <form id="commentResult" action="/tm/board/travel/add" method="post">
+		<table border="3" align="center">
+		<c:forEach var="comment" items="${comment}" varStatus="status">
+					<tr>
+						<td>글번호 : ${status.count }  |||</td>
+						<td>ID : ${comment.id }  |||</td>
+						<td>내용 : ${comment.content }  |||</td>
+						<td>작성날짜 : ${comment.writeDate }  |||</td>
+						<td>테마여행 글번호 : ${comment.travelNO }</td>
+					</tr>
+			</c:forEach>
+			<tr>
+				<td>댓글 달기 : </td>
+				<td>
+					<input type="text" name="content">
+					<input type="hidden" name="id" value="${userSession.id }">
+					<input type="hidden" name="commentTravelNO" value="${travel.travelNO }">
+				</td>
+				<td>
+					<input type="submit" value="댓글달기">
+				</td>
+			<tr>
+		</table>	
+	 </form>
 	
+	
+	
+	
+	
+	
+	<!-- 댓글 목록 -->
+<%-- 	
 	<form name="frmComment" action="${contextPath}/board/travel/view?travelNO=${travel.travelNO }" method="post">
 		<table border="3" align="center">
 			<input type="hidden" name="travelNO" value="${travel.travelNO}"/>				
@@ -309,8 +340,8 @@ function fn_delete_comment(){
 				
 
 					<tr height="10" align="center" border="1">
-						<%-- <td><a href="travel/view?travelNO=${travel.travelNO }">${travel.travelNO}</a></td> --%>
-						<%-- <td>${travel.travelNO}</a></td> --%>
+						<td><a href="travel/view?travelNO=${travel.travelNO }">${travel.travelNO}</a></td>
+						<td>${travel.travelNO}</a></td>
 						<td>${travel.content }</td>
 						<td>${travel.writeDate }</td>
 						<td>${travel.id }</td>
@@ -319,19 +350,20 @@ function fn_delete_comment(){
 				</div>
 		</table>	
 	</form>
-	
+	 --%>
+<%-- 	
 <!-- 	 게시판 글 목록	 -->
 	<form action="${contextPath}/board/travel/view?travelNO=${travel.travelNO }" method="post">
 		<table border="3" align="center">			
 			<div>
 				<tr height="10" align="center" border="1">
 					<th>이전글</th>						
-					<%-- <td><a href="travel/view?content=${travel.travelNO}">${travel.content }</a></td> --%>	
+					<td><a href="travel/view?content=${travel.travelNO}">${travel.content }</a></td>	
 				</tr>
 				
 				<tr align="center" border="1">
 					<th>다음글</th>					
-					<%-- <td><a href="travel/view?content=${travel.travelNO}">${travel.content }</a></td> --%>	
+					<td><a href="travel/view?content=${travel.travelNO}">${travel.content }</a></td>	
 					<td><button type="button" onClick="next()"> 다음 글 보기</button></td>						  
 				</tr>
 			</div>
@@ -340,7 +372,7 @@ function fn_delete_comment(){
 	
 	
 <!-- 	// 댓글쓰기 -->
-	<form name="frmComment" action="${contextPath}/board/travel/view?travelNO=${travel.travelNO }" method="post">
+	 <form name="frmComment" action="${contextPath}/board/travel/view?travelNO=${travel.travelNO }" method="post">
 		
 			<table border="3" align="center">
 			<tr>
@@ -410,7 +442,7 @@ function fn_delete_comment(){
 			
 		</table>		
 	</form>
-	  
+	   --%>
   
     <hr>
   	<!-- Bootstrap core JS-->

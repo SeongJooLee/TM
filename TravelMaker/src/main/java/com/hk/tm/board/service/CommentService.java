@@ -26,8 +26,7 @@ public class CommentService {
 	@Autowired
 	ReviewDAO reviewDAO;
 
-	public List<CommentVO> selectAllComments() {
-		// TODO Auto-generated method stub
+	public List<CommentVO> selectAllComments(int travelNO) {
 		return commentDAO.selectAllComments();
 	}
 
@@ -66,6 +65,14 @@ public class CommentService {
 	public List<CommentVO> selectUserComment(String id) {
 		// TODO Auto-generated method stub
 		return commentDAO.selectUserComment(id);
+	}
+
+	public List<CommentVO> selectTravelComment(int travelNO) {
+		return commentDAO.selectTravelComment(travelNO);
+	}
+
+	public int addTravelComment(CommentVO commentVO) {
+		return commentDAO.addTravelComment(commentVO);
 	}
 
 }

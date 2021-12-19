@@ -52,4 +52,16 @@ public class CommentDAO {
 		return list;
 	}
 
+	public List<CommentVO> selectTravelComment(int travelNO) {
+		List<CommentVO> list = sql.selectList(ns+"selectTravelComment", travelNO);
+		
+		return list;
+	}
+
+	public int addTravelComment(CommentVO commentVO) {
+		int ret = sql.insert(ns+"addTravelComment",commentVO);
+		
+		return ret;
+	}
+
 }

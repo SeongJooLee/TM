@@ -3,11 +3,14 @@ package com.hk.tm.board.vo;
 import java.sql.Date;
 
 public class CommentVO {
+	
+	private int count;
 	private String id;
 	private String content;
 	private Date writeDate;
 	private int travelNO;
 	private int reviewNO;
+	
 	
 	public String getId() {
 		return id;
@@ -39,10 +42,16 @@ public class CommentVO {
 	public void setReviewNO(int reviewNO) {
 		this.reviewNO = reviewNO;
 	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
 	@Override
 	public String toString() {
-		return "CommentVO [id=" + id + ", content=" + content + ", writeDate=" + writeDate + ", travelNO=" + travelNO
-				+ ", reviewNO=" + reviewNO + "]";
+		return "CommentVO [count=" + count + ", id=" + id + ", content=" + content + ", writeDate=" + writeDate
+				+ ", travelNO=" + travelNO + ", reviewNO=" + reviewNO + "]";
 	}
 	
 	

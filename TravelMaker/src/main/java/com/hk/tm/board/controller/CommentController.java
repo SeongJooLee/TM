@@ -23,33 +23,37 @@ import com.hk.tm.board.vo.TravelVO;
 import com.hk.tm.member.vo.UserVO;
 
 @Controller
-@RequestMapping(value="/board/comment")
 public class CommentController {
 
 	@Autowired
 	CommentService commentService;
 	
-	@RequestMapping(value="" , method = {RequestMethod.GET, RequestMethod.POST}) 
-	public String commentList(Model model) {
+//	@RequestMapping(value="/board/comment/allList" , method = {RequestMethod.GET, RequestMethod.POST}) 
+//	public String commentList(Model model) {
+//	
+//	List<CommentVO> list = commentService.selectAllComments();
+//	
+//	return "commentList"; 
+//}
 	
-	List<CommentVO> list = commentService.selectAllComments();
-	
-	return "commentList"; 
-}
-	
-	@RequestMapping(value="/select" , method = RequestMethod.GET) 
-	public String commentSelectList(Model model) {
-		List<CommentVO> list = commentService.selectAllComments();
-
-		return "commentView"; 
+	@RequestMapping(value="/board/travel/comment" , method = RequestMethod.GET) 
+	public String commentSelectList(Model model,@RequestParam("travelNO")int travelNO) {
+		List<CommentVO> list = commentService.selectTravelComment(travelNO);
+		model.addAttribute("comment",list);
+		
+		return "commentTest"; 
 	}
 	
-	@RequestMapping(value="/add" ,  method=RequestMethod.GET)
-	public String commentAdd(Model model, @RequestParam("travelNO") int travelNO) {			
+	@RequestMapping(value="/board/travel/add" ,  method=RequestMethod.POST)
+	public void commentAdd(Model model, @RequestParam("commentTravelNO") int commentTravelNO,@RequestParam("id") String id,@RequestParam("content")String content) {			
+		CommentVO commentVO = new CommentVO();
 		
-		model.addAttribute("travelNO" , travelNO);
+		commentVO.setContent(content);
+		commentVO.setId(id);
+		commentVO.setTravelNO(commentTravelNO);
+		int ret = commentService.addTravelComment(commentVO);
+		System.out.println("성공? : "+ret);
 		
-		return "commentAdd"; 
 		
 	}
 	

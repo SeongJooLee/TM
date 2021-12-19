@@ -33,6 +33,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.hk.tm.board.service.CommentService;
 import com.hk.tm.board.service.TravelService;
 import com.hk.tm.board.vo.CategoryVO;
+import com.hk.tm.board.vo.CommentVO;
 import com.hk.tm.board.vo.ImageVO;
 import com.hk.tm.board.vo.SelectPageVO;
 import com.hk.tm.board.vo.TravelImageVO;
@@ -119,11 +120,16 @@ public class TravelController {
 	public String travelView(Model model , @RequestParam("travelNO") int travelNO,HttpSession session) {
 
 		Map<String,Object> map = travelService.selectOneTravel(travelNO);
+		
+		List<CommentVO> commentList = commentService.selectTravelComment(travelNO);
 
+		model.addAttribute("comment",commentList);
+		
 		model.addAttribute("travel", map.get("travel"));		
 		model.addAttribute("image",map.get("image"));
 		model.addAttribute("category",map.get("category"));
-		System.out.println("여기는 view +"+ map.get("travel").toString());
+		
+//		System.out.println("여기는 view +"+ map.get("travel").toString());
 
 		try {
 			UserVO userVO = (UserVO)session.getAttribute("userSession");

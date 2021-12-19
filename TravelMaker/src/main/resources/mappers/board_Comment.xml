@@ -26,7 +26,13 @@
 		 where travelNO=#{travelNO}
 	</select>
 	
-	<insert id="insertComment" parameterType="CommentVO">
+	<select id="selectTravelComment" resultType="CommentVO">
+		SELECT ID, CONTENT, WRITEDATE, TRAVELNO, REVIEWNO
+		 FROM "COMMENT"
+		 where travelNO=#{travelNO}
+	</select>
+	
+	<insert id="addTravelComment" parameterType="CommentVO">
 		INSERT INTO "COMMENT" (ID, CONTENT, WRITEDATE, TRAVELNO, REVIEWNO)
 		 VALUES(#{id}, #{content}, SYSDATE, #{travelNO}, null)
 	</insert>
