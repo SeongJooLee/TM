@@ -28,10 +28,10 @@ public class SampleController {
     }
     
 	@RequestMapping(value="/kakaoPaySuccess" , method =RequestMethod.GET) 
-    public void kakaoPaySuccess(@RequestParam("pg_token") String pg_token, Model model) {
+    public String kakaoPaySuccess(@RequestParam("pg_token") String pg_token, Model model) {
         
         model.addAttribute("info", kakaopay.kakaoPayInfo(pg_token));
-        
+        return "kakaoPaySuccess";
     }
     
 }
