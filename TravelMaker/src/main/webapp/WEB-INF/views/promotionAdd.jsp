@@ -101,7 +101,7 @@ function fn_create(){
 				<td align='left' colspan="2">이미지 파일 첨부<br>
 					<p><input type="button" value="파일 추가" onClick="fn_addFile()"><small> &nbsp;&nbsp;*최대 3개까지 첨부 가능합니다.</small>
 					<div id="d_file">
-					
+				 	
 					</div>
 				</td>
 			</tr>
