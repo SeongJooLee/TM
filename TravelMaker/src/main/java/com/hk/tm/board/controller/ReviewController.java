@@ -238,8 +238,8 @@ public class ReviewController {
 			map.put("result", "false");
 		} else {
 			map.put("result", "true");
-			File imgDir = new File(REPO+"\\review\\"+reviewNO);
-			File thumbnail = new File(REPO+"\\thumbnail\\review\\"+reviewNO);
+			File imgDir = new File(REPO+"\\이용후기\\"+reviewNO);
+			File thumbnail = new File(REPO+"\\thumbnail\\이용후기\\"+reviewNO);
 			if(imgDir.exists()) {
 				FileUtils.deleteDirectory(imgDir);
 				FileUtils.deleteDirectory(thumbnail);
