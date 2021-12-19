@@ -294,7 +294,8 @@ function fn_delete_comment(){
 	</div>
 	
 	
-	//댓글목록
+	<!-- 댓글 목록 -->
+	
 	<form name="frmComment" action="${contextPath}/board/travel/view?travelNO=${travel.travelNO }" method="post">
 		<table border="3" align="center">
 			<input type="hidden" name="travelNO" value="${travel.travelNO}"/>				
@@ -319,7 +320,7 @@ function fn_delete_comment(){
 		</table>	
 	</form>
 	
-	// 게시판 글 목록	
+<!-- 	 게시판 글 목록	 -->
 	<form action="${contextPath}/board/travel/view?travelNO=${travel.travelNO }" method="post">
 		<table border="3" align="center">			
 			<div>
@@ -338,7 +339,7 @@ function fn_delete_comment(){
 	</form>
 	
 	
-	// 댓글쓰기
+<!-- 	// 댓글쓰기 -->
 	<form name="frmComment" action="${contextPath}/board/travel/view?travelNO=${travel.travelNO }" method="post">
 		
 			<table border="3" align="center">
