@@ -40,7 +40,7 @@
 	<select id="selectOneReservation" resultType="ReservationVO">
 		SELECT RESERNO, PROMOTIONNO, RESERDATE, HEADCOUNT, ID
 		 FROM RESERVATION
-		 where id = 'user'
+		 where id = #{id}
 		 and promotionNO = #{promotionNO}
 		 and reserDate = #{reserDate}
 		 and headCount = #{headCount}

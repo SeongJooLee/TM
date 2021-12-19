@@ -76,7 +76,7 @@
 	</select>
 	
 	<select id="selectMaxReview" resultType="java.lang.Integer"> 
-		SELECT max(reviewNO)
+		SELECT nvl(max(reviewNO),0)
 		 FROM REVIEW
 	</select>
 	

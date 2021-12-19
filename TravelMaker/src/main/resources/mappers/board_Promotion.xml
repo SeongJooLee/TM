@@ -60,7 +60,7 @@
 	</select>
 	
 	<select id="selectMaxPromotion" resultType="java.lang.Integer"> 
-		SELECT nvl(max(promotionNO),0)+1 FROM PROMOTION
+		SELECT nvl(max(promotionNO),0) FROM PROMOTION
 	</select>	
 	
 	<insert id="insertPromotion" parameterType="PromotionVO">
