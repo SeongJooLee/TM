@@ -94,8 +94,7 @@ function success(){
 			</ul>
 		</div>
 		<div class="grid2">
-			<button onclick='nameOrder()'>이름 순으로보기</button><br><br>
-			<button onclick='dateOrder()'>가입날짜 순으로보기</button><br><br>
+			
 			<form action='/tm/admin/mypage' method='post'>
 			아이디 조회 : <input type="search" name='search'><input type='submit' value='검색'>
 			</form>

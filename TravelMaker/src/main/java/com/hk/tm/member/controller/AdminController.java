@@ -257,23 +257,23 @@ public class AdminController {
 		System.out.println(randomName);
 		
 		switch(randomName) {
-		case "notice":
+		case "공지사항":
 			noticeVO = adminService.selectNoticeOne(randomNO);
 			model.addAttribute("notice",noticeVO);
 			return "adminRandomLocation";
-		case "event":
+		case "이벤트":
 			noticeVO = adminService.selectNoticeOne(randomNO);
 			model.addAttribute("notice",noticeVO);
 			return "adminRandomLocation";
-		case "promotion":
+		case "홍보상품":
 			PromotionVO promotionVO = adminService.selectPromotionOne(randomNO);
 			model.addAttribute("promotion",promotionVO);
 			return "adminRandomLocation";
-		case "review":
+		case "이용후기":
 			ReviewVO reviewVO = adminService.selectReviewOne(randomNO);
 			model.addAttribute("review",reviewVO);
 			return "adminRandomLocation";
-		case "travel":
+		case "테마여행":
 			TravelVO travelVO = adminService.selectTravelOne(randomNO);
 			model.addAttribute("travel", travelVO);
 			return "adminRandomLocation";

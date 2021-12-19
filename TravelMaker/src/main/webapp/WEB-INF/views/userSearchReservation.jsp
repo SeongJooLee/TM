@@ -12,7 +12,10 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="<c:url value="/resources/css/styles.css" />" rel="stylesheet" />
 <script>
-
+function returnHome(){
+	alert('글관리로 돌아갑니다');
+	location.href='/tm/admin/mypage';
+}
 function success(){
 	alert('${result}로 검색한결과입니다');
 	
@@ -83,7 +86,7 @@ function success(){
 		<h2>검색결과</h2>
 		<form action='/tm/admin/mypage/search' method='get'>
 			아이디 조회 : <input type="search" name='search'><input type='submit' value='검색'>
-		</form><br><br>
+		</form><button onclick='returnHome()'>돌아가기</button><br><br>
 		
 			<table border='1'>
 	<tr>
