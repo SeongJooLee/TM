@@ -32,7 +32,7 @@ public class CommentController {
 	
 	List<CommentVO> list = commentService.selectAllComments();
 	
-	return "tavelView"; 
+	return "commentList"; 
 }
 	
 	@RequestMapping(value="/select" , method = RequestMethod.GET) 
@@ -66,7 +66,7 @@ public class CommentController {
 	
 	@RequestMapping(value="/add" ,  method=RequestMethod.GET)
 	public String commentAdd(Model model) {			
-		return "tavelView"; 
+		return "commentAdd"; 
 		
 	}
 	
