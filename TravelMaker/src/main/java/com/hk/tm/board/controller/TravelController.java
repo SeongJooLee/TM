@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.hk.tm.board.service.CommentService;
 import com.hk.tm.board.service.TravelService;
 import com.hk.tm.board.vo.CategoryVO;
 import com.hk.tm.board.vo.ImageVO;
@@ -46,6 +47,9 @@ public class TravelController {
 
 	@Autowired
 	TravelService travelService;	
+	
+	@Autowired
+	CommentService commentService;
 	
 	String REPO = "C:\\files";
 	
@@ -66,6 +70,7 @@ public class TravelController {
 		selectPageVO.setEndPage(endList);
 		
 		List<TravelImageVO> selectList = travelService.selectAllTravelImage(selectPageVO);
+		
 		
 		model.addAttribute("travel", selectList);
 		model.addAttribute("page",page);

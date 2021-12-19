@@ -1,14 +1,13 @@
 package com.hk.tm.board.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.hk.tm.board.vo.CommentVO;
-import com.hk.tm.board.vo.TravelVO;
+
 
 @Repository
 public class CommentDAO {
@@ -25,9 +24,9 @@ public class CommentDAO {
 		return list;
 	}
 	
-	public CommentVO selectOneComment(int commentNO) {
+	public CommentVO selectOneComment(String id) {
 		
-		CommentVO commentVO = sql.selectOne(ns + "selectOneComment" , commentNO);
+		CommentVO commentVO = sql.selectOne(ns + "selectOneComment" , id);
 
 		return commentVO;
 	}
@@ -42,9 +41,9 @@ public class CommentDAO {
 		sql.update(ns + "updateComment", commentVO);
 	}
 
-	public void deleteComment(int commentNO) {
+	public void deleteComment(String id) {
 		
-		sql.delete(ns + "deleteComment", commentNO);
+		sql.delete(ns + "deleteComment", id);
 	}
 
 	public List<CommentVO> selectUserComment(String id) {

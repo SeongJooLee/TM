@@ -61,6 +61,11 @@ public class ReviewDAO {
 		return list;
 	}
 
+	public static ReviewVO selectOneComment(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 
 } 

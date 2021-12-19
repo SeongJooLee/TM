@@ -18,7 +18,6 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.hk.tm.board.service.CommentService;
 import com.hk.tm.board.vo.CommentVO;
-import com.hk.tm.board.vo.SelectPageVO;
 import com.hk.tm.member.vo.UserVO;
 
 @Controller
@@ -33,20 +32,20 @@ public class CommentController {
 	
 	List<CommentVO> list = commentService.selectAllComments();
 	
-	return "commentList"; //commentList.jsp 호출
+	return "tavelView"; 
 }
 	
 	@RequestMapping(value="/select" , method = RequestMethod.GET) 
 	public String commentSelectList(Model model) {
 		List<CommentVO> list = commentService.selectAllComments();
 
-		return "commentList"; //travelList.jsp 호출
+		return "tavelView"; 
 	}
 	
 	@RequestMapping(value="/view" , method=RequestMethod.GET)
-	public String commentView(Model model , @RequestParam("commentNO") int commentNO,HttpSession session) {
+	public String commentView(Model model , @RequestParam("commentNO") String id,HttpSession session) {
 		
-		Map<String,Object> map = commentService.selectOneComment(commentNO);
+		Map<String,Object> map = commentService.selectOneComment(id);
 		
 		model.addAttribute("comment", map.get("comment"));		
 		System.out.println("여기는 view +"+ map.get("comment").toString());
@@ -61,35 +60,37 @@ public class CommentController {
 			// TODO: handle exception
 			System.out.println("오류발생");
 		}
-		return "commentView"; // travelView.jsp 호출
+		return "tavelView"; 
 		
 	}
 	
 	@RequestMapping(value="/add" ,  method=RequestMethod.GET)
 	public String commentAdd(Model model) {			
-		return "commentAdd"; // travelAdd.jsp 호출
+		return "tavelView"; 
 		
 	}
 	
 	@RequestMapping(value="/addDone" ,  method=RequestMethod.POST)
 	public void commentAddDone(@ModelAttribute CommentVO commentVO, MultipartHttpServletRequest request, HttpServletResponse response,Model model) throws Exception, ServletException {
 		
-		response.sendRedirect("/tm/board/comment");  //travelList.jsp로 이동	
+		response.sendRedirect("/tm/board/tavelView");  	
 	}		
 
 	@RequestMapping(value="/update" ,  method=RequestMethod.POST)
 	public String commentUpdate(@ModelAttribute CommentVO commentVO, Model model, MultipartHttpServletRequest request, HttpServletResponse response) throws Exception, ServletException {		
 		
-		return "commentView"; // tavelView.jsp로 이동
+		commentService.updateComment(commentVO);		
+
+		return "tavelView"; 
 		
 	}
 	
 	@RequestMapping(value="/delete" ,  method=RequestMethod.GET) 
-		public void commentDelete(@RequestParam("commentNO") int commentNO, HttpServletResponse response) throws Exception {		
+		public void commentDelete(@RequestParam("id") String id, HttpServletResponse response) throws Exception {		
 
-		CommentVO commentVO = commentService.deleteComment(commentNO);		
+		CommentVO commentVO = commentService.deleteComment(id);	
 
-	response.sendRedirect("/tm/board/comment"); //travelList.jsp로 이동
+	response.sendRedirect("/tm/board/tavelView"); 
 	}
 }
 

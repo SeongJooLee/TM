@@ -8,25 +8,40 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hk.tm.board.dao.CommentDAO;
+import com.hk.tm.board.dao.ReviewDAO;
+import com.hk.tm.board.dao.TravelDAO;
 import com.hk.tm.board.vo.CommentVO;
+import com.hk.tm.board.vo.ReviewVO;
+import com.hk.tm.board.vo.TravelVO;
 
 @Service
 public class CommentService {
 	
 	@Autowired
 	CommentDAO commentDAO;	
+	
+	@Autowired
+	TravelDAO travelDAO;
+	
+	@Autowired
+	ReviewDAO reviewDAO;
 
 	public List<CommentVO> selectAllComments() {
 		// TODO Auto-generated method stub
 		return commentDAO.selectAllComments();
 	}
 
-	public Map<String, Object> selectOneComment(int commentNO) {
+	public Map<String, Object> selectOneComment(String id) {
 		
-		CommentVO commentVO = commentDAO.selectOneComment(commentNO);
+		CommentVO commentVO = commentDAO.selectOneComment(id);
+		TravelVO travelVO = TravelDAO.selectOneComment(id);
+		ReviewVO reviewVO = ReviewDAO.selectOneComment(id);
 		
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("comment", commentVO);
+		map.put("travel" , travelVO);
+		map.put("review", reviewVO);
+		
 		return map;
 	}
 	
@@ -40,10 +55,10 @@ public class CommentService {
 		commentDAO.addComment(commentVO);
 	}
 
-	public CommentVO deleteComment(int commentNO) {
+	public CommentVO deleteComment(String id) {
 		// TODO Auto-generated method stub
-		CommentVO commentVO = commentDAO.selectOneComment(commentNO);
-		commentDAO.deleteComment(commentNO);
+		CommentVO commentVO = commentDAO.selectOneComment(id);
+		commentDAO.deleteComment(id);
 		
 		return commentVO;
 	}

@@ -57,7 +57,7 @@ public class TravelService {
 	
 	public int selectMaxTravel() {
 		
-		return travelDAO.selectMaxTravel(); // 여기?
+		return travelDAO.selectMaxTravel();
 	}
 	
 	public void addTravel(TravelVO travelVO, ImageVO imageVO, CategoryVO categoryVO) {		

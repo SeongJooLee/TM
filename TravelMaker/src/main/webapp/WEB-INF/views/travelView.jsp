@@ -116,16 +116,21 @@ function next(){
 }
 
 // 댓글 관련
+
 function fn_enable_comment(obj){	  
 	   
 	   document.getElementById("content_comment").disabled = false;
+
+	   if (document.getElementById("content_comment") == null) {
+		   document.getElementById("content_comment").disabled = false;
+	   }
 	   document.getElementById("tr_btn_modify_comment").style.display='block';
-	   document.getElementById("tr_btn_comment").style.display='none';
+	   document.getElementById("tr_btn_comment").style.display='none';	   
 	}
 // 댓글 작성
 function fn_create_comment(){
 
-	var content = document.getElementById("").value;
+	var content = document.getElementById("content_comment").value;
 	if(!content){
 		alert('내용을 적어주세요.');
 		return false;
@@ -135,7 +140,7 @@ function fn_create_comment(){
         return;
     } else {
         alert("확인(예)을 누르셨습니다.");
-        document.getElementById("").submit();
+        document.getElementById("frm").submit();
     }
 }
 // 댓글 수정
@@ -308,7 +313,7 @@ function fn_delete_comment(){
 						<td>${travel.content }</td>
 						<td>${travel.writeDate }</td>
 						<td>${travel.id }</td>
-						<td><input type="button" value="댓글쓰기" onClick="fn_create_comment"></td>					  
+						<td><input type="button" value="댓글쓰기" onClick="fn_enable_comment(this.form)"></td>					  
 					</tr>
 				</div>
 		</table>	
