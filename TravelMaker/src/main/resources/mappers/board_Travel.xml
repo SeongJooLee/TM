@@ -47,8 +47,7 @@
 	</select>
 
 	<select id="selectMaxTravel" resultType="java.lang.Integer">
-		SELECT max(travelNO)
-		FROM TRAVEL
+		select nvl(max(travelNO),0)+1 from travel
 	</select>
 
 	<insert id="insertTravel" parameterType="TravelVO">
