@@ -13,7 +13,15 @@
         <link href="<c:url value="/resources/css/styles.css" />" rel="stylesheet" />
 
 <script>
-	
+var cnt = 1;
+function fn_addFile(){
+	if(cnt===4){
+		alert("최대 3개만 생성할 수 있습니다.");
+		return;        
+	    }
+	    $("#d_file").append("<br>" + "<p id='image"+cnt+" '><input type='file' name='image" + cnt + " ' />");
+	    cnt++;
+	}
 	function updateUser(){
 			
 			location.href = "/tm/member/mypage/update";
@@ -23,6 +31,26 @@
 	function deleteUser(){
 		location.href = "/tm/member/mypage/delete?userId=${userSession.id}";
 		}
+	function fn_create(){
+		var title = document.getElementById("title").value;
+		if(!title){
+			alert('제목을 적어주세요.');
+			return false;
+		}
+		var content = document.getElementById("content").value;
+		if(!content){
+			alert('내용을 적어주세요.');
+			return false;
+		}
+		
+	    if (!confirm("글을 생성하시겠습니까?")) {
+	        alert("취소(아니오)를 누르셨습니다.");
+	        return;
+	    } else {
+	        alert("확인(예)을 누르셨습니다.");
+	        }
+	        document.getElementById("frm").submit();
+	    }
 </script>
 <style type="text/css">
 .wrap {
@@ -93,7 +121,7 @@ width:110px;
 		</div>
 		<div class="grid2">
 			<h3>리뷰를 작성해주세요</h3>
-			<form action='/tm/member/mypage/review' method='get'>
+			<%-- <form action='/tm/member/mypage/review' method='get'>
 			
 				
 				제목을 적어주세요: <input type='text' name='title'><br>
@@ -101,7 +129,40 @@ width:110px;
 				<input type='hidden' type='text' name='promotionNO' value='${promotionNO}'>
 				<input type='submit' value='작성하기'>
 				
-			</form>
+			</form> --%>
+				<form id="frm" action="/tm/member/mypage/review" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="id" value="${userSession.id}">
+					<table border="1" align="center">
+					<tr>
+						<td></td>
+						<td>
+							&nbsp;&nbsp;글 제목 : <input type="text" name="title" id="title">
+							<input type='hidden' name='name' value='이용후기'>
+							<input type='hidden' name='promotionNO' value='${promotionNO}'>
+						</td>
+					</tr>
+					<tr>
+						<td align='left' colspan="2">이미지 파일 첨부<br>
+						<p><input type="button" value="파일 추가" onClick="fn_addFile()"><small> &nbsp;&nbsp;*최대 3개까지 첨부 가능합니다.</small>
+						<div id="d_file">
+					
+						</div>
+						</td>
+					</tr>
+					<tr>
+						<td align="center" valign="top">글내용</td>
+						<td colspan=2>
+						<textarea id="content" name="content" rows="10" cols="65" maxlength="4000"></textarea>
+						</td>
+					</tr>
+			</table>
+		<br><br>
+		<div align="center">
+			<input type="button" value="작성하기" onClick="fn_create()">
+			<input type="reset" value="다시 작성">
+			<input type="button" value="목록 보기" onClick="backToList(this.form)">
+		</div>
+	</form>
 		
 		</div>
 	</div>

@@ -103,7 +103,7 @@
 	</delete>
    
    
-   	<select id="selectOne" resultType="imageVO"> 
+   	<select id="selectOne" resultType="imageVO" parameterType='java.lang.Integer'> 
 		SELECT REVIEWNO, IMAGE1, IMAGE2, IMAGE3
 		 FROM IMAGE
 		 where reviewNO=#{reviewNO}

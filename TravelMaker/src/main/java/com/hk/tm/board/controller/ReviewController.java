@@ -109,8 +109,11 @@ public class ReviewController {
 	@RequestMapping(value="/board/review/view", method=RequestMethod.GET)
 	public String reviewView(Model model,@RequestParam("reviewNO") int reviewNO,HttpSession session) {
 		Map<String,Object> map = reviewService.selectOne(reviewNO);
+		System.out.println("여기 숨엇냐?= "+reviewNO);
 		model.addAttribute("review",map.get("review"));
 		model.addAttribute("image",map.get("image"));
+		System.out.println("리뷴쿠폰개봉 = "+map.get("review"));
+		System.out.println("쿠폰개봉 = "+map.get("image"));
 		try {
 			UserVO userVO = (UserVO)session.getAttribute("userSession");
 			List<ReviewVO> list = reviewService.userReviewList(userVO);
@@ -251,13 +254,16 @@ public class ReviewController {
 
 			request.setCharacterEncoding("utf-8");
 			String image = request.getParameter("image");
+			System.out.println("image= "+image);
 			String reviewNO = request.getParameter("reviewNO");
+			System.out.println("review= "+reviewNO);
 			String name = request.getParameter("name");
+			System.out.println("NAME= "+name);
 
 			OutputStream out = response.getOutputStream();
 			String path = "C:\\files\\"+name+"\\"+reviewNO+"\\"+image;
 			File imageFile = new File(path);
-
+			System.out.println("path="+path);
 			int lastIndex = image.lastIndexOf(".");
 			String fileName = image.substring(0,lastIndex);
 			File destDir = new File(REPO+"\\thumbnail");

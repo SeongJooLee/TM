@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.hk.tm.board.vo.NoticeVO;
 import com.hk.tm.board.vo.PromotionVO;
 import com.hk.tm.board.vo.ReservationVO;
 import com.hk.tm.board.vo.ReviewVO;
@@ -221,6 +222,15 @@ public class UserDAO {
 		// TODO Auto-generated method stub
 		int result = sqlSession.insert("mapper.boardReview.insert", reviewVO);
 		return result;
+	}
+	
+	public int selectMaxNotice() {
+		int reviewNO = sqlSession.selectOne("mapper.boardReview.selectMaxReview",null);
+		return reviewNO;
+	}
+	
+	public void noticeAdd(ReviewVO reviewVO) {
+		sqlSession.insert("mapper.boardReview.insertReview",reviewVO);
 	}
 
 	

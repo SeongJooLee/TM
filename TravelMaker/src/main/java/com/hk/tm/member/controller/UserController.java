@@ -2,12 +2,23 @@ package com.hk.tm.member.controller;
 
 
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +26,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.hk.tm.board.vo.ImageVO;
 import com.hk.tm.board.vo.PromotionVO;
 import com.hk.tm.board.vo.ReservationVO;
 import com.hk.tm.board.vo.ReviewVO;
@@ -24,6 +38,8 @@ import com.hk.tm.member.service.UserService;
 import com.hk.tm.member.vo.AdminVO;
 import com.hk.tm.member.vo.SellerVO;
 import com.hk.tm.member.vo.UserVO;
+
+import net.coobird.thumbnailator.Thumbnails;
 
 
 
@@ -36,6 +52,8 @@ public class UserController {
 	SellerVO sellerVO;
 	@Autowired
 	AdminVO adminVO;
+	
+	String REPO = "C:\\files";
 	
 	
 	
@@ -321,17 +339,92 @@ public class UserController {
 		return "sellerMyPageDeleteDone";
 	}
 	
-	@RequestMapping(value="/member/mypage/review", method=RequestMethod.GET)
-	public String userAddReview(@ModelAttribute ReviewVO reviewVO , Model model,HttpSession session){	
+	@RequestMapping(value="/member/mypage/review", method=RequestMethod.POST)
+	public String userAddReview(@ModelAttribute ReviewVO reviewVO , Model model,HttpSession session,MultipartHttpServletRequest request,HttpServletResponse response) throws IOException, ServletException{	
 		
-		UserVO user = (UserVO)session.getAttribute("userSession");
-		reviewVO.setId(user.getId());
-		
-		int result = 0;
-		
-		result = userService.addReview(reviewVO);
-		model.addAttribute("result",result);
+//		UserVO user = (UserVO)session.getAttribute("userSession");
+//		reviewVO.setId(user.getId());
+//		
+//		int result = 0;
+//		
+//		result = userService.addReview(reviewVO);
+//		model.addAttribute("result",result);
+		System.out.println("reviewVO 파라미터확인"+reviewVO);
+		request.setCharacterEncoding("utf-8");
+		Map<String,Object> map = new HashMap<String,Object>();
+		Enumeration enu=request.getParameterNames();
+		while(enu.hasMoreElements()){
+			String name=(String)enu.nextElement();
+			String value=request.getParameter(name);
+			map.put(name,value);
+		}
+		List fileList= upload(request);
+		map.put("fileList", fileList);
+		ImageVO imageVO = new ImageVO();
+
+		int reviewNO = userService.selectMaxNotice();
+		reviewNO++;
+		reviewVO.setReviewNO(reviewNO);
+
+		if(fileList.size()>2) {
+			imageVO.setImage3((String) fileList.get(2));
+			if(fileList.get(2) == "") {
+				imageVO.setImage3(null);
+				fileList.remove(2);
+			}
+		} if(fileList.size()>1) {
+			imageVO.setImage2((String) fileList.get(1));
+			if(fileList.get(1) == "") {
+				imageVO.setImage2(null);
+				fileList.remove(1);
+			}
+		} if(fileList.size()>0) {
+			imageVO.setImage1((String) fileList.get(0));
+			if(fileList.get(0) == "") {
+				imageVO.setImage1(null);
+				fileList.remove(0);
+			}
+		}
+		System.out.println("reviewVO =="+reviewVO);
+		userService.noticeAdd(reviewVO,imageVO);
+
+		for(int i=0;i < fileList.size(); i++) {
+			if(fileList.get(i)!=null) {
+				File srcFile = new File(REPO+"\\"+"temp"+"\\"+fileList.get(i));
+				File destDir = new File(REPO+"\\"+reviewVO.getName()+"\\"+reviewVO.getReviewNO());
+				destDir.mkdir();
+				FileUtils.moveFileToDirectory(srcFile, destDir, true);
+			}
+		}
+		response.sendRedirect("/tm/board/review");
 		return "userReviewAddDone";
+	}
+	
+	
+	
+	private List<String> upload(MultipartHttpServletRequest request) throws ServletException, IOException{
+		List<String> fileList= new ArrayList<String>();
+		Iterator<String> fileNames = request.getFileNames();
+		
+		while(fileNames.hasNext()){
+			String fileName = fileNames.next();
+			MultipartFile mFile = request.getFile(fileName);
+			String originalFileName=mFile.getOriginalFilename();
+			fileList.add(originalFileName);
+			File file = new File(REPO +"\\"+ fileName);
+			
+			if(mFile.getSize()!=0){ //File Null Check
+				if(! file.exists()){ //경로상에 파일이 존재하지 않을 경우
+					if(file.getParentFile().mkdirs()){ //경로에 해당하는 디렉토리들을 생성
+						file.createNewFile(); //이후 파일 생성
+					}
+				}
+				File destDir = new File(REPO +"\\temp\\");
+				destDir.mkdir();
+				mFile.transferTo(new File(REPO +"\\temp\\"+ originalFileName)); //임시로 저장된 multipartFile을 실제 파일로 전송
+			}
+		}
+		return fileList;
 	}
 	
 	

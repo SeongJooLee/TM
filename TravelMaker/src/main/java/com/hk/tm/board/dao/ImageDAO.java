@@ -43,6 +43,7 @@ public class ImageDAO {
 	}
 
 	//테마여행
+	
 	public ImageVO selectOneTravel(int travelNO) {
 		ImageVO imageVO = sql.selectOne(ns + "selectOneTravel" , travelNO);
 		return imageVO;
@@ -73,8 +74,13 @@ public class ImageDAO {
 	}
 
 	// 이용후기
+	public void reviewAdd(ImageVO imageVO) {
+		sql.insert(ns+"insert",imageVO);
+	}
+	
 	public ImageVO selectOne(int reviewNO) {
 		ImageVO imageVO = sql.selectOne(ns+"selectOne",reviewNO);
+		System.out.println("아무르티그로 = "+imageVO);
 		return imageVO;
 	}
 

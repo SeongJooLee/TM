@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hk.tm.board.dao.ImageDAO;
+import com.hk.tm.board.vo.ImageVO;
+import com.hk.tm.board.vo.NoticeVO;
 import com.hk.tm.board.vo.PromotionVO;
 import com.hk.tm.board.vo.ReservationVO;
 import com.hk.tm.board.vo.ReviewVO;
@@ -19,6 +22,9 @@ import com.hk.tm.member.vo.UserVO;
 public class UserService {
 	@Autowired
 	UserDAO userDAO;
+	
+	@Autowired
+	ImageDAO imageDAO;
 	
 	public List<UserVO> selectAll(){
 		return userDAO.selectAll();
@@ -197,5 +203,13 @@ public class UserService {
 		System.out.println("reservation 테이블 삭제개수 = "+reservationResult);
 		
 		return 5;
+	}
+	public int selectMaxNotice() {
+		return userDAO.selectMaxNotice();
+	}
+
+	public void noticeAdd(ReviewVO reviewVO, ImageVO imageVO) {
+		userDAO.noticeAdd(reviewVO);
+		imageDAO.reviewAdd(imageVO);
 	}
 }

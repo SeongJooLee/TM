@@ -75,4 +75,14 @@
 		 order by reviewNO desc
 	</select>
 	
+	<select id="selectMaxReview" resultType="java.lang.Integer"> 
+		SELECT max(reviewNO)
+		 FROM REVIEW
+	</select>
+	
+	<insert id="insertReview" parameterType="ReviewVO">
+		INSERT INTO REVIEW (REVIEWNO, TITLE, CONTENT, ID, NAME, WRITEDATE,PROMOTIONNO)
+		 VALUES((SELECT nvl(MAX(REVIEWNO) ,0)+1 FROM REVIEW), #{title}, #{content}, #{id}, #{name}, sysdate,#{promotionNO})
+	</insert>
+	
 </mapper>
