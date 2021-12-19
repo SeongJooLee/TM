@@ -60,13 +60,13 @@
 	</select>
 	
 	<select id="selectMaxPromotion" resultType="java.lang.Integer"> 
-		SELECT max(promotionNO)
-		 FROM PROMOTION
+		SELECT nvl(max(promotionNO),0)+1 FROM PROMOTION
 	</select>	
 	
 	<insert id="insertPromotion" parameterType="PromotionVO">
 		INSERT INTO PROMOTION (PROMOTIONNO, TITLE, CONTENT, WRITEDATE, PRICE, SELLERID, NAME)
-		 VALUES((SELECT MAX(PROMOTIONNO)+1 FROM PROMOTION), #{title}, #{content}, SYSDATE, #{price}, #{sellerID}, #{name})
+		 VALUES((SELECT NVL(MAX(PROMOTIONNO),0)+1 FROM PROMOTION), #{title}, #{content}, SYSDATE, #{price}, #{sellerID}, #{name})
+		 
 	</insert>
 	
 	<update id="updatePromotion" parameterType="PromotionVO"> 
