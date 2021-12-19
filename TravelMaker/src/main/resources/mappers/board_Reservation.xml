@@ -56,7 +56,7 @@
 	
 	<insert id="insertReservation" parameterType="ReservationVO">
 		INSERT INTO RESERVATION (RESERNO, PROMOTIONNO, RESERDATE, HEADCOUNT, ID)
- 		VALUES(TO_CHAR(SYSDATE,'YYYY/MM/DD/HH/MI/SS'), #{promotionNO}, #{reserDate}, #{headCount}, 'user')	
+ 		VALUES(TO_CHAR(SYSDATE,'YYYY/MM/DD/HH/MI/SS'), #{promotionNO}, #{reserDate}, #{headCount}, #{id})	
 	</insert>
 	
 	<delete id="deleteReservation" parameterType="ReservationVO">

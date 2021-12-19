@@ -60,8 +60,8 @@ function fn_create(){
         return;
     } else {
         alert("확인(예)을 누르셨습니다.");
-        }
         document.getElementById("frm").submit();
+        }
     }
 
 </script>

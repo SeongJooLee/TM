@@ -4,6 +4,14 @@ public class SelectPageVO {
 	private int startPage;
 	private int endPage;
 	private int nowPage;
+	private String categoryKey;
+	
+	public String getCategoryKey() {
+		return categoryKey;
+	}
+	public void setCategoryKey(String categoryKey) {
+		this.categoryKey = categoryKey;
+	}
 	public int getStartPage() {
 		return startPage;
 	}

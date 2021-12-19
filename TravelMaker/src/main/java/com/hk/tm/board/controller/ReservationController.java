@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,7 +29,7 @@ public class ReservationController {
 	
 	
 	@RequestMapping(value="/board/reservation", method= {RequestMethod.GET,RequestMethod.POST})
-	public String reservation(@ModelAttribute PromotionImageVO promotionImageVO,Model model) {
+	public String reservation(@ModelAttribute PromotionImageVO promotionImageVO,Model model,HttpSession session) {
 		promotionImageVO = reserService.selectOnePromotion(promotionImageVO.getPromotionNO());
 		model.addAttribute("reser",promotionImageVO);
 		
@@ -36,20 +37,17 @@ public class ReservationController {
 	}
 
 	@RequestMapping(value="/board/reservation/done", method={RequestMethod.GET,RequestMethod.POST})
-	public String reservationDone(@ModelAttribute ReservationVO reserVO,@RequestParam("promotionNO") int promotionNO,@RequestParam("title") String title ,@RequestParam("price") int price,Model model) {
-		//reserVO에 저장될 값
-		//reserNO, promotionNO, reserDate, headCount, id(user)
-		//ModelAttribute 로 reserDate, headCount 받고
-		//RequestParam 으로 promotionNO 받고
-		//user Session 값 받아서 값 저장
-		UserVO userVO = new UserVO(); // <--- 저장하기
-		reserVO.setId(userVO.getId());
+	public String reservationDone(HttpSession session,@ModelAttribute ReservationVO reserVO,@RequestParam("id") String id,@RequestParam("promotionNO") int promotionNO,@RequestParam("title") String title ,@RequestParam("price") int price,Model model) {
+		reserVO.setId(id);
 		reserVO.setPromotionNO(promotionNO);
 		PromotionVO promotionVO = new PromotionVO();
 		promotionVO.setTitle(title);
 		promotionVO.setPrice(price);
+
+		System.out.println("reserVO예약확인 "+reserVO.toString());
 		
 		reserVO = reserService.insertReservation(reserVO);
+		
 		
 		model.addAttribute("reser",reserVO);
 		model.addAttribute("promotion",promotionVO);

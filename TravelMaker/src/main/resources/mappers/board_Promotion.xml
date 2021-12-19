@@ -45,6 +45,16 @@
 		  WHERE p.PROMOTIONNO = i.PROMOTIONNO(+)
 		  AND p.PROMOTIONNO = c.PROMOTIONNO (+)
 		  AND p.count BETWEEN #{startPage} AND #{endPage}
+		  ORDER BY p.promotionNO DESC 
+	</select>
+	
+	<select id="selectCategory" resultType="promotionImageVO" parameterType="java.lang.String">
+		SELECT * 
+		FROM PROMOTION p ,IMAGE i,CATEGORY c 
+		WHERE p.PROMOTIONNO = i.PROMOTIONNO(+)
+		AND p.PROMOTIONNO = c.PROMOTIONNO (+)
+		AND c.CATEGORYNAME = #{key}
+		ORDER BY p.PROMOTIONNO DESC
 	</select>
    
    <select id="selectAllPromotion" resultMap="promotionResult">
@@ -89,14 +99,7 @@
 		 WHERE sellerID=#{sellerID}
 	</delete>
 	
-	<select id="selectCategory" resultType="promotionImageVO" parameterType="java.lang.String">
-		SELECT * 
-		FROM PROMOTION p ,IMAGE i,CATEGORY c 
-		WHERE p.PROMOTIONNO = i.PROMOTIONNO(+)
-		AND p.PROMOTIONNO = c.PROMOTIONNO (+)
-		AND c.CATEGORYNAME = #{key}
-		ORDER BY p.PROMOTIONNO DESC
-	</select>
+
    
    <select id='selectSellerPromotion' resultMap='promotionResult'>
    		select * from promotion where sellerID = #{sellerID}

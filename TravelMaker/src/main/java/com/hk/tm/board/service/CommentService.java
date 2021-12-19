@@ -75,4 +75,11 @@ public class CommentService {
 		return commentDAO.addTravelComment(commentVO);
 	}
 
+	public List<CommentVO> selectReviewComment(int reviewNO) {
+		return commentDAO.selectReviewComment(reviewNO);
+	}
+
+	public int addReviewComment(CommentVO commentVO) {
+		return commentDAO.addReviewComment(commentVO);
+	}
 }

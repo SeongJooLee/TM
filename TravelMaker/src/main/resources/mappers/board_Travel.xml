@@ -90,6 +90,7 @@
 		WHERE t.TRAVELNO = i.TRAVELNO(+)
 		AND t.TRAVELNO = c.TRAVELNO (+)
 		AND t.count BETWEEN #{startPage} AND #{endPage}
+		ORDER BY t.travelNO DESC 
 	</select>
 	
 	<select id="selectCategory" resultType="travelImageVO" parameterType="java.lang.String">

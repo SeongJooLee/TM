@@ -27,15 +27,30 @@
 	</select>
 	
 	<select id="selectTravelComment" resultType="CommentVO">
-		SELECT ID, CONTENT, WRITEDATE, TRAVELNO, REVIEWNO
+		SELECT ID, CONTENT, WRITEDATE, TRAVELNO
 		 FROM "COMMENT"
 		 where travelNO=#{travelNO}
+		 order by writeDate asc
 	</select>
 	
 	<insert id="addTravelComment" parameterType="CommentVO">
 		INSERT INTO "COMMENT" (ID, CONTENT, WRITEDATE, TRAVELNO, REVIEWNO)
 		 VALUES(#{id}, #{content}, SYSDATE, #{travelNO}, null)
 	</insert>
+	
+	<select id="selectReviewComment" resultType="CommentVO">
+		SELECT ID, CONTENT, WRITEDATE, REVIEWNO
+		 FROM "COMMENT"
+		 where reviewNO=#{reviewNO}
+		 order by writeDate asc
+	</select>
+	
+	<insert id="addReviewComment" parameterType="CommentVO">
+		INSERT INTO "COMMENT" (ID, CONTENT, WRITEDATE, TRAVELNO, REVIEWNO)
+		 VALUES(#{id}, #{content}, SYSDATE, null, #{reviewNO})
+	</insert>
+	
+	
 	
 	<update id="updateComment" parameterType="CommentVO">
 		UPDATE "COMMENT" SET CONTENT=#{content}

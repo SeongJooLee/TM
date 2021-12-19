@@ -64,4 +64,15 @@ public class CommentDAO {
 		return ret;
 	}
 
+	public List<CommentVO> selectReviewComment(int reviewNO) {
+		List<CommentVO> list = sql.selectList(ns+"selectReviewComment", reviewNO);
+		return list;
+	}
+	
+	public int addReviewComment(CommentVO commentVO) {
+		System.out.println("댓글달기 : "+commentVO.toString());
+		int ret = sql.insert(ns+"addReviewComment",commentVO);
+		return ret;
+	}
+
 }

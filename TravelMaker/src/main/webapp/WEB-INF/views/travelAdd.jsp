@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-     pageEncoding="UTF-8"
-    isELIgnored="false" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-  request.setCharacterEncoding("UTF-8");
-%> 
-<c:set var="contextPath"  value="${pageContext.request.contextPath}"  /> 
+	pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath }" />
+<%       
+   request.setCharacterEncoding("utf-8");
+ %>
+<!DOCTYPE html>
+<html>
 <head>
 <meta charset="UTF-8">
 <title>테마 여행 글쓰기창</title>
@@ -61,17 +62,17 @@ function fn_create(){
 </script>
 </head>
 <body>
-	<jsp:include page="/resources/include/header.jsp" />
-	<!-- Responsive navbar-->
-	<hr>
-	<h1 style="text-align: center">여행 글 쓰기</h1>
+    <jsp:include page="/resources/include/header.jsp" />
+    <hr>
+    
+	<h1 style="text-align: center">홍보 글 쓰기</h1>
 	<form id="frm" action="addDone" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="id" value="${userSession.id}">
 		<input type="hidden" name="name" value="테마여행">
 		<table border="1" align="center">
 			<tr>
 				<td>
-					<select name="categoryName" id="categoryName">
+					<select name="categoryName" id="categoryName" >
 						<option value="null">선택해주세요.</option>
 						<option value="쇼핑">쇼핑</option>
 						<option value="음식">음식</option>
@@ -82,13 +83,13 @@ function fn_create(){
 						<option value="지역">지역</option>
 					</select>
 				</td>
-				<td>
+				<td align='left'>
 					&nbsp;&nbsp;글 제목 : <input type="text" name="title" id="title">
 				</td>
 			</tr>
 			<tr>
 				<td align='left' colspan="2">이미지 파일 첨부<br>
-					<p><input type="button" value="파일 추가" onClick="fn_addFile()"><small> &nbsp;&nbsp;*최대 3개까지 첨부 가능합니다.</small></p>
+					<p><input type="button" value="파일 추가" onClick="fn_addFile()"><small> &nbsp;&nbsp;*최대 3개까지 첨부 가능합니다.</small>
 					<div id="d_file">
 					
 					</div>
@@ -97,18 +98,19 @@ function fn_create(){
 			<tr>
 				<td align="center" valign="top">글내용</td>
 				<td colspan=2>
-					<textarea name="content" rows="10" cols="65" maxlength="4000"></textarea>
+					<textarea id="content" name="content" rows="10" cols="65" maxlength="4000"></textarea>
 				</td>
 			</tr>
 		</table>
 		<br><br>
 		<div align="center">
-			<input type="submit" value="작성하기"  onClick="fn_create()">
+			<input type="button" value="작성하기" onClick="fn_create()">
 			<input type="reset" value="다시 작성">
 			<input type="button" value="목록 보기" onClick="backToList(this.form)">
 		</div>
 	</form>
  <hr>
      <jsp:include page="/resources/include/footer.jsp" />
+
 </body>
 </html>

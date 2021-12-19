@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page session="true"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <%
 	request.setCharacterEncoding("utf-8");
@@ -86,7 +87,7 @@ table {
 					</tr>
 					<tr>
 						<td>예약자 성명</td>
-						<td>로그인 정보 출력</td>
+						<td><input type="hidden" name="id" value="${userSession.id}">${userSession.name }</td>
 					</tr>
 					<tr>
 						<td>예약 날짜</td>
@@ -97,10 +98,11 @@ table {
 					</tr>
 					<tr>
 						<td>연락처</td>
-					<c:if test="${user.phone != null}">
-						<td> [ ${user.phone } ]</td>
+					<c:if test="${userSession.phone != null}">
+						<td><input type="hidden" name="phone" value="${userSession.phone }">  [ ${userSession.phone } ]</td>
 					</c:if>
-					<c:if test="${user.phone == null}">
+					
+					<c:if test="${userSession.phone == null}">
 						<td>
 							<small>등록된 번호가 없습니다.</small><br>
 							<small>마이페이지에서 번호 등록을 해주세요.</small>

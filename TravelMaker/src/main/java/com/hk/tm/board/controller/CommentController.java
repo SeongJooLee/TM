@@ -37,7 +37,7 @@ public class CommentController {
 //}
 	
 	@RequestMapping(value="/board/travel/comment" , method = RequestMethod.GET) 
-	public String commentSelectList(Model model,@RequestParam("travelNO")int travelNO) {
+	public String commentTravelList(Model model,@RequestParam("travelNO")int travelNO) {
 		List<CommentVO> list = commentService.selectTravelComment(travelNO);
 		model.addAttribute("comment",list);
 		
@@ -45,7 +45,7 @@ public class CommentController {
 	}
 	
 	@RequestMapping(value="/board/travel/add" ,  method=RequestMethod.POST)
-	public void commentAdd(Model model, @RequestParam("commentTravelNO") int commentTravelNO,@RequestParam("id") String id,@RequestParam("content")String content) {			
+	public void commentTravelAdd(Model model, @RequestParam("commentTravelNO") int commentTravelNO,@RequestParam("id") String id,@RequestParam("content")String content) {			
 		CommentVO commentVO = new CommentVO();
 		
 		commentVO.setContent(content);
@@ -54,9 +54,32 @@ public class CommentController {
 		int ret = commentService.addTravelComment(commentVO);
 		System.out.println("성공? : "+ret);
 		
+	}
+	
+	@RequestMapping(value="/board/review/comment" , method = RequestMethod.GET) 
+	public String commentSelectList(Model model,@RequestParam("reviewNO")int reviewNO) {
+		List<CommentVO> list = commentService.selectReviewComment(reviewNO);
+		model.addAttribute("comment",list);
 		
+		
+		return "commentTest"; 
+	}
+	
+	@RequestMapping(value="/board/review/add" ,  method=RequestMethod.POST)
+	public void commentAdd(Model model, @RequestParam("commentReviewNO") int commentReviewNO,@RequestParam("id") String id,@RequestParam("content")String content) {			
+		CommentVO commentVO = new CommentVO();
+		
+		commentVO.setContent(content);
+		commentVO.setId(id);
+		commentVO.setReviewNO(commentReviewNO);
+		int ret = commentService.addReviewComment(commentVO);
+		System.out.println("성공? : "+ret);
 		
 	}
+	
+	
+	
+	
 	
 	@RequestMapping(value="/addDone" ,  method=RequestMethod.POST)
 	public void commentAddDone(@ModelAttribute CommentVO commentVO,@ModelAttribute TravelVO travelVO, @ModelAttribute ReviewVO reviewVO , MultipartHttpServletRequest request, HttpServletResponse response,Model model) throws Exception, ServletException {

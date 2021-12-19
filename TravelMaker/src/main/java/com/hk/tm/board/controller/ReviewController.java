@@ -28,7 +28,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.hk.tm.board.service.CommentService;
 import com.hk.tm.board.service.ReviewService;
+import com.hk.tm.board.vo.CommentVO;
 import com.hk.tm.board.vo.ImageVO;
 import com.hk.tm.board.vo.ReviewVO;
 import com.hk.tm.board.vo.SelectPageVO;
@@ -41,6 +43,10 @@ public class ReviewController {
 
 	@Autowired
 	ReviewService reviewService;
+	
+	@Autowired
+	CommentService commentService;
+	
 	String REPO = "C:\\files";
 	
 	@RequestMapping(value = "/board/review", method= {RequestMethod.GET,RequestMethod.POST})
@@ -109,11 +115,10 @@ public class ReviewController {
 	@RequestMapping(value="/board/review/view", method=RequestMethod.GET)
 	public String reviewView(Model model,@RequestParam("reviewNO") int reviewNO,HttpSession session) {
 		Map<String,Object> map = reviewService.selectOne(reviewNO);
-		System.out.println("여기 숨엇냐?= "+reviewNO);
+		List<CommentVO> commentList = commentService.selectReviewComment(reviewNO);
+		model.addAttribute("comment",commentList);
 		model.addAttribute("review",map.get("review"));
 		model.addAttribute("image",map.get("image"));
-		System.out.println("리뷴쿠폰개봉 = "+map.get("review"));
-		System.out.println("쿠폰개봉 = "+map.get("image"));
 		try {
 			UserVO userVO = (UserVO)session.getAttribute("userSession");
 			List<ReviewVO> list = reviewService.userReviewList(userVO);

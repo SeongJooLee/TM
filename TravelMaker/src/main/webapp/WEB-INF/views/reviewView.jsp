@@ -228,12 +228,36 @@ function backToList(obj){
 							</c:when>
 						</c:choose>
 					</td>
-					
-					
-					
 				</tr>
 			</table>
 		</form>
+		
+			 <!--  해당 글 댓글 보이기 -->
+	 <form id="commentResult" action="/tm/board/review/add" method="post">
+		<table border="3" align="center">
+		<c:forEach var="comment" items="${comment}" varStatus="status">
+					<tr>
+						<td>글번호 : ${status.count }  |||</td>
+						<td>ID : ${comment.id }  |||</td>
+						<td>내용 : ${comment.content }  |||</td>
+						<td>작성날짜 : ${comment.writeDate }  |||</td>
+						<td>테마여행 글번호 : ${comment.reviewNO }</td>
+					</tr>
+			</c:forEach>
+			<tr>
+				<td>댓글 달기 : </td>
+				<td>
+					<input type="text" name="content">
+					<input type="hidden" name="id" value="${userSession.id }">
+					<input type="hidden" name="commentReviewNO" value="${review.reviewNO }">
+				</td>
+				<td>
+					<input type="submit" value="댓글달기">
+				</td>
+			<tr>
+		</table>	
+	 </form>
+		
 	</div>
      <jsp:include page="/resources/include/footer.jsp" />
 </body>
