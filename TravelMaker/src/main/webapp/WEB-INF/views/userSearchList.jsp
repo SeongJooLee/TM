@@ -8,6 +8,10 @@
 <head>
 <meta charset="UTF-8">
 <title>관리자 마이페이지</title>
+<!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="<c:url value="/resources/css/styles.css" />" rel="stylesheet" />
 <script>
 function success(){
 	alert('${search}로 검색한 결과입니다');
@@ -54,6 +58,8 @@ function success(){
 </style>
 </head>
 <body>
+<jsp:include page="/resources/include/header.jsp" />
+
 	<c:if test='${empty list}'>
 					<script>
 						waitd();
@@ -124,6 +130,7 @@ function success(){
 			</script>
 		</div>
 	</div>
+	<jsp:include page="/resources/include/footer.jsp" />
 </body>
 
 

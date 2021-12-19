@@ -169,7 +169,9 @@ public class AdminController {
 
 		model.addAttribute("result",search);
 		model.addAttribute("proList",proList);
+		
 		model.addAttribute("reserList",reserList);
+		
 		return "userSearchReservation";
 	}
 	@RequestMapping(value="/admin/mypage/reservationUpdate",method=RequestMethod.GET)

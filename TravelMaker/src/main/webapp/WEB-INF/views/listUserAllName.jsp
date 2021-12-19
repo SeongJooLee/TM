@@ -8,6 +8,10 @@
 <head>
 <meta charset="UTF-8">
 <title>관리자 마이페이지</title>
+ <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="<c:url value="/resources/css/styles.css" />" rel="stylesheet" />
 <script>
 	function nameOrder(){
 		alert('이름순으로 보여집니다.');
@@ -47,7 +51,9 @@
 }
 </style>
 </head>
+
 <body>
+<jsp:include page="/resources/include/header.jsp" />
 	<h1>${userSession.name} 전용 페이지</h1>
 	<div class="wrap">
 		<div class="grid1">
@@ -108,6 +114,7 @@
 			</table>
 		</div>
 	</div>
+	<jsp:include page="/resources/include/footer.jsp" />
 </body>
 
 </html>

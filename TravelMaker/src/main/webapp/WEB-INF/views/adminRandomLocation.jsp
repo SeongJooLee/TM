@@ -7,6 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="<c:url value="/resources/css/styles.css" />" rel="stylesheet" />
 <script>
 	function notice(){
 		alert('해당 notice 게시물로 이동합니다');
@@ -27,6 +32,8 @@
 </script>
 </head>
 <body>
+<jsp:include page="/resources/include/header.jsp" />
+
 	<c:choose>
 		<c:when test='${notice != null}'>
 			<script>
@@ -50,5 +57,6 @@
 		</c:when>
 	
 	</c:choose>
+	<jsp:include page="/resources/include/footer.jsp" />
 </body>
 </html>

@@ -7,16 +7,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="<c:url value="/resources/css/styles.css" />" rel="stylesheet" />
 <script>
 
 function success(){
-	alert('${result}로 검색한 결과입니다');
+	alert('${result}로 검색한결과입니다');
 	
 	}
-function waitd(){
-	alert('검색 결과가 없습니다 게시판 관리 페이지로 이동합니다');
-	location.href='/tm/admin/mypage';
-	}
+/* function waitd(){
+	alert('검색 결과가 없습니다');
+	 location.href='/tm/admin/mypage'; 
+	} */
 </script>
 <style type="text/css">
 .wrap {
@@ -47,7 +51,8 @@ function waitd(){
 </style>
 </head>
 <body>
-
+<jsp:include page="/resources/include/header.jsp" />
+<c:set  var='count' value='${0}'></c:set>
 <h1>${userSession.name} 전용 페이지</h1>
 	<div class="wrap">
 		<div class="grid1">
@@ -97,6 +102,7 @@ function waitd(){
 	<c:forEach var='reserList' items='${reserList}' >
 		
 		<c:if test='${proList.promotionNO==reserList.promotionNO && result.equals(reserList.id)}'>
+		
 			<tr>
 				<td>${reserList.reserNO}</td>
 				<td>${reserList.reserDate}</td>
@@ -116,13 +122,16 @@ function waitd(){
 	
 	
 </c:forEach>
+
 	
-	<script>
+		<script>
 			success();
-	</script>
+		</script>
+	
+	
 </table>
 		</div>
 	</div>
-
+<jsp:include page="/resources/include/footer.jsp" />
 </body>
 </html>
