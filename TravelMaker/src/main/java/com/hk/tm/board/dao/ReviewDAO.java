@@ -66,6 +66,12 @@ public class ReviewDAO {
 		return null;
 	}
 
+	// 댓글관련
+	public void addReview(ReviewVO reviewVO) {
+		// TODO Auto-generated method stub
+		sql.insert(ns + "insertReview", reviewVO);
+	}
+
 
 
 } 

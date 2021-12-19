@@ -27,11 +27,7 @@ function backToList(obj){
 }
 
 function fn_create(){
-	var title = document.getElementById("title").value;
-	if(!title){
-		alert('제목을 적어주세요.');
-		return false;
-	}
+
 	var content = document.getElementById("content").value;
 	if(!content){
 		alert('내용을 적어주세요.');
@@ -58,11 +54,25 @@ function fn_create(){
 		<table border="1" align="center">
 
 			<tr>
-				<td align="center" valign="top">글내용</td>
+				<td align="center" valign="top">댓글내용</td>
 				<td colspan=2>
 					<textarea name="content" rows="10" cols="65" maxlength="4000"></textarea>
 				</td>
 			</tr>
+			
+			<tr>
+      			<td width="150" align="center" bgcolor="cornflowerblue">
+        			 작성일
+      			</td>
+      		<td>
+       			<input type=text value="<fmt:formatDate value="${comment.writeDate}" />" disabled />
+      		</td> 
+     	    <td width="150" align="center" bgcolor="cornflowerblue">
+     			 	작성자
+  			</td>  
+  			<td >
+   				<input type=text value="${comment.id }" name="writer"  disabled />    			
+   			</td>
 		</table>
 		<br><br>
 		<div align="center">

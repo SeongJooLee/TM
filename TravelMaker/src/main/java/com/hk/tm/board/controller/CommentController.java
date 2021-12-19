@@ -18,6 +18,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.hk.tm.board.service.CommentService;
 import com.hk.tm.board.vo.CommentVO;
+import com.hk.tm.board.vo.ReviewVO;
+import com.hk.tm.board.vo.TravelVO;
 import com.hk.tm.member.vo.UserVO;
 
 @Controller
@@ -71,7 +73,9 @@ public class CommentController {
 	}
 	
 	@RequestMapping(value="/addDone" ,  method=RequestMethod.POST)
-	public void commentAddDone(@ModelAttribute CommentVO commentVO, MultipartHttpServletRequest request, HttpServletResponse response,Model model) throws Exception, ServletException {
+	public void commentAddDone(@ModelAttribute CommentVO commentVO,@ModelAttribute TravelVO travelVO, @ModelAttribute ReviewVO reviewVO , MultipartHttpServletRequest request, HttpServletResponse response,Model model) throws Exception, ServletException {
+		
+		commentService.addComment(commentVO, travelVO, reviewVO);// 여기문제
 		
 		response.sendRedirect("/tm/board/comment");  	
 	}		

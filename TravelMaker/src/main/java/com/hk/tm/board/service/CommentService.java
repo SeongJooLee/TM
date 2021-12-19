@@ -35,12 +35,12 @@ public class CommentService {
 		
 		CommentVO commentVO = commentDAO.selectOneComment(id);
 		TravelVO travelVO = TravelDAO.selectOneComment(id);
-		ReviewVO reviewVO = ReviewDAO.selectOneComment(id);
+		//ReviewVO reviewVO = ReviewDAO.selectOneComment(id);
 		
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("comment", commentVO);
 		map.put("travel" , travelVO);
-		map.put("review", reviewVO);
+		//map.put("review", reviewVO);
 		
 		return map;
 	}
@@ -50,9 +50,11 @@ public class CommentService {
 		commentDAO.updateComment(commentVO);
 	}
 	
-	public void addComment(CommentVO commentVO) {		
+	public void addComment(CommentVO commentVO, TravelVO travelVO, ReviewVO reviewVO) {		
 		
-		commentDAO.addComment(commentVO);
+		commentDAO.addComment(commentVO);// 여기문제
+		travelDAO.addTravel(travelVO);
+		reviewDAO.addReview(reviewVO);
 	}
 
 	public CommentVO deleteComment(String id) {

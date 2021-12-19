@@ -33,7 +33,7 @@ public class CommentDAO {
 
 	public void addComment(CommentVO commentVO) {
 		
-		sql.insert(ns + "insertComment", commentVO);
+		sql.insert(ns + "insertComment", commentVO);// 여기 문제?
 	}
 	
 	public void updateComment(CommentVO commentVO) {
