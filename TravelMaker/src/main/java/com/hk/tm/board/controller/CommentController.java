@@ -50,6 +50,7 @@ public class CommentController {
 		System.out.println("어..느..새 ..힙..합..은 안..멋져");
 		commentVO.setContent(content);
 		commentVO.setId(id);
+		
 		commentVO.setTravelNO(commentTravelNO);
 		int ret = commentService.addTravelComment(commentVO);
 		System.out.println("성공? : "+ret);

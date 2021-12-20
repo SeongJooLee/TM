@@ -299,10 +299,10 @@ function fn_delete_comment(){
 		<table border="3" align="center">
 		<c:forEach var="comment" items="${comment}" varStatus="status">
 					<tr>
-						<td>글번호 : ${status.count }  |||</td>
-						<td>ID : ${comment.id }  |||</td>
-						<td>내용 : ${comment.content }  |||</td>
-						<td>작성날짜 : ${comment.writeDate }  |||</td>
+						<td>글번호 : ${status.count}</td>
+						<td>ID:${comment.id }</td>
+						<td>내용 : ${comment.content } </td>
+						<td>작성날짜 : ${comment.writeDate }</td>
 						<td>테마여행 글번호 : ${comment.travelNO }</td>
 					</tr>
 			</c:forEach>
