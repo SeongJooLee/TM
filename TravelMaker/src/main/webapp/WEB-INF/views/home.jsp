@@ -23,22 +23,28 @@
         <div class="container px-4 px-lg-5">
             <!-- Heading Row-->
 
+
+
+
             <!-- Call to Action-->
             <div class="card text-white bg-secondary my-5 py-4 text-center">
                 <div class="card-body"><a class="text-white m-0" href="${contextPath}/tm/board/notice">공지사항</a></div>
             </div>
             <!-- Content Row-->
+            
+            <!-- 여기서 for문 i < 3 -->
+            
+            
+            <!-- 이친구들을 반복해서 만들건데 받아올 값은 홍보 리스트 처럼 -->
             <div class="row gx-4 gx-lg-5">
                 <div class="col-md-4 mb-5">
                     <div class="card h-100">
-                        <!-- <div class="card-body">
-                            <h2 class="card-title">Card One</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
-                        </div> -->
                         <img  src="<c:url value="http://encosmall.kr/design/encos0720/shop/img/common/gonggi_top.jpg" />" width="100%" height="100%" /> 
                         <div class="card-footer"><a class="btn btn-primary btn-sm" href="${contextPath}/tm/board/notice">공지사항</a><a class="title" href="${contextPath}/tm/board/notice/view?noticeNO=1"> 첫번째 글 연결</a></div>
                     </div>
                 </div>
+                
+                <%-- 
                 <div class="col-md-4 mb-5">
                     <div class="card h-100">
                         <!-- <div class="card-body">
@@ -59,6 +65,11 @@
                         <div class="card-footer"><a class="btn btn-primary btn-sm" href="${contextPath}/tm/board/notice">이벤트</a><a class="title" href="${contextPath}/tm/board/notice/view?noticeNO=3"> 세번째 글 연결</a></div>
                     </div>
                 </div>
+                 --%>
+                
+                
+                
+                
                 
                 <div class="card text-white bg-secondary my-5 py-4 text-center">
                 <div class="card-body"><a class="text-white m-0" href="${contextPath}/tm/board/promotion">홍보상품</a></div>
