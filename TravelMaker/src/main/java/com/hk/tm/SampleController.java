@@ -21,7 +21,7 @@ public class SampleController {
     }
     
 	@RequestMapping(value="/kakaoPay" , method =RequestMethod.POST) 
-    public String kakaoPay(@RequestParam("title")String title,@RequestParam("name")String name,@RequestParam("headCount")int headCount,@RequestParam("price")int price) { // redirec:URL --> URL move 
+    public String kakaoPay(@RequestParam("title")String title,@RequestParam("name")String name,@RequestParam("headCount")String headCount,@RequestParam("price")String price) { // redirec:URL --> URL move 
         String url = kakaopay.kakaoPayReady(title,name,headCount,price);
         return "redirect:" +url; // 해당 유알엘로 이동
  
@@ -31,7 +31,6 @@ public class SampleController {
     public String kakaoPaySuccess(@RequestParam("pg_token") String pg_token, Model model) {
         // 서버에서 성공한 정보 
 	
-		System.out.println("피지토큰 = "+pg_token);
         model.addAttribute("info", kakaopay.kakaoPayInfo(pg_token));
         return "kakaoPaySuccess"; // jsp 호출
     }

@@ -110,7 +110,7 @@ function kakaoPay(){
 			</tr>
 			<tr>	
 				<td>
-					<input type="hidden" name="price" value="${promtion.price }"> 가   격   : ${promotion.price } 원
+					<input type="hidden" name="price" value="${promotion.price }"> 가   격   : ${promotion.price } 원
 				</td>
 			</tr>
 			<tr align="right">

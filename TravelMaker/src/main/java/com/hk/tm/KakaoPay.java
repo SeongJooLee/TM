@@ -22,14 +22,16 @@ public class KakaoPay {
     private KakaoPayReadyVO kakaoPayReadyVO;
     private KakaoPayApprovalVO kakaoPayApprovalVO;
     
-    public String kakaoPayReady(String title, String name, int headCount, int price) {
+    public String kakaoPayReady(String title, String name, String headCount, String price) {
  
-    	String headCountStr = Integer.toString(headCount);
-    	String priceStr = Integer.toString(price);
-    	
+//    	String headCountStr = Integer.toString(headCount);
+//    	String priceStr = Integer.toString(price);
         RestTemplate restTemplate = new RestTemplate();
- 
+        
+        System.out.println("받은 값 : "+title+"|||"+name+"|||"+headCount+"|||"+price);
+        
         // 서버로 요청할 Header
+        
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "KakaoAK" + " b35936c88d90573a13525f1103fdde5f");
         headers.add("Accept", MediaType.APPLICATION_JSON_UTF8_VALUE);
@@ -39,11 +41,11 @@ public class KakaoPay {
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("cid", "TC0ONETIME");
         params.add("partner_order_id", "관리자");
-        params.add("partner_user_id", "name");
+        params.add("partner_user_id", "이성주");
         params.add("item_name", title);
-        params.add("quantity", headCountStr);
-        params.add("total_amount", priceStr);
-        params.add("tax_free_amount", "0");
+        params.add("quantity", headCount);
+        params.add("total_amount", price);
+        params.add("tax_free_amount", "100");
         params.add("approval_url", "http://localhost:8888/tm/kakaoPaySuccess");
         params.add("cancel_url", "http://localhost:8888/tm/kakaoPayCancel");
         params.add("fail_url", "http://localhost:8888/tm/kakaoPaySuccessFail");
@@ -55,7 +57,6 @@ public class KakaoPay {
  
         try {
         	kakaoPayReadyVO = restTemplate.postForObject(new URI(HOST + "/v1/payment/ready"), body, KakaoPayReadyVO.class);
-            
             
             return kakaoPayReadyVO.getNext_redirect_pc_url();
  
@@ -87,12 +88,10 @@ public class KakaoPay {
         params.add("cid", "TC0ONETIME");
         params.add("tid", kakaoPayReadyVO.getTid());
         params.add("partner_order_id", "관리자");
-        params.add("partner_user_id", "이성주");
+        params.add("partner_user_id","이성주");
         params.add("pg_token", pg_token);
-        params.add("total_amount", "100");
         
         
-        System.out.println("카카오페이 인포 여기 들어오냐");
         HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
         
         try {
