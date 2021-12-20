@@ -46,8 +46,8 @@ public class NoticeDAO {
 		sql.delete(ns+"deleteNotice",noticeNO);
 	}
 
-	public List<NoticeVO> selectCategoryNotice(String key) {
-		List<NoticeVO> list = sql.selectList(ns+"selectCategory",key);
+	public List<NoticeImageVO> selectCategoryNotice(String key) {
+		List<NoticeImageVO> list = sql.selectList(ns+"selectCategory",key);
 		return list;
 	}
 

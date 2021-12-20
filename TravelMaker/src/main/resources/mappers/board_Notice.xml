@@ -54,11 +54,12 @@
 		 where noticeNO=#{noticeNO} 
 	</delete>
 	
-	<select id="selectCategory" resultType="NoticeVO" parameterType="java.lang.String">
-		SELECT NOTICENO, TITLE, CONTENT, ADMINID, NAME, WRITEDATE
-		 FROM NOTICE
-		 where name=#{key}
-		 order by noticeNO desc
+	<select id="selectCategory" resultType="NoticeImageVO" parameterType="java.lang.String">
+		  		SELECT *
+		 FROM NOTICE n, IMAGE i
+		 where n.noticeNO = i.noticeNO(+)
+		 and n.name=#{key}
+		 order by n.noticeNO desc
 	</select>
 	
 	<select id="selectNoticeAll" resultType="NoticeVO" >
@@ -66,11 +67,12 @@
 	</select>
 	
 	   <select id="selectPageNoticeImage" resultType="NoticeImageVO">
-		SELECT * 
-		FROM NOTICE p ,IMAGE i,CATEGORY c 
-		WHERE p.NOTICENO = i.NOTICENO(+)
-		AND p.NOTICENO = c.NOTICENO (+)
-		ORDER BY p.NOTICENO DESC
+		SELECT * FROM
+		 (SELECT ROW_NUMBER()over(ORDER BY noticeNO DESC) count,noticeNO, title,content,adminID,name, writeDate
+		  FROM notice )  n,IMAGE i
+		  WHERE n.noticeNO = i.noticeNO(+)
+		  AND n.count BETWEEN #{startPage} AND #{endPage}
+		  ORDER BY n.noticeNO DESC 
 	</select>
 
 	<select id="selectUnion" resultType="NoticeVO" >

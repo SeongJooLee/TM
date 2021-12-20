@@ -50,11 +50,11 @@
 <script>
    function rhdwl() {
       alert('공지사항 카테고리');
-      location.href = '/tm/board/notice/category?key=notice';
+      location.href = '/tm/board/notice/category?key=공지사항';
    }
    function dlqpsxm() {
       alert('이벤트 카테고리');
-      location.href = '/tm/board/notice/category?key=event';
+      location.href = '/tm/board/notice/category?key=이벤트';
    }
    function chrlghk() {
       alert('설정을 초기화합니다.');
@@ -83,7 +83,7 @@
 
                   <c:if test="${notice.image1 != null }">
                      <img
-                        src="${contextPath }/tm/board/notice/download?image=${notice.image1}&noticeNO=${notice.noticeNO}&name=${notice.name}"
+                        src="${contextPath }/board/notice/download?image=${notice.image1}&noticeNO=${notice.noticeNO}&name=${notice.name}"
                         width="100%" height="100%" />
                   </c:if>
 
@@ -94,7 +94,7 @@
                   </c:if>
 
                   <div class="card-footer">
-                     <a class="btn btn-primary btn-sm">${notice.categoryName }</a>&nbsp;&nbsp;&nbsp;<a href="${contextPath}/tm/board/notice/view?noticeNO=${notice.noticeNO }">${notice.title }</a>
+                     <a class="btn btn-primary btn-sm">${notice.categoryName }</a>&nbsp;&nbsp;&nbsp;<a href="${contextPath}/board/notice/view?noticeNO=${notice.noticeNO }">${notice.title }</a>
                   </div>
                </div>
             </div>

@@ -72,7 +72,7 @@ public class NoticeService {
 		return imageDAO.noticeImgDelete(noticeNO);
 	}
 
-	public List<NoticeVO> selectCategoryNotice(String key) {
+	public List<NoticeImageVO> selectCategoryNotice(String key) {
 		return noticeDAO.selectCategoryNotice(key);
 	}
 

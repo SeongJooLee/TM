@@ -49,11 +49,11 @@ public class NoticeController {
 	public String noticeList(Model model) {
 		List<NoticeVO> list = noticeService.selectAllNotice();
 		int listCount = list.size(); //전체 게시물의 개수
-		int listSize = 10; //한 페이지에 보일 갯수
-		int page = (listCount+10)/listSize; //현재 목록의 페이지 번호
+		int listSize = 6; //한 페이지에 보일 갯수
+		int page = (listCount+5)/listSize; //현재 목록의 페이지 번호
 		
 		int endList = 1*listSize;
-		int startList = endList-9;
+		int startList = endList-5;
 		
 		SelectPageVO selectPageVO = new SelectPageVO();
 		
@@ -62,7 +62,6 @@ public class NoticeController {
 		
 		List<NoticeImageVO> selectList = noticeService.selectAllNoticeImage(selectPageVO);
 		
-		System.out.println("선생ㄴ미 등장 : "+selectList.toString());
 		
 		model.addAttribute("notice",selectList);
 		model.addAttribute("page",page);
@@ -74,20 +73,22 @@ public class NoticeController {
 	public String noticeSelectList(Model model,@RequestParam(value="selectPage",required=false) int selectPage) {
 		List<NoticeVO> list = noticeService.selectAllNotice();
 		int listCount = list.size(); //전체 게시물의 개수
-		int listSize = 10; //한 페이지에 보일 갯수
-		int page = (listCount+10)/listSize; //현재 목록의 페이지 번호
+		int listSize = 6; //한 페이지에 보일 갯수
+		int page = (listCount+5)/listSize; //현재 목록의 페이지 번호
 
 		int endList = 0;
 		int startList = 0;
 
 		endList = selectPage*listSize;
-		startList = endList-9;
+		startList = endList-5;
 		
 		SelectPageVO selectPageVO = new SelectPageVO();
 		
 		selectPageVO.setStartPage(startList);
 		selectPageVO.setEndPage(endList);
-		List<NoticeVO> selectList = noticeService.selectPageNotice(selectPageVO);
+		
+		List<NoticeImageVO> selectList = noticeService.selectAllNoticeImage(selectPageVO);
+		
 		model.addAttribute("notice",selectList);
 		model.addAttribute("page",page);
 		model.addAttribute("selectPage",selectPage);
@@ -98,8 +99,9 @@ public class NoticeController {
 	
 	@RequestMapping(value="/board/notice/category", method= {RequestMethod.GET})
 	public String noticeCategory(Model model,@RequestParam("key") String key) {
-		List<NoticeVO> list = noticeService.selectCategoryNotice(key);
+		List<NoticeImageVO> list = noticeService.selectCategoryNotice(key);
 		model.addAttribute("notice",list);
+		System.out.println("카테고리 선택 "+list.toString());
 		return "noticeList";
 	}
 
