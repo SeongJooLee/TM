@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
  
@@ -21,8 +22,11 @@ public class KakaoPay {
     private KakaoPayReadyVO kakaoPayReadyVO;
     private KakaoPayApprovalVO kakaoPayApprovalVO;
     
-    public String kakaoPayReady() {
+    public String kakaoPayReady(String title, String name, int headCount, int price) {
  
+    	String headCountStr = Integer.toString(headCount);
+    	String priceStr = Integer.toString(price);
+    	
         RestTemplate restTemplate = new RestTemplate();
  
         // 서버로 요청할 Header
@@ -35,25 +39,22 @@ public class KakaoPay {
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("cid", "TC0ONETIME");
         params.add("partner_order_id", "관리자");
-        params.add("partner_user_id", "이성주");
-        params.add("item_name", "일단 아무거나 팔거야");
-        params.add("quantity", "1");
-        params.add("total_amount", "8500");
+        params.add("partner_user_id", "name");
+        params.add("item_name", title);
+        params.add("quantity", headCountStr);
+        params.add("total_amount", priceStr);
         params.add("tax_free_amount", "0");
         params.add("approval_url", "http://localhost:8888/tm/kakaoPaySuccess");
-        params.add("cancel_url", "http://localhost:8888/kakaoPayCancel");
-        params.add("fail_url", "http://localhost:8888/kakaoPaySuccessFail");
+        params.add("cancel_url", "http://localhost:8888/tm/kakaoPayCancel");
+        params.add("fail_url", "http://localhost:8888/tm/kakaoPaySuccessFail");
  
         
-        System.out.println("헤드 투스트링 : "+headers.toString());
-        System.out.println("파람 투스트링 : "+params.toString());
+
         
          HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
  
         try {
-            System.out.println("여기 들어왓어? 1");
         	kakaoPayReadyVO = restTemplate.postForObject(new URI(HOST + "/v1/payment/ready"), body, KakaoPayReadyVO.class);
-        	System.out.println("여기 들어왓어? 2");
             
             
             return kakaoPayReadyVO.getNext_redirect_pc_url();
@@ -69,7 +70,7 @@ public class KakaoPay {
         return "/pay";
         
     }
-    
+    @ResponseBody
     public KakaoPayApprovalVO kakaoPayInfo(String pg_token) {
  
         
@@ -85,15 +86,20 @@ public class KakaoPay {
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("cid", "TC0ONETIME");
         params.add("tid", kakaoPayReadyVO.getTid());
-        params.add("partner_order_id", "1001");
-        params.add("partner_user_id", "gorany");
+        params.add("partner_order_id", "관리자");
+        params.add("partner_user_id", "이성주");
         params.add("pg_token", pg_token);
-        params.add("total_amount", "2100");
+        params.add("total_amount", "100");
         
+        
+        System.out.println("카카오페이 인포 여기 들어오냐");
         HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
         
         try {
+            System.out.println("여기 들어왓어? 1");
             kakaoPayApprovalVO = restTemplate.postForObject(new URI(HOST + "/v1/payment/approve"), body, KakaoPayApprovalVO.class);
+            
+            System.out.println("여기 들어왓어? 2");
             return kakaoPayApprovalVO;
         
         } catch (RestClientException e) {
@@ -104,7 +110,7 @@ public class KakaoPay {
             e.printStackTrace();
         }
         
-        return null;
+        return kakaoPayApprovalVO;
     }
     
 }

@@ -26,5 +26,10 @@ public class KakaoPayReadyVO {
 	public void setCreated_at(Date created_at) {
 		this.created_at = created_at;
 	}
+	@Override
+	public String toString() {
+		return "KakaoPayReadyVO [tid=" + tid + ", next_redirect_pc_url=" + next_redirect_pc_url + ", created_at="
+				+ created_at + "]";
+	}
     
 }

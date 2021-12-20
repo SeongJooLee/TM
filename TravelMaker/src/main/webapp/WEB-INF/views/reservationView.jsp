@@ -33,6 +33,15 @@ function fn_create(){
 			location.href="${contextPath}/board/review/add?promotionNO=${reser.promotionNO}";
 	    }
     }
+function kakaoPay(){
+	    if (!confirm("확인을 누르면 결제 페이지로 이동합니다.")) {
+	        alert("취소(아니오)를 누르셨습니다.");
+	        return;
+	    } else {
+	        alert("확인(예)을 누르셨습니다.");
+			document.getElementById("kakaoFrm").submit();
+	    }
+    }
  	function goHome(obj) {
 	    if (!confirm("확인을 누르면 상품페이지로 이동합니다.")) {
 	        alert("취소(아니오)를 누르셨습니다.");
@@ -62,10 +71,11 @@ function fn_create(){
 		<h1 style="text-align: center">예약 확인</h1>
 		<br>
 		<br>
+	<form id="kakaoFrm" method="post" action="${contextPath }/kakaoPay">
 		<table border="1" >
 			<tr>
 				<td >
-					<h1 >${promotion.title }</h1>
+					<h1 ><input type="hidden" name="title" value="${promotion.title }">${promotion.title }</h1>
 				<td>
 			<tr>
 			<tr>
@@ -75,7 +85,7 @@ function fn_create(){
 			</tr>
 			<tr>
 				<td>
-				 	 예 약 자 : ${userSession.name }
+				 	<input type="hidden" name="name" value="${userSession.name }"> 예 약 자 : ${userSession.name }
 				</td>
 			</tr>
 			<tr>	
@@ -85,7 +95,7 @@ function fn_create(){
 			</tr>
 			<tr>	
 				<td>
-					인 원  수 : ${reser.headCount }
+					<input type="hidden" name="headCount" value="${reser.headCount }"> 인 원  수 : ${reser.headCount }
 				</td>
 			</tr>
 			<tr>	
@@ -100,15 +110,15 @@ function fn_create(){
 			</tr>
 			<tr>	
 				<td>
-					 가   격   : ${promotion.price } 원
+					<input type="hidden" name="price" value="${promtion.price }"> 가   격   : ${promotion.price } 원
 				</td>
 			</tr>
 			<tr align="right">
 				<td>
 				<br><br>
-					<form method="post" action="${contextPath }/kakaoPay">
-						<button>카카오페이로 결제하기</button>
-					</form>
+
+						<button type="button" onClick="kakaoPay()">카카오페이로 결제하기</button>
+
 				<br><br>
 					 <input type="button" value="이용 후기 작성" onClick="fn_create()">
 					<br><br>
@@ -117,7 +127,7 @@ function fn_create(){
 				</td>
 			</tr>
 		</table>
-		
+	</form>		
 	</div>
 	<hr>
 	<jsp:include page="/resources/include/footer.jsp" />
