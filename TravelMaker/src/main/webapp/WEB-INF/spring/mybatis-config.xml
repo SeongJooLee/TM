@@ -24,6 +24,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 			<typeAlias type="com.hk.tm.board.vo.ReservationVO" alias="ReservationVO" />
 			<typeAlias type="com.hk.tm.board.vo.CategoryVO" alias="CategoryVO" />
 			
+			<typeAlias type="com.hk.tm.board.vo.NoticeImageVO" alias="NoticeImageVO" />
+			<typeAlias type="com.hk.tm.board.vo.ReviewImageVO" alias="ReviewImageVO" />
 			<typeAlias type="com.hk.tm.board.vo.PromotionImageVO" alias="PromotionImageVO" />
 			<typeAlias type="com.hk.tm.board.vo.TravelImageVO" alias="TravelImageVO" />
 			<typeAlias type="com.hk.tm.board.vo.SelectPageVO" alias="SelectPageVO" />

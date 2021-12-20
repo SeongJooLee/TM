@@ -21,79 +21,76 @@ import com.hk.tm.board.vo.TravelVO;
 @Service
 public class TravelService {
 	private static final Logger logger = LoggerFactory.getLogger(TravelService.class);
-	
+
 	@Autowired
-	TravelDAO travelDAO;			
-	
+	TravelDAO travelDAO;
+
 	@Autowired
 	ImageDAO imageDAO;
-	
+
 	@Autowired
 	CategoryDAO categoryDAO;
-	
+
 	public List<TravelVO> selectAllTravels() {
-		
+
 		return travelDAO.selectAllTravels();
 	}
-	
+
 	public List<TravelImageVO> selectAllTravelImage(SelectPageVO selectPageVO) {
-		
+
 		return travelDAO.selectAllTravelImage(selectPageVO);
 	}
-	
+
 	public Map<String, Object> selectOneTravel(int travelNO) {
-		
-		TravelVO travelVO = travelDAO.selectOneTravel(travelNO);		
-		ImageVO imageVO = imageDAO.selectOneTravel(travelNO); 
+
+		TravelVO travelVO = travelDAO.selectOneTravel(travelNO);
+		ImageVO imageVO = imageDAO.selectOneTravel(travelNO);
 		CategoryVO categoryVO = categoryDAO.selectOneTravel(travelNO);
-		
-		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("travel", travelVO);		
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("travel", travelVO);
 		map.put("image", imageVO);
 		map.put("category", categoryVO);
-		
+
 		return map;
 	}
-	
+
 	public int selectMaxTravel() {
-		
+
 		return travelDAO.selectMaxTravel();
 	}
-	
-	public void addTravel(TravelVO travelVO, ImageVO imageVO, CategoryVO categoryVO) {		
-		
+
+	public void addTravel(TravelVO travelVO, ImageVO imageVO, CategoryVO categoryVO) {
+
 		travelDAO.addTravel(travelVO);
 		imageDAO.addTravel(imageVO);
 		categoryDAO.addTravel(categoryVO);
 	}
 
 	public void updateTravel(TravelVO travelVO, ImageVO imageVO, CategoryVO categoryVO) {
-		
+
 		travelDAO.updateTravel(travelVO);
-		imageDAO.travelUpdate(travelVO,imageVO);
+		imageDAO.travelUpdate(travelVO, imageVO);
 		categoryDAO.updateTravel(categoryVO);
 	}
-	
+
 	public TravelVO deleteTravel(int travelNO) {
 		imageDAO.deleteTravel(travelNO);
-		categoryDAO.deleteTravel(travelNO);		
-		TravelVO travelVO = travelDAO.selectOneTravel(travelNO);		
+		categoryDAO.deleteTravel(travelNO);
+		TravelVO travelVO = travelDAO.selectOneTravel(travelNO);
 
 		travelDAO.deleteTravel(travelNO);
-		
-		
+
 		return travelVO;
 	}
-	
+
 	public int travelImgDelete(int travelNO) {
-					
+
 		return imageDAO.travelImgDelete(travelNO);
 	}
 
-
-
 	public List<TravelImageVO> selectCategoryTravel(String key) {
-		
+
 		return travelDAO.selectCategoryTravel(key);
 	}
 
@@ -101,4 +98,4 @@ public class TravelService {
 		// TODO Auto-generated method stub
 		return travelDAO.selectUserTravel(id);
 	}
-}	
+}

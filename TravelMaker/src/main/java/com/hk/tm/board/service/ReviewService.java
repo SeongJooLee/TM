@@ -11,6 +11,7 @@ import com.hk.tm.board.dao.ImageDAO;
 import com.hk.tm.board.dao.ReviewDAO;
 import com.hk.tm.board.vo.ImageVO;
 import com.hk.tm.board.vo.NoticeVO;
+import com.hk.tm.board.vo.ReviewImageVO;
 import com.hk.tm.board.vo.ReviewVO;
 import com.hk.tm.board.vo.SelectPageVO;
 import com.hk.tm.member.vo.UserVO;
@@ -77,6 +78,11 @@ public class ReviewService {
 	public List<ReviewVO> selectPageReview(SelectPageVO selectPageVO) {
 		// TODO Auto-generated method stub
 		return reviewDAO.selectPageReview(selectPageVO);
+	}
+
+	public List<ReviewImageVO> selectAllReviewImage(SelectPageVO selectPageVO) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

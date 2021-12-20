@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.hk.tm.board.vo.NoticeImageVO;
 import com.hk.tm.board.vo.NoticeVO;
 import com.hk.tm.board.vo.PromotionImageVO;
 import com.hk.tm.board.vo.SelectPageVO;
@@ -52,6 +53,12 @@ public class NoticeDAO {
 
 	public List<NoticeVO> selectPageNotice(SelectPageVO selectPageVO) {
 		List<NoticeVO>list = sql.selectList(ns+"selectPageNotice", selectPageVO);
+		return list;
+	}
+
+	public List<NoticeImageVO> selectAllNoticeImage(SelectPageVO selectPageVO) {
+		// TODO Auto-generated method stub
+		List<NoticeImageVO> list = sql.selectList(ns+"selectPageNoticeImage",selectPageVO);
 		return list;
 	}
 }

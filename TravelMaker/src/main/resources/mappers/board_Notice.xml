@@ -65,6 +65,14 @@
 		SELECT * FROM NOTICE
 	</select>
 	
+	   <select id="selectPageNoticeImage" resultType="NoticeImageVO">
+		SELECT * 
+		FROM NOTICE p ,IMAGE i,CATEGORY c 
+		WHERE p.NOTICENO = i.NOTICENO(+)
+		AND p.NOTICENO = c.NOTICENO (+)
+		ORDER BY p.NOTICENO DESC
+	</select>
+
 	<select id="selectUnion" resultType="NoticeVO" >
 		SELECT * FROM (SELECT ROW_NUMBER()OVER(ORDER BY name) as count ,noticeNO,title,name FROM 
 		(SELECT noticeNO,title,name FROM (SELECT NOTICENO ,title,name FROM NOTICE n

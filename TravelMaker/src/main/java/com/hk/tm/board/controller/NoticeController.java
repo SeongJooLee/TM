@@ -31,6 +31,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.hk.tm.board.service.NoticeService;
 import com.hk.tm.board.vo.ImageVO;
+import com.hk.tm.board.vo.NoticeImageVO;
 import com.hk.tm.board.vo.NoticeVO;
 import com.hk.tm.board.vo.SelectPageVO;
 
@@ -59,7 +60,9 @@ public class NoticeController {
 		selectPageVO.setStartPage(startList);
 		selectPageVO.setEndPage(endList);
 		
-		List<NoticeVO> selectList = noticeService.selectPageNotice(selectPageVO);
+		List<NoticeImageVO> selectList = noticeService.selectAllNoticeImage(selectPageVO);
+		
+		System.out.println("선생ㄴ미 등장 : "+selectList.toString());
 		
 		model.addAttribute("notice",selectList);
 		model.addAttribute("page",page);

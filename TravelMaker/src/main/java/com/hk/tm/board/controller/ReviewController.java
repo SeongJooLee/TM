@@ -32,6 +32,7 @@ import com.hk.tm.board.service.CommentService;
 import com.hk.tm.board.service.ReviewService;
 import com.hk.tm.board.vo.CommentVO;
 import com.hk.tm.board.vo.ImageVO;
+import com.hk.tm.board.vo.ReviewImageVO;
 import com.hk.tm.board.vo.ReviewVO;
 import com.hk.tm.board.vo.SelectPageVO;
 import com.hk.tm.member.vo.UserVO;
@@ -65,7 +66,7 @@ public class ReviewController {
 		selectPageVO.setStartPage(startList);
 		selectPageVO.setEndPage(endList);
 		
-		List<ReviewVO> selectList = reviewService.selectPageReview(selectPageVO);
+		List<ReviewImageVO> selectList = reviewService.selectAllReviewImage(selectPageVO); 
 		
 		model.addAttribute("review",selectList);
 		model.addAttribute("page",page);
