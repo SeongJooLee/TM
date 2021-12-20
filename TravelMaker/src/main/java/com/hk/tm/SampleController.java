@@ -30,6 +30,7 @@ public class SampleController {
 	@RequestMapping(value="/kakaoPaySuccess" , method =RequestMethod.GET) 
     public String kakaoPaySuccess(@RequestParam("pg_token") String pg_token, Model model) {
         
+		System.out.println("피지토큰 = "+pg_token);
         model.addAttribute("info", kakaopay.kakaoPayInfo(pg_token));
         return "kakaoPaySuccess";
     }
