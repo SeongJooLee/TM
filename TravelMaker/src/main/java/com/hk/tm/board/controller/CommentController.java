@@ -45,20 +45,10 @@ public class CommentController {
 		return "commentTest"; 
 	}
 	
-<<<<<<< HEAD
-	@RequestMapping(value="/board/travel/commentTravelAdd" ,  method={RequestMethod.GET,RequestMethod.POST}, produces = "application/json; charset=utf8")
-	@ResponseBody
-	public void commentTravelAdd(Model model, @RequestParam("travelNO") int commentTravelNO,@RequestParam("id") String id,@RequestParam("content")String content) {			
-		System.out.println("comment : "+content);
-=======
 	@RequestMapping(value="/board/travel/add" ,  method=RequestMethod.POST)
 	public String commentTravelAdd(Model model, @RequestParam("commentTravelNO") int commentTravelNO,@RequestParam("id") String id,@RequestParam("content")String content) {			
->>>>>>> branch 'main' of https://github.com/SeongJooLee/TM.git
 		CommentVO commentVO = new CommentVO();
-<<<<<<< HEAD
-=======
 		System.out.println("어..느..새 ..힙..합..은 안..멋져");
->>>>>>> branch 'main' of https://github.com/SeongJooLee/TM.git
 		commentVO.setContent(content);
 		commentVO.setId(id);
 		commentVO.setTravelNO(commentTravelNO);
@@ -137,7 +127,7 @@ public class CommentController {
 
 		CommentVO commentVO = commentService.deleteComment(travelNO);	
 
-	response.sendRedirect("/tm/board/comment"); 
+		response.sendRedirect("/tm/board/comment"); 
 	}
 }
 
