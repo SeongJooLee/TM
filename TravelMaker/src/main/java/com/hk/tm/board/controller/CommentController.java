@@ -45,6 +45,7 @@ public class CommentController {
 		return "commentTest"; 
 	}
 	
+	
 	@RequestMapping(value="/board/travel/add" ,  method=RequestMethod.POST)
 	public String commentTravelAdd(Model model, @RequestParam("commentTravelNO") int commentTravelNO,@RequestParam("id") String id,@RequestParam("content")String content) {			
 		CommentVO commentVO = new CommentVO();
