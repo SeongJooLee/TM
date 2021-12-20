@@ -53,13 +53,12 @@ public class ReviewController {
 	@RequestMapping(value = "/board/review", method= {RequestMethod.GET,RequestMethod.POST})
 	public String reviewList(Model model) {
 		List<ReviewVO> list = reviewService.boardAllList();
-		
 		int listCount = list.size(); //전체 게시물의 개수
-		int listSize = 10; //한 페이지에 보일 갯수
-		int page = (listCount+10)/listSize; //현재 목록의 페이지 번호
+		int listSize = 6; //한 페이지에 보일 갯수
+		int page = (listCount+5)/listSize; //현재 목록의 페이지 번호
 		
 		int endList = 1*listSize;
-		int startList = endList-9;
+		int startList = endList-5;
 		
 		SelectPageVO selectPageVO = new SelectPageVO();
 		

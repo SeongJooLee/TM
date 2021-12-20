@@ -43,6 +43,9 @@
 	<jsp:include page="/resources/include/header.jsp" />
 
 <div class="container px-4 px-lg-5">
+	<div class="card text-white bg-secondary my-5 py-4 text-center">
+		<div class="card-body"><p class="text-white m-0">이용후기</p></div>
+	</div>
 
       <div class="row gx-4 gx-lg-5">
          <c:forEach var="review" items="${review}">
@@ -62,7 +65,7 @@
                   </c:if>
 
                   <div class="card-footer">
-                     <a class="btn btn-primary btn-sm">${review.categoryName }</a>&nbsp;&nbsp;&nbsp;<a href="${contextPath}/tm/board/review/view?reviewNO=${review.reviewNO }">${review.title }</a>
+                     <a href="${contextPath}/tm/board/review/view?reviewNO=${review.reviewNO }">${review.title }</a>
                   </div>
                </div>
             </div>
