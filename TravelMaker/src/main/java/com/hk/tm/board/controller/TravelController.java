@@ -118,7 +118,7 @@ public class TravelController {
 
 	@RequestMapping(value="/view" , method=RequestMethod.GET)
 	public String travelView(Model model , @RequestParam("travelNO") int travelNO,HttpSession session) {
-
+		System.out.println("여기 ??");
 		Map<String,Object> map = travelService.selectOneTravel(travelNO);
 		
 		List<CommentVO> commentList = commentService.selectTravelComment(travelNO);

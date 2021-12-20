@@ -34,6 +34,15 @@
 		  FROM REVIEW )  r2 WHERE r2.count BETWEEN #{startPage} AND #{endPage}
 	</select>
 	
+	<select id="selectPageReviewImage" resultType="ReviewImageVO">
+		 SELECT * FROM
+		 (SELECT ROW_NUMBER()over(ORDER BY reviewNO DESC) count,reviewNO ,title,content,writeDate, id, name, promotionNO
+		  FROM REVIEW )  r,image i
+		   WHERE r.reviewNO=i.reviewNO(+) 
+		   and r.count BETWEEN #{startPage} AND #{endPage}
+		   order by r.reviewNO desc
+	</select>
+	
 	<select id="selectOne" resultType="ReviewVO">
 		SELECT REVIEWNO, TITLE, CONTENT, WRITEDATE, ID, NAME, PROMOTIONNO
 		 FROM REVIEW 

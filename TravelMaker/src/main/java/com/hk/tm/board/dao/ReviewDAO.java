@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.hk.tm.board.vo.NoticeVO;
+import com.hk.tm.board.vo.ReviewImageVO;
 import com.hk.tm.board.vo.ReviewVO;
 import com.hk.tm.board.vo.SelectPageVO;
 import com.hk.tm.member.vo.UserVO;
@@ -70,6 +71,12 @@ public class ReviewDAO {
 	public void addReview(ReviewVO reviewVO) {
 		// TODO Auto-generated method stub
 		sql.insert(ns + "insertReview", reviewVO);
+	}
+
+	public List<ReviewImageVO> selectAllReviewImage(SelectPageVO selectPageVO) {
+		List<ReviewImageVO> list = sql.selectList(ns+"selectPageReviewImage",selectPageVO);
+		
+		return list;
 	}
 
 

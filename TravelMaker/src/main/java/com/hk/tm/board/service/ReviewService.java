@@ -76,13 +76,11 @@ public class ReviewService {
 	}
 
 	public List<ReviewVO> selectPageReview(SelectPageVO selectPageVO) {
-		// TODO Auto-generated method stub
 		return reviewDAO.selectPageReview(selectPageVO);
 	}
 
 	public List<ReviewImageVO> selectAllReviewImage(SelectPageVO selectPageVO) {
-		// TODO Auto-generated method stub
-		return null;
+		return reviewDAO.selectAllReviewImage(selectPageVO);
 	}
 
 }
