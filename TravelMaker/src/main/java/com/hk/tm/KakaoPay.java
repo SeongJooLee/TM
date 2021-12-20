@@ -104,13 +104,15 @@ public class KakaoPay {
         
         } catch (RestClientException e) {
             // TODO Auto-generated catch block
+        	System.out.println("오류1번실행");
             e.printStackTrace();
         } catch (URISyntaxException e) {
             // TODO Auto-generated catch block
+        	System.out.println("오류2번실행");
             e.printStackTrace();
         }
         
-        return kakaoPayApprovalVO;
+        return null;
     }
     
 }
