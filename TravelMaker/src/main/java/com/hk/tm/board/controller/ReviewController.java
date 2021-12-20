@@ -32,6 +32,7 @@ import com.hk.tm.board.service.CommentService;
 import com.hk.tm.board.service.ReviewService;
 import com.hk.tm.board.vo.CommentVO;
 import com.hk.tm.board.vo.ImageVO;
+import com.hk.tm.board.vo.ReviewImageVO;
 import com.hk.tm.board.vo.ReviewVO;
 import com.hk.tm.board.vo.SelectPageVO;
 import com.hk.tm.member.vo.UserVO;
@@ -52,20 +53,19 @@ public class ReviewController {
 	@RequestMapping(value = "/board/review", method= {RequestMethod.GET,RequestMethod.POST})
 	public String reviewList(Model model) {
 		List<ReviewVO> list = reviewService.boardAllList();
-		
 		int listCount = list.size(); //전체 게시물의 개수
-		int listSize = 10; //한 페이지에 보일 갯수
-		int page = (listCount+10)/listSize; //현재 목록의 페이지 번호
+		int listSize = 6; //한 페이지에 보일 갯수
+		int page = (listCount+5)/listSize; //현재 목록의 페이지 번호
 		
 		int endList = 1*listSize;
-		int startList = endList-9;
+		int startList = endList-5;
 		
 		SelectPageVO selectPageVO = new SelectPageVO();
 		
 		selectPageVO.setStartPage(startList);
 		selectPageVO.setEndPage(endList);
 		
-		List<ReviewVO> selectList = reviewService.selectPageReview(selectPageVO);
+		List<ReviewImageVO> selectList = reviewService.selectAllReviewImage(selectPageVO); 
 		
 		model.addAttribute("review",selectList);
 		model.addAttribute("page",page);

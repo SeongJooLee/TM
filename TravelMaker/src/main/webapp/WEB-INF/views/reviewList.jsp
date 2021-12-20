@@ -11,32 +11,66 @@
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="<c:url value="/resources/css/styles.css" />"
 	rel="stylesheet" />
+<style>
+.button {
+   background-color: #4CAF50; /* Green */
+   border: none;
+   color: white;
+   padding: 16px 32px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 16px;
+   margin: 4px 2px;
+   -webkit-transition-duration: 0.4s; /* Safari */
+   transition-duration: 0.4s;
+   cursor: pointer;
+}
+
+.button4 {
+   background-color: white;
+   color: black;
+   border: 2px solid #e7e7e7;
+}
+
+.button4:hover {
+   background-color: #e7e7e7;
+}
+</style>
 </head>
 <body>
 
 	<jsp:include page="/resources/include/header.jsp" />
 
-	<table align="center" border="1" width="80%">
-		<tr height="10" align="center" bgcolor="lightgreen">
-			<td>글번호</td>
-			<td>제목</td>
-			<td>내용</td>
-			<td>작성일</td>
-			<td>작성자</td>
-			<td>상품번호</td>
-		</tr>
+<div class="container px-4 px-lg-5">
+	<div class="card text-white bg-secondary my-5 py-4 text-center">
+		<div class="card-body"><p class="text-white m-0">이용후기</p></div>
+	</div>
 
-			<c:forEach var="review" items="${review}" varStatus="status">
-				<tr height="10" align="center">
-					<td>${review.reviewNO}</td>
-					<td><a href="review/view?reviewNO=${review.reviewNO }" >${review.title}</a></td>
-					<td>${review.content }</td>
-				    <td>${review.writeDate }</td>
-					<td>${review.id }</td>
-					<td>${review.promotionNO }</td>
-				</tr>
-			</c:forEach>
-	</table>
+      <div class="row gx-4 gx-lg-5">
+         <c:forEach var="review" items="${review}">
+            <div class="col-md-4 mb-5">
+               <div class="card h-100">
+
+                  <c:if test="${review.image1 != null }">
+                     <img
+                        src="${contextPath }/tm/board/review/download?image=${review.image1}&reviewNO=${review.reviewNO}&name=${review.name}"
+                        width="100%" height="100%" />
+                  </c:if>
+
+                  <c:if test="${review.image1 == null }">
+                     <img
+                        src="<c:url value="http://encosmall.kr/design/encos0720/shop/img/common/gonggi_top.jpg" />"
+                        width="100%" height="100%" />
+                  </c:if>
+
+                  <div class="card-footer">
+                     <a href="${contextPath}/tm/board/review/view?reviewNO=${review.reviewNO }">${review.title }</a>
+                  </div>
+               </div>
+            </div>
+         </c:forEach>
+      </div>
 		<div align="center">
 			<c:forEach var="i" begin="1" end="${page }">
 				<c:if test="${selectPage == i}">
@@ -47,7 +81,7 @@
 				</c:if>
 				</c:forEach>
 		</div>
-
+</div>
 	<jsp:include page="/resources/include/footer.jsp" />
 </body>
 </html>

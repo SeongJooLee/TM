@@ -146,7 +146,8 @@ public class TravelController {
 	}
 
 	@RequestMapping(value="/add" ,  method=RequestMethod.GET)
-	public String travelAdd(Model model) {			
+	public String travelAdd(Model model) {	
+		System.out.println("작성자?ㄴ");
 		return "travelAdd"; // travelAdd.jsp 호출
 
 	}

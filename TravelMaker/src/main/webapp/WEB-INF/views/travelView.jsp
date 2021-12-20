@@ -464,7 +464,6 @@ function commentSubmit(){
 				</c:if>      			
    				</td>
   			</tr>			
-
 			
 		</table>		
 	</form>
