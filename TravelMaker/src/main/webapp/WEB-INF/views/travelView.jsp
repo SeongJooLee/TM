@@ -321,23 +321,26 @@ function commentSubmit(){
 	
 	
 	 <!--  해당 글 댓글 보이기 -->
+	<c:if test='${userSession.grade.equals("user")}'> 
 	 <form id="commentResult" action="/tm/board/travel/commentTravelAdd" method="post">
 		<table border="3" align="center">
 		<c:forEach var="comment" items="${comment}" varStatus="status">
 					<tr>
-						<td>글번호 : ${status.count}</td>
-						<td>ID:${comment.id }</td>
+					
+						<td>작성자ID: ${comment.id }</td>
 						<td>내용 : ${comment.content } </td>
 						<td>작성날짜 : ${comment.writeDate }</td>
-						<td>테마여행 글번호 : ${comment.travelNO }</td>
+						
 					</tr>
 			</c:forEach>
 			<tr>
 				<td>댓글 달기 : </td>
 				<td>
+					
 					<input type="text" id="commentContent">
-					<input type="hidden" name="id" value="${userSession.id }">
+					<input type="hidden" name="id" value="${userSession.name }">
 					<input type="hidden" name="commentTravelNO" value="${travel.travelNO }">
+					
 				</td>
 				<td>
 					<input type="button" onClick="commentSubmit()" value="댓글달기" >
@@ -345,7 +348,7 @@ function commentSubmit(){
 			<tr>
 		</table>	
 	 </form>
-	
+	</c:if>
 	
 	
 	

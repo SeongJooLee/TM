@@ -70,7 +70,7 @@ public class CommentController {
 	}
 	
 	@RequestMapping(value="/board/review/add" ,  method=RequestMethod.POST)
-	public void commentAdd(Model model, @RequestParam("commentReviewNO") int commentReviewNO,@RequestParam("id") String id,@RequestParam("content")String content) {			
+	public String commentAdd(Model model, @RequestParam("commentReviewNO") int commentReviewNO,@RequestParam("id") String id,@RequestParam("content")String content) {			
 		CommentVO commentVO = new CommentVO();
 		
 		commentVO.setContent(content);
@@ -78,7 +78,9 @@ public class CommentController {
 		commentVO.setReviewNO(commentReviewNO);
 		int ret = commentService.addReviewComment(commentVO);
 		System.out.println("성공? : "+ret);
-		
+		System.out.println("잡았다 요너석!!");
+		model.addAttribute("review",commentReviewNO);
+		return "reviewViewCheck";
 	}
 	
 	

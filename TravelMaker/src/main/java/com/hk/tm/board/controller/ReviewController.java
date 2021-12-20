@@ -128,6 +128,7 @@ public class ReviewController {
 		} catch (Exception e) {
 			System.out.println("오류발생");
 		}
+		System.out.println("어..느새..");
 		return "reviewView";
 	}
 	

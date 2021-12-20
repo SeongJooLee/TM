@@ -122,10 +122,11 @@ function backToList(obj){
 function commentSubmit(){
     $.ajax({
         type : 'POST',
-        url : 'promotionImgDelete',
+        url : 'commentAdd',
         dataType : "json",
         data : {
            'promotionNO' : '${promotion.promotionNO}'
+        	 
         },
         success : function(data) {
            if (data.result == 'false') {
@@ -260,32 +261,36 @@ function commentSubmit(){
 		</form>
 		
 			 <!--  해당 글 댓글 보이기 -->
+			
 	 <form id="commentResult" action="/tm/board/review/add" method="post">
 		<table border="3" align="center">
 		<c:forEach var="comment" items="${comment}" varStatus="status">
 					<tr>
-						<td>글번호 : ${status.count }  |||</td>
-						<td>ID : ${comment.id }  |||</td>
-						<td>내용 : ${comment.content }  |||</td>
-						<td>작성날짜 : ${comment.writeDate }  |||</td>
-						<td>테마여행 글번호 : ${comment.reviewNO }</td>
+						
+						<td>작성자 ID: ${comment.id}</td>
+						<td> 내용: ${comment.content } </td>
+						<td>작성날짜 : ${comment.writeDate } </td>
+						
 					</tr>
 			</c:forEach>
 			<tr>
+			 <c:if test='${userSession.grade.equals("user")}'>
 				<td>댓글 달기 : </td>
 				<td>
 					<input type="text" name="content">
-					<c:if test='${userSession.grade.equals("user")}'>
+					
 					<input type="hidden" name="id" value="${userSession.id }">
-					</c:if>
-					<c:if test='${userSession.grade.equals("admin")}'>
-					<input type="hidden" name="id" value="${userSession.adminID }">
-					</c:if>
 					<input type="hidden" name="commentReviewNO" value="${review.reviewNO }">
+					
+					
+					
+					
+					
 				</td>
 				<td>
-					<input type="button"  onClick="commentSubmit()" value="댓글달기">
+					<input type="submit" value="댓글달기">
 				</td>
+				</c:if>
 			<tr>
 		</table>	
 	 </form>
