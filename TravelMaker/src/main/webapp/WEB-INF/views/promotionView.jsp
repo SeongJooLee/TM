@@ -48,13 +48,15 @@ function fn_imgUpdateBtn(obj) {
 		alert("취소(아니오)를 누르셨습니다.");
 		return false;
 	} else {
+		
 		alert("확인(예)을 누르셨습니다.");
+		
 		$.ajax({
 			type : 'POST',
 			url : 'promotionImgDelete',
 			dataType : "json",
 			data : {
-				'promotionNO' : '${promotion.promotionNO}'
+				'promotionNO' : '${promotion.promotionNO}',
 			},
 			success : function(data) {
 				if (data.result == 'false') {
@@ -71,6 +73,8 @@ function fn_imgUpdateBtn(obj) {
 				return;
 			}
 		});
+
+		
 		document.getElementById("update").style.display = 'none';
 	}
 }

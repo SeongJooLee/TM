@@ -119,6 +119,31 @@ function backToList(obj){
    obj.submit();
 }
 
+function commentSubmit(){
+    $.ajax({
+        type : 'POST',
+        url : 'promotionImgDelete',
+        dataType : "json",
+        data : {
+           'promotionNO' : '${promotion.promotionNO}'
+        },
+        success : function(data) {
+           if (data.result == 'false') {
+              alert('삭제 실패');
+           } else {
+              alert('파일을 삭제했습니다.');
+              $("#d_filetest").remove();
+              location.href="${contextPath}/board/promotion/view?promotionNO=${promotion.promotionNO }";
+           }
+        },
+        error : function(err) {
+           //서버로부터 응답이 정상적으로 처리되지 못햇을 때 실행
+           alert('에러떳는데 난 몰랑');
+           return;
+        }
+     });
+	
+}
 </script>
 
 </head>
@@ -252,7 +277,7 @@ function backToList(obj){
 					<input type="hidden" name="commentReviewNO" value="${review.reviewNO }">
 				</td>
 				<td>
-					<input type="submit" value="댓글달기">
+					<input type="button"  onClick="commentSubmit()" value="댓글달기">
 				</td>
 			<tr>
 		</table>	
