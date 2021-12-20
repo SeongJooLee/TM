@@ -176,7 +176,7 @@ function commentSubmit(){
         dataType : "json",
         data : {
            'travelNO' : '${travel.travelNO}',
-           'id' : '${userSession.id}',
+           'id' : '${userSession.name}',
            'content' : '${commentTest}',
            },  		 success : function(data) {
            if (data.result == 'false') {
@@ -321,7 +321,7 @@ function commentSubmit(){
 	
 	
 	 <!--  해당 글 댓글 보이기 -->
-	<c:if test='${userSession.grade.equals("user")}'> 
+	 
 	 <form id="commentResult" action="/tm/board/travel/commentTravelAdd" method="post">
 		<table border="3" align="center">
 		<c:forEach var="comment" items="${comment}" varStatus="status">
@@ -334,6 +334,7 @@ function commentSubmit(){
 					</tr>
 			</c:forEach>
 			<tr>
+				<c:if test='${userSession.grade.equals("user")}'>
 				<td>댓글 달기 : </td>
 				<td>
 					
@@ -345,10 +346,11 @@ function commentSubmit(){
 				<td>
 					<input type="button" onClick="commentSubmit()" value="댓글달기" >
 				</td>
+				</c:if>
 			<tr>
 		</table>	
 	 </form>
-	</c:if>
+	
 	
 	
 	
