@@ -33,8 +33,8 @@ public class CommentService {
 	public Map<String, Object> selectOneComment(int TravelNO) {
 		
 		CommentVO commentVO = commentDAO.selectOneComment(TravelNO);
-		TravelVO travelVO = TravelDAO.selectOneComment(TravelNO);
-		//ReviewVO reviewVO = ReviewDAO.selectOneComment(id);
+		TravelVO travelVO = TravelDAO.selectOneComment(TravelNO);		
+		//ReviewVO reviewVO = ReviewDAO.selectOneComment(reviewNO);
 		
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("comment", commentVO);

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.hk.tm.board.service.CommentService;
@@ -44,10 +45,11 @@ public class CommentController {
 		return "commentTest"; 
 	}
 	
-	@RequestMapping(value="/board/travel/add" ,  method=RequestMethod.POST)
-	public void commentTravelAdd(Model model, @RequestParam("commentTravelNO") int commentTravelNO,@RequestParam("id") String id,@RequestParam("content")String content) {			
+	@RequestMapping(value="/board/travel/commentTravelAdd" ,  method={RequestMethod.GET,RequestMethod.POST}, produces = "application/json; charset=utf8")
+	@ResponseBody
+	public void commentTravelAdd(Model model, @RequestParam("travelNO") int commentTravelNO,@RequestParam("id") String id,@RequestParam("content")String content) {			
+		System.out.println("comment : "+content);
 		CommentVO commentVO = new CommentVO();
-		
 		commentVO.setContent(content);
 		commentVO.setId(id);
 		commentVO.setTravelNO(commentTravelNO);

@@ -52,7 +52,7 @@ function fn_imgUpdateBtn(obj) {
 	} else {
 		alert("확인(예)을 누르셨습니다.");
 		$.ajax({
-			type : 'POST',
+			type : 'GET',
 			url : 'travelImgDelete',
 			dataType : "json",
 			data : {
@@ -115,7 +115,7 @@ function next(){
 	location.href = "${contextPath}/board/travel/view?travelNO=${travel.travelNO}&page=page";
 }
 
-// 댓글 관련
+/* // 댓글 관련
 
 function fn_enable_comment(obj){	  
 	   
@@ -165,8 +165,34 @@ function fn_delete_comment(){
         location.href="${contextPath}/board/travel/delete?travelNO=${travel.travelNO}";
     }     
 	
-}
+} */
 
+// 댓글 작성
+function commentSubmit(){
+	var commentTest = document.getElementById("commentContent").value;
+    $.ajax({
+        type : 'GET',
+        url : 'commentTravelAdd',
+        dataType : "json",
+        data : {
+           'travelNO' : '${travel.travelNO}',
+           'id' : '${userSession.id}',
+           'content' : '${commentTest}',
+           },  		 success : function(data) {
+           if (data.result == 'false') {
+              alert('댓글 생성 실패');
+           } else {
+              alert('댓글을 생성했습니다.');
+
+           }
+        },
+        error : function(err) {
+           //서버로부터 응답이 정상적으로 처리되지 못햇을 때 실행
+           alert('에러떳는데 난 몰랑');
+           return;
+        }
+     });
+}
 </script>
 </head>
 <body>
@@ -295,7 +321,7 @@ function fn_delete_comment(){
 	
 	
 	 <!--  해당 글 댓글 보이기 -->
-	 <form id="commentResult" action="/tm/board/travel/add" method="post">
+	 <form id="commentResult" action="/tm/board/travel/commentTravelAdd" method="post">
 		<table border="3" align="center">
 		<c:forEach var="comment" items="${comment}" varStatus="status">
 					<tr>
@@ -309,12 +335,12 @@ function fn_delete_comment(){
 			<tr>
 				<td>댓글 달기 : </td>
 				<td>
-					<input type="text" name="content">
+					<input type="text" id="commentContent">
 					<input type="hidden" name="id" value="${userSession.id }">
 					<input type="hidden" name="commentTravelNO" value="${travel.travelNO }">
 				</td>
 				<td>
-					<input type="submit" value="댓글달기">
+					<input type="button" onClick="commentSubmit()" value="댓글달기" >
 				</td>
 			<tr>
 		</table>	
