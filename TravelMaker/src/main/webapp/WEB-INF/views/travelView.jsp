@@ -344,6 +344,7 @@ function commentSubmit(){
 					
 				</td>
 				<td>
+				
 					<input type="button" onClick="commentSubmit()" value="댓글달기" >
 				</td>
 				</c:if>
