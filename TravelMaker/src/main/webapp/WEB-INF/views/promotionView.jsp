@@ -243,7 +243,9 @@ function backToList(obj){
 					<input type="button"	value="예약하기" onClick="fn_reser(this.form)" />
 					</c:if>
 					
-					<c:if test='${!userSession.grade.equals("seller")}'>
+					<c:if test='${userSession.grade.equals("admin")}'>
+					 <input type="button" value="수정하기" onClick="fn_enable(this.form)" /> 
+					<input type="button" value="삭제하기" onClick="fn_delete(this.form)" />
 					 <input	type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />
 					 </c:if>
 					</td>

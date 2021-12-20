@@ -241,6 +241,8 @@ function commentSubmit(){
 						
 						<c:choose>
 							<c:when test='${userSession.grade.equals("admin")}'>
+								<input type="button" value="수정하기" onClick="fn_enable(this.form)" /> 
+								<input type="button" value="삭제하기" onClick="fn_delete(this.form)" />
 								<input type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />
 							</c:when>
 							
@@ -273,7 +275,12 @@ function commentSubmit(){
 				<td>댓글 달기 : </td>
 				<td>
 					<input type="text" name="content">
+					<c:if test='${userSession.grade.equals("user")}'>
 					<input type="hidden" name="id" value="${userSession.id }">
+					</c:if>
+					<c:if test='${userSession.grade.equals("admin")}'>
+					<input type="hidden" name="id" value="${userSession.adminID }">
+					</c:if>
 					<input type="hidden" name="commentReviewNO" value="${review.reviewNO }">
 				</td>
 				<td>

@@ -130,7 +130,7 @@ public class UserDAO {
 
 	public int deleteComment(String userId) {
 		// TODO Auto-generated method stub
-		int result = sqlSession.delete("mapper.boardComment.delete",userId);
+		int result = sqlSession.delete("mapper.boardComment.deleteComment",userId);
 		return result;
 	}
 
