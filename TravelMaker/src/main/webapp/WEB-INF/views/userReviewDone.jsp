@@ -1,108 +1,136 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
-<%@ page session="true" %>
+	pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath }" />
+<%
+request.setCharacterEncoding("utf-8");
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-       <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="<c:url value="/resources/css/styles.css" />" rel="stylesheet" />
+<title>일반 유저 회원가입</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+
+<!-- Favicon-->
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<!-- Core theme CSS (includes Bootstrap)-->
+<link href="<c:url value="/resources/css/styles.css" />"
+	rel="stylesheet" />
 <script>
 	function start(){
 		alert('해당 게시물로 이동합니다');
 		location.href = "/tm/board/review/view?reviewNO=${reviewVO.reviewNO}";
 	}
 </script>
-<style type="text/css">
-.wrap {
-	display: grid;
-	grid-template-columns: 5% 15% 5% 60% 15%;
-	grid-template-rows: 100%;    
-}
-
-.wrap>div {
-	margin: 1px; 
-	padding: 10px;
-	font-size: 16px;
-}
-
-.grid1 {
-	grid-column-start: 2;
-	grid-column-end: 3;
-	background: ghostwhite;
-	border: 3px solid royalblue;
-}
-
-.grid2 {
-	grid-column-start: 4;
-	grid-column-end: 5;
-	background: ghostwhite;
-	border: 3px solid royalblue;
-}
-.btn{
-width:110px;
-}
-</style>
 </head>
 <body>
-<jsp:include page="/resources/include/header.jsp" />
-	<h1>일반유저 페이지</h1>
-	<h2>${userSession.id}님 정보</h2> 
-	
-	<div class="wrap">
-		<div class="grid1">
-			<br>
-			<ul style="background-color: CornflowerBlue; text-align: center;" >
-				<li>
-					<form action='mypage' method='post'>
-						<input type="hidden" name="testKey" value="one">					
-						<input class='btn' type='submit'  value='회원정보'>
-					</form>
-				</li><br>
-				<li>
-					<form action='mypage' method='post'>
-						<input type="hidden" name="testKey" value="two">					
-						<input class='btn' type='submit'  value='내가 쓴 글 보기'>
-					</form>			
-				</li><br>
-				<li>
-					<form action='mypage' method='post'>
-						<input type="hidden" name="testKey" value="three">					
-						<input class='btn' type='submit'  value='예약확인'>
-					</form>	
-				</li><br>
-				<li>
-					<form action='mypage' method='post'>
-						<input type="hidden" name="testKey" value="four">					
-						<input class='btn' type='submit'  value='추천한 글(보류중)'>
-					</form>	
-				</li>		
-			</ul>
-		</div>
-		<div class="grid2">
-		<h3>리뷰 상세보기</h3> 
-		
-		
-	
-				
-			<p>글 번호: ${reviewVO.reviewNO}</p>
-			<p>제목: ${reviewVO.title}</p>
-			<p>내용: ${reviewVO.content}</p>	
-			<p>작성날짜: ${reviewVO.writeDate}</p>
-			<p>작성자ID: ${reviewVO.id}</p>
-			<p>상품 번호: ${reviewVO.promotionNO}</p>
-			
-			
-			<button type='button' onclick='start()'>글 이동하기</button>
-			
-	
-		
+	<jsp:include page="/resources/include/header.jsp" />
+	<hr>
+
+
+	<div class="container">
+		<div class="input-form-backgroud row">
+			<div class="input-form col-md-12 mx-auto">
+				<h4 class="mb-3" align="center">회원 정보</h4>
+					<input type="hidden" name="id" value="${userSession.id}">
+					<div class="row">
+						<div class="col-md-4 mb-3">
+							<form action='/tm/member/mypage' method='post'>
+								<input type="hidden" name="testKey" value="one">					
+								<input class='form-control' type='submit'  value='회원정보'>
+							</form>
+						</div>
+						<div class="col-md-4 mb-3">
+							<form action='/tm/member/mypage' method='post'>
+								<input type="hidden" name="testKey" value="two">					
+								<input class='form-control' type='submit'  value='내가 쓴 글 보기''>
+							</form>
+						</div>
+						<div class="col-md-4 mb-3">
+							<form action='/tm/member/mypage' method='post'>
+								<input type="hidden" name="testKey" value="three">					
+								<input class='form-control' type='submit'  value='예약확인'>
+							</form>
+						</div>
+					</div>
+					
+					<hr>
+					<hr>
+					<br>
+					<br>
+					<h4 class="mb-3" align="center">[ ${userSession.id} ] 님의 이용후기 게시글</h4>
+					<br>
+					<br>
+					<div class="row">
+						<div class="col-md-2 mb-3">
+							<label class='form-control'>글 번호</label> 
+						</div>
+						<div class="col-md-10 mb-3">
+							<label class='form-control'>${reviewVO.reviewNO }</label> 
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2 mb-3">
+							<label class='form-control'>제목</label> 
+						</div>
+						<div class="col-md-10 mb-3">
+							<label class='form-control'>${reviewVO.title }</label> 
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2 mb-3">
+							<label class='form-control'>내용</label> 
+						</div>
+						<div class="col-md-10 mb-3">
+							<label class='form-control'>${reviewVO.content }</label> 
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2 mb-3">
+							<label class='form-control'>작성 날짜</label> 
+						</div>
+						<div class="col-md-10 mb-3">
+							<label class='form-control'>${reviewVO.writeDate }</label> 
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2 mb-3">
+							<label class='form-control'>작성자 ID</label> 
+						</div>
+						<div class="col-md-10 mb-3">
+							<label class='form-control'>${reviewVO.id }</label> 
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2 mb-3">
+							<label class='form-control'>상품번호</label> 
+						</div>
+						<div class="col-md-10 mb-3">
+							<label class='form-control'>${reviewVO.promotionNO }</label> 
+						</div>
+					</div>
+					
+					
+				<button class="btn btn-primary btn-lg btn-block" type='button' onclick='start()'>글 이동하기</button>
+					
+					
+			</div>
 		</div>
 	</div>
-<jsp:include page="/resources/include/footer.jsp" />
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<hr>
+
+	<jsp:include page="/resources/include/footer.jsp" />
 </body>
 </html>
