@@ -314,7 +314,7 @@ public class UserController {
 	}
 	@RequestMapping(value="/member/mypage/sellerUpdate", method=RequestMethod.GET)
 	public String sellermypageUpdate(){	
-		return "sellerMyPageUpdate";
+		return "sellerMyPageUpdate"; 
 	}
 	@RequestMapping(value="/member/mypage/sellerUpdate", method=RequestMethod.POST)
 	public String sellermypageUpdatePost(@ModelAttribute SellerVO seller,Model model){	
