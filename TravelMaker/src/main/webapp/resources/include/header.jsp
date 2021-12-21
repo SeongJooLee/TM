@@ -39,6 +39,7 @@
 	text-decoration: none;
 	cursor: pointer;
 }
+
 </style>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <c:if
@@ -120,16 +121,18 @@
 			<li class="nav-item"><a class="nav-link"
 				href="${contextPath}/board/travel">여행게시판</a></li>
 		</ul>
-		
-    <form class="form-inline my-2 my-lg-0">
-      
-                  <button class="btn btn-outline-success my-2 my-sm-0" type=button onclick = "showPopup() "> 통합검색</button>
-                     <!--location.href = '/tm/board/popupEnter'  -->
-    </form>
-    <script>
-   function showPopup(){
-      window.open("/tm/board/popupEnter", "a", "width=700, height=450, left=100, top=50");
-      }
-    </script>
+
+		<form class="form-inline my-2 my-lg-0" action="/tm/board/popupEnter" method="post">
+			<select class="form-control" name="searchOption">
+				<option value="null">검색 옵션</option>
+				<option value="person">작성자</option>
+				<option value="title">제목</option>
+				<option value="content">내용</option>
+				<option value="titleContent">제목+내용</option>
+			</select>&nbsp;&nbsp;
+			 <input class="form-control" type='text' name='searchResult'
+				placeholder='검색어 입력' required>&nbsp;&nbsp;
+			<button class="form-control" type="submit">검색</button>
+		</form>
   </div>
 </nav>
