@@ -36,7 +36,6 @@ function listAll() {
 	 	<input type='text' name='searchResult' placeholder='검색어입력 "해줘"' required>
    		<input type='submit' value='검색하기'>
    		
-   		<button onclick='self.close();'>검색창 닫기</button>
 	</form>
 	<button onclick='listAll()'>모두보기</button>
 	<br><br><br>

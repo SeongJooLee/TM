@@ -49,8 +49,8 @@ html, body {
 .btnSubmit {
    font-weight: 600;
    width: 45%;
-   color: #363636;
-   background-color: lightblue;
+   color: white;
+   background-color: #4a3a3a;
    border: none;
    border-radius: 1rem;
    padding: 2%;

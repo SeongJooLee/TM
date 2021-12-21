@@ -12,9 +12,7 @@
 </script>
 </head>
 <body>
-	<h1>통합검색</h1>
 
-	<form action='/tm/board/popupEnter' method='post'>
 		<select name="searchOption" required>
 			<option value="">옵션 선택</option>
    	    	<option value="person">작성자</option>
@@ -22,10 +20,8 @@
     		<option value="content">내용</option>
     		<option value="titleContent">제목+내용</option>
 		</select>
-		<input type='text' name='searchResult' placeholder='검색어 입력' required>
+		<input type='text' name='searchResult' placeholder='검색어를 입력하세요' required>
         <input type='submit' value='검색하기'>
-   
-    </form>
     <br><br><br>
     <table border='1'>
     	<tr>
