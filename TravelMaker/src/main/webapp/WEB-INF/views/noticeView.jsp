@@ -117,24 +117,31 @@
 <body>
 	<jsp:include page="/resources/include/header.jsp" />
 	<hr>
-	
-	<div align="center">
-		<form id="frmNotice" enctype="multipart/form-data">
-			<table border='1' align="center">
-				<tr>
-					<td >글 번호 : <input type="text" value="${notice.noticeNO }"
-						id="noticeNO" name="noticeNO" readonly />
-					</td>
-					<td>글 제목 : <input type="text" value="${notice.title }" id="title"
-						name="title" disabled />
-					<input type="hidden" value="${notice.name }" name="name" />
-					</td>
-				</tr>
-				<tr>
-					<td>작성자</td>
-					<td><input type="text" value="${notice.adminID }"
-						name="adminID" readonly /></td>
-				</tr>
+
+
+	<div class="container">
+		<div class="input-form-backgroud row">
+			<div class="input-form col-md-12 mx-auto">
+				<div class="col-md-6 mb-3">
+					<label for="title">글 번호</label> <input type="text"
+						class="form-control" name="noticeNO" id="noticeNO" placeholder=""
+						value="${notice.noticeNO }"> <input type="hidden"
+						value="${notice.name }" name="name" />
+				</div>
+				<div class="col-md-6 mb-3">
+					<label for="title">글 제목</label> <input type="text"
+						class="form-control" name="title" id="title" placeholder=""
+						value="${notice.title }"> <input type="hidden"
+						value="${notice.name }" name="name" />
+				</div>
+				<br>
+				<div class="col-md-6 mb-3">
+					<label for="title">작성자</label> <input type="text"
+						class="form-control" name="adminID" placeholder=""
+						value="${notice.adminID }"> 
+				</div>
+
+			
 				<tr align="center">
 					<td align='left' colspan="2">이미지 파일 첨부<br>
 						<div id="update">
@@ -144,7 +151,7 @@
 						</div> <input type="button" value="파일 추가" id="imgUpdate"
 						onClick="fn_addFile()" disabled /> <small> &nbsp;&nbsp; *
 							최대 3개까지 첨부 가능합니다.</small>
-					
+
 						<div id="d_file"></div>
 						<div id="d_filetest">
 							<c:if test="${not empty image.image1 && image.image1 !='null' }">
@@ -171,15 +178,18 @@
 						</div>
 					</td>
 				</tr>
-				<tr>
-					<td align="center">글내용</td>
-					<td><textarea rows="20" cols="60" name="content" id="content"
-							disabled>${notice.content } </textarea></td>
-				</tr>
-				<tr>
-					<td align="center">작성 날짜 : </td>
-					<td>${notice.writeDate }</td>
-				</tr>
+
+									<div class="mb-3">
+						<label for="content">글 내용</label>
+						<textarea	class="form-control" name="content" id="content" placeholder="" maxlength="4000"></textarea>
+						
+					</div>
+									<div class="col-md-6 mb-3">
+					<label for="title">작성날짜</label> <input type="text"
+						class="form-control" name="writeDate" placeholder=""
+						value="${notice.writeDate }"> 
+				</div>
+
 				<tr>
 					<td colspan="2" align="center">
 						<div id="tr_btn_modify" style="display: none">
@@ -190,20 +200,22 @@
 					</td>
 				</tr>
 				<tr id="tr_btn">
-					<td colspan="2" align="center">
-					<c:if test='${userSession.grade.equals("admin")}'> 
-					
-					<input type="button" value="수정하기" onClick="fn_enable(this.form)" />
-					 <input type="button" value="삭제하기" onClick="fn_delete(this.form)" /> 
-					 </c:if>
-					 <input type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />
-					</td>
+					<td colspan="2" align="center"><c:if
+							test='${userSession.grade.equals("admin")}'>
+
+							<input type="button" value="수정하기" onClick="fn_enable(this.form)" />
+							<input type="button" value="삭제하기" onClick="fn_delete(this.form)" />
+						</c:if> <input type="button" value="리스트로 돌아가기"
+						onClick="backToList(this.form)" /></td>
 				</tr>
-			</table>
-			<button type="button" onClick="next()"> 다음 글 보기</button>
-		</form>
-	</div>
-		<hr>
-	<jsp:include page="/resources/include/footer.jsp" />
+				</table>
+				<button type="button" onClick="next()">다음 글 보기</button>
+				
+			</div>
+			</div>
+			</div>
+			
+			<hr>
+			<jsp:include page="/resources/include/footer.jsp" />
 </body>
 </html>
