@@ -3,9 +3,6 @@
 <%@page session='true'%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!-- jQuery library -->
-<script
-   src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
 /* The Modal (background) */
 .modal {
@@ -124,103 +121,15 @@
 				href="${contextPath}/board/travel">여행게시판</a></li>
 		</ul>
 		
-		<form class="form-inline my-2 my-lg-0">
-
-			<button class="btn btn-primary" data-toggle="modal"	data-target="#myModal" >통합검색</button>
-
-			<div class="modal fade" id="myModal">
-				<div class="modal-dialog modal-lg">
-					<div class="modal-content">
-
-						<!-- Modal Header -->
-						<div class="modal-header">
-							<h4 class="modal-title">통합 검색</h4>
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
-						</div>
-
-						<div class="modal-body">
-							<select id="searchOption" name="searchOption" required>
-								<option value="">옵션 선택</option>
-								<option value="person">작성자</option>
-								<option value="title">제목</option>
-								<option value="content">내용</option>
-								<option value="titleContent">제목+내용</option>
-							</select> <input type='text' id="searchResult" name='searchResult' placeholder='검색어를 입력하세요'
-								required> <input type='button' onClick="pageEnter()" value='검색하기'> <br>
-							<br>
-							<br>
-							<div id="insertData"></div>
-							
-
-						</div>
-						<div class="modal-footer">
-						
-						    <table border='1'>
-    	<tr>
-    		<td>-</td>
-    		<td>게시판종류</td>
-    		<td>작성자</td>
-    		<td>제목</td>
-    		<td>내용</td>
-    	</tr>
-    		<c:forEach var='list' items='${boardList}'>
-    			<tr>
-    				<td>${list.count}</td>
-    				<td>${list.name}</td>
-    				<td>${list.adminID}</td>
-    				<td><a href='/tm/board/popupCheck?randomNO=${list.noticeNO}&randomName=${list.name}'>${list.title}</a></td>
-    				<td>${list.content}</td>
-    			</tr>
-    		</c:forEach>
-    
-    </table>
-						</div>
-						
-												
-					</div>
-				</div>
-			</div>
-
-
-			<!--location.href = '/tm/board/popupEnter'  -->
-		</form>
-	</div>
-	<script>
-	function pageEnter(){
-		var searchOption = $('select#searchOption').val();
-		var searchResult = $('input#searchResult').val();
-		alert('검색합니다.')
-		$.ajax({
-			type : 'POST',
-			url : '/board/popupEnter',
-			dataType : "json",
-			data : {
-				'searchOption' : searchOption,
-				'searchResult' : searchResult
-			},
-			success : function(data) {
-				// 여기서 받아온값 뿌려주는거 
-				
-				
-				if (data.result == 'false') {
-					alert('삭제 실패');
-				} else {
-					alert('일단 들어옴.');
-				}
-				var insertData +='<div>정상작동 하는지 </div>'
-					
-					$('#insertData').append(insertData);
-			},
-			error : function(err) {
-				//서버로부터 응답이 정상적으로 처리되지 못햇을 때 실행
-				alert('에러떳는데 난 몰랑');
-				return;
-			}
-			
-		});
-		}
-	
-
+    <form class="form-inline my-2 my-lg-0">
+      
+                  <button class="btn btn-outline-success my-2 my-sm-0" type=button onclick = "showPopup() "> 통합검색</button>
+                     <!--location.href = '/tm/board/popupEnter'  -->
+    </form>
+    <script>
+   function showPopup(){
+      window.open("/tm/board/popupEnter", "a", "width=700, height=450, left=100, top=50");
+      }
     </script>
-
+  </div>
 </nav>
