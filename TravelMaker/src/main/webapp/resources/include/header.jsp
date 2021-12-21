@@ -3,6 +3,9 @@
 <%@page session='true'%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!-- jQuery library -->
+<script
+   src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
 /* The Modal (background) */
 .modal {
@@ -146,7 +149,7 @@
 								required> <input type='button' onClick="pageEnter()" value='검색하기'> <br>
 							<br>
 							<br>
-							
+							<div id="insertData"></div>
 							
 
 						</div>
@@ -196,11 +199,17 @@
 				'searchResult' : searchResult
 			},
 			success : function(data) {
+				// 여기서 받아온값 뿌려주는거 
+				
+				
 				if (data.result == 'false') {
 					alert('삭제 실패');
 				} else {
 					alert('일단 들어옴.');
 				}
+				var insertData +='<div>정상작동 하는지 </div>'
+					
+					$('#insertData').append(insertData);
 			},
 			error : function(err) {
 				//서버로부터 응답이 정상적으로 처리되지 못햇을 때 실행
