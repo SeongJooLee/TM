@@ -141,7 +141,7 @@ public class TravelController {
 			// TODO: handle exception
 			System.out.println("오류발생");
 		}
-		return "travelView"; // travelView.jsp 호출
+		return "travelViewTest"; // travelView.jsp 호출
 
 	}
 
@@ -284,7 +284,7 @@ public class TravelController {
 		model.addAttribute("category",map.get("category"));
 
 
-		return "travelView"; // tavelView.jsp로 이동
+		return "travelViewTest"; // tavelView.jsp로 이동
 
 	}
 

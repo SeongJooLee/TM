@@ -178,31 +178,47 @@ body {
 			<div class="input-form col-md-12 mx-auto">
 				<h4 class="mb-3">여행 게시글 보기</h4>
 					<form id="frmTravel" enctype="multipart/form-data">
+					<div class="col-md-6 mb-3">
 						<label for="name">글 번호</label>
-						<input type="text" value="${travel.travelNO }"
-						id="travelNO" name="travelNO" readonly />
-						<input type="text" value="${travel.title }" id="title"
-						name="title" disabled />
-						<input type="hidden" value="${travel.name }" name="name" />
+						<input type="text" class="form-control"  id="travelNO" name="travelNO" placeholder="" 
+						value="${travel.travelNO }" readonly />
+					</div>	
+					<div class="col-md-6 mb-3">
+						<label for="name">글 제목</label>
+						<input type="text" class="form-control" placeholder="" 
+						value="${travel.title }" id="title" name="title" disabled />
+						<input type="hidden" class="form-control" placeholder=""
+						value="${travel.name }"id="name" name="name" />
+					</div>
 						<div class="row">
 						<div class="col-md-6 mb-3">
 							<label for="name">카테고리</label> 
-								<select class="form-control" id ="categoryName" name="categoryName">
+								<select class="form-control" id ="categoryName" name="categoryName" placeholder="" disabled>
 									<option value="${category.categoryName }">${category.categoryName }</option>
-									<option value="쇼핑">쇼핑</option>
-									<option value="음식">음식</option>
-									<option value="문화">문화</option>
-									<option value="체험">체험</option>
-									<option value="전시">전시</option>
-									<option value="교통">교통</option>
-									<option value="지역">지역</option>
 								</select>
 						</div>
 						</div>
 						<div class="col-md-6 mb-3">
-						<label for="name">작성자 id</label> 
-						<input type="text" value="${travel.id }" name="id"
-						readonly />
+						<label for="name">작성자 아이디</label> 
+						<input type="text" class="form-control" name="id" placeholder="" value="${travel.id }" readonly />
+						</div>
+						<div class="col-md-6 mb-3">
+						<label for="name">이미지 파일 첨부</label> 
+						<input type="button" class="form-control" name="" id="imgUpdateBtn" placeholder=""
+						value="파일 삭제"  onClick="fn_imgUpdateBtn()" disabled />
+						<input type="button" class="form-control" name="" id="imgUpdate" placeholder=""
+						value="파일 추가"  onClick="fn_addFile()" disabled />
+						<small>* 최대 3개까지 첨부 가능합니다.</small>
+						</div>
+						<div class="col-md-6 mb-3">
+						<label for="name">글 내용</label> 
+						<textarea class="form-control" name="content" id="content" placeholder=""
+						rows="20" cols="60" disabled />${travel.content }</textarea>
+						</div>
+						<div class="col-md-6 mb-3">
+						<label for="name">작성 날짜</label> 
+						<input type="text" class="form-control" name="writeDate" placeholder=""
+						value="${travel.writeDate }" readonly/>
 						</div>
 					</form>
 			</div>
