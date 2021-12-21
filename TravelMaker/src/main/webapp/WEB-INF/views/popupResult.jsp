@@ -3,9 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
-<%       
-   request.setCharacterEncoding("utf-8");
- %>
+<%
+	request.setCharacterEncoding("utf-8");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,31 +64,43 @@ body {
 
 						<div class="col-md-6 mb-3">
 							<a
-								href='/tm/board/popupCheck?randomNO=${list.noticeNO}&randomName=${list.name}'>${list.title}</a>
+								href='/tm/board/popupCheck?randomNO=${list.noticeNO}&randomName=${list.name}'
+								target="_blank">${list.title}</a>
 						</div>
 
 						<div class="col-md-2 mb-3">${list.adminID}</div>
 					</div>
 				</c:forEach>
-				<form class="form-inline my-2 my-lg-0" action="/tm/board/popupEnter"
-					method="post">
-				<div class="row"  align="center">
-					<select class="form-control" name="searchOption">
-						<option value="null">검색 옵션</option>
-						<option value="person">작성자</option>
-						<option value="title">제목</option>
-						<option value="content">내용</option>
-						<option value="titleContent">제목+내용</option>
-					</select>&nbsp;&nbsp; <input class="form-control" type='text'
-						name='searchResult' placeholder='검색어 입력' required>&nbsp;&nbsp;
-					<button class="form-control" type="submit">검색</button>
+				<hr>
+				<div align="right">
+					<form action="/tm/board/popupEnter" method="post">
+						<div class="row">
+							<div class="col-md-3 mb-3" >
+						<label>
+								<select class="form-control" name="searchOption">
+									<option value="null">검색 옵션</option>
+									<option value="person">작성자</option>
+									<option value="title">제목</option>
+									<option value="content">내용</option>
+									<option value="titleContent">제목+내용</option>
+								</select>&nbsp;&nbsp;
+						</label>
+							</div>
+							<div class="col-md-6 mb-3">
+								<input class="form-control" type='text' name='searchResult'
+									placeholder='검색어 입력' required>&nbsp;&nbsp;
+							</div>
+							<div class="col-md-2 mb-3">
+								<button class="form-control" type="submit">검색</button>
+							</div>
+						</div>
+					</form>
 				</div>
-				</form>
 			</div>
 		</div>
 	</div>
 	<br>
-<hr>
-<jsp:include page="/resources/include/footer.jsp" />
+	<hr>
+	<jsp:include page="/resources/include/footer.jsp" />
 </body>
 </html>

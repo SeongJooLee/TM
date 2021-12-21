@@ -10,249 +10,328 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>홍보 상품 뷰</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="<c:url value="/resources/css/styles.css" />" rel="stylesheet" />
+<title>일반 유저 회원가입</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+
+<!-- Favicon-->
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<!-- Core theme CSS (includes Bootstrap)-->
+<link href="<c:url value="/resources/css/styles.css" />"
+	rel="stylesheet" />
+<style>
+img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+body {
+	min-height: 100vh;
+}
+
+.input-form {
+	max-width: 680px;
+	margin-top: 80px;
+	padding: 32px;
+	background: #fff;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+	-moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+	box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+}
+</style>
+
 <script src='http://code.jquery.com/jquery-latest.min.js'></script>
 <script type='text/javascript'>
-var cnt = 1;
-function fn_addFile() {
-	if (cnt === 4) {
-		alert("최대 3개만 생성할 수 있습니다.");
-		return;
+	var cnt = 1;
+	function fn_addFile() {
+		if (cnt === 4) {
+			alert("최대 3개만 생성할 수 있습니다.");
+			return;
+		}
+		$("#d_file")
+				.append(
+						"<br>"
+								+ "<p id='image"+cnt+" '><input type='file' name='image" + cnt + " ' />");
+		cnt++;
 	}
-	$("#d_file")
-			.append(
-					"<br>"
-							+ "<p id='image"+cnt+" '><input type='file' name='image" + cnt + " ' />");
-	cnt++;
-}
-function fn_enable(obj){
-   document.getElementById("categoryName").disabled = false;
-   document.getElementById("title").disabled = false;
-   document.getElementById("content").disabled = false;
-   if(document.getElementById("originalFileName")!=null){
-   	document.getElementById("imgUpdateBtn").disabled = false;
-   }
-	if (document.getElementById("originalFileName") == null) {
+	function fn_enable(obj) {
+		document.getElementById("categoryName").disabled = false;
+		document.getElementById("title").disabled = false;
+		document.getElementById("content").disabled = false;
+		if (document.getElementById("originalFileName") != null) {
+			document.getElementById("imgUpdateBtn").disabled = false;
+		}
+		if (document.getElementById("originalFileName") == null) {
+			document.getElementById("imgUpdate").disabled = false;
+		}
+		document.getElementById("tr_btn_modify").style.display = 'block';
+		document.getElementById("tr_btn").style.display = 'none';
+	}
+	function fn_imgUpdateBtn(obj) {
 		document.getElementById("imgUpdate").disabled = false;
+		if (!confirm("사진을 삭제 하시겠습니까?")) {
+			alert("취소(아니오)를 누르셨습니다.");
+			return false;
+		} else {
+
+			alert("확인(예)을 누르셨습니다.");
+
+			$
+					.ajax({
+						type : 'POST',
+						url : 'promotionImgDelete',
+						dataType : "json",
+						data : {
+							'promotionNO' : '${promotion.promotionNO}',
+						},
+						success : function(data) {
+							if (data.result == 'false') {
+								alert('삭제 실패');
+							} else {
+								alert('파일을 삭제했습니다.');
+								$("#d_filetest").remove();
+								location.href = "${contextPath}/board/promotion/view?promotionNO=${promotion.promotionNO }";
+							}
+						},
+						error : function(err) {
+							//서버로부터 응답이 정상적으로 처리되지 못햇을 때 실행
+							alert('에러떳는데 난 몰랑');
+							return;
+						}
+					});
+
+			document.getElementById("update").style.display = 'none';
+		}
 	}
-   document.getElementById("tr_btn_modify").style.display='block';
-   document.getElementById("tr_btn").style.display='none';
-}
-function fn_imgUpdateBtn(obj) {
-	document.getElementById("imgUpdate").disabled = false;
-	if (!confirm("사진을 삭제 하시겠습니까?")) {
-		alert("취소(아니오)를 누르셨습니다.");
-		return false;
-	} else {
-		
-		alert("확인(예)을 누르셨습니다.");
-		
-		$.ajax({
-			type : 'POST',
-			url : 'promotionImgDelete',
-			dataType : "json",
-			data : {
-				'promotionNO' : '${promotion.promotionNO}',
-			},
-			success : function(data) {
-				if (data.result == 'false') {
-					alert('삭제 실패');
-				} else {
-					alert('파일을 삭제했습니다.');
-					$("#d_filetest").remove();
-					location.href="${contextPath}/board/promotion/view?promotionNO=${promotion.promotionNO }";
-				}
-			},
-			error : function(err) {
-				//서버로부터 응답이 정상적으로 처리되지 못햇을 때 실행
-				alert('에러떳는데 난 몰랑');
-				return;
-			}
-		});
 
-		
-		document.getElementById("update").style.display = 'none';
+	function fn_image(obj) {
+		document.getElementById("image").disabled = false;
 	}
-}
 
-function fn_image(obj){
-	   document.getElementById("image").disabled = false;
-	   }
+	function fn_modify_update() {
+		if (!confirm("수정 하시겠습니까?")) {
+			alert("취소(아니오)를 누르셨습니다.");
+			return;
+		} else {
+			alert("확인(예)을 누르셨습니다.");
+			document.getElementById('frmPromotion').method = "POST";
+			document.getElementById('frmPromotion').action = "${contextPath}/board/promotion/update";
+			document.getElementById('frmPromotion').submit();
+		}
+	}
 
-function fn_modify_update(){
-    if (!confirm("수정 하시겠습니까?")) {
-        alert("취소(아니오)를 누르셨습니다.");
-        return;
-    } else {
-        alert("확인(예)을 누르셨습니다.");
-	document.getElementById('frmPromotion').method= "POST";
-	document.getElementById('frmPromotion').action = "${contextPath}/board/promotion/update";
-   document.getElementById('frmPromotion').submit();
-    }
-}
+	function fn_reser() {
+		if (!confirm("예약 하시겠습니까?")) {
+			alert("취소(아니오)를 누르셨습니다.");
+			return;
+		} else {
+			alert("확인(예)을 누르셨습니다.");
+			document.getElementById('frmPromotion').method = "GET";
+			document.getElementById('frmPromotion').action = "${contextPath}/board/reservation";
+			document.getElementById('frmPromotion').submit();
+		}
+	}
 
-function fn_reser(){
-    if (!confirm("예약 하시겠습니까?")) {
-        alert("취소(아니오)를 누르셨습니다.");
-        return;
-    } else {
-        alert("확인(예)을 누르셨습니다.");
-	document.getElementById('frmPromotion').method= "GET";
-	document.getElementById('frmPromotion').action = "${contextPath}/board/reservation";
-   document.getElementById('frmPromotion').submit();
-    }
-}
+	function fn_delete() {
+		if (!confirm("삭제 하시겠습니까?")) {
+			alert("취소(아니오)를 누르셨습니다.");
+			return;
+		} else {
+			alert("확인(예)을 누르셨습니다.");
+			location.href = "${contextPath}/board/promotion/delete?promotionNO=${promotion.promotionNO}";
+		}
+	}
 
-function fn_delete(){
-    if (!confirm("삭제 하시겠습니까?")) {
-        alert("취소(아니오)를 누르셨습니다.");
-        return;
-    } else {
-        alert("확인(예)을 누르셨습니다.");
-        location.href="${contextPath}/board/promotion/delete?promotionNO=${promotion.promotionNO}";
-    }
-}
-
-function backToList(obj){
-   obj.method ="POST";
-   obj.action = "${contextPath}/board/promotion";
-   obj.submit();
-}
-
+	function backToList(obj) {
+		obj.method = "POST";
+		obj.action = "${contextPath}/board/promotion";
+		obj.submit();
+	}
 </script>
 </head>
 <body>
 	<jsp:include page="/resources/include/header.jsp" />
 	<hr>
-	
-	<div align="center">
-		<form id="frmPromotion" enctype="multipart/form-data">
-			<table border="1" align="center">
-				<tr>
-					<td >글 번호 : <input type="text" value="${promotion.promotionNO }"
-						id="promotionNO" name="promotionNO" readonly />
-					</td>
-					<td>글 제목 : <input type="text" value="${promotion.title }" id="title"
-						name="title" disabled />
-					<input type="hidden" value="${promotion.name }" name="name" />
-					</td>
-				</tr>
-				<tr>
-					<td >카테고리 : 	<select name="categoryName" id="categoryName" disabled>
-						<option value="${category.categoryName }">${category.categoryName }</option>
-						<option value="쇼핑">쇼핑</option>
-						<option value="음식">음식</option>
-						<option value="문화">문화</option>
-						<option value="체험">체험</option>
-						<option value="전시">전시</option>
-						<option value="교통">교통</option>
-						<option value="지역">지역</option>
-					</select>
-					</td>
-					<td >작성자 :
-					<input type="text" value="${promotion.sellerID }"
-						name="sellerID" readonly /></td>
-				</tr>
-				<tr>
-					<td>가격 : ${promotion.price } 원<input type="hidden" name="price" value="${promotion.price }" /></td>
-					</tr>
 
-				<tr align="center">
-					<td align='left' colspan="2">이미지 파일 첨부<br>
-						<div id="update">
-							<input type="button" value="파일 삭제" id="imgUpdateBtn"
-								onClick="fn_imgUpdateBtn()" disabled /> <small>
-								&nbsp;&nbsp; * 클릭시 전체 파일이 삭제됩니다.</small>
-						</div> <input type="button" value="파일 추가" id="imgUpdate"
-						onClick="fn_addFile()" disabled /> <small> &nbsp;&nbsp; *
-							최대 3개까지 첨부 가능합니다.</small>
-					
+	<div class="container">
+		<div class="input-form-backgroud row">
+			<div class="input-form col-md-12 mx-auto">
+				<form id="frmPromotion" enctype="multipart/form-data">
+						<input type="hidden"
+						value="${promotion.name }" name="name" />
+					<div class="row">
+						<div class="col-md-2 mb-3">
+							<label for="promotionNO">번호</label> <input type="text"
+								class="form-control" value="${promotion.promotionNO }"
+								id="promotionNO" name="promotionNO" readonly />
+						</div>
+						<div class="col-md-10 mb-3">
+							<label for="title">제목</label> <input type="text"
+								class="form-control" value="${promotion.title }" id="title"
+								name="title" disabled />
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-5 mb-3">
+							<label for="image">이미지 파일 첨부</label>
+							<div id="update">
+								<input type="button" value="파일 삭제" id="imgUpdateBtn"
+									class="form-control" onClick="fn_imgUpdateBtn()" disabled /> <small>
+									&nbsp;&nbsp; * 클릭시 전체 파일이 삭제됩니다.</small>
+							</div>
+							<input type="button" value="파일 추가" id="imgUpdate"
+								class="form-control" onClick="fn_addFile()" disabled /> <small>
+								&nbsp;&nbsp; * 최대 3개까지 첨부 가능합니다.</small>
+						</div>
 						<div id="d_file"></div>
 						<div id="d_filetest">
-							<c:if test="${not empty image.image1 && image.image1 !='null' }">
-								<input type="hidden" id="originalFileName" name="image1"
-									value="${image.image1 }" />
-								<img
-									src="${contextPath }/board/promotion/download?image=${image.image1}&promotionNO=${promotion.promotionNO}&name=${promotion.name}" />
-							</c:if>
-
-							<c:if test="${not empty image.image2 && image.image2 !='null' }">
-								<input type="hidden" id="originalFileName" name="image2"
-									value="${image.image2 }" />
-								<img
-									src="${contextPath }/board/promotion/download?image=${image.image2}&promotionNO=${promotion.promotionNO}&name=${promotion.name}">
-							</c:if>
-
-							<c:if test="${not empty image.image3 && image.image3 !='null' }">
-								<input type="hidden" id="originalFileName" name="image3"
-									value="${image.image3 }" />
-								<img
-									src="${contextPath }/board/promotion/download?image=${image.image3}&promotionNO=${promotion.promotionNO}&name=${promotion.name}">
+							<div class="row">
+								<div class="col-md-4 mb-5">
+									<c:if
+										test="${not empty image.image1 && image.image1 !='null' }">
+										<input type="hidden" id="originalFileName" name="image1"
+											value="${image.image1 }" />
+										<img
+											src="${contextPath }/board/promotion/download?image=${image.image1}&promotionNO=${promotion.promotionNO}&name=${promotion.name}"
+											width="100%" height="100%" />
+									</c:if>
+								</div>
+								<div class="col-md-4 mb-5">
+									<c:if
+										test="${not empty image.image2 && image.image2 !='null' }">
+										<input type="hidden" id="originalFileName" name="image2"
+											value="${image.image2 }" />
+										<img
+											src="${contextPath }/board/promotion/download?image=${image.image2}&promotionNO=${promotion.promotionNO}&name=${promotion.name}">
+									</c:if>
+								</div>
+								<div class="col-md-4 mb-5">
+									<c:if
+										test="${not empty image.image3 && image.image3 !='null' }">
+										<input type="hidden" id="originalFileName" name="image3"
+											value="${image.image3 }" />
+										<img
+											src="${contextPath }/board/promotion/download?image=${image.image3}&promotionNO=${promotion.promotionNO}&name=${promotion.name}">
+									</c:if>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="mb-3">
+						<label for="content">글 내용</label>
+						<textarea class="form-control" rows="20" cols="60" name="content"
+							id="content" disabled>${promotion.content } </textarea>
+					</div>
+					<div class="row">
+						<div class="col-md-2 mb-3">
+							<label for="categoryName">카테고리</label> <select
+								class="form-control" name="categoryName" id="categoryName"
+								disabled>
+								<option value="${category.categoryName }">${category.categoryName }</option>
+								<option value="쇼핑">쇼핑</option>
+								<option value="음식">음식</option>
+								<option value="문화">문화</option>
+								<option value="체험">체험</option>
+								<option value="전시">전시</option>
+								<option value="교통">교통</option>
+								<option value="지역">지역</option>
+							</select>
+						</div>
+						<div class="col-md-4 mb-3">
+							<label for="sellerID">작성자</label> <input type="text"
+								class="form-control" name="sellerID" id="sellerID"
+								value="${promotion.sellerID }" readonly>
+						</div>
+						<div class="col-md-6 mb-3">
+							<label for="title">작성날짜</label> <input type="text"
+								class="form-control" name="writeDate" id="writeDate"
+								value="${promotion.writeDate }" readonly>
+						</div>
+					</div>
+					<hr>
+					<div id="tr_btn_modify" style="display: none">
+						<div class="row">
+							<div class="col-md-1 mb-3"></div>
+							<div class="col-md-4 mb-3">
+								<input class="form-control" type="button" value="수정 반영하기"
+									onClick="fn_modify_update(frmPromotion)" />
+							</div>
+							<div class="col-md-4 mb-3">
+								<input class="form-control" type="button" value="취소하기"
+									onClick="backToList(frmPromotion)" />
+							</div>
+							<div class="col-md-1 mb-3"></div>
+						</div>
+					</div>
+					<div id="tr_btn">
+						<div class="row">
+							<c:if test='${userSession.grade.equals("seller")}'>
+								<c:forEach var='list' items='${proList}'>
+									<c:if
+										test='${list.promotionNO == promotion.promotionNO && list.sellerID.equals(promotion.sellerID)}'>
+										<div class="col-md-4 mb-3">
+											<input class="form-control" type="button" value="수정하기"
+												onClick="fn_enable(this.form)" />
+										</div>
+										<div class="col-md-4 mb-3">
+											<input class="form-control" type="button" value="삭제하기"
+												onClick="fn_delete(this.form)" />
+										</div>
+										<div class="col-md-4 mb-3">
+											<input class="form-control" type="button" value="리스트로 돌아가기"
+												onClick="backToList(this.form)" />
+										</div>
+										<c:set var="check" value="1" />
+									</c:if>
+								</c:forEach>
+								<c:if test='${check!=1}'>
+									<div class="col-md-4 mb-3"></div>
+									<div class="col-md-4 mb-3"></div>
+									<div class="col-md-4 mb-3">
+										<input class="form-control" type="button" value="리스트로 돌아가기"
+											onClick="backToList(this.form)" />
+									</div>
+								</c:if>
 							</c:if>
 						</div>
-					</td>
-				</tr>
-
-				<tr>
-					<td  align="center">글내용</td>
-					<td><textarea rows="20" cols="60" name="content" id="content"
-							disabled>${promotion.content } </textarea></td>
-				</tr>
-				<tr>
-					<td align="center">작성 날짜 :</td><td> ${promotion.writeDate }</td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center">
-						<div id="tr_btn_modify" style="display: none">
-						
-						
-						
-							<input type="button" value="수정 반영하기"
-								onClick="fn_modify_update(frmPromotion)" /> <input type="button"
-								value="취소하기" onClick="backToList(frmPromotion)" />
-						</div>
-					</td>
-				</tr>
-				<tr id="tr_btn">
-					<td colspan="2" align="center">
-					<c:if test='${userSession.grade.equals("seller")}'>
-						
-						<c:forEach var='list' items='${proList}'>
-							
-							 <c:if test='${list.promotionNO == promotion.promotionNO && list.sellerID.equals(promotion.sellerID)}'> 
-								<input type="button" value="수정하기" onClick="fn_enable(this.form)" /> 
-								<input type="button" value="삭제하기" onClick="fn_delete(this.form)" />
-								<input type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />	
-								<c:set var="check" value="1" />															
-							 </c:if>  				
-						</c:forEach>	
-						<c:if test='${check!=1}'>
-							<input type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />
-						</c:if>							 			
-					</c:if>
-					
-					</td>
-				</tr>	
-				<tr id="#">
-					<td colspan="2" align="center">
-					<c:if test='${userSession.grade.equals("user")}'>
-					<input type="button"	value="예약하기" onClick="fn_reser(this.form)" />
-					</c:if>
-					
-					<c:if test='${userSession.grade.equals("admin")}'>
-					 <input type="button" value="수정하기" onClick="fn_enable(this.form)" /> 
-					<input type="button" value="삭제하기" onClick="fn_delete(this.form)" />
-					 <input	type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />
-					 </c:if>
-					</td>
-				</tr>
-			</table>
-		</form>
+					</div>
+					<div class="row">
+						<c:if test='${userSession.grade.equals("user")}'>
+							<div class="col-md-4 mb-3"></div>
+							<div class="col-md-4 mb-3"></div>
+							<div class="col-md-4 mb-3">
+								<input class="form-control" type="button" value="예약하기"
+									onClick="fn_reser(this.form)" />
+							</div>
+						</c:if>
+						<c:if test='${userSession.grade.equals("admin")}'>
+							<div class="col-md-4 mb-3">
+								<input class="form-control" type="button" value="수정하기"
+									onClick="fn_enable(this.form)" />
+							</div>
+							<div class="col-md-4 mb-3">
+								<input class="form-control" type="button" value="삭제하기"
+									onClick="fn_delete(this.form)" />
+							</div>
+							<div class="col-md-4 mb-3">
+								<input class="form-control" type="button" value="리스트로 돌아가기"
+									onClick="backToList(this.form)" />
+							</div>
+						</c:if>
+					</div>
+				</form>
+			</div>
+		</div>
 	</div>
+	<br>
+	<br>
 	<hr>
 	<jsp:include page="/resources/include/footer.jsp" />
 </body>

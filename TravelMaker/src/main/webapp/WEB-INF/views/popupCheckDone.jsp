@@ -10,23 +10,19 @@
 <script>
 	function returnNotice(){
 		alert('공지사항 상세보기로 이동됩니다');
-		opener.location.href='/tm/board/notice/view?noticeNO=${notice.noticeNO}';
-		self.close();
+		location.href='/tm/board/notice/view?noticeNO=${notice.noticeNO}';
 		}
 	function returnPromotion(){
 		alert('홍보상품 상세보기로 이동됩니다');
-		opener.location.href='/tm/board/promotion/view?promotionNO=${promotion.promotionNO}';
-		self.close();
+		location.href='/tm/board/promotion/view?promotionNO=${promotion.promotionNO}';
 		}
 	function returnReview(){
 		alert('이용후기 상세보기로 이동됩니다');
-		opener.location.href='/tm/board/review/view?reviewNO=${review.reviewNO}';
-		self.close();
+		location.href='/tm/board/review/view?reviewNO=${review.reviewNO}';
 		}
 	function returnTravel(){
 		alert('테마여행 상세보기로 이동됩니다');
-		opener.location.href='/tm/board/travel/view?travelNO=${travel.travelNO}';
-		self.close();
+		location.href='/tm/board/travel/view?travelNO=${travel.travelNO}';
 		}
 </script>
 </head>

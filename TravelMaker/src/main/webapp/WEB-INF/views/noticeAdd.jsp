@@ -48,7 +48,7 @@ if(cnt===4){
 	alert("최대 3개만 생성할 수 있습니다.");
 	return;        
     }
-    $("#d_file").append("<br>" + "<p id='image"+cnt+" '><input class='form-control' type='file' name='image" + cnt + " ' />");
+    $("#d_file").append("<br>" + "<p id='image"+cnt+" '><input class="form-control" type='file' name='image" + cnt + " ' />");
     cnt++;
 }
 
@@ -101,9 +101,8 @@ function fn_create(){
 						</div>
 						<div class="col-md-6 mb-3">
 							<label for="title">글 제목</label> <input type="text"
-								class="form-control" name="title" id="title" placeholder="" value=""
+								class="form-control" name="title" id="title" 
 								required>
-							<div class="invalid-feedback">글 제목을 입력해주세요.</div>
 						</div>
 					</div>
 					<div class="mb-3">
@@ -117,9 +116,8 @@ function fn_create(){
 					<div class="mb-3">
 						<label for="content">글 내용</label>
 						<textarea	class="form-control" name="content" id="content" placeholder="" maxlength="4000"></textarea>
-						<div class="invalid-feedback">글 내용을 입력해주세요.</div>
 					</div>
-				<button class="btn btn-primary btn-lg btn-block" type="submit"
+				<button class="btn btn-primary btn-lg btn-block" type="button" onClick="fn_create()"
 				>작성 하기</button>
 				<button class="btn btn-primary btn-lg btn-block" type="reset"
 				>다시 작성</button>
