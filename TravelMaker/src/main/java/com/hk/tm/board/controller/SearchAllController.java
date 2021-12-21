@@ -20,18 +20,15 @@ import com.hk.tm.board.vo.TravelVO;
 public class SearchAllController {
 	@Autowired
 	SearchAllService searchAllService;
-	@RequestMapping(value="/board/popupEnter", method=RequestMethod.GET,produces = "application/json; charset=utf8")
-	@ResponseBody
+	@RequestMapping(value="/board/popupEnter", method=RequestMethod.GET)
 	public String popupEnterGet(Model model){	
 		List<NoticeVO> boardList = searchAllService.boardSearchAll();
 		model.addAttribute("boardList",boardList);
-		return null;
+		return "popupEnter";
 	}
 	
-	@RequestMapping(value="/board/popupEnter", method=RequestMethod.POST,produces = "application/json; charset=utf8")
-	@ResponseBody
+	@RequestMapping(value="/board/popupEnter", method=RequestMethod.POST)
 	public String popupEnterPost(Model model,@RequestParam("searchOption")String option,@RequestParam("searchResult")String result){	
-		System.out.println("들어왔니??");
 		switch(option) {
 		case "person" : //검색옵션 == 작성자
 			List<NoticeVO> listID = searchAllService.searchIdList(result);
