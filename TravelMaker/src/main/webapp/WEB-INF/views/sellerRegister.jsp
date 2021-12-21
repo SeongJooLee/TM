@@ -40,7 +40,42 @@ body {
 }
 </style>
 
-<script>	
+<script>
+
+
+function fn_imgUpdate(obj) {
+	var sellerID = $( 'input#id' ).val();
+		$.ajax({
+			type : 'POST',
+			url : 'duplicationCheck',
+			dataType : "json",
+			data : {
+				
+				'checkID' : sellerID
+				
+			},
+			success : function(data) {
+				if(data.result == null){
+					alert('ID를 입력 후 체크해주세요');
+					
+				}else if(data.result == true){	
+							
+					alert('사용가능한 ID입니다');
+					document.getElementById("zz0509").disabled = false;	
+				}else{
+					alert('중복된 ID입니다');
+					document.getElementById("zz0509").disabled = true;
+					}
+				
+			},
+			error : function(err) {
+				//서버로부터 응답이 정상적으로 처리되지 못햇을 때 실행
+				alert('에러발생');
+				return;
+			}
+		});
+}	
+
 	function check(){
 		var result = confirm("취소할거니..?");
 		if(result){
@@ -49,6 +84,39 @@ body {
 		    return;
 		}
 	}
+/* 	$("#zz0509").onclick(function(){
+		alert("준비완료");
+	}); */
+
+	function dldl(){
+		alert('실행');
+		
+		}
+
+/* 	function fn_imgUpdateBtn(obj) {
+		var num = $( 'input#id' ).val();
+		document.getElementById("zz0509").disabled = false;	
+			alert("확인(예)을 누르셨습니다.");
+			$.ajax({
+				type : 'POST',
+				url : 'duplicationCheck',
+				dataType : "json",
+				data : {
+					'key1' :'11'
+					'key2' : '222'
+				},
+				success : function(data) {
+					alert('성공?');
+				},
+				error : function(err) {
+					//서버로부터 응답이 정상적으로 처리되지 못햇을 때 실행
+					alert('에러');
+					return;
+				}
+			});
+	}	 */
+		
+	
 </script>
 </head>
 <body>
@@ -63,17 +131,21 @@ body {
 				<form class="validation-form" action='sellerAdd' method='post' novalidate>
 				
 					<div class="row">
-						<div class="col-md-6 mb-3">
+						<div class="col-md-9 mb-3">
 							<label for="id">아이디</label> <input type="text"
 								class="form-control" name="sellerID" id="id" placeholder="" value="" required>
 							<div class="invalid-feedback">아이디를 입력해주세요.</div>
+						</div><br>
+						<div class="col-md-3 mb-3">
+							<label for="**"><small>* 중복체크를 눌러주세요.</small> </label>
+							<button id='hh0564' type='button' class="form-control" onclick='fn_imgUpdate();'>중복체크</button>
 						</div>
-						<div class="col-md-6 mb-3">
+					</div>
+					<div class="mb-3">
 							<label for="password">비밀번호</label> <input type="password"
 								class="form-control" name="pw" id="pw" placeholder="" value=""
 								required>
 							<div class="invalid-feedback">비밀번호를 입력해주세요.</div>
-						</div>
 					</div>
 					<div class="mb-3">
 						<label for="name">회사명</label> <input type="text"
@@ -90,15 +162,21 @@ body {
 							class="form-control" name="address" id="address" placeholder="" required>
 						<div class="invalid-feedback">주소를 입력해주세요.</div>
 					</div>
-				<button class="btn btn-primary btn-lg btn-block" type="submit"
-				value='회원가입'>가입 완료</button>
-			<button class="btn btn-primary btn-lg btn-block" type="button"
+					
+				<button id='zz0509' class="btn btn-primary btn-lg btn-block" type="submit"
+				value='회원가입' disabled >가입 완료</button>
+			<button  class="btn btn-primary btn-lg btn-block" type="button"
 				onclick='check();'>취소</button>
 				</form>
+				
+				
+				
+			<!-- 	<button id='zz0509' onclick='dldl()' disabled >테스트버튼 </button> -->
 			</div>
 		</div>
 	</div>
-	
+
 <jsp:include page="/resources/include/footer.jsp" />
 </body>
+
 </html>

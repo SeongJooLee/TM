@@ -65,5 +65,9 @@
    <delete id="delete" parameterType="UserVO">
    		DELETE FROM "USER" WHERE ID=#{id}
    </delete>
+   
+    <select id="duplicationCheck"  resultType="UserVO">
+   		select * from "USER" where id = #{checkID}
+   </select>
 
 </mapper>
