@@ -233,6 +233,30 @@ public class UserDAO {
 		sqlSession.insert("mapper.boardReview.insertReview",reviewVO);
 	}
 
+	public boolean duplicationCheckSeller(String checkID) {
+		// TODO Auto-generated method stub
+		SellerVO seller = sqlSession.selectOne("mapper.memberSeller.duplicationCheck", checkID);
+		System.out.println(seller);
+		if(seller==null) {
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
+
+	public boolean duplicationCheckUser(String checkID) {
+		// TODO Auto-generated method stub
+		UserVO user = sqlSession.selectOne("mapper.memberUser.duplicationCheck", checkID);
+		System.out.println("user="+user);
+		if(user==null) {
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
+
 	
 
 }

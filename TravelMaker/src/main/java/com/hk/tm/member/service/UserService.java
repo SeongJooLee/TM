@@ -212,4 +212,14 @@ public class UserService {
 		userDAO.noticeAdd(reviewVO);
 		imageDAO.reviewAdd(imageVO);
 	}
+
+	public boolean duplicationCheckSeller(String checkID) {
+		// TODO Auto-generated method stub
+		return userDAO.duplicationCheckSeller(checkID);
+	}
+
+	public boolean duplicationCheckUser(String checkID) {
+		// TODO Auto-generated method stub
+		return userDAO.duplicationCheckUser(checkID);
+	}
 }

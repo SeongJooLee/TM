@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -425,6 +426,43 @@ public class UserController {
 			}
 		}
 		return fileList;
+	}
+	
+	
+	
+	@RequestMapping(value="/member/duplicationCheck", method=RequestMethod.POST,produces = "application/json; charset=utf8")
+	@ResponseBody
+	public Map<String, Object>  duplicationCheck(@RequestParam("checkID")String checkID){	
+		System.out.println("전달받은 ID = "+checkID);
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		if(checkID == "") {
+			map.put("result", null);
+			System.out.println("이쪽실행?");
+			return map;
+		}
+		
+		map.put("result",userService.duplicationCheckSeller(checkID));
+
+		return map;
+	}
+	
+	@RequestMapping(value="/member/duplicationCheckUser", method=RequestMethod.POST,produces = "application/json; charset=utf8")
+	@ResponseBody
+	public Map<String, Object>  duplicationCheckUser(@RequestParam("checkID")String checkID){	
+		System.out.println("전달받은 ID = "+checkID);
+		Map<String, Object> map = new HashMap<String, Object>();
+
+		
+		  if(checkID == "") {
+			  map.put("result", null); System.out.println("null??");
+			  return map; 
+		  }
+		 
+		
+		map.put("result",userService.duplicationCheckUser(checkID));
+		
+		return map;
 	}
 	
 	

@@ -48,4 +48,8 @@
    		DELETE FROM seller WHERE sellerID=#{sellerID}
    </delete>
    
+    <select id="duplicationCheck"  resultType="SellerVO" parameterType='java.lang.String' >
+   		select * from seller where sellerID = #{checkID}
+   </select>
+   
 </mapper>

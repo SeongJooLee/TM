@@ -51,6 +51,50 @@ body {
 		    return;
 		}
 	}
+	function fn_imgUpdate() {
+		var sellerID = $( 'input#id' ).val();
+			$.ajax({
+				type : 'POST',
+				url : 'duplicationCheckUser',
+				dataType : "json",
+				data : {
+					
+					'checkID' : sellerID
+					
+				},
+				success : function(data) {
+					if(data.result == null){
+						alert('ID를 입력 후 체크해주세요');
+						
+					}else if(data.result == true){	
+								
+						alert('사용가능한 ID입니다');
+						document.getElementById("zz0509").disabled = false;	
+					}else{
+						alert('중복된 ID입니다');
+						document.getElementById("zz0509").disabled = true;
+						}
+					
+				},
+				error : function(err) {
+					//서버로부터 응답이 정상적으로 처리되지 못햇을 때 실행
+					alert('에러발생');
+					return;
+				}
+			});
+	}
+
+	function fn_modify_update() {
+		if (!confirm("가입 하시겠습니까?")) {
+			alert("취소(아니오)를 누르셨습니다.");
+			return;
+		} else {
+			alert("확인(예)을 누르셨습니다.");
+			document.getElementById('frmNotice').method = "POST";
+			document.getElementById('frmNotice').action = "/tm/member/userAdd";
+			document.getElementById('frmNotice').submit();
+		}
+	}
 </script>
 </head>
 <body>
@@ -60,15 +104,19 @@ body {
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
 				<h4 class="mb-3">일반 유저 회원가입</h4>
-				<form class="validation-form" action='userAdd' method='post' novalidate>
+				<form id='frmNotice' class="validation-form" action='userAdd' method='post' novalidate>
 				
 					<div class="row">
-						<div class="col-md-6 mb-3">
+						<div class="col-md-9 mb-3">
 							<label for="id">아이디</label> <input type="text"
 								class="form-control" name="id" id="id" placeholder="" value="" required>
 							<div class="invalid-feedback">아이디를 입력해주세요.</div>
+						</div><br>
+						<div class='col-md-3 mb-3'>
+							<label for="**"><small>* 중복체크를 눌러주세요</small></label>
+							<button type='button' id='hh0564' class="form-control" onclick='fn_imgUpdate();'>중복체크</button>
 						</div>
-						<div class="col-md-6 mb-3">
+						<div class="mb-3">
 							<label for="password">비밀번호</label> <input type="password"
 								class="form-control" name="pw" id="pw" placeholder="" value=""
 								required>
@@ -96,15 +144,17 @@ body {
 							class="form-control" name="address" id="address" placeholder="" required>
 						<div class="invalid-feedback">주소를 입력해주세요.</div>
 					</div>
-				<button class="btn btn-primary btn-lg btn-block" type="submit"
-				value='회원가입'>가입 완료</button>
+				<button class="btn btn-primary btn-lg btn-block" type="button"
+				value='회원가입' id='zz0509' disabled onclick='fn_modify_update()'>가입완료</button>
 			<button class="btn btn-primary btn-lg btn-block" type="button"
 				onclick='check();'>취소</button>
+				
 				</form>
+				
 			</div>
 		</div>
 	</div>
-
+	
 
 <jsp:include page="/resources/include/footer.jsp" />
 </body>
