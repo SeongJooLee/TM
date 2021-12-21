@@ -54,34 +54,8 @@ body {
 		
 	function myFunction() {
 		  var myWindow = window.open("", "passwordPopUp", "width=700, height=450, top=300, left=100");
-		  myWindow.document.write("<p>비밀번호 도움말!</p>");
+		  myWindow.document.write("<p>※비밀번호 도움말!<br><br>1. 8~18자의 영문 대문자, 영문 소문자, 숫자, 특수문자만 가능합니다.<br><br>2. 영문 대문자, 영문 소문자, 숫자 , 특수문자를 3가지 이상 혼용하십시오.<br><br>3. 학번, 전화번호 혹은 연속된 숫자 및 문자, 사전에 포함된 단어 등 타인이 쉽게 알아낼 수 있는 비밀번호 사용은 위험합니다.<br><br>4. 타 사이트와 동일한 비밀번호의 사용, 이전에 사용했던 비밀번호의 재사용은 안전하지 않을 수 있습니다.<br><br>5. 비밀번호는 비밀번호 안전도에 따라 3~6개월에 한번씩 주기적으로 바꾸어 사용하시는 것이 안전합니다.<br><br>6. 비밀번호는 길수록, 그리고 많이 혼용할수록 안전합니다.<br><br>7. 공백은 비밀번호로 사용할 수 없습니다.<br><br>8. 숫자만(또는 문자만)으로 이루어진 비밀번호는 사용할 수 없습니다.<br><br></p>");
 		}
-	
-/* 	function chkPW(){
-
-		var pw = $("#password").val();
-		var id = $("#id").val();
-			
-		var reg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
-		var hangulcheck = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
-		 
-		if(false === reg.test(pw)) {
-		alert('비밀번호는 8자 이상이어야 하며, 숫자/대문자/소문자/특수문자를 모두 포함해야 합니다.');
-		}else if(/(\w)\1\1\1/.test(pw)){
-		 alert('같은 문자를 4번 이상 사용하실 수 없습니다.');
-		 return false;
-		 }else if(pw.search(id) > -1){
-		 alert("비밀번호에 아이디가 포함되었습니다.");
-		  return false;
-		 }else if(pw.search(/\s/) != -1){
-		 alert("비밀번호는 공백 없이 입력해주세요.");
-		 return false;
-		 }else if(hangulcheck.test(pw)){
-		 alert("비밀번호에 한글을 사용 할 수 없습니다."); 
-		 }else {
-		 console.log("통과");
-		 }
-	} */
 	
 </script>
 </head>
