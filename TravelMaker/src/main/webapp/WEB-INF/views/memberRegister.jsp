@@ -50,7 +50,7 @@ body {
 		}else{
 		    return;
 		}
-<<<<<<< HEAD
+
 	}
 	function fn_imgUpdate() {
 		var sellerID = $( 'input#id' ).val();
@@ -96,8 +96,8 @@ body {
 			document.getElementById('frmNotice').submit();
 		}
 	}
-=======
-	}	
+
+	
 		
 	function myFunction() {
 		  var myWindow = window.open("", "passwordPopUp", "width=700, height=450, top=300, left=100");
@@ -130,7 +130,7 @@ body {
 		 }
 	} */
 	
->>>>>>> branch 'main' of https://github.com/SeongJooLee/TM.git
+
 </script>
 </head>
 <body>
@@ -153,10 +153,8 @@ body {
 							<button type='button' id='hh0564' class="form-control" onclick='fn_imgUpdate();'>중복체크</button>
 						</div>
 
+						
 						<div class="mb-3">
-							<label for="password">비밀번호</label> <input type="password">
-						</div>
-						<div class="col-md-6 mb-3">
 							<label for="password">비밀번호</label><button type="button" onclick = "myFunction() ">비밀번호 도움말</button> <input type="password"
 								class="form-control" name="pw" id="pw" placeholder="" value=""
 								required>
