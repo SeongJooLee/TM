@@ -18,12 +18,7 @@
 <style>
 body {
 	min-height: 100vh;
-	background: -webkit-gradient(linear, left bottom, right top, from(#92b5db),
-		to(#1d466c));
-	background: -webkit-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
-	background: -moz-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
-	background: -o-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
-	background: linear-gradient(to top right, #92b5db 0%, #1d466c 100%);
+
 }
 
 .input-form {
@@ -175,7 +170,10 @@ function fn_imgUpdate(obj) {
 			</div>
 		</div>
 	</div>
-
+	<br>
+	<br>
+	<br>
+<hr>
 <jsp:include page="/resources/include/footer.jsp" />
 </body>
 

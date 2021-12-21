@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hk.tm.board.service.SearchAllService;
 import com.hk.tm.board.vo.NoticeVO;
@@ -19,16 +20,18 @@ import com.hk.tm.board.vo.TravelVO;
 public class SearchAllController {
 	@Autowired
 	SearchAllService searchAllService;
-	
-	@RequestMapping(value="/board/popupEnter", method=RequestMethod.GET)
+	@RequestMapping(value="/board/popupEnter", method=RequestMethod.GET,produces = "application/json; charset=utf8")
+	@ResponseBody
 	public String popupEnterGet(Model model){	
 		List<NoticeVO> boardList = searchAllService.boardSearchAll();
 		model.addAttribute("boardList",boardList);
-		return "popupEnter";
+		return null;
 	}
 	
-	@RequestMapping(value="/board/popupEnter", method=RequestMethod.POST)
+	@RequestMapping(value="/board/popupEnter", method=RequestMethod.POST,produces = "application/json; charset=utf8")
+	@ResponseBody
 	public String popupEnterPost(Model model,@RequestParam("searchOption")String option,@RequestParam("searchResult")String result){	
+		System.out.println("들어왔니??");
 		switch(option) {
 		case "person" : //검색옵션 == 작성자
 			List<NoticeVO> listID = searchAllService.searchIdList(result);

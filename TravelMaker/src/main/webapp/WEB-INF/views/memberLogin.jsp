@@ -60,8 +60,8 @@ html, body {
 .btnSubmit {
    font-weight: 600;
    width: 45%;
-   color: #363636;
-   background-color: lightblue;
+   color: white;
+   background-color: #4a3a3a;
    border: none;
    border-radius: 1rem;
    padding: 2%;
@@ -78,7 +78,7 @@ html, body {
       <div class="row">
          <div class="col-md-6 login_form">
          <form action='login' method='post'>
-            <h3>로그인</h3>
+            <h3><img class="logo_img" src="<c:url value="/resources/img/log.png" />" /></h3>
             구매자 : <input type="radio" name='grade' value='user' required>
             판매자 : <input type="radio" name='grade' value='seller' required>
             관리자 : <input type="radio" name='grade' value='admin' required>
