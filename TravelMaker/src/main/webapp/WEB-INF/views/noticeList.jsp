@@ -21,6 +21,8 @@
 
 
 <style>
+
+
 .button {
    background-color: #4CAF50; /* Green */
    border: none;
@@ -79,25 +81,27 @@
       <div class="row gx-4 gx-lg-5">
          <c:forEach var="notice" items="${notice}">
             <div class="col-md-4 mb-5">
+     		  
                <div class="card h-100">
 
                   <c:if test="${notice.image1 != null }">
                      <img
                         src="${contextPath }/board/notice/download?image=${notice.image1}&noticeNO=${notice.noticeNO}&name=${notice.name}"
-                        width="100%" height="100%" />
+                        width="100%" height="250px" />
                   </c:if>
 
                   <c:if test="${notice.image1 == null }">
                      <img
                         src="<c:url value="http://encosmall.kr/design/encos0720/shop/img/common/gonggi_top.jpg" />"
-                        width="100%" height="100%" />
+                        width="100%" height="250px" />
                   </c:if>
 
-                  <div class="card-footer">
-                     <a class="btn btn-primary btn-sm">${notice.categoryName }</a>&nbsp;&nbsp;&nbsp;<a href="${contextPath}/board/notice/view?noticeNO=${notice.noticeNO }">${notice.title }</a>
+                  <div class="card-footer"> 
+                     <a class="btn btn-primary btn-sm">${notice.name }</a>&nbsp;&nbsp;&nbsp;<a href="${contextPath}/board/notice/view?noticeNO=${notice.noticeNO }">${notice.title }</a>
                   </div>
                </div>
-            </div>
+          
+           </div>
          </c:forEach>
       </div>
 

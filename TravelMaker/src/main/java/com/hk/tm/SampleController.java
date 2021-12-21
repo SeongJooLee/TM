@@ -1,5 +1,7 @@
 package com.hk.tm;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +16,8 @@ public class SampleController {
 	@Autowired
     private KakaoPay kakaopay;
     
+	@Autowired
+	HttpSession session;
     
 	@RequestMapping(value="/kakaoPay" , method =RequestMethod.GET) 
     public void kakaoPayGet() {
@@ -21,8 +25,8 @@ public class SampleController {
     }
     
 	@RequestMapping(value="/kakaoPay" , method =RequestMethod.POST) 
-    public String kakaoPay(@RequestParam("title")String title,@RequestParam("name")String name,@RequestParam("headCount")String headCount,@RequestParam("price")String price) { // redirec:URL --> URL move 
-        String url = kakaopay.kakaoPayReady(title,name,headCount,price);
+    public String kakaoPay(@RequestParam("title")String title,@RequestParam("headCount")String headCount,@RequestParam("price")String price) { // redirec:URL --> URL move 
+        String url = kakaopay.kakaoPayReady(title,headCount,price);
         return "redirect:" +url; // 해당 유알엘로 이동
  
     }

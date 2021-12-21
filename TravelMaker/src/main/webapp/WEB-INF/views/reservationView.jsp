@@ -80,7 +80,7 @@ function kakaoPay(){
 			<tr>
 			<tr>
 				<td>
-					예약 번호 : ${reser.reserNO }
+					<input type="hidden" name="reserNO" value="${reser.reserNO }">예약 번호 : ${reser.reserNO }
 				</td>
 			</tr>
 			<tr>

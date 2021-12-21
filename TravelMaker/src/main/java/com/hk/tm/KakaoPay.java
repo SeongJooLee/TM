@@ -4,6 +4,9 @@ package com.hk.tm;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -13,6 +16,8 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
+
+import com.hk.tm.member.vo.UserVO;
  
 @Service
 public class KakaoPay {
@@ -22,13 +27,22 @@ public class KakaoPay {
     private KakaoPayReadyVO kakaoPayReadyVO;
     private KakaoPayApprovalVO kakaoPayApprovalVO;
     
-    public String kakaoPayReady(String title, String name, String headCount, String price) {
- 
+    //3) 필드로 선언해서 메소드에서 다 쓸수 있게
+    @Autowired
+    HttpSession session;
+    
+    
+    
+    
+    public String kakaoPayReady(String title, String headCount, String price ) {
+    	UserVO userVO = new UserVO();
+    	userVO = (UserVO) session.getAttribute("userSession");
+    	String name = userVO.getName();
+    	
+    	// 1) 세션을 읽어서
 //    	String headCountStr = Integer.toString(headCount);
 //    	String priceStr = Integer.toString(price);
         RestTemplate restTemplate = new RestTemplate();
-        
-        System.out.println("받은 값 : "+title+"|||"+name+"|||"+headCount+"|||"+price);
         
         // 서버로 요청할 Header
         
@@ -40,8 +54,8 @@ public class KakaoPay {
         // 서버로 요청할 Body
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("cid", "TC0ONETIME");
-        params.add("partner_order_id", "관리자");
-        params.add("partner_user_id", "이성주");
+        params.add("partner_order_id", "TravelMaker");
+        params.add("partner_user_id", name); // 2) 여기에 변수로 쓰고
         params.add("item_name", title);
         params.add("quantity", headCount);
         params.add("total_amount", price);
@@ -74,7 +88,11 @@ public class KakaoPay {
     @ResponseBody
     public KakaoPayApprovalVO kakaoPayInfo(String pg_token) {
  
-        
+    	UserVO userVO = new UserVO();
+    	userVO = (UserVO) session.getAttribute("userSession");
+    	String name = userVO.getName();
+    	
+
         RestTemplate restTemplate = new RestTemplate();
  
         // 서버로 요청할 Header
@@ -87,8 +105,8 @@ public class KakaoPay {
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("cid", "TC0ONETIME");
         params.add("tid", kakaoPayReadyVO.getTid());
-        params.add("partner_order_id", "관리자");
-        params.add("partner_user_id","이성주");
+        params.add("partner_order_id", "TravelMaker" );
+        params.add("partner_user_id", name); // 4) 여기에 변수로 쓰고
         params.add("pg_token", pg_token);
         
         
