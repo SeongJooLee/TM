@@ -128,7 +128,7 @@ body {
 
 						
 						<div class="mb-3">
-							<label for="password">비밀번호</label><button type="button" onclick = "myFunction() ">비밀번호 도움말</button> <input type="password"
+							<label for="password">비밀번호</label>&nbsp;<button class="btn btn-link btn-sm" type="button" onclick = "myFunction() ">비밀번호 도움말</button> <input type="password"
 								class="form-control" name="pw" id="pw" placeholder="" value=""
 								required>
 							<div class="invalid-feedback">비밀번호를 입력해주세요.</div>
