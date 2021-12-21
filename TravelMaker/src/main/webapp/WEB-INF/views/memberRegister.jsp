@@ -100,7 +100,7 @@ body {
 							<div class="invalid-feedback">아이디를 입력해주세요.</div>
 						</div>
 						<div class="col-md-6 mb-3">
-							<label for="password">비밀번호</label><button type=button onclick = "openPopUp() ">비밀번호 도움말</button> <input type="password"
+							<label for="password">비밀번호</label><button type="button" onclick = "openPopUp() ">비밀번호 도움말</button> <input type="password"
 								class="form-control" name="pw" id="pw" placeholder="" value=""
 								required>
 							<div class="invalid-feedback">비밀번호를 입력해주세요.</div>
