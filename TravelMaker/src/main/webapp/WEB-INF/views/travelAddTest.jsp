@@ -126,7 +126,7 @@ function fn_create(){
 					</div>
 					<div class="mb-3">
 						<label for="image">이미지 파일 첨부</label> <input type="button"
-							class="form-control" onClick="fn_addFile()" placeholder=""  value="파일 추가"><small>*최대 3개까지 첨부 가능합니다.</small>
+							class="btn btn-info btn-lg btn-block" onClick="fn_addFile()" placeholder=""  value="파일 추가"><small>*최대 3개까지 첨부 가능합니다.</small>
 						<div class="invalid-feedback"><small>몰라욤</small></div>
 						<div id="d_file">
 					

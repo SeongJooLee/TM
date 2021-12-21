@@ -178,6 +178,7 @@ body {
 			<div class="input-form col-md-12 mx-auto">
 				<h4 class="mb-3">여행 게시글 보기</h4>
 					<form id="frmTravel" enctype="multipart/form-data">
+					<div class="row">
 					<div class="col-md-6 mb-3">
 						<label for="name">글 번호</label>
 						<input type="text" class="form-control"  id="travelNO" name="travelNO" placeholder="" 
@@ -190,6 +191,7 @@ body {
 						<input type="hidden" class="form-control" placeholder=""
 						value="${travel.name }"id="name" name="name" />
 					</div>
+					</div>
 						<div class="row">
 						<div class="col-md-6 mb-3">
 							<label for="name">카테고리</label> 
@@ -197,20 +199,21 @@ body {
 									<option value="${category.categoryName }">${category.categoryName }</option>
 								</select>
 						</div>
-						</div>
+						
 						<div class="col-md-6 mb-3">
 						<label for="name">작성자 아이디</label> 
 						<input type="text" class="form-control" name="id" placeholder="" value="${travel.id }" readonly />
 						</div>
-						<div class="col-md-6 mb-3">
+						</div>
+						<div class="mb-3">
 						<label for="name">이미지 파일 첨부</label> 
-						<input type="button" class="form-control" name="" id="imgUpdateBtn" placeholder=""
+						<input type="button" class="btn btn-danger btn-lg btn-block" name="" id="imgUpdateBtn" placeholder=""
 						value="파일 삭제"  onClick="fn_imgUpdateBtn()" disabled />
-						<input type="button" class="form-control" name="" id="imgUpdate" placeholder=""
+						<input type="button" class="btn btn-info btn-lg btn-block" name="" id="imgUpdate" placeholder=""
 						value="파일 추가"  onClick="fn_addFile()" disabled />
 						<small>* 최대 3개까지 첨부 가능합니다.</small>
 						</div>
-						<div class="col-md-6 mb-3">
+						<div class="mb-3">
 						<label for="name">글 내용</label> 
 						<textarea class="form-control" name="content" id="content" placeholder=""
 						rows="20" cols="60" disabled />${travel.content }</textarea>
