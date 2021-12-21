@@ -121,7 +121,7 @@ public class NoticeController {
 
 	@RequestMapping(value="/board/notice/add", method=RequestMethod.GET)
 	public String noticeAdd(Model model) {
-		return "noticeAdd";
+		return "noticeAddTest";
 	}
 
 	@RequestMapping(value="/board/notice/addDone", method=RequestMethod.POST)

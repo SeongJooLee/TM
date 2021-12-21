@@ -50,6 +50,7 @@ body {
 		}else{
 		    return;
 		}
+<<<<<<< HEAD
 	}
 	function fn_imgUpdate() {
 		var sellerID = $( 'input#id' ).val();
@@ -95,6 +96,41 @@ body {
 			document.getElementById('frmNotice').submit();
 		}
 	}
+=======
+	}	
+		
+	function myFunction() {
+		  var myWindow = window.open("", "passwordPopUp", "width=700, height=450, top=300, left=100");
+		  myWindow.document.write("<p>비밀번호 도움말!</p>");
+		}
+	
+/* 	function chkPW(){
+
+		var pw = $("#password").val();
+		var id = $("#id").val();
+			
+		var reg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+		var hangulcheck = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+		 
+		if(false === reg.test(pw)) {
+		alert('비밀번호는 8자 이상이어야 하며, 숫자/대문자/소문자/특수문자를 모두 포함해야 합니다.');
+		}else if(/(\w)\1\1\1/.test(pw)){
+		 alert('같은 문자를 4번 이상 사용하실 수 없습니다.');
+		 return false;
+		 }else if(pw.search(id) > -1){
+		 alert("비밀번호에 아이디가 포함되었습니다.");
+		  return false;
+		 }else if(pw.search(/\s/) != -1){
+		 alert("비밀번호는 공백 없이 입력해주세요.");
+		 return false;
+		 }else if(hangulcheck.test(pw)){
+		 alert("비밀번호에 한글을 사용 할 수 없습니다."); 
+		 }else {
+		 console.log("통과");
+		 }
+	} */
+	
+>>>>>>> branch 'main' of https://github.com/SeongJooLee/TM.git
 </script>
 </head>
 <body>
@@ -116,8 +152,12 @@ body {
 							<label for="**"><small>* 중복체크를 눌러주세요</small></label>
 							<button type='button' id='hh0564' class="form-control" onclick='fn_imgUpdate();'>중복체크</button>
 						</div>
+
 						<div class="mb-3">
-							<label for="password">비밀번호</label> <input type="password"
+							<label for="password">비밀번호</label> <input type="password">
+						</div>
+						<div class="col-md-6 mb-3">
+							<label for="password">비밀번호</label><button type="button" onclick = "myFunction() ">비밀번호 도움말</button> <input type="password"
 								class="form-control" name="pw" id="pw" placeholder="" value=""
 								required>
 							<div class="invalid-feedback">비밀번호를 입력해주세요.</div>
