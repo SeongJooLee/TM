@@ -64,7 +64,7 @@ function fn_create(){
     <jsp:include page="/resources/include/header.jsp" />
     <hr>
     
-	<h1 style="text-align: center">홍보 글 쓰기</h1>
+	<h1 style="text-align: center">여행 게시글 쓰기</h1>
 	<form id="frm" action="addDone" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="id" value="${userSession.id}">
 		<input type="hidden" name="name" value="테마여행">
