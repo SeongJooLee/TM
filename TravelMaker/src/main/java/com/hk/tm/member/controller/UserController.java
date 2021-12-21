@@ -205,7 +205,7 @@ public class UserController {
 	        	UserVO user = (UserVO) session.getAttribute("userSession");
 	        	model.addAttribute("user", user);   
 	        	
-	        	return "userMyPage";            
+	        	return "userMyPagetest";            
 	        case "com.hk.tm.member.vo.SellerVO":
 //	        	if() {
 //	        		return ;

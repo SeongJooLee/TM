@@ -63,6 +63,8 @@ width:110px;
 </head>
 <body>
 <jsp:include page="/resources/include/header.jsp" />
+
+
 	<h1>일반유저 페이지</h1>
 	<h2>${userSession.id}님 정보</h2>  
 	<div class="wrap">
