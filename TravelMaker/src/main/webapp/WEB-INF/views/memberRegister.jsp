@@ -50,10 +50,11 @@ body {
 		}else{
 		    return;
 		}
-	}
-	
-	function openPopUp(){
-		window.open("/tm/board/passwordPopUp", "passwordPopUp", "width=700, height=450, top=300, left=100");
+	}	
+		
+	function myFunction() {
+		  var myWindow = window.open("", "passwordPopUp", "width=700, height=450, top=300, left=100");
+		  myWindow.document.write("<p>비밀번호 도움말!</p>");
 		}
 	
 /* 	function chkPW(){
@@ -100,7 +101,7 @@ body {
 							<div class="invalid-feedback">아이디를 입력해주세요.</div>
 						</div>
 						<div class="col-md-6 mb-3">
-							<label for="password">비밀번호</label><button type="button" onclick = "openPopUp() ">비밀번호 도움말</button> <input type="password"
+							<label for="password">비밀번호</label><button type="button" onclick = "myFunction() ">비밀번호 도움말</button> <input type="password"
 								class="form-control" name="pw" id="pw" placeholder="" value=""
 								required>
 							<div class="invalid-feedback">비밀번호를 입력해주세요.</div>
