@@ -39,6 +39,14 @@
 		ORDER BY p.PROMOTIONNO DESC
 	</select>
 	
+   <select id="selectHomePromotionImage" resultType="promotionImageVO">
+		SELECT * 
+		FROM PROMOTION p ,IMAGE i,CATEGORY c 
+		WHERE p.PROMOTIONNO = i.PROMOTIONNO(+)
+		AND p.PROMOTIONNO = c.PROMOTIONNO (+)
+		ORDER BY p.PROMOTIONNO asc
+	</select>
+	
    <select id="selectPagePromotionImage" resultType="promotionImageVO">
 		SELECT * FROM
 		 (SELECT ROW_NUMBER()over(ORDER BY promotionNO DESC) count,promotionNO, title,content,sellerID,name, writeDate

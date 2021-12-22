@@ -66,4 +66,9 @@ public class PromotionDAO {
 		List<PromotionVO> list = sql.selectList(ns+"selectSellerPromotion",sellerID);
 		return list;
 	}
+
+	public List<PromotionImageVO> selectHomePromotionImage() {
+		List<PromotionImageVO>list = sql.selectList(ns+"selectHomePromotionImage");
+		return list;
+	}
 }

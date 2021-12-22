@@ -99,5 +99,9 @@ public class PromotionService {
 		return promotionDAO.selectSellerPromotion(sellerID);
 	}
 
+	public List<PromotionImageVO> selectHomePromotionImage() {
+		return promotionDAO.selectHomePromotionImage();
+	}
+
 
 }

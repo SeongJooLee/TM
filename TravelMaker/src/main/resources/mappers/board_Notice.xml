@@ -66,13 +66,19 @@
 		SELECT * FROM NOTICE
 	</select>
 	
-	   <select id="selectPageNoticeImage" resultType="NoticeImageVO">
+	<select id="selectPageNoticeImage" resultType="NoticeImageVO">
 		SELECT * FROM
 		 (SELECT ROW_NUMBER()over(ORDER BY noticeNO DESC) count,noticeNO, title,content,adminID,name, writeDate
 		  FROM notice )  n,IMAGE i
 		  WHERE n.noticeNO = i.noticeNO(+)
 		  AND n.count BETWEEN #{startPage} AND #{endPage}
 		  ORDER BY n.noticeNO DESC 
+	</select>
+	
+	<select id="selectHomeNoticeImage" resultType="NoticeImageVO">
+		SELECT * FROM notice n, image i
+		  WHERE n.noticeNO = i.noticeNO(+)
+		  ORDER BY n.noticeNO asc 
 	</select>
 
 	<select id="selectUnion" resultType="NoticeVO" >

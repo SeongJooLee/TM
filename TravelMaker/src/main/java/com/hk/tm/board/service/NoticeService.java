@@ -81,7 +81,11 @@ public class NoticeService {
 	}
 
 	public List<NoticeImageVO> selectAllNoticeImage(SelectPageVO selectPageVO) {
-		// TODO Auto-generated method stub
 		return noticeDAO.selectAllNoticeImage(selectPageVO); 
+	}
+
+	public List<NoticeImageVO> selectHomeNoticeImage() {
+		// TODO Auto-generated method stub
+		return noticeDAO.selectHomeNoticeImage();
 	}
 }
