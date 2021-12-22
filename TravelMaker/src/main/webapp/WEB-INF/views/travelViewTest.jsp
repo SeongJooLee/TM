@@ -316,6 +316,9 @@ body {
 
 	<!--  해당 글 댓글 보이기 -->
 	<div class="container">
+	
+	<c:if test="${comment != null }">
+	
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
 
@@ -341,25 +344,28 @@ body {
 					</div>
 				</c:forEach>
 
-			<c:if test='${userSession.grade.equals("user")}'>
-				<form action="/tm/board/travel/add" method="post">
-					<div class="row">
-						<div class="col-md-12 mb-3">
-							<label for="comment">댓글 쓰기 :</label> <input type="text"
-								class="form-control" name="content">
-						<hr>
+				<c:if test='${userSession.grade.equals("user")}'>
+					<form action="/tm/board/travel/add" method="post">
+						<div class="row">
+							<div class="col-md-12 mb-3">
+								<label for="comment">댓글 쓰기 :</label> <input type="text"
+									class="form-control" name="content">
+								<hr>
+							</div>
+							<input type="hidden" name="id" value="${userSession.id }">
+							<input type="hidden" name="commentTravelNO"
+								value="${travel.travelNO }">
+							<div class="col-md-4 mb-3">
+								<input class="btn btn-primary btn-lg btn-block" type="submit"
+									value="댓글쓰기">
+							</div>
 						</div>
-						<input type="hidden" name="id" value="${userSession.id }">
-						<input	type="hidden" name="commentTravelNO" value="${travel.travelNO }">
-						<div class="col-md-4 mb-3">
-							<input class="btn btn-primary btn-lg btn-block" type="submit"
-								value="댓글쓰기">
-						</div>
-					</div>
-				</form>
-			</c:if>
+					</form>
+				</c:if>
+			</div>
 		</div>
-					</div>
+		</c:if>
+		
 	</div>
 
 

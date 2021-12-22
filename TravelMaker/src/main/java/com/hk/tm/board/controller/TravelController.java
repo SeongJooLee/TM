@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.ibatis.reflection.SystemMetaObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -148,7 +147,7 @@ public class TravelController {
 	@RequestMapping(value="/add" ,  method=RequestMethod.GET)
 	public String travelAdd(Model model) {	
 		System.out.println("작성자?ㄴ");
-		return "travelAddTest"; // travelAdd.jsp 호출
+		return "travelAdd"; // travelAdd.jsp 호출
 
 	}
 

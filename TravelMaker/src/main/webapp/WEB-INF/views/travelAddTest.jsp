@@ -74,12 +74,6 @@ function fn_create(){
 		alert('내용을 적어주세요.');
 		return false;
 	}
-	var price = document.getElementById("price").value;
-	if(!price||price<0){
-		alert('가격을 적어주세요.');
-		return false;
-	}
-	
     if (!confirm("글을 생성하시겠습니까?")) {
         alert("취소(아니오)를 누르셨습니다.");
         return;
@@ -104,7 +98,7 @@ function fn_create(){
 						<input type="hidden" name="name" value="테마여행">
 					<div class="row">
 						<div class="col-md-6 mb-3">
-							<label for="name">카테고리</label> 
+							<label for="categoryName">카테고리</label> 
 								<select class="form-control" id ="categoryName" name="categoryName">
 									<option value="null">선택해주세요.</option>
 									<option value="쇼핑">쇼핑</option>
@@ -118,9 +112,8 @@ function fn_create(){
 						</div>
 						<div class="col-md-6 mb-3">
 							<label for="title">글 제목</label> <input type="text"
-								class="form-control" name="title" id="title" placeholder="" value=""
-								required>
-							<div class="invalid-feedback">글 제목을 입력해주세요.</div>
+								class="form-control" name="title" id="title"
+								>
 						</div>					
 
 					</div>
@@ -137,7 +130,7 @@ function fn_create(){
 						<textarea	class="form-control" name="content" id="content" placeholder="" maxlength="4000"></textarea>
 						<div class="invalid-feedback">글 내용을 입력해주세요.</div>
 					</div>
-				<button class="btn btn-primary btn-lg btn-block" type="submit"
+				<button class="btn btn-primary btn-lg btn-block" type="button" onClick="fn_create()"
 				>작성 하기</button>
 				<button class="btn btn-primary btn-lg btn-block" type="reset"
 				>다시 작성</button>

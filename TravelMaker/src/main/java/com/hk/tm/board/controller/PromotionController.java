@@ -123,7 +123,7 @@ public class PromotionController {
 
 	@RequestMapping(value="/board/promotion/add", method=RequestMethod.GET)
 	public String promotionAdd(Model model) {
-		return "promotionAddTest";
+		return "promotionAdd";
 	}
 
 	@RequestMapping(value="/board/promotion/addDone", method=RequestMethod.POST)
