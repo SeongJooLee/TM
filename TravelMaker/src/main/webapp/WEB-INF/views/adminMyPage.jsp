@@ -111,7 +111,7 @@ body {
 								
 							</div>
 								<div class="col-md-6 mb-3">
-							<a class='form-control' href='/tm/admin/mypage/next?indexOne=${notice.x}&indexTwo=${notice.y}'>다음페이지</a>
+								<a class='form-control' href='/tm/admin/mypage/next?indexOne=${notice.x}&indexTwo=${notice.y}'>다음페이지</a>
 							</div>
 						</div>
 					
@@ -135,5 +135,7 @@ body {
 	<hr>
 
 	<jsp:include page="/resources/include/footer.jsp" />
+	
 </body>
+
 </html>

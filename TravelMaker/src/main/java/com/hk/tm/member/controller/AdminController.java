@@ -105,6 +105,7 @@ public class AdminController {
 			System.out.println("민수야 일어나.. 코딩해야지..");
 			List<PromotionVO> seller = adminService.sellerPromotion(selectSellerOne);
 			model.addAttribute("seller",seller);
+			System.out.println("테스트테스트");
 			return "adminSellerOne";
 		}
 		switch(key) {
@@ -188,7 +189,7 @@ public class AdminController {
 	}
 	@RequestMapping(value="/admin/mypage/reservationUpdate",method=RequestMethod.POST)
 	public String myPageReservationUpdatePost(Model model,@ModelAttribute ReservationVO reservation){
-		
+		System.out.println("진짜 집가고싶다 = "+reservation);
 		int result = adminService.reservationUpdate(reservation);
 		
 		

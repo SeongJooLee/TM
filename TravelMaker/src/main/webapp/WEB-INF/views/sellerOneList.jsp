@@ -129,7 +129,7 @@ body {
 							
 							<div class='col-md-12 mb-3'>
 							<form action='/tm/admin/mypage' method='post'>
-								<input type='hidden' name='selectUserBoard'value='${user.id}'>
+								<input type='hidden' name='selectSellerOne'value='${seller.sellerID}'>
 								<input class="btn btn-primary btn-lg btn-block" type='submit' value='상품내역 보기'>
 							
 							</form>

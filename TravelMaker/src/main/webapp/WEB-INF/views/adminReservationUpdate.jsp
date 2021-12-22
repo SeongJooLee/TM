@@ -1,112 +1,188 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
-<%@ page session="true" %>
-
+	pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath }" />
+<%
+request.setCharacterEncoding("utf-8");
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관리자 마이페이지</title>
-       <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="<c:url value="/resources/css/styles.css" />" rel="stylesheet" />
-<script>
-	function reset(){
-		
-			var result = confirm("취소할거니..?");
-			if(result){
-				location.href = "/tm/admin/mypage";
-			}else{
-			    return;
-			}
-		
-		}
-	function check(){
-		alert('ㅇㅇ');
-		location.href='/tm/admin/mypage';
-		}
-	
-</script>
-<style type="text/css">
-.wrap {
-	display: grid;
-	grid-template-columns: 5% 15% 5% 60% 15%;
-	grid-template-rows: 100%;    
+<title>일반 유저 회원가입</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+
+<!-- Favicon-->
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<!-- Core theme CSS (includes Bootstrap)-->
+<link href="<c:url value="/resources/css/styles.css" />"
+	rel="stylesheet" />
+<style>
+body {
+	min-height: 100vh;
 }
 
-.wrap>div {
-	margin: 1px; 
-	padding: 10px;
-	font-size: 16px;
-}
-
-.grid1 {
-	grid-column-start: 2;
-	grid-column-end: 3;
-	background: ghostwhite;
-	border: 3px solid royalblue;
-}
-
-.grid2 {
-	grid-column-start: 4;
-	grid-column-end: 5;
-	background: ghostwhite;
-	border: 3px solid royalblue;
+.input-form {
+	max-width: 680px;
+	margin-top: 80px;
+	padding: 32px;
+	background: #fff;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+	-moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+	box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
 }
 </style>
+
+<script src='http://code.jquery.com/jquery-latest.min.js'></script>
+<script>
+function reset(){
+	
+	var result = confirm("취소할거니..?");
+	if(result){
+		location.href = "/tm/admin/mypage";
+	}else{
+	    return;
+	}
+
+}
+</script>
 </head>
 <body>
-<jsp:include page="/resources/include/header.jsp" />
-	<h1>${userSession.name} 전용 페이지</h1>
-	<div class="wrap">
-		<div class="grid1">
-			
-			<ul style="background-color: CornflowerBlue; text-align: center;" >
-				<li>
-					<form action='/tm/admin/mypage' method='post'>
-						<input type='hidden' name='key' value='one'>
-						<input type='submit' value='게시판 글 관리'>
-					</form>
-				</li><br>
-				<li>
-					<form action='/tm/admin/mypage' method='post'>
-						<input type='hidden' name='key' value='two'>
-						<input type='submit' value='회원조회'>
-					</form>
-				</li><br>
-				<li>
-					<form action='' method='post'>
-						<input type='hidden' name='key' value='three'>
-						<input type='submit' value='예약 조회'>
-					</form>
-				</li><br>
+	<jsp:include page="/resources/include/header.jsp" />
+	<hr>
+
+
+	<div class="container">
+		<div class="input-form-backgroud row">
+			<div class="input-form col-md-12 mx-auto">
+				<h4 class="mb-3" align="center">${userSession.name}화면</h4>
+				<input type="hidden" name="id" value="${userSession.adminID}">
+				<div class="row">
+					<div class="col-md-4 mb-3">
+						<form action='/tm/admin/mypage' method='post'>
+							<input type="hidden" name="key" value="one"> <input
+								class='form-control' type='submit' value='게시판 글 관리'>
+						</form>
+					</div>
+					<div class="col-md-4 mb-3">
+						<form action='/tm/admin/mypage' method='post'>
+							<input type="hidden" name="key" value="two"> <input
+								class='form-control' type='submit' value='회원 조회'>
+						</form>
+					</div>
+					<div class="col-md-4 mb-3">
+						<form action='/tm/admin/mypage' method='post'>
+							<input type="hidden" name="key" value="three"> <input
+								class='form-control' type='submit' value='예약 조회'>
+						</form>
+					</div>
+				</div>
+
+				<hr>
+
+				<br> <br>
+				<h4 class="mb-3" align="center">변경할 값을 입력해주세요</h4>
+				<br> <br>
+				<form action='/tm/admin/mypage/reservationUpdate' method='post'>
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label class='form-control'>예약 번호</label>
+					</div>
+					<div class="col-md-6 mb-3">
+						<input class='form-control' type='text' name='reserNO' value='${reservation.reserNO}' readonly>
+					</div>
+				</div>
 				
 				
-			</ul>
-		</div>
-		<div class="grid2">
-			<h3>변경할 값을 입력해주세요</h3>
-			<form action='/tm/admin/mypage/reservationUpdate' method='post'>
-				예약번호: <input type='text' name='reserNO' value='${reservation.reserNO}' readonly><br>
 				
-				<br>변경할 상품을 선택해주세요<br>
-				<c:forEach var='list' items='${proList}'>			
-					${list.title} ${list.promotionNO} <input type='radio'  name='promotionNO' value='${list.promotionNO}' required>
-					<br>
+				<div class="row">
+					<div class="col-md-12 mb-3">
+						<label class='form-control'>변경할 상품을 선택해주세요</label>
+					</div>
+				</div>
+				
+				<c:forEach var='list' items='${proList}' >
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label class='form-control'>${list.title}  
+						  <input type='radio'  name='promotionNO' value='${list.promotionNO}' required> </label>
+					</div>
+					
+				</div>
 				</c:forEach>
-				<br>예약 날짜: <input type='date' name='reserDate' value='${reservation.reserDate}' ><br><br>
-				인원 수: <input type='number' name='headCount' value='${reservation.headCount}' ><br><br>
-				예약자 ID: <input type='text'  name='id' value='${reservation.id}' readonly><br><br>
-				<input type='submit' value='변경하기'>
 				
 				
-			</form>
-			<button onclick='reset()'>취소하기</button>
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label class='form-control'>예약날짜</label>
+					</div>
+					<div class="col-md-6 mb-3">
+						<input class='form-control' type='date' name='reserDate' value='${reservation.reserDate}' >
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label class='form-control'>인원 수</label>
+					</div>
+					<div class="col-md-6 mb-3">
+						<input class='form-control' type='number' name='headCount' value='${reservation.headCount}' >
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label class='form-control'>예약자 아이디</label>
+					</div>
+					<div class="col-md-6 mb-3">
+						<input class='form-control'  type='text'  name='id' value='${reservation.id}' readonly>
+					</div>
+				</div>
+				
+				
+				<div class="row">
+					<div class="col-md-12 mb-3">
+						<input class="btn btn-primary btn-lg btn-block" type='submit' value='변경하기'>
+					</div>
+					
+				</div>
+				</form>
+				
+				
+			
+				<button class="btn btn-primary btn-lg btn-block" onclick='reset()'>취소하기</button>
+
+
+
+
+
+
+
+
+
+
+
+			</div>
 		</div>
 	</div>
-</body>
+	<script>
+			
+			</script>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<hr>
 
-<jsp:include page="/resources/include/footer.jsp" />
+	<jsp:include page="/resources/include/footer.jsp" />
+</body>
 </html>
