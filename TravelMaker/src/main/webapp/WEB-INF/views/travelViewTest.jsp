@@ -78,7 +78,7 @@ body {
 			alert("확인(예)을 누르셨습니다.");
 			$
 					.ajax({
-						type : 'GET',
+						type : 'POST',
 						url : 'travelImgDelete',
 						dataType : "json",
 						data : {
@@ -179,12 +179,12 @@ body {
 				<h4 class="mb-3">여행 게시글 보기</h4>
 					<form id="frmTravel" enctype="multipart/form-data">
 					<div class="row">
-					<div class="col-md-6 mb-3">
+					<div class="col-md-3 mb-3">
 						<label for="name">글 번호</label>
 						<input type="text" class="form-control"  id="travelNO" name="travelNO" placeholder="" 
 						value="${travel.travelNO }" readonly />
 					</div>	
-					<div class="col-md-6 mb-3">
+					<div class="col-md-9 mb-3">
 						<label for="name">글 제목</label>
 						<input type="text" class="form-control" placeholder="" 
 						value="${travel.title }" id="title" name="title" disabled />
@@ -193,37 +193,147 @@ body {
 					</div>
 					</div>
 						<div class="row">
-						<div class="col-md-6 mb-3">
+						<div class="col-md-3 mb-3">
 							<label for="name">카테고리</label> 
 								<select class="form-control" id ="categoryName" name="categoryName" placeholder="" disabled>
 									<option value="${category.categoryName }">${category.categoryName }</option>
 								</select>
 						</div>
 						
-						<div class="col-md-6 mb-3">
-						<label for="name">작성자 아이디</label> 
+						<div class="col-md-3 mb-3">
+						<label for="name">작성자</label> 
 						<input type="text" class="form-control" name="id" placeholder="" value="${travel.id }" readonly />
+						</div>						
+						
+						<div class="col-md-6 mb-3">
+						<label for="writeDate">작성 날짜</label> 
+						<input type="text" class="form-control" name="writeDate" placeholder=""
+						value="${travel.writeDate }" readonly/>
+						</div>						
 						</div>
-						</div>
-						<div class="mb-3">
+						<div class="row">
+						<div class="col-md-4 mb-3">
 						<label for="name">이미지 파일 첨부</label> 
 						<input type="button" class="btn btn-danger btn-lg btn-block" name="" id="imgUpdateBtn" placeholder=""
 						value="파일 삭제"  onClick="fn_imgUpdateBtn()" disabled />
+						<small>* 클릭 시 전체 파일이 삭제됩니다.</small>
 						<input type="button" class="btn btn-info btn-lg btn-block" name="" id="imgUpdate" placeholder=""
 						value="파일 추가"  onClick="fn_addFile()" disabled />
 						<small>* 최대 3개까지 첨부 가능합니다.</small>
 						</div>
+						
+						<div id="d_file"></div>
+						<div id="d_filetest">
+						<div class="row">
+							<div class="col-md-4 mb-5">						
+									<c:if
+										test="${not empty image.image1 && image.image1 !='null' }">
+										<input type="hidden" id="originalFileName" name="image1"
+											value="${image.image1 }" />
+										<img
+											src="${contextPath }/board/travel/download?image=${image.image1}&travelNO=${travel.travelNO}&name=${travel.name}"
+											width="100%" height="100%" />
+									</c:if>
+								</div>
+								<div class="col-md-4 mb-5">
+									<c:if
+										test="${not empty image.image2 && image.image2 !='null' }">
+										<input type="hidden" id="originalFileName" name="image2"
+											value="${image.image2 }" />
+										<img
+											src="${contextPath }/board/travel/download?image=${image.image2}&travelNO=${travel.travelNO}&name=${travel.name}">
+									</c:if>
+								</div>
+								<div class="col-md-4 mb-5">
+									<c:if
+										test="${not empty image.image3 && image.image3 !='null' }">
+										<input type="hidden" id="originalFileName" name="image3"
+											value="${image.image3 }" />
+										<img
+											src="${contextPath }/board/travel/download?image=${image.image3}&travelNO=${travel.travelNO}&name=${travel.name}">
+									</c:if>									
+								</div>
+							</div>
+						</div>
+						</div>
 						<div class="mb-3">
-						<label for="name">글 내용</label> 
-						<textarea class="form-control" name="content" id="content" placeholder=""
-						rows="20" cols="60" disabled />${travel.content }</textarea>
+						<label for="content">글 내용</label> 
+						<textarea class="form-control" name="content" id="content" placeholder="" 
+						rows="20" cols="60" disabled>${travel.content }</textarea>
 						</div>
-						<div class="col-md-6 mb-3">
-						<label for="name">작성 날짜</label> 
-						<input type="text" class="form-control" name="writeDate" placeholder=""
-						value="${travel.writeDate }" readonly/>
+						
+					<hr>
+					<div id="tr_btn_modify" style="display: none">
+						<div class="row">
+							<div class="col-md-1 mb-3"></div>
+							<div class="col-md-4 mb-3">
+								<input class="btn btn-primary btn-lg btn-block" type="button" value="수정 반영하기"
+									onClick="fn_modify_update(frmTravel)" />
+							</div>
+							<div class="col-md-4 mb-3">
+								<input class="btn btn-primary btn-lg btn-block" type="button" value="취소하기"
+									onClick="backToList(frmTravel)" />
+							</div>
+							<div class="col-md-1 mb-3"></div>
 						</div>
-					</form>
+					</div>
+					<div id="tr_btn">
+						<div class="row">
+						<c:if test='${userSession.grade.equals("user")}'>
+							<c:forEach var='list' items='${list}'>
+								<c:if test='${list.travelNO == travel.travelNO}'>
+								<div class="col-md-4 mb-3">
+									<input class="btn btn-primary btn-lg btn-block" type="button" value="수정하기" 
+									onClick="fn_enable(this.form)" />
+								</div>	 
+								<div class="col-md-4 mb-3">
+									<input class="btn btn-danger btn-lg btn-block" type="button" value="삭제하기" 
+									onClick="fn_delete(this.form)" /> 	
+								</div>		
+								<div class="col-md-4 mb-3">							
+									<input class="btn btn-primary btn-lg btn-block" type="button" value="리스트로 돌아가기" 
+									onClick="backToList(this.form)" />
+								</div>	
+									<c:set var="check" value="1" />	
+								</c:if>
+							</c:forEach>
+							
+							<c:if test='${check==0}'>
+								<div class="col-md-4 mb-3"></div>	
+								<div class="col-md-4 mb-3"></div>
+								<div class="col-md-4 mb-3">	
+								<input class="btn btn-primary btn-lg btn-block" type="button" value="리스트로 돌아가기" 
+								onClick="backToList(this.form)" />
+								</div>
+							</c:if>							
+						</c:if>
+					</div>
+				</div>
+					<div class="row">
+						<c:if test='${userSession.grade.equals("admin")}'>
+							<div class="col-md-4 mb-3"></div>	
+							<div class="col-md-4 mb-3"></div>
+							<div class="col-md-4 mb-3">		
+							<input class="btn btn-primary btn-lg btn-block" type="button" value="리스트로 돌아가기" 
+							onClick="backToList(this.form)" />
+							</div>
+						</c:if>
+							
+						<c:if test='${userSession.grade.equals("seller")}'>	
+							<div class="col-md-4 mb-3">		
+							<input class="btn btn-primary btn-lg btn-block" type="button" value="리스트로 돌아가기" 
+							onClick="backToList(this.form)" />
+							</div>
+						</c:if>
+						
+						<c:if test='${userSession.grade == null}'>	
+							<div class="col-md-4 mb-3">		
+							<input class="btn btn-primary btn-lg btn-block" type="button" value="리스트로 돌아가기" 
+							onClick="backToList(this.form)" />
+							</div>
+						</c:if>
+					</div>						
+				</form>
 			</div>
 		</div>
 	</div>
