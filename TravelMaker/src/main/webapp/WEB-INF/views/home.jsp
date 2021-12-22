@@ -113,5 +113,6 @@
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
         <jsp:include page="/resources/include/footer.jsp" />
+        <jsp:include page="/WEB-INF/views/seongtest.jsp" />
     </body>
 </html>

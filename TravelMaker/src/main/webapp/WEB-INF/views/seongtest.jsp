@@ -40,18 +40,18 @@
 	<div id="demo" class="carousel slide" data-ride="carousel">
 		<div class="carousel-inner">
 			<!-- 슬라이드 쇼 -->
-			<div class="carousel-item active">
+			<div class="carousel-item active"style="width: 500px; height: 500px;">
 				<!--가로-->
 				<img class="d-block w-100"
 					src="https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
 					alt="First slide">
 			</div>
-			<div class="carousel-item">
+			<div class="carousel-item"style="width: 500px; height: 500px;">
 				<img class="d-block w-100"
 					src="https://images.pexels.com/photos/2355519/pexels-photo-2355519.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
 					alt="Second slide">
 			</div>
-			<div class="carousel-item">
+			<div class="carousel-item"style="width: 500px; height: 500px;">
 				<img class="d-block w-100"
 					src="https://images.pexels.com/photos/2544554/pexels-photo-2544554.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
 					alt="Third slide">
