@@ -138,7 +138,7 @@ public class TravelController {
 			model.addAttribute("list",list);
 		} catch (Exception e) {
 			// TODO: handle exception
-			System.out.println("오류발생");
+			
 		}
 		return "travelViewTest"; // travelView.jsp 호출
 
@@ -146,7 +146,7 @@ public class TravelController {
 
 	@RequestMapping(value="/add" ,  method=RequestMethod.GET)
 	public String travelAdd(Model model) {	
-		System.out.println("작성자?ㄴ");
+		
 		return "travelAdd"; // travelAdd.jsp 호출
 
 	}
@@ -169,9 +169,7 @@ public class TravelController {
 
 		List fileList= upload(request);
 		map.put("fileList", fileList);
-		System.out.println("파일리스트 확인1"+fileList.toString());
-		System.out.println("파일리스트 확인2"+travelVO.toString());
-		System.out.println("파일리스트 확인3"+categoryVO.toString());
+		
 		ImageVO imageVO = new ImageVO();
 
 		int travelNO = travelService.selectMaxTravel(); 
@@ -229,9 +227,7 @@ public class TravelController {
 		}
 
 		List fileList= upload(request);
-		map.put("fileList", fileList);
-
-		System.out.println("파일리스트 : "+fileList.toString());
+		map.put("fileList", fileList);		
 
 		ImageVO imageVO = new ImageVO();				
 		imageVO.setTravelNO(travelVO.getTravelNO());
@@ -304,8 +300,7 @@ public class TravelController {
 	@RequestMapping(value="/travelImgDelete", method= {RequestMethod.GET,RequestMethod.POST},produces = "application/json; charset=utf8")
 	@ResponseBody
 	public Map<String, Object> imgDelete(@RequestParam("travelNO") int travelNO) throws Exception {
-		Map<String, Object> map = new HashMap<String, Object>();
-		System.out.println("들어왓니?"+travelNO);
+		Map<String, Object> map = new HashMap<String, Object>();		
 		int ret = travelService.travelImgDelete(travelNO);
 		if(ret==0) {
 			map.put("result", "false");
@@ -328,9 +323,7 @@ public class TravelController {
 			request.setCharacterEncoding("utf-8");
 			String image = request.getParameter("image");
 			String travelNO = request.getParameter("travelNO");
-			String name = request.getParameter("name");
-
-			System.out.print("여기 들어오니"+image+"|||"+travelNO+"||||"+name);
+			String name = request.getParameter("name");			
 
 			OutputStream out = response.getOutputStream();
 			String path = "C:\\files\\"+name+"\\"+travelNO+"\\"+image;
