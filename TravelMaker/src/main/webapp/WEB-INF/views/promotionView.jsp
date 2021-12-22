@@ -42,11 +42,21 @@ body {
 	border-radius: 10px;
 	-webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
 	-moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
-	box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+	box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
 }
 </style>
 
-<script src='http://code.jquery.com/jquery-latest.min.js'></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+	crossorigin="anonymous"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+	crossorigin="anonymous"></script>
 <script type='text/javascript'>
 	var cnt = 1;
 	function fn_addFile() {
@@ -163,8 +173,7 @@ body {
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
 				<form id="frmPromotion" enctype="multipart/form-data">
-						<input type="hidden"
-						value="${promotion.name }" name="name" />
+					<input type="hidden" value="${promotion.name }" name="name" />
 					<div class="row">
 						<div class="col-md-2 mb-3">
 							<label for="promotionNO">번호</label> <input type="text"
@@ -192,35 +201,71 @@ body {
 						</div>
 						<div id="d_file"></div>
 						<div id="d_filetest">
-							<div class="row">
-								<div class="col-md-4 mb-5">
-									<c:if
-										test="${not empty image.image1 && image.image1 !='null' }">
-										<input type="hidden" id="originalFileName" name="image1"
-											value="${image.image1 }" />
-										<img
-											src="${contextPath }/board/promotion/download?image=${image.image1}&promotionNO=${promotion.promotionNO}&name=${promotion.name}"
-											width="100%" height="100%" />
-									</c:if>
+							<div id="demo" class="carousel slide" data-bs-ride="carousel">
+								<div class="row">
+									<div class="col-md-4 mb-5"></div>
+
+									<div class="col-md-4 mb-5" data-bs-ride="carousel">
+										<div class="carousel-inner"
+											style="width: 500px; height: 500px;">
+											<div class="carousel-item active "
+												style="width: 500px; height: 500px;">
+												<c:if
+													test="${not empty image.image1 && image.image1 !='null' }">
+													<input type="hidden" id="originalFileName" name="image1"
+														value="${image.image1 }" />
+													<img
+														src="${contextPath }/board/promotion/download?image=${image.image1}&promotionNO=${promotion.promotionNO}&name=${promotion.name}" />
+												</c:if>
+											</div>
+
+											<div class="carousel-item"
+												style="width: 500px; height: 500px;">
+												<c:if
+													test="${not empty image.image2 && image.image2 !='null' }">
+													<input type="hidden" id="originalFileName" name="image2"
+														value="${image.image2 }" />
+													<img
+														src="${contextPath }/board/promotion/download?image=${image.image2}&promotionNO=${promotion.promotionNO}&name=${promotion.name}" />
+												</c:if>
+											</div>
+											<div class="carousel-item"
+												style="width: 500px; height: 500px;">
+												<c:if
+													test="${not empty image.image3 && image.image3 !='null' }">
+													<input type="hidden" id="originalFileName" name="image3"
+														value="${image.image3 }" />
+													<img
+														src="${contextPath }/board/promotion/download?image=${image.image3}&promotionNO=${promotion.promotionNO}&name=${promotion.name} " />
+												</c:if>
+											</div>
+										</div>
+
+										<!-- / 슬라이드 쇼 끝 -->
+										<!-- 왼쪽 오른쪽 화살표 버튼 -->
+										<a class="carousel-control-prev" href="#demo"
+											data-slide="prev"> <span
+											class="carousel-control-prev-icon" aria-hidden="true"></span>
+											<!-- <span>Previous</span> -->
+										</a> <a class="carousel-control-next" href="#demo"
+											data-slide="next"> <span
+											class="carousel-control-next-icon" aria-hidden="true"></span>
+											<!-- <span>Next</span> -->
+										</a>
+										<!-- / 화살표 버튼 끝 -->
+										<!-- 인디케이터 -->
+										<ul class="carousel-indicators">
+											<li data-target="#demo" data-slide-to="0" class="active"></li>
+											<!--0번부터시작-->
+											<li data-target="#demo" data-slide-to="1"></li>
+											<li data-target="#demo" data-slide-to="2"></li>
+										</ul>
+
+									</div>
+									<div class="col-md-4 mb-5"></div>
 								</div>
-								<div class="col-md-4 mb-5">
-									<c:if
-										test="${not empty image.image2 && image.image2 !='null' }">
-										<input type="hidden" id="originalFileName" name="image2"
-											value="${image.image2 }" />
-										<img
-											src="${contextPath }/board/promotion/download?image=${image.image2}&promotionNO=${promotion.promotionNO}&name=${promotion.name}">
-									</c:if>
-								</div>
-								<div class="col-md-4 mb-5">
-									<c:if
-										test="${not empty image.image3 && image.image3 !='null' }">
-										<input type="hidden" id="originalFileName" name="image3"
-											value="${image.image3 }" />
-										<img
-											src="${contextPath }/board/promotion/download?image=${image.image3}&promotionNO=${promotion.promotionNO}&name=${promotion.name}">
-									</c:if>
-								</div>
+
+
 							</div>
 						</div>
 					</div>
