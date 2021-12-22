@@ -60,7 +60,7 @@ request.setCharacterEncoding("utf-8");
 					</div>
 					
 					<hr>
-					<hr>
+					
 					<br>
 					<br>
 					<h4 class="mb-3" align="center">[ ${userSession.id} ] 님의 테마여행 게시글</h4>
