@@ -87,7 +87,7 @@ body {
 					</div>
 					
 					<hr>
-					<hr>
+					
 					<br>
 					<br>
 					<h4 class="mb-3" align="center">[ 수정할 정보를 입력해주세요 ]</h4>

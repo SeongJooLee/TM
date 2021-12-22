@@ -87,10 +87,10 @@ body {
 					</div>
 					
 					<hr>
-					<hr>
+				
 					<br>
 					<br>
-					<h4 class="mb-3" align="center">[ ${userSession.id} ] 님의 예약 d목록</h4>
+					<h4 class="mb-3" align="center">[ ${userSession.id} ] 님의 예약 목록</h4>
 					<br>
 					<br>
 					<div class="row">

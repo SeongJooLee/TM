@@ -61,4 +61,12 @@ public class NoticeDAO {
 		List<NoticeImageVO> list = sql.selectList(ns+"selectPageNoticeImage",selectPageVO);
 		return list;
 	}
+
+	public List<NoticeImageVO> selectHomeNoticeImage() {
+		List<NoticeImageVO> list = sql.selectList(ns+"selectHomeNoticeImage");
+		return list;
+	}
+	
+	
+	
 }

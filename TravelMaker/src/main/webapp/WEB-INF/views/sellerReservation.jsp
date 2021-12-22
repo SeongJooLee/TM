@@ -73,7 +73,7 @@ body {
 					<hr>
 					<br>
 					<br>
-					<h4 class="mb-3" align="center">[ ${userSession.sellerID} ] 님이 등록한 상품 목록</h4>
+					<h4 class="mb-3" align="center">${proNO}번 상품 예약 내역</h4>
 					<br>
 					<br>
 					<div class="row">

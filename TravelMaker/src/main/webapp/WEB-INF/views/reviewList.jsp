@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
-<%@ page session="false" %>
+    pageEncoding="UTF-8"
+    isELIgnored="false" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
+<%
+  request.setCharacterEncoding("UTF-8");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,18 +59,18 @@
 
                   <c:if test="${review.image1 != null }">
                      <img
-                        src="${contextPath }/tm/board/review/download?image=${review.image1}&reviewNO=${review.reviewNO}&name=${review.name}"
-                        width="100%" height="100%" />
+                        src="${contextPath }/board/review/download?image=${review.image1}&reviewNO=${review.reviewNO}&name=${review.name}"
+                        width="100%" height="250px"/>
                   </c:if>
 
                   <c:if test="${review.image1 == null }">
                      <img
                         src="<c:url value="http://encosmall.kr/design/encos0720/shop/img/common/gonggi_top.jpg" />"
-                        width="100%" height="100%" />
+                        width="100%" height="250px" />
                   </c:if>
 
                   <div class="card-footer">
-                     <a href="${contextPath}/tm/board/review/view?reviewNO=${review.reviewNO }">${review.title }</a>
+                     <a href="${contextPath}/board/review/view?reviewNO=${review.reviewNO }">${review.title }</a>
                   </div>
                </div>
             </div>
@@ -74,10 +79,10 @@
 		<div align="center">
 			<c:forEach var="i" begin="1" end="${page }">
 				<c:if test="${selectPage == i}">
-				<strong><a href="${contextPath }/tm/board/review/select?selectPage=${i}">	${i } </a>&nbsp;&nbsp;&nbsp;</strong>
+				<strong><a href="${contextPath }/board/review/select?selectPage=${i}">	${i } </a>&nbsp;&nbsp;&nbsp;</strong>
 				</c:if>
 				<c:if test="${selectPage != i }">
-					<a href="${contextPath }/tm/board/review/select?selectPage=${i}">	${i } </a>&nbsp;&nbsp;&nbsp;
+					<a href="${contextPath }/board/review/select?selectPage=${i}">	${i } </a>&nbsp;&nbsp;&nbsp;
 				</c:if>
 				</c:forEach>
 		</div>
