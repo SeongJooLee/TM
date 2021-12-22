@@ -22,10 +22,10 @@
 <link href="<c:url value="/resources/css/styles.css" />"
 	rel="stylesheet" />
 <style>
-img {
+.imagetest {
 	width: 100%;
-	height: 100%;
-	object-fit: cover;
+	height: 500px;
+	object-fit: contain;
 }
 
 body {
@@ -203,39 +203,39 @@ body {
 						<div id="d_filetest">
 							<div id="demo" class="carousel slide" data-bs-ride="carousel">
 								<div class="row">
-									<div class="col-md-4 mb-5"></div>
+									<div class="col-md-2 mb-5"></div>
 
-									<div class="col-md-4 mb-5" data-bs-ride="carousel">
+									<div class="col-md-8 mb-5" data-bs-ride="carousel">
 										<div class="carousel-inner"
-											style="width: 500px; height: 500px;">
+											>
 											<div class="carousel-item active "
-												style="width: 500px; height: 500px;">
+												>
 												<c:if
 													test="${not empty image.image1 && image.image1 !='null' }">
 													<input type="hidden" id="originalFileName" name="image1"
 														value="${image.image1 }" />
-													<img
+													<img class="imagetest"
 														src="${contextPath }/board/promotion/download?image=${image.image1}&promotionNO=${promotion.promotionNO}&name=${promotion.name}" />
 												</c:if>
 											</div>
 
 											<div class="carousel-item"
-												style="width: 500px; height: 500px;">
+												>
 												<c:if
 													test="${not empty image.image2 && image.image2 !='null' }">
 													<input type="hidden" id="originalFileName" name="image2"
 														value="${image.image2 }" />
-													<img
+													<img class="imagetest"
 														src="${contextPath }/board/promotion/download?image=${image.image2}&promotionNO=${promotion.promotionNO}&name=${promotion.name}" />
 												</c:if>
 											</div>
 											<div class="carousel-item"
-												style="width: 500px; height: 500px;">
+												>
 												<c:if
 													test="${not empty image.image3 && image.image3 !='null' }">
 													<input type="hidden" id="originalFileName" name="image3"
 														value="${image.image3 }" />
-													<img
+													<img class="imagetest"
 														src="${contextPath }/board/promotion/download?image=${image.image3}&promotionNO=${promotion.promotionNO}&name=${promotion.name} " />
 												</c:if>
 											</div>
@@ -244,7 +244,7 @@ body {
 										<!-- / 슬라이드 쇼 끝 -->
 										<!-- 왼쪽 오른쪽 화살표 버튼 -->
 										<a class="carousel-control-prev" href="#demo"
-											data-slide="prev"> <span
+											data-slide="prev" > <span
 											class="carousel-control-prev-icon" aria-hidden="true"></span>
 											<!-- <span>Previous</span> -->
 										</a> <a class="carousel-control-next" href="#demo"
@@ -262,7 +262,7 @@ body {
 										</ul>
 
 									</div>
-									<div class="col-md-4 mb-5"></div>
+									<div class="col-md-2 mb-5"></div>
 								</div>
 
 

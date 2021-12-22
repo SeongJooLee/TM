@@ -6080,12 +6080,10 @@ textarea.form-control-lg {
   justify-content: center;
   width: 15%;
   padding: 0;
-  color: #fff;
+  color: #ff0808;
   text-align: center;
   background: none;
   border: 0;
-  opacity: 0.5;
-  transition: opacity 0.15s ease;
 }
 @media (prefers-reduced-motion: reduce) {
   .carousel-control-prev,
@@ -6093,10 +6091,10 @@ textarea.form-control-lg {
     transition: none;
   }
 }
-.carousel-control-prev:hover, .carousel-control-prev:focus,
-.carousel-control-next:hover,
-.carousel-control-next:focus {
-  color: #fff;
+.carousel-control-prev:hover, 
+.carousel-control-next:hover
+ {
+  background-color: #edf0f0;
   text-decoration: none;
   outline: 0;
   opacity: 0.9;
