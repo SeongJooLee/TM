@@ -302,11 +302,11 @@ body {
 						<div class="row">
 							<div class="col-md-1 mb-3"></div>
 							<div class="col-md-4 mb-3">
-								<input class="btn btn-primary btn-lg btn-block" type="button" value="수정 반영하기"
+								<input class="btn btn-info btn-lg btn-block" type="button" value="수정 반영하기"
 									onClick="fn_modify_update(frmPromotion)" />
 							</div>
 							<div class="col-md-4 mb-3">
-								<input class="btn btn-primary btn-lg btn-block" type="button" value="취소하기"
+								<input class="btn btn-info btn-lg btn-block" type="button" value="취소하기"
 									onClick="backToList(frmPromotion)" />
 							</div>
 							<div class="col-md-1 mb-3"></div>
@@ -348,7 +348,7 @@ body {
 						<c:if test='${userSession.grade.equals("user")}'>
 							<div class="col-md-4 mb-3"></div>
 							<div class="col-md-4 mb-3">
-								<input class="form-control" type="button" value="리스트로 돌아가기"
+								<input class="btn btn-primary btn-lg btn-block" type="button" value="리스트로 돌아가기"
 									onClick="backToList(this.form)" />
 							</div>
 							<div class="col-md-4 mb-3">
@@ -377,7 +377,7 @@ body {
 							<div class="col-md-4 mb-3"></div>
 
 							<div class="col-md-4 mb-3">
-								<input class="form-control" type="button" value="리스트로 돌아가기"
+								<input class="btn btn-primary btn-lg btn-block" type="button" value="리스트로 돌아가기"
 									onClick="backToList(this.form)" />
 							</div>
 						</c:if>
