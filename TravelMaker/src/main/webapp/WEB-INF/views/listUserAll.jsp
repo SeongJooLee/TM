@@ -86,7 +86,7 @@ function dateOrder(){
 				<hr>
 
 				<br> <br>
-				<h4 class="mb-3" align="center">모든 게시판 목록</h4>
+				<h4 class="mb-3" align="center">모든 회원목록</h4>
 				<br> <br>
 				<div class="row">
 					<div class="col-md-6 mb-3">
