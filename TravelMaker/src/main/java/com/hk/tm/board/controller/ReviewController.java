@@ -105,7 +105,6 @@ public class ReviewController {
 	
 	@RequestMapping(value="/board/review/add", method=RequestMethod.GET)
 	public String reviewAdd(Model model,@RequestParam("promotionNO") int promotionNO) {
-		System.out.println("해치웟나?"+promotionNO);
 		
 		model.addAttribute("promotionNO",promotionNO);
 		
@@ -128,7 +127,6 @@ public class ReviewController {
 		} catch (Exception e) {
 			System.out.println("오류발생");
 		}
-		System.out.println("어..느새..");
 		return "reviewViewTest";
 	}
 	

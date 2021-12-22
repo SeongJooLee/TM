@@ -1,7 +1,11 @@
-<%@ page language="java" pageEncoding="UTF-8"
-	contentType="text/html; charset=UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="true"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath }" />
+<%
+request.setCharacterEncoding("utf-8");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +20,13 @@
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="<c:url value="/resources/css/styles.css" />"
 	rel="stylesheet" />
+<style>
+.imageTest{
+width:100%;
+ height:250px; 
+}
 
+</style>
 </head>
 <body>
 	<jsp:include page="/resources/include/header.jsp" />
@@ -36,19 +46,19 @@
 				<div class="col-md-4 mb-5">
 					<div class="card h-100">
 						<c:if test="${notice.image1 != null }">
-							<img
-								src="${contextPath }/tm/board/notice/download?image=${notice.image1}&noticeNO=${notice.noticeNO}&name=${notice.name}"
-								width="100%" height="250px" />
+							<img class="imageTest"
+								src="${contextPath }/board/notice/download?image=${notice.image1}&noticeNO=${notice.noticeNO}&name=${notice.name}"
+								 />
 						</c:if>
 
 						<c:if test="${notice.image1 == null }">
 							<img
 								src="<c:url value="http://encosmall.kr/design/encos0720/shop/img/common/gonggi_top.jpg" />"
-								width="100%" height="250px" />
+								 />
 						</c:if>
 						<div class="card-footer">
 							<a class="btn btn-primary btn-sm">${notice.name }</a>&nbsp;&nbsp;&nbsp;<a
-								href="${contextPath}/tm/board/notice/view?noticeNO=${notice.noticeNO }">${notice.title }</a>
+								href="${contextPath}/board/notice/view?noticeNO=${notice.noticeNO }">${notice.title }</a>
 						</div>
 					</div>
 				</div>
@@ -71,19 +81,19 @@
 					<div class="card h-100">
 						<c:if test="${promotion.image1 != null }">
 							<img
-								src="${contextPath }/tm/board/promotion/download?image=${promotion.image1}&promotionNO=${promotion.promotionNO}&name=${promotion.name}"
-								width="100%" height="250px" />
+								src="${contextPath }/board/promotion/download?image=${promotion.image1}&promotionNO=${promotion.promotionNO}&name=${promotion.name}"
+								 />
 						</c:if>
 
 						<c:if test="${promotion.image1 == null }">
 							<img
 								src="<c:url value="http://encosmall.kr/design/encos0720/shop/img/common/gonggi_top.jpg" />"
-								width="100%" height="250px" />
+								 />
 						</c:if>
 
 						<div class="card-footer">
 							<a class="btn btn-primary btn-sm">${promotion.categoryName }</a>&nbsp;&nbsp;&nbsp;<a
-								href="${contextPath}/tm/board/promotion/view?promotionNO=${promotion.promotionNO }">${promotion.title }</a>
+								href="${contextPath}/board/promotion/view?promotionNO=${promotion.promotionNO }">${promotion.title }</a>
 						</div>
 					</div>
 				</div>
