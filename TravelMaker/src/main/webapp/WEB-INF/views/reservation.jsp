@@ -84,31 +84,120 @@ body {
 			<div class="input-form col-md-12 mx-auto">
 				<h4 class="mb-3" align="center">예약 신청</h4>
 				<form id="frm" action="reservation/done" method="post">
-
 					<div class="row">
 						<div class="col-md-4">
-								<label for="title">상품 제목</label> <input type="text"
-								class="form-control" value="${reser.title}"
-								id="title" name="title" readonly />
+							<label for="title">상품 제목</label> <input type="text"
+								class="form-control" value="${reser.title}" id="title"
+								name="title" readonly />
+							<input type="hidden" name="promotionNO" value="${reser.promotionNO }" >
 						</div>
 						<div class="col-md-4">
-								<label for="price">가격</label> <input type="number"
-								class="form-control" value="${reser.price}"
-								id="price" name="price" readonly />
+							<label for="price">가격</label> <input type="number"
+								class="form-control" value="${reser.price}" id="price"
+								name="price" readonly />
 						</div>
 						<div class="col-md-4">
-								<label for="date">예약 날짜</label> <input type="number"
-								class="form-control" value="${reser.reserDate}"
-								id="reserDate" name="reserDate" readonly />
+							<label for="date">예약 날짜</label> <input type="date" id="reserDate"
+								name="reserDate" class="form-control" value="2021-12-21"
+								min="2022-01-01" max="2022-12-31">
 						</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-md-4">
+							<label for="title">예약자</label> <input type="text"
+								class="form-control" value="${userSession.name}" id="name"
+								name="name" readonly />
+								<input type="hidden" name="id" value="${userSession.id}">
+						</div>
+						<div class="col-md-4">
+							<label for="price">연락처</label>
+							<c:if test="${userSession.phone != null}">
+								<input class="form-control" type="text" name="phone"
+									value="${userSession.phone }" readonly>
+							</c:if>
+							<c:if test="${userSession.phone == null}">
+								<small>등록된 번호가 없습니다.</small>
+								<br>
+								<small>마이페이지에서 번호 등록을 해주세요.</small>
+							</c:if>
+						</div>
+						<div class="col-md-4">
+							<label for="date">인원 수 <small> * 최대 4인</small></label> <select
+								class="form-control" name="headCount" id="headCount">
+								<option value="null">선택해주세요.</option>
+								<option value="1">1인</option>
+								<option value="2">2인</option>
+								<option value="3">3인</option>
+								<option value="4">4인</option>
+							</select>
+						</div>
+					</div>
+					<br>
+					<div id="demo" class="carousel slide" data-bs-ride="carousel">
+						<div class="row">
+							<div class="col-md-2 mb-5"></div>
+
+							<div class="col-md-8 mb-5" data-bs-ride="carousel">
+								<div class="carousel-inner">
+									<c:if
+										test="${not empty reser.image1 && reser.image1 !='null' }">
+										<div class="carousel-item active ">
+											<input type="hidden" id="originalFileName" name="image1"
+												value="${reser.image1 }" /> <img class="imagetest"
+												src="${contextPath }/board/promotion/download?image=${reser.image1}&promotionNO=${reser.promotionNO}&name=${reser.name}" />
+										</div>
+									</c:if>
+
+									<c:if
+										test="${not empty reser.image2 && reser.image2 !='null' }">
+										<div class="carousel-item">
+											<input type="hidden" id="originalFileName" name="image2"
+												value="${reser.image2 }" /> <img class="imagetest"
+												src="${contextPath }/board/promotion/download?image=${reser.image1}&promotionNO=${reser.promotionNO}&name=${reser.name}" />
+										</div>
+									</c:if>
+									<c:if
+										test="${not empty reser.image3 && reser.image3 !='null' }">
+										<div class="carousel-item">
+											<input type="hidden" id="originalFileName" name="image3"
+												value="${reser.image3 }" /> <img class="imagetest"
+												src="${contextPath }/board/promotion/download?image=${reser.image1}&promotionNO=${reser.promotionNO}&name=${reser.name}" />
+										</div>
+									</c:if>
+								</div>
+
+								<!-- / 슬라이드 쇼 끝 -->
+								<!-- 왼쪽 오른쪽 화살표 버튼 -->
+								<a class="carousel-control-prev" href="#demo" data-slide="prev">
+									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+									<!-- <span>Previous</span> -->
+								</a> <a class="carousel-control-next" href="#demo" data-slide="next">
+									<span class="carousel-control-next-icon" aria-hidden="true"></span>
+									<!-- <span>Next</span> -->
+								</a>
+								<!-- / 화살표 버튼 끝 -->
+								<!-- 인디케이터 -->
+								<ul class="carousel-indicators">
+									<li data-target="#demo" data-slide-to="0" class="active"></li>
+									<!--0번부터시작-->
+									<li data-target="#demo" data-slide-to="1"></li>
+									<li data-target="#demo" data-slide-to="2"></li>
+								</ul>
+
+							</div>
+							<div class="col-md-2 mb-5"></div>
+						</div>
+
+
 					</div>
 
 
 
 
 
-
-
+					<br>
+					<hr>
 					<div class="row">
 						<div class="col-md-4 mb-3">
 							<button class="btn btn-primary btn-lg btn-block" type="button"
