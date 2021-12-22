@@ -23,6 +23,12 @@ request.setCharacterEncoding("utf-8");
 	rel="stylesheet" />
 
 <style>
+.imagetest {
+	width: 100%;
+	height: 500px;
+	object-fit: contain;
+}
+
 body {
 	min-height: 100vh;
 }
@@ -148,107 +154,143 @@ body {
 	<hr>
 
 	<div class="container">
-		<div class="input-form-background row">
+		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
-				<h4 class="mb-3">여행 게시글 보기</h4>
+				<h4 class="mb-3">홍보상품 게시글 보기</h4>
 				<form id="frmTravel" enctype="multipart/form-data">
+					<input type="hidden" value="${travel.name }" name="name" />
 					<div class="row">
-						<div class="col-md-3 mb-3">
-							<label for="name">글 번호</label> <input type="text"
-								class="form-control" id="travelNO" name="travelNO"
-								placeholder="" value="${travel.travelNO }" readonly />
+						<div class="col-md-2 mb-3">
+							<label for="travelNO">번호</label> <input type="text"
+								class="form-control" value="${travel.travelNO }"
+								id="travelNO" name="travelNO" readonly />
 						</div>
-						<div class="col-md-9 mb-3">
-							<label for="name">글 제목</label> <input type="text"
-								class="form-control" placeholder="" value="${travel.title }"
-								id="title" name="title" disabled /> <input type="hidden"
-								class="form-control" placeholder="" value="${travel.name }"
-								id="name" name="name" />
+						<div class="col-md-10 mb-3">
+							<label for="title">제목</label> <input type="text"
+								class="form-control" value="${travel.title }" id="title"
+								name="title" disabled />
 						</div>
 					</div>
+
 					<div class="row">
-						<div class="col-md-3 mb-3">
-							<label for="name">카테고리</label> <select class="form-control"
-								id="categoryName" name="categoryName" placeholder="" disabled>
-								<option value="${category.categoryName }">${category.categoryName }</option>
-							</select>
+						<div class="col-md-5 mb-3">
+							<label for="image">이미지 파일 첨부</label>
+							<div id="update">
+								<input type="button" value="파일 삭제" id="imgUpdateBtn"
+									class="form-control" onClick="fn_imgUpdateBtn()" disabled /> <small>
+									&nbsp;&nbsp; * 클릭시 전체 파일이 삭제됩니다.</small>
+							</div>
+							<input type="button" value="파일 추가" id="imgUpdate"
+								class="form-control" onClick="fn_addFile()" disabled /> <small>
+								&nbsp;&nbsp; * 최대 3개까지 첨부 가능합니다.</small>
 						</div>
-
-						<div class="col-md-3 mb-3">
-							<label for="name">작성자</label> <input type="text"
-								class="form-control" name="id" placeholder=""
-								value="${travel.id }" readonly />
-						</div>
-
-						<div class="col-md-6 mb-3">
-							<label for="writeDate">작성 날짜</label> <input type="text"
-								class="form-control" name="writeDate" placeholder=""
-								value="${travel.writeDate }" readonly />
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-4 mb-3">
-							<label for="name">이미지 파일 첨부</label> <input type="button"
-								class="btn btn-danger btn-lg btn-block" name=""
-								id="imgUpdateBtn" placeholder="" value="파일 삭제"
-								onClick="fn_imgUpdateBtn()" disabled /> <small>* 클릭 시
-								전체 파일이 삭제됩니다.</small> <input type="button"
-								class="btn btn-info btn-lg btn-block" name="" id="imgUpdate"
-								placeholder="" value="파일 추가" onClick="fn_addFile()" disabled />
-							<small>* 최대 3개까지 첨부 가능합니다.</small>
-						</div>
-
 						<div id="d_file"></div>
 						<div id="d_filetest">
-							<div class="row">
-								<div class="col-md-4 mb-5">
-									<c:if
-										test="${not empty image.image1 && image.image1 !='null' }">
-										<input type="hidden" id="originalFileName" name="image1"
-											value="${image.image1 }" />
-										<img
-											src="${contextPath }/board/travel/download?image=${image.image1}&travelNO=${travel.travelNO}&name=${travel.name}"
-											width="100%" height="100%" />
-									</c:if>
+							<div id="demo" class="carousel slide" data-bs-ride="carousel">
+								<div class="row">
+									<div class="col-md-2 mb-5"></div>
+									<div class="col-md-8 mb-5" data-bs-ride="carousel">
+										<div class="carousel-inner">
+												<c:if
+													test="${not empty image.image1 && image.image1 !='null' }">
+											<div class="carousel-item active ">
+													<input type="hidden" id="originalFileName" name="image1"
+														value="${image.image1 }" />
+													<img class="imagetest"
+														src="${contextPath }/board/travel/download?image=${image.image1}&travelNO=${travel.travelNO}&name=${travel.name}" />
+											</div>
+												</c:if>
+
+												<c:if
+													test="${not empty image.image2 && image.image2 !='null' }">
+											<div class="carousel-item">
+													<input type="hidden" id="originalFileName" name="image2"
+														value="${image.image2 }" />
+													<img class="imagetest"
+														src="${contextPath }/board/travel/download?image=${image.image2}&travelNO=${travel.travelNO}&name=${travel.name}" />
+											</div>
+												</c:if>
+												<c:if
+													test="${not empty image.image3 && image.image3 !='null' }">
+											<div class="carousel-item">
+													<input type="hidden" id="originalFileName" name="image3"
+														value="${image.image3 }" />
+													<img class="imagetest"
+														src="${contextPath }/board/travel/download?image=${image.image3}&travelNO=${travel.travelNO}&name=${travel.name}" />
+											</div>
+												</c:if>
+										</div>
+
+										<!-- / 슬라이드 쇼 끝 -->
+										<!-- 왼쪽 오른쪽 화살표 버튼 -->
+										<a class="carousel-control-prev" href="#demo"
+											data-slide="prev"> <span
+											class="carousel-control-prev-icon" aria-hidden="true"></span>
+											<!-- <span>Previous</span> -->
+										</a> <a class="carousel-control-next" href="#demo"
+											data-slide="next"> <span
+											class="carousel-control-next-icon" aria-hidden="true"></span>
+											<!-- <span>Next</span> -->
+										</a>
+										<!-- / 화살표 버튼 끝 -->
+										<!-- 인디케이터 -->
+										<ul class="carousel-indicators">
+											<li data-target="#demo" data-slide-to="0" class="active"></li>
+											<!--0번부터시작-->
+											<li data-target="#demo" data-slide-to="1"></li>
+											<li data-target="#demo" data-slide-to="2"></li>
+										</ul>
+
+									</div>
+									<div class="col-md-2 mb-5"></div>
 								</div>
-								<div class="col-md-4 mb-5">
-									<c:if
-										test="${not empty image.image2 && image.image2 !='null' }">
-										<input type="hidden" id="originalFileName" name="image2"
-											value="${image.image2 }" />
-										<img
-											src="${contextPath }/board/travel/download?image=${image.image2}&travelNO=${travel.travelNO}&name=${travel.name}">
-									</c:if>
-								</div>
-								<div class="col-md-4 mb-5">
-									<c:if
-										test="${not empty image.image3 && image.image3 !='null' }">
-										<input type="hidden" id="originalFileName" name="image3"
-											value="${image.image3 }" />
-										<img
-											src="${contextPath }/board/travel/download?image=${image.image3}&travelNO=${travel.travelNO}&name=${travel.name}">
-									</c:if>
-								</div>
+
+
 							</div>
 						</div>
 					</div>
 					<div class="mb-3">
 						<label for="content">글 내용</label>
-						<textarea class="form-control" name="content" id="content"
-							placeholder="" rows="20" cols="60" disabled>${travel.content }</textarea>
+						<textarea class="form-control" rows="20" cols="60" name="content"
+							id="content" disabled>${travel.content } </textarea>
 					</div>
-
+					<div class="row">
+						<div class="col-md-2 mb-3">
+							<label for="categoryName">카테고리</label> <select
+								class="form-control" name="categoryName" id="categoryName"
+								disabled>
+								<option value="${category.categoryName }">${category.categoryName }</option>
+								<option value="쇼핑">쇼핑</option>
+								<option value="음식">음식</option>
+								<option value="문화">문화</option>
+								<option value="체험">체험</option>
+								<option value="전시">전시</option>
+								<option value="교통">교통</option>
+								<option value="지역">지역</option>
+							</select>
+						</div>
+						<div class="col-md-4 mb-3">
+							<label for="id">작성자</label> <input type="text"
+								class="form-control" name="id" id="id"
+								value="${travel.id }" readonly>
+						</div>
+						<div class="col-md-6 mb-3">
+							<label for="title">작성날짜</label> <input type="text"
+								class="form-control" name="writeDate" id="writeDate"
+								value="${travel.writeDate }" readonly>
+						</div>
+					</div>
 					<hr>
 					<div id="tr_btn_modify" style="display: none">
 						<div class="row">
 							<div class="col-md-1 mb-3"></div>
 							<div class="col-md-4 mb-3">
-								<input class="btn btn-primary btn-lg btn-block" type="button"
-									value="수정 반영하기" onClick="fn_modify_update(frmTravel)" />
+								<input class="form-control" type="button" value="수정 반영하기"
+									onClick="fn_modify_update(frmTravel)" />
 							</div>
 							<div class="col-md-4 mb-3">
-								<input class="btn btn-primary btn-lg btn-block" type="button"
-									value="취소하기" onClick="backToList(frmTravel)" />
+								<input class="form-control" type="button" value="취소하기"
+									onClick="backToList(frmTravel)" />
 							</div>
 							<div class="col-md-1 mb-3"></div>
 						</div>
@@ -256,56 +298,49 @@ body {
 					<div id="tr_btn">
 						<div class="row">
 							<c:if test='${userSession.grade.equals("user")}'>
-								<c:forEach var='list' items='${list}'>
-									<c:if test='${list.travelNO == travel.travelNO}'>
+								<c:forEach var='list' items='${proList}'>
+									<c:if
+										test='${list.travelNO == travel.travelNO && list.id.equals(travel.id)}'>
 										<div class="col-md-4 mb-3">
-											<input class="btn btn-primary btn-lg btn-block" type="button"
-												value="수정하기" onClick="fn_enable(this.form)" />
+											<input class="form-control" type="button" value="수정하기"
+												onClick="fn_enable(this.form)" />
 										</div>
 										<div class="col-md-4 mb-3">
-											<input class="btn btn-danger btn-lg btn-block" type="button"
-												value="삭제하기" onClick="fn_delete(this.form)" />
+											<input class="form-control" type="button" value="삭제하기"
+												onClick="fn_delete(this.form)" />
 										</div>
 										<div class="col-md-4 mb-3">
-											<input class="btn btn-primary btn-lg btn-block" type="button"
-												value="리스트로 돌아가기" onClick="backToList(this.form)" />
+											<input class="form-control" type="button" value="리스트로 돌아가기"
+												onClick="backToList(this.form)" />
 										</div>
 										<c:set var="check" value="1" />
 									</c:if>
 								</c:forEach>
-
-								<c:if test='${check==0}'>
+								<c:if test='${check!=1}'>
 									<div class="col-md-4 mb-3"></div>
 									<div class="col-md-4 mb-3"></div>
 									<div class="col-md-4 mb-3">
-										<input class="btn btn-primary btn-lg btn-block" type="button"
-											value="리스트로 돌아가기" onClick="backToList(this.form)" />
+										<input class="form-control" type="button" value="리스트로 돌아가기"
+											onClick="backToList(this.form)" />
 									</div>
 								</c:if>
 							</c:if>
 						</div>
 					</div>
 					<div class="row">
+
 						<c:if test='${userSession.grade.equals("admin")}'>
-							<div class="col-md-4 mb-3"></div>
-							<div class="col-md-4 mb-3"></div>
 							<div class="col-md-4 mb-3">
-								<input class="btn btn-primary btn-lg btn-block" type="button"
-									value="리스트로 돌아가기" onClick="backToList(this.form)" />
+								<input class="form-control" type="button" value="수정하기"
+									onClick="fn_enable(this.form)" />
 							</div>
-						</c:if>
-
-						<c:if test='${userSession.grade.equals("seller")}'>
 							<div class="col-md-4 mb-3">
-								<input class="btn btn-primary btn-lg btn-block" type="button"
-									value="리스트로 돌아가기" onClick="backToList(this.form)" />
+								<input class="form-control" type="button" value="삭제하기"
+									onClick="fn_delete(this.form)" />
 							</div>
-						</c:if>
-
-						<c:if test='${userSession.grade == null}'>
 							<div class="col-md-4 mb-3">
-								<input class="btn btn-primary btn-lg btn-block" type="button"
-									value="리스트로 돌아가기" onClick="backToList(this.form)" />
+								<input class="form-control" type="button" value="리스트로 돌아가기"
+									onClick="backToList(this.form)" />
 							</div>
 						</c:if>
 					</div>

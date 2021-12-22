@@ -172,6 +172,7 @@ body {
 	<div class="container">
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
+				<h4 class="mb-3">홍보상품 게시글 보기</h4>
 				<form id="frmPromotion" enctype="multipart/form-data">
 					<input type="hidden" value="${promotion.name }" name="name" />
 					<div class="row">
@@ -206,10 +207,8 @@ body {
 									<div class="col-md-2 mb-5"></div>
 
 									<div class="col-md-8 mb-5" data-bs-ride="carousel">
-										<div class="carousel-inner"
-											>
-											<div class="carousel-item active "
-												>
+										<div class="carousel-inner">
+											<div class="carousel-item active ">
 												<c:if
 													test="${not empty image.image1 && image.image1 !='null' }">
 													<input type="hidden" id="originalFileName" name="image1"
@@ -219,8 +218,7 @@ body {
 												</c:if>
 											</div>
 
-											<div class="carousel-item"
-												>
+											<div class="carousel-item">
 												<c:if
 													test="${not empty image.image2 && image.image2 !='null' }">
 													<input type="hidden" id="originalFileName" name="image2"
@@ -229,8 +227,7 @@ body {
 														src="${contextPath }/board/promotion/download?image=${image.image2}&promotionNO=${promotion.promotionNO}&name=${promotion.name}" />
 												</c:if>
 											</div>
-											<div class="carousel-item"
-												>
+											<div class="carousel-item">
 												<c:if
 													test="${not empty image.image3 && image.image3 !='null' }">
 													<input type="hidden" id="originalFileName" name="image3"
@@ -244,7 +241,7 @@ body {
 										<!-- / 슬라이드 쇼 끝 -->
 										<!-- 왼쪽 오른쪽 화살표 버튼 -->
 										<a class="carousel-control-prev" href="#demo"
-											data-slide="prev" > <span
+											data-slide="prev"> <span
 											class="carousel-control-prev-icon" aria-hidden="true"></span>
 											<!-- <span>Previous</span> -->
 										</a> <a class="carousel-control-next" href="#demo"
@@ -350,11 +347,15 @@ body {
 					<div class="row">
 						<c:if test='${userSession.grade.equals("user")}'>
 							<div class="col-md-4 mb-3"></div>
-							<div class="col-md-4 mb-3"></div>
+							<div class="col-md-4 mb-3">
+								<input class="form-control" type="button" value="리스트로 돌아가기"
+									onClick="backToList(this.form)" />
+							</div>
 							<div class="col-md-4 mb-3">
 								<input class="form-control" type="button" value="예약하기"
 									onClick="fn_reser(this.form)" />
 							</div>
+
 						</c:if>
 						<c:if test='${userSession.grade.equals("admin")}'>
 							<div class="col-md-4 mb-3">
@@ -365,6 +366,16 @@ body {
 								<input class="form-control" type="button" value="삭제하기"
 									onClick="fn_delete(this.form)" />
 							</div>
+							<div class="col-md-4 mb-3">
+								<input class="form-control" type="button" value="리스트로 돌아가기"
+									onClick="backToList(this.form)" />
+							</div>
+						</c:if>
+
+						<c:if test='${userSession.grade==null}'>
+							<div class="col-md-4 mb-3"></div>
+							<div class="col-md-4 mb-3"></div>
+
 							<div class="col-md-4 mb-3">
 								<input class="form-control" type="button" value="리스트로 돌아가기"
 									onClick="backToList(this.form)" />
