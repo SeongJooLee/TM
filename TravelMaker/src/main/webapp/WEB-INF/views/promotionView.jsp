@@ -208,34 +208,34 @@ body {
 
 									<div class="col-md-8 mb-5" data-bs-ride="carousel">
 										<div class="carousel-inner">
-											<div class="carousel-item active ">
 												<c:if
 													test="${not empty image.image1 && image.image1 !='null' }">
+											<div class="carousel-item active ">
 													<input type="hidden" id="originalFileName" name="image1"
 														value="${image.image1 }" />
 													<img class="imagetest"
 														src="${contextPath }/board/promotion/download?image=${image.image1}&promotionNO=${promotion.promotionNO}&name=${promotion.name}" />
-												</c:if>
 											</div>
+												</c:if>
 
-											<div class="carousel-item">
 												<c:if
 													test="${not empty image.image2 && image.image2 !='null' }">
+											<div class="carousel-item">
 													<input type="hidden" id="originalFileName" name="image2"
 														value="${image.image2 }" />
 													<img class="imagetest"
 														src="${contextPath }/board/promotion/download?image=${image.image2}&promotionNO=${promotion.promotionNO}&name=${promotion.name}" />
-												</c:if>
 											</div>
-											<div class="carousel-item">
+												</c:if>
 												<c:if
 													test="${not empty image.image3 && image.image3 !='null' }">
+											<div class="carousel-item">
 													<input type="hidden" id="originalFileName" name="image3"
 														value="${image.image3 }" />
 													<img class="imagetest"
 														src="${contextPath }/board/promotion/download?image=${image.image3}&promotionNO=${promotion.promotionNO}&name=${promotion.name} " />
-												</c:if>
 											</div>
+												</c:if>
 										</div>
 
 										<!-- / 슬라이드 쇼 끝 -->
