@@ -42,7 +42,7 @@ width:100%;
 		</div>
 		<!-- Content Row-->
 		<div class="row gx-4 gx-lg-5">
-			<c:forEach var="notice" items="${notice}" begin="1" end="3">
+			<c:forEach var="notice" items="${notice}" begin="0" end="2">
 				<div class="col-md-4 mb-5">
 					<div class="card h-100">
 						<c:if test="${notice.image1 != null }">
@@ -76,7 +76,7 @@ width:100%;
 		</div>
 		<!-- Content Row-->
 		<div class="row gx-4 gx-lg-5">
-			<c:forEach var="promotion" items="${promotion}" begin="1" end="3">
+			<c:forEach var="promotion" items="${promotion}" begin="0" end="2">
 				<div class="col-md-4 mb-5">
 					<div class="card h-100">
 						<c:if test="${promotion.image1 != null }">

@@ -18,8 +18,27 @@
 <link href="<c:url value="/resources/css/styles.css" />"
 	rel="stylesheet" />
 <style>
-table {
+.imagetest {
 	width: 100%;
+	height: 500px;
+	object-fit: contain;
+}
+
+body {
+	min-height: 100vh;
+}
+
+.input-form {
+	max-width: 680px;
+	margin-top: 80px;
+	padding: 32px;
+	background: #fff;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+	-moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+	box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
 }
 </style>
 <script src='http://code.jquery.com/jquery-latest.min.js'></script>
@@ -59,81 +78,65 @@ table {
 <body>
 	<jsp:include page="/resources/include/header.jsp" />
 	<hr>
-	<div class="container px-4 px-lg-5">
-		<h1 style="text-align: center">예약 하기</h1>
-		<br>
-		<br>
-		<form id="frm" action="reservation/done" method="post">
-			<table border="1" style="width:1000px">
-				<thead>
-					<tr>
-						<th colspan="2" align="center">예약 정보</th>
-						<th align="center">예약 상품</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>상품 제목</td>
-						<td>
-							<input type="hidden" name="promotionNO" value="${reser.promotionNO }" >
-							<input type="hidden" name="title" value="${reser.title }" >
-							${reser.title}
-						</td>
-						<td rowspan="4">
-							<c:if test="${reser.image1 != null }">
-								<img	src="${contextPath }/board/promotion/download?image=${reser.image1}&promotionNO=${reser.promotionNO}&name=${reser.name}"  	width="100%" height="100%" />
-							</c:if>
-						</td>
-					</tr>
-					<tr>
-						<td>예약자 성명</td>
-						<td><input type="hidden" name="id" value="${userSession.id}">${userSession.name }</td>
-					</tr>
-					<tr>
-						<td>예약 날짜</td>
-						<td><input type="date" id="reserDate" name="reserDate"
-							       value="2021-12-21"
-							       min="2022-01-01" max="2022-12-31">
-						</td>
-					</tr>
-					<tr>
-						<td>연락처</td>
-					<c:if test="${userSession.phone != null}">
-						<td><input type="hidden" name="phone" value="${userSession.phone }">  [ ${userSession.phone } ]</td>
-					</c:if>
-					
-					<c:if test="${userSession.phone == null}">
-						<td>
-							<small>등록된 번호가 없습니다.</small><br>
-							<small>마이페이지에서 번호 등록을 해주세요.</small>
-								
-						</td>
-					</c:if>
-						
-					</tr>
-					<tr>
-						<td>인원 수</td>
-						<td><select name="headCount" id="headCount">
-								<option value="null">선택해주세요.</option>
-								<option value="1">1인</option>
-								<option value="2">2인</option>
-								<option value="3">3인</option>
-								<option value="4">4인</option>
-						</select> <small>*최대 4인</small></td>
-						<td><input type="hidden" name="price" value="${reser.price }">가격 : [ ${reser.price } 원 ]</td>
-					</tr>
-				</tbody>
-			</table>
-			<br> <br>
-			<div align="center">
-				<input type="button" value="예약 신청" onClick="fn_create()"> <input
-					type="reset" value="다시 작성"> <input type="button"
-					value="예약 취소" onClick="backToList()">
-			</div>
-		</form>
-	</div>
-	<hr>
-	<jsp:include page="/resources/include/footer.jsp" />
 
+	<div class="container">
+		<div class="input-form-backgroud row">
+			<div class="input-form col-md-12 mx-auto">
+				<h4 class="mb-3" align="center">예약 신청</h4>
+				<form id="frm" action="reservation/done" method="post">
+
+					<div class="row">
+						<div class="col-md-4">
+								<label for="title">상품 제목</label> <input type="text"
+								class="form-control" value="${reser.title}"
+								id="title" name="title" readonly />
+						</div>
+						<div class="col-md-4">
+								<label for="price">가격</label> <input type="number"
+								class="form-control" value="${reser.price}"
+								id="price" name="price" readonly />
+						</div>
+						<div class="col-md-4">
+								<label for="date">예약 날짜</label> <input type="number"
+								class="form-control" value="${reser.reserDate}"
+								id="reserDate" name="reserDate" readonly />
+						</div>
+					</div>
+
+
+
+
+
+
+
+					<div class="row">
+						<div class="col-md-4 mb-3">
+							<button class="btn btn-primary btn-lg btn-block" type="button"
+								onClick="fn_create()">예약 신청</button>
+						</div>
+						<div class="col-md-4 mb-3">
+							<button class="btn btn-primary btn-lg btn-block" type="reset">다시
+								작성</button>
+						</div>
+						<div class="col-md-4 mb-3">
+							<button class="btn btn-primary btn-lg btn-block" type="button"
+								onClick='backToList(this.form);'>예약 취소</button>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<hr>
+
+	<jsp:include page="/resources/include/footer.jsp" />
 </body>
 </html>
