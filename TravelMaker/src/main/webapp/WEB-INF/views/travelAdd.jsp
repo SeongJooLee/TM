@@ -141,7 +141,7 @@ body {
 						</div>
 						<div class="col-md-4 mb-3">
 							<button class="btn btn-primary btn-lg btn-block" type="button"
-								onclick='backToList(this.form);'>취소</button>
+								onClick='backToList(this.form);'>취소</button>
 						</div>
 					</div>
 				</form>

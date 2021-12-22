@@ -51,14 +51,20 @@ body {
 		$("#d_file")
 				.append(
 						"<br>"
-								+ "<p id='image"+cnt+" '><input class="form-control" type='file' name='image" + cnt + " ' />");
+								+ "<p id='image"+cnt+" '><input type='file' name='image" + cnt + " ' />");
 		cnt++;
 	}
 
 	function backToList(obj) {
-		obj.method = "POST";
-		obj.action = "/tm/board/notice";
-		obj.submit();
+		if (!confirm("메인화면으로 이동하시겠습니까?")) {
+			alert("취소(아니오)를 누르셨습니다.");
+			return;
+		} else {
+			alert("확인(예)을 누르셨습니다.");
+			obj.method = "POST";
+			obj.action = "${contextPath}";
+			obj.submit();
+		}
 	}
 
 	function fn_create() {
@@ -72,14 +78,13 @@ body {
 			alert('내용을 적어주세요.');
 			return false;
 		}
-
 		if (!confirm("글을 생성하시겠습니까?")) {
 			alert("취소(아니오)를 누르셨습니다.");
 			return;
 		} else {
 			alert("확인(예)을 누르셨습니다.");
+			document.getElementById("frm").submit();
 		}
-		document.getElementById("frm").submit();
 	}
 </script>
 </head>
@@ -104,14 +109,14 @@ body {
 						</div>
 						<div class="col-md-9 mb-3">
 							<label for="title">글 제목</label> <input type="text"
-								class="form-control" name="title" id="title" placeholder="제목 입력해주세요." required>
+								class="form-control" name="title" id="title"
+								placeholder="제목 입력해주세요." required>
 						</div>
 					</div>
 					<div class="mb-3">
 						<label for="image">이미지 파일 첨부</label> <input type="button"
 							class="btn btn-info btn-lg btn-block" onClick="fn_addFile()"
-							 value="파일 추가"><small>*최대 3개까지 첨부
-							가능합니다.</small>
+							value="파일 추가"><small>*최대 3개까지 첨부 가능합니다.</small>
 						<div id="d_file"></div>
 					</div>
 					<div class="mb-3">
@@ -119,12 +124,20 @@ body {
 						<textarea class="form-control" name="content" id="content"
 							placeholder="내용 입력해주세요." maxlength="4000"></textarea>
 					</div>
-					<button class="btn btn-primary btn-lg btn-block" type="button"
-						onClick="fn_create()">작성 하기</button>
-					<button class="btn btn-primary btn-lg btn-block" type="reset">다시
-						작성</button>
-					<button class="btn btn-primary btn-lg btn-block" type="button"
-						onclick='backToList(this.form);'>취소</button>
+					<div class="row">
+						<div class="col-md-4 mb-3">
+							<button class="btn btn-primary btn-lg btn-block" type="button"
+								onClick="fn_create()">작성 하기</button>
+						</div>
+						<div class="col-md-4 mb-3">
+							<button class="btn btn-primary btn-lg btn-block" type="reset">다시
+								작성</button>
+						</div>
+						<div class="col-md-4 mb-3">
+							<button class="btn btn-primary btn-lg btn-block" type="button"
+								onClick='backToList(this.form);'>취소</button>
+						</div>
+					</div>
 				</form>
 			</div>
 		</div>

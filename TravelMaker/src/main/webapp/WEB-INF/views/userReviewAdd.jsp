@@ -61,9 +61,9 @@ body {
 			return;
 		} else {
 			alert("확인(예)을 누르셨습니다.");
-		obj.method = "POST";
-		obj.action = "${contextPath}";
-		obj.submit();
+			obj.method = "POST";
+			obj.action = "${contextPath}";
+			obj.submit();
 		}
 	}
 
@@ -103,11 +103,13 @@ body {
 						type='hidden' name='promotionNO' value='${promotionNO}'>
 
 					<div class="row">
-					
-						<div class="col-md-2 mb-3"><label class="form-control" >글 제목</label></div>
+
+						<div class="col-md-2 mb-3">
+							<label class="form-control">글 제목</label>
+						</div>
 						<div class="col-md-10 mb-3">
-							 <input type="text"
-								class="form-control" name="title" id="title" placeholder="글 제목을 입력해주세요.">
+							<input type="text" class="form-control" name="title" id="title"
+								placeholder="글 제목을 입력해주세요.">
 						</div>
 
 					</div>
@@ -125,16 +127,16 @@ body {
 					</div>
 					<div class="row">
 						<div class="col-md-4 mb-3">
-					<button class="btn btn-primary btn-lg btn-block" type="button"
-						onClick="fn_create()">작성 하기</button>
+							<button class="btn btn-primary btn-lg btn-block" type="button"
+								onClick="fn_create()">작성 하기</button>
 						</div>
 						<div class="col-md-4 mb-3">
-					<button class="btn btn-primary btn-lg btn-block" type="reset">다시
-						작성</button>
+							<button class="btn btn-primary btn-lg btn-block" type="reset">다시
+								작성</button>
 						</div>
 						<div class="col-md-4 mb-3">
-					<button class="btn btn-primary btn-lg btn-block" type="button"
-						onclick='backToList(this.form);'>취소</button>
+							<button class="btn btn-primary btn-lg btn-block" type="button"
+								onClick='backToList(this.form);'>취소</button>
 						</div>
 					</div>
 				</form>
