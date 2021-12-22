@@ -70,7 +70,7 @@ body {
 					</div>
 					
 					<hr>
-					<hr>
+				
 					<br>
 					<br>
 					<h4 class="mb-3" align="center">[ 정보를 수정해주세요 ]</h4>

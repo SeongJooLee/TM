@@ -70,7 +70,7 @@ body {
 					</div>
 					
 					<hr>
-					<hr>
+					
 					<br>
 					<br>
 					<h4 class="mb-3" align="center">[ ${userSession.sellerID} ] 님이 등록한 상품 목록</h4>

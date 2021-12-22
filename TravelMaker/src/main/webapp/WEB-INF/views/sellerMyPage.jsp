@@ -79,7 +79,7 @@ function sellerDelete(){
 					</div>
 					
 					<hr>
-					<hr>
+					
 					<br>
 					<br>
 					<h4 class="mb-3" align="center">[ ${userSession.sellerID} ] 님의 회원 정보</h4>
