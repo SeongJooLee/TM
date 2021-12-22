@@ -146,7 +146,7 @@ body {
 							placeholder="" maxlength="4000"></textarea>
 						<div class="invalid-feedback">글 내용을 입력해주세요.</div>
 					</div>
-					<button class="btn btn-primary btn-lg btn-block" type="submit">작성
+					<button class="btn btn-primary btn-lg btn-block" type="button" onClick="fn_create()">작성
 						하기</button>
 					<button class="btn btn-primary btn-lg btn-block" type="reset">다시
 						작성</button>
