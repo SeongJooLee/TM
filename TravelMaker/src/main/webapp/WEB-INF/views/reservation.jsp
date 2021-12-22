@@ -188,14 +188,7 @@ body {
 							</div>
 							<div class="col-md-2 mb-5"></div>
 						</div>
-
-
 					</div>
-
-
-
-
-
 					<br>
 					<hr>
 					<div class="row">

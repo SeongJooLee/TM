@@ -47,7 +47,7 @@
 	</select>
 	
 	<select id="selectOneReservationView" resultType="ReservationVO">
-		SELECT RESERNO, PROMOTIONNO, RESERDATE, HEADCOUNT, ID
+		SELECT *
 		 FROM RESERVATION
 		 where RESERNO = #{reserNO}
 	</select>
@@ -83,6 +83,12 @@
 	</delete> 
 	<update id="updateOne" parameterType="ReservationVO">
 		UPDATE RESERVATION SET promotionNO=#{promotionNO},RESERDATE=#{reserDate}, HEADCOUNT=#{headCount}
+		 WHERE RESERNO=#{reserNO}
+	</update>
+	
+	
+	<update id="insertPayment" parameterType="java.lang.String">
+		UPDATE RESERVATION SET payment = 'Y'
 		 WHERE RESERNO=#{reserNO}
 	</update>
 	

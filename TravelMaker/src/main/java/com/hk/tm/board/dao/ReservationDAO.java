@@ -24,7 +24,6 @@ public class ReservationDAO {
 
 		if(ret==1) {
 			reserVO = sql.selectOne(ns+"selectOneReservation",reserVO);
-			System.out.println("여기 사용하니? "+reserVO.toString());
 			return reserVO;
 		}
 		return null;
@@ -39,6 +38,11 @@ public class ReservationDAO {
 		// TODO Auto-generated method stub
 		reserVO = sql.selectOne(ns+"selectOneReservationView",reserVO);
 		return reserVO;
+	}
+
+	public void insertPayment(String reserNO) {
+		// TODO Auto-generated method stub
+		sql.update(ns+"insertPayment",reserNO);
 	}
 
 }

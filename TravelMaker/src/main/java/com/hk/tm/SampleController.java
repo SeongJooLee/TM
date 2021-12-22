@@ -1,6 +1,7 @@
 package com.hk.tm;
 
 import javax.servlet.http.HttpSession;
+import javax.sound.midi.MidiDevice.Info;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,17 +26,16 @@ public class SampleController {
     }
     
 	@RequestMapping(value="/kakaoPay" , method =RequestMethod.POST) 
-    public String kakaoPay(@RequestParam("title")String title,@RequestParam("headCount")String headCount,@RequestParam("price")String price) { // redirec:URL --> URL move 
-        String url = kakaopay.kakaoPayReady(title,headCount,price);
+    public String kakaoPay(Model model,@RequestParam("title")String title,@RequestParam("reserNO")String reserNO,@RequestParam("headCount")String headCount,@RequestParam("price")String price) { // redirec:URL --> URL move 
+        String url = kakaopay.kakaoPayReady(title,headCount,price,reserNO);
         return "redirect:" +url; // 해당 유알엘로 이동
- 
     }
     
 	@RequestMapping(value="/kakaoPaySuccess" , method =RequestMethod.GET) 
     public String kakaoPaySuccess(@RequestParam("pg_token") String pg_token, Model model) {
         // 서버에서 성공한 정보 
-	
         model.addAttribute("info", kakaopay.kakaoPayInfo(pg_token));
+        
         return "kakaoPaySuccess"; // jsp 호출
     }
     

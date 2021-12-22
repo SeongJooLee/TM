@@ -9,7 +9,9 @@ public class ReservationVO {
 	private Date reserDate;
 	private int headCount;
 	private String id;
-	
+	private String payment;
+	private String complete;
+
 	public String getReserNO() {
 		return reserNO;
 	}
@@ -45,5 +47,18 @@ public class ReservationVO {
 		return "ReservationVO [reserNO=" + reserNO + ", promotionNO=" + promotionNO + ", reserDate=" + reserDate
 				+ ", headCount=" + headCount + ", id=" + id + "]";
 	}
-	
+	public String getPayment() {
+		return payment;
+	}
+	public void setPayment(String payment) {
+		this.payment = payment;
+	}
+	public String getComplete() {
+		return complete;
+	}
+	public void setComplete(String complete) {
+		this.complete = complete;
+	}
+
 }
+

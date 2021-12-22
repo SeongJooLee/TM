@@ -37,9 +37,13 @@ public class ReservationService {
 		reserVO = reserDAO.selectOneReservation(reserVO);
 		int promotionNO = reserVO.getPromotionNO();
 		PromotionImageVO promotionImageVO = promotionDAO.selectOneReservation(promotionNO);
-		
+
 		map.put("reser", reserVO);
 		map.put("promotion", promotionImageVO);
 		return map;
+	}
+
+	public void insertPayment(String reserNO) {
+		reserDAO.insertPayment(reserNO);
 	}
 }

@@ -11,6 +11,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -34,11 +35,10 @@ public class KakaoPay {
     
     
     
-    public String kakaoPayReady(String title, String headCount, String price ) {
+    public String kakaoPayReady(String title, String headCount, String price,String reserNO ) {
     	UserVO userVO = new UserVO();
     	userVO = (UserVO) session.getAttribute("userSession");
     	String name = userVO.getName();
-    	
     	// 1) 세션을 읽어서
 //    	String headCountStr = Integer.toString(headCount);
 //    	String priceStr = Integer.toString(price);
@@ -57,6 +57,7 @@ public class KakaoPay {
         params.add("partner_order_id", "TravelMaker");
         params.add("partner_user_id", name); // 2) 여기에 변수로 쓰고
         params.add("item_name", title);
+        params.add("item_code", reserNO);
         params.add("quantity", headCount);
         params.add("total_amount", price);
         params.add("tax_free_amount", "100");
@@ -71,8 +72,7 @@ public class KakaoPay {
  
         try {
         	kakaoPayReadyVO = restTemplate.postForObject(new URI(HOST + "/v1/payment/ready"), body, KakaoPayReadyVO.class);
-            
-            return kakaoPayReadyVO.getNext_redirect_pc_url();
+            return  kakaoPayReadyVO.getNext_redirect_pc_url();
  
         } catch (RestClientException e) {
             // TODO Auto-generated catch block

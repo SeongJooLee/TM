@@ -44,10 +44,8 @@ public class ReservationController {
 		promotionVO.setTitle(title);
 		promotionVO.setPrice(price);
 
-		System.out.println("reserVO예약확인 "+reserVO.toString());
 		
 		reserVO = reserService.insertReservation(reserVO);
-		
 		
 		model.addAttribute("reser",reserVO);
 		model.addAttribute("promotion",promotionVO);
@@ -79,5 +77,11 @@ public class ReservationController {
 		}
 	
 		return "promotionList";
+	}
+	@RequestMapping(value="/board/reservation/payment", method=RequestMethod.GET)
+	public String reservationPayment(@RequestParam("reserNO")String reserNO,HttpServletResponse response) throws IOException {
+		reserService.insertPayment(reserNO);
+		
+		return "home";
 	}
 }

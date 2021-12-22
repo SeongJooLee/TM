@@ -71,6 +71,7 @@ body {
 		cnt++;
 	}
 	function fn_enable(obj) {
+		document.getElementById("price").disabled = false;
 		document.getElementById("categoryName").disabled = false;
 		document.getElementById("title").disabled = false;
 		document.getElementById("content").disabled = false;
@@ -172,7 +173,7 @@ body {
 	<div class="container">
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
-				<h4 class="mb-3">홍보상품 게시글 보기</h4>
+				<h4 class="mb-3" align="center">홍보상품</h4>
 				<form id="frmPromotion" enctype="multipart/form-data">
 					<input type="hidden" value="${promotion.name }" name="name" />
 					<div class="row">
@@ -199,6 +200,12 @@ body {
 							<input type="button" value="파일 추가" id="imgUpdate"
 								class="btn btn-info btn-lg btn-block" onClick="fn_addFile()" disabled /> <small>
 								&nbsp;&nbsp; * 최대 3개까지 첨부 가능합니다.</small>
+						</div>
+						<div class="col-md-1 mb-3"></div>
+						<div class="col-md-3 mb-3">
+							<label for="price">가격</label> <input type="text"
+								class="form-control" value="${promotion.price } 원" id="price"
+								name="price" disabled />
 						</div>
 						<div id="d_file"></div>
 						<div id="d_filetest">
