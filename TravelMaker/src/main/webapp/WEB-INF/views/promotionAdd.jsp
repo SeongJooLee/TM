@@ -57,7 +57,7 @@ body {
 
 	function backToList(obj) {
 		obj.method = "POST";
-		obj.action = "${contextPath}/tm/board/promotion";
+		obj.action = "${contextPath}/board/promotion";
 		obj.submit();
 	}
 
@@ -122,36 +122,41 @@ body {
 						</div>
 						<div class="col-md-6 mb-3">
 							<label for="title">글 제목</label> <input type="text"
-								class="form-control" name="title" id="title" placeholder=""
-								value="" required>
-							<div class="invalid-feedback">글 제목을 입력해주세요.</div>
+								class="form-control" name="title" id="title" placeholder="제목을 입력해주세요."
+								required>
 						</div>
 
 						<div class="col-md-6 mb-3">
 							<label for="title">가격</label> <input type="number"
-								class="form-control" name="price" id="price" placeholder=""
+								class="form-control" name="price" id="price" placeholder="가격을 입력해주세요."
 								value="" required>
-							<div class="invalid-feedback">가격을 입력해주세요.</div>
 						</div>
 					</div>
 					<div class="mb-3">
 						<label for="image">이미지 파일 첨부</label> <input type="button"
-							class="form-control" onClick="fn_addFile()" placeholder=""
+							class="btn btn-info btn-lg btn-block" onClick="fn_addFile()" placeholder=""
 							value="파일 추가"><small>*최대 3개까지 첨부 가능합니다.</small>
 						<div id="d_file"></div>
 					</div>
 					<div class="mb-3">
 						<label for="content">글 내용</label>
 						<textarea class="form-control" name="content" id="content"
-							placeholder="" maxlength="4000"></textarea>
-						<div class="invalid-feedback">글 내용을 입력해주세요.</div>
+							placeholder="내용을 입력해주세요." maxlength="4000"></textarea>
 					</div>
-					<button class="btn btn-primary btn-lg btn-block" type="button" onClick="fn_create()">작성
-						하기</button>
+					<div class="row">
+						<div class="col-md-4 mb-3">
+					<button class="btn btn-primary btn-lg btn-block" type="button"
+						onClick="fn_create()">작성 하기</button>
+						</div>
+						<div class="col-md-4 mb-3">
 					<button class="btn btn-primary btn-lg btn-block" type="reset">다시
 						작성</button>
+						</div>
+						<div class="col-md-4 mb-3">
 					<button class="btn btn-primary btn-lg btn-block" type="button"
-						onclick='check();'>취소</button>
+						onclick='backToList(this.form);'>취소</button>
+						</div>
+					</div>
 				</form>
 			</div>
 		</div>

@@ -56,9 +56,15 @@ body {
 	}
 
 	function backToList(obj) {
+		if (!confirm("메인화면으로 이동하시겠습니까?")) {
+			alert("취소(아니오)를 누르셨습니다.");
+			return;
+		} else {
+			alert("확인(예)을 누르셨습니다.");
 		obj.method = "POST";
-		obj.action = "${contextPath}/tm/board/promotion";
+		obj.action = "${contextPath}";
 		obj.submit();
+		}
 	}
 
 	function fn_create() {
@@ -128,7 +134,7 @@ body {
 						</div>
 						<div class="col-md-4 mb-3">
 					<button class="btn btn-primary btn-lg btn-block" type="button"
-						onclick='check();'>취소</button>
+						onclick='backToList(this.form);'>취소</button>
 						</div>
 					</div>
 				</form>
