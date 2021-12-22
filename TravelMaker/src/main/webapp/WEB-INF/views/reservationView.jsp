@@ -18,8 +18,21 @@
 <link href="<c:url value="/resources/css/styles.css" />"
 	rel="stylesheet" />
 <style>
-table {
-	width: 100%;
+body {
+	min-height: 100vh;
+}
+
+.input-form {
+	max-width: 680px;
+	margin-top: 80px;
+	padding: 32px;
+	background: #fff;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+	-moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+	box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
 }
 </style>
 <script src='http://code.jquery.com/jquery-latest.min.js'></script>
