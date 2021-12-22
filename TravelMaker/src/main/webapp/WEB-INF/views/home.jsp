@@ -103,7 +103,7 @@
                     </div>
                 </div>
                 
-                <a href="/tm/seongJooTest"> 성주 테스트 ㄱㄱ</a>
+                
             
             </div>
         </div>

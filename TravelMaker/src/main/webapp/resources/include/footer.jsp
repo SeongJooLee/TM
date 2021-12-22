@@ -30,6 +30,7 @@ $('.btn_gotop').click(function(){
 });
 </script>
 <style>
+
 .sns_test {
 	
 	font-size: 40px;
@@ -88,6 +89,7 @@ list-style:none;
 	height: 210px;
 	border-right: 1px solid #f5f5f5;
 	padding: 10px 60px 10px 50px;
+	
 }
 .footer_inner .box_cs .tit {
 	font-size:11px;
@@ -165,8 +167,11 @@ list-style:none;
 </style>
 </head>
 <body>
- <div class="footer_inner">
-    <div class="box_cs">
+<br>
+<br>
+<br>
+ <div class="footer_inner" style = "background-color: #f0f0f0;">
+    <div class="box_cs" >
       <div class="tit">고객센터</div>
       <div class="bignum">1234-1234</div>
       <div class="ss_txt">MON-FRI : AM 10:00 ~ PM 05:00</div>
