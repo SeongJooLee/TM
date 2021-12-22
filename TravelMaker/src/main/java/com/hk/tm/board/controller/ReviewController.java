@@ -129,7 +129,7 @@ public class ReviewController {
 			System.out.println("오류발생");
 		}
 		System.out.println("어..느새..");
-		return "reviewView";
+		return "reviewViewTest";
 	}
 	
 	@RequestMapping(value="/board/review/update", method=RequestMethod.POST)
