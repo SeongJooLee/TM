@@ -79,21 +79,21 @@ public class ReviewController {
 		List<ReviewVO> list = reviewService.boardAllList();
 		
 		int listCount = list.size(); //전체 게시물의 개수
-		int listSize = 10; //한 페이지에 보일 갯수
-		int page = (listCount+10)/listSize; //현재 목록의 페이지 번호
+		int listSize = 6; //한 페이지에 보일 갯수
+		int page = (listCount+5)/listSize; //현재 목록의 페이지 번호
 
 		int endList = 0;
 		int startList = 0;
 
 		endList = selectPage*listSize;
-		startList = endList-9;
+		startList = endList-5;
 		
 		SelectPageVO selectPageVO = new SelectPageVO();
 		
 		selectPageVO.setStartPage(startList);
 		selectPageVO.setEndPage(endList);
 		
-		List<ReviewVO> selectList = reviewService.selectPageReview(selectPageVO);
+		List<ReviewImageVO> selectList = reviewService.selectAllReviewImage(selectPageVO);
 		
 		model.addAttribute("review",selectList);
 		model.addAttribute("page",page);

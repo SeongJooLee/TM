@@ -71,7 +71,11 @@
 	<hr>
 
 	<div class="container px-4 px-lg-5">
-
+		<div class="card text-white bg-secondary my-5 py-4 text-center">
+			<div class="card-body">
+				<p class="text-white m-0">공지사항</p>
+			</div>
+		</div>
 		<div class="col-md-12 mb-4">
 			<button type="button" class="button button4" onclick='rhdwl()'>공지사항</button>
 			&nbsp;&nbsp;
