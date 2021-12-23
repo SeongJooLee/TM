@@ -86,6 +86,7 @@ body {
 						</div>
 						
 					
+					
 						<div class="col-md-3 mb-3">
 							<form action='/tm/member/mypage/comment' method='get'>					
 								<input class='form-control' type='submit'  value='내가 쓴 댓글 보기'>
