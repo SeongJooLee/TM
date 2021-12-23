@@ -85,6 +85,8 @@ body {
 									<th>예약 날짜</th>
 									<th>인원 수</th>
 									<th>예약자 ID</th>
+									<th>결제 여부</th>
+									<th>이용 여부</th>
 								
 								</tr>
 							</thead>
@@ -98,6 +100,15 @@ body {
 									<td>${list.reserDate}</td>	
 									<td>${list.headCount}</td>
 									<td>${list.id}</td>
+									<td>${list.payment}</td>
+									<td>
+									<c:if test="${list.complete=='Y' }">
+										이용 완료
+									</c:if>
+									<c:if test="${list.payment=='Y' && list.complete!='Y' }">
+										<button type="button" name="complete" onClick="reserComplete()">확정</button>
+									</c:if>
+									</td>
 								</tr>
 							</c:forEach>
 								
