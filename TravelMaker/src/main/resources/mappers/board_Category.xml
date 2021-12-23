@@ -67,5 +67,9 @@
 		   	 WHERE TRAVELNO=#{travelNO}
 	</delete>
 	
+	<delete id="deletePlayReview" parameterType="java.lang.Integer">
+		DELETE FROM CATEGORY WHERE REVIEWNO=#{integer}
+	</delete>
+	
 
 </mapper>

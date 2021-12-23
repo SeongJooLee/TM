@@ -101,6 +101,11 @@
 		AND c.CATEGORYNAME = #{key}
 		ORDER BY t.TRAVELNO DESC
 	</select>
+	
+	<delete id="deleteTravelUser" parameterType="java.lang.String">
+		DELETE FROM TRAVEL
+		WHERE id=#{userId}
+	</delete>
 
 	<!-- 테스트중 -->
 	<select id="selectToTravels" resultType="int">
@@ -113,5 +118,21 @@
 		FROM TRAVEL
 		
 	</select>
+	
+	<select id="selectTravelUser" resultMap="travelResult">
+		SELECT TRAVELNO, TITLE, CONTENT,
+		WRITEDATE, ID, NAME
+		FROM TRAVEL where id=#{id}
+		order by travelNO desc
+	</select>
+	
+	
+	
+	<select id="selectTravelPK" resultMap='travelResult' parameterType="java.lang.String">
+		SELECT TRAVELNO	FROM TRAVEL where id=#{userId}
+		
+	</select>
+	
+	
 
 </mapper>

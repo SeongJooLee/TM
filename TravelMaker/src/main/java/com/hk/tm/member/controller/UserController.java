@@ -283,8 +283,20 @@ public class UserController {
 	@RequestMapping(value="/member/mypage/delete", method=RequestMethod.GET)
 	public String mypageDelete(@RequestParam(value="userId",required=false) String userId,Model model){	
 		if(userId != null) {
+			List<Integer> userTravelPK = userService.selectTravel(userId); // a가 등록한 travel pk여러개를 찾아서
+			int deleteImageTravel = userService.deleteImageTravel(userTravelPK); // 해당 travel pk뭉치로 image테이블에서 관련된 데이터 삭제
+			int deleteCategoryTravel = userService.deleteImageCategory(userTravelPK); // 해당 travel pk뭉치로 category테이블에서 관련된 데이터 삭제
+			int deleteCommentTravel = userService.deleteCommentTravel(userTravelPK);//해당 travel pk뭉치로 comment테이블에서관련된 데이터삭제
+			
+			List<Integer> userReviewPK = userService.selectReview(userId); // a가 등록한 travel pk여러개를 찾아서
+			int deleteImageReview = userService.deleteImageReview(userReviewPK); // 해당 travel pk뭉치로 image테이블에서 관련된 데이터 삭제
+			int deleteCategoryReview = userService.deleteCategoryReview(userReviewPK); // 해당 travel pk뭉치로 category테이블에서 관련된 데이터 삭제
+			int deleteCommentReview = userService.deleteCommentReview(userReviewPK);//해당 travel pk뭉치로 comment테이블에서관련된 데이터삭제
+			
 			int totalResult = userService.deleteTotal(userId);	
-			int result = userService.delete(userId);
+			System.out.println("여기까지 성공하면 돼..");
+			
+			int result = userService.delete(userId);//최종 유저삭제
 			model.addAttribute("result",result);
 		}
 		return "userMyPageDeleteDone";
