@@ -140,14 +140,14 @@ function fn_headSerch() {
 		</ul>
 
 		<form id="frmHeadSerch" class="form-inline my-2 my-lg-0" action="/tm/board/popupEnter" method="post">
-			<select class="form-control" name="headSearchOption">
+			<select class="form-control" id="headSearchOption" name="headSearchOption">
 				<option value="null">검색 옵션</option>
 				<option value="person">작성자</option>
 				<option value="title">제목</option>
 				<option value="content">내용</option>
 				<option value="titleContent">제목+내용</option>
 			</select>&nbsp;&nbsp;
-			 <input class="form-control" type='text' name='headSearchResult'
+			 <input class="form-control" type='text' id="headSearchResult" name='headSearchResult'
 				placeholder='검색어 입력' required>&nbsp;&nbsp;
 			<button class="form-control" onClick="fn_headSerch()">검색</button>
 		</form>

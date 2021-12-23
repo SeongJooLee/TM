@@ -93,7 +93,7 @@ function fn_serch() {
 						<div class="row">
 							<div class="col-md-3 mb-3" >
 						<label>
-								<select class="form-control" name="searchOption">
+								<select class="form-control" id="searchOption" name="searchOption">
 									<option value="null">검색 옵션</option>
 									<option value="person">작성자</option>
 									<option value="title">제목</option>
@@ -103,7 +103,7 @@ function fn_serch() {
 						</label>
 							</div>
 							<div class="col-md-6 mb-3">
-								<input class="form-control" type='text' name='searchResult'
+								<input class="form-control" type='text' id="searchResult" name='searchResult'
 									placeholder='검색어 입력' required>&nbsp;&nbsp;
 							</div>
 							<div class="col-md-2 mb-3">
