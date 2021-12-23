@@ -162,12 +162,10 @@ public class UserService {
 	public int childDeleteAll(List<PromotionVO> promotion) {
 		// TODO Auto-generated method stub
 		for (PromotionVO promotionVO : promotion) {
-			System.out.println("테스트해볼게 "+promotionVO.getPromotionNO());
 			int a = userDAO.deleteSellerReservation(promotionVO.getPromotionNO());
 			int b = userDAO.deleteSellerCategory(promotionVO.getPromotionNO());
 			int c = userDAO.deleteSellerReview(promotionVO.getPromotionNO());
 			int d = userDAO.deleteSellerImage(promotionVO.getPromotionNO());
-			System.out.println(a+" "+b+" "+c+" "+d);
 		}
 		return 0;
 	}
@@ -194,13 +192,7 @@ public class UserService {
 		//reservation삭제
 		int reservationResult= userDAO.deleteReservation(userId);
 		//user 삭제
-		System.out.println("image 테이블 삭제개수 = "+imageResult);
-		System.out.println("likeyou 테이블 삭제개수 = "+likeyouResult);
-		System.out.println("comment 테이블 삭제개수 = "+commentResult);
-		System.out.println("travel 테이블 삭제개수 = "+travelResult);
-		System.out.println("review 테이블 삭제개수 = "+reviewResult);
-		System.out.println("eventProduct 테이블 삭제개수 = "+eventProductResult);
-		System.out.println("reservation 테이블 삭제개수 = "+reservationResult);
+	
 		
 		return 5;
 	}

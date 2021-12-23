@@ -35,22 +35,18 @@ public class UserDAO {
 	public int addSeller(SellerVO seller) {
 		int result = 0;
 		seller.setGrade("seller");
-		System.out.println("dao seller = "+seller);
 		result = sqlSession.insert("mapper.memberSeller.insert",seller);
 		return result;
 	}
 
 	public UserVO checkUser(UserVO userVO) {
 		// TODO Auto-generated method stub
-		System.out.println("dao USER = "+userVO);
 		UserVO user = sqlSession.selectOne("mapper.memberUser.selectOne", userVO);
 		
-		System.out.println("user ="+user);
 		return user;
 	}
 
 	public SellerVO checkUser(SellerVO sellerVO) {
-		System.out.println("dao seller = "+sellerVO);
 		SellerVO seller = sqlSession.selectOne("mapper.memberSeller.selectOne",sellerVO);
 		return seller;
 	}
@@ -67,14 +63,12 @@ public class UserDAO {
 	
 	public List<TravelVO> travelListAll(String id) {
 		// TODO Auto-generated method stub
-		System.out.println("dao id ="+id);
 		List<TravelVO> travel = sqlSession.selectList("mapper.boardTravel.select",id);
 		return travel;
 	}
 
 	public List<ReviewVO> reviewListAll(String id) {
 		// TODO Auto-generated method stub
-		System.out.println("dao id=2 "+id);
 		List<ReviewVO> review = sqlSession.selectList("mapper.boardReview.select",id);
 		return review;
 	}
@@ -177,7 +171,6 @@ public class UserDAO {
 
 	public int promotionDelete(String sellerId) {
 		// TODO Auto-generated method stub
-		System.out.println("프로모션에서 "+sellerId);
 		int result = sqlSession.delete("mapper.boardPromotion.deleteSeller",sellerId);
 		return result;
 	}
@@ -236,7 +229,6 @@ public class UserDAO {
 	public boolean duplicationCheckSeller(String checkID) {
 		// TODO Auto-generated method stub
 		SellerVO seller = sqlSession.selectOne("mapper.memberSeller.duplicationCheck", checkID);
-		System.out.println(seller);
 		if(seller==null) {
 			return true;
 		}else {
@@ -248,7 +240,6 @@ public class UserDAO {
 	public boolean duplicationCheckUser(String checkID) {
 		// TODO Auto-generated method stub
 		UserVO user = sqlSession.selectOne("mapper.memberUser.duplicationCheck", checkID);
-		System.out.println("user="+user);
 		if(user==null) {
 			return true;
 		}else {

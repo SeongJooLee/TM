@@ -73,7 +73,6 @@ public class UserController {
 			return "logoutUpdate";
 		}else {
 			session.invalidate();
-			System.out.println("세션삭제");
 			return "logout";
 		}
 		
@@ -81,7 +80,7 @@ public class UserController {
 	
 	@RequestMapping(value="/member/registerCheck",method=RequestMethod.GET)
 	public String memberRegisterCheck(Model model) {
-		System.out.println("회원가입기능 실행");
+	
 		
 		
 		return "memberRegisterCheck";
@@ -89,11 +88,10 @@ public class UserController {
 	}
 	@RequestMapping(value="/member/userAdd",method=RequestMethod.POST)
 	public String memberUserAdd(@ModelAttribute UserVO userVO,Model model) {
-		System.out.println("hello");
-		System.out.println(userVO);
+
 		
 		int ret = userService.addUser(userVO);
-		System.out.println(ret);
+
 		
 		model.addAttribute("result",ret);
 		
@@ -129,7 +127,6 @@ public class UserController {
 	        case "user":   
 	        	UserVO user = userService.checkUser(userVO);  
 	        	if(user !=null) {
-	        		System.out.println("1번실행");
 	        		session.setAttribute("userSession", user);
 	        	}
 	        	
@@ -137,13 +134,11 @@ public class UserController {
 	        	
 	        	return "userhome";            
 	        case "seller":	      
-	        	System.out.println("작업할공간");
 	        	sellerVO.setSellerID(userVO.getId());
 				sellerVO.setPw(userVO.getPw());
 				sellerVO.setGrade(userVO.getGrade());
 				SellerVO seller = userService.checkUser(sellerVO);
 				if(seller !=null) {
-	        		System.out.println("33번실행");
 	        		session.setAttribute("userSession", seller);
 	        	}			
 				model.addAttribute("seller", seller);
@@ -157,7 +152,7 @@ public class UserController {
 	        	if(admin !=null) {
 	        		
 	        		session.setAttribute("userSession", admin);
-	        		System.out.println("관리자 세션생성");
+	        		
 	        	}	
 	        	model.addAttribute("admin", admin);
 	        	return "adminhome";
@@ -167,23 +162,18 @@ public class UserController {
 	
 	@RequestMapping(value="/member/mypage",method=RequestMethod.GET)
 	public String memberMyPage(@ModelAttribute UserVO userVO,Model model,HttpSession session,@RequestParam(required = false,value="promotionNO") String proNO,@RequestParam(required = false,value="travelNO") String traNO,@RequestParam(required=false,value="reviewNO") String revNO,@RequestParam(required=false,value="userId") String userId,@RequestParam(required=false,value="proNO") String promotionNO_) {
-		System.out.println("민수야.? = "+session.getAttribute("userSession").getClass().getName());
 		String check = session.getAttribute("userSession").getClass().getName();
-		System.out.println("관리자 세션체크 : "+check);
 		
 		
 		if(proNO!=null) {
 			int promotionNO = Integer.parseInt(proNO);
 			List<ReservationVO> result = userService.checkReservation(promotionNO);
 			//System.out.println("result = "+result);
-			System.out.println("Controller의 result = "+result);
 			model.addAttribute("proNO",proNO);
 			model.addAttribute("reservation",result);
 			return "sellerReservation";
 		}else if(traNO != null) {
-			System.out.println("이번에 작업할곳");
 			int travelNO = Integer.parseInt(traNO);
-			System.out.println(travelNO);
 			TravelVO travel = userService.checkOneTravel(travelNO);
 			model.addAttribute("travel",travel);
 			return "userBoardListDone";
@@ -210,9 +200,8 @@ public class UserController {
 //	        	if() {
 //	        		return ;
 //	        	}
-	        	System.out.println("12-13작업공간");
+	        	
 	        	SellerVO seller = (SellerVO) session.getAttribute("userSession");
-	        	System.out.println("seller switch = "+seller);
 				model.addAttribute("seller", seller);
 	        	return "sellerMyPage";
 	        
@@ -230,61 +219,49 @@ public class UserController {
 //		}else if(session.getAttribute("")) {
 //			session.
 //		}
-		System.out.println("햇던일또하게생겻네");
+	
 		UserVO user = null;
 		SellerVO seller = null;
 		try {
 			user = (UserVO) session.getAttribute("userSession");
-			System.out.println("오류발생");
+			
 		} catch (Exception e) {
 			seller = (SellerVO)session.getAttribute("userSession");
-			System.out.println("변형성공");
+		
 		}
-		System.out.println("처리완료");
+		
 		
 		
 		switch(key) {
 		case "one" :
 			
-			System.out.println("세션값 받아오기 11 test "+user.getId());
+	
 			return "userMyPage";
 		case "two":
 			//user = (UserVO) session.getAttribute("userSession");
-			System.out.println("세션값 받아오기 22 "+user.getId());
 			List <TravelVO> travel = userService.travelListAll(user.getId());
 			List <ReviewVO> review = userService.reviewListAll(user.getId());
 			model.addAttribute("travel",travel);
 			model.addAttribute("review",review);
-			System.out.println("review = "+review);
-			System.out.println("설마?");
 			return "userBoardList";
 		case "three":
 			//user = (UserVO) session.getAttribute("userSession");
-			System.out.println("세션값 받아오기 33 "+user.getId());
 			List<ReservationVO> userReservationList = userService.userReservationList(user.getId());
 			model.addAttribute("list",userReservationList);
 			return "userReservationList";
 		case "four":
 			//user = (UserVO) session.getAttribute("userSession");
-			System.out.println("세션값 받아오기 44 "+user.getId());
 			return null;
 		
 		case "sellerOne":
-			System.out.println("sellerOne실행");
 			return "sellerMyPage";
 		case "sellerTwo":
 			List<PromotionVO> list = userService.sellerPromotionList(seller.getSellerID());
 			model.addAttribute("proList",list);
 			return "sellerBoardList";
 		case "sellerThree":
-			System.out.println(seller);
-			//System.out.println("프로모션 넘버 = "+proNum);
-			System.out.println("sellerThree실행");
-		
-			//
 			return null;
 		case "sellerFour":
-			System.out.println("sellerFour실행");
 			return null;
 		
 		}
@@ -297,7 +274,6 @@ public class UserController {
 	
 	@RequestMapping(value="/member/mypage/update", method=RequestMethod.POST)
 	public String mypageUpdatePost(@ModelAttribute UserVO user,Model model){	
-		System.out.println(user);
 		int result = userService.update(user);
 		model.addAttribute("result",result);
 		return "userMyPageUpdateDone";
@@ -318,10 +294,8 @@ public class UserController {
 	}
 	@RequestMapping(value="/member/mypage/sellerUpdate", method=RequestMethod.POST)
 	public String sellermypageUpdatePost(@ModelAttribute SellerVO seller,Model model){	
-		System.out.println(seller);
 		int result = userService.updateSeller(seller);
 		model.addAttribute("result",result);
-		System.out.println("실행?? ="+result);
 		return "sellerMyPageUpdateDone";
 	}
 	@RequestMapping(value="/member/sellerMypage/delete", method=RequestMethod.GET)
@@ -331,7 +305,6 @@ public class UserController {
 //			int imageResult = userService.imageDelete(sellerId);
 //			System.out.println("이미지테이블 개수 = "+imageResult);
 			List<PromotionVO> promotion = userService.promotionOne(sellerId);
-			System.out.println("시작 "+promotion);
 			int childDeleteResult = userService.childDeleteAll(promotion);
 			int promotionResult = userService.promotionDelete(sellerId);
 			int result = userService.sellerDelete(sellerId);
@@ -350,7 +323,6 @@ public class UserController {
 //		
 //		result = userService.addReview(reviewVO);
 //		model.addAttribute("result",result);
-		System.out.println("reviewVO 파라미터확인"+reviewVO);
 		request.setCharacterEncoding("utf-8");
 		Map<String,Object> map = new HashMap<String,Object>();
 		Enumeration enu=request.getParameterNames();
@@ -386,7 +358,6 @@ public class UserController {
 				fileList.remove(0);
 			}
 		}
-		System.out.println("reviewVO =="+reviewVO);
 		userService.noticeAdd(reviewVO,imageVO);
 
 		for(int i=0;i < fileList.size(); i++) {
@@ -433,12 +404,10 @@ public class UserController {
 	@RequestMapping(value="/member/duplicationCheck", method=RequestMethod.POST,produces = "application/json; charset=utf8")
 	@ResponseBody
 	public Map<String, Object>  duplicationCheck(@RequestParam("checkID")String checkID){	
-		System.out.println("전달받은 ID = "+checkID);
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		if(checkID == "") {
 			map.put("result", null);
-			System.out.println("이쪽실행?");
 			return map;
 		}
 		
@@ -450,7 +419,6 @@ public class UserController {
 	@RequestMapping(value="/member/duplicationCheckUser", method=RequestMethod.POST,produces = "application/json; charset=utf8")
 	@ResponseBody
 	public Map<String, Object>  duplicationCheckUser(@RequestParam("checkID")String checkID){	
-		System.out.println("전달받은 ID = "+checkID);
 		Map<String, Object> map = new HashMap<String, Object>();
 
 		

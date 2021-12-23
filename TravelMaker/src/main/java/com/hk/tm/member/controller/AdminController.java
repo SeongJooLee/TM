@@ -84,7 +84,6 @@ public class AdminController {
 			List<UserVO>list = adminService.searchID(search);
 			model.addAttribute("list",list);
 			model.addAttribute("search",search);
-			System.out.println(list);
 			
 			return "userSearchList";
 		}
@@ -102,16 +101,13 @@ public class AdminController {
 			model.addAttribute("list",reserList);
 			return "adminReservation";
 		}else if(selectSellerOne != null) {
-			System.out.println("민수야 일어나.. 코딩해야지..");
 			List<PromotionVO> seller = adminService.sellerPromotion(selectSellerOne);
 			model.addAttribute("seller",seller);
-			System.out.println("테스트테스트");
 			return "adminSellerOne";
 		}
 		switch(key) {
 		
 		case "one":
-			System.out.println("post요청");
 			
 			noticeVO.setX(1);
 			noticeVO.setY(5);
@@ -120,7 +116,6 @@ public class AdminController {
 			model.addAttribute("notice",noticeVO);
 			return "adminMyPage";
 		case "two":
-			System.out.println("시작해보자");
 			List<UserVO>userList = adminService.userListAll();
 			List<SellerVO>sellerList = adminService.sellerListAll();
 			model.addAttribute("sellerList",sellerList);
@@ -180,8 +175,6 @@ public class AdminController {
 		
 		ReservationVO reservation = adminService.reservationOne(reservationNO);
 		List<PromotionVO> list = adminService.listPro();
-		System.out.println("실행인가..?");
-		System.out.println(list);
 		model.addAttribute("proList",list);
 		model.addAttribute("reservation",reservation);
 		
@@ -189,7 +182,6 @@ public class AdminController {
 	}
 	@RequestMapping(value="/admin/mypage/reservationUpdate",method=RequestMethod.POST)
 	public String myPageReservationUpdatePost(Model model,@ModelAttribute ReservationVO reservation){
-		System.out.println("진짜 집가고싶다 = "+reservation);
 		int result = adminService.reservationUpdate(reservation);
 		
 		
@@ -254,8 +246,7 @@ public class AdminController {
 	@RequestMapping(value="/admin/mypage/check",method=RequestMethod.GET)
 	public String checkGet(Model model,@RequestParam(value="randomNO",required=false) int randomNO,@RequestParam(value="randomName",required=false)String randomName){
 		
-		System.out.println(randomNO);
-		System.out.println(randomName);
+	
 		
 		switch(randomName) {
 		case "공지사항":

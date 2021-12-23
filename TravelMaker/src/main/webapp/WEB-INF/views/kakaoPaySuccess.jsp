@@ -36,7 +36,7 @@ body {
 	
 	function fn_thankyou(){
 	alert('결제 확인 되었습니다.');
-		}
+	}
 </script>
 </head>
 <body>
