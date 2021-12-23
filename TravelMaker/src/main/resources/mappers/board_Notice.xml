@@ -127,7 +127,7 @@
 		FROM (SELECT name,id,title,content,reviewNO 
 		FROM REVIEW r 
 		UNION ALL
-		SELECT name,id,title,content,travelNO FROM TRAVEL t)))) minsu WHERE adminid=#{result})
+		SELECT name,id,title,content,travelNO FROM TRAVEL t)))) minsu WHERE adminid LIKE '%'||#{result}||'%')
 	</select>
 	
 	<select id="selectUnionSearchTitle" resultMap="noticeResult" parameterType='java.lang.String'>
@@ -147,7 +147,7 @@
 		FROM (SELECT name,id,title,content,reviewNO 
 		FROM REVIEW r 
 		UNION ALL
-		SELECT name,id,title,content,travelNO FROM TRAVEL t)))) minsu WHERE title=#{result})
+		SELECT name,id,title,content,travelNO FROM TRAVEL t)))) minsu WHERE title LIKE '%'||#{result}||'%')
 	</select>
 	
 	<select id="selectUnionSearchContent" resultMap="noticeResult" parameterType='java.lang.String'>
@@ -167,7 +167,7 @@
 		FROM (SELECT name,id,title,content,reviewNO 
 		FROM REVIEW r 
 		UNION ALL
-		SELECT name,id,title,content,travelNO FROM TRAVEL t)))) minsu WHERE content=#{result})
+		SELECT name,id,title,content,travelNO FROM TRAVEL t)))) minsu WHERE content LIKE '%'||#{result}||'%')
 	</select>
 	
 	
