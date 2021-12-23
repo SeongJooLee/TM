@@ -78,7 +78,7 @@ function wkrtjd(obj){
 						</c:if>
 
 						<div class="card-footer">
-							<a
+							<a class="btn btn-primary btn-sm">후기</a>&nbsp;&nbsp;&nbsp;<a
 								href="${contextPath}/board/review/view?reviewNO=${review.reviewNO }">${review.title }</a>
 						</div>
 					</div>

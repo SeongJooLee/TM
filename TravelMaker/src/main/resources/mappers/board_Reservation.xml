@@ -38,7 +38,7 @@
 	</select>
 	
 	<select id="selectOneReservation" resultType="ReservationVO">
-		SELECT RESERNO, PROMOTIONNO, RESERDATE, HEADCOUNT, ID
+		SELECT *
 		 FROM RESERVATION
 		 where id = #{id}
 		 and promotionNO = #{promotionNO}

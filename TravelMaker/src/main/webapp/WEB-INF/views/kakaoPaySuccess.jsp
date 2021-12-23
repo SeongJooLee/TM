@@ -36,10 +36,9 @@ body {
 	
 	function fn_thankyou(){
 		alert('결제 확인 되었습니다.');
-		document.getElementById('kakaoPay').method = "GET";
+		document.getElementById('kakaoPay').method = "POST";
 		document.getElementById('kakaoPay').action = "${contextPath}/board/reservation/payment";
 		document.getElementById('kakaoPay').submit();
-		window.close();
 	}
 </script>
 </head>
@@ -83,14 +82,14 @@ body {
 					<div style="position: absolute; right: 0px; bottom: 0px;">
 						카카오페이 결제가 정상적으로 완료되었습니다.
 					</div>
+					<form id="kakaoPay">
+						<input type="hidden" name="reserNO" value="${info.item_code }">
+					</form>
 					
 					<div class="col-md-6"></div>
 					<div class="col-md-6">
 						<button type="button" onClick="fn_thankyou()" class="btn btn-primary btn-lg btn-block">결제 확인</button>
 					</div>
-					<form id="kakaoPay">
-						<input type="hidden" name="payment" value="${info.item_code }">
-					</form>
 				</div>
 			</div>
 		</div>

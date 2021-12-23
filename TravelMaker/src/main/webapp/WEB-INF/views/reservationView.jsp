@@ -11,6 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
@@ -52,7 +53,6 @@ function kakaoPay(){
 	        return;
 	    } else {
 	        alert("확인(예)을 누르셨습니다.");
-			document.getElementById("kakaoFrm").target = "_blank";
 			document.getElementById("kakaoFrm").submit();
 	    }
     }
@@ -80,7 +80,6 @@ function kakaoPay(){
 </head>
 <body>
 	<jsp:include page="/resources/include/header.jsp" />
-	<hr>
 
 	<div class="container">
 		<div class="input-form-backgroud row">
@@ -151,25 +150,31 @@ function kakaoPay(){
 					<br>
 					<hr>
 					<div class="row">
-					<c:if test="${reser.payment==null }">
+					<c:if test="${reser.payment!='Y' }">
+						<div class="col-md-2 mb-3">
+						</div>
 						<div class="col-md-4 mb-3">
 							<button class="btn btn-primary btn-lg btn-block" type="button"
 								onClick="kakaoPay()">결제하기</button>
 						</div>
+						<div class="col-md-4 mb-3">
+							<button class="btn btn-primary btn-lg btn-block" type="button"
+								onClick='fn_delete();'>예약 취소</button>
+						</div>
 					</c:if>
-					<c:if test="${reser.complete==null }">
+					<c:if test="${reser.complete=='Y' }">
+						<div class="col-md-4 mb-3"></div>
 						<div class="col-md-4 mb-3">
 							<button class="btn btn-primary btn-lg btn-block" type="button"
 								onClick="fn_create()">이용 후기 작성</button>
 						</div>
 					</c:if>
-						<div class="col-md-4 mb-3">
-							<button class="btn btn-primary btn-lg btn-block" type="button"
-								onClick='fn_delete();'>예약 취소</button>
-						</div>
+						<div class="row">
+						<div class="col-md-4 mb-3"></div>
 						<div class="col-md-4 mb-3">
 							<button class="btn btn-primary btn-lg btn-block" type="button"
 								onClick='goHome();'>메인으로 돌아가기</button>
+						</div>
 						</div>
 					</div>
 				</form>
@@ -182,7 +187,6 @@ function kakaoPay(){
 	<br>
 	<br>
 	<br>
-	<hr>
 	<jsp:include page="/resources/include/footer.jsp" />
 </body>
 </html>

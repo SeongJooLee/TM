@@ -21,7 +21,6 @@ public class ReservationDAO {
 
 	public ReservationVO insertReservation(ReservationVO reserVO) {
 		int ret = sql.insert(ns+"insertReservation",reserVO);
-
 		if(ret==1) {
 			reserVO = sql.selectOne(ns+"selectOneReservation",reserVO);
 			return reserVO;

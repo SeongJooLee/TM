@@ -1,7 +1,6 @@
 package com.hk.tm.board.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -14,12 +13,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hk.tm.board.service.ReservationService;
 import com.hk.tm.board.vo.PromotionImageVO;
 import com.hk.tm.board.vo.PromotionVO;
 import com.hk.tm.board.vo.ReservationVO;
-import com.hk.tm.member.vo.UserVO;
 
 @Controller
 public class ReservationController {
@@ -40,10 +39,17 @@ public class ReservationController {
 	public String reservationDone(HttpSession session,@ModelAttribute ReservationVO reserVO,@RequestParam("id") String id,@RequestParam("promotionNO") int promotionNO,@RequestParam("title") String title ,@RequestParam("price") int price,Model model) {
 		reserVO.setId(id);
 		reserVO.setPromotionNO(promotionNO);
-		PromotionVO promotionVO = new PromotionVO();
+		
+		System.out.println("TestreserVO"+reserVO.toString());
+		
+		int priceSum = price * reserVO.getHeadCount();
+		
+		
+		PromotionImageVO promotionVO = new PromotionImageVO();
 		promotionVO.setTitle(title);
-		promotionVO.setPrice(price);
+		promotionVO.setPrice(priceSum);
 
+		
 		
 		reserVO = reserService.insertReservation(reserVO);
 		
@@ -56,7 +62,10 @@ public class ReservationController {
 	
 	@RequestMapping(value="/board/reservation/view", method=RequestMethod.GET)
 	public String reservationDone(@ModelAttribute ReservationVO reserVO,Model model) {
+		System.out.println("view 확인"+reserVO.getReserNO());
+		
 		Map<String, Object> map =reserService.selectOneReservation(reserVO);
+		
 		
 		model.addAttribute("reser",map.get("reser"));
 		model.addAttribute("promotion",map.get("promotion"));
@@ -78,10 +87,13 @@ public class ReservationController {
 	
 		return "promotionList";
 	}
-	@RequestMapping(value="/board/reservation/payment", method=RequestMethod.GET)
-	public String reservationPayment(@RequestParam("reserNO")String reserNO,HttpServletResponse response) throws IOException {
+	@RequestMapping(value="/board/reservation/payment", method=RequestMethod.POST)
+	public String reservationPayment(RedirectAttributes redirectAttributes,@RequestParam("reserNO")String reserNO,HttpServletResponse response) throws IOException {
+		System.out.println("결제 확인 "+reserNO);
 		reserService.insertPayment(reserNO);
 		
-		return "home";
+		redirectAttributes.addAttribute("reserNO",reserNO);
+		
+		return "redirect:/board/reservation/view";
 	}
 }
