@@ -15,11 +15,12 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
-	
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="<c:url value="/resources/css/styles.css" />" rel="stylesheet" />
+
+<!-- Favicon-->
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<!-- Core theme CSS (includes Bootstrap)-->
+<link href="<c:url value="/resources/css/styles.css" />"
+	rel="stylesheet" />
 <style>
 .imagetest {
 	width: 100%;
@@ -56,7 +57,7 @@ body {
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 	crossorigin="anonymous"></script>
-	
+
 <script type='text/javascript'>
 	var cnt = 1;
 	function fn_addFile() {
@@ -71,7 +72,6 @@ body {
 		cnt++;
 	}
 	function fn_enable(obj) {
-		document.getElementById("name").disabled = false;
 		document.getElementById("title").disabled = false;
 		document.getElementById("content").disabled = false;
 		if (document.getElementById("originalFileName") != null) {
@@ -92,13 +92,13 @@ body {
 
 			alert("확인(예)을 누르셨습니다.");
 
-			$
-					.ajax({
+			$.ajax({
 						type : 'POST',
 						url : 'noticeImgDelete',
 						dataType : "json",
 						data : {
 							'noticeNO' : '${notice.noticeNO}',
+							'name' : '${notice.name}'
 						},
 						success : function(data) {
 							if (data.result == 'false') {
@@ -178,8 +178,8 @@ body {
 					<div class="row">
 						<div class="col-md-2 mb-3">
 							<label for="noticeNO">번호</label> <input type="text"
-								class="form-control" value="${notice.noticeNO }"
-								id="noticeNO" name="noticeNO" readonly />
+								class="form-control" value="${notice.noticeNO }" id="noticeNO"
+								name="noticeNO" readonly />
 						</div>
 						<div class="col-md-10 mb-3">
 							<label for="title">제목</label> <input type="text"
@@ -193,12 +193,13 @@ body {
 							<label for="image">이미지 파일 첨부</label>
 							<div id="update">
 								<input type="button" value="파일 삭제" id="imgUpdateBtn"
-									class="btn btn-danger btn-lg btn-block" onClick="fn_imgUpdateBtn()" disabled /> <small>
+									class="btn btn-danger btn-lg btn-block"
+									onClick="fn_imgUpdateBtn()" disabled /> <small>
 									&nbsp;&nbsp; * 클릭시 전체 파일이 삭제됩니다.</small>
 							</div>
 							<input type="button" value="파일 추가" id="imgUpdate"
-								class="btn btn-info btn-lg btn-block" onClick="fn_addFile()" disabled /> <small>
-								&nbsp;&nbsp; * 최대 3개까지 첨부 가능합니다.</small>
+								class="btn btn-info btn-lg btn-block" onClick="fn_addFile()"
+								disabled /> <small> &nbsp;&nbsp; * 최대 3개까지 첨부 가능합니다.</small>
 						</div>
 						<div id="d_file"></div>
 						<div id="d_filetest">
@@ -208,34 +209,31 @@ body {
 
 									<div class="col-md-8 mb-5" data-bs-ride="carousel">
 										<div class="carousel-inner">
-												<c:if
-													test="${not empty image.image1 && image.image1 !='null' }">
-											<div class="carousel-item active ">
+											<c:if
+												test="${not empty image.image1 && image.image1 !='null' }">
+												<div class="carousel-item active ">
 													<input type="hidden" id="originalFileName" name="image1"
-														value="${image.image1 }" />
-													<img class="imagetest"
+														value="${image.image1 }" /> <img class="imagetest"
 														src="${contextPath }/board/notice/download?image=${image.image1}&noticeNO=${notice.noticeNO}&name=${notice.name}" />
-											</div>
-												</c:if>
+												</div>
+											</c:if>
 
-												<c:if
-													test="${not empty image.image2 && image.image2 !='null' }">
-											<div class="carousel-item">
+											<c:if
+												test="${not empty image.image2 && image.image2 !='null' }">
+												<div class="carousel-item">
 													<input type="hidden" id="originalFileName" name="image2"
-														value="${image.image2 }" />
-													<img class="imagetest"
+														value="${image.image2 }" /> <img class="imagetest"
 														src="${contextPath }/board/notice/download?image=${image.image2}&noticeNO=${notice.noticeNO}&name=${notice.name}" />
-											</div>
-												</c:if>
-												<c:if
-													test="${not empty image.image3 && image.image3 !='null' }">
-											<div class="carousel-item">
+												</div>
+											</c:if>
+											<c:if
+												test="${not empty image.image3 && image.image3 !='null' }">
+												<div class="carousel-item">
 													<input type="hidden" id="originalFileName" name="image3"
-														value="${image.image3 }" />
-													<img class="imagetest"
+														value="${image.image3 }" /> <img class="imagetest"
 														src="${contextPath }/board/notice/download?image=${image.image3}&noticeNO=${notice.noticeNO}&name=${notice.name} " />
-											</div>
-												</c:if>
+												</div>
+											</c:if>
 										</div>
 
 										<!-- / 슬라이드 쇼 끝 -->
@@ -273,13 +271,9 @@ body {
 					</div>
 					<div class="row">
 						<div class="col-md-2 mb-3">
-							<label for="name">카테고리</label> <select
-								class="form-control" name="name" id="name"
-								disabled>
-								<option value="${notice.name }">${notice.name }</option>
-								<option value="이벤트">이벤트</option>
-								<option value="공지사항">공지사항</option>
-							</select>
+							<label for="name">카테고리</label> <input class="form-control"
+								type="text" value="${notice.name }" readonly> <input
+								type="hidden" value="${notice.name }" name="name" />
 						</div>
 						<div class="col-md-4 mb-3">
 							<label for="adminID">작성자</label> <input type="text"
@@ -297,12 +291,12 @@ body {
 						<div class="row">
 							<div class="col-md-1 mb-3"></div>
 							<div class="col-md-4 mb-3">
-								<input class="btn btn-info btn-lg btn-block" type="button" value="수정 반영하기"
-									onClick="fn_modify_update(frmNotice)" />
+								<input class="btn btn-info btn-lg btn-block" type="button"
+									value="수정 반영하기" onClick="fn_modify_update(frmNotice)" />
 							</div>
 							<div class="col-md-4 mb-3">
-								<input class="btn btn-info btn-lg btn-block" type="button" value="취소하기"
-									onClick="backToList(frmNotice)" />
+								<input class="btn btn-info btn-lg btn-block" type="button"
+									value="취소하기" onClick="backToList(frmNotice)" />
 							</div>
 							<div class="col-md-1 mb-3"></div>
 						</div>
@@ -310,32 +304,18 @@ body {
 					<div id="tr_btn">
 						<div class="row">
 							<c:if test='${userSession.grade.equals("admin")}'>
-								<c:forEach var='list' items='${list}'>
-									<c:if
-										test='${list.noticeNO == notice.noticeNO && list.adminID.equals(notice.adminID)}'>
-										<div class="col-md-4 mb-3">
-											<input class="btn btn-primary btn-lg btn-block" type="button" value="수정하기"
-												onClick="fn_enable(this.form)" />
-										</div>
-										<div class="col-md-4 mb-3">
-											<input class="btn btn-danger btn-lg btn-block" type="button" value="삭제하기"
-												onClick="fn_delete(this.form)" />
-										</div>
-										<div class="col-md-4 mb-3">
-											<input class="btn btn-primary btn-lg btn-block" type="button" value="리스트로 돌아가기"
-												onClick="backToList(this.form)" />
-										</div>
-										<c:set var="check" value="1" />
-									</c:if>
-								</c:forEach>
-								<c:if test='${check!=1}'>
-									<div class="col-md-4 mb-3"></div>
-									<div class="col-md-4 mb-3"></div>
-									<div class="col-md-4 mb-3">
-										<input class="btn btn-primary btn-lg btn-block" type="button" value="리스트로 돌아가기"
-											onClick="backToList(this.form)" />
-									</div>
-								</c:if>
+								<div class="col-md-4 mb-3">
+									<input class="btn btn-primary btn-lg btn-block" type="button"
+										value="수정하기" onClick="fn_enable(this.form)" />
+								</div>
+								<div class="col-md-4 mb-3">
+									<input class="btn btn-danger btn-lg btn-block" type="button"
+										value="삭제하기" onClick="fn_delete(this.form)" />
+								</div>
+								<div class="col-md-4 mb-3">
+									<input class="btn btn-primary btn-lg btn-block" type="button"
+										value="리스트로 돌아가기" onClick="backToList(this.form)" />
+								</div>
 							</c:if>
 						</div>
 					</div>
@@ -343,35 +323,19 @@ body {
 						<c:if test='${userSession.grade.equals("user")}'>
 							<div class="col-md-4 mb-3"></div>
 							<div class="col-md-4 mb-3">
-								<input class="btn btn-primary btn-lg btn-block" type="button" value="리스트로 돌아가기"
-									onClick="backToList(this.form)" />
+								<input class="btn btn-primary btn-lg btn-block" type="button"
+									value="리스트로 돌아가기" onClick="backToList(this.form)" />
 							</div>
 
 						</c:if>
-						
-												<c:if test='${userSession.grade.equals("seller")}'>
+
+						<c:if test='${userSession.grade.equals("seller")}'>
 							<div class="col-md-4 mb-3"></div>
 							<div class="col-md-4 mb-3">
-								<input class="btn btn-primary btn-lg btn-block" type="button" value="리스트로 돌아가기"
-									onClick="backToList(this.form)" />
+								<input class="btn btn-primary btn-lg btn-block" type="button"
+									value="리스트로 돌아가기" onClick="backToList(this.form)" />
 							</div>
 
-						</c:if>
-						
-						<c:if test='${userSession.grade.equals("admin")}'>
-							<div class="col-md-4 mb-3">
-								<input class="btn btn-primary btn-lg btn-block" type="button" value="수정하기"
-									onClick="fn_enable(this.form)" />
-							</div>
-							<div class="col-md-4 mb-3">
-								<input class="btn btn-danger btn-lg btn-block" type="button" value="삭제하기"
-									onClick="fn_delete(this.form)" />
-							</div>
-														<div class="col-md-4 mb-3">
-								<input class="btn btn-primary btn-lg btn-block" type="button" value="리스트로 돌아가기"
-									onClick="backToList(this.form)" />
-							</div>
-							
 						</c:if>
 					</div>
 				</form>
