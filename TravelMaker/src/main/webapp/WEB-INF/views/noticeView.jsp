@@ -168,7 +168,6 @@ body {
 </head>
 <body>
 	<jsp:include page="/resources/include/header.jsp" />
-	<hr>
 
 
 	<div class="container">
@@ -290,7 +289,7 @@ body {
 					<hr>
 					<div id="tr_btn_modify" style="display: none">
 						<div class="row">
-							<div class="col-md-1 mb-3"></div>
+							<div class="col-md-2 mb-3"></div>
 							<div class="col-md-4 mb-3">
 								<input class="btn btn-info btn-lg btn-block" type="button"
 									value="수정 반영하기" onClick="fn_modify_update(frmNotice)" />
@@ -345,7 +344,6 @@ body {
 	</div>
 	<br>
 	<br>
-	<hr>
 	<jsp:include page="/resources/include/footer.jsp" />
 </body>
 </html>

@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8" isELIgnored="false"%>
+	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page session="true"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <%
-   request.setCharacterEncoding("utf-8");
+request.setCharacterEncoding("utf-8");
 %>
 <!DOCTYPE html>
 <html>
@@ -52,24 +52,23 @@
 </style>
 
 <script>
-   function rhdwl() {
-      alert('공지사항 카테고리');
-      location.href = '/tm/board/notice/category?key=공지사항';
-   }
-   function dlqpsxm() {
-      alert('이벤트 카테고리');
-      location.href = '/tm/board/notice/category?key=이벤트';
-   }
-   function chrlghk() {
-      alert('설정을 초기화합니다.');
-      location.href = '/tm/board/notice';
-   }
+	function rhdwl() {
+		alert('공지사항 카테고리');
+		location.href = '/tm/board/notice/category?key=공지사항';
+	}
+	function dlqpsxm() {
+		alert('이벤트 카테고리');
+		location.href = '/tm/board/notice/category?key=이벤트';
+	}
+	function chrlghk() {
+		alert('설정을 초기화합니다.');
+		location.href = '/tm/board/notice';
+	}
 </script>
 </head>
 <body>
 
 	<jsp:include page="/resources/include/header.jsp" />
-	<hr>
 
 	<div class="container px-4 px-lg-5">
 		<div class="card text-white bg-secondary my-5 py-4 text-center">
@@ -112,6 +111,13 @@
 				</div>
 			</c:forEach>
 		</div>
+		<c:if test='${userSession.grade.equals("admin")}'>
+			<div align="right">
+				<a href="${contextPath}/board/notice/add"
+					class="btn btn-primary btn-sm" id="mainColor">글쓰기</a>
+			</div>
+		</c:if>
+
 
 		<div align="center">
 			<c:forEach var="i" begin="1" end="${page }">
@@ -128,10 +134,6 @@
 		</div>
 	</div>
 
-	<c:if test='${userSession.grade.equals("admin")}'>
-		<a href="/tm/board/notice/add">글쓰기</a>
-	</c:if>
-	<hr>
 	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

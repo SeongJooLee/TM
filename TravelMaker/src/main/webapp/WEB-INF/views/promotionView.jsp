@@ -174,7 +174,6 @@ body {
 </head>
 <body>
 	<jsp:include page="/resources/include/header.jsp" />
-	<hr>
 
 	<div class="container">
 		<div class="input-form-backgroud row">
@@ -394,7 +393,6 @@ body {
 	</div>
 	<br>
 	<br>
-	<hr>
 	<jsp:include page="/resources/include/footer.jsp" />
 </body>
 </html>

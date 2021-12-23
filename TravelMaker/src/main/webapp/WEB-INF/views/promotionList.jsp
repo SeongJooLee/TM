@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8" isELIgnored="false"%>
+	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page session="true"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <%
-   request.setCharacterEncoding("utf-8");
+request.setCharacterEncoding("utf-8");
 %>
 <!DOCTYPE html>
 <html>
@@ -90,7 +90,6 @@
 
 	<jsp:include page="/resources/include/header.jsp" />
 	<!-- Responsive navbar-->
-	<hr>
 	<div class="container px-4 px-lg-5">
 		<div class="card text-white bg-secondary my-5 py-4 text-center">
 			<div class="card-body">
@@ -124,7 +123,7 @@
 						<c:if test="${promotion.image1 != null }">
 							<img
 								src="${contextPath }/board/promotion/download?image=${promotion.image1}&promotionNO=${promotion.promotionNO}&name=${promotion.name}"
-								width="100%" height="250px"/>
+								width="100%" height="250px" />
 						</c:if>
 
 						<c:if test="${promotion.image1 == null }">
@@ -141,6 +140,12 @@
 				</div>
 			</c:forEach>
 		</div>
+		<c:if test='${userSession.grade.equals("seller")}'>
+			<div align="right">
+				<a href="${contextPath }/board/promotion/add"
+					class="btn btn-primary btn-sm" id="mainColor">글쓰기</a>
+			</div>
+		</c:if>
 
 		<div align="center">
 			<c:forEach var="i" begin="1" end="${page }">
@@ -157,10 +162,8 @@
 		</div>
 
 	</div>
-	<c:if test='${userSession.grade.equals("seller")}'>
-		<a href="${contextPath }/board/promotion/add">글쓰기</a>
-	</c:if>
-	<hr>
+
+
 	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
