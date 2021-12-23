@@ -137,5 +137,11 @@
 		 where reviewNO=#{reviewNO}
 	</update>
 	
+	<delete id="deletePlayImage" parameterType="java.lang.Integer">
+		DELETE FROM IMAGE WHERE TRAVELNO=#{integer}
+	</delete>
 	
+	<delete id="deletePlayReview" parameterType="java.lang.Integer">
+		DELETE FROM IMAGE WHERE REVIEWNO=#{integer}
+	</delete>
 </mapper>

@@ -16,6 +16,15 @@
 <link href="<c:url value="/resources/css/styles.css" />"
 	rel="stylesheet" />
 <style>
+body {
+	min-height: 100vh;
+}
+
+#mainColor{
+	background-color:#876b6b !important;
+	solid:#876b6b !important;
+
+}
 .button {
 	background-color: #4CAF50; /* Green */
 	border: none;
@@ -47,6 +56,39 @@ function wkrtjd(obj){
 	document.getElementById('reviewcreate').action = "${contextPath}/member/mypage";
    document.getElementById('reviewcreate').submit();
 }
+<!-- 여기 수정 덜됐습니다. -->
+function tyvld(){
+	alert('쇼핑 카테고리');
+	location.href='/tm/board/travel/category?key=쇼핑';
+	}
+function wldur(){
+	alert('지역 카테고리');
+	location.href='/tm/board/travel/category?key=지역';
+	}
+function dmatlr(){
+	alert('음식 카테고리');
+	location.href='/tm/board/travel/category?key=음식';
+	}
+function ryxhd(){
+	alert('교통 카테고리');
+	location.href='/tm/board/travel/category?key=교통';
+	}
+function ansghk(){
+	alert('문화 카테고리');
+	location.href='/tm/board/travel/category?key=문화';
+	}
+function wjstl(){
+	alert('전시 카테고리');
+	location.href='/tm/board/travel/category?key=전시';
+	}
+function cpgja(){
+	alert('체험 카테고리');
+	location.href='/tm/board/travel/category?key=체험';
+	}
+function chrlghk(){
+	alert('설정을 초기화합니다.');
+	location.href='/tm/board/travel';
+	}
 </script>
 </head>
 <body>
@@ -54,11 +96,30 @@ function wkrtjd(obj){
 	<jsp:include page="/resources/include/header.jsp" />
 
 	<div class="container px-4 px-lg-5">
-		<div class="card text-white bg-secondary my-5 py-4 text-center">
+		<div class="card text-white bg-secondary my-5 py-4 text-center" id="mainColor">
 			<div class="card-body">
-				<p class="text-white m-0">이용후기</p>
+				<h5 class="text-white m-0">이 용 후 기</h5>
 			</div>
 		</div>
+		<!-- 여기 수정 덜됐습니다. -->
+		<div class="col-md-12 mb-4">
+			<button type="button" class="button button4" onclick='tyvld()'>쇼핑</button>
+			&nbsp;&nbsp;
+			<button type="button" class="button button4" onclick='dmatlr()'>음식</button>
+			&nbsp;&nbsp;
+			<button type="button" class="button button4" onclick='ansghk()'>문화</button>
+			&nbsp;&nbsp;
+			<button type="button" class="button button4" onclick='cpgja()'>체험</button>
+			&nbsp;&nbsp;
+			<button type="button" class="button button4" onclick='wjstl()'>전시</button>
+			&nbsp;&nbsp;
+			<button type="button" class="button button4" onclick='ryxhd()'>교통</button>
+			&nbsp;&nbsp;
+			<button type="button" class="button button4" onclick='wldur()'>지역</button>
+			&nbsp;&nbsp;
+			<button type="button" class="button button4" onclick='chrlghk()'>설정
+				초기화</button>
+		</div>		
 
 		<div class="row gx-4 gx-lg-5">
 			<c:forEach var="review" items="${review}">

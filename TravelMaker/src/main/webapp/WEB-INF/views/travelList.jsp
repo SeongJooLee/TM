@@ -129,6 +129,7 @@ body {
 			<button type="button" class="button button4" onclick='chrlghk()'>설정
 				초기화</button>
 		</div>
+		
 		<div class="row gx-4 gx-lg-5">
 			<c:forEach var="travel" items="${travel}">
 				<div class="col-md-4 mb-5">

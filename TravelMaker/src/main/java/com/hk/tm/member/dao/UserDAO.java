@@ -1,5 +1,6 @@
 package com.hk.tm.member.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -119,7 +120,8 @@ public class UserDAO {
 
 	public int deleteTravel(String userId) {
 		// TODO Auto-generated method stub
-		int result = sqlSession.delete("mapper.boardTravel.deleteOne",userId);
+		
+		int result = sqlSession.delete("mapper.boardTravel.deleteTravelUser",userId);
 		return result;
 	}
 
@@ -253,6 +255,83 @@ public class UserDAO {
 		// TODO Auto-generated method stub
 		List<CommentVO> list = sqlSession.selectList("mapper.boardComment.selectAllCommentUser",id);
 		return list;
+	}
+
+	public List<Integer> selectTravel(String userId) {
+		// TODO Auto-generated method stub
+		List<TravelVO> travelList = sqlSession.selectList("mapper.boardTravel.selectTravelPK",userId);
+		
+		List<Integer> travelPKList = new ArrayList<>();
+		for (TravelVO travelVO : travelList) {
+			travelPKList.add(travelVO.getTravelNO());
+		}
+		System.out.println("user가 등록한 travel PK = "+travelPKList);
+		return travelPKList;
+	}
+
+	public int deleteImageTravel(List<Integer> userTravelPK) {
+		// TODO Auto-generated method stub
+		for (Integer integer : userTravelPK) {
+			 sqlSession.delete("mapper.boardImage.deletePlayImage",integer);
+			 System.out.println("삭제준비 ="+integer);
+		}
+		
+		
+		return 0;
+	}
+
+	public int deleteImageCategory(List<Integer> userTravelPK) {
+		// TODO Auto-generated method stub
+		for (Integer integer : userTravelPK) {
+			int result = sqlSession.delete("mapper.boardCategory.deleteTravel",integer);
+		}
+		return 0;
+	}
+
+	public int deleteCommentTravel(List<Integer> userTravelPK) {
+		// TODO Auto-generated method stub
+		for (Integer integer : userTravelPK) {
+			int result = sqlSession.delete("mapper.boardComment.travelDelete",integer);
+		}
+		return 0;
+	}
+	
+	public List<Integer> selectReview(String userId) {
+		// TODO Auto-generated method stub
+		List<ReviewVO> list = sqlSession.selectList("mapper.boardReview.selectReviewPK",userId);
+		List<Integer> pkList = new ArrayList<>();
+		for (ReviewVO review : list) {
+			pkList.add(review.getReviewNO());
+		}
+		return pkList;
+	}
+
+	public int deleteImageReview(List<Integer> userReviewPK) {
+		// TODO Auto-generated method stub
+		for (Integer integer : userReviewPK) {
+			 sqlSession.delete("mapper.boardImage.deletePlayReview",integer);
+			
+		}
+		return 0;
+	}
+
+	public int deleteCategoryReview(List<Integer> userReviewPK) {
+		// TODO Auto-generated method stub
+		for (Integer integer : userReviewPK) {
+			 sqlSession.delete("mapper.boardCategory.deletePlayReview",integer);
+			
+		}
+		
+		return 0;
+	}
+
+	public int deleteCommentReview(List<Integer> userReviewPK) {
+		// TODO Auto-generated method stub
+		for (Integer integer : userReviewPK) {
+			 sqlSession.delete("mapper.boardComment.deletePlayReview",integer);
+			
+		}
+		return 0;
 	}
 
 	

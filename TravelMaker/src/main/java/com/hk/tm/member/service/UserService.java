@@ -178,6 +178,7 @@ public class UserService {
 
 	public int deleteTotal(String userId) {
 		// TODO Auto-generated method stub
+		
 		//image
 		int imageResult = userDAO.deleteImage(userId);
 		//liktyou삭제
@@ -219,5 +220,46 @@ public class UserService {
 	public List<CommentVO> selectComment(String id) {
 		// TODO Auto-generated method stub
 		return userDAO.selectComment(id);
+	}
+
+	public List<Integer> selectTravel(String userId) {
+		// TODO Auto-generated method stub
+		return userDAO.selectTravel(userId);
+	}
+
+	public int deleteImageTravel(List<Integer> userTravelPK) {
+		// TODO Auto-generated method stub
+		return userDAO.deleteImageTravel(userTravelPK);
+		
+	}
+
+	public int deleteImageCategory(List<Integer> userTravelPK) {
+		// TODO Auto-generated method stub
+		return userDAO.deleteImageCategory(userTravelPK);
+	}
+
+	public int deleteCommentTravel(List<Integer> userTravelPK) {
+		// TODO Auto-generated method stub
+		return userDAO.deleteCommentTravel(userTravelPK);
+	}
+
+	public List<Integer> selectReview(String userId) {
+		// TODO Auto-generated method stub
+		return userDAO.selectReview(userId);
+	}
+
+	public int deleteImageReview(List<Integer> userReviewPK) {
+		// TODO Auto-generated method stub
+		return userDAO.deleteImageReview(userReviewPK);
+	}
+
+	public int deleteCategoryReview(List<Integer> userReviewPK) {
+		// TODO Auto-generated method stub
+		return userDAO.deleteCategoryReview(userReviewPK);
+	}
+
+	public int deleteCommentReview(List<Integer> userReviewPK) {
+		// TODO Auto-generated method stub
+		return userDAO.deleteCommentReview(userReviewPK);
 	}
 }

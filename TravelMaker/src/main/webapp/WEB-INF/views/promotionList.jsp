@@ -25,6 +25,15 @@ request.setCharacterEncoding("utf-8");
 	rel="stylesheet" />
 
 <style>
+body {
+	min-height: 100vh;
+}
+
+#mainColor{
+	background-color:#876b6b !important;
+	solid:#876b6b !important;
+
+}
 .button {
 	background-color: #4CAF50; /* Green */
 	border: none;
@@ -91,9 +100,9 @@ request.setCharacterEncoding("utf-8");
 	<jsp:include page="/resources/include/header.jsp" />
 	<!-- Responsive navbar-->
 	<div class="container px-4 px-lg-5">
-		<div class="card text-white bg-secondary my-5 py-4 text-center">
+		<div class="card text-white bg-secondary my-5 py-4 text-center" id="mainColor">
 			<div class="card-body">
-				<p class="text-white m-0">홍보상품</p>
+				<h5 class="text-white m-0">홍 보 상 품</h5>
 			</div>
 		</div>
 

@@ -74,5 +74,9 @@
 		 FROM "COMMENT" WHERE id = #{id}
 		 
 	</select>
+	
+	<delete id="deletePlayReview" parameterType="java.lang.Integer">
+		DELETE FROM "COMMENT" WHERE REVIEWNO=#{integer}
+	</delete>
 
 </mapper>

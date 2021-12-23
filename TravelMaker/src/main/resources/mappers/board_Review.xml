@@ -94,4 +94,8 @@
 		 VALUES((SELECT nvl(MAX(REVIEWNO) ,0)+1 FROM REVIEW), #{title}, #{content}, #{id}, #{name}, sysdate,#{promotionNO})
 	</insert>
 	
+	<select id="selectReviewPK" resultType="ReviewVO" parameterType='java.lang.String' > 
+		SELECT REVIEWNO FROM REVIEW WHERE id=#{userId}
+	</select>
+	
 </mapper>
