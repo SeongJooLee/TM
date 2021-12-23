@@ -404,19 +404,18 @@ body {
 				</c:forEach>
 
 				<c:if test='${userSession.grade.equals("user")}'>
+								<hr>
 					<form action="/tm/board/travel/add" method="post">
 						<div class="row">
-							<div class="col-md-12 mb-3">
+							<div class="col-md-8 mb-3">
 								<label for="comment">댓글 쓰기</label> <input type="text"
 									class="form-control" name="content" maxlength="48">
-								<hr>
 							</div>
 							<input type="hidden" name="id" value="${userSession.id }">
 							<input type="hidden" name="commentTravelNO"
 								value="${travel.travelNO }">
-							<div class="col-md-4 mb-3" ></div>
-							<div class="col-md-4 mb-3" ></div>
 							<div class="col-md-4 mb-3" >
+							<label> </label>
 								<input class="btn btn-primary btn-lg btn-block" type="submit"
 									value="댓글쓰기">
 							</div>

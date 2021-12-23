@@ -112,6 +112,7 @@ body {
 									<th>예약 상품번호</th>
 									<th>예약날짜</th>
 									<th>예약자 ID</th>
+									<th>결제 여부</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -121,6 +122,7 @@ body {
 								<td>${list.promotionNO}</td>
 								<td>${list.reserDate}</td>
 								<td>${list.id}</td>
+								<td>${list.payment}</td>
 								
 							</tr>
 							</c:forEach>

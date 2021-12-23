@@ -15,24 +15,24 @@
    </resultMap>
    	
    	<select id="selectId" resultMap="reservationResult">
-		SELECT RESERNO, PROMOTIONNO, RESERDATE, HEADCOUNT, ID
+		SELECT *
 		 FROM RESERVATION WHERE id=#{id}
 		 order by reserNO desc
 	</select>
    	<select id="select" resultType="ReservationVO">
-		SELECT RESERNO, PROMOTIONNO, RESERDATE, HEADCOUNT, ID
+		SELECT *
 		 FROM RESERVATION WHERE PROMOTIONNO=#{promotionNO}
 		 order by reserNO desc
 	</select>
 	
    	<select id="selectAll" resultMap="reservationResult">
-		SELECT RESERNO, PROMOTIONNO, RESERDATE, HEADCOUNT, ID
+		SELECT *
 		 FROM RESERVATION
 		 order by reserNO desc
 	</select>
 	
 	<select id="selectOne" resultType="ReservationVO">
-		SELECT RESERNO, PROMOTIONNO, RESERDATE, HEADCOUNT, ID
+		SELECT *
 		 FROM RESERVATION
 		 where reserNO=#{reserNO}
 	</select>
@@ -55,8 +55,8 @@
 	
 	
 	<insert id="insertReservation" parameterType="ReservationVO">
-		INSERT INTO RESERVATION (RESERNO, PROMOTIONNO, RESERDATE, HEADCOUNT, ID)
- 		VALUES(TO_CHAR(SYSDATE,'YYYY/MM/DD/HH/MI/SS'), #{promotionNO}, #{reserDate}, #{headCount}, #{id})	
+		INSERT INTO RESERVATION (RESERNO, PROMOTIONNO, RESERDATE, HEADCOUNT, ID, PAYMENT)
+ 		VALUES(TO_CHAR(SYSDATE,'YYYY/MM/DD/HH/MI/SS'), #{promotionNO}, #{reserDate}, #{headCount}, #{id}, 'N')	
 	</insert>
 	
 	<delete id="deleteReservation" parameterType="ReservationVO">

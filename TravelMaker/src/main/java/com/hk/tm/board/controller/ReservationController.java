@@ -62,11 +62,8 @@ public class ReservationController {
 	
 	@RequestMapping(value="/board/reservation/view", method=RequestMethod.GET)
 	public String reservationDone(@ModelAttribute ReservationVO reserVO,Model model) {
-		System.out.println("view 확인"+reserVO.getReserNO());
-		
 		
 		Map<String, Object> map =reserService.selectOneReservation(reserVO);
-		
 		
 		model.addAttribute("reser",map.get("reser"));
 		model.addAttribute("promotion",map.get("promotion"));
