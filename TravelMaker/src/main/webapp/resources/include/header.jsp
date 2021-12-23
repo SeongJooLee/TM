@@ -43,12 +43,12 @@
 </style>
 <script>
 function fn_headSerch() {
-	var title = document.getElementById("headSearchOption").value;
+	var headSearchOption = document.getElementById("headSearchOption").value;
 	if (!headSearchOption) {
 		alert('검색 옵션을 선택해주세요.');
 		return false;
 	}
-	var content = document.getElementById("headSearchResult").value;
+	var headSearchResult = document.getElementById("headSearchResult").value;
 	if (!headSearchResult) {
 		alert('검색내용을 입력해주세요.');
 		return false;

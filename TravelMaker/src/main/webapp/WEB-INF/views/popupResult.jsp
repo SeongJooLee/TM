@@ -41,12 +41,12 @@ body {
 </style>
 <script>
 function fn_serch() {
-	var title = document.getElementById("searchOption").value;
+	var searchOption = document.getElementById("searchOption").value;
 	if (!searchOption) {
 		alert('검색 옵션을 선택해주세요.');
 		return false;
 	}
-	var content = document.getElementById("searchResult").value;
+	var searchResult = document.getElementById("searchResult").value;
 	if (!searchResult) {
 		alert('검색내용을 입력해주세요.');
 		return false;
