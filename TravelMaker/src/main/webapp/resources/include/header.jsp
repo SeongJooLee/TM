@@ -94,7 +94,8 @@
 			<a href="${contextPath}/member/login">로그인</a>&nbsp;&nbsp;&nbsp; <a
 				href="${contextPath}/member/registerCheck">회원가입</a>
 			&nbsp;&nbsp;&nbsp;<a
-				href="${contextPath}/board/notice/view?noticeNO=3">고객센터</a>
+				href="https://korean.visitseoul.net/tourist-complaint-center">관광불편처리센터</a>&nbsp;&nbsp;&nbsp;
+			<a href="https://kto.visitkorea.or.kr/kor/customer/call/1330.kto">관광통역안내</a>	
 		</p>
 	</div>
 </c:if>
