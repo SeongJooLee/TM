@@ -22,8 +22,41 @@
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="<c:url value="/resources/css/styles.css" />"
 	rel="stylesheet" />	
+<!-- 글씨체 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
 
 <style>
+#font1 {
+  font-family: 'Gamja Flower', cursive !important;
+  font-size: 46px;
+  font-weight: bold;
+  color:#AADBFF;
+ 
+}
+
+#font2 {
+  font-family: 'Gamja Flower', cursive !important;
+  font-size: 22px;
+  font-weight: bold;
+  color:#AADBFF;
+}
+
+#font3 {
+  font-family: 'Gamja Flower', cursive !important;
+  font-size: 18px;
+  font-weight: bold;
+  color:#AADBFF;
+}
+
+#value {
+  font-family: 'Gamja Flower', cursive !important;
+  font-size: 22px;
+  font-weight: bold;
+  color:#876b6b;
+}
+
 .imagetest {
 	width: 100%;
 	height: 500px;
@@ -46,6 +79,8 @@ body {
 	-moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
 	box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
 }
+
+
 </style>
 
 <script src='http://code.jquery.com/jquery-latest.min.js'></script>
@@ -161,32 +196,32 @@ body {
 	<div class="container">
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
-				<h4 class="mb-3" align="center">테마여행 게시글 보기</h4><br>
+				<h4 class="mb-3" align="center" id="font1">여행 게시글 보기</h4><br>
 				<form id="frmTravel" enctype="multipart/form-data">
 					<input type="hidden" value="${travel.name }" name="name" />
 					<div class="row">
 						<div class="col-md-2 mb-3">
-							<label for="travelNO">번호</label> <input type="text"
+							<label for="travelNO" id="font2">번호</label> <input type="text"
 								class="form-control" value="${travel.travelNO }"
-								id="travelNO" name="travelNO" readonly />
+								id="value" name="travelNO" readonly />
 						</div>
 						<div class="col-md-10 mb-3">
-							<label for="title">제목</label> <input type="text"
-								class="form-control" value="${travel.title }" id="title"
+							<label for="title" id="font2">제목</label> <input type="text"
+								class="form-control" value="${travel.title }" id="value"
 								name="title" disabled />
 						</div>
 					</div>
 
 					<div class="row">
 						<div class="col-md-5 mb-3">
-							<label for="image">이미지 파일 첨부</label>
+							<label for="image" id="font2">이미지 파일 첨부</label>
 							<div id="update">
 								<input type="button" value="파일 삭제" id="imgUpdateBtn"
-									class="btn btn-danger btn-lg btn-block" onClick="fn_imgUpdateBtn()" disabled /> <small>
+									class="btn btn-danger btn-lg btn-block" onClick="fn_imgUpdateBtn()" disabled /> <small id="font3" >
 									&nbsp;&nbsp; * 클릭시 전체 파일이 삭제됩니다.</small>
 							</div>
 							<input type="button" value="파일 추가" id="imgUpdate"
-								class="btn btn-info btn-lg btn-block" onClick="fn_addFile()" disabled /> <small>
+								class="btn btn-info btn-lg btn-block" id="font3" onClick="fn_addFile()" disabled /> <small id="font3" >
 								&nbsp;&nbsp; * 최대 3개까지 첨부 가능합니다.</small>
 						</div>
 						<div id="d_file"></div>
@@ -255,37 +290,37 @@ body {
 						</div>
 					</div>
 					<div class="mb-3">
-						<label for="content">글 내용</label>
+						<label for="content" id="font2">글 내용</label>
 						<textarea class="form-control" rows="20" cols="60" name="content"
-							id="content" disabled>${travel.content } </textarea>
+							id="value" disabled>${travel.content } </textarea>
 					</div>
 					<div class="row">
 						<div class="col-md-2 mb-3">
-							<label for="categoryName">카테고리</label> <select
-								class="form-control" name="categoryName" id="categoryName"
+							<label for="categoryName" id="font2">카테고리</label> <select
+								class="form-control" id="value" name="categoryName" id="categoryName"
 								disabled>
-								<option value="${category.categoryName }">${category.categoryName }</option>
-								<option value="쇼핑">쇼핑</option>
-								<option value="음식">음식</option>
-								<option value="문화">문화</option>
-								<option value="체험">체험</option>
-								<option value="전시">전시</option>
-								<option value="교통">교통</option>
-								<option value="지역">지역</option>
+								<option id="value" value="${category.categoryName }">${category.categoryName }</option>
+								<option id="value" value="쇼핑">쇼핑</option>
+								<option id="value" value="음식">음식</option>
+								<option id="value" value="문화">문화</option>
+								<option id="value" value="체험">체험</option>
+								<option id="value" value="전시">전시</option>
+								<option id="value" value="교통">교통</option>
+								<option id="value" value="지역">지역</option>
 							</select>
 						</div>
 						<div class="col-md-4 mb-3">
-							<label for="id">작성자</label> <input type="text"
-								class="form-control" name="id" id="id"
+							<label for="id" id="font2">작성자</label> <input type="text"
+								class="form-control" name="id" id="value"
 								value="${travel.id }" readonly>
 						</div>
 						<div class="col-md-6 mb-3">
-							<label for="title">작성날짜</label> <input type="text"
-								class="form-control" name="writeDate" id="writeDate"
+							<label for="title" id="font2">작성날짜</label> <input type="text"
+								class="form-control" name="writeDate" id="value"
 								value="${travel.writeDate }" readonly>
 						</div>
 					</div>
-					<hr>
+					<hr id="value">
 					<div id="tr_btn_modify" style="display: none">
 						<div class="row">
 							<div class="col-md-2 mb-3"></div>
@@ -376,27 +411,27 @@ body {
 				<c:forEach var="comment" items="${comment}" varStatus="status">
 					<div class="row">					
 						<div class="col-md-1 mb-3">
-						<label for="id">No</label>
+						<label for="id" id="font2">No</label>
 							<input type="text"
 								class="form-control" value="${status.count }" 
 								readonly />
 						</div>
 						<div class="col-md-2 mb-3">
-						<label for="id">작성자ID</label>
+						<label for="id" id="font2">작성자ID</label>
 							<input type="text"
-								class="form-control" value="${comment.id }" id="id" name="id"
+								class="form-control" value="${comment.id }" id="value" name="id"
 								readonly />
 						</div>
 						<div class="col-md-7 mb-3">
-						<label for="content">댓글 내용</label>
+						<label for="content" id="font2">댓글 내용</label>
 							 <input type="text"
-								class="form-control" value="${comment.content }" id="content"
+								class="form-control" value="${comment.content }" id="value"
 								name="content" readonly />
 						</div>
 						<div class="col-md-2 mb-3">
-						<label for="writeDate">작성 날짜</label>
+						<label for="writeDate" id="font2">작성 날짜</label>
 							<input type="text"
-								class="form-control" value="${comment.writeDate}" id="writeDate"
+								class="form-control" value="${comment.writeDate}" id="value"
 								name="writeDate" readonly />
 						</div>
 
@@ -404,20 +439,21 @@ body {
 				</c:forEach>
 
 				<c:if test='${userSession.grade.equals("user")}'>
-								<hr>
+								<hr id="value">
 					<form action="/tm/board/travel/add" method="post">
 						<div class="row">
 							<div class="col-md-8 mb-3">
-								<label for="comment">댓글 쓰기</label> <input type="text"
-									class="form-control" name="content" maxlength="48">
+								<label for="comment" id="font2">댓글 쓰기</label> <input type="text"
+									class="form-control" id="value" name="content" maxlength="48">
 							</div>
 							<input type="hidden" name="id" value="${userSession.id }">
 							<input type="hidden" name="commentTravelNO"
-								value="${travel.travelNO }">
-							<div class="col-md-4 mb-3" >
-							<label> </label>
+								value="${travel.travelNO }">																
+							<div class="col-md-4 mb-3">
+							<label> </label>							
 								<input class="btn btn-primary btn-lg btn-block" type="submit"
-									value="댓글쓰기">
+									value="댓글쓰기"> 
+									<!-- 여기 버튼 마진 0으로 주고 싶습니다만... -->
 							</div>
 						</div>
 					</form>
