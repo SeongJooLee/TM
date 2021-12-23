@@ -48,8 +48,8 @@ body {
 					<form action="/tm/board/popupEnter" method="post">
 					<div class="row">
 						<div class="col-md-3 mb-3">
-								<select class="form-control" name="searchOption">
-									<option value="null">검색 옵션</option>
+								<select class="form-control" name="headSearchOption" required>
+									<option value="" >검색 옵션</option>
 						   	    	<option value="person">작성자</option>
 						   			<option value="title">제목</option>
 						    		<option value="content">내용</option>
@@ -57,10 +57,10 @@ body {
 								</select>
 						</div>
 						<div class="col-md-6 mb-3">
-							<input class="form-control" type='text' name='searchResult' placeholder='검색어 입력' required>
+							<input class="form-control" type='text' name='headSearchResult' placeholder='검색어 입력' required>
 						</div>
 						<div class="col-md-3 mb-3">
-							<button class="btn btn-primary btn-md btn-block" type="submit">검색</button>
+							<button class="btn btn-primary btn-md btn-block" type="submit" >검색</button>
 						</div>
 					</div>
 					</form>

@@ -41,12 +41,12 @@ body {
 </style>
 <script>
 function fn_serch() {
-	var searchOption = document.getElementById("searchOption").value;
+	var searchOption = document.getElementById("headSearchOption").value;
 	if (!searchOption) {
 		alert('검색 옵션을 선택해주세요.');
 		return false;
 	}
-	var searchResult = document.getElementById("searchResult").value;
+	var searchResult = document.getElementById("headSearchResult").value;
 	if (!searchResult) {
 		alert('검색내용을 입력해주세요.');
 		return false;
@@ -93,8 +93,8 @@ function fn_serch() {
 						<div class="row">
 							<div class="col-md-3 mb-3" >
 						<label>
-								<select class="form-control" id="searchOption" name="searchOption">
-									<option value="null">검색 옵션</option>
+								<select class="form-control" id="searchOption" name="headSearchOption" required>
+									<option value="">검색 옵션</option>
 									<option value="person">작성자</option>
 									<option value="title">제목</option>
 									<option value="content">내용</option>
@@ -103,7 +103,7 @@ function fn_serch() {
 						</label>
 							</div>
 							<div class="col-md-6 mb-3">
-								<input class="form-control" type='text' id="searchResult" name='searchResult'
+								<input class="form-control" type='text' id="searchResult" name='headSearchResult'
 									placeholder='검색어 입력' required>&nbsp;&nbsp;
 							</div>
 							<div class="col-md-2 mb-3">
