@@ -454,5 +454,12 @@ public class UserController {
 		return "userComment";
 	}
 	
+	@RequestMapping(value="/member/seller/reservation/complete", method=RequestMethod.GET)
+	public String sellerReservationComplete(@RequestParam("reserNO")String reserNO,HttpSession session){	
+		userService.sellerReservationComplete(reserNO);
+		
+		return "sellerMyPage";
+	}
+	
 	
 }

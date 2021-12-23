@@ -2,9 +2,10 @@
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page session="true"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <%
-request.setCharacterEncoding("utf-8");
+	request.setCharacterEncoding("utf-8");
 %>
 <!DOCTYPE html>
 <html>
@@ -41,44 +42,41 @@ body {
 </style>
 
 <script src='http://code.jquery.com/jquery-latest.min.js'></script>
-
 </head>
 <body>
 	<jsp:include page="/resources/include/header.jsp" />
-	<hr>
 
 
 	<div class="container">
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
 				<h4 class="mb-3" align="center">회원 정보</h4>
-					<input type="hidden" name="id" value="${userSession.sellerID}">
-					<div class="row">
-						<div class="col-md-6 mb-3">
-							<form action='mypage' method='post'>
-								<input type="hidden" name="testKey" value="sellerOne">					
-								<input class='form-control' type='submit'  value='회원정보'>
-							</form>
-						</div>
-						<div class="col-md-6 mb-3">
-							<form action='mypage' method='post'>
-							<input type="hidden" name="testKey" value="sellerTwo">					
-							<input class='form-control' type='submit'  value='내가 등록한 상품 보기'>
-							</form>	
-						</div>
-						
+				<input type="hidden" name="id" value="${userSession.sellerID}">
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<form action='mypage' method='post'>
+							<input type="hidden" name="testKey" value="sellerOne"> <input
+								class='form-control' type='submit' value='회원정보'>
+						</form>
 					</div>
-					
-					<hr>
-				
-					<br>
-					<br>
-					<h4 class="mb-3" align="center">${proNO}번 상품 예약 내역</h4>
-					<br>
-					<br>
-					<div class="row">
+					<div class="col-md-6 mb-3">
+						<form action='mypage' method='post'>
+							<input type="hidden" name="testKey" value="sellerTwo"> <input
+								class='form-control' type='submit' value='내가 등록한 상품 보기'>
+						</form>
+					</div>
+
+				</div>
+
+				<hr>
+
+				<br> <br>
+				<h4 class="mb-3" align="center">${proNO}번상품예약내역</h4>
+				<br> <br>
+				<div class="row">
+					<form id="reserComplete">
 						<table class="table table-hover">
-							<thead>
+							<thead align="center">
 								<tr class="table-primary">
 									<th>상품 번호</th>
 									<th>예약 번호</th>
@@ -87,40 +85,33 @@ body {
 									<th>예약자 ID</th>
 									<th>결제 여부</th>
 									<th>이용 여부</th>
-								
+
 								</tr>
 							</thead>
-							<tbody>
-							
+							<tbody align="center">
 								<c:forEach var='list' items='${reservation}' varStatus='num'>
-								<tr>
-
-									<td>${proNO}</td>
-									<td>${list.reserNO}</td>
-									<td>${list.reserDate}</td>	
-									<td>${list.headCount}</td>
-									<td>${list.id}</td>
-									<td>${list.payment}</td>
-									<td>
-									<c:if test="${list.complete=='Y' }">
+									<tr>
+										<td>${proNO}</td>
+										<td>${list.reserNO}</td>
+										<td>${list.reserDate}</td>
+										<td>${list.headCount}</td>
+										<td>${list.id}</td>
+										<td><c:if test="${list.payment=='Y' }">
+									${list.payment}
+									</c:if> <c:if test="${list.payment!='Y' }">
+									N
+									</c:if></td>
+										<td><c:if test="${list.complete=='Y' }">
 										이용 완료
-									</c:if>
-									<c:if test="${list.payment=='Y' && list.complete!='Y' }">
-										<button type="button" name="complete" onClick="reserComplete()">확정</button>
-									</c:if>
-									</td>
-								</tr>
-							</c:forEach>
-								
+									</c:if> <c:if test="${list.payment=='Y' && list.complete!='Y' }">
+										<a href="${contextPath}/member/seller/reservation/complete?reserNO=${list.reserNO}">확정</a>
+										</c:if></td>
+									</tr>
+								</c:forEach>
 							</tbody>
 						</table>
-					</div>
-					
-					
-					
-				
-					
-					
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>

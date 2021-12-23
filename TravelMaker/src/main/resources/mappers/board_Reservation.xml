@@ -92,6 +92,11 @@
 		 WHERE RESERNO=#{reserNO}
 	</update>
 	
+	<update id="insertComplete" parameterType="java.lang.String">
+		UPDATE RESERVATION SET complete = 'Y'
+		 WHERE RESERNO=#{reserNO}
+	</update>
+	
 	
 	
 

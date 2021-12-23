@@ -262,4 +262,9 @@ public class UserService {
 		// TODO Auto-generated method stub
 		return userDAO.deleteCommentReview(userReviewPK);
 	}
+
+	public void sellerReservationComplete(String reserNO) {
+		// TODO Auto-generated method stub
+		userDAO.sellerReservationComplete(reserNO);
+	}
 }

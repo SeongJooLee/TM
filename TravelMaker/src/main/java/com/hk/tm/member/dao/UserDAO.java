@@ -334,6 +334,12 @@ public class UserDAO {
 		return 0;
 	}
 
+	public void sellerReservationComplete(String reserNO) {
+		// TODO Auto-generated method stub
+		System.out.println("여기까지 왓으!!");
+		sqlSession.update("mapper.boardReservation.insertComplete",reserNO);
+	}
+
 	
 
 }

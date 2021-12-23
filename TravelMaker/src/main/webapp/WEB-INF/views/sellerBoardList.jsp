@@ -78,7 +78,7 @@ body {
 					<br>
 					<div class="row">
 						<table class="table table-hover">
-							<thead>
+							<thead align="center">
 								<tr class="table-primary">
 									<th>상품 번호</th>
 									<th>상품 제목</th>
@@ -91,7 +91,7 @@ body {
 							<tbody>
 							
 								<c:forEach var='list' items='${proList}' varStatus='num'>
-								<tr>
+								<tr align="center">
 
 								<td><a href='/tm/board/promotion/view?promotionNO=${list.promotionNO}'>${list.promotionNO}</a></td>
 								<td>${list.title}</td>
