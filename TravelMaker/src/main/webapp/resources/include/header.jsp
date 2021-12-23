@@ -41,6 +41,22 @@
 }
 
 </style>
+<script>
+function fn_serch() {
+	var title = document.getElementById("headSearchOption").value;
+	if (!headSearchOption) {
+		alert('검색 옵션을 선택해주세요.');
+		return false;
+	}
+	var content = document.getElementById("headSearchResult").value;
+	if (!headSearchResult) {
+		alert('검색내용을 입력해주세요.');
+		return false;
+	}
+		document.getElementById("frmHeadSerch").submit();
+	}
+}
+</script>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <c:if
 	test='${userSession.name != null && userSession.grade.equals("user")}'>
@@ -123,17 +139,17 @@
 				href="${contextPath}/board/travel">여행게시판</a></li>
 		</ul>
 
-		<form class="form-inline my-2 my-lg-0" action="/tm/board/popupEnter" method="post">
-			<select class="form-control" name="searchOption">
+		<form id="frmHeadSerch" class="form-inline my-2 my-lg-0" action="/tm/board/popupEnter" method="post">
+			<select class="form-control" name="headSearchOption">
 				<option value="null">검색 옵션</option>
 				<option value="person">작성자</option>
 				<option value="title">제목</option>
 				<option value="content">내용</option>
 				<option value="titleContent">제목+내용</option>
 			</select>&nbsp;&nbsp;
-			 <input class="form-control" type='text' name='searchResult'
+			 <input class="form-control" type='text' name='headSearchResult'
 				placeholder='검색어 입력' required>&nbsp;&nbsp;
-			<button class="form-control" type="submit">검색</button>
+			<button class="form-control" onClick="fn_serch()">검색</button>
 		</form>
   </div>
 </nav>

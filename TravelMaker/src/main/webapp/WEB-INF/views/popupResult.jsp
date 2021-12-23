@@ -39,6 +39,22 @@ body {
 	box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
 }
 </style>
+<script>
+function fn_serch() {
+	var title = document.getElementById("searchOption").value;
+	if (!searchOption) {
+		alert('검색 옵션을 선택해주세요.');
+		return false;
+	}
+	var content = document.getElementById("searchResult").value;
+	if (!searchResult) {
+		alert('검색내용을 입력해주세요.');
+		return false;
+	}
+		document.getElementById("frmSerch").submit();
+	}
+}
+</script>
 </head>
 <body>
 	<jsp:include page="/resources/include/header.jsp" />
@@ -73,7 +89,7 @@ body {
 				</c:forEach>
 				<hr>
 				<div align="right">
-					<form action="/tm/board/popupEnter" method="post">
+					<form id="frmSerch" action="/tm/board/popupEnter" method="post">
 						<div class="row">
 							<div class="col-md-3 mb-3" >
 						<label>
@@ -91,7 +107,7 @@ body {
 									placeholder='검색어 입력' required>&nbsp;&nbsp;
 							</div>
 							<div class="col-md-2 mb-3">
-								<button class="form-control" type="submit">검색</button>
+								<button class="form-control" onClick="fn_serch()">검색</button>
 							</div>
 						</div>
 					</form>
