@@ -41,10 +41,6 @@ public class CommentDAO {
 		sql.update(ns + "updateComment", commentVO);
 	}
 
-	public void travelDelete(int travelNO) {
-		
-		sql.delete(ns + "travelDelete", travelNO);
-	}
 
 	public List<CommentVO> selectUserComment(String id) {
 		// TODO Auto-generated method stub
@@ -79,6 +75,15 @@ public class CommentDAO {
 		// TODO Auto-generated method stub
 		sql.delete(ns+"reviewDelete",reviewNO);
 		
+	}
+	//테마여행 게시글 삭제시 자식 테이블 삭제
+	public void deleteTravel(int travelNO) {
+		sql.delete(ns+"travelDelete",travelNO);
+	}
+
+	public void travelDelete(int travelNO) {
+		
+		sql.delete(ns + "travelDelete", travelNO);
 	}
 
 }

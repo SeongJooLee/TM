@@ -52,7 +52,7 @@ width:100%;
 						</c:if>
 
 						<c:if test="${notice.image1 == null }">
-							<img
+							<img class="imageTest"
 								src="<c:url value="http://encosmall.kr/design/encos0720/shop/img/common/gonggi_top.jpg" />"
 								 />
 						</c:if>
@@ -80,13 +80,13 @@ width:100%;
 				<div class="col-md-4 mb-5">
 					<div class="card h-100">
 						<c:if test="${promotion.image1 != null }">
-							<img
+							<img class="imageTest"
 								src="${contextPath }/board/promotion/download?image=${promotion.image1}&promotionNO=${promotion.promotionNO}&name=${promotion.name}"
 								 />
 						</c:if>
 
 						<c:if test="${promotion.image1 == null }">
-							<img
+							<img class="imageTest"
 								src="<c:url value="http://encosmall.kr/design/encos0720/shop/img/common/gonggi_top.jpg" />"
 								 />
 						</c:if>

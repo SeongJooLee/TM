@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hk.tm.board.dao.CategoryDAO;
+import com.hk.tm.board.dao.CommentDAO;
 import com.hk.tm.board.dao.ImageDAO;
 import com.hk.tm.board.dao.TravelDAO;
 import com.hk.tm.board.vo.CategoryVO;
@@ -30,6 +31,9 @@ public class TravelService {
 
 	@Autowired
 	CategoryDAO categoryDAO;
+	
+	@Autowired
+	CommentDAO commentDAO;
 
 	public List<TravelVO> selectAllTravels() {
 
@@ -75,6 +79,9 @@ public class TravelService {
 	}
 
 	public TravelVO deleteTravel(int travelNO) {
+		//게시글 삭제를 위한 재료
+		commentDAO.deleteTravel(travelNO);
+		
 		imageDAO.deleteTravel(travelNO);
 		categoryDAO.deleteTravel(travelNO);
 		TravelVO travelVO = travelDAO.selectOneTravel(travelNO);

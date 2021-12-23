@@ -21,7 +21,7 @@
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="<c:url value="/resources/css/styles.css" />"
-	rel="stylesheet" />
+	rel="stylesheet" />	
 
 <style>
 .imagetest {
@@ -73,7 +73,12 @@ body {
 			document.getElementById("imgUpdate").disabled = false;
 		}
 		document.getElementById("tr_btn_modify").style.display = 'block';
-		document.getElementById("tr_btn").style.display = 'none';
+		if(${userSession.grade.equals("user")}){
+			document.getElementById("tr_btn1").style.display = 'none';
+		}
+		if(${userSession.grade.equals("admin")}){
+			document.getElementById("tr_btn2").style.display = 'none';
+		}
 	}
 
 	function fn_imgUpdateBtn(obj) {
@@ -152,12 +157,11 @@ body {
 </head>
 <body>
 	<jsp:include page="/resources/include/header.jsp" />
-	<hr>
 
 	<div class="container">
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
-				<h4 class="mb-3">테마여행 게시글 보기</h4>
+				<h4 class="mb-3" align="center">테마여행 게시글 보기</h4><br>
 				<form id="frmTravel" enctype="multipart/form-data">
 					<input type="hidden" value="${travel.name }" name="name" />
 					<div class="row">
@@ -284,7 +288,7 @@ body {
 					<hr>
 					<div id="tr_btn_modify" style="display: none">
 						<div class="row">
-							<div class="col-md-1 mb-3"></div>
+							<div class="col-md-2 mb-3"></div>
 							<div class="col-md-4 mb-3">
 								<input class="btn btn-info btn-lg btn-block" type="button" value="수정 반영하기"
 									onClick="fn_modify_update(frmTravel)" />
@@ -296,7 +300,7 @@ body {
 							<div class="col-md-1 mb-3"></div>
 						</div>
 					</div>
-					<div id="tr_btn">
+					<div id="tr_btn1">
 						<div class="row">
 							<c:if test='${userSession.grade.equals("user")}'>
 								<c:forEach var='list' items='${list}'>
@@ -328,8 +332,18 @@ body {
 							</c:if>
 						</div>
 					</div>
+					<div id="tr_btn2">
 					<div class="row">
 
+						<c:if test='${userSession.grade.equals("seller")}'>
+
+							<div class="col-md-4 mb-3"></div>
+							<div class="col-md-4 mb-3"></div>
+							<div class="col-md-4 mb-3">
+								<input class="btn btn-primary btn-lg btn-block" type="button" value="리스트로 돌아가기"
+									onClick="backToList(this.form)" />
+							</div>
+						</c:if>
 						<c:if test='${userSession.grade.equals("admin")}'>
 							<div class="col-md-4 mb-3">
 								<input class="btn btn-primary btn-lg btn-block" type="button" value="수정하기"
@@ -345,6 +359,7 @@ body {
 							</div>
 						</c:if>
 					</div>
+					</div>	
 				</form>
 			</div>
 		</div>
@@ -358,21 +373,41 @@ body {
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
 
-
-				<c:forEach var="comment" items="${comment}">
-					<div class="row">
+					<div class="row" align="center">
+						<div class="col-md-1 mb-3" >
+							<label for="id">No</label>
+						</div>
+						<div class="col-md-2 mb-3" >
+							<label for="id">작성자ID</label>
+						</div>
+						<div class="col-md-7 mb-3">
+							<label for="content">댓글 내용</label>
+						</div>
 						<div class="col-md-2 mb-3">
-							<label for="id">작성자ID</label> <input type="text"
+							<label for="writeDate">작성 날짜</label>
+						</div>
+
+					</div>
+
+				<c:forEach var="comment" items="${comment}" varStatus="status">
+					<div class="row">
+						<div class="col-md-1 mb-3">
+							<input type="text"
+								class="form-control" value="${status.count }" 
+								readonly />
+						</div>
+						<div class="col-md-2 mb-3">
+							<input type="text"
 								class="form-control" value="${comment.id }" id="id" name="id"
 								readonly />
 						</div>
-						<div class="col-md-8 mb-3">
-							<label for="content">댓글 내용</label> <input type="text"
+						<div class="col-md-7 mb-3">
+							 <input type="text"
 								class="form-control" value="${comment.content }" id="content"
 								name="content" readonly />
 						</div>
 						<div class="col-md-2 mb-3">
-							<label for="writeDate">작성 날짜</label> <input type="text"
+							<input type="text"
 								class="form-control" value="${comment.writeDate}" id="writeDate"
 								name="writeDate" readonly />
 						</div>
@@ -384,14 +419,16 @@ body {
 					<form action="/tm/board/travel/add" method="post">
 						<div class="row">
 							<div class="col-md-12 mb-3">
-								<label for="comment">댓글 쓰기 :</label> <input type="text"
-									class="form-control" name="content">
+								<label for="comment">댓글 쓰기</label> <input type="text"
+									class="form-control" name="content" maxlength="48">
 								<hr>
 							</div>
 							<input type="hidden" name="id" value="${userSession.id }">
 							<input type="hidden" name="commentTravelNO"
 								value="${travel.travelNO }">
-							<div class="col-md-4 mb-3">
+							<div class="col-md-4 mb-3" ></div>
+							<div class="col-md-4 mb-3" ></div>
+							<div class="col-md-4 mb-3" >
 								<input class="btn btn-primary btn-lg btn-block" type="submit"
 									value="댓글쓰기">
 							</div>
@@ -411,7 +448,7 @@ body {
 	<br>
 	<br>
 	<br>
-	<hr>
+
 	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

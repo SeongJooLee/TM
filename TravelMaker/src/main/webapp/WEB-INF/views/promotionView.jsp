@@ -83,7 +83,12 @@ body {
 			document.getElementById("imgUpdate").disabled = false;
 		}
 		document.getElementById("tr_btn_modify").style.display = 'block';
-		document.getElementById("tr_btn").style.display = 'none';
+		if(${userSession.grade.equals("seller")}){
+		document.getElementById("tr_btn1").style.display = 'none';
+		}
+		if(${userSession.grade.equals("admin")}){
+		document.getElementById("tr_btn2").style.display = 'none';
+		}
 	}
 	function fn_imgUpdateBtn(obj) {
 		document.getElementById("imgUpdate").disabled = false;
@@ -204,8 +209,8 @@ body {
 						</div>
 						<div class="col-md-1 mb-3"></div>
 						<div class="col-md-3 mb-3">
-							<label for="price">가격</label> <input type="text"
-								class="form-control" value="${promotion.price } 원" id="price"
+							<label for="price">가격</label> <input type="number"
+								class="form-control" value="${promotion.price }" id="price"
 								name="price" disabled />
 						</div>
 						<div id="d_file"></div>
@@ -308,7 +313,7 @@ body {
 					<hr>
 					<div id="tr_btn_modify" style="display: none">
 						<div class="row">
-							<div class="col-md-1 mb-3"></div>
+							<div class="col-md-2 mb-3"></div>
 							<div class="col-md-4 mb-3">
 								<input class="btn btn-info btn-lg btn-block" type="button" value="수정 반영하기"
 									onClick="fn_modify_update(frmPromotion)" />
@@ -320,7 +325,7 @@ body {
 							<div class="col-md-1 mb-3"></div>
 						</div>
 					</div>
-					<div id="tr_btn">
+					<div id="tr_btn1">
 						<div class="row">
 							<c:if test='${userSession.grade.equals("seller")}'>
 								<c:forEach var='list' items='${proList}'>
@@ -352,6 +357,7 @@ body {
 							</c:if>
 						</div>
 					</div>
+					<div id="tr_btn2">
 					<div class="row">
 						<c:if test='${userSession.grade.equals("user")}'>
 							<div class="col-md-4 mb-3"></div>
@@ -380,15 +386,7 @@ body {
 							</div>
 						</c:if>
 
-						<c:if test='${userSession.grade==null}'>
-							<div class="col-md-4 mb-3"></div>
-							<div class="col-md-4 mb-3"></div>
-
-							<div class="col-md-4 mb-3">
-								<input class="btn btn-primary btn-lg btn-block" type="button" value="리스트로 돌아가기"
-									onClick="backToList(this.form)" />
-							</div>
-						</c:if>
+					</div>
 					</div>
 				</form>
 			</div>

@@ -35,7 +35,11 @@ body {
 	alert(' ※ 결제 확인을 누르셔야 결제가 완료됩니다!!');
 	
 	function fn_thankyou(){
-	alert('결제 확인 되었습니다.');
+		alert('결제 확인 되었습니다.');
+		document.getElementById('kakaoPay').method = "GET";
+		document.getElementById('kakaoPay').action = "${contextPath}/board/reservation/payment";
+		document.getElementById('kakaoPay').submit();
+		window.close();
 	}
 </script>
 </head>
@@ -84,6 +88,9 @@ body {
 					<div class="col-md-6">
 						<button type="button" onClick="fn_thankyou()" class="btn btn-primary btn-lg btn-block">결제 확인</button>
 					</div>
+					<form id="kakaoPay">
+						<input type="hidden" name="payment" value="${info.item_code }">
+					</form>
 				</div>
 			</div>
 		</div>

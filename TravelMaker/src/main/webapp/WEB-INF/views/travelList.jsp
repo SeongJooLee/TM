@@ -19,6 +19,27 @@
 	rel="stylesheet" />
 
 <style>
+body {
+	min-height: 100vh;
+}
+
+#mainColor{
+	background-color:#876b6b !important;
+	solid:#876b6b !important;
+
+}
+.input-form {
+	max-width: 680px;
+	margin-top: 80px;
+	padding: 32px;
+	background: #fff;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+	-moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+	box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+}
 .button {
 	background-color: #4CAF50; /* Green */
 	border: none;
@@ -83,11 +104,10 @@
 <body>
 	<jsp:include page="/resources/include/header.jsp" />
 	<!-- Responsive navbar-->
-	<hr>
 	<div class="container px-4 px-lg-5">
-		<div class="card text-white bg-secondary my-5 py-4 text-center">
+		<div class="card text-white bg-secondary my-5 py-4 text-center" id="mainColor">
 			<div class="card-body">
-				<p class="text-white m-0">테마여행</p>
+				<h5 class="text-white m-0" >테 마 여 행</h5>
 			</div>
 		</div>
 
@@ -127,7 +147,7 @@
 						</c:if>
 
 						<div class="card-footer">
-							<a class="btn btn-primary btn-sm">${travel.categoryName }</a>&nbsp;&nbsp;&nbsp;
+							<a class="btn btn-primary btn-sm" id="mainColor">${travel.categoryName }</a>&nbsp;&nbsp;&nbsp;
 							<a
 								href="${contextPath}/board/travel/view?travelNO=${travel.travelNO }">${travel.title }</a>
 						</div>
@@ -135,6 +155,11 @@
 				</div>
 			</c:forEach>
 		</div>
+		<c:if test='${userSession.grade.equals("user")}'>
+			<div align="right">
+				<a href="${contextPath }/board/travel/add" class="btn btn-primary btn-sm" id="mainColor">글쓰기</a>
+			</div>
+		</c:if>
 
 		<div align="center">
 			<c:forEach var="i" begin="1" end="${page }">
@@ -149,13 +174,10 @@
 				</c:if>
 			</c:forEach>
 		</div>
-
 	</div>
 
-	<c:if test='${userSession.grade.equals("user")}'>
-		<a href="${contextPath }/board/travel/add">글쓰기</a>
-	</c:if>
-	<hr>
+	
+	
 	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
