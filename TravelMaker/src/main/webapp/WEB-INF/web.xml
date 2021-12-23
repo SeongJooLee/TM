@@ -5,10 +5,31 @@
          http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	version="3.1">
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
+	
+
+        <error-page>
+  		 	 <error-code>404</error-code>
+   		 	<location>/WEB-INF/error/errorCode.jsp</location>
+		</error-page>
+		  <error-page>
+  		 	 <error-code>400</error-code>
+   		 	<location>/WEB-INF/error/errorCode.jsp</location>
+		</error-page>
+		  
+
+		<error-page>
+    		<error-code>500</error-code>
+    		<location>/WEB-INF/error/errorCode.jsp</location>
+		</error-page> 
+		<error-page>
+    		<exception-type>java.lang.Throwable</exception-type>
+   			 <location>/WEB-INF/error/errorCode.jsp</location>
+		</error-page>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/spring/root-context.xml</param-value>
 	</context-param>
+	
 	
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
 	<listener>
@@ -16,7 +37,7 @@
 	</listener>
 
 	<!-- Processes application requests -->
-	<servlet>
+	<servlet>	
 		<servlet-name>appServlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
@@ -47,6 +68,12 @@
 		<filter-mapping>
 			<filter-name>encodingFilter</filter-name>
 			<url-pattern>/*</url-pattern>
+			
 		</filter-mapping>
+		
+		
+
+
+
 
 </web-app>
