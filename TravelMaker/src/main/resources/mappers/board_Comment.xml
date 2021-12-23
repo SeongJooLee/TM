@@ -69,5 +69,10 @@
 		DELETE FROM "COMMENT" WHERE reviewNO=#{reviewNO} 
 	</delete>
 	
+	<select id="selectAllCommentUser" resultMap="commentResult">
+		SELECT ID, CONTENT, WRITEDATE, TRAVELNO, REVIEWNO
+		 FROM "COMMENT" WHERE id = #{id}
+		 
+	</select>
 
 </mapper>

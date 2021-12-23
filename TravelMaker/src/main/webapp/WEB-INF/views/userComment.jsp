@@ -42,17 +42,7 @@ body {
 
 <script src='http://code.jquery.com/jquery-latest.min.js'></script>
 <script>
-	function updateUser() {
-		location.href = "/tm/member/mypage/update";
-	}
-	function deleteUser() {
-		var result = confirm("삭제할거니..?");
-		if (result) {
-			location.href = "/tm/member/mypage/delete?userId=${userSession.id}";
-		} else {
-			return;
-		}
-	}
+	
 </script>
 </head>
 <body>
@@ -85,16 +75,16 @@ body {
 						</form>
 					</div>
 					<div class="col-md-3 mb-3">
-						<form action='/tm/member/mypage/comment' method='get'>					
+							<form action='/tm/member/mypage/comment' method='get'>					
 								<input class='form-control' type='submit'  value='내가 쓴 댓글 보기'>
-						</form>
-					</div>
+							</form>
+						</div>
 				</div>
 
 				<hr>
 				
 				<br> <br>
-				<h4 class="mb-3" align="center">[ ${userSession.id} ] 님의 게시글</h4>
+				<h4 class="mb-3" align="center">[ ${userSession.id} ] 님이 작성한 댓글</h4>
 				<br> <br>
 				<div class="row">
 					
@@ -102,28 +92,32 @@ body {
 						<table class="table table-hover">
 							<thead>
 								<tr class="table-primary">
+									
 									<th>게시판 종류</th>
-									<th>글 제목</th>
-									<th>글 내용</th>
+									<th>댓글 내용</th>
+									<th>작성 날짜</th>
+									<th>작성자 ID</th>
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach var='travel' items='${travel}'>
+								<c:forEach var='list' items='${userComment}'>
 									<tr>
-										<td>${travel.name}</td>
-										<td><a
-											href='/tm/member/mypage?travelNO=${travel.travelNO}'>${travel.title}</a></td>
-										<td>${travel.content}</td>
+										<c:choose>
+											<c:when test='${list.travelNO!=0}'>
+												<td><a href='/tm/board/travel/view?travelNO=${list.travelNO}'>테마여행</a></td>
+											</c:when>
+											<c:when test='${list.reviewNO!=0}'>
+												<td><a href='/tm/board/review/view?reviewNO=${list.reviewNO}'>이용후기</a></td>
+											</c:when>			
+										</c:choose>
+							
+										<td>${list.content}</td>
+										<td>${list.writeDate}</td>
+										<td>${list.id}</td>
+										
 									</tr>
 								</c:forEach>
-								<c:forEach var='review' items='${review}'>
-									<tr>
-										<td>${review.name}</td>
-										<td><a
-											href='/tm/member/mypage?reviewNO=${review.reviewNO}'>${review.title}</a></td>
-										<td>${review.content}</td>
-									</tr>
-								</c:forEach>
+								
 							</tbody>
 						</table>
 

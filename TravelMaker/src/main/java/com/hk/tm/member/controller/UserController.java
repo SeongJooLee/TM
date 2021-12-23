@@ -30,6 +30,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.hk.tm.board.vo.CommentVO;
 import com.hk.tm.board.vo.ImageVO;
 import com.hk.tm.board.vo.PromotionVO;
 import com.hk.tm.board.vo.ReservationVO;
@@ -431,6 +432,15 @@ public class UserController {
 		map.put("result",userService.duplicationCheckUser(checkID));
 		
 		return map;
+	}
+	
+	@RequestMapping(value="/member/mypage/comment", method=RequestMethod.GET)
+	public String userComment(Model model,HttpSession session){	
+		UserVO user = (UserVO) session.getAttribute("userSession");
+		
+		List<CommentVO> userComment = userService.selectComment(user.getId());
+		model.addAttribute("userComment",userComment);
+		return "userComment";
 	}
 	
 	

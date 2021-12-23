@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hk.tm.board.dao.ImageDAO;
+import com.hk.tm.board.vo.CommentVO;
 import com.hk.tm.board.vo.ImageVO;
 import com.hk.tm.board.vo.NoticeVO;
 import com.hk.tm.board.vo.PromotionVO;
@@ -213,5 +214,10 @@ public class UserService {
 	public boolean duplicationCheckUser(String checkID) {
 		// TODO Auto-generated method stub
 		return userDAO.duplicationCheckUser(checkID);
+	}
+
+	public List<CommentVO> selectComment(String id) {
+		// TODO Auto-generated method stub
+		return userDAO.selectComment(id);
 	}
 }

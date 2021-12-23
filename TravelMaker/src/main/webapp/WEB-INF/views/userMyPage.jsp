@@ -66,22 +66,27 @@ body {
 				<h4 class="mb-3" align="center">회원 정보</h4>
 					<input type="hidden" name="id" value="${userSession.id}">
 					<div class="row">
-						<div class="col-md-4 mb-3">
-							<form action='mypage' method='post'>
+						<div class="col-md-3 mb-3">
+							<form action='/tm/member/mypage' method='post'>
 								<input type="hidden" name="testKey" value="one">					
 								<input class='form-control' type='submit'  value='회원정보'>
 							</form>
 						</div>
-						<div class="col-md-4 mb-3">
-							<form action='mypage' method='post'>
+						<div class="col-md-3 mb-3">
+							<form action='/tm/member/mypage' method='post'>
 								<input type="hidden" name="testKey" value="two">					
 								<input class='form-control' type='submit'  value='내가 쓴 글 보기''>
 							</form>
 						</div>
-						<div class="col-md-4 mb-3">
-							<form action='mypage' method='post'>
+						<div class="col-md-3 mb-3">
+							<form action='/tm/member/mypage' method='post'>
 								<input type="hidden" name="testKey" value="three">					
 								<input class='form-control' type='submit'  value='예약확인'>
+							</form>
+						</div>
+						<div class="col-md-3 mb-3">
+							<form action='/tm/member/mypage/comment' method='get'>					
+								<input class='form-control' type='submit'  value='내가 쓴 댓글 보기'>
 							</form>
 						</div>
 					</div>

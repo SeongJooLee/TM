@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.hk.tm.board.vo.CommentVO;
 import com.hk.tm.board.vo.NoticeVO;
 import com.hk.tm.board.vo.PromotionVO;
 import com.hk.tm.board.vo.ReservationVO;
@@ -246,6 +247,12 @@ public class UserDAO {
 			return false;
 		}
 		
+	}
+
+	public List<CommentVO> selectComment(String id) {
+		// TODO Auto-generated method stub
+		List<CommentVO> list = sqlSession.selectList("mapper.boardComment.selectAllCommentUser",id);
+		return list;
 	}
 
 	
