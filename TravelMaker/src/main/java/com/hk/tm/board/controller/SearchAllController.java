@@ -28,7 +28,8 @@ public class SearchAllController {
 	}
 	
 	@RequestMapping(value="/board/popupEnter", method=RequestMethod.POST)
-	public String popupEnterPost(Model model,@RequestParam("searchOption")String option,@RequestParam("searchResult")String result){	
+	public String popupEnterPost(Model model,@RequestParam("headSearchOption")String option,@RequestParam("headSearchResult")String result){	
+		
 		switch(option) {
 		case "person" : //검색옵션 == 작성자
 			List<NoticeVO> listID = searchAllService.searchIdList(result);

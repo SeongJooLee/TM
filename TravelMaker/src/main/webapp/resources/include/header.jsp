@@ -43,8 +43,9 @@
 </style>
 <script>
 function fn_headSerch() {
-	var headSearchOption = document.getElementById("headSearchOption").value;
-	if (!headSearchOption) {
+<!--	var headSearchOption = document.getElementById("headSearchOption").value;
+	
+	if (headSearchOption == null) {
 		alert('검색 옵션을 선택해주세요.');
 		return false;
 	}
@@ -52,7 +53,7 @@ function fn_headSerch() {
 	if (!headSearchResult) {
 		alert('검색내용을 입력해주세요.');
 		return false;
-	}
+	}-->
 		document.getElementById("frmHeadSerch").submit();
 	}
 }
@@ -140,8 +141,8 @@ function fn_headSerch() {
 		</ul>
 
 		<form id="frmHeadSerch" class="form-inline my-2 my-lg-0" action="/tm/board/popupEnter" method="post">
-			<select class="form-control" id="headSearchOption" name="headSearchOption">
-				<option value="null">검색 옵션</option>
+			<select class="form-control" id="headSearchOption" name="headSearchOption" required>
+				<option value="" >검색 옵션</option>
 				<option value="person">작성자</option>
 				<option value="title">제목</option>
 				<option value="content">내용</option>
