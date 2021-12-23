@@ -42,7 +42,7 @@
 
 </style>
 <script>
-function fn_serch() {
+function fn_headSerch() {
 	var title = document.getElementById("headSearchOption").value;
 	if (!headSearchOption) {
 		alert('검색 옵션을 선택해주세요.');
@@ -149,7 +149,7 @@ function fn_serch() {
 			</select>&nbsp;&nbsp;
 			 <input class="form-control" type='text' name='headSearchResult'
 				placeholder='검색어 입력' required>&nbsp;&nbsp;
-			<button class="form-control" onClick="fn_serch()">검색</button>
+			<button class="form-control" onClick="fn_headSerch()">검색</button>
 		</form>
   </div>
 </nav>
