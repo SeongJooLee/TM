@@ -64,6 +64,7 @@ public class ReservationController {
 	public String reservationDone(@ModelAttribute ReservationVO reserVO,Model model) {
 		System.out.println("view 확인"+reserVO.getReserNO());
 		
+		
 		Map<String, Object> map =reserService.selectOneReservation(reserVO);
 		
 		
