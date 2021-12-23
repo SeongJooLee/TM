@@ -169,7 +169,7 @@ function backToList(obj){
 	<div class="container">
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
-				<h4 class="mb-3">홍보상품 게시글 보기</h4>
+				<h4 class="mb-3">이용후기 보기</h4>
 				<form id="frmReview" enctype="multipart/form-data">
 					<input type="hidden" value="${review.name }" name="name" />
 					<div class="row">

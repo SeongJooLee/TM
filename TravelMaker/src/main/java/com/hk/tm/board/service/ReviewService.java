@@ -7,10 +7,10 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hk.tm.board.dao.CommentDAO;
 import com.hk.tm.board.dao.ImageDAO;
 import com.hk.tm.board.dao.ReviewDAO;
 import com.hk.tm.board.vo.ImageVO;
-import com.hk.tm.board.vo.NoticeVO;
 import com.hk.tm.board.vo.ReviewImageVO;
 import com.hk.tm.board.vo.ReviewVO;
 import com.hk.tm.board.vo.SelectPageVO;
@@ -23,6 +23,9 @@ public class ReviewService {
 	
 	@Autowired
 	ImageDAO imageDAO;
+	
+	@Autowired
+	CommentDAO commentDAO;
 	
 	
 	public List<ReviewVO> boardAllList() {
@@ -57,6 +60,7 @@ public class ReviewService {
 	
 	public ReviewVO reviewDelete(int reviewNO) {
 		imageDAO.reviewDelete(reviewNO);
+		commentDAO.reviewDelete(reviewNO);
 		
 		ReviewVO reviewVO = reviewDAO.selectOne(reviewNO);
 		

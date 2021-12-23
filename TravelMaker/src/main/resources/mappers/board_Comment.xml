@@ -61,5 +61,13 @@
 		DELETE FROM "COMMENT" WHERE ID=#{userId} 
 	</delete>
 	
+	<delete id="travelDelete" parameterType="CommentVO"> 
+		DELETE FROM "COMMENT" WHERE travelNO = #{travelNO} 
+	</delete>
+	
+	<delete id="reviewDelete" parameterType="CommentVO"> 
+		DELETE FROM "COMMENT" WHERE reviewNO=#{reviewNO} 
+	</delete>
+	
 
 </mapper>

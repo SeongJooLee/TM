@@ -127,11 +127,10 @@ public class CommentController {
 	}
 	
 	@RequestMapping(value="/delete" ,  method=RequestMethod.GET) 
-		public void commentDelete(@RequestParam("travelNO") int travelNO, HttpServletResponse response) throws Exception {		
+		public void travelDelete(@RequestParam("travelNO") int travelNO, HttpServletResponse response) throws Exception {		
 
-		CommentVO commentVO = commentService.deleteComment(travelNO);	
+		CommentVO commentVO = commentService.travelDelete(travelNO);	
 
-		response.sendRedirect("/tm/board/comment"); 
 	}
 }
 

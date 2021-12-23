@@ -293,7 +293,7 @@ public class PromotionController {
 			File imageFile = new File(path);
 
 			int lastIndex = image.lastIndexOf(".");
-			String fileName = image.substring(0,lastIndex);
+			String fileName = image.substring(0,lastIndex); // 여기 왜 오류?
 			File destDir = new File(REPO+"\\thumbnail");
 			File thumbnail = new File(REPO+"\\thumbnail\\"+name+"\\"+promotionNO+"\\"+fileName+".png");
 			destDir.mkdir();

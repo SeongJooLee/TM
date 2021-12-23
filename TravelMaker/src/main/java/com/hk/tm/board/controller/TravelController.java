@@ -140,7 +140,7 @@ public class TravelController {
 			// TODO: handle exception
 			
 		}
-		return "travelViewTest"; // travelView.jsp 호출
+		return "travelView"; // travelView.jsp 호출
 
 	}
 
@@ -279,7 +279,7 @@ public class TravelController {
 		model.addAttribute("category",map.get("category"));
 
 
-		return "travelViewTest"; // tavelView.jsp로 이동
+		return "travelView"; // tavelView.jsp로 이동
 
 	}
 

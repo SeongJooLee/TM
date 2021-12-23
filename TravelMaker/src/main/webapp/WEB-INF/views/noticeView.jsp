@@ -71,7 +71,7 @@ body {
 		cnt++;
 	}
 	function fn_enable(obj) {
-		document.getElementById("categoryName").disabled = false;
+		document.getElementById("name").disabled = false;
 		document.getElementById("title").disabled = false;
 		document.getElementById("content").disabled = false;
 		if (document.getElementById("originalFileName") != null) {
@@ -175,7 +175,6 @@ body {
 			<div class="input-form col-md-12 mx-auto">
 				<h4 class="mb-3">공지사항 보기</h4>
 				<form id="frmNotice" enctype="multipart/form-data">
-					<input type="hidden" value="${notice.name }" name="name" />
 					<div class="row">
 						<div class="col-md-2 mb-3">
 							<label for="noticeNO">번호</label> <input type="text"
@@ -274,10 +273,10 @@ body {
 					</div>
 					<div class="row">
 						<div class="col-md-2 mb-3">
-							<label for="categoryName">카테고리</label> <select
-								class="form-control" name="categoryName" id="categoryName"
+							<label for="name">카테고리</label> <select
+								class="form-control" name="name" id="name"
 								disabled>
-								<option value="${category.categoryName }">${category.categoryName }</option>
+								<option value="${notice.name }">${notice.name }</option>
 								<option value="이벤트">이벤트</option>
 								<option value="공지사항">공지사항</option>
 							</select>

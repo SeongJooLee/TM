@@ -54,10 +54,10 @@ public class CommentService {
 		commentDAO.addComment(commentVO);// 여기문제
 	}
 
-	public CommentVO deleteComment(int travelNO) {
+	public CommentVO travelDelete(int travelNO) {
 		// TODO Auto-generated method stub
 		CommentVO commentVO = commentDAO.selectOneComment(travelNO);
-		commentDAO.deleteComment(travelNO);
+		commentDAO.travelDelete(travelNO);
 		
 		return commentVO;
 	}

@@ -45,7 +45,7 @@
 	</insert>
 	
 	<update id="updateNotice" parameterType="NoticeVO">
-		UPDATE NOTICE SET TITLE=#{title}, CONTENT=#{content}
+		UPDATE NOTICE SET TITLE=#{title}, CONTENT=#{content}, name=#{name}
 		 WHERE NOTICENO=#{noticeNO}
 	</update>
 	

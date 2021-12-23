@@ -41,9 +41,9 @@ public class CommentDAO {
 		sql.update(ns + "updateComment", commentVO);
 	}
 
-	public void deleteComment(int travelNO) {
+	public void travelDelete(int travelNO) {
 		
-		sql.delete(ns + "deleteComment", travelNO);
+		sql.delete(ns + "travelDelete", travelNO);
 	}
 
 	public List<CommentVO> selectUserComment(String id) {
@@ -73,6 +73,12 @@ public class CommentDAO {
 		System.out.println("댓글달기 : "+commentVO.toString());
 		int ret = sql.insert(ns+"addReviewComment",commentVO);
 		return ret;
+	}
+
+	public void reviewDelete(int reviewNO) {
+		// TODO Auto-generated method stub
+		sql.delete(ns+"reviewDelete",reviewNO);
+		
 	}
 
 }

@@ -36,6 +36,8 @@ public class PromotionService {
 	@Autowired
 	ReviewDAO reviewDAO;
 	
+
+	
 	public List<PromotionVO> selectAllPromotion() {
 		return promotionDAO.selectAllPromotion();
 	}
@@ -77,6 +79,7 @@ public class PromotionService {
 		imageDAO.promotionDelete(promotionNO);
 		categoryDAO.promotionDelete(promotionNO);
 		reservationyDAO.promotionDelete(promotionNO);
+		
 		reviewDAO.promotionDelete(promotionNO);
 		
 		PromotionVO promotionVO = promotionDAO.selectOnePromotion(promotionNO);
