@@ -110,7 +110,7 @@ function kakaoPay(){
 							<p class="form-control">${reser.promotionNO}</p>
 						</div>
 						<div class="col-md-2">
-							<label for="title">가 격</label> <input type="hidden" name="price"
+							<label for="title">상품 가격</label> <input type="hidden" name="price"
 								value="${promotion.price  }">
 						</div>
 						<div class="col-md-4">
@@ -143,6 +143,17 @@ function kakaoPay(){
 						</div>
 						<div class="col-md-4">
 							<p class="form-control">${userSession.phone}</p>
+						</div>
+						<div class="col-md-2">
+							<label for="payment">결제 여부</label> 
+						</div>
+						<div class="col-md-4">
+							<c:if test="${reser.payment=='Y' }">
+							<p class="form-control">결제 완료!!</p>
+							</c:if>
+							<c:if test="${reser.payment!='Y' }">
+							<p class="form-control">X</p>
+							</c:if>
 						</div>
 
 					</div>
