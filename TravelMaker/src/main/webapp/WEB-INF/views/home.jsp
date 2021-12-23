@@ -15,6 +15,7 @@ request.setCharacterEncoding("utf-8");
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>Small Business - Start Bootstrap Template</title>
+<link rel="shortcut icon" type="image/x-icon" href="https://genfavicon.com/tmp/icon_cbe17ed8f879f2a2a624cded0d27c3f7.ico">
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Core theme CSS (includes Bootstrap)-->
