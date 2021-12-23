@@ -41,6 +41,13 @@
 	background-color: #e7e7e7;
 }
 </style>
+<script>
+function wkrtjd(obj){
+	document.getElementById('reviewcreate').method= "POST";
+	document.getElementById('reviewcreate').action = "${contextPath}/member/mypage";
+   document.getElementById('reviewcreate').submit();
+}
+</script>
 </head>
 <body>
 
@@ -78,6 +85,15 @@
 				</div>
 			</c:forEach>
 		</div>
+			<c:if test='${userSession.grade.equals("user")}'>
+		<div align="right">
+			<form id="reviewcreate">
+				<input type="hidden" name="testKey" value="three" >
+				<button class="btn btn-primary btn-sm" type="button" onClick="wkrtjd()" id="mainColor">이용후기 작성</button>
+			</form>
+		</div>
+	</c:if>
+		
 		<div align="center">
 			<c:forEach var="i" begin="1" end="${page }">
 				<c:if test="${selectPage == i}">

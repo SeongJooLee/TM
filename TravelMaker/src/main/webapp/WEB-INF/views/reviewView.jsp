@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8" isELIgnored="false"%>
+	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page session="true"%>
@@ -16,7 +16,7 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
-	
+
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="<c:url value="/resources/css/styles.css" />"
@@ -159,24 +159,24 @@ function backToList(obj){
    obj.submit();
 }
 
+
 </script>
 
 </head>
 <body>
-  <jsp:include page="/resources/include/header.jsp" />
-	<hr>
+	<jsp:include page="/resources/include/header.jsp" />
 
 	<div class="container">
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
-				<h4 class="mb-3">이용후기 보기</h4>
+				<h4 class="mb-3" align="center">이용후기</h4><br>
 				<form id="frmReview" enctype="multipart/form-data">
 					<input type="hidden" value="${review.name }" name="name" />
 					<div class="row">
 						<div class="col-md-2 mb-3">
 							<label for="reviewNO">번호</label> <input type="text"
-								class="form-control" value="${review.reviewNO }"
-								id="reviewNO" name="reviewNO" readonly />
+								class="form-control" value="${review.reviewNO }" id="reviewNO"
+								name="reviewNO" readonly />
 						</div>
 						<div class="col-md-10 mb-3">
 							<label for="title">제목</label> <input type="text"
@@ -190,12 +190,13 @@ function backToList(obj){
 							<label for="image">이미지 파일 첨부</label>
 							<div id="update">
 								<input type="button" value="파일 삭제" id="imgUpdateBtn"
-									class="btn btn-danger btn-lg btn-block" onClick="fn_imgUpdateBtn()" disabled /> <small>
+									class="btn btn-danger btn-lg btn-block"
+									onClick="fn_imgUpdateBtn()" disabled /> <small>
 									&nbsp;&nbsp; * 클릭시 전체 파일이 삭제됩니다.</small>
 							</div>
 							<input type="button" value="파일 추가" id="imgUpdate"
-								class="btn btn-info btn-lg btn-block" onClick="fn_addFile()" disabled /> <small>
-								&nbsp;&nbsp; * 최대 3개까지 첨부 가능합니다.</small>
+								class="btn btn-info btn-lg btn-block" onClick="fn_addFile()"
+								disabled /> <small> &nbsp;&nbsp; * 최대 3개까지 첨부 가능합니다.</small>
 						</div>
 						<div id="d_file"></div>
 						<div id="d_filetest">
@@ -204,34 +205,31 @@ function backToList(obj){
 									<div class="col-md-2 mb-5"></div>
 									<div class="col-md-8 mb-5" data-bs-ride="carousel">
 										<div class="carousel-inner">
-												<c:if
-													test="${not empty image.image1 && image.image1 !='null' }">
-											<div class="carousel-item active ">
+											<c:if
+												test="${not empty image.image1 && image.image1 !='null' }">
+												<div class="carousel-item active ">
 													<input type="hidden" id="originalFileName" name="image1"
-														value="${image.image1 }" />
-													<img class="imagetest"
+														value="${image.image1 }" /> <img class="imagetest"
 														src="${contextPath }/board/review/download?image=${image.image1}&reviewNO=${review.reviewNO}&name=${review.name}" />
-											</div>
-												</c:if>
+												</div>
+											</c:if>
 
-												<c:if
-													test="${not empty image.image2 && image.image2 !='null' }">
-											<div class="carousel-item">
+											<c:if
+												test="${not empty image.image2 && image.image2 !='null' }">
+												<div class="carousel-item">
 													<input type="hidden" id="originalFileName" name="image2"
-														value="${image.image2 }" />
-													<img class="imagetest"
+														value="${image.image2 }" /> <img class="imagetest"
 														src="${contextPath }/board/review/download?image=${image.image2}&reviewNO=${review.reviewNO}&name=${review.name}" />
-											</div>
-												</c:if>
-												<c:if
-													test="${not empty image.image3 && image.image3 !='null' }">
-											<div class="carousel-item">
+												</div>
+											</c:if>
+											<c:if
+												test="${not empty image.image3 && image.image3 !='null' }">
+												<div class="carousel-item">
 													<input type="hidden" id="originalFileName" name="image3"
-														value="${image.image3 }" />
-													<img class="imagetest"
+														value="${image.image3 }" /> <img class="imagetest"
 														src="${contextPath }/board/review/download?image=${image.image3}&reviewNO=${review.reviewNO}&name=${review.name}" />
-											</div>
-												</c:if>
+												</div>
+											</c:if>
 										</div>
 
 										<!-- / 슬라이드 쇼 끝 -->
@@ -268,11 +266,11 @@ function backToList(obj){
 							id="content" disabled>${review.content } </textarea>
 					</div>
 					<div class="row">
-						
+
 						<div class="col-md-4 mb-3">
 							<label for="id">작성자</label> <input type="text"
-								class="form-control" name="id" id="id"
-								value="${review.id }" readonly>
+								class="form-control" name="id" id="id" value="${review.id }"
+								readonly>
 						</div>
 						<div class="col-md-6 mb-3">
 							<label for="title">작성날짜</label> <input type="text"
@@ -283,14 +281,14 @@ function backToList(obj){
 					<hr>
 					<div id="tr_btn_modify" style="display: none">
 						<div class="row">
-							<div class="col-md-1 mb-3"></div>
+							<div class="col-md-2 mb-3"></div>
 							<div class="col-md-4 mb-3">
-								<input class="btn btn-info btn-lg btn-block" type="button" value="수정 반영하기"
-									onClick="fn_modify_update(frmReview)" />
+								<input class="btn btn-info btn-lg btn-block" type="button"
+									value="수정 반영하기" onClick="fn_modify_update(frmReview)" />
 							</div>
 							<div class="col-md-4 mb-3">
-								<input class="btn btn-info btn-lg btn-block" type="button" value="취소하기"
-									onClick="backToList(frmReview)" />
+								<input class="btn btn-info btn-lg btn-block" type="button"
+									value="취소하기" onClick="backToList(frmReview)" />
 							</div>
 							<div class="col-md-1 mb-3"></div>
 						</div>
@@ -302,16 +300,16 @@ function backToList(obj){
 									<c:if
 										test='${list.reviewNO == review.reviewNO && list.id.equals(review.id)}'>
 										<div class="col-md-4 mb-3">
-											<input class="btn btn-primary btn-lg btn-block" type="button" value="수정하기"
-												onClick="fn_enable(this.form)" />
+											<input class="btn btn-primary btn-lg btn-block" type="button"
+												value="수정하기" onClick="fn_enable(this.form)" />
 										</div>
 										<div class="col-md-4 mb-3">
-											<input class="btn btn-danger btn-lg btn-block" type="button" value="삭제하기"
-												onClick="fn_delete(this.form)" />
+											<input class="btn btn-danger btn-lg btn-block" type="button"
+												value="삭제하기" onClick="fn_delete(this.form)" />
 										</div>
 										<div class="col-md-4 mb-3">
-											<input class="btn btn-primary btn-lg btn-block" type="button" value="리스트로 돌아가기"
-												onClick="backToList(this.form)" />
+											<input class="btn btn-primary btn-lg btn-block" type="button"
+												value="리스트로 돌아가기" onClick="backToList(this.form)" />
 										</div>
 										<c:set var="check" value="1" />
 									</c:if>
@@ -320,8 +318,8 @@ function backToList(obj){
 									<div class="col-md-4 mb-3"></div>
 									<div class="col-md-4 mb-3"></div>
 									<div class="col-md-4 mb-3">
-										<input class="btn btn-primary btn-lg btn-block" type="button" value="리스트로 돌아가기"
-											onClick="backToList(this.form)" />
+										<input class="btn btn-primary btn-lg btn-block" type="button"
+											value="리스트로 돌아가기" onClick="backToList(this.form)" />
 									</div>
 								</c:if>
 							</c:if>
@@ -331,16 +329,16 @@ function backToList(obj){
 
 						<c:if test='${userSession.grade.equals("admin")}'>
 							<div class="col-md-4 mb-3">
-								<input class="btn btn-primary btn-lg btn-block" type="button" value="수정하기"
-									onClick="fn_enable(this.form)" />
+								<input class="btn btn-primary btn-lg btn-block" type="button"
+									value="수정하기" onClick="fn_enable(this.form)" />
 							</div>
 							<div class="col-md-4 mb-3">
-								<input class="btn btn-danger btn-lg btn-block" type="button" value="삭제하기"
-									onClick="fn_delete(this.form)" />
+								<input class="btn btn-danger btn-lg btn-block" type="button"
+									value="삭제하기" onClick="fn_delete(this.form)" />
 							</div>
 							<div class="col-md-4 mb-3">
-								<input class="btn btn-primary btn-lg btn-block" type="button" value="리스트로 돌아가기"
-									onClick="backToList(this.form)" />
+								<input class="btn btn-primary btn-lg btn-block" type="button"
+									value="리스트로 돌아가기" onClick="backToList(this.form)" />
 							</div>
 						</c:if>
 					</div>
@@ -351,56 +349,77 @@ function backToList(obj){
 
 	<!--  해당 글 댓글 보이기 -->
 	<div class="container">
-	
-	<c:if test="${comment != null }">
-	
-		<div class="input-form-backgroud row">
-			<div class="input-form col-md-12 mx-auto">
 
+		<c:if test="${comment != null }">
 
-				<c:forEach var="comment" items="${comment}">
-					<div class="row">
-						<div class="col-md-2 mb-3">
-							<label for="id">작성자ID</label> <input type="text"
-								class="form-control" value="${comment.id }" id="id" name="id"
-								readonly />
-						</div>
-						<div class="col-md-8 mb-3">
-							<label for="content">댓글 내용</label> <input type="text"
-								class="form-control" value="${comment.content }" id="content"
-								name="content" readonly />
+			<div class="input-form-backgroud row">
+				<div class="input-form col-md-12 mx-auto">
+
+					<div class="row" align="center">
+						<div class="col-md-1 mb-3">
+							<label for="id">No</label>
 						</div>
 						<div class="col-md-2 mb-3">
-							<label for="writeDate">작성 날짜</label> <input type="text"
-								class="form-control" value="${comment.writeDate}" id="writeDate"
-								name="writeDate" readonly />
+							<label for="id">작성자ID</label>
+						</div>
+						<div class="col-md-7 mb-3">
+							<label for="content">댓글 내용</label>
+						</div>
+						<div class="col-md-2 mb-3">
+							<label for="writeDate">작성 날짜</label>
 						</div>
 
 					</div>
-				</c:forEach>
 
-				<c:if test='${userSession.grade.equals("user")}'>
-					<form action="/tm/board/review/add" method="post">
+
+					<c:forEach var="comment" items="${comment}" varStatus="status">
 						<div class="row">
-							<div class="col-md-12 mb-3">
-								<label for="comment">댓글 쓰기 :</label> <input type="text"
-									class="form-control" name="content">
-								<hr>
+							<div class="col-md-1 mb-3">
+								<input type="text" class="form-control" value="${status.count }"
+									readonly />
 							</div>
-							<input type="hidden" name="id" value="${userSession.id }">
-							<input type="hidden" name="commentReviewNO"
-								value="${review.reviewNO }">
-							<div class="col-md-4 mb-3">
-								<input class="btn btn-primary btn-lg btn-block" type="submit"
-									value="댓글쓰기">
+							<div class="col-md-2 mb-3">
+								<input type="text" class="form-control" value="${comment.id }"
+									id="id" name="id" readonly />
 							</div>
+							<div class="col-md-7 mb-3">
+								<input type="text" class="form-control"
+									value="${comment.content }" id="content" name="content"
+									readonly />
+							</div>
+							<div class="col-md-2 mb-3">
+								<input type="text" class="form-control"
+									value="${comment.writeDate}" id="writeDate" name="writeDate"
+									readonly />
+							</div>
+
 						</div>
-					</form>
-				</c:if>
+					</c:forEach>
+
+					<c:if test='${userSession.grade.equals("user")}'>
+						<form action="/tm/board/review/add" method="post">
+							<div class="row">
+								<div class="col-md-12 mb-3">
+									<label for="comment">댓글 쓰기</label> <input type="text"
+										class="form-control" name="content">
+									<hr>
+								</div>
+								<input type="hidden" name="id" value="${userSession.id }">
+								<input type="hidden" name="commentReviewNO"
+									value="${review.reviewNO }">
+								<div class="col-md-4 mb-3" ></div>
+								<div class="col-md-4 mb-3" ></div>
+								<div class="col-md-4 mb-3">
+									<input class="btn btn-primary btn-lg btn-block" type="submit"
+										value="댓글쓰기">
+								</div>
+							</div>
+						</form>
+					</c:if>
+				</div>
 			</div>
-		</div>
 		</c:if>
-		
+
 	</div>
 
 
@@ -410,7 +429,6 @@ function backToList(obj){
 	<br>
 	<br>
 	<br>
-	<hr>
 	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
