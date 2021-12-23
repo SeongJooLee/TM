@@ -34,10 +34,18 @@ public class SampleController {
 	@RequestMapping(value="/kakaoPaySuccess" , method =RequestMethod.GET) 
     public String kakaoPaySuccess(@RequestParam("pg_token") String pg_token, Model model) {
         // 서버에서 성공한 정보 
+		
         model.addAttribute("info", kakaopay.kakaoPayInfo(pg_token));
         
         return "kakaoPaySuccess"; // jsp 호출
     }
-    
+//	@RequestMapping(value="/kakaoPaySuccess" , method =RequestMethod.POST) 
+//	public String kakaoPaySuccessPOST(@RequestParam("pg_token") String pg_token, Model model) {
+//		// 서버에서 성공한 정보 
+//		model.addAttribute("info", kakaopay.kakaoPayInfo(pg_token));
+//		
+//		return "kakaoPaySuccess"; // jsp 호출
+//	}
+//    
 }
  
