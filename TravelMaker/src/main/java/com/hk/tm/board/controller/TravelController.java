@@ -278,7 +278,6 @@ public class TravelController {
 		model.addAttribute("image",map.get("image"));
 		model.addAttribute("category",map.get("category"));
 
-
 		return "travelView"; // tavelView.jsp로 이동
 
 	}
