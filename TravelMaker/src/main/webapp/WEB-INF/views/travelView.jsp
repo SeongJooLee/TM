@@ -373,40 +373,28 @@ body {
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
 
-					<div class="row" align="center">
-						<div class="col-md-1 mb-3" >
-							<label for="id">No</label>
-						</div>
-						<div class="col-md-2 mb-3" >
-							<label for="id">작성자ID</label>
-						</div>
-						<div class="col-md-7 mb-3">
-							<label for="content">댓글 내용</label>
-						</div>
-						<div class="col-md-2 mb-3">
-							<label for="writeDate">작성 날짜</label>
-						</div>
-
-					</div>
-
 				<c:forEach var="comment" items="${comment}" varStatus="status">
-					<div class="row">
+					<div class="row">					
 						<div class="col-md-1 mb-3">
+						<label for="id">No</label>
 							<input type="text"
 								class="form-control" value="${status.count }" 
 								readonly />
 						</div>
 						<div class="col-md-2 mb-3">
+						<label for="id">작성자ID</label>
 							<input type="text"
 								class="form-control" value="${comment.id }" id="id" name="id"
 								readonly />
 						</div>
 						<div class="col-md-7 mb-3">
+						<label for="content">댓글 내용</label>
 							 <input type="text"
 								class="form-control" value="${comment.content }" id="content"
 								name="content" readonly />
 						</div>
 						<div class="col-md-2 mb-3">
+						<label for="writeDate">작성 날짜</label>
 							<input type="text"
 								class="form-control" value="${comment.writeDate}" id="writeDate"
 								name="writeDate" readonly />
