@@ -190,11 +190,11 @@ function backToList(obj){
 							<label for="image">이미지 파일 첨부</label>
 							<div id="update">
 								<input type="button" value="파일 삭제" id="imgUpdateBtn"
-									class="form-control" onClick="fn_imgUpdateBtn()" disabled /> <small>
+									class="btn btn-danger btn-lg btn-block" onClick="fn_imgUpdateBtn()" disabled /> <small>
 									&nbsp;&nbsp; * 클릭시 전체 파일이 삭제됩니다.</small>
 							</div>
 							<input type="button" value="파일 추가" id="imgUpdate"
-								class="form-control" onClick="fn_addFile()" disabled /> <small>
+								class="btn btn-info btn-lg btn-block" onClick="fn_addFile()" disabled /> <small>
 								&nbsp;&nbsp; * 최대 3개까지 첨부 가능합니다.</small>
 						</div>
 						<div id="d_file"></div>
@@ -285,11 +285,11 @@ function backToList(obj){
 						<div class="row">
 							<div class="col-md-1 mb-3"></div>
 							<div class="col-md-4 mb-3">
-								<input class="form-control" type="button" value="수정 반영하기"
+								<input class="btn btn-info btn-lg btn-block" type="button" value="수정 반영하기"
 									onClick="fn_modify_update(frmReview)" />
 							</div>
 							<div class="col-md-4 mb-3">
-								<input class="form-control" type="button" value="취소하기"
+								<input class="btn btn-info btn-lg btn-block" type="button" value="취소하기"
 									onClick="backToList(frmReview)" />
 							</div>
 							<div class="col-md-1 mb-3"></div>
@@ -298,19 +298,19 @@ function backToList(obj){
 					<div id="tr_btn">
 						<div class="row">
 							<c:if test='${userSession.grade.equals("user")}'>
-								<c:forEach var='list' items='${proList}'>
+								<c:forEach var='list' items='${list}'>
 									<c:if
 										test='${list.reviewNO == review.reviewNO && list.id.equals(review.id)}'>
 										<div class="col-md-4 mb-3">
-											<input class="form-control" type="button" value="수정하기"
+											<input class="btn btn-primary btn-lg btn-block" type="button" value="수정하기"
 												onClick="fn_enable(this.form)" />
 										</div>
 										<div class="col-md-4 mb-3">
-											<input class="form-control" type="button" value="삭제하기"
+											<input class="btn btn-danger btn-lg btn-block" type="button" value="삭제하기"
 												onClick="fn_delete(this.form)" />
 										</div>
 										<div class="col-md-4 mb-3">
-											<input class="form-control" type="button" value="리스트로 돌아가기"
+											<input class="btn btn-primary btn-lg btn-block" type="button" value="리스트로 돌아가기"
 												onClick="backToList(this.form)" />
 										</div>
 										<c:set var="check" value="1" />
@@ -320,7 +320,7 @@ function backToList(obj){
 									<div class="col-md-4 mb-3"></div>
 									<div class="col-md-4 mb-3"></div>
 									<div class="col-md-4 mb-3">
-										<input class="form-control" type="button" value="리스트로 돌아가기"
+										<input class="btn btn-primary btn-lg btn-block" type="button" value="리스트로 돌아가기"
 											onClick="backToList(this.form)" />
 									</div>
 								</c:if>
@@ -331,15 +331,15 @@ function backToList(obj){
 
 						<c:if test='${userSession.grade.equals("admin")}'>
 							<div class="col-md-4 mb-3">
-								<input class="form-control" type="button" value="수정하기"
+								<input class="btn btn-primary btn-lg btn-block" type="button" value="수정하기"
 									onClick="fn_enable(this.form)" />
 							</div>
 							<div class="col-md-4 mb-3">
-								<input class="form-control" type="button" value="삭제하기"
+								<input class="btn btn-danger btn-lg btn-block" type="button" value="삭제하기"
 									onClick="fn_delete(this.form)" />
 							</div>
 							<div class="col-md-4 mb-3">
-								<input class="form-control" type="button" value="리스트로 돌아가기"
+								<input class="btn btn-primary btn-lg btn-block" type="button" value="리스트로 돌아가기"
 									onClick="backToList(this.form)" />
 							</div>
 						</c:if>

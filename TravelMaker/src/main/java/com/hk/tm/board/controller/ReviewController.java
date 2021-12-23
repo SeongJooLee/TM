@@ -127,7 +127,7 @@ public class ReviewController {
 		} catch (Exception e) {
 			System.out.println("오류발생");
 		}
-		return "reviewViewTest"; // 아직 수정 미완
+		return "reviewView"; 
 	}
 	
 	@RequestMapping(value="/board/review/update", method=RequestMethod.POST)
