@@ -290,7 +290,6 @@ public class UserController {
 			
 			List<Integer> userReviewPK = userService.selectReview(userId); // a가 등록한 travel pk여러개를 찾아서
 			int deleteImageReview = userService.deleteImageReview(userReviewPK); // 해당 travel pk뭉치로 image테이블에서 관련된 데이터 삭제
-			int deleteCategoryReview = userService.deleteCategoryReview(userReviewPK); // 해당 travel pk뭉치로 category테이블에서 관련된 데이터 삭제
 			int deleteCommentReview = userService.deleteCommentReview(userReviewPK);//해당 travel pk뭉치로 comment테이블에서관련된 데이터삭제
 			
 			int totalResult = userService.deleteTotal(userId);	
