@@ -82,7 +82,7 @@ body {
 								<tr class="table-primary">
 									<th>상품 번호</th>
 									<th>상품 제목</th>
-									<th>상품 내용</th>
+								<!-- 	<th>상품 내용</th> -->
 									<th>상품 가격</th>
 									<th>판매자 ID</th>
 									<th>상품 예약내역 보기</th>
@@ -95,7 +95,7 @@ body {
 
 								<td><a href='/tm/board/promotion/view?promotionNO=${list.promotionNO}'>${list.promotionNO}</a></td>
 								<td>${list.title}</td>
-								<td>${list.content}</td>
+							<%-- 	<td>${list.content}</td> --%>
 								<td>${list.price}</td>
 								<td>${list.sellerID}</td>
 								<td>
