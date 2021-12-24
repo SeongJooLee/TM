@@ -107,6 +107,7 @@ body {
                         + "<p id='image"+cnt+" '><input type='file' name='image" + cnt + " ' />");
       cnt++;
    }
+  
    function fn_enable(obj) {
       document.getElementById("categoryName").disabled = false;
       document.getElementById("title").disabled = false;
@@ -196,7 +197,9 @@ body {
    function next() {
       location.href = "${contextPath}/board/travel/view?travelNO=${travel.travelNO}&page=page";
    }
-
+	function rlaalstn(){
+		alert('dddd');
+		}
    // 댓글 작성
 </script>
 </head>
@@ -403,6 +406,7 @@ body {
                            onClick="backToList(this.form)" />
                      </div>
                   </c:if>
+                 
                </div>
                </div>   
             </form>
@@ -487,7 +491,10 @@ body {
 
    <!-- Bootstrap core JS-->
    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js">
+
+
+   </script>
    <!-- Core theme JS-->
 
    <jsp:include page="/resources/include/footer.jsp" />
