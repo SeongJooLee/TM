@@ -23,40 +23,42 @@
 	rel="stylesheet" />
 <style>
 @font-face {
-    font-family: 'Cafe24SsurroundAir';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+	font-family: 'Cafe24SsurroundAir';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
 }
 
 .font1 {
-  font-family: 'Cafe24SsurroundAir' !important;
-  font-size: 38px;
-  font-weight: bold;
-  color:#4a1b1b;
- 
+	font-family: 'Cafe24SsurroundAir' !important;
+	font-size: 38px;
+	font-weight: bold;
+	color: #4a1b1b;
 }
 
 .font2 {
-  font-family: 'Cafe24SsurroundAir' !important;
-  font-size: 20px;
-  font-weight: bold;
-  color:#5e0c0c;
+	font-family: 'Cafe24SsurroundAir' !important;
+	font-size: 20px;
+	font-weight: bold;
+	color: #5e0c0c;
 }
 
 .font3 {
-  font-family: 'Cafe24SsurroundAir' !important;
-  font-size: 16px;
-  font-weight: bold;
-  color:#5e0c0c;
+	font-family: 'Cafe24SsurroundAir' !important;
+	font-size: 16px;
+	font-weight: bold;
+	color: #5e0c0c;
 }
 
 .value {
-  font-family: 'Cafe24SsurroundAir' !important;
-  font-size: 20px;
-  font-weight: bold;
-  color: #754343;
+	font-family: 'Cafe24SsurroundAir' !important;
+	font-size: 20px;
+	font-weight: bold;
+	color: #754343;
 }
+
 .imagetest {
 	width: 100%;
 	height: 500px;
@@ -204,7 +206,8 @@ function backToList(obj){
 	<div class="container">
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
-				<h4 class="mb-3 font1" align="center">이용후기</h4><br>
+				<h4 class="mb-3 font1" align="center">이용후기</h4>
+				<br>
 				<form id="frmReview" enctype="multipart/form-data">
 					<input type="hidden" value="${review.name }" name="name" />
 					<div class="row">
@@ -231,7 +234,8 @@ function backToList(obj){
 							</div>
 							<input type="button" value="파일 추가" id="imgUpdate"
 								class="btn btn-info btn-lg btn-block" onClick="fn_addFile()"
-								disabled /> <small class="font3"> &nbsp;&nbsp; * 최대 3개까지 첨부 가능합니다.</small>
+								disabled /> <small class="font3"> &nbsp;&nbsp; * 최대
+								3개까지 첨부 가능합니다.</small>
 						</div>
 						<div id="d_file"></div>
 						<div id="d_filetest">
@@ -353,8 +357,9 @@ function backToList(obj){
 									<div class="col-md-4 mb-3"></div>
 									<div class="col-md-4 mb-3"></div>
 									<div class="col-md-4 mb-3">
-										<input class="btn btn-primary btn-lg btn-block font2" type="button"
-											value="리스트로 돌아가기" onClick="backToList(this.form)" />
+										<input class="btn btn-primary btn-lg btn-block font2"
+											type="button" value="리스트로 돌아가기"
+											onClick="backToList(this.form)" />
 									</div>
 								</c:if>
 							</c:if>
@@ -364,16 +369,22 @@ function backToList(obj){
 
 						<c:if test='${userSession.grade.equals("admin")}'>
 							<div class="col-md-4 mb-3">
-								<input class="btn btn-primary btn-lg btn-block font2" type="button"
-									value="수정하기" onClick="fn_enable(this.form)" />
+								<input class="btn btn-primary btn-lg btn-block font2"
+									type="button" value="수정하기" onClick="fn_enable(this.form)" />
 							</div>
 							<div class="col-md-4 mb-3">
-								<input class="btn btn-danger btn-lg btn-block font2" type="button"
-									value="삭제하기" onClick="fn_delete(this.form)" />
+								<input class="btn btn-danger btn-lg btn-block font2"
+									type="button" value="삭제하기" onClick="fn_delete(this.form)" />
 							</div>
 							<div class="col-md-4 mb-3">
-								<input class="btn btn-primary btn-lg btn-block font2" type="button"
-									value="리스트로 돌아가기" onClick="backToList(this.form)" />
+								<input class="btn btn-primary btn-lg btn-block font2"
+									type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />
+							</div>
+						</c:if>
+						<c:if test="${userSession == null }">
+							<div class="col-md-4 mb-3">
+								<input class="btn btn-primary btn-lg btn-block font2"
+									type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />
 							</div>
 						</c:if>
 					</div>
@@ -393,26 +404,23 @@ function backToList(obj){
 					<c:forEach var="comment" items="${comment}" varStatus="status">
 						<div class="row">
 							<div class="col-md-1 mb-3 font2">
-							<label for="id">No</label>
-								<input type="text" class="form-control" value="${status.count }"
-									readonly />
+								<label for="id">No</label> <input type="text"
+									class="form-control" value="${status.count }" readonly />
 							</div>
 							<div class="col-md-2 mb-3 font2">
-							<label for="id">작성자ID</label>
-								<input type="text" class="form-control" value="${comment.id }"
-									id="id" name="id" readonly />
+								<label for="id">작성자ID</label> <input type="text"
+									class="form-control" value="${comment.id }" id="id" name="id"
+									readonly />
 							</div>
 							<div class="col-md-7 mb-3 font2">
-							<label for="content">댓글 내용</label>
-								<input type="text" class="form-control"
-									value="${comment.content }" id="content" name="content"
-									readonly />
+								<label for="content">댓글 내용</label> <input type="text"
+									class="form-control" value="${comment.content }" id="content"
+									name="content" readonly />
 							</div>
 							<div class="col-md-2 mb-3 font2">
-							<label for="writeDate">작성 날짜</label>
-								<input type="text" class="form-control"
-									value="${comment.writeDate}" id="writeDate" name="writeDate"
-									readonly />
+								<label for="writeDate">작성 날짜</label> <input type="text"
+									class="form-control" value="${comment.writeDate}"
+									id="writeDate" name="writeDate" readonly />
 							</div>
 
 						</div>
@@ -429,11 +437,11 @@ function backToList(obj){
 								<input type="hidden" name="id" value="${userSession.id }">
 								<input type="hidden" name="commentReviewNO"
 									value="${review.reviewNO }">
-								<div class="col-md-4 mb-3" ></div>
-								<div class="col-md-4 mb-3" ></div>
+								<div class="col-md-4 mb-3"></div>
+								<div class="col-md-4 mb-3"></div>
 								<div class="col-md-4 mb-3">
-									<input class="btn btn-primary btn-lg btn-block font2" type="submit"
-										value="댓글쓰기">
+									<input class="btn btn-primary btn-lg btn-block font2"
+										type="submit" value="댓글쓰기">
 								</div>
 							</div>
 						</form>

@@ -428,9 +428,9 @@ body {
 									onClick="backToList(this.form)" />
 							</div>
 						</c:if>
-						<c:if test='${userSession.grade == null}'>
+						<c:if test="${userSession == null }">
 							<div class="col-md-4 mb-3">
-								<input class="btn btn-primary btn-lg btn-block font2" type="button" value="리스트로44 돌아가기"
+								<input class="btn btn-primary btn-lg btn-block font2" type="button" value="리스트로 돌아가기"
 									onClick="backToList(this.form)" />
 							</div>
 						</c:if>
