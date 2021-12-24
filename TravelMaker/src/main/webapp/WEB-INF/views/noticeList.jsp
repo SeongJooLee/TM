@@ -11,10 +11,6 @@ request.setCharacterEncoding("utf-8");
 <html>
 <head>
 <meta charset="utf-8" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<meta name="description" content="" />
-<meta name="author" content="" />
 
 <title>공지사항 목록</title>
 <!-- Favicon-->
@@ -23,8 +19,52 @@ request.setCharacterEncoding("utf-8");
 <link href="<c:url value="/resources/css/styles.css" />"
 	rel="stylesheet" />
 
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
 <style>
+body {
+	min-height: 100vh;
+}
+
+#mainColor{
+	background-color:#876b6b !important;
+	solid:#876b6b !important;
+
+}
+.font1 {
+  font-family: 'Cafe24SsurroundAir' !important;
+  font-size: 38px;
+  font-weight: bold;
+  color:#4a1b1b;
+ 
+}
+
+.font2 {
+  font-family: 'Cafe24SsurroundAir' !important;
+  font-size: 20px;
+  font-weight: bold;
+  color:#5e0c0c;
+}
+
+.font3 {
+  font-family: 'Cafe24SsurroundAir' !important;
+  font-size: 16px;
+  font-weight: bold;
+  color:#5e0c0c;
+}
+.input-form {
+	max-width: 680px;
+	margin-top: 80px;
+	padding: 32px;
+	background: #fff;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+	-moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+	box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+}
 .button {
 	background-color: #4CAF50; /* Green */
 	border: none;
@@ -70,10 +110,10 @@ request.setCharacterEncoding("utf-8");
 
 	<jsp:include page="/resources/include/header.jsp" />
 
-	<div class="container px-4 px-lg-5">
-		<div class="card text-white bg-secondary my-5 py-4 text-center">
+	<div class="container px-4 px-lg-5 font3">
+		<div class="card text-white bg-secondary my-5 py-4 text-center" id="mainColor">
 			<div class="card-body">
-				<p class="text-white m-0">공지사항</p>
+				<h5 class="text-white m-0" >공 지 사 항</h5>
 			</div>
 		</div>
 		<div class="col-md-12 mb-4">
