@@ -121,7 +121,6 @@ public class ReviewController {
 		try {
 			UserVO userVO = (UserVO)session.getAttribute("userSession");
 			List<ReviewVO> list = reviewService.userReviewList(userVO);
-			System.out.println("저장된 리스트 ="+list);
 			model.addAttribute("list",list);
 			
 		} catch (Exception e) {
@@ -258,16 +257,12 @@ public class ReviewController {
 
 			request.setCharacterEncoding("utf-8");
 			String image = request.getParameter("image");
-			System.out.println("image= "+image);
 			String reviewNO = request.getParameter("reviewNO");
-			System.out.println("review= "+reviewNO);
 			String name = request.getParameter("name");
-			System.out.println("NAME= "+name);
 
 			OutputStream out = response.getOutputStream();
 			String path = "C:\\files\\"+name+"\\"+reviewNO+"\\"+image;
 			File imageFile = new File(path);
-			System.out.println("path="+path);
 			int lastIndex = image.lastIndexOf(".");
 			String fileName = image.substring(0,lastIndex);
 			File destDir = new File(REPO+"\\thumbnail");

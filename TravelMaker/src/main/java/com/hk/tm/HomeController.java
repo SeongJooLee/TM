@@ -38,7 +38,7 @@ public class HomeController {
 		List<PromotionImageVO> promotionList = promotionService.selectHomePromotionImage();
 		// travelImageVO - AllSelect
 		List<TravelImageVO> travelList = travelService.selectHomeTravelImage();
-	
+		
 		model.addAttribute("travel",travelList);
 		model.addAttribute("notice",noticeList);
 		model.addAttribute("promotion",promotionList);

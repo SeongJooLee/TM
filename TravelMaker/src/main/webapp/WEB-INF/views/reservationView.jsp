@@ -174,11 +174,13 @@ function kakaoPay(){
 						</div>
 					</c:if>
 					<c:if test="${reser.complete=='Y' }">
+					<div class="row">
 						<div class="col-md-4 mb-3"></div>
 						<div class="col-md-4 mb-3">
 							<button class="btn btn-primary btn-lg btn-block" type="button"
 								onClick="fn_create()">이용 후기 작성</button>
 						</div>
+					</div>						
 					</c:if>
 						<div class="row">
 						<div class="col-md-4 mb-3"></div>

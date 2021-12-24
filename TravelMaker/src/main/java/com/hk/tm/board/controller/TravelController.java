@@ -134,7 +134,6 @@ public class TravelController {
 			UserVO userVO = (UserVO)session.getAttribute("userSession");
 			System.out.println(userVO);
 			List<TravelVO> list = travelService.selectUserTravel(userVO.getId());
-			System.out.println(userVO.getId()+"님의 테마여행 리스트  "+list);
 			model.addAttribute("list",list);
 		} catch (Exception e) {
 			// TODO: handle exception

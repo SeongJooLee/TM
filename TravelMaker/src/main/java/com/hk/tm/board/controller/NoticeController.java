@@ -101,7 +101,6 @@ public class NoticeController {
 	public String noticeCategory(Model model,@RequestParam("key") String key) {
 		List<NoticeImageVO> list = noticeService.selectCategoryNotice(key);
 		model.addAttribute("notice",list);
-		System.out.println("카테고리 선택 "+list.toString());
 		return "noticeList";
 	}
 

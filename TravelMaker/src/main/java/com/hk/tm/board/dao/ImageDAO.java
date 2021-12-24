@@ -64,11 +64,9 @@ public class ImageDAO {
 
 	public int travelImgDelete(int travelNO) {
 		ImageVO imageVO = sql.selectOne(ns+"selectOneTravel", travelNO);
-		System.out.println("트레벨 이미지 저장1"+imageVO.toString());
 		int ret=0;
 		if(imageVO!=null) {
 			ret = sql.update(ns+"deleteTravelImage", travelNO);
-			System.out.println("트레벨 이미지 저장2"+imageVO.toString());
 		}
 		return ret;
 	}
@@ -80,7 +78,6 @@ public class ImageDAO {
 	
 	public ImageVO selectOne(int reviewNO) {
 		ImageVO imageVO = sql.selectOne(ns+"selectOne",reviewNO);
-		System.out.println("아무르티그로 = "+imageVO);
 		return imageVO;
 	}
 

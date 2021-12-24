@@ -113,10 +113,8 @@ public class KakaoPay {
         HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
         
         try {
-            System.out.println("여기 들어왓어? 1");
             kakaoPayApprovalVO = restTemplate.postForObject(new URI(HOST + "/v1/payment/approve"), body, KakaoPayApprovalVO.class);
             
-            System.out.println("여기 들어왓어? 2");
             return kakaoPayApprovalVO;
         
         } catch (RestClientException e) {

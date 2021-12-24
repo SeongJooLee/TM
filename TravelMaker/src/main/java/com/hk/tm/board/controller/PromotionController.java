@@ -109,9 +109,7 @@ public class PromotionController {
 		model.addAttribute("category",map.get("category"));
 		try {
 			SellerVO sellerVO = (SellerVO) session.getAttribute("userSession");
-			System.out.println(sellerVO.getSellerID());
 			List<PromotionVO> list = promotionService.selectSellerPromotion(sellerVO.getSellerID());
-			System.out.println(sellerVO.getSellerID()+"님이 등록한 상품은 "+list);
 			model.addAttribute("proList",list);
 			
 		} catch (Exception e) {
