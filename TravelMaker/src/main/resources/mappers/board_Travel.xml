@@ -55,7 +55,7 @@
 		FROM travel t ,IMAGE i,CATEGORY c 
 		where t.travelNO = i.travelNO(+)
 		and t.travelNO = c.travelNO(+)
-		ORDER BY p.PROMOTIONNO asc
+		ORDER BY t.travelNO asc
 	</select>
 
 	<insert id="insertTravel" parameterType="TravelVO">
