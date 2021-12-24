@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8" isELIgnored="false"%>
+	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page session="true"%>
@@ -24,39 +24,40 @@
 	rel="stylesheet" />
 <style>
 @font-face {
-    font-family: 'Cafe24SsurroundAir';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+	font-family: 'Cafe24SsurroundAir';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
 }
 
 .font1 {
-  font-family: 'Cafe24SsurroundAir' !important;
-  font-size: 36px;
-  font-weight: bold;
-  color:#4a1b1b;
- 
+	font-family: 'Cafe24SsurroundAir' !important;
+	font-size: 36px;
+	font-weight: bold;
+	color: #4a1b1b;
 }
 
 .font2 {
-  font-family: 'Cafe24SsurroundAir' !important;
-  font-size: 18px;
-  font-weight: bold;
-  color:#5e0c0c;
+	font-family: 'Cafe24SsurroundAir' !important;
+	font-size: 18px;
+	font-weight: bold;
+	color: #5e0c0c;
 }
 
 .font3 {
-  font-family: 'Cafe24SsurroundAir' !important;
-  font-size: 14px;
-  font-weight: bold;
-  color:#5e0c0c;
+	font-family: 'Cafe24SsurroundAir' !important;
+	font-size: 14px;
+	font-weight: bold;
+	color: #5e0c0c;
 }
 
 .value {
-  font-family: 'Cafe24SsurroundAir' !important;
-  font-size: 18px;
-  font-weight: bold;
-  color: #754343;
+	font-family: 'Cafe24SsurroundAir' !important;
+	font-size: 18px;
+	font-weight: bold;
+	color: #754343;
 }
 
 body {
@@ -161,6 +162,15 @@ body {
 								class="form-control" name="title" id="title"
 								placeholder="제목을 입력해주세요." required>
 						</div>
+						<div class="mb-3 font2">
+							<label for="image">이미지 파일 첨부</label> <input type="button"
+								class="btn btn-info btn-lg btn-block font2"
+								onClick="fn_addFile()" placeholder="" value="파일 추가"><small
+								class="font3">*최대 3개까지 첨부 가능합니다.</small>
+							<div id="d_file"></div>
+						</div>
+
+
 
 						<div class="col-md-6 mb-3 font2">
 							<label for="title">가격</label> <input type="number"
@@ -175,16 +185,16 @@ body {
 					</div>
 					<div class="row">
 						<div class="col-md-4 mb-3">
-							<button class="btn btn-primary btn-lg btn-block font2" type="button"
-								onClick="fn_create()">작성 하기</button>
+							<button class="btn btn-primary btn-lg btn-block font2"
+								type="button" onClick="fn_create()">작성 하기</button>
 						</div>
 						<div class="col-md-4 mb-3">
-							<button class="btn btn-primary btn-lg btn-block font2" type="reset">다시
-								작성</button>
+							<button class="btn btn-primary btn-lg btn-block font2"
+								type="reset">다시 작성</button>
 						</div>
 						<div class="col-md-4 mb-3">
-							<button class="btn btn-primary btn-lg btn-block font2" type="button"
-								onclick='backToList(this.form);'>취소</button>
+							<button class="btn btn-primary btn-lg btn-block font2"
+								type="button" onclick='backToList(this.form);'>취소</button>
 						</div>
 					</div>
 				</form>
