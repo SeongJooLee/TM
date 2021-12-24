@@ -343,6 +343,7 @@ body {
 							<div class="col-md-1 mb-3"></div>
 						</div>
 					</div>
+					
 					<div id="tr_btn">
 						<div class="row">
 							<c:if test='${userSession.grade.equals("user")}'>
