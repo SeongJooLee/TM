@@ -148,7 +148,7 @@ list-style:none;
 .footer_inner .box_quick .quick a img {margin-right:10px; height:28px;}
 .footer_inner .box_about {
     position: relative;
-	float: right;
+	float: left;
 	width: 33%;
     height: 210px;
     padding-left: 45px;
@@ -171,17 +171,14 @@ list-style:none;
 <br>
 <br>
  <div class="footer_inner" style = "background-color: #f0f0f0;">
-    <div class="box_cs" >
-      <div class="tit">고객센터</div>
-      <div class="bignum">1234-1234</div>
-      <div class="ss_txt">MON-FRI : AM 10:00 ~ PM 05:00</div>
-      <div class="ss_txt">LUNCH: PM 01:00 ~ PM 02:00</div>
-          <div class="sns_test">
-           <a class="sns-link" href="https://www.instagram.com/"><i class="fab fa-instagram" ></i></a>
-           <a class="sns-link" href="https://www.facebook.com/"><i class="fab fa-facebook" ></i></a>
-           <a class="sns-link" href="https://www.twitter.com/"><i class="fab fa-twitter" ></i></a>
-          </div>
-    
+
+    <div class="box_about">
+      <div class="tit">회사 정보</div>
+      <div class="txt">Travel Maker</div>
+      <div class="txt">사업자 등록 번호 : 123-45-6789</div>
+      <div class="txt">E-mail : kkm8057@naver.com</div>
+      <div class="txt">주소 : 경기도 고양시 덕양구 행신2동</div>
+      <div class="txt">책임자 : 김나연, 이성주, 김민수, 김강민 <a href="http://www.ftc.go.kr/bizCommPop.do?wrkr_no=&apv_perm_no=2011386021230200126" target="_blank"> [사업자정보확인]</a></div>
     </div>
     <div class="promo">
       <div class="tit">홍보 문의</div>
@@ -190,13 +187,16 @@ list-style:none;
       <div class="team"> · 품질관리팀 : 김민수 kms970408@naver.com</div>
       <div class="team"> · 기획팀 : 김강민 kkm8057@naver.com </div>
     </div>
-    <div class="box_about">
-      <div class="tit">회사 정보</div>
-      <div class="txt">Travel Maker</div>
-      <div class="txt">사업자 등록 번호 : 123-45-6789</div>
-      <div class="txt">E-mail : kkm8057@naver.com</div>
-      <div class="txt">주소 : 경기도 고양시 덕양구 행신2동</div>
-      <div class="txt">책임자 : 김나연, 이성주, 김민수, 김강민 <a href="http://www.ftc.go.kr/bizCommPop.do?wrkr_no=&apv_perm_no=2011386021230200126" target="_blank"> [사업자정보확인]</a></div>
+        <div class="box_cs" >
+      <div class="tit" id="targetId">고객센터</div>
+      <div class="bignum">1234-1234</div>
+      <div class="ss_txt">MON-FRI : AM 10:00 ~ PM 05:00</div>
+      <div class="ss_txt">LUNCH: PM 01:00 ~ PM 02:00</div>
+          <div class="sns_test">
+           <a class="sns-link" href="https://www.instagram.com/"><i class="fab fa-instagram" ></i></a>
+           <a class="sns-link" href="https://www.facebook.com/"><i class="fab fa-facebook" ></i></a>
+           <a class="sns-link" href="https://www.twitter.com/"><i class="fab fa-twitter" ></i></a>
+          </div>
     </div>
   </div>
             <a href="#" class="btn_gotop">

@@ -297,7 +297,7 @@ body {
 					<div class="row">
 						<div class="col-md-2 mb-3">
 							<label for="categoryName" id="font2">카테고리</label> <select
-								class="form-control" id="value" name="categoryName" id="categoryName"
+								class="form-control" name="categoryName" id="categoryName"
 								disabled>
 								<option id="value" value="${category.categoryName }">${category.categoryName }</option>
 								<option id="value" value="쇼핑">쇼핑</option>

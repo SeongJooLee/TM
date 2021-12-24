@@ -458,7 +458,7 @@ public class UserController {
 	public String sellerReservationComplete(@RequestParam("reserNO")String reserNO,HttpSession session){	
 		userService.sellerReservationComplete(reserNO);
 		
-		return "sellerMyPage";
+		return "sellerReservationCompleteDone";
 	}
 	
 	

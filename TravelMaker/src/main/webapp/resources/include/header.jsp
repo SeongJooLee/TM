@@ -56,7 +56,6 @@ function fn_headSerch() {
 	}-->
 		document.getElementById("frmHeadSerch").submit();
 	}
-}
 </script>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <c:if
@@ -110,9 +109,8 @@ function fn_headSerch() {
 		<p align="right">
 			<a href="${contextPath}/member/login">로그인</a>&nbsp;&nbsp;&nbsp; <a
 				href="${contextPath}/member/registerCheck">회원가입</a>
-			&nbsp;&nbsp;&nbsp;<a
-				href="https://korean.visitseoul.net/tourist-complaint-center">관광불편처리센터</a>&nbsp;&nbsp;&nbsp;
-			<a href="https://kto.visitkorea.or.kr/kor/customer/call/1330.kto">관광통역안내</a>	
+			&nbsp;&nbsp;&nbsp; <a
+				href="#">고객센터</a>
 		</p>
 	</div>
 </c:if>
