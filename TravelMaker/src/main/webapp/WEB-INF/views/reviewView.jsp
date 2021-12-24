@@ -204,16 +204,16 @@ function backToList(obj){
 	<div class="container">
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
-				<h4 class="mb-3" align="center">이용후기</h4><br>
+				<h4 class="mb-3 font1" align="center">이용후기</h4><br>
 				<form id="frmReview" enctype="multipart/form-data">
 					<input type="hidden" value="${review.name }" name="name" />
 					<div class="row">
-						<div class="col-md-2 mb-3">
+						<div class="col-md-2 mb-3 font2">
 							<label for="reviewNO">번호</label> <input type="text"
 								class="form-control" value="${review.reviewNO }" id="reviewNO"
 								name="reviewNO" readonly />
 						</div>
-						<div class="col-md-10 mb-3">
+						<div class="col-md-10 mb-3 font2">
 							<label for="title">제목</label> <input type="text"
 								class="form-control" value="${review.title }" id="title"
 								name="title" disabled />
@@ -295,14 +295,14 @@ function backToList(obj){
 							</div>
 						</div>
 					</div>
-					<div class="mb-3">
+					<div class="mb-3 font2">
 						<label for="content">글 내용</label>
 						<textarea class="form-control" rows="20" cols="60" name="content"
 							id="content" disabled>${review.content } </textarea>
 					</div>
 					<div class="row">
 
-						<div class="col-md-4 mb-3">
+						<div class="col-md-4 mb-3 font2">
 							<label for="id">작성자</label> <input type="text"
 								class="form-control" name="id" id="id" value="${review.id }"
 								readonly>
