@@ -195,7 +195,6 @@ body {
 	function rlaalstn(){
 		alert('dddd');
 		}
-   // 댓글 작성
 </script>
 </head>
 <body>
