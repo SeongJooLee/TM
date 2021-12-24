@@ -205,6 +205,13 @@ body {
 		obj.action = "${contextPath}/board/promotion";
 		obj.submit();
 	}
+
+	function kkm(obj) {
+		obj.method = "POST";
+		location.href = "${contextPath}/board/promotion";
+		obj.submit();
+	}
+
 </script>
 </head>
 <body>
@@ -391,6 +398,7 @@ body {
 							</c:if>
 						</div>
 					</div>
+					
 					<div id="tr_btn2">
 					<div class="row">
 						<c:if test='${userSession.grade.equals("user")}'>
@@ -415,13 +423,19 @@ body {
 									onClick="fn_delete(this.form)" />
 							</div>
 							<div class="col-md-4 mb-3">
-								<input class="btn btn-primary btn-lg btn-block font2" type="button" value="리스트로 돌아가기"
+								<input class="btn btn-primary btn-lg btn-block font2" type="button" value="리스트로1 돌아가기"
 									onClick="backToList(this.form)" />
 							</div>
 						</c:if>
-
+						<c:if test='${userSession.grade == null}'>
+							<div class="col-md-4 mb-3">
+								<input class="btn btn-primary btn-lg btn-block font2" type="button" value="리스트로44 돌아가기"
+									onClick="backToList(this.form)" />
+							</div>
+						</c:if>
 					</div>
 					</div>
+					
 				</form>
 			</div>
 		</div>
