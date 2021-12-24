@@ -49,6 +49,14 @@
 	<select id="selectMaxTravel" resultType="java.lang.Integer">
 		select nvl(max(travelNO),0) from travel
 	</select>
+	
+	  <select id="selectHomeTravelImage" resultType="travelImageVO">
+		SELECT * 
+		FROM travel t ,IMAGE i,CATEGORY c 
+		where t.travelNO = i.travelNO(+)
+		and t.travelNO = c.travelNO(+)
+		ORDER BY p.PROMOTIONNO asc
+	</select>
 
 	<insert id="insertTravel" parameterType="TravelVO">
 		INSERT INTO TRAVEL (TRAVELNO, TITLE, CONTENT, WRITEDATE, ID, NAME)

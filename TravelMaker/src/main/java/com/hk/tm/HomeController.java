@@ -1,6 +1,5 @@
 package com.hk.tm;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.hk.tm.board.service.NoticeService;
 import com.hk.tm.board.service.PromotionService;
+import com.hk.tm.board.service.TravelService;
 import com.hk.tm.board.vo.NoticeImageVO;
 import com.hk.tm.board.vo.PromotionImageVO;
+import com.hk.tm.board.vo.TravelImageVO;
 
 /**
  * Handles requests for the application home page.
@@ -26,13 +27,19 @@ public class HomeController {
 	@Autowired
 	PromotionService promotionService;
 	
+	@Autowired
+	TravelService travelService;
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home( Model model) {
 		// NoticeImageVO - AllSelect
 		List<NoticeImageVO> noticeList = noticeService.selectHomeNoticeImage();
 		// PromotionImageVO - AllSelect
 		List<PromotionImageVO> promotionList = promotionService.selectHomePromotionImage();
-		
+		// travelImageVO - AllSelect
+		List<TravelImageVO> travelList = travelService.selectHomeTravelImage();
+	
+		model.addAttribute("travel",travelList);
 		model.addAttribute("notice",noticeList);
 		model.addAttribute("promotion",promotionList);
 		

@@ -15,7 +15,8 @@ request.setCharacterEncoding("utf-8");
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>Small Business - Start Bootstrap Template</title>
-<link rel="shortcut icon" type="image/x-icon" href="https://genfavicon.com/tmp/icon_cbe17ed8f879f2a2a624cded0d27c3f7.ico">
+<link rel="shortcut icon" type="image/x-icon"
+	href="https://genfavicon.com/tmp/icon_cbe17ed8f879f2a2a624cded0d27c3f7.ico">
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Core theme CSS (includes Bootstrap)-->
@@ -26,32 +27,32 @@ body {
 	min-height: 100vh;
 }
 
-#mainColor{
-	background-color:#876b6b !important;
-	solid:#876b6b !important;
-
+#mainColor {
+	background-color: #876b6b !important;
+	solid: #876b6b !important;
 }
+
 .font1 {
-  font-family: 'Cafe24SsurroundAir' !important;
-  font-size: 38px;
-  font-weight: bold;
-  color:#4a1b1b;
- 
+	font-family: 'Cafe24SsurroundAir' !important;
+	font-size: 38px;
+	font-weight: bold;
+	color: #4a1b1b;
 }
 
 .font2 {
-  font-family: 'Cafe24SsurroundAir' !important;
-  font-size: 20px;
-  font-weight: bold;
-  color:#5e0c0c;
+	font-family: 'Cafe24SsurroundAir' !important;
+	font-size: 20px;
+	font-weight: bold;
+	color: #5e0c0c;
 }
 
 .font3 {
-  font-family: 'Cafe24SsurroundAir' !important;
-  font-size: 16px;
-  font-weight: bold;
-  color:#5e0c0c;
+	font-family: 'Cafe24SsurroundAir' !important;
+	font-size: 16px;
+	font-weight: bold;
+	color: #5e0c0c;
 }
+
 .input-form {
 	max-width: 680px;
 	margin-top: 80px;
@@ -64,6 +65,7 @@ body {
 	-moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
 	box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
 }
+
 .button {
 	background-color: #4CAF50; /* Green */
 	border: none;
@@ -87,8 +89,7 @@ body {
 
 .button4:hover {
 	background-color: #e7e7e7;
-
-
+}
 </style>
 </head>
 <body>
@@ -98,9 +99,10 @@ body {
 	<!-- Page Content-->
 	<div class="container px-4 px-lg-5 font3">
 		<!-- Heading Row-->
-		<div class="card text-white bg-secondary my-5 py-4 text-center" id="mainColor">
+		<div class="card text-white bg-secondary my-5 py-4 text-center"
+			id="mainColor">
 			<div class="card-body">
-				<h5 class="text-white m-0" >공 지 사 항</h5>
+				<h5 class="text-white m-0">공 지 사 항</h5>
 			</div>
 		</div>
 		<!-- Content Row-->
@@ -109,15 +111,15 @@ body {
 				<div class="col-md-4 mb-5">
 					<div class="card h-100">
 						<c:if test="${notice.image1 != null }">
-							<img class="imageTest"
+							<img
 								src="${contextPath }/board/notice/download?image=${notice.image1}&noticeNO=${notice.noticeNO}&name=${notice.name}"
-								 />
+								width="100%" height="250px" />
 						</c:if>
 
 						<c:if test="${notice.image1 == null }">
 							<img class="imageTest"
 								src="<c:url value="http://encosmall.kr/design/encos0720/shop/img/common/gonggi_top.jpg" />"
-								 />
+								width="100%" height="250px" />
 						</c:if>
 						<div class="card-footer">
 							<a class="btn btn-primary btn-sm">${notice.name }</a>&nbsp;&nbsp;&nbsp;<a
@@ -132,9 +134,10 @@ body {
 
 		<!-- 이친구들을 반복해서 만들건데 받아올 값은 홍보 리스트 처럼 -->
 
-		<div class="card text-white bg-secondary my-5 py-4 text-center" id="mainColor">
+		<div class="card text-white bg-secondary my-5 py-4 text-center"
+			id="mainColor">
 			<div class="card-body">
-				<h5 class="text-white m-0" >홍 보 상 품</h5>
+				<h5 class="text-white m-0">홍 보 상 품</h5>
 			</div>
 		</div>
 		<!-- Content Row-->
@@ -143,20 +146,51 @@ body {
 				<div class="col-md-4 mb-5">
 					<div class="card h-100">
 						<c:if test="${promotion.image1 != null }">
-							<img class="imageTest"
+							<img
 								src="${contextPath }/board/promotion/download?image=${promotion.image1}&promotionNO=${promotion.promotionNO}&name=${promotion.name}"
-								 />
+								width="100%" height="250px" />
 						</c:if>
 
 						<c:if test="${promotion.image1 == null }">
-							<img class="imageTest"
+							<img
 								src="<c:url value="http://encosmall.kr/design/encos0720/shop/img/common/gonggi_top.jpg" />"
-								 />
+								width="100%" height="250px" />
 						</c:if>
 
 						<div class="card-footer">
 							<a class="btn btn-primary btn-sm">${promotion.categoryName }</a>&nbsp;&nbsp;&nbsp;<a
 								href="${contextPath}/board/promotion/view?promotionNO=${promotion.promotionNO }">${promotion.title }</a>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
+		</div>
+		
+		<div class="card text-white bg-secondary my-5 py-4 text-center"
+			id="mainColor">
+			<div class="card-body">
+				<h5 class="text-white m-0">테 마 여 행</h5>
+			</div>
+		</div>
+		<!-- Content Row-->
+		<div class="row gx-4 gx-lg-5">
+			<c:forEach var="travel" items="${travel}" begin="0" end="2">
+				<div class="col-md-4 mb-5">
+					<div class="card h-100">
+						<c:if test="${travel.image1 != null }">
+							<img
+								src="${contextPath }/board/travel/download?image=${travel.image1}&travelNO=${travel.travelNO}&name=${travel.name}"
+								width="100%" height="250px" />
+						</c:if>
+
+						<c:if test="${travel.image1 == null }">
+							<img class="imageTest"
+								src="<c:url value="http://encosmall.kr/design/encos0720/shop/img/common/gonggi_top.jpg" />"
+								width="100%" height="250px" />
+						</c:if>
+						<div class="card-footer">
+							<a class="btn btn-primary btn-sm">${travel.name }</a>&nbsp;&nbsp;&nbsp;<a
+								href="${contextPath}/board/travel/view?travelNO=${travel.travelNO }">${travel.title }</a>
 						</div>
 					</div>
 				</div>

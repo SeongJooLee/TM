@@ -73,6 +73,12 @@ public class TravelDAO {
 		return list;
 	}
 	
+	public List<TravelImageVO> selectHomeTravelImage() {
+		// TODO Auto-generated method stub
+		List<TravelImageVO> list = sql.selectList(ns+"selectHomeTravelImage");
+		return list;
+	}
+
 	public static TravelVO selectOneComment(int travelNO) {
 		// TODO Auto-generated method stub
 		return null;

@@ -105,4 +105,9 @@ public class TravelService {
 		// TODO Auto-generated method stub
 		return travelDAO.selectUserTravel(id);
 	}
+
+	public List<TravelImageVO> selectHomeTravelImage() {
+		// TODO Auto-generated method stub
+		return travelDAO.selectHomeTravelImage();
+	}
 }
