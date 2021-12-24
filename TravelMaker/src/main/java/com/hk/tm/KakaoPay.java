@@ -47,7 +47,7 @@ public class KakaoPay {
         // 서버로 요청할 Header
         
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Authorization", "KakaoAK" + " b35936c88d90573a13525f1103fdde5f");
+        headers.add("Authorization", "KakaoAK" + " b35936c88d90573a13525f1103fdde5f"); //카카오톡 api 홈페이지에서 admin key 가져오기.
         headers.add("Accept", MediaType.APPLICATION_JSON_UTF8_VALUE);
         headers.add("Content-Type", MediaType.APPLICATION_FORM_URLENCODED_VALUE + ";charset=UTF-8");
         
