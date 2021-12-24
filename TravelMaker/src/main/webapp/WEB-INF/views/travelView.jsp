@@ -223,7 +223,7 @@ body {
 					</div>
 
 					<div class="row">
-						<div class="col-md-5 mb-3 ">
+						<div class="col-md-5 mb-3">
 							<label for="image">이미지 파일 첨부</label>
 							<div id="update">
 								<input type="button" value="파일 삭제" id="imgUpdateBtn"
