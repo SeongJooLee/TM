@@ -286,8 +286,7 @@ public class TravelController {
 	public void travelDelete(@RequestParam("travelNO") int travelNO, HttpServletResponse response) throws Exception {
 
 		TravelVO travelVO = travelService.deleteTravel(travelNO);		
-		File imgDir = new File(REPO+"\\"+travelVO.getName()+"\\"+travelVO.getTravelNO());
-		System.out.println("왜 안계세요???ㅜㅜ");
+		File imgDir = new File(REPO+"\\"+travelVO.getName()+"\\"+travelVO.getTravelNO());		
 		if(imgDir.exists()) {
 			FileUtils.deleteDirectory(imgDir);
 			imgDelete(travelVO.getTravelNO());

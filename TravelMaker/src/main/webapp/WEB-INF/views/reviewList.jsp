@@ -54,7 +54,7 @@ body {
 function wkrtjd(obj){
 	document.getElementById('reviewcreate').method= "POST";
 	document.getElementById('reviewcreate').action = "${contextPath}/member/mypage";
-   document.getElementById('reviewcreate').submit();
+    document.getElementById('reviewcreate').submit();
 }
 <!-- 여기 수정 덜됐습니다. -->
 function tyvld(){
