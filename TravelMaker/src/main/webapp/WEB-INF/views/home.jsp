@@ -22,10 +22,72 @@ request.setCharacterEncoding("utf-8");
 <link href="<c:url value="/resources/css/styles.css" />"
 	rel="stylesheet" />
 <style>
-.imageTest{
-width:100%;
- height:250px; 
+body {
+	min-height: 100vh;
 }
+
+#mainColor{
+	background-color:#876b6b !important;
+	solid:#876b6b !important;
+
+}
+.font1 {
+  font-family: 'Cafe24SsurroundAir' !important;
+  font-size: 38px;
+  font-weight: bold;
+  color:#4a1b1b;
+ 
+}
+
+.font2 {
+  font-family: 'Cafe24SsurroundAir' !important;
+  font-size: 20px;
+  font-weight: bold;
+  color:#5e0c0c;
+}
+
+.font3 {
+  font-family: 'Cafe24SsurroundAir' !important;
+  font-size: 16px;
+  font-weight: bold;
+  color:#5e0c0c;
+}
+.input-form {
+	max-width: 680px;
+	margin-top: 80px;
+	padding: 32px;
+	background: #fff;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+	-moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+	box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+}
+.button {
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	padding: 16px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	-webkit-transition-duration: 0.4s; /* Safari */
+	transition-duration: 0.4s;
+	cursor: pointer;
+}
+
+.button4 {
+	background-color: white;
+	color: black;
+	border: 2px solid #e7e7e7;
+}
+
+.button4:hover {
+	background-color: #e7e7e7;
+
 
 </style>
 </head>
@@ -34,11 +96,11 @@ width:100%;
 	<!-- Responsive navbar-->
 
 	<!-- Page Content-->
-	<div class="container px-4 px-lg-5">
+	<div class="container px-4 px-lg-5 font3">
 		<!-- Heading Row-->
-		<div class="card text-white bg-secondary my-5 py-4 text-center">
+		<div class="card text-white bg-secondary my-5 py-4 text-center" id="mainColor">
 			<div class="card-body">
-				<a class="text-white m-0" href="${contextPath}/tm/board/notice">공지사항</a>
+				<h5 class="text-white m-0" >공 지 사 항</h5>
 			</div>
 		</div>
 		<!-- Content Row-->
@@ -70,9 +132,9 @@ width:100%;
 
 		<!-- 이친구들을 반복해서 만들건데 받아올 값은 홍보 리스트 처럼 -->
 
-		<div class="card text-white bg-secondary my-5 py-4 text-center">
+		<div class="card text-white bg-secondary my-5 py-4 text-center" id="mainColor">
 			<div class="card-body">
-				<a class="text-white m-0" href="${contextPath}/tm/board/promotion">홍보상품</a>
+				<h5 class="text-white m-0" >홍 보 상 품</h5>
 			</div>
 		</div>
 		<!-- Content Row-->
