@@ -23,6 +23,41 @@
 <link href="<c:url value="/resources/css/styles.css" />"
 	rel="stylesheet" />
 <style>
+@font-face {
+    font-family: 'Cafe24SsurroundAir';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.font1 {
+  font-family: 'Cafe24SsurroundAir' !important;
+  font-size: 38px;
+  font-weight: bold;
+  color:#4a1b1b;
+ 
+}
+
+.font2 {
+  font-family: 'Cafe24SsurroundAir' !important;
+  font-size: 20px;
+  font-weight: bold;
+  color:#5e0c0c;
+}
+
+.font3 {
+  font-family: 'Cafe24SsurroundAir' !important;
+  font-size: 16px;
+  font-weight: bold;
+  color:#5e0c0c;
+}
+
+.value {
+  font-family: 'Cafe24SsurroundAir' !important;
+  font-size: 20px;
+  font-weight: bold;
+  color: #754343;
+}
 .imagetest {
 	width: 100%;
 	height: 500px;
