@@ -40,7 +40,7 @@
 
 .font1 {
   font-family: 'Cafe24SsurroundAir' !important;
-  font-size: 38px;
+  font-size: 36px;
   font-weight: bold;
   color:#4a1b1b;
  
@@ -48,21 +48,21 @@
 
 .font2 {
   font-family: 'Cafe24SsurroundAir' !important;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   color:#5e0c0c;
 }
 
 .font3 {
   font-family: 'Cafe24SsurroundAir' !important;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
   color:#5e0c0c;
 }
 
 .value {
   font-family: 'Cafe24SsurroundAir' !important;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   color: #754343;
 }
@@ -335,11 +335,11 @@ body {
                   <div class="row">
                      <div class="col-md-2 mb-3"></div>
                      <div class="col-md-4 mb-3">
-                        <input class="btn btn-info btn-lg btn-block" type="button" value="수정 반영하기"
+                        <input class="btn btn-info btn-lg btn-block font2" type="button" value="수정 반영하기"
                            onClick="fn_modify_update(frmTravel)" />
                      </div>
                      <div class="col-md-4 mb-3">
-                        <input class="btn btn-info btn-lg btn-block" type="button" value="취소하기"
+                        <input class="btn btn-info btn-lg btn-block font2" type="button" value="취소하기"
                            onClick="backToList(frmTravel)" />
                      </div>
                      <div class="col-md-1 mb-3"></div>
@@ -352,15 +352,15 @@ body {
                            <c:if
                               test='${list.travelNO == travel.travelNO && list.id.equals(travel.id)}'>
                               <div class="col-md-4 mb-3">
-                                 <input class="btn btn-primary btn-lg btn-block" type="button" value="수정하기"
+                                 <input class="btn btn-primary btn-lg btn-block font2" type="button" value="수정하기"
                                     onClick="fn_enable(this.form)" />
                               </div>
                               <div class="col-md-4 mb-3">
-                                 <input class="btn btn-danger btn-lg btn-block" type="button" value="삭제하기"
+                                 <input class="btn btn-danger btn-lg btn-block font2" type="button" value="삭제하기"
                                     onClick="fn_delete(this.form)" />
                               </div>
                               <div class="col-md-4 mb-3">
-                                 <input class="btn btn-primary btn-lg btn-block" type="button" value="리스트로 돌아가기"
+                                 <input class="btn btn-primary btn-lg btn-block font2" type="button" value="리스트로 돌아가기"
                                     onClick="backToList(this.form)" />
                               </div>
                               <c:set var="check" value="1" />
@@ -449,7 +449,7 @@ body {
             </c:forEach>
 
             <c:if test='${userSession.grade.equals("user")}'>
-                        <hr id="value">
+                        <hr class="value">
                <form action="/tm/board/travel/add" method="post">
                   <div class="row">
                      <div class="col-md-12 mb-3 font2">
@@ -464,7 +464,7 @@ body {
                      <div class="col-md-4 mb-3"></div>
                      <div class="col-md-4 mb-3"></div>
                      <div class="col-md-4 mb-3">
-                        <input class="btn btn-primary btn-lg btn-block" type="submit" 
+                        <input class="btn btn-primary btn-lg btn-block font2" type="submit" 
                            value="댓글쓰기"> 
                            <!-- 여기 버튼 마진 0으로 주고 싶습니다만... -->
                      </div>

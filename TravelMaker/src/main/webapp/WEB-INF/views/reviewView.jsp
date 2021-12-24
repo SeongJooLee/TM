@@ -318,11 +318,11 @@ function backToList(obj){
 						<div class="row">
 							<div class="col-md-2 mb-3"></div>
 							<div class="col-md-4 mb-3">
-								<input class="btn btn-info btn-lg btn-block" type="button"
+								<input class="btn btn-info btn-lg btn-block font2" type="button"
 									value="수정 반영하기" onClick="fn_modify_update(frmReview)" />
 							</div>
 							<div class="col-md-4 mb-3">
-								<input class="btn btn-info btn-lg btn-block" type="button"
+								<input class="btn btn-info btn-lg btn-block font2" type="button"
 									value="취소하기" onClick="backToList(frmReview)" />
 							</div>
 							<div class="col-md-1 mb-3"></div>
@@ -334,15 +334,15 @@ function backToList(obj){
 								<c:forEach var='list' items='${list}'>
 									<c:if
 										test='${list.reviewNO == review.reviewNO && list.id.equals(review.id)}'>
-										<div class="col-md-4 mb-3">
+										<div class="col-md-4 mb-3 font2">
 											<input class="btn btn-primary btn-lg btn-block" type="button"
 												value="수정하기" onClick="fn_enable(this.form)" />
 										</div>
-										<div class="col-md-4 mb-3">
+										<div class="col-md-4 mb-3 font2">
 											<input class="btn btn-danger btn-lg btn-block" type="button"
 												value="삭제하기" onClick="fn_delete(this.form)" />
 										</div>
-										<div class="col-md-4 mb-3">
+										<div class="col-md-4 mb-3 font2">
 											<input class="btn btn-primary btn-lg btn-block" type="button"
 												value="리스트로 돌아가기" onClick="backToList(this.form)" />
 										</div>
@@ -353,7 +353,7 @@ function backToList(obj){
 									<div class="col-md-4 mb-3"></div>
 									<div class="col-md-4 mb-3"></div>
 									<div class="col-md-4 mb-3">
-										<input class="btn btn-primary btn-lg btn-block" type="button"
+										<input class="btn btn-primary btn-lg btn-block font2" type="button"
 											value="리스트로 돌아가기" onClick="backToList(this.form)" />
 									</div>
 								</c:if>
@@ -364,15 +364,15 @@ function backToList(obj){
 
 						<c:if test='${userSession.grade.equals("admin")}'>
 							<div class="col-md-4 mb-3">
-								<input class="btn btn-primary btn-lg btn-block" type="button"
+								<input class="btn btn-primary btn-lg btn-block font2" type="button"
 									value="수정하기" onClick="fn_enable(this.form)" />
 							</div>
 							<div class="col-md-4 mb-3">
-								<input class="btn btn-danger btn-lg btn-block" type="button"
+								<input class="btn btn-danger btn-lg btn-block font2" type="button"
 									value="삭제하기" onClick="fn_delete(this.form)" />
 							</div>
 							<div class="col-md-4 mb-3">
-								<input class="btn btn-primary btn-lg btn-block" type="button"
+								<input class="btn btn-primary btn-lg btn-block font2" type="button"
 									value="리스트로 돌아가기" onClick="backToList(this.form)" />
 							</div>
 						</c:if>
@@ -432,7 +432,7 @@ function backToList(obj){
 								<div class="col-md-4 mb-3" ></div>
 								<div class="col-md-4 mb-3" ></div>
 								<div class="col-md-4 mb-3">
-									<input class="btn btn-primary btn-lg btn-block" type="submit"
+									<input class="btn btn-primary btn-lg btn-block font2" type="submit"
 										value="댓글쓰기">
 								</div>
 							</div>
