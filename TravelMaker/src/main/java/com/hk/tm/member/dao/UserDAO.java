@@ -265,7 +265,6 @@ public class UserDAO {
 		for (TravelVO travelVO : travelList) {
 			travelPKList.add(travelVO.getTravelNO());
 		}
-		System.out.println("user가 등록한 travel PK = "+travelPKList);
 		return travelPKList;
 	}
 
@@ -273,7 +272,6 @@ public class UserDAO {
 		// TODO Auto-generated method stub
 		for (Integer integer : userTravelPK) {
 			 sqlSession.delete("mapper.boardImage.deletePlayImage",integer);
-			 System.out.println("삭제준비 ="+integer);
 		}
 		
 		
@@ -336,7 +334,6 @@ public class UserDAO {
 
 	public void sellerReservationComplete(String reserNO) {
 		// TODO Auto-generated method stub
-		System.out.println("여기까지 왓으!!");
 		sqlSession.update("mapper.boardReservation.insertComplete",reserNO);
 	}
 

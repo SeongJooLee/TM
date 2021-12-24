@@ -293,7 +293,6 @@ public class UserController {
 			int deleteCommentReview = userService.deleteCommentReview(userReviewPK);//해당 travel pk뭉치로 comment테이블에서관련된 데이터삭제
 			
 			int totalResult = userService.deleteTotal(userId);	
-			System.out.println("여기까지 성공하면 돼..");
 			
 			int result = userService.delete(userId);//최종 유저삭제
 			model.addAttribute("result",result);

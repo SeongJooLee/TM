@@ -40,7 +40,6 @@ public class ReservationController {
 		reserVO.setId(id);
 		reserVO.setPromotionNO(promotionNO);
 		
-		System.out.println("TestreserVO"+reserVO.toString());
 		
 		int priceSum = price * reserVO.getHeadCount();
 		
@@ -87,7 +86,6 @@ public class ReservationController {
 	}
 	@RequestMapping(value="/board/reservation/payment", method=RequestMethod.POST)
 	public String reservationPayment(RedirectAttributes redirectAttributes,@RequestParam("reserNO")String reserNO,HttpServletResponse response) throws IOException {
-		System.out.println("결제 확인 "+reserNO);
 		reserService.insertPayment(reserNO);
 		
 		redirectAttributes.addAttribute("reserNO",reserNO);

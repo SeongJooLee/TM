@@ -66,7 +66,6 @@ public class CommentDAO {
 	}
 	
 	public int addReviewComment(CommentVO commentVO) {
-		System.out.println("댓글달기 : "+commentVO.toString());
 		int ret = sql.insert(ns+"addReviewComment",commentVO);
 		return ret;
 	}
