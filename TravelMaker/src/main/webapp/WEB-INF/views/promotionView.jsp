@@ -30,6 +30,7 @@
     font-style: normal;
 }
 
+
 .font1 {
   font-family: 'Cafe24SsurroundAir' !important;
   font-size: 38px;
