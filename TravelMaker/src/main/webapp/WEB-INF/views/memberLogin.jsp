@@ -67,6 +67,10 @@ html, body {
    padding: 2%;
    font-family: 'Nanum Gothic', sans-serif;
 }
+.font1 {
+font-family: 'Nanum Gothic', sans-serif;
+font-weight: bold;
+}
 
 </style>
 </head>
@@ -76,7 +80,7 @@ html, body {
 
    <div class="container login-container">
       <div class="row">
-         <div class="col-md-6 login_form">
+         <div class="col-md-6 login_form font1">
          <form action='login' method='post'>
             <h3><img class="logo_img" src="<c:url value="/resources/img/log.png" />" /></h3>
             구매자 : <input type="radio" name='grade' value='user' required>
