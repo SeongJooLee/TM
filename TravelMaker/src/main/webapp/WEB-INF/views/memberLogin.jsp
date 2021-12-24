@@ -74,7 +74,7 @@ font-weight: bold;
 
 </style>
 </head>
-<body>
+<body> 
 
    <jsp:include page="/resources/include/header.jsp" />
 
