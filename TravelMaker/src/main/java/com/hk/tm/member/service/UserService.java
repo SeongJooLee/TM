@@ -182,7 +182,7 @@ public class UserService {
 		//image
 		int imageResult = userDAO.deleteImage(userId);
 		//liktyou삭제
-		int likeyouResult = userDAO.deleteLikeyou(userId);
+//		int likeyouResult = userDAO.deleteLikeyou(userId);
 		//comment삭제
 		int commentResult = userDAO.deleteComment(userId);
 		//travel삭제
@@ -190,7 +190,7 @@ public class UserService {
 		//review삭제
 		int reviewResult = userDAO.deleteReview(userId);
 		//eventproduct삭제
-		int eventProductResult = userDAO.deleteEventProduct(userId);
+//		int eventProductResult = userDAO.deleteEventProduct(userId);
 		//reservation삭제
 		int reservationResult= userDAO.deleteReservation(userId);
 		//user 삭제

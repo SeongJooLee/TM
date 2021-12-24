@@ -15,9 +15,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 			
 			<typeAlias type="com.hk.tm.board.vo.NoticeVO" alias="NoticeVO" />
 			<typeAlias type="com.hk.tm.board.vo.CommentVO" alias="CommentVO" />
-			<typeAlias type="com.hk.tm.board.vo.EventVO" alias="EventVO" />
 			<typeAlias type="com.hk.tm.board.vo.ImageVO" alias="ImageVO" />
-			<typeAlias type="com.hk.tm.board.vo.LikeyouVO" alias="LikeyouVO" />
 			<typeAlias type="com.hk.tm.board.vo.PromotionVO" alias="PromotionVO" />
 			<typeAlias type="com.hk.tm.board.vo.ReviewVO" alias="ReviewVO" />
 			<typeAlias type="com.hk.tm.board.vo.TravelVO" alias="TravelVO" />
