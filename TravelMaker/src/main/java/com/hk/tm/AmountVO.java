@@ -3,6 +3,7 @@ package com.hk.tm;
 
 public class AmountVO {
  
+	
     private Integer total, tax_free, vat, point, discount;
 
 	public Integer getTotal() {
