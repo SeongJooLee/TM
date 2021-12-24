@@ -365,6 +365,7 @@ body {
 										<c:set var="check" value="1" />
 									</c:if>
 								</c:forEach>
+								
 								<c:if test='${check!=1}'>
 									<div class="col-md-4 mb-3"></div>
 									<div class="col-md-4 mb-3"></div>
