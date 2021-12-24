@@ -208,15 +208,15 @@ body {
 	<div class="container">
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
-				<h4 class="mb-3">공지사항 보기</h4>
+				<h4 class="mb-3 font1" align="center">공지사항 보기</h4>
 				<form id="frmNotice" enctype="multipart/form-data">
 					<div class="row">
-						<div class="col-md-2 mb-3">
+						<div class="col-md-2 mb-3 font2">
 							<label for="noticeNO">번호</label> <input type="text"
 								class="form-control" value="${notice.noticeNO }" id="noticeNO"
 								name="noticeNO" readonly />
 						</div>
-						<div class="col-md-10 mb-3">
+						<div class="col-md-10 mb-3 font2">
 							<label for="title">제목</label> <input type="text"
 								class="form-control" value="${notice.title }" id="title"
 								name="title" disabled />
@@ -224,17 +224,17 @@ body {
 					</div>
 
 					<div class="row">
-						<div class="col-md-5 mb-3">
+						<div class="col-md-5 mb-3 font2">
 							<label for="image">이미지 파일 첨부</label>
 							<div id="update">
 								<input type="button" value="파일 삭제" id="imgUpdateBtn"
 									class="btn btn-danger btn-lg btn-block"
-									onClick="fn_imgUpdateBtn()" disabled /> <small>
+									onClick="fn_imgUpdateBtn()" disabled /> <small class="font3">
 									&nbsp;&nbsp; * 클릭시 전체 파일이 삭제됩니다.</small>
 							</div>
 							<input type="button" value="파일 추가" id="imgUpdate"
 								class="btn btn-info btn-lg btn-block" onClick="fn_addFile()"
-								disabled /> <small> &nbsp;&nbsp; * 최대 3개까지 첨부 가능합니다.</small>
+								disabled /> <small class="font3"> &nbsp;&nbsp; * 최대 3개까지 첨부 가능합니다.</small>
 						</div>
 						<div id="d_file"></div>
 						<div id="d_filetest">
@@ -299,23 +299,23 @@ body {
 							</div>
 						</div>
 					</div>
-					<div class="mb-3">
+					<div class="mb-3 font2">
 						<label for="content">글 내용</label>
 						<textarea class="form-control" rows="20" cols="60" name="content"
 							id="content" disabled>${notice.content } </textarea>
 					</div>
 					<div class="row">
-						<div class="col-md-2 mb-3">
+						<div class="col-md-2 mb-3 font2">
 							<label for="name">카테고리</label> <input class="form-control"
 								type="text" value="${notice.name }" readonly> <input
 								type="hidden" value="${notice.name }" name="name" />
 						</div>
-						<div class="col-md-4 mb-3">
+						<div class="col-md-4 mb-3 font2">
 							<label for="adminID">작성자</label> <input type="text"
 								class="form-control" name="adminID" id="adminID"
 								value="${notice.adminID }" readonly>
 						</div>
-						<div class="col-md-6 mb-3">
+						<div class="col-md-6 mb-3 font2">
 							<label for="title">작성날짜</label> <input type="text"
 								class="form-control" name="writeDate" id="writeDate"
 								value="${notice.writeDate }" readonly>

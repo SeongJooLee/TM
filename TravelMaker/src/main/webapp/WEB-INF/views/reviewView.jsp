@@ -221,17 +221,17 @@ function backToList(obj){
 					</div>
 
 					<div class="row">
-						<div class="col-md-5 mb-3">
+						<div class="col-md-5 mb-3 font2">
 							<label for="image">이미지 파일 첨부</label>
 							<div id="update">
 								<input type="button" value="파일 삭제" id="imgUpdateBtn"
 									class="btn btn-danger btn-lg btn-block"
-									onClick="fn_imgUpdateBtn()" disabled /> <small>
+									onClick="fn_imgUpdateBtn()" disabled /> <small class="font3">
 									&nbsp;&nbsp; * 클릭시 전체 파일이 삭제됩니다.</small>
 							</div>
 							<input type="button" value="파일 추가" id="imgUpdate"
 								class="btn btn-info btn-lg btn-block" onClick="fn_addFile()"
-								disabled /> <small> &nbsp;&nbsp; * 최대 3개까지 첨부 가능합니다.</small>
+								disabled /> <small class="font3"> &nbsp;&nbsp; * 최대 3개까지 첨부 가능합니다.</small>
 						</div>
 						<div id="d_file"></div>
 						<div id="d_filetest">
@@ -307,7 +307,7 @@ function backToList(obj){
 								class="form-control" name="id" id="id" value="${review.id }"
 								readonly>
 						</div>
-						<div class="col-md-6 mb-3">
+						<div class="col-md-6 mb-3 font2">
 							<label for="title">작성날짜</label> <input type="text"
 								class="form-control" name="writeDate" id="writeDate"
 								value="${review.writeDate }" readonly>
@@ -392,23 +392,23 @@ function backToList(obj){
 
 					<c:forEach var="comment" items="${comment}" varStatus="status">
 						<div class="row">
-							<div class="col-md-1 mb-3">
+							<div class="col-md-1 mb-3 font2">
 							<label for="id">No</label>
 								<input type="text" class="form-control" value="${status.count }"
 									readonly />
 							</div>
-							<div class="col-md-2 mb-3">
+							<div class="col-md-2 mb-3 font2">
 							<label for="id">작성자ID</label>
 								<input type="text" class="form-control" value="${comment.id }"
 									id="id" name="id" readonly />
 							</div>
-							<div class="col-md-7 mb-3">
+							<div class="col-md-7 mb-3 font2">
 							<label for="content">댓글 내용</label>
 								<input type="text" class="form-control"
 									value="${comment.content }" id="content" name="content"
 									readonly />
 							</div>
-							<div class="col-md-2 mb-3">
+							<div class="col-md-2 mb-3 font2">
 							<label for="writeDate">작성 날짜</label>
 								<input type="text" class="form-control"
 									value="${comment.writeDate}" id="writeDate" name="writeDate"
@@ -421,7 +421,7 @@ function backToList(obj){
 					<c:if test='${userSession.grade.equals("user")}'>
 						<form action="/tm/board/review/add" method="post">
 							<div class="row">
-								<div class="col-md-12 mb-3">
+								<div class="col-md-12 mb-3 font2">
 									<label for="comment">댓글 쓰기</label> <input type="text"
 										class="form-control" name="content">
 									<hr>

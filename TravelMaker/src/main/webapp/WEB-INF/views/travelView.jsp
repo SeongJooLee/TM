@@ -223,15 +223,15 @@ body {
                </div>
 
                <div class="row">
-                  <div class="col-md-5 mb-3">
+                  <div class="col-md-5 mb-3 font2">
                      <label for="image">이미지 파일 첨부</label>
                      <div id="update">
                         <input type="button" value="파일 삭제" id="imgUpdateBtn"
-                           class="btn btn-danger btn-lg btn-block" onClick="fn_imgUpdateBtn()" disabled /> <small id="font3" >
+                           class="btn btn-danger btn-lg btn-block" onClick="fn_imgUpdateBtn()" disabled /> <small class="font3" >
                            &nbsp;&nbsp; * 클릭시 전체 파일이 삭제됩니다.</small>
                      </div>
                      <input type="button" value="파일 추가" id="imgUpdate"
-                        class="btn btn-info btn-lg btn-block" id="font3" onClick="fn_addFile()" disabled /> <small id="font3" >
+                        class="btn btn-info btn-lg btn-block" id="font3" onClick="fn_addFile()" disabled /> <small class="font3" >
                         &nbsp;&nbsp; * 최대 3개까지 첨부 가능합니다.</small>
                   </div>
                   <div id="d_file"></div>
@@ -420,8 +420,8 @@ body {
 
             <c:forEach var="comment" items="${comment}" varStatus="status">
                <div class="row">               
-                  <div class="col-md-1 mb-3">
-                  <label for="id" id="font2">No</label>
+                  <div class="col-md-1 mb-3 font2">
+                  <label for="id">No</label>
                      <input type="text"
                         class="form-control value" value="${status.count }" 
                         readonly />
