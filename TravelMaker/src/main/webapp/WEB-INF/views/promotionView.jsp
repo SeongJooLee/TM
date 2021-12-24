@@ -119,12 +119,7 @@ body {
 			document.getElementById("imgUpdate").disabled = false;
 		}
 		document.getElementById("tr_btn_modify").style.display = 'block';
-		if(${userSession.grade.equals("seller")}){
-		document.getElementById("tr_btn1").style.display = 'none';
-		}
-		if(${userSession.grade.equals("admin")}){
-		document.getElementById("tr_btn2").style.display = 'none';
-		}
+		document.getElementById("tr_btn").style.display = 'none';
 	}
 	function fn_imgUpdateBtn(obj) {
 		document.getElementById("imgUpdate").disabled = false;
@@ -216,6 +211,7 @@ body {
 </script>
 </head>
 <body>
+						
 	<jsp:include page="/resources/include/header.jsp" />
 
 	<div class="container">
@@ -367,7 +363,7 @@ body {
 							<div class="col-md-1 mb-3"></div>
 						</div>
 					</div>
-					<div id="tr_btn1">
+					<div id="tr_btn">
 						<div class="row">
 							<c:if test='${userSession.grade.equals("seller")}'>
 								<c:forEach var='list' items='${proList}'>
@@ -397,10 +393,10 @@ body {
 									</div>
 								</c:if>
 							</c:if>
+							
 						</div>
 					</div>
-					
-					<div id="tr_btn2">
+						
 					<div class="row">
 						<c:if test='${userSession.grade.equals("user")}'>
 							<div class="col-md-4 mb-3"></div>
@@ -428,13 +424,13 @@ body {
 									onClick="backToList(this.form)" />
 							</div>
 						</c:if>
-						<c:if test="${userSession == null }">
+						<c:if test='${userSession.grade == null}'>
 							<div class="col-md-4 mb-3">
-								<input class="btn btn-primary btn-lg btn-block font2" type="button" value="리스트로 돌아가기"
+								<input class="btn btn-primary btn-lg btn-block font2" type="button" value="리스트로 32돌아가기"
 									onClick="backToList(this.form)" />
 							</div>
 						</c:if>
-					</div>
+						
 					</div>
 					
 				</form>

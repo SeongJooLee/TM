@@ -119,12 +119,7 @@ body {
          document.getElementById("imgUpdate").disabled = false;
       }
       document.getElementById("tr_btn_modify").style.display = 'block';
-      if(${userSession.grade.equals("user")}){
-         document.getElementById("tr_btn1").style.display = 'none';
-      }
-      if(${userSession.grade.equals("admin")}){
-         document.getElementById("tr_btn2").style.display = 'none';
-      }
+         document.getElementById("tr_btn").style.display = 'none';
    }
 
    function fn_imgUpdateBtn(obj) {
@@ -348,7 +343,7 @@ body {
 							<div class="col-md-1 mb-3"></div>
 						</div>
 					</div>
-					<div id="tr_btn1">
+					<div id="tr_btn">
 						<div class="row">
 							<c:if test='${userSession.grade.equals("user")}'>
 								<c:forEach var='list' items='${list}'>
@@ -382,7 +377,6 @@ body {
 							</c:if>
 						</div>
 					</div>
-					<div id="tr_btn2">
 						<div class="row">
 
 							<c:if test='${userSession.grade.equals("seller")}'>
@@ -410,8 +404,6 @@ body {
 										onClick="backToList(this.form)" />
 								</div>
 							</c:if>
-						</div>
-					</div>
 							<c:if test="${userSession == null }">
 								<div class="col-md-4 mb-3">
 									<input class="btn btn-primary btn-lg btn-block font2"
@@ -419,6 +411,7 @@ body {
 										onClick="backToList(this.form)" />
 								</div>
 							</c:if>
+						</div>
 				</form>
 			</div>
 		</div>
