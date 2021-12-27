@@ -61,77 +61,84 @@ function sellerDelete(){
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
 				<h4 class="mb-3" align="center">회원 정보</h4>
-					<input type="hidden" name="id" value="${userSession.sellerID}">
-					<div class="row">
-						<div class="col-md-6 mb-3">
-							<form action='mypage' method='post'>
-								<input type="hidden" name="testKey" value="sellerOne">					
-								<input class='form-control' type='submit'  value='회원정보'>
-							</form>
-						</div>
-						<div class="col-md-6 mb-3">
-							<form action='mypage' method='post'>
-							<input type="hidden" name="testKey" value="sellerTwo">					
-							<input class='form-control' type='submit'  value='내가 등록한 상품 보기'>
-							</form>	
-						</div>
-						
+				<input type="hidden" name="id" value="${userSession.sellerID}">
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<form action='mypage' method='post'>
+							<input type="hidden" name="testKey" value="sellerOne"> <input
+								class='form-control' type='submit' value='회원정보'>
+						</form>
 					</div>
-					
-					<hr>
-					
-					<br>
-					<br>
-					<h4 class="mb-3" align="center">[ ${userSession.sellerID} ] 님의 회원 정보</h4>
-					<br>
-					<br>
-					<div class="row">
-						<div class="col-md-2 mb-3">
-							<label class='form-control'>아이디</label> 
-						</div>
-						<div class="col-md-4 mb-3">
-							<label class='form-control'>${userSession.sellerID }</label> 
-						</div>
-						<div class="col-md-2 mb-3">
-							<label class='form-control'>비밀번호</label> 
-						</div>
-						<div class="col-md-4 mb-3">
-							<label class='form-control'>${userSession.pw }</label> 
-						</div>
+					<div class="col-md-6 mb-3">
+						<form action='mypage' method='post'>
+							<input type="hidden" name="testKey" value="sellerTwo"> <input
+								class='form-control' type='submit' value='내가 등록한 상품 보기'>
+						</form>
 					</div>
-					<div class="row">
-						<div class="col-md-2 mb-3">
-							<label class='form-control'>이 름</label> 
-						</div>
-						<div class="col-md-4 mb-3">
-							<label class='form-control'>${userSession.name }</label> 
-						</div>
-						<div class="col-md-2 mb-3">
-							<label class='form-control'>연락처</label> 
-						</div>
-						<div class="col-md-4 mb-3">
-							<label class='form-control'>${userSession.phone }</label> 
-						</div>
+
+				</div>
+
+				<hr>
+
+				<br> <br>
+				<h4 class="mb-3" align="center">[ ${userSession.sellerID} ] 님의
+					회원 정보</h4>
+				<br> <br>
+				<div class="row">
+					<div class="col-md-2 mb-3">
+						<label class='form-control'>아이디</label>
 					</div>
-					<div class="row">
-						<div class="col-md-2 mb-3">
-							<label class='form-control'>주소</label> 
-						</div>
-						<div class="col-md-4 mb-3">
-							<label class='form-control'>${userSession.address }</label> 
-						</div>
-						<div class="col-md-2 mb-3">
-							<label class='form-control'>가입날짜</label> 
-						</div>
-						<div class="col-md-4 mb-3">
-							<label class='form-control'>${userSession.joinDate }</label> 
-						</div>
+					<div class="col-md-4 mb-3">
+						<label class='form-control'>${userSession.sellerID }</label>
 					</div>
-					
-				<button class="btn btn-primary btn-lg btn-block" onclick='sellerUpdate()'>수정하기</button>
-				<button class="btn btn-primary btn-lg btn-block" onclick='sellerDelete()'>삭제하기</button>
-					
-					
+					<div class="col-md-2 mb-3">
+						<label class='form-control'>비밀번호</label>
+					</div>
+					<div class="col-md-4 mb-3">
+						<label class='form-control'>${userSession.pw }</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2 mb-3">
+						<label class='form-control'>이 름</label>
+					</div>
+					<div class="col-md-4 mb-3">
+						<label class='form-control'>${userSession.name }</label>
+					</div>
+					<div class="col-md-2 mb-3">
+						<label class='form-control'>연락처</label>
+					</div>
+					<div class="col-md-4 mb-3">
+						<label class='form-control'>${userSession.phone }</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2 mb-3">
+						<label class='form-control'>주소</label>
+					</div>
+					<div class="col-md-4 mb-3">
+						<label class='form-control'>${userSession.address }</label>
+					</div>
+					<div class="col-md-2 mb-3">
+						<label class='form-control'>가입날짜</label>
+					</div>
+					<div class="col-md-4 mb-3">
+						<label class='form-control'>${userSession.joinDate }</label>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-md-1 mb-3"></div>
+					<div class="col-md-5 mb-3">
+						<button class="btn btn-primary btn-lg btn-block"
+							onclick='sellerUpdate()'>정보 수정</button>
+					</div>
+					<div class="col-md-5 mb-3">
+						<button class="btn btn-primary btn-lg btn-block"
+							onclick='sellerDelete()'>회원 탈퇴</button>
+					</div>
+					<div class="col-md-1 mb-3"></div>
+				</div>
 			</div>
 		</div>
 	</div>

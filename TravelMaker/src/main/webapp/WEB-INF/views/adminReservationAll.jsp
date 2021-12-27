@@ -115,7 +115,6 @@ function dateOrder(){
 								<th>예약날짜</th>
 								<th>상품번호</th>
 								<th>상품제목</th>
-								<th>상품내용</th>
 								<th>가격</th>
 								<th>인원수</th>
 								<th>예약자아이디</th>
@@ -132,7 +131,6 @@ function dateOrder(){
 											<td><a
 												href='/tm/board/promotion/view?promotionNO=${proList.promotionNO}'>${proList.promotionNO}</a></td>
 											<td>${proList.title}</td>
-											<td>${proList.content}</td>
 											<td>${proList.price}</td>
 											<td>${reserList.headCount}</td>
 											<td>${reserList.id}</td>

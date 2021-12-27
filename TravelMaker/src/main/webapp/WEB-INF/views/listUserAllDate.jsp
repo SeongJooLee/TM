@@ -60,112 +60,100 @@ function dateOrder(){
 	<div class="container">
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
-				<h4 class="mb-3" align="center">${userSession.name} 화면</h4>
-					<input type="hidden" name="id" value="${userSession.adminID}">
-					<div class="row">
-						<div class="col-md-4 mb-3">
-							<form action='/tm/admin/mypage' method='post'>
-								<input type="hidden" name="key" value="one">					
-								<input class='form-control' type='submit'  value='게시판 글 관리'>
-							</form>
-						</div>
-						<div class="col-md-4 mb-3">
-							<form action='/tm/admin/mypage' method='post'>
-								<input type="hidden" name="key" value="two">					
-								<input class='form-control' type='submit'  value='회원 조회''>
-							</form>
-						</div>
-						<div class="col-md-4 mb-3">
-							<form action='/tm/admin/mypage' method='post'>
-								<input type="hidden" name="key" value="three">					
-								<input class='form-control' type='submit'  value='예약 조회'>
-							</form>
-						</div>
+				<h4 class="mb-3" align="center">${userSession.name}화면</h4>
+				<input type="hidden" name="id" value="${userSession.adminID}">
+				<div class="row">
+					<div class="col-md-4 mb-3">
+						<form action='/tm/admin/mypage' method='post'>
+							<input type="hidden" name="key" value="one"> <input
+								class='form-control' type='submit' value='게시판 글 관리'>
+						</form>
 					</div>
-					
-					<hr>
-					
-					<br>
-					<br>
-					<h4 class="mb-3" align="center">모든 게시판 목록</h4>
-					<br>
-					<br>
-					<div class="row">
-							<div class="col-md-6 mb-3">
-								<button class='form-control' onclick='nameOrder()'>이름 순으로보기</button><br><br>
-			
-								
-							</div>
-								<div class="col-md-6 mb-3">
-									<button class='form-control' onclick='dateOrder()'>가입날짜 순으로보기</button><br><br>
-							</div>
+					<div class="col-md-4 mb-3">
+						<form action='/tm/admin/mypage' method='post'>
+							<input type="hidden" name="key" value="two"> <input
+								class='form-control' type='submit' value='회원 조회''>
+						</form>
 					</div>
-					<form  action='/tm/admin/mypage' method='post'>
+					<div class="col-md-4 mb-3">
+						<form action='/tm/admin/mypage' method='post'>
+							<input type="hidden" name="key" value="three"> <input
+								class='form-control' type='submit' value='예약 조회'>
+						</form>
+					</div>
+				</div>
+				<hr>
+				<br> <br>
+				<h4 class="mb-3" align="center">모든 게시판 목록</h4>
+				<br> <br>
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<button class='form-control' onclick='nameOrder()'>이름
+							순으로보기</button>
+						<br> <br>
+					</div>
+					<div class="col-md-6 mb-3">
+						<button class='form-control' onclick='dateOrder()'>가입날짜
+							순으로보기</button>
+						<br> <br>
+					</div>
+				</div>
+				<form action='/tm/admin/mypage' method='post'>
 					<div class="row">
-						
-						<div class="col-md-2 mb-3">		
-							<label class='form-control'>아이디조회</label> 
+
+						<div class="col-md-2 mb-3">
+							<label class='form-control'>아이디조회</label>
 						</div>
-						<div class="col-md-8 mb-3">			
-							<input class='form-control' type="search" name='search'>						
+						<div class="col-md-8 mb-3">
+							<input class='form-control' type="search" name='search'>
 						</div>
 						<div class="col-md-2 mb-3">
 							<input class='form-control' type='submit' value='검색'>
 						</div>
-								
-						
 					</div>
-						</form>
-					</div>
-					<div class="row">
-					
-						<table class="table table-hover">
-							<thead>
-								<tr class="table-primary">
-									<th>ID</th>
-									<th>PW</th>
-									<th>NAME</th>
-									<th>PHONE</th>
-									<th>ADDRESS</th>
-									<th>JOINDATE</th>
-									<th>GRADE</th>
-								</tr>
-							</thead>
-							<tbody>
-								<c:forEach var='list' items='${list}'>
-									<tr>
-										<td><a href='/tm/admin/mypage?id=${list.id}&grade=${list.grade}'>${list.id}</a></td>
-										<td>${list.pw}</td>
-										<td>${list.name}</td>
-										<td>${list.phone}</td>
-										<td>${list.address}</td>
-										<td>${list.joinDate}</td>
-										<td>${list.grade}</td>
-									</tr>
-								</c:forEach>
-								
-								<c:forEach var='sellerList' items='${sellerList}'>
-									<tr>
-										<td><a href='/tm/admin/mypage?id=${sellerList.sellerID}&grade=${sellerList.grade}'>${sellerList.sellerID}</a></td>
-										<td>${sellerList.pw}</td>
-										<td>${sellerList.name}</td>
-										<td>${sellerList.phone}</td>
-										<td>${sellerList.address}</td>
-										<td>${sellerList.joinDate}</td>
-										<td>${sellerList.grade}</td>
-									</tr>			
-								</c:forEach>
-							</tbody>
-						</table>
-						
-					
-				
-						
-					</div>
-				
-				
-					
-					
+				</form>
+			<div class="row">
+
+				<table class="table table-hover">
+					<thead>
+						<tr class="table-primary">
+							<th>ID</th>
+							<th>PW</th>
+							<th>NAME</th>
+							<th>PHONE</th>
+							<th>ADDRESS</th>
+							<th>JOINDATE</th>
+							<th>GRADE</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var='list' items='${list}'>
+							<tr>
+								<td><a
+									href='/tm/admin/mypage?id=${list.id}&grade=${list.grade}'>${list.id}</a></td>
+								<td>${list.pw}</td>
+								<td>${list.name}</td>
+								<td>${list.phone}</td>
+								<td>${list.address}</td>
+								<td>${list.joinDate}</td>
+								<td>${list.grade}</td>
+							</tr>
+						</c:forEach>
+						<c:forEach var='sellerList' items='${sellerList}'>
+							<tr>
+								<td><a
+									href='/tm/admin/mypage?id=${sellerList.sellerID}&grade=${sellerList.grade}'>${sellerList.sellerID}</a></td>
+								<td>${sellerList.pw}</td>
+								<td>${sellerList.name}</td>
+								<td>${sellerList.phone}</td>
+								<td>${sellerList.address}</td>
+								<td>${sellerList.joinDate}</td>
+								<td>${sellerList.grade}</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
 			</div>
 		</div>
 	</div>

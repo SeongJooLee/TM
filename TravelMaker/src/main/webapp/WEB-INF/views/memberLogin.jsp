@@ -101,10 +101,6 @@ font-weight: bold;
                </div>
             </form>
             <div class="form-group">
-               <button type='button' class="btnSubmit" onclick='find()'>ID/PW찾기</button>
-
-            </div>
-            <div class="form-group">
                <button type='button' class="btnSubmit" onclick='register()'>회원가입</button>
             </div>
          </div>

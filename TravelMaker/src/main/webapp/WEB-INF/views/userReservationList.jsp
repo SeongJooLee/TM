@@ -64,82 +64,72 @@ body {
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
 				<h4 class="mb-3" align="center">회원 정보</h4>
-					<input type="hidden" name="id" value="${userSession.id}">
-					<div class="row">
-						<div class="col-md-3 mb-3">
-							<form action='/tm/member/mypage' method='post'>
-								<input type="hidden" name="testKey" value="one">					
-								<input class='form-control' type='submit'  value='회원정보'>
-							</form>
-						</div>
-						<div class="col-md-3 mb-3">
-							<form action='/tm/member/mypage' method='post'>
-								<input type="hidden" name="testKey" value="two">					
-								<input class='form-control' type='submit'  value='내가 쓴 글 보기'>
-							</form>
-						</div>
-						<div class="col-md-3 mb-3">
-							<form action='/tm/member/mypage' method='post'>
-								<input type="hidden" name="testKey" value="three">					
-								<input class='form-control' type='submit'  value='예약확인'>
-							</form>
-						</div>
-						
-					
-					
-						<div class="col-md-3 mb-3">
-							<form action='/tm/member/mypage/comment' method='get'>					
-								<input class='form-control' type='submit'  value='내가 쓴 댓글 보기'>
-							</form>
-						</div>
+				<input type="hidden" name="id" value="${userSession.id}">
+				<div class="row">
+					<div class="col-md-3 mb-3">
+						<form action='/tm/member/mypage' method='post'>
+							<input type="hidden" name="testKey" value="one"> <input
+								class='form-control' type='submit' value='회원정보'>
+						</form>
 					</div>
-					
-					<hr>
-				
-					<br>
-					<br>
-					<h4 class="mb-3" align="center">[ ${userSession.id} ] 님의 예약 목록</h4>
-					<br>
-					<br>
-					<div class="row">
-						<div class="row">
-					
+					<div class="col-md-3 mb-3">
+						<form action='/tm/member/mypage' method='post'>
+							<input type="hidden" name="testKey" value="two"> <input
+								class='form-control' type='submit' value='내가 쓴 글 보기'>
+						</form>
+					</div>
+					<div class="col-md-3 mb-3">
+						<form action='/tm/member/mypage' method='post'>
+							<input type="hidden" name="testKey" value="three"> <input
+								class='form-control' type='submit' value='예약확인'>
+						</form>
+					</div>
 
-						<table class="table table-hover">
-							<thead>
-								<tr class="table-primary">
-									<th>예약번호</th>
-									<th>예약 상품번호</th>
-									<th>예약날짜</th>
-									<th>예약자 ID</th>
-									<th>결제 여부</th>
-								</tr>
-							</thead>
-							<tbody>
-									<c:forEach var='list' items='${list}' varStatus='num'>
-							<tr>
-								<td><a href='/tm/board/reservation/view?reserNO=${list.reserNO }' > ${list.reserNO}</a></td>
-								<td>${list.promotionNO}</td>
-								<td>${list.reserDate}</td>
-								<td>${list.id}</td>
-								<td>${list.payment}</td>
-								
+
+
+					<div class="col-md-3 mb-3">
+						<form action='/tm/member/mypage/comment' method='get'>
+							<input class='form-control' type='submit' value='내가 쓴 댓글 보기'>
+						</form>
+					</div>
+				</div>
+
+				<hr>
+
+				<br> <br>
+				<h4 class="mb-3" align="center">[ ${userSession.id} ] 님의 예약 목록</h4>
+				<br> <br>
+				<div class="row">
+					<table class="table table-hover">
+						<thead>
+							<tr class="table-primary">
+								<th>예약번호</th>
+								<th>예약 상품번호</th>
+								<th>예약날짜</th>
+								<th>예약자 ID</th>
+								<th>결제 여부</th>
 							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var='list' items='${list}' varStatus='num'>
+								<tr>
+									<td><a
+										href='/tm/board/reservation/view?reserNO=${list.reserNO }'>
+											${list.reserNO}</a></td>
+									<td>${list.promotionNO}</td>
+									<td>${list.reserDate}</td>
+									<td>${list.id}</td>
+									<td>${list.payment}</td>
+								</tr>
 							</c:forEach>
-							
-							</tbody>
-						</table>
 
-					
-
-				</div> 
-						</div>
-					</div>
-					
-					
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
-	
+	</div>
+
 
 	<br>
 	<br>
