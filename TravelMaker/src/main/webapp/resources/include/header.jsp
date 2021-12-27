@@ -10,7 +10,7 @@
 </style>
 <script>
 function fn_headSerch() {
-<!--	var headSearchOption = document.getElementById("headSearchOption").value;
+	var headSearchOption = document.getElementById("headSearchOption").value;
 	
 	if (headSearchOption == null) {
 		alert('검색 옵션을 선택해주세요.');
@@ -20,7 +20,7 @@ function fn_headSerch() {
 	if (!headSearchResult) {
 		alert('검색내용을 입력해주세요.');
 		return false;
-	}-->
+	}
 		document.getElementById("frmHeadSerch").submit();
 	}
 </script>

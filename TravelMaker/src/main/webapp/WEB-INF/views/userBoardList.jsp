@@ -85,49 +85,56 @@ body {
 						</form>
 					</div>
 					<div class="col-md-3 mb-3">
-						<form action='/tm/member/mypage/comment' method='get'>					
-								<input class='form-control' type='submit'  value='내가 쓴 댓글 보기'>
+						<form action='/tm/member/mypage/comment' method='get'>
+							<input class='form-control' type='submit' value='내가 쓴 댓글 보기'>
 						</form>
 					</div>
 				</div>
 
 				<hr>
-				
+
 				<br> <br>
 				<h4 class="mb-3" align="center">[ ${userSession.id} ] 님의 게시글</h4>
 				<br> <br>
 				<div class="row">
-					
 
-						<table class="table table-hover">
-							<thead>
-								<tr class="table-primary">
-									<th>게시판 종류</th>
-									<th>글 제목</th>
-									<th>글 내용</th>
+
+					<table class="table table-hover">
+						<thead>
+							<tr class="table-primary">
+								<th>게시판 종류</th>
+								<th>글 제목</th>
+								<th>글 내용</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:if test="${travel.size() == 0  || review.size() ==0}">
+								<tr>
+									<td colspan="3" align="center">
+											<p>작성된 글이 없습니다.</p>
+									</td>
 								</tr>
-							</thead>
-							<tbody>
-								<c:forEach var='travel' items='${travel}'>
-									<tr>
-										<td>${travel.name}</td>
-										<td><a
-											href='/tm/member/mypage?travelNO=${travel.travelNO}'>${travel.title}</a></td>
-										<td>${travel.content}</td>
-									</tr>
-								</c:forEach>
-								<c:forEach var='review' items='${review}'>
-									<tr>
-										<td>${review.name}</td>
-										<td><a
-											href='/tm/member/mypage?reviewNO=${review.reviewNO}'>${review.title}</a></td>
-										<td>${review.content}</td>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
+							</c:if>
+							<c:forEach var='travel' items='${travel}'>
+								<tr>
+									<td>${travel.name}</td>
+									<td><a
+										href='/tm/member/mypage?travelNO=${travel.travelNO}'>${travel.title}</a></td>
+									<td>${travel.content}</td>
+								</tr>
+							</c:forEach>
+							<c:forEach var='review' items='${review}'>
+								<tr>
+									<td>${review.name}</td>
+									<td><a
+										href='/tm/member/mypage?reviewNO=${review.reviewNO}'>${review.title}</a></td>
+									<td>${review.content}</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
 
-					
+
 
 				</div>
 

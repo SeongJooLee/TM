@@ -45,68 +45,56 @@ body {
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
 				<h4 class="mb-3" align="center">통합검색</h4>
-					<form action="/tm/board/popupEnter" method="post">
+				<form action="/tm/board/popupEnter" method="post">
 					<div class="row">
 						<div class="col-md-3 mb-3">
-								<select class="form-control" name="headSearchOption" required>
-									<option value="" >검색 옵션</option>
-						   	    	<option value="person">작성자</option>
-						   			<option value="title">제목</option>
-						    		<option value="content">내용</option>
-						    		<option value="titleContent">제목+내용</option>
-								</select>
+							<select class="form-control" name="headSearchOption" required>
+								<option value="">검색 옵션</option>
+								<option value="person">작성자</option>
+								<option value="title">제목</option>
+								<option value="content">내용</option>
+								<option value="titleContent">제목+내용</option>
+							</select>
 						</div>
 						<div class="col-md-6 mb-3">
-							<input class="form-control" type='text' name='headSearchResult' placeholder='검색어 입력' required>
+							<input class="form-control" type='text' name='headSearchResult'
+								placeholder='검색어 입력' required>
 						</div>
 						<div class="col-md-3 mb-3">
-							<button class="btn btn-primary btn-md btn-block" type="submit" >검색</button>
+							<button class="btn btn-primary btn-md btn-block" type="submit">검색</button>
 						</div>
 					</div>
-					</form>
-					<br>
-					<div align="center">
-						<small>* 제목을 누르면 해당 글로 이동합니다.</small>
-					</div>
-					<br>
+				</form>
+				<br>
+				<div align="center">
+					<small>* 제목을 누르면 해당 글로 이동합니다.</small>
+				</div>
+				<br>
 				<div class="row" align="center">
-					<div class="col-md-2 mb-3">
-						No
-					</div>
-					<div class="col-md-2 mb-3">
-						게시판
-					</div>
-					
-					<div class="col-md-6 mb-3">
-						제목
-					</div>
-					
-					<div class="col-md-2 mb-3">
-						작성자
-					</div>
+					<div class="col-md-2 mb-3">No</div>
+					<div class="col-md-2 mb-3">게시판</div>
+
+					<div class="col-md-6 mb-3">제목</div>
+
+					<div class="col-md-2 mb-3">작성자</div>
 				</div>
 				<hr>
-    		<c:forEach var='list' items='${boardList}'>
-				<div class="row" align="center">
-					<div class="col-md-2 mb-3">
-						${list.count}
+				<c:forEach var='list' items='${boardList}'>
+					<div class="row" align="center">
+						<div class="col-md-2 mb-3">${list.count}</div>
+						<div class="col-md-2 mb-3">${list.name}</div>
+
+						<div class="col-md-6 mb-3">
+							<a
+								href='/tm/board/popupCheck?randomNO=${list.noticeNO}&randomName=${list.name}'>${list.title}</a>
+						</div>
+
+						<div class="col-md-2 mb-3">${list.adminID}</div>
 					</div>
-					<div class="col-md-2 mb-3">
-						${list.name}
-					</div>
-					
-					<div class="col-md-6 mb-3">
-						<a href='/tm/board/popupCheck?randomNO=${list.noticeNO}&randomName=${list.name}'>${list.title}</a>
-					</div>
-					
-					<div class="col-md-2 mb-3">
-						${list.adminID}
-					</div>
-				</div>
-    		</c:forEach>
-				</div>
+				</c:forEach>
 			</div>
 		</div>
+	</div>
 
 </body>
 </html>
