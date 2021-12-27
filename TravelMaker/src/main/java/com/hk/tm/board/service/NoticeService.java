@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.hk.tm.board.dao.CategoryDAO;
 import com.hk.tm.board.dao.ImageDAO;
@@ -45,10 +46,19 @@ public class NoticeService {
 	public int selectMaxNotice() {
 		return noticeDAO.selectMaxNotice();
 	}
-
+	
+	@Transactional(rollbackFor = {Exception.class})
 	public void noticeAdd(NoticeVO noticeVO, ImageVO imageVO) {
-		noticeDAO.noticeAdd(noticeVO);
-		imageDAO.noticeAdd(imageVO);
+		
+		try {
+			noticeDAO.noticeAdd(noticeVO);
+			imageDAO.noticeAdd(imageVO);
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Eror!!!");
+		
+		}
+		
 	}
 
 	public void noticeUpdate(NoticeVO noticeVO, ImageVO imageVO) {
