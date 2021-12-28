@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -391,8 +392,11 @@ public class UserController {
 		
 		while(fileNames.hasNext()){
 			String fileName = fileNames.next();
+			UUID uuid = UUID.randomUUID();
+			String uuidStr = uuid.toString();
+			
 			MultipartFile mFile = request.getFile(fileName);
-			String originalFileName=mFile.getOriginalFilename();
+			String originalFileName = uuidStr+"_"+mFile.getOriginalFilename();
 			fileList.add(originalFileName);
 			File file = new File(REPO +"\\"+ fileName);
 			
