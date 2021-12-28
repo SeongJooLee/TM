@@ -313,6 +313,7 @@ public class NoticeController {
 		List<String> fileList= new ArrayList<String>();
 		Iterator<String> fileNames = request.getFileNames();
 		while(fileNames.hasNext()){
+			
 			//파일의 원본 이름 저장
 			String fileName = fileNames.next();
 			
