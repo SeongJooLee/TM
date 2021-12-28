@@ -89,7 +89,11 @@ public class UserController {
 	}
 	@RequestMapping(value="/member/userAdd",method=RequestMethod.POST)
 	public String memberUserAdd(@ModelAttribute UserVO userVO,Model model) {
-
+		
+        
+        
+        
+		System.out.println("이쪽이냐?" +userVO);
 		
 		int ret = userService.addUser(userVO);
 

@@ -88,9 +88,12 @@ body {
 			alert("취소(아니오)를 누르셨습니다.");
 			return;
 		} else {
+			
 			alert("확인(예)을 누르셨습니다.");
+			
 			document.getElementById('frmNotice').method = "POST";
 			document.getElementById('frmNotice').action = "/tm/member/userAdd";
+			
 			document.getElementById('frmNotice').submit();
 		}
 	}
@@ -138,6 +141,7 @@ body {
 			return;
 		} else {
 			alert("확인(예)을 누르셨습니다.");
+			document.getElementById("id").disabled = false;
 			document.getElementById("frmNotice").submit();
 		}
 	}
@@ -180,18 +184,39 @@ body {
 							required>
 						<div class="invalid-feedback">이름을 입력해주세요.</div>
 					</div>
+				<div class="row">
 					<div class="mb-3">
-						<label for="birth">생년월일</label> <input type="text"
-							class="form-control" name="birth" id="birth"
-							placeholder="ex)19960522" required>
+						<label for="birth">생년월일</label> <input type="date"
+							class="form-control" name="birth" id="birth" min="1900-01-01" max="2021-12-31"
+							 required>
 						<div class="invalid-feedback">생년월일을 입력해주세요.</div>
 					</div>
-					<div class="mb-3">
+					</div>
+				<div class="row">
+				
+				</div>
+				<div class="row">
+					<div class="col-md-4 mb-3">
 						<label for="phone">연락처</label> <input type="text"
-							class="form-control" name="phone" id="phone" placeholder=""
-							required>
+							class="form-control" name="phone" id="phone"  maxlength="3" minlength='3' required>
 						<div class="invalid-feedback">연락처를 입력해주세요.</div>
 					</div>
+
+					<div class="col-md-4 mb-3">
+						<label for="phone"> &nbsp; </label> <input type="text"
+							class="form-control" name="phone" id="phone" placeholder=""
+							minlength="4" maxlength="4" required>
+						<div class="invalid-feedback">연락처를 입력해주세요.</div>
+					</div>
+
+					<div class="col-md-4 mb-3">
+						<label for="phone"> &nbsp; </label> <input type="text"
+							class="form-control" name="phone" id="phone" placeholder=""
+							 minlength="4" maxlength="4" required>
+						<div class="invalid-feedback">연락처를 입력해주세요.</div>
+					</div>
+				</div>
+
 					<div class="mb-3">
 						<label for="address">주소</label> <input type="text"
 							class="form-control" name="address" id="address" placeholder=""
@@ -200,7 +225,7 @@ body {
 					</div>
 					<button class="btn btn-primary btn-lg btn-block" type="button"
 						value='회원가입' id='zz0509' disabled onclick='fn_create()'>가입완료</button>
-						
+
 					<button class="btn btn-primary btn-lg btn-block" type="button"
 						onclick='resetTest();'>다시 작성</button>
 					<button class="btn btn-primary btn-lg btn-block" type="button"

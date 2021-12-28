@@ -30,6 +30,7 @@ public class UserDAO {
 	public int addUser(UserVO userVO) {
 		int result = 0;
 		userVO.setGrade("user");
+		userVO.setPhone(userVO.getPhone().replace(',','-'));
 		result = sqlSession.insert("mapper.memberUser.insert",userVO);
 		return result;
 	}
