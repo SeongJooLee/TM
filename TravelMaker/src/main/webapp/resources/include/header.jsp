@@ -1,8 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@page session='true'%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+   pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page session="true"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath }" />
+<%
+request.setCharacterEncoding("utf-8");
+%>
+
 <style>
 
 /* The Close Button */
@@ -29,7 +34,7 @@ function fn_headSerch() {
 	test='${userSession.name != null && userSession.grade.equals("user")}'>
 	<div class="jumbotron text-center"
 		style="margin-bottom: 0; background-color: white; padding: 0;">
-		<a href="/tm"><img class="logo_img"
+		<a href="${contextPath}"><img class="logo_img"
 			src="<c:url value="/resources/img/Travel Maker (3).png" />" /></a>
 		<p align="right">${userSession.name}님
 			<a href="${contextPath}/member/mypage">마이페이지</a> <a
@@ -44,7 +49,7 @@ function fn_headSerch() {
 	test='${userSession.name != null && userSession.grade.equals("seller")}'>
 	<div class="jumbotron text-center"
 		style="margin-bottom: 0; background-color: white; padding: 0;">
-		<a href="/tm"><img class="logo_img"
+		<a href="${contextPath}"><img class="logo_img"
 			src="<c:url value="/resources/img/Travel Maker (3).png" />" /></a>
 		<p align="right">${userSession.name}님
 			<a href="${contextPath}/member/mypage">마이페이지</a> <a
@@ -58,7 +63,7 @@ function fn_headSerch() {
 	test='${userSession.name != null && userSession.grade.equals("admin")}'>
 	<div class="jumbotron text-center"
 		style="margin-bottom: 0; background-color: white; padding: 0;">
-		<a href="/tm"><img class="logo_img"
+		<a href="${contextPath}"><img class="logo_img"
 			src="<c:url value="/resources/img/Travel Maker (3).png" />" /></a>
 		<p align="right">${userSession.name}님
 			<a href="${contextPath}/admin/mypage">마이페이지</a> <a
@@ -71,7 +76,7 @@ function fn_headSerch() {
 <c:if test='${userSession.name == null}'>
 	<div class="jumbotron text-center"
 		style="margin-bottom: 0; background-color: white; padding: 0;">
-		<a href="/tm"><img class="logo_img"
+		<a href="${contextPath}"><img class="logo_img"
 			src="<c:url value="/resources/img/Travel Maker (3).png" />" /></a>
 		<p align="right">
 			<a href="${contextPath}/member/login">로그인</a>&nbsp;&nbsp;&nbsp; <a
@@ -105,7 +110,7 @@ function fn_headSerch() {
 				href="${contextPath}/board/travel">여행게시판</a></li>
 		</ul>
 
-		<form id="frmHeadSerch" class="form-inline my-2 my-lg-0" action="/tm/board/popupEnter" method="post">
+		<form id="frmHeadSerch" class="form-inline my-2 my-lg-0" action="${contextPath}/board/popupEnter" method="post">
 			<select class="form-control" id="headSearchOption" name="headSearchOption" required>
 				<option value="" >검색 옵션</option>
 				<option value="person">작성자</option>
