@@ -44,11 +44,11 @@ body {
 <script>
 function nameOrder(){
 	alert('이름순으로 보여집니다.');
-	location.href='/tm/admin/mypage?list=name';
+	location.href='${contextPath}/admin/mypage?list=name';
 	}
 function dateOrder(){
 	alert('날짜순으로 보여집니다.');
-	location.href='/tm/admin/mypage?list=date';
+	location.href='${contextPath}/admin/mypage?list=date';
 	}
 </script>
 </head>
@@ -64,19 +64,19 @@ function dateOrder(){
 				<input type="hidden" name="id" value="${userSession.adminID}">
 				<div class="row">
 					<div class="col-md-4 mb-3">
-						<form action='/tm/admin/mypage' method='post'>
+						<form action='${contextPath}/admin/mypage' method='post'>
 							<input type="hidden" name="key" value="one"> <input
 								class='form-control' type='submit' value='게시판 글 관리'>
 						</form>
 					</div>
 					<div class="col-md-4 mb-3">
-						<form action='/tm/admin/mypage' method='post'>
+						<form action='${contextPath}/admin/mypage' method='post'>
 							<input type="hidden" name="key" value="two"> <input
 								class='form-control' type='submit' value='회원 조회''>
 						</form>
 					</div>
 					<div class="col-md-4 mb-3">
-						<form action='/tm/admin/mypage' method='post'>
+						<form action='${contextPath}/admin/mypage' method='post'>
 							<input type="hidden" name="key" value="three"> <input
 								class='form-control' type='submit' value='예약 조회'>
 						</form>
@@ -88,7 +88,7 @@ function dateOrder(){
 				<br> <br>
 				<h4 class="mb-3" align="center">모든 예약 리스트</h4>
 				<br> <br>
-				<form action='/tm/admin/mypage/search' method='get'>
+				<form action='${contextPath}/admin/mypage/search' method='get'>
 					<div class="row">
 						<div class="col-md-3 mb-3">
 							<label class='form-control'>아이디조회</label>
@@ -129,7 +129,7 @@ function dateOrder(){
 											<td>${reserList.reserNO}</td>
 											<td>${reserList.reserDate}</td>
 											<td><a
-												href='/tm/board/promotion/view?promotionNO=${proList.promotionNO}'>${proList.promotionNO}</a></td>
+												href='${contextPath}/board/promotion/view?promotionNO=${proList.promotionNO}'>${proList.promotionNO}</a></td>
 											<td>${proList.title}</td>
 											<td>${proList.price}</td>
 											<td>${reserList.headCount}</td>

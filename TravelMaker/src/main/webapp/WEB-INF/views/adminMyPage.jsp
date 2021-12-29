@@ -57,19 +57,19 @@ body {
 					<input type="hidden" name="id" value="${userSession.adminID}">
 					<div class="row">
 						<div class="col-md-4 mb-3">
-							<form action='/tm/admin/mypage' method='post'>
+							<form action='${contextPath}/admin/mypage' method='post'>
 								<input type="hidden" name="key" value="one">					
 								<input class='form-control' type='submit'  value='게시판 글 관리'>
 							</form>
 						</div>
 						<div class="col-md-4 mb-3">
-							<form action='/tm/admin/mypage' method='post'>
+							<form action='${contextPath}/admin/mypage' method='post'>
 								<input type="hidden" name="key" value="two">					
 								<input class='form-control' type='submit'  value='회원 조회''>
 							</form>
 						</div>
 						<div class="col-md-4 mb-3">
-							<form action='/tm/admin/mypage' method='post'>
+							<form action='${contextPath}/admin/mypage' method='post'>
 								<input type="hidden" name="key" value="three">					
 								<input class='form-control' type='submit'  value='예약 조회'>
 							</form>
@@ -97,7 +97,7 @@ body {
 								<c:forEach var='list' items='${boardList}'>
 									<tr>
 										<td>${list.count}</td>
-										<td><a href='/tm/admin/mypage/check?randomNO=${list.noticeNO}&randomName=${list.name}'>${list.noticeNO}번</a></td>
+										<td><a href='${contextPath}/admin/mypage/check?randomNO=${list.noticeNO}&randomName=${list.name}'>${list.noticeNO}번</a></td>
 										<td>${list.title}</td>
 										<td>${list.name}</td>
 									</tr>
@@ -107,11 +107,11 @@ body {
 						</table>
 						<div class="row">
 							<div class="col-md-6 mb-3">
-								<a class='form-control' href='/tm/admin/mypage/before?indexOne=${notice.x}&indexTwo=${notice.y}'>이전페이지</a>
+								<a class='form-control' href='${contextPath}/admin/mypage/before?indexOne=${notice.x}&indexTwo=${notice.y}'>이전페이지</a>
 								
 							</div>
 								<div class="col-md-6 mb-3">
-								<a class='form-control' href='/tm/admin/mypage/next?indexOne=${notice.x}&indexTwo=${notice.y}'>다음페이지</a>
+								<a class='form-control' href='${contextPath}/admin/mypage/next?indexOne=${notice.x}&indexTwo=${notice.y}'>다음페이지</a>
 							</div>
 						</div>
 					
