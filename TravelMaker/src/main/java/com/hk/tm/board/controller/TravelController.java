@@ -118,7 +118,7 @@ public class TravelController {
 
 	@RequestMapping(value="/view" , method=RequestMethod.GET)
 	public String travelView(Model model , @RequestParam("travelNO") int travelNO,HttpSession session) {
-		System.out.println("여기 ??");
+		
 		Map<String,Object> map = travelService.selectOneTravel(travelNO);
 		
 		List<CommentVO> commentList = commentService.selectTravelComment(travelNO);
@@ -210,7 +210,7 @@ public class TravelController {
 			}
 		}
 
-		response.sendRedirect("${contextPath}/board/travel");  //travelList.jsp로 이동			
+		response.sendRedirect("/board/travel");  //travelList.jsp로 이동			
 	}
 
 
@@ -291,7 +291,7 @@ public class TravelController {
 			FileUtils.deleteDirectory(imgDir);
 			imgDelete(travelVO.getTravelNO());
 		}
-		response.sendRedirect("${contextPath}/board/travel"); //travelList.jsp로 이동	
+		response.sendRedirect("/board/travel"); //travelList.jsp로 이동	
 	}
 
 

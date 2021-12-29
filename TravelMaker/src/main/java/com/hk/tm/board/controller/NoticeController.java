@@ -171,7 +171,7 @@ public class NoticeController {
 				FileUtils.moveFileToDirectory(srcFile, destDir, true);
 			}
 		}
-		response.sendRedirect("${contextPath}/board/notice");
+		response.sendRedirect("/board/notice");
 	}
 
 	@RequestMapping(value="/board/notice/update", method=RequestMethod.POST)
@@ -247,7 +247,7 @@ public class NoticeController {
 		if(imgDir.exists()) {
 			FileUtils.deleteDirectory(imgDir);
 		}
-		response.sendRedirect("${contextPath}/board/notice");
+		response.sendRedirect("/board/notice");
 	}
 
 	@RequestMapping(value="/board/notice/noticeImgDelete", method= {RequestMethod.GET,RequestMethod.POST},produces = "application/json; charset=utf8")
