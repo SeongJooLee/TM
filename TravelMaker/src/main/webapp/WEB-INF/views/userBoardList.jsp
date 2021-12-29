@@ -108,7 +108,7 @@ body {
 							</tr>
 						</thead>
 						<tbody>
-							<c:if test="${travel.size() == 0  || review.size() ==0}">
+							<c:if test="${travel.size() == 0  && review.size() ==0}">
 								<tr>
 									<td colspan="3" align="center">
 											<p>작성된 글이 없습니다.</p>
