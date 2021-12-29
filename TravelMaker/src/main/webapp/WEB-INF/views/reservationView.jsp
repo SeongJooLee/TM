@@ -62,7 +62,7 @@ function kakaoPay(){
 	        return;
 	    } else {
 	        alert("확인(예)을 누르셨습니다.");
-			location.href="${contextPath}";
+			location.href="${contextPath}/";
 	    }
 	}
  
