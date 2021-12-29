@@ -96,7 +96,7 @@ body {
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
 				<h4 class="mb-3" align="center">이용후기 작성</h4>
-				<form id="frm" action="/tm/member/mypage/review" method="post"
+				<form id="frm" action="${contextPath}/member/mypage/review" method="post"
 					enctype="multipart/form-data">
 					<input type="hidden" name="id" value="${userSession.id}"> <input
 						type="hidden" name="name" value="이용후기"> <input

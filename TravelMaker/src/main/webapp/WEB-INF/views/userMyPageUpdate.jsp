@@ -43,12 +43,12 @@ body {
 <script src='http://code.jquery.com/jquery-latest.min.js'></script>
 <script>
 	function updateUser() {
-		location.href = "/tm/member/mypage/update";
+		location.href = "${contextPath}/member/mypage/update";
 	}
 	function deleteUser() {
 		var result = confirm("삭제할거니..?");
 		if (result) {
-			location.href = "/tm/member/mypage/delete?userId=${userSession.id}";
+			location.href = "${contextPath}/member/mypage/delete?userId=${userSession.id}";
 		} else {
 			return;
 		}
@@ -67,19 +67,19 @@ body {
 					<input type="hidden" name="id" value="${userSession.id}">
 					<div class="row">
 						<div class="col-md-4 mb-3">
-							<form action='/tm/member/mypage' method='post'>
+							<form action='${contextPath}/member/mypage' method='post'>
 								<input type="hidden" name="testKey" value="one">					
 								<input class='form-control' type='submit'  value='회원정보'>
 							</form>
 						</div>
 						<div class="col-md-4 mb-3">
-							<form action='/tm/member/mypage' method='post'>
+							<form action='${contextPath}/member/mypage' method='post'>
 								<input type="hidden" name="testKey" value="two">					
 								<input class='form-control' type='submit'  value='내가 쓴 글 보기''>
 							</form>
 						</div>
 						<div class="col-md-4 mb-3">
-							<form action='/tm/member/mypage' method='post'>
+							<form action='${contextPath}/member/mypage' method='post'>
 								<input type="hidden" name="testKey" value="three">					
 								<input class='form-control' type='submit'  value='예약확인'>
 							</form>
@@ -93,7 +93,7 @@ body {
 					<h4 class="mb-3" align="center">[ 수정할 정보를 입력해주세요 ]</h4>
 					<br>
 					<br>
-					<form action='/tm/member/mypage/update' method='post'>
+					<form action='${contextPath}/member/mypage/update' method='post'>
 		
 		
 					<div class="row">

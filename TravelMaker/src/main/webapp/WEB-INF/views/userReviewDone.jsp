@@ -24,7 +24,7 @@ request.setCharacterEncoding("utf-8");
 <script>
 	function start(){
 		alert('해당 게시물로 이동합니다');
-		location.href = "/tm/board/review/view?reviewNO=${reviewVO.reviewNO}";
+		location.href = "${contextPath}/board/review/view?reviewNO=${reviewVO.reviewNO}";
 	}
 </script>
 </head>
@@ -40,19 +40,19 @@ request.setCharacterEncoding("utf-8");
 					<input type="hidden" name="id" value="${userSession.id}">
 					<div class="row">
 						<div class="col-md-4 mb-3">
-							<form action='/tm/member/mypage' method='post'>
+							<form action='${contextPath}/member/mypage' method='post'>
 								<input type="hidden" name="testKey" value="one">					
 								<input class='form-control' type='submit'  value='회원정보'>
 							</form>
 						</div>
 						<div class="col-md-4 mb-3">
-							<form action='/tm/member/mypage' method='post'>
+							<form action='${contextPath}/member/mypage' method='post'>
 								<input type="hidden" name="testKey" value="two">					
 								<input class='form-control' type='submit'  value='내가 쓴 글 보기''>
 							</form>
 						</div>
 						<div class="col-md-4 mb-3">
-							<form action='/tm/member/mypage' method='post'>
+							<form action='${contextPath}/member/mypage' method='post'>
 								<input type="hidden" name="testKey" value="three">					
 								<input class='form-control' type='submit'  value='예약확인'>
 							</form>

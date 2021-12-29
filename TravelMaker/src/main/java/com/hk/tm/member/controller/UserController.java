@@ -199,7 +199,7 @@ public class UserController {
 		 switch(check){
 	        case "com.hk.tm.member.vo.UserVO":   
 	        	UserVO user = (UserVO) session.getAttribute("userSession");
-	        	model.addAttribute("user", user);   
+	        	model.addAttribute("user", user);   //주석지우기
 	        	
 	        	return "userMyPage";            
 	        case "com.hk.tm.member.vo.SellerVO":
@@ -384,7 +384,7 @@ public class UserController {
 				FileUtils.moveFileToDirectory(srcFile, destDir, true);
 			}
 		}
-		response.sendRedirect("/tm/board/review");
+		response.sendRedirect("/board/review");
 		return "userReviewAddDone";
 	}
 	
