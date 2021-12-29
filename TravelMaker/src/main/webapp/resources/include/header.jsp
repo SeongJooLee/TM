@@ -34,7 +34,7 @@ function fn_headSerch() {
 	test='${userSession.name != null && userSession.grade.equals("user")}'>
 	<div class="jumbotron text-center"
 		style="margin-bottom: 0; background-color: white; padding: 0;">
-		<a href="${contextPath}"><img class="logo_img"
+		<a href="/"><img class="logo_img"
 			src="<c:url value="/resources/img/Travel Maker (3).png" />" /></a>
 		<p align="right">${userSession.name}님
 			<a href="${contextPath}/member/mypage">마이페이지</a> <a
@@ -49,7 +49,7 @@ function fn_headSerch() {
 	test='${userSession.name != null && userSession.grade.equals("seller")}'>
 	<div class="jumbotron text-center"
 		style="margin-bottom: 0; background-color: white; padding: 0;">
-		<a href="${contextPath}"><img class="logo_img"
+		<a href="/"><img class="logo_img"
 			src="<c:url value="/resources/img/Travel Maker (3).png" />" /></a>
 		<p align="right">${userSession.name}님
 			<a href="${contextPath}/member/mypage">마이페이지</a> <a
@@ -63,7 +63,7 @@ function fn_headSerch() {
 	test='${userSession.name != null && userSession.grade.equals("admin")}'>
 	<div class="jumbotron text-center"
 		style="margin-bottom: 0; background-color: white; padding: 0;">
-		<a href="${contextPath}"><img class="logo_img"
+		<a href="/"><img class="logo_img"
 			src="<c:url value="/resources/img/Travel Maker (3).png" />" /></a>
 		<p align="right">${userSession.name}님
 			<a href="${contextPath}/admin/mypage">마이페이지</a> <a
@@ -76,7 +76,7 @@ function fn_headSerch() {
 <c:if test='${userSession.name == null}'>
 	<div class="jumbotron text-center"
 		style="margin-bottom: 0; background-color: white; padding: 0;">
-		<a href="${contextPath}"><img class="logo_img"
+		<a href="/"><img class="logo_img"
 			src="<c:url value="/resources/img/Travel Maker (3).png" />" /></a>
 		<p align="right">
 			<a href="${contextPath}/member/login">로그인</a>&nbsp;&nbsp;&nbsp; <a
