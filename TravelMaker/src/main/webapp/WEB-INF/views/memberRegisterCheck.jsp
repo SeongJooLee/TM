@@ -21,10 +21,10 @@ request.setCharacterEncoding("utf-8");
 
 
 	function userRegister() {
-		location.href = "${contextPath}/register?name=user";
+		location.href = "${contextPath}/member/register?name=user";
 	}
 	function sellerRegister() {
-		location.href = "${contextPath}/register?name=seller";
+		location.href = "${contextPath}/member/register?name=seller";
 	}
 </script>
 <style>
