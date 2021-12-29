@@ -43,14 +43,14 @@ body {
 <script src='http://code.jquery.com/jquery-latest.min.js'></script>
 <script>
 function reserUpdate(){
-	location.href='/tm/admin/mypage/reservationUpdate?key=${reservation.reserNO}';
+	location.href='${contextPath}/admin/mypage/reservationUpdate?key=${reservation.reserNO}';
 	}
 
 function check(){
 	
 	var result = confirm("삭제할거니..?");
 	if(result){
-		location.href = "/tm/admin/mypage/reservationDelete?key=${reservation.reserNO}";
+		location.href = "${contextPath}/admin/mypage/reservationDelete?key=${reservation.reserNO}";
 	}else{
 	    return;
 	}
@@ -70,19 +70,19 @@ function check(){
 				<input type="hidden" name="id" value="${userSession.adminID}">
 				<div class="row">
 					<div class="col-md-4 mb-3">
-						<form action='/tm/admin/mypage' method='post'>
+						<form action='${contextPath}/admin/mypage' method='post'>
 							<input type="hidden" name="key" value="one"> <input
 								class='form-control' type='submit' value='게시판 글 관리'>
 						</form>
 					</div>
 					<div class="col-md-4 mb-3">
-						<form action='/tm/admin/mypage' method='post'>
+						<form action='${contextPath}/admin/mypage' method='post'>
 							<input type="hidden" name="key" value="two"> <input
 								class='form-control' type='submit' value='회원 조회'>
 						</form>
 					</div>
 					<div class="col-md-4 mb-3">
-						<form action='/tm/admin/mypage' method='post'>
+						<form action='${contextPath}/admin/mypage' method='post'>
 							<input type="hidden" name="key" value="three"> <input
 								class='form-control' type='submit' value='예약 조회'>
 						</form>

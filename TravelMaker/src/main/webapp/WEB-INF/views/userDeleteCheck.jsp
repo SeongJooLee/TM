@@ -11,9 +11,9 @@
 function check(){
 	var result = confirm("탈퇴할거니");
 	if(result){
-		location.href = "/tm/member/mypage/delete/?userId=${userSession.id}";
+		location.href = "${contextPath}/member/mypage/delete/?userId=${userSession.id}";
 	}else{
-	    location.href='/tm/member/mypage';
+	    location.href='${contextPath}/member/mypage';
 	}
 }
 </script>
