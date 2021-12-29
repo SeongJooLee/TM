@@ -210,7 +210,7 @@ public class TravelController {
 			}
 		}
 
-		response.sendRedirect("/tm/board/travel");  //travelList.jsp로 이동			
+		response.sendRedirect("${contextPath}/board/travel");  //travelList.jsp로 이동			
 	}
 
 
@@ -291,7 +291,7 @@ public class TravelController {
 			FileUtils.deleteDirectory(imgDir);
 			imgDelete(travelVO.getTravelNO());
 		}
-		response.sendRedirect("/tm/board/travel"); //travelList.jsp로 이동	
+		response.sendRedirect("${contextPath}/board/travel"); //travelList.jsp로 이동	
 	}
 
 

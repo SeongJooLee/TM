@@ -228,7 +228,7 @@ public class ReviewController {
 		if(imgDir.exists()) {
 			FileUtils.deleteDirectory(imgDir);
 		}
-		response.sendRedirect("/tm/board/review");
+		response.sendRedirect("${contextPath}/board/review");
 	}
 	
 	@RequestMapping(value="/board/review/reviewImgDelete", method= {RequestMethod.GET,RequestMethod.POST},produces = "application/json; charset=utf8")

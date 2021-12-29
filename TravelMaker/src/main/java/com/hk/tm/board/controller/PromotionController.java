@@ -173,7 +173,7 @@ public class PromotionController {
 				FileUtils.moveFileToDirectory(srcFile, destDir, true);
 			}
 		}
-		response.sendRedirect("/tm/board/promotion");
+		response.sendRedirect("${contextPath}/board/promotion");
 	}
 
 	@RequestMapping(value="/board/promotion/update", method=RequestMethod.POST)
@@ -255,7 +255,7 @@ public class PromotionController {
 			FileUtils.deleteDirectory(imgDir);
 			imgDelete(promotionVO.getPromotionNO());
 		}
-		response.sendRedirect("/tm/board/promotion");
+		response.sendRedirect("${contextPath}/board/promotion");
 	}
 
 	@RequestMapping(value="/board/promotion/promotionImgDelete", method= {RequestMethod.GET,RequestMethod.POST},produces = "application/json; charset=utf8")

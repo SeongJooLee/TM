@@ -22,7 +22,6 @@ import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -172,7 +171,7 @@ public class NoticeController {
 				FileUtils.moveFileToDirectory(srcFile, destDir, true);
 			}
 		}
-		response.sendRedirect("/tm/board/notice");
+		response.sendRedirect("${contextPath}/board/notice");
 	}
 
 	@RequestMapping(value="/board/notice/update", method=RequestMethod.POST)
@@ -248,7 +247,7 @@ public class NoticeController {
 		if(imgDir.exists()) {
 			FileUtils.deleteDirectory(imgDir);
 		}
-		response.sendRedirect("/tm/board/notice");
+		response.sendRedirect("${contextPath}/board/notice");
 	}
 
 	@RequestMapping(value="/board/notice/noticeImgDelete", method= {RequestMethod.GET,RequestMethod.POST},produces = "application/json; charset=utf8")
