@@ -61,9 +61,10 @@ body {
 			return;
 		} else {
 			alert("확인(예)을 누르셨습니다.");
-			obj.method = "POST";
-			obj.action = "${contextPath}";
-			obj.submit();
+			/* obj.method = "POST";
+			obj.action = "/";
+			obj.submit(); */
+			location.href='${contextPath}/member/mypage';
 		}
 	}
 
