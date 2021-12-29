@@ -99,7 +99,7 @@ body {
 		} else {
 			alert("확인(예)을 누르셨습니다.");
 			obj.method = "POST";
-			obj.action = "${contextPath}";
+			obj.action = "/board/notice";
 			obj.submit();
 		}
 	}
