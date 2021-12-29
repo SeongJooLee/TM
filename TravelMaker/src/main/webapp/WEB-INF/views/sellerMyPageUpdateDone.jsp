@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
-<%@ page session="true" %>
+	pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page session="true"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath }" />
+<%
+request.setCharacterEncoding("utf-8");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +17,7 @@
 	
 	function result(){
 			alert('정보가 변경되었습니다 다시 로그인해주세요.');
-			location.href='/tm/member/logout?key=${result}';
+			location.href='/member/logout?key=${result}';
 		}
 </script>
 <style type="text/css">

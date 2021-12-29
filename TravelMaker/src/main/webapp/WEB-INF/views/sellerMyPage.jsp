@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" isELIgnored="false"%>
+   pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page session="true"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <%
 request.setCharacterEncoding("utf-8");
@@ -44,11 +45,11 @@ body {
 <script>
 function sellerUpdate(){
 	
-	location.href = "/tm/member/mypage/sellerUpdate";
+	location.href = "${contextPath}/member/mypage/sellerUpdate";
 }
 
 function sellerDelete(){
-	location.href='/tm/member/sellerMypage/delete?sellerId=${userSession.sellerID}';
+	location.href='${contextPath}/member/sellerMypage/delete?sellerId=${userSession.sellerID}';
 	}
 </script>
 </head>
