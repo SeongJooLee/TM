@@ -94,15 +94,15 @@ body {
 <script>
 	function rhdwl() {
 		alert('공지사항 카테고리');
-		location.href = '/tm/board/notice/category?key=공지사항';
+		location.href = '${contextPath}/board/notice/category?key=공지사항';
 	}
 	function dlqpsxm() {
 		alert('이벤트 카테고리');
-		location.href = '/tm/board/notice/category?key=이벤트';
+		location.href = '${contextPath}/board/notice/category?key=이벤트';
 	}
 	function chrlghk() {
 		alert('설정을 초기화합니다.');
-		location.href = '/tm/board/notice';
+		location.href = '${contextPath}/board/notice';
 	}
 </script>
 </head>

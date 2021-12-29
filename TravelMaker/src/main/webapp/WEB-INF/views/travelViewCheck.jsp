@@ -10,7 +10,7 @@
 <script>
 	function whffu(){
 		alert('댓글생성');
-		location.href='/tm/board/travel/view?travelNO=${travel}';
+		location.href='${contextPath}/board/travel/view?travelNO=${travel}';
 		}
 </script>
 </head>
