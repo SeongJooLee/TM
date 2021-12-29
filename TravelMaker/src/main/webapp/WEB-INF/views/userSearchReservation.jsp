@@ -44,7 +44,7 @@ body {
 <script>
 function returnHome(){
 	alert('글관리로 돌아갑니다');
-	location.href='/tm/admin/mypage';
+	location.href='${contextPath }/admin/mypage';
 }
 function success(){
 	alert('${result}로 검색한결과입니다');
@@ -69,19 +69,19 @@ function success(){
 				<input type="hidden" name="id" value="${userSession.adminID}">
 				<div class="row">
 					<div class="col-md-4 mb-3">
-						<form action='/tm/admin/mypage' method='post'>
+						<form action='${contextPath }/admin/mypage' method='post'>
 							<input type="hidden" name="key" value="one"> <input
 								class='form-control' type='submit' value='게시판 글 관리'>
 						</form>
 					</div>
 					<div class="col-md-4 mb-3">
-						<form action='/tm/admin/mypage' method='post'>
+						<form action='${contextPath }/admin/mypage' method='post'>
 							<input type="hidden" name="key" value="two"> <input
 								class='form-control' type='submit' value='회원 조회''>
 						</form>
 					</div>
 					<div class="col-md-4 mb-3">
-						<form action='/tm/admin/mypage' method='post'>
+						<form action='${contextPath }/admin/mypage' method='post'>
 							<input type="hidden" name="key" value="three"> <input
 								class='form-control' type='submit' value='예약 조회'>
 						</form>
@@ -93,7 +93,7 @@ function success(){
 				<br> <br>
 				<h4 class="mb-3" align="center">검색결과</h4>
 				<br> <br>
-				<form action='/tm/admin/mypage/search' method='get'>
+				<form action='${contextPath }/admin/mypage/search' method='get'>
 					<div class="row">
 						<div class="col-md-2 mb-3">
 							<label class='form-control'>아이디조회</label>
@@ -141,7 +141,7 @@ function success(){
 											<td>${reserList.reserNO}</td>
 											<td>${reserList.reserDate}</td>
 											<td><a
-												href='/tm/board/promotion/view?promotionNO=${proList.promotionNO}'>${proList.promotionNO}</a></td>
+												href='${contextPath }/board/promotion/view?promotionNO=${proList.promotionNO}'>${proList.promotionNO}</a></td>
 											<td>${proList.title}</td>
 											<td>${proList.content}</td>
 											<td>${proList.price}</td>
