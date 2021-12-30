@@ -43,12 +43,12 @@ body {
 <script src='http://code.jquery.com/jquery-latest.min.js'></script>
 <script>
 	function updateUser() {
-		location.href = "/tm/member/mypage/update";
+		location.href = "${contextPath}/member/mypage/update";
 	}
 	function deleteUser() {
 		var result = confirm("삭제할거니..?");
 		if (result) {
-			location.href = "/tm/member/mypage/delete?userId=${userSession.id}";
+			location.href = "${contextPath}/member/mypage/delete?userId=${userSession.id}";
 		} else {
 			return;
 		}
@@ -107,7 +107,7 @@ body {
 									<tr>
 										<td>${travel.name}</td>
 										<td><a
-											href='/tm/member/mypage?travelNO=${travel.travelNO}'>${travel.title}</a></td>
+											href='${contextPath}/member/mypage?travelNO=${travel.travelNO}'>${travel.title}</a></td>
 										<td>${travel.content}</td>
 									</tr>
 								</c:forEach>
@@ -115,7 +115,7 @@ body {
 									<tr>
 										<td>${review.name}</td>
 										<td><a
-											href='/tm/member/mypage?reviewNO=${review.reviewNO}'>${review.title}</a></td>
+											href='${contextPath}/member/mypage?reviewNO=${review.reviewNO}'>${review.title}</a></td>
 										<td>${review.content}</td>
 									</tr>
 								</c:forEach>

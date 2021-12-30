@@ -80,7 +80,7 @@ function fn_serch() {
 
 						<div class="col-md-6 mb-3">
 							<a
-								href='/tm/board/popupCheck?randomNO=${list.noticeNO}&randomName=${list.name}'
+								href='${contextPath}/board/popupCheck?randomNO=${list.noticeNO}&randomName=${list.name}'
 								target="_blank">${list.title}</a>
 						</div>
 
@@ -89,7 +89,7 @@ function fn_serch() {
 				</c:forEach>
 				<hr>
 				<div align="right">
-					<form id="frmSerch" action="/tm/board/popupEnter" method="post">
+					<form id="frmSerch" action="${contextPath}/board/popupEnter" method="post">
 						<div class="row">
 							<div class="col-md-3 mb-3" >
 						<label>

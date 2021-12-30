@@ -57,19 +57,19 @@ body {
 					<input type="hidden" name="id" value="${userSession.adminID}">
 					<div class="row">
 						<div class="col-md-4 mb-3">
-							<form action='/tm/admin/mypage' method='post'>
+							<form action='${contextPath }/admin/mypage' method='post'>
 								<input type="hidden" name="key" value="one">					
 								<input class='form-control' type='submit'  value='게시판 글 관리'>
 							</form>
 						</div>
 						<div class="col-md-4 mb-3">
-							<form action='/tm/admin/mypage' method='post'>
+							<form action='${contextPath }/admin/mypage' method='post'>
 								<input type="hidden" name="key" value="two">					
 								<input class='form-control' type='submit'  value='회원 조회''>
 							</form>
 						</div>
 						<div class="col-md-4 mb-3">
-							<form action='/tm/admin/mypage' method='post'>
+							<form action='${contextPath }/admin/mypage' method='post'>
 								<input type="hidden" name="key" value="three">					
 								<input class='form-control' type='submit'  value='예약 조회'>
 							</form>
@@ -135,7 +135,7 @@ body {
 					<div class="row">
 							
 							<div class='col-md-6 mb-3'>
-							<form action='/tm/admin/mypage' method='post'>
+							<form action='${contextPath }/admin/mypage' method='post'>
 								<input type='hidden' name='selectUserBoard'value='${user.id}'>
 								<input class="btn btn-primary btn-lg btn-block" type='submit' value='글쓴내역 보기'>
 							</form>
@@ -146,7 +146,7 @@ body {
 							
 							
 							<div class='col-md-6 mb-3'>
-							<form action='/tm/admin/mypage' method='post'>
+							<form action='${contextPath }/admin/mypage' method='post'>
 								<input type='hidden' name='selectUserReservation'value='${user.id}'>
 								<input class="btn btn-primary btn-lg btn-block" type='submit' value='예약내역 보기'>
 							</form>

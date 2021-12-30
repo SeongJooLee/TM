@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -172,7 +173,7 @@ public class PromotionController {
 				FileUtils.moveFileToDirectory(srcFile, destDir, true);
 			}
 		}
-		response.sendRedirect("/tm/board/promotion");
+		response.sendRedirect("/board/promotion");
 	}
 
 	@RequestMapping(value="/board/promotion/update", method=RequestMethod.POST)
@@ -254,7 +255,7 @@ public class PromotionController {
 			FileUtils.deleteDirectory(imgDir);
 			imgDelete(promotionVO.getPromotionNO());
 		}
-		response.sendRedirect("/tm/board/promotion");
+		response.sendRedirect("/board/promotion");
 	}
 
 	@RequestMapping(value="/board/promotion/promotionImgDelete", method= {RequestMethod.GET,RequestMethod.POST},produces = "application/json; charset=utf8")
@@ -318,11 +319,14 @@ public class PromotionController {
 	private List<String> upload(MultipartHttpServletRequest request) throws ServletException, IOException{
 		List<String> fileList= new ArrayList<String>();
 		Iterator<String> fileNames = request.getFileNames();
-
 		while(fileNames.hasNext()){
 			String fileName = fileNames.next();
+			UUID uuid = UUID.randomUUID();
+			String uuidStr = uuid.toString();
+			
 			MultipartFile mFile = request.getFile(fileName);
-			String originalFileName=mFile.getOriginalFilename();
+			String originalFileName = uuidStr+"_"+mFile.getOriginalFilename();
+			
 			fileList.add(originalFileName);
 			File file = new File(REPO +"\\"+ fileName);
 			

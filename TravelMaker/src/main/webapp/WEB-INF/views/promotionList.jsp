@@ -63,35 +63,35 @@ body {
 <script>
 	function tyvld() {
 		alert('쇼핑 카테고리');
-		location.href = '/tm/board/promotion/category?key=쇼핑';
+		location.href = '${contextPath}/board/promotion/category?key=쇼핑';
 	}
 	function wldur() {
 		alert('지역 카테고리');
-		location.href = '/tm/board/promotion/category?key=지역';
+		location.href = '${contextPath}/board/promotion/category?key=지역';
 	}
 	function dmatlr() {
 		alert('음식 카테고리');
-		location.href = '/tm/board/promotion/category?key=음식';
+		location.href = '${contextPath}/board/promotion/category?key=음식';
 	}
 	function ryxhd() {
 		alert('교통 카테고리');
-		location.href = '/tm/board/promotion/category?key=교통';
+		location.href = '${contextPath}/board/promotion/category?key=교통';
 	}
 	function ansghk() {
 		alert('문화 카테고리');
-		location.href = '/tm/board/promotion/category?key=문화';
+		location.href = '${contextPath}/board/promotion/category?key=문화';
 	}
 	function wjstl() {
 		alert('전시 카테고리');
-		location.href = '/tm/board/promotion/category?key=전시';
+		location.href = '${contextPath}/board/promotion/category?key=전시';
 	}
 	function cpgja() {
 		alert('체험 카테고리');
-		location.href = '/tm/board/promotion/category?key=체험';
+		location.href = '${contextPath}/board/promotion/category?key=체험';
 	}
 	function chrlghk() {
 		alert('설정을 초기화합니다.');
-		location.href = '/tm/board/promotion';
+		location.href = '${contextPath}/board/promotion';
 	}
 </script>
 </head>

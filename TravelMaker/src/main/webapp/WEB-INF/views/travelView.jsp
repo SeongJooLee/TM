@@ -453,7 +453,7 @@ body {
 
 					<c:if test='${userSession.grade.equals("user")}'>
 						<hr class="value">
-						<form action="/tm/board/travel/add" method="post">
+						<form action="${contextPath}/board/travel/add" method="post">
 							<div class="row">
 								<div class="col-md-12 mb-3 font2">
 									<label for="comment value">댓글 쓰기</label> <input type="text"

@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
-<%@ page session="true" %>
+   pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page session="true"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath }" />
+<%
+   request.setCharacterEncoding("utf-8");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,19 +20,19 @@
 <script>
 	function notice(){
 		alert('해당 notice 게시물로 이동합니다');
-		location.href='/tm/board/notice/view?noticeNO=${notice.noticeNO}';
+		location.href='${contextPath}/board/notice/view?noticeNO=${notice.noticeNO}';
 		}
 	function promotion(){
 		alert('해당 promotion 게시물로 이동합니다');
-		location.href='/tm/board/promotion/view?promotionNO=${promotion.promotionNO}';
+		location.href='${contextPath}/board/promotion/view?promotionNO=${promotion.promotionNO}';
 	}
 	function travel(){
 		alert('해당 travel 게시물로 이동합니다');
-		location.href='/tm/board/travel/view?travelNO=${travel.travelNO}';
+		location.href='${contextPath}/board/travel/view?travelNO=${travel.travelNO}';
 	}
 	function review(){
 		alert('해당 review 게시물로 이동합니다');
-		location.href='/tm/board/review/view?reviewNO=${review.reviewNO}';
+		location.href='${contextPath}/board/review/view?reviewNO=${review.reviewNO}';
 	}
 </script>
 </head>

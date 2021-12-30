@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page session="true"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <%
 request.setCharacterEncoding("utf-8");
@@ -42,123 +43,108 @@ body {
 
 <script src='http://code.jquery.com/jquery-latest.min.js'></script>
 <script>
-
+	
 </script>
 </head>
 <body>
 	<jsp:include page="/resources/include/header.jsp" />
-	<hr>
-
-
 	<div class="container">
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
-				<h4 class="mb-3" align="center">${userSession.name} 화면</h4>
-					<input type="hidden" name="id" value="${userSession.adminID}">
-					<div class="row">
-						<div class="col-md-4 mb-3">
-							<form action='/tm/admin/mypage' method='post'>
-								<input type="hidden" name="key" value="one">					
-								<input class='form-control' type='submit'  value='게시판 글 관리'>
-							</form>
-						</div>
-						<div class="col-md-4 mb-3">
-							<form action='/tm/admin/mypage' method='post'>
-								<input type="hidden" name="key" value="two">					
-								<input class='form-control' type='submit'  value='회원 조회''>
-							</form>
-						</div>
-						<div class="col-md-4 mb-3">
-							<form action='/tm/admin/mypage' method='post'>
-								<input type="hidden" name="key" value="three">					
-								<input class='form-control' type='submit'  value='예약 조회'>
-							</form>
-						</div>
+				<h4 class="mb-3" align="center">${userSession.name}화면</h4>
+				<input type="hidden" name="id" value="${userSession.adminID}">
+				<div class="row">
+					<div class="col-md-4 mb-3">
+						<form action='/admin/mypage' method='post'>
+							<input type="hidden" name="key" value="one"> <input
+								class='form-control' type='submit' value='게시판 글 관리'>
+						</form>
 					</div>
-					
-					<hr>
-					
-					<br>
-					<br>
-					<h4 class="mb-3" align="center">${seller.sellerID}님의 정보</h4>
-					<br>
-					<br>
-					
-					<div class="row">
-							<div class="col-md-6 mb-3">
-								<label class='form-control'>아이디</label>			
-							</div>
-							<div class="col-md-6 mb-3">
-								<label class='form-control'>${seller.sellerID}</label>
-							</div>
+					<div class="col-md-4 mb-3">
+						<form action='/admin/mypage' method='post'>
+							<input type="hidden" name="key" value="two"> <input
+								class='form-control' type='submit' value='회원 조회''>
+						</form>
 					</div>
-					<div class="row">
-							<div class="col-md-6 mb-3">
-								<label class='form-control'>비밀번호</label>			
-							</div>
-							<div class="col-md-6 mb-3">
-								<label class='form-control'>${seller.pw}</label>
-							</div>
+					<div class="col-md-4 mb-3">
+						<form action='/admin/mypage' method='post'>
+							<input type="hidden" name="key" value="three"> <input
+								class='form-control' type='submit' value='예약 조회'>
+						</form>
 					</div>
-					
-						<div class="row">
-							<div class="col-md-6 mb-3">
-								<label class='form-control'>연락처</label>			
-							</div>
-							<div class="col-md-6 mb-3">
-								<label class='form-control'>${seller.phone}</label>
-							</div>
+				</div>
+
+				<hr>
+
+				<br> <br>
+				<h4 class="mb-3" align="center">${seller.sellerID}님의정보</h4>
+				<br> <br>
+
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label class='form-control'>아이디</label>
 					</div>
-						<div class="row">
-							<div class="col-md-6 mb-3">
-								<label class='form-control'>주소</label>			
-							</div>
-							<div class="col-md-6 mb-3">
-								<label class='form-control'>${seller.address}</label>
-							</div>
+					<div class="col-md-6 mb-3">
+						<label class='form-control'>${seller.sellerID}</label>
 					</div>
-						<div class="row">
-							<div class="col-md-6 mb-3">
-								<label class='form-control'>사용자 구분</label>			
-							</div>
-							<div class="col-md-6 mb-3">
-								<label class='form-control'>${seller.grade}</label>
-							</div>
-						</div>
-					<div class="row">
-							
-							<div class='col-md-12 mb-3'>
-							<form action='/tm/admin/mypage' method='post'>
-								<input type='hidden' name='selectSellerOne'value='${seller.sellerID}'>
-								<input class="btn btn-primary btn-lg btn-block" type='submit' value='상품내역 보기'>
-							
-							</form>
-							</div>			
-													
+				</div>
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label class='form-control'>비밀번호</label>
 					</div>
-				
-					
-				
-						
-					
-					
-				
-				
-					
-					
+					<div class="col-md-6 mb-3">
+						<label class='form-control'>${seller.pw}</label>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label class='form-control'>연락처</label>
+					</div>
+					<div class="col-md-6 mb-3">
+						<label class='form-control'>${seller.phone}</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label class='form-control'>주소</label>
+					</div>
+					<div class="col-md-6 mb-3">
+						<label class='form-control'>${seller.address}</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label class='form-control'>사용자 구분</label>
+					</div>
+					<div class="col-md-6 mb-3">
+						<label class='form-control'>${seller.grade}</label>
+					</div>
+				</div>
+				<div class="row">
+
+					<div class='col-md-12 mb-3'>
+						<form action='/admin/mypage' method='post'>
+							<input type='hidden' name='selectSellerOne'
+								value='${seller.sellerID}'> <input
+								class="btn btn-primary btn-lg btn-block" type='submit'
+								value='상품내역 보기'>
+
+						</form>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-<script>
-				success();
-			</script>
+	<script>
+		success();
+	</script>
 	<br>
 	<br>
 	<br>
 	<br>
 	<br>
 	<br>
-	<hr>
 
 	<jsp:include page="/resources/include/footer.jsp" />
 </body>

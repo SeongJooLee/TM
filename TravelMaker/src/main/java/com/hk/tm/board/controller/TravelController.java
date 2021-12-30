@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -117,7 +118,7 @@ public class TravelController {
 
 	@RequestMapping(value="/view" , method=RequestMethod.GET)
 	public String travelView(Model model , @RequestParam("travelNO") int travelNO,HttpSession session) {
-		System.out.println("여기 ??");
+		
 		Map<String,Object> map = travelService.selectOneTravel(travelNO);
 		
 		List<CommentVO> commentList = commentService.selectTravelComment(travelNO);
@@ -209,7 +210,7 @@ public class TravelController {
 			}
 		}
 
-		response.sendRedirect("/tm/board/travel");  //travelList.jsp로 이동			
+		response.sendRedirect("/board/travel");  //travelList.jsp로 이동			
 	}
 
 
@@ -290,7 +291,7 @@ public class TravelController {
 			FileUtils.deleteDirectory(imgDir);
 			imgDelete(travelVO.getTravelNO());
 		}
-		response.sendRedirect("/tm/board/travel"); //travelList.jsp로 이동	
+		response.sendRedirect("/board/travel"); //travelList.jsp로 이동	
 	}
 
 
@@ -356,8 +357,12 @@ public class TravelController {
 
 		while(fileNames.hasNext()){
 			String fileName = fileNames.next();
+			UUID uuid = UUID.randomUUID();
+			String uuidStr = uuid.toString();
+			
 			MultipartFile mFile = request.getFile(fileName);
-			String originalFileName=mFile.getOriginalFilename();
+			String originalFileName = uuidStr+"_"+mFile.getOriginalFilename();
+			
 			fileList.add(originalFileName);
 			File file = new File(REPO +"\\"+ fileName);
 

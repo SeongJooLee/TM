@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -198,7 +199,7 @@ public class UserController {
 		 switch(check){
 	        case "com.hk.tm.member.vo.UserVO":   
 	        	UserVO user = (UserVO) session.getAttribute("userSession");
-	        	model.addAttribute("user", user);   
+	        	model.addAttribute("user", user);   //주석지우기
 	        	
 	        	return "userMyPage";            
 	        case "com.hk.tm.member.vo.SellerVO":
@@ -383,7 +384,7 @@ public class UserController {
 				FileUtils.moveFileToDirectory(srcFile, destDir, true);
 			}
 		}
-		response.sendRedirect("/tm/board/review");
+		response.sendRedirect("/board/review");
 		return "userReviewAddDone";
 	}
 	
@@ -395,8 +396,11 @@ public class UserController {
 		
 		while(fileNames.hasNext()){
 			String fileName = fileNames.next();
+			UUID uuid = UUID.randomUUID();
+			String uuidStr = uuid.toString();
+			
 			MultipartFile mFile = request.getFile(fileName);
-			String originalFileName=mFile.getOriginalFilename();
+			String originalFileName = uuidStr+"_"+mFile.getOriginalFilename();
 			fileList.add(originalFileName);
 			File file = new File(REPO +"\\"+ fileName);
 			

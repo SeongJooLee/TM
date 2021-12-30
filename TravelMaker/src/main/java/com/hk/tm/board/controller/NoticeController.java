@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -170,13 +171,14 @@ public class NoticeController {
 				FileUtils.moveFileToDirectory(srcFile, destDir, true);
 			}
 		}
-		response.sendRedirect("/tm/board/notice");
+		response.sendRedirect("/board/notice");
 	}
 
 	@RequestMapping(value="/board/notice/update", method=RequestMethod.POST)
 	public String noticeUpdate(@ModelAttribute NoticeVO noticeVO,Model model,MultipartHttpServletRequest multi,HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		Map<String,Object> map = new HashMap<String,Object>();
+		
 		Enumeration enu=multi.getParameterNames();
 
 		while(enu.hasMoreElements()){
@@ -245,7 +247,7 @@ public class NoticeController {
 		if(imgDir.exists()) {
 			FileUtils.deleteDirectory(imgDir);
 		}
-		response.sendRedirect("/tm/board/notice");
+		response.sendRedirect("/board/notice");
 	}
 
 	@RequestMapping(value="/board/notice/noticeImgDelete", method= {RequestMethod.GET,RequestMethod.POST},produces = "application/json; charset=utf8")
@@ -309,11 +311,17 @@ public class NoticeController {
 	private List<String> upload(MultipartHttpServletRequest request) throws ServletException, IOException{
 		List<String> fileList= new ArrayList<String>();
 		Iterator<String> fileNames = request.getFileNames();
-		
 		while(fileNames.hasNext()){
+			
+			//파일의 원본 이름 저장
 			String fileName = fileNames.next();
+			
+			UUID uuid = UUID.randomUUID();
+			String uuidStr = uuid.toString();
+			
 			MultipartFile mFile = request.getFile(fileName);
-			String originalFileName=mFile.getOriginalFilename();
+			String originalFileName = uuidStr+"_"+mFile.getOriginalFilename();
+			
 			fileList.add(originalFileName);
 			File file = new File(REPO +"\\"+ fileName);
 			
@@ -326,8 +334,13 @@ public class NoticeController {
 				File destDir = new File(REPO +"\\temp\\");
 				destDir.mkdir();
 				mFile.transferTo(new File(REPO +"\\temp\\"+ originalFileName)); //임시로 저장된 multipartFile을 실제 파일로 전송
+				
 			}
 		}
 		return fileList;
 	}
+
+	
+	
+	
 }

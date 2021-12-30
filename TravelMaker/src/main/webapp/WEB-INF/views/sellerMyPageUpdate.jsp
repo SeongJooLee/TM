@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page session="true"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <%
 request.setCharacterEncoding("utf-8");
@@ -52,46 +53,43 @@ body {
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
 				<h4 class="mb-3" align="center">회원 정보</h4>
-					<input type="hidden" name="id" value="${userSession.sellerID}">
-					<div class="row">
-						<div class="col-md-6 mb-3">
-							<form action='/tm/member/mypage' method='post'>
-								<input type="hidden" name="testKey" value="sellerOne">					
-								<input class='form-control' type='submit'  value='회원정보'>
-							</form>
-						</div>
-						<div class="col-md-6 mb-3">
-							<form action='/tm/member/mypage' method='post'>
-							<input type="hidden" name="testKey" value="sellerTwo">					
-							<input class='form-control' type='submit'  value='내가 등록한 상품 보기'>
-							</form>	
-						</div>
-						
+				<input type="hidden" name="id" value="${userSession.sellerID}">
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<form action='/member/mypage' method='post'>
+							<input type="hidden" name="testKey" value="sellerOne"> <input
+								class='form-control' type='submit' value='회원정보'>
+						</form>
 					</div>
-					
-					<hr>
-				
-					<br>
-					<br>
-					<h4 class="mb-3" align="center">[ 정보를 수정해주세요 ]</h4>
-					<br>
-					<br>
+					<div class="col-md-6 mb-3">
+						<form action='/member/mypage' method='post'>
+							<input type="hidden" name="testKey" value="sellerTwo"> <input
+								class='form-control' type='submit' value='내가 등록한 상품 보기'>
+						</form>
+					</div>
+				</div>
+
+				<br> <br>
+				<h4 class="mb-3" align="center">[ 정보를 수정해주세요 ]</h4>
+				<br> <br>
+				<form action='/member/mypage/sellerUpdate' method='post'>
 					<div class="row">
 						<div class="col-md-2 mb-3">
-							<form action='/tm/member/mypage/sellerUpdate' method='post'>
-								<label class='form-control'>아이디</label> 		
-								
-							
+							<label class='form-control'>아이디</label>
+
+
 						</div>
 						<div class="col-md-4 mb-3">
-							<input type='text' class='form-control' name='sellerID'value='${userSession.sellerID}' readonly> 
-							
+							<input type='text' class='form-control' name='sellerID'
+								value='${userSession.sellerID}' readonly>
+
 						</div>
 						<div class="col-md-2 mb-3">
-							<label class='form-control'>비밀번호</label> 
+							<label class='form-control'>비밀번호</label>
 						</div>
 						<div class="col-md-4 mb-3">
-							<input type='text' class='form-control' name='pw' value='${userSession.pw}'>
+							<input type='text' class='form-control' name='pw'
+								value='${userSession.pw}'>
 						</div>
 					</div>
 					<div class="row">
@@ -99,29 +97,33 @@ body {
 							<label class='form-control'>회사명</label>
 						</div>
 						<div class="col-md-4 mb-3">
-							<input class='form-control' type='text' name='name' value='${userSession.name}' readonly><br> 
+							<input class='form-control' type='text' name='name'
+								value='${userSession.name}' readonly><br>
 						</div>
 						<div class="col-md-2 mb-3">
-							<label class='form-control'>연락처</label> 
+							<label class='form-control'>연락처</label>
 						</div>
 						<div class="col-md-4 mb-3">
-							<input class='form-control' type='text' name='phone' value='${userSession.phone}'> 
+							<input class='form-control' type='text' name='phone'
+								value='${userSession.phone}'>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-2 mb-3">
-							<label class='form-control'>주소</label> 
+							<label class='form-control'>주소</label>
 						</div>
 						<div class="col-md-10 mb-3">
-							 <input class='form-control' type='text' name='address' value='${userSession.address}'><br>
+							<input class='form-control' type='text' name='address'
+								value='${userSession.address}'><br>
 						</div>
-						
+
 					</div>
-					
-				<input class="btn btn-primary btn-lg btn-block" type='submit' value='변경하기'>
+
+					<input class="btn btn-primary btn-lg btn-block" type='submit'
+						value='변경하기'>
 				</form>
-					
-					
+
+
 			</div>
 		</div>
 	</div>
@@ -132,7 +134,6 @@ body {
 	<br>
 	<br>
 	<br>
-	<hr>
 
 	<jsp:include page="/resources/include/footer.jsp" />
 </body>

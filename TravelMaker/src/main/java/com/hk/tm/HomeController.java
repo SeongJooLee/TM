@@ -32,10 +32,17 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home( Model model) {
+		
+		// 시작시간 
+		long startTime = System.currentTimeMillis(); // 1/1000 초 
 		// NoticeImageVO - AllSelect
 		List<NoticeImageVO> noticeList = noticeService.selectHomeNoticeImage();
 		// PromotionImageVO - AllSelect
+		long endTime1 = System.currentTimeMillis(); // 1/1000 초 
+		
 		List<PromotionImageVO> promotionList = promotionService.selectHomePromotionImage();
+		long endTime2 = System.currentTimeMillis(); // 1/1000 초 
+		
 		// travelImageVO - AllSelect
 		List<TravelImageVO> travelList = travelService.selectHomeTravelImage();
 		
@@ -43,12 +50,22 @@ public class HomeController {
 		model.addAttribute("notice",noticeList);
 		model.addAttribute("promotion",promotionList);
 		
+		// 끝시간
+		long endTime = System.currentTimeMillis(); // 1/1000 초 
+		// diff ( 실행시간 ) 
+		System.out.println("Diff = " + (endTime-startTime));
+		System.out.println("Diff range1= " + (endTime1-startTime));
+		System.out.println("Diff range2= " + (endTime2-endTime1));
+
 		return "home";
 		
 	}
 	@RequestMapping(value = "/seongJooTest", method = RequestMethod.GET)
 	public String seongJooTest( Model model) {
-		
+		// 시작시간 
+
+		// 끝시간
+		// diff ( 실행시간 ) 
 		return "/seongtest";
 		
 	}

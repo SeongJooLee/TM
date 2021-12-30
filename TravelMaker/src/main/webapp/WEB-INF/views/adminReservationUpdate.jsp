@@ -46,7 +46,7 @@ function reset(){
 	
 	var result = confirm("취소할거니..?");
 	if(result){
-		location.href = "/tm/admin/mypage";
+		location.href = "${contextPath}/admin/mypage";
 	}else{
 	    return;
 	}
@@ -66,19 +66,19 @@ function reset(){
 				<input type="hidden" name="id" value="${userSession.adminID}">
 				<div class="row">
 					<div class="col-md-4 mb-3">
-						<form action='/tm/admin/mypage' method='post'>
+						<form action='${contextPath}/admin/mypage' method='post'>
 							<input type="hidden" name="key" value="one"> <input
 								class='form-control' type='submit' value='게시판 글 관리'>
 						</form>
 					</div>
 					<div class="col-md-4 mb-3">
-						<form action='/tm/admin/mypage' method='post'>
+						<form action='${contextPath}/admin/mypage' method='post'>
 							<input type="hidden" name="key" value="two"> <input
 								class='form-control' type='submit' value='회원 조회'>
 						</form>
 					</div>
 					<div class="col-md-4 mb-3">
-						<form action='/tm/admin/mypage' method='post'>
+						<form action='${contextPath}/admin/mypage' method='post'>
 							<input type="hidden" name="key" value="three"> <input
 								class='form-control' type='submit' value='예약 조회'>
 						</form>
@@ -90,7 +90,7 @@ function reset(){
 				<br> <br>
 				<h4 class="mb-3" align="center">변경할 값을 입력해주세요</h4>
 				<br> <br>
-				<form action='/tm/admin/mypage/reservationUpdate' method='post'>
+				<form action='${contextPath}/admin/mypage/reservationUpdate' method='post'>
 				<div class="row">
 					<div class="col-md-6 mb-3">
 						<label class='form-control'>예약 번호</label>

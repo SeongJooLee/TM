@@ -427,7 +427,7 @@ function backToList(obj){
 					</c:forEach>
 
 					<c:if test='${userSession.grade.equals("user")}'>
-						<form action="/tm/board/review/add" method="post">
+						<form action="${contextPath}/board/review/add" method="post">
 							<div class="row">
 								<div class="col-md-12 mb-3 font2">
 									<label for="comment">댓글 쓰기</label> <input type="text"

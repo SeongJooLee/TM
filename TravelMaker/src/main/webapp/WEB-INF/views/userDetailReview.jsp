@@ -44,7 +44,7 @@ body {
 <script>
 function page(){
 	alert('상세글로 이동됩니다.');
-	location.href='/tm/board/review/view?reviewNO=${review.reviewNO}';
+	location.href='${contextPath}/board/review/view?reviewNO=${review.reviewNO}';
 	}
 </script>
 </head>
@@ -60,19 +60,19 @@ function page(){
 				<input type="hidden" name="id" value="${userSession.adminID}">
 				<div class="row">
 					<div class="col-md-4 mb-3">
-						<form action='/tm/admin/mypage' method='post'>
+						<form action='${contextPath}/admin/mypage' method='post'>
 							<input type="hidden" name="key" value="one"> <input
 								class='form-control' type='submit' value='게시판 글 관리'>
 						</form>
 					</div>
 					<div class="col-md-4 mb-3">
-						<form action='/tm/admin/mypage' method='post'>
+						<form action='${contextPath}/admin/mypage' method='post'>
 							<input type="hidden" name="key" value="two"> <input
 								class='form-control' type='submit' value='회원 조회'>
 						</form>
 					</div>
 					<div class="col-md-4 mb-3">
-						<form action='/tm/admin/mypage' method='post'>
+						<form action='${contextPath}/admin/mypage' method='post'>
 							<input type="hidden" name="key" value="three"> <input
 								class='form-control' type='submit' value='예약 조회'>
 						</form>

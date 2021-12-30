@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" isELIgnored="false"%>
+   pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page session="true"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <%
 request.setCharacterEncoding("utf-8");
@@ -93,13 +94,13 @@ body {
 								<c:forEach var='list' items='${proList}' varStatus='num'>
 								<tr align="center">
 
-								<td><a href='/tm/board/promotion/view?promotionNO=${list.promotionNO}'>${list.promotionNO}</a></td>
+								<td><a href='${contextPath }/board/promotion/view?promotionNO=${list.promotionNO}'>${list.promotionNO}</a></td>
 								<td>${list.title}</td>
 							<%-- 	<td>${list.content}</td> --%>
 								<td>${list.price}</td>
 								<td>${list.sellerID}</td>
 								<td>
-									<a href='/tm/member/mypage?promotionNO=${list.promotionNO}'>예약내역
+									<a href='${contextPath }/member/mypage?promotionNO=${list.promotionNO}'>예약내역
 										확인하기</a>
 								</td>
 								</tr>

@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
+   pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page session="true"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath }" />
+<%
+request.setCharacterEncoding("utf-8");
+%>
     
 <!DOCTYPE html>
 <html>
@@ -15,10 +21,10 @@
 
 
 	function userRegister() {
-		location.href = "register?name=user";
+		location.href = "${contextPath}/member/register?name=user";
 	}
 	function sellerRegister() {
-		location.href = "register?name=seller";
+		location.href = "${contextPath}/member/register?name=seller";
 	}
 </script>
 <style>

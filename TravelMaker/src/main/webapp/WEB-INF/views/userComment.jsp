@@ -57,25 +57,25 @@ body {
 				<input type="hidden" name="id" value="${userSession.id}">
 				<div class="row">
 					<div class="col-md-3 mb-3">
-						<form action='/tm/member/mypage' method='post'>
+						<form action='${contextPath}/member/mypage' method='post'>
 							<input type="hidden" name="testKey" value="one"> <input
 								class='form-control' type='submit' value='회원정보'>
 						</form>
 					</div>
 					<div class="col-md-3 mb-3">
-						<form action='/tm/member/mypage' method='post'>
+						<form action='${contextPath}/member/mypage' method='post'>
 							<input type="hidden" name="testKey" value="two"> <input
 								class='form-control' type='submit' value='내가 쓴 글 보기'>
 						</form>
 					</div>
 					<div class="col-md-3 mb-3">
-						<form action='/tm/member/mypage' method='post'>
+						<form action='${contextPath}/member/mypage' method='post'>
 							<input type="hidden" name="testKey" value="three"> <input
 								class='form-control' type='submit' value='예약확인'>
 						</form>
 					</div>
 					<div class="col-md-3 mb-3">
-							<form action='/tm/member/mypage/comment' method='get'>					
+							<form action='${contextPath}/member/mypage/comment' method='get'>					
 								<input class='form-control' type='submit'  value='내가 쓴 댓글 보기'>
 							</form>
 						</div>
@@ -104,10 +104,10 @@ body {
 									<tr>
 										<c:choose>
 											<c:when test='${list.travelNO!=0}'>
-												<td><a href='/tm/board/travel/view?travelNO=${list.travelNO}'>테마여행</a></td>
+												<td><a href='${contextPath}/board/travel/view?travelNO=${list.travelNO}'>테마여행</a></td>
 											</c:when>
 											<c:when test='${list.reviewNO!=0}'>
-												<td><a href='/tm/board/review/view?reviewNO=${list.reviewNO}'>이용후기</a></td>
+												<td><a href='${contextPath}/board/review/view?reviewNO=${list.reviewNO}'>이용후기</a></td>
 											</c:when>			
 										</c:choose>
 							

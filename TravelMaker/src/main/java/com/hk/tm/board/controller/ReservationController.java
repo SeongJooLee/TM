@@ -76,7 +76,7 @@ public class ReservationController {
 		int ret = reserService.deleteReservation(reserVO);
 		if(ret==1) {
 			//삭제 성공
-			response.sendRedirect("/tm/board/promotion");
+			response.sendRedirect("/board/promotion");
 		} else {
 			//실패..?
 			

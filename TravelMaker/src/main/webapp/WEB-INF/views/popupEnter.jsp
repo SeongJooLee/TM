@@ -45,7 +45,7 @@ body {
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
 				<h4 class="mb-3" align="center">통합검색</h4>
-				<form action="/tm/board/popupEnter" method="post">
+				<form action="${contextPath}/board/popupEnter" method="post">
 					<div class="row">
 						<div class="col-md-3 mb-3">
 							<select class="form-control" name="headSearchOption" required>
@@ -86,7 +86,7 @@ body {
 
 						<div class="col-md-6 mb-3">
 							<a
-								href='/tm/board/popupCheck?randomNO=${list.noticeNO}&randomName=${list.name}'>${list.title}</a>
+								href='${contextPath}/board/popupCheck?randomNO=${list.noticeNO}&randomName=${list.name}'>${list.title}</a>
 						</div>
 
 						<div class="col-md-2 mb-3">${list.adminID}</div>

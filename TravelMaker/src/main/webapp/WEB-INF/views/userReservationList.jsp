@@ -43,12 +43,12 @@ body {
 <script src='http://code.jquery.com/jquery-latest.min.js'></script>
 <script>
 	function updateUser() {
-		location.href = "/tm/member/mypage/update";
+		location.href = "${contextPath}/member/mypage/update";
 	}
 	function deleteUser() {
 		var result = confirm("삭제할거니..?");
 		if (result) {
-			location.href = "/tm/member/mypage/delete?userId=${userSession.id}";
+			location.href = "${contextPath}/member/mypage/delete?userId=${userSession.id}";
 		} else {
 			return;
 		}
@@ -67,19 +67,19 @@ body {
 				<input type="hidden" name="id" value="${userSession.id}">
 				<div class="row">
 					<div class="col-md-3 mb-3">
-						<form action='/tm/member/mypage' method='post'>
+						<form action='${contextPath}/member/mypage' method='post'>
 							<input type="hidden" name="testKey" value="one"> <input
 								class='form-control' type='submit' value='회원정보'>
 						</form>
 					</div>
 					<div class="col-md-3 mb-3">
-						<form action='/tm/member/mypage' method='post'>
+						<form action='${contextPath}/member/mypage' method='post'>
 							<input type="hidden" name="testKey" value="two"> <input
 								class='form-control' type='submit' value='내가 쓴 글 보기'>
 						</form>
 					</div>
 					<div class="col-md-3 mb-3">
-						<form action='/tm/member/mypage' method='post'>
+						<form action='${contextPath}/member/mypage' method='post'>
 							<input type="hidden" name="testKey" value="three"> <input
 								class='form-control' type='submit' value='예약확인'>
 						</form>
@@ -88,7 +88,7 @@ body {
 
 
 					<div class="col-md-3 mb-3">
-						<form action='/tm/member/mypage/comment' method='get'>
+						<form action='${contextPath}/member/mypage/comment' method='get'>
 							<input class='form-control' type='submit' value='내가 쓴 댓글 보기'>
 						</form>
 					</div>
@@ -114,7 +114,7 @@ body {
 							<c:forEach var='list' items='${list}' varStatus='num'>
 								<tr>
 									<td><a
-										href='/tm/board/reservation/view?reserNO=${list.reserNO }'>
+										href='${contextPath}/board/reservation/view?reserNO=${list.reserNO }'>
 											${list.reserNO}</a></td>
 									<td>${list.promotionNO}</td>
 									<td>${list.reserDate}</td>

@@ -57,19 +57,19 @@ body {
 				<input type="hidden" name="id" value="${userSession.adminID}">
 				<div class="row">
 					<div class="col-md-4 mb-3">
-						<form action='/tm/admin/mypage' method='post'>
+						<form action='${contextPath}/admin/mypage' method='post'>
 							<input type="hidden" name="key" value="one"> <input
 								class='form-control' type='submit' value='게시판 글 관리'>
 						</form>
 					</div>
 					<div class="col-md-4 mb-3">
-						<form action='/tm/admin/mypage' method='post'>
+						<form action='${contextPath}/admin/mypage' method='post'>
 							<input type="hidden" name="key" value="two"> <input
 								class='form-control' type='submit' value='회원 조회'>
 						</form>
 					</div>
 					<div class="col-md-4 mb-3">
-						<form action='/tm/admin/mypage' method='post'>
+						<form action='${contextPath}/admin/mypage' method='post'>
 							<input type="hidden" name="key" value="three"> <input
 								class='form-control' type='submit' value='예약 조회'>
 						</form>
@@ -98,7 +98,7 @@ body {
 
 							<c:forEach var='seller' items='${seller}'>
 								<tr>
-									<td><a href='/tm/board/promotion/view?promotionNO=${seller.promotionNO}'>${seller.promotionNO}</a></td>
+									<td><a href='${contextPath}/board/promotion/view?promotionNO=${seller.promotionNO}'>${seller.promotionNO}</a></td>
 									<td>${seller.title}</td>
 									<td>${seller.price}</td>
 									<td>${seller.writeDate}</td>

@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page session="true"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath }" />
+<%
+request.setCharacterEncoding("utf-8");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,7 +43,7 @@ body {
 
 <script>
 	function resetTest() {
-		location.href = "/tm/member/register?name=seller"
+		location.href = "/member/register?name=seller"
 	}
 	function fn_create() {
 		var id = document.getElementById("id").value;
@@ -70,6 +76,7 @@ body {
 			return;
 		} else {
 			alert("확인(예)을 누르셨습니다.");
+			document.getElementById("id").disabled = false;
 			document.getElementById("frmNotice").submit();
 		}
 	}
@@ -165,7 +172,7 @@ body {
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
 				<h4 class="mb-3">판매자 회원가입</h4>
-				<form class="validation-form" action='sellerAdd' method='post'
+				<form class="validation-form" action='sellerAdd' method='post' id="frmNotice"
 					novalidate>
 
 					<div class="row">
@@ -226,7 +233,6 @@ body {
 	<br>
 	<br>
 	<br>
-	<hr>
 	<jsp:include page="/resources/include/footer.jsp" />
 </body>
 

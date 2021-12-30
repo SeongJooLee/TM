@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8" isELIgnored="false"%>
+	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page session="true"%>
@@ -24,41 +24,42 @@
 	rel="stylesheet" />
 <style>
 @font-face {
-    font-family: 'Cafe24SsurroundAir';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+	font-family: 'Cafe24SsurroundAir';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
 }
 
-
 .font1 {
-  font-family: 'Cafe24SsurroundAir' !important;
-  font-size: 38px;
-  font-weight: bold;
-  color:#4a1b1b;
- 
+	font-family: 'Cafe24SsurroundAir' !important;
+	font-size: 38px;
+	font-weight: bold;
+	color: #4a1b1b;
 }
 
 .font2 {
-  font-family: 'Cafe24SsurroundAir' !important;
-  font-size: 20px;
-  font-weight: bold;
-  color:#5e0c0c;
+	font-family: 'Cafe24SsurroundAir' !important;
+	font-size: 20px;
+	font-weight: bold;
+	color: #5e0c0c;
 }
 
 .font3 {
-  font-family: 'Cafe24SsurroundAir' !important;
-  font-size: 16px;
-  font-weight: bold;
-  color:#5e0c0c;
+	font-family: 'Cafe24SsurroundAir' !important;
+	font-size: 16px;
+	font-weight: bold;
+	color: #5e0c0c;
 }
 
 .value {
-  font-family: 'Cafe24SsurroundAir' !important;
-  font-size: 20px;
-  font-weight: bold;
-  color: #754343;
+	font-family: 'Cafe24SsurroundAir' !important;
+	font-size: 20px;
+	font-weight: bold;
+	color: #754343;
 }
+
 .imagetest {
 	width: 100%;
 	height: 500px;
@@ -211,7 +212,7 @@ body {
 </script>
 </head>
 <body>
-						
+
 	<jsp:include page="/resources/include/header.jsp" />
 
 	<div class="container">
@@ -238,12 +239,13 @@ body {
 							<label for="image">이미지 파일 첨부</label>
 							<div id="update">
 								<input type="button" value="파일 삭제" id="imgUpdateBtn"
-									class="btn btn-danger btn-lg btn-block" onClick="fn_imgUpdateBtn()" disabled /> <small>
+									class="btn btn-danger btn-lg btn-block"
+									onClick="fn_imgUpdateBtn()" disabled /> <small>
 									&nbsp;&nbsp; * 클릭시 전체 파일이 삭제됩니다.</small>
 							</div>
 							<input type="button" value="파일 추가" id="imgUpdate"
-								class="btn btn-info btn-lg btn-block" onClick="fn_addFile()" disabled /> <small>
-								&nbsp;&nbsp; * 최대 3개까지 첨부 가능합니다.</small>
+								class="btn btn-info btn-lg btn-block" onClick="fn_addFile()"
+								disabled /> <small> &nbsp;&nbsp; * 최대 3개까지 첨부 가능합니다.</small>
 						</div>
 						<div class="col-md-1 mb-3"></div>
 						<div class="col-md-3 mb-3 font2">
@@ -259,34 +261,31 @@ body {
 
 									<div class="col-md-8 mb-5" data-bs-ride="carousel">
 										<div class="carousel-inner">
-												<c:if
-													test="${not empty image.image1 && image.image1 !='null' }">
-											<div class="carousel-item active ">
+											<c:if
+												test="${not empty image.image1 && image.image1 !='null' }">
+												<div class="carousel-item active ">
 													<input type="hidden" id="originalFileName" name="image1"
-														value="${image.image1 }" />
-													<img class="imagetest"
+														value="${image.image1 }" /> <img class="imagetest"
 														src="${contextPath }/board/promotion/download?image=${image.image1}&promotionNO=${promotion.promotionNO}&name=${promotion.name}" />
-											</div>
-												</c:if>
+												</div>
+											</c:if>
 
-												<c:if
-													test="${not empty image.image2 && image.image2 !='null' }">
-											<div class="carousel-item">
+											<c:if
+												test="${not empty image.image2 && image.image2 !='null' }">
+												<div class="carousel-item">
 													<input type="hidden" id="originalFileName" name="image2"
-														value="${image.image2 }" />
-													<img class="imagetest"
+														value="${image.image2 }" /> <img class="imagetest"
 														src="${contextPath }/board/promotion/download?image=${image.image2}&promotionNO=${promotion.promotionNO}&name=${promotion.name}" />
-											</div>
-												</c:if>
-												<c:if
-													test="${not empty image.image3 && image.image3 !='null' }">
-											<div class="carousel-item">
+												</div>
+											</c:if>
+											<c:if
+												test="${not empty image.image3 && image.image3 !='null' }">
+												<div class="carousel-item">
 													<input type="hidden" id="originalFileName" name="image3"
-														value="${image.image3 }" />
-													<img class="imagetest"
+														value="${image.image3 }" /> <img class="imagetest"
 														src="${contextPath }/board/promotion/download?image=${image.image3}&promotionNO=${promotion.promotionNO}&name=${promotion.name} " />
-											</div>
-												</c:if>
+												</div>
+											</c:if>
 										</div>
 
 										<!-- / 슬라이드 쇼 끝 -->
@@ -353,12 +352,12 @@ body {
 						<div class="row">
 							<div class="col-md-2 mb-3"></div>
 							<div class="col-md-4 mb-3 font2">
-								<input class="btn btn-info btn-lg btn-block font2" type="button" value="수정 반영하기"
-									onClick="fn_modify_update(frmPromotion)" />
+								<input class="btn btn-info btn-lg btn-block font2" type="button"
+									value="수정 반영하기" onClick="fn_modify_update(frmPromotion)" />
 							</div>
 							<div class="col-md-4 mb-3">
-								<input class="btn btn-info btn-lg btn-block font2" type="button" value="취소하기"
-									onClick="backToList(frmPromotion)" />
+								<input class="btn btn-info btn-lg btn-block font2" type="button"
+									value="취소하기" onClick="backToList(frmPromotion)" />
 							</div>
 							<div class="col-md-1 mb-3"></div>
 						</div>
@@ -370,15 +369,16 @@ body {
 									<c:if
 										test='${list.promotionNO == promotion.promotionNO && list.sellerID.equals(promotion.sellerID)}'>
 										<div class="col-md-4 mb-3">
-											<input class="btn btn-primary btn-lg btn-block font2" type="button" value="수정하기"
-												onClick="fn_enable(this.form)" />
+											<input class="btn btn-primary btn-lg btn-block font2"
+												type="button" value="수정하기" onClick="fn_enable(this.form)" />
 										</div>
 										<div class="col-md-4 mb-3">
-											<input class="btn btn-danger btn-lg btn-block font2" type="button" value="삭제하기"
-												onClick="fn_delete(this.form)" />
+											<input class="btn btn-danger btn-lg btn-block font2"
+												type="button" value="삭제하기" onClick="fn_delete(this.form)" />
 										</div>
 										<div class="col-md-4 mb-3">
-											<input class="btn btn-primary btn-lg btn-block font2" type="button" value="리스트로 돌아가기"
+											<input class="btn btn-primary btn-lg btn-block font2"
+												type="button" value="리스트로 돌아가기"
 												onClick="backToList(this.form)" />
 										</div>
 										<c:set var="check" value="1" />
@@ -388,53 +388,56 @@ body {
 									<div class="col-md-4 mb-3"></div>
 									<div class="col-md-4 mb-3"></div>
 									<div class="col-md-4 mb-3">
-										<input class="btn btn-primary btn-lg btn-block font2" type="button" value="리스트로 돌아가기"
+										<input class="btn btn-primary btn-lg btn-block font2"
+											type="button" value="리스트로 돌아가기"
 											onClick="backToList(this.form)" />
 									</div>
 								</c:if>
 							</c:if>
-							
+							<c:if test='${userSession.grade.equals("admin")}'>
+								<div class="col-md-4 mb-3">
+									<input class="btn btn-primary btn-lg btn-block font2"
+										type="button" value="수정하기" onClick="fn_enable(this.form)" />
+								</div>
+								<div class="col-md-4 mb-3">
+									<input class="btn btn-danger btn-lg btn-block font2"
+										type="button" value="삭제하기" onClick="fn_delete(this.form)" />
+								</div>
+								<div class="col-md-4 mb-3">
+									<input class="btn btn-primary btn-lg btn-block font2"
+										type="button" value="리스트로 돌아가기"
+										onClick="backToList(this.form)" />
+								</div>
+							</c:if>
 						</div>
+
 					</div>
-						
+
 					<div class="row">
 						<c:if test='${userSession.grade.equals("user")}'>
 							<div class="col-md-4 mb-3"></div>
 							<div class="col-md-4 mb-3">
-								<input class="btn btn-primary btn-lg btn-block font2" type="button" value="리스트로 돌아가기"
-									onClick="backToList(this.form)" />
+								<input class="btn btn-primary btn-lg btn-block font2"
+									type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />
 							</div>
 							<div class="col-md-4 mb-3">
-								<input class="btn btn-primary btn-lg btn-block font2" type="button" value="예약하기"
-									onClick="fn_reser(this.form)" />
+								<input class="btn btn-primary btn-lg btn-block font2"
+									type="button" value="예약하기" onClick="fn_reser(this.form)" />
 							</div>
 
 						</c:if>
-						<c:if test='${userSession.grade.equals("admin")}'>
-							<div class="col-md-4 mb-3">
-								<input class="btn btn-primary btn-lg btn-block font2" type="button" value="수정하기"
-									onClick="fn_enable(this.form)" />
-							</div>
-							<div class="col-md-4 mb-3">
-								<input class="btn btn-danger btn-lg btn-block font2" type="button" value="삭제하기"
-									onClick="fn_delete(this.form)" />
-							</div>
-							<div class="col-md-4 mb-3">
-								<input class="btn btn-primary btn-lg btn-block font2" type="button" value="리스트로 돌아가기"
-									onClick="backToList(this.form)" />
-							</div>
-						</c:if>
+
 						<c:if test='${userSession.grade == null}'>
 							<div class="col-md-4 mb-3">
-								<input class="btn btn-primary btn-lg btn-block font2" type="button" value="리스트로 돌아가기"
-									onClick="backToList(this.form)" />
+								<input class="btn btn-primary btn-lg btn-block font2"
+									type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" />
 							</div>
 						</c:if>
-						
+
 					</div>
-					
+
 				</form>
-				
+
 			</div>
 		</div>
 	</div>
