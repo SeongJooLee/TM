@@ -8,7 +8,7 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	<!--
+
  	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName"
@@ -18,7 +18,7 @@
 		<property name="username" value="TRAVELMAKER" />
 		<property name="password" value="TRAVELMAKER" />
 	</bean>
-	 -->
+<!-- 
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName"
@@ -28,7 +28,7 @@
 		<property name="username" value="STUDY" />
 		<property name="password" value="STUDY" />
 	</bean>
-
+ -->
 	<bean id="sqlSessionFactory"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
