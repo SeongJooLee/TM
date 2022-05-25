@@ -30,7 +30,7 @@ request.setCharacterEncoding("utf-8");
           <h6>오류 번호 : 404 not found</h6>
           <ul class="list-unstyled">
             <li><a style="color: #008489;" href="/tm">메인 화면으로 돌아가기</a></li>
-            <li><a style="color: #008489;" href="https://i.ytimg.com/vi/POurA_Qph8Q/maxresdefault.jpg">떨어진 아이스크림이 안 아까우시다면?</a></li>
+            <li><a style="color: #008489;" href="https://i.ytimg.com/vi/POurA_Qph8Q/maxresdefault.jpg">아이스크림을 놓친 소녀가 불쌍하시다면?</a></li>
 
           </ul>
         </div>
